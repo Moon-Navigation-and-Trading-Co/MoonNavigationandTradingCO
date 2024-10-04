@@ -8,5 +8,5 @@ export default async function Page() {
         .from('notes')
         .insert([{ title: 'New Note 1' }])
 
-    return <pre>{JSON.stringify(notes, null, 2)}</pre>
+    return <pre>This should work: {JSON.stringify(notes, null, 2)}</pre>
 }
