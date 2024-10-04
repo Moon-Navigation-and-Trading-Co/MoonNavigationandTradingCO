@@ -6,7 +6,9 @@ import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
 import Link from "next/link";
-import "./globals.css";
+import "../globals.css";
+import { getMessages } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -14,18 +16,27 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
+  title: "FormBase",
+  description: "Internationalized Forms",
 };
 
-export default function RootLayout({
-  children,
-}: {
+type Props = {
   children: React.ReactNode;
-}) {
+  params: { locale: string };
+}
+
+export default async function RootLayout({
+  children,
+  params: { locale }
+}: Props) {
+  const messages = await getMessages();
+
+  console.log(messages)
+
   return (
-    <html lang="en" className={GeistSans.className} suppressHydrationWarning>
+    <html lang={locale} className={GeistSans.className} suppressHydrationWarning>
       <body className="bg-background text-foreground">
+
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -46,7 +57,9 @@ export default function RootLayout({
                 </div>
               </nav>
               <div className="flex flex-col gap-20 max-w-5xl p-5">
-                {children}
+                <NextIntlClientProvider messages={messages}>
+                  {children}
+                </NextIntlClientProvider>
               </div>
 
               <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
