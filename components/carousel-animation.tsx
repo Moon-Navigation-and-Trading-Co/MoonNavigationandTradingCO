@@ -3,7 +3,8 @@ import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useTranslations } from 'next-intl';
-
+import Image from "next/image";
+import { Separator } from "@radix-ui/react-dropdown-menu";
 
 
 export default function CarouselAnimation() {
@@ -30,29 +31,35 @@ export default function CarouselAnimation() {
     ]
 
     return (
-        <div className="flex flex-col lg:flex-row h-[500px] w-full gap-3">
+        <div className="flex flex-col lg:flex-row h-[800px]  lg:h-[500px] w-full gap-3">
+            <div className="w-full  shadow-md shadow-black h-[100px] lg:h-full lg:w-[160px] bg-[#6A908D] rounded-2xl flex items-center justify-start px-2">
+                <h1 className="text-center text-xl font-semibold text-white">Transportation Services</h1>
+            </div>
+            <Separator className="bg-[#243642] w-[2px] lg:my-24" />
             {freightTypes.map((freight, index) => (
                 <motion.div
                     key={freight.title}
-                    className="relative overflow-hidden rounded-2xl"
+                    className="relative shadow-lg shadow-black overflow-hidden rounded-2xl"
                     initial={false}
                     animate={{
-                        flex: expandedIndex === index ? 2 : 1,
+                        flex: expandedIndex === index ? 3 : 1,
                     }}
-                    transition={{ duration: 1, type: 'spring' }}
+                    transition={{ duration: 0.9, type: 'spring' }}
                 >
                     <Card
-                        className="h-full w-full cursor-pointer"
+                        className="h-full w-full border-0 cursor-pointer"
                         onClick={() => setExpandedIndex(index)}
                     >
                         <CardContent className="relative h-full p-0">
-                            <img
+                            <Image
                                 src={freight.image}
                                 alt={freight.title}
+                                width={1000}
+                                height={1000}
                                 className="h-full w-full object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/30" />
-                            <div className="absolute bottom-0 left-0 p-4 text-white">
+                            <div className="absolute bottom-0 left-0 p-4 text-white ">
                                 <h2 className="text-2xl font-bold">{freight.title}</h2>
                                 {expandedIndex === index && (
                                     <motion.div
@@ -71,10 +78,7 @@ export default function CarouselAnimation() {
                     </Card>
                 </motion.div>
             ))}
-            <div className="w-full h-[100px] lg:h-full lg:w-[170px] bg-red-500 rounded-2xl flex items-center justify-start px-5">
 
-                <h1 className="text-center text-white">Transportation Services</h1>
-            </div>
         </div>
     )
 }
