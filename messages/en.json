@@ -23,5 +23,29 @@
         "contact": "Contact Us",
         "learnmore": "Learn More",
         "getQuote": "Get Quote"
+    },
+    "Services-2": {
+        "container-s-1": "Less than Load Container",
+        "container-s-2": "Standard Container",
+        "container-s-3": "Oversized Container",
+        "container-s-4": "Inland Container Transportation",
+        "ship-s-1": "Request for PDA",
+        "ship-s-2": "Sign on/off Crew Members",
+        "ship-s-3": "Dangerous Cargo Services",
+        "ship-s-4": "Heavy Lift Services"
+    },
+    "Services-3": {
+        "container-title-1": "Shipping Services",
+        "container-description-1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "container-title-2": "Container Services",
+        "container-description-2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "container-title-3": "Freight Services",
+        "container-description-3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "container-title-4": "Logistics Services",
+        "container-description-4": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "container-title-5": "Warehousing Services",
+        "container-description-5": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "container-title-6": "Customs Services",
+        "container-description-6": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
     }
 }

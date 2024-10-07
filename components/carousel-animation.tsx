@@ -16,24 +16,27 @@ export default function CarouselAnimation() {
         {
             title: t("servicesCard1Title"),
             description: t("servicesCard1Description"),
-            image: "/cargoAir.png",
+            image: "/cargoAir.jpeg",
         },
         {
             title: t("servicesCard2Title"),
             description: t("servicesCard2Description"),
-            image: "/cargoAir.png",
+            image: "/airCargo.jpg",
         },
         {
             title: t("servicesCard3Title"),
             description: t("servicesCard3Description"),
-            image: "/cargoAir.png",
+            image: "/land-cargo-2.jpeg",
         },
     ]
 
     return (
         <div className="flex flex-col lg:flex-row h-[800px]  lg:h-[500px] w-full gap-5">
-            <div className="w-full  shadow-md shadow-black h-[100px] lg:h-full lg:w-[160px] bg-[#6A908D] rounded-2xl flex items-center justify-start px-2">
-                <h1 className="text-center text-xl font-semibold text-white">Transportation Services</h1>
+            <div className="w-full relative shadow-md overflow-hidden shadow-black h-[150px] lg:h-full lg:w-[160px]  rounded-2xl flex items-center justify-start">
+                <div className="bg-black/35 z-[998] absolute w-full h-full"></div>
+                <Image src={'/container-top-v.jpeg'} className="object-cover hidden lg:flex" fill alt="Transportation Services Background" />
+                <Image src={'/container-top-h.jpeg'} className="object-cover flex lg:hidden" fill alt="Transportation Services Background" />
+                <h1 className="text-center z-[999] text-xl font-semibold text-[#E2F1E7] w-full">Transportation Services</h1>
             </div>
             <Separator className="bg-[#243642] w-[2px] lg:my-24" />
             {freightTypes.map((freight, index) => (
@@ -50,12 +53,11 @@ export default function CarouselAnimation() {
                         className="h-full w-full border-0 cursor-pointer"
                         onClick={() => setExpandedIndex(index)}
                     >
-                        <CardContent className="relative h-full p-0">
+                        <CardContent className="relative w-full h-full p-0">
                             <Image
                                 src={freight.image}
                                 alt={freight.title}
-                                width={1000}
-                                height={1000}
+                                fill
                                 className="h-full w-full object-cover"
                             />
                             <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/90 to-black/30" />

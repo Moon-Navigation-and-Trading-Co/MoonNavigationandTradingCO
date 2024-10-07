@@ -73,23 +73,23 @@ const ContactForm: React.FC = () => {
                     <div className='flex flex-col gap-5'>
                         <div>
                             <Input className='border-[#6A908D] border-2 rounded-xl' placeholder='Name' id="name" {...register('name')} />
-                            {errors.name && <p>{errors.name.message}</p>}
+                            {errors.name && <p className='text-red-500 text-xs px-4 pt-2'>{errors.name.message}</p>}
                         </div>
                         <div>
                             <Input className='border-[#6A908D] border-2 rounded-xl' placeholder='Company Name' id="companyName" {...register('companyName')} />
-                            {errors.companyName && <p>{errors.companyName.message}</p>}
+                            {errors.companyName && <p className='text-red-500 text-xs px-4 pt-2'>{errors.companyName.message}</p>}
                         </div>
                         <div>
                             <Input className='border-[#6A908D] border-2 rounded-xl' placeholder='example@Yahoo.eg' id="email" {...register('email')} />
-                            {errors.email && <p>{errors.email.message}</p>}
+                            {errors.email && <p className='text-red-500 text-xs px-4 pt-2'>{errors.email.message}</p>}
                         </div>
                         <div>
                             <Input className='border-[#6A908D] border-2 rounded-xl' placeholder="(800) 555‑0100" type='number' id="number" {...register('number')} />
-                            {errors.number && <p>{errors.number.message}</p>}
+                            {errors.number && <p className='text-red-500 text-xs px-4 pt-2'>{errors.number.message}</p>}
                         </div>
                         <div>
                             <Textarea className='border-[#6A908D] border-2 rounded-xl' placeholder='Talk to us!' id="message" {...register('message')} />
-                            {errors.message && <p>{errors.message.message}</p>}
+                            {errors.message && <p className='text-red-500 text-xs px-4 pt-2'>{errors.message.message}</p>}
                         </div>
                         <Button className='bg-[#243642]' type="submit" disabled={loading}>
                             {loading ? 'Submitting...' : 'Submit'}

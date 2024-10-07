@@ -17,6 +17,7 @@ import ContactForm from "@/components/contact-form";
 export default function Index() {
   const t = useTranslations('HomePage');
   const tt = useTranslations('Buttons');
+  const ttt = useTranslations('Services-3')
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToModal = () => {
@@ -58,11 +59,12 @@ export default function Index() {
               </div>
 
               <div className="bg-black shadow-md shadow-black rounded-3xl overflow-hidden aspect-square flex items-center justify-center relative">
-                <Image alt="about us icon" src={'/cargoShip.png'} fill />
+                <Image alt="about us icon" fill
+                  className="object-cover" src={'/cargoShip.jpeg'} />
               </div>
 
               <div className="bg-black shadow-md col-span-1 md:col-span-2 shadow-black rounded-2xl md:max-h-[200px] min-w-full overflow-hidden aspect-square md:aspect-video flex items-center justify-center relative">
-                <Image alt="about us icon" src={'/cargoAir.png'} width={1000} height={500} />
+                <Image className="object-cover" alt="about us icon" src={'/land-cargo-1.jpg'} fill />
               </div>
 
             </div>
@@ -105,18 +107,12 @@ export default function Index() {
             {/* Other Services */}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-4">
-              <ServicesMiniCard icon="/letter-i.png" description="Lorem Ipsum is so overrated let me write my own overrated let me write my own overrated let me write my own overrated let me write my own!" buttonText="Learn More" title={"Shipping Services"} onButtonClick={function (): void {
-              }} />
-              <ServicesMiniCard icon="/letter-i.png" description="Lorem Ipsum is so overrated let me write my own overrated let me write my own overrated let me write my own overrated let me write my own!" buttonText="Learn More" title={"Shipping Services"} onButtonClick={function (): void {
-              }} />
-              <ServicesMiniCard icon="/letter-i.png" description="Lorem Ipsum is so overrated let me write my own overrated let me write my own overrated let me write my own overrated let me write my own!" buttonText="Learn More" title={"Shipping Services"} onButtonClick={function (): void {
-              }} />
-              <ServicesMiniCard icon="/letter-i.png" description="Lorem Ipsum is so overrated let me write my own overrated let me write my own overrated let me write my own overrated let me write my own!" buttonText="Learn More" title={"Shipping Services"} onButtonClick={function (): void {
-              }} />
-              <ServicesMiniCard icon="/letter-i.png" description="Lorem Ipsum is so overrated let me write my own overrated let me write my own overrated let me write my own overrated let me write my own!" buttonText="Learn More" title={"Shipping Services"} onButtonClick={function (): void {
-              }} />
-              <ServicesMiniCard icon="/letter-i.png" description="Lorem Ipsum is so overrated let me write my own overrated let me write my own overrated let me write my own overrated let me write my own!" buttonText="Learn More" title={"Shipping Services"} onButtonClick={function (): void {
-              }} />
+              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-1")} buttonText={tt("learnmore")} title={ttt("container-title-1")} onButtonClick={function (): void { }} />
+              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-2")} buttonText={tt("learnmore")} title={ttt("container-title-2")} onButtonClick={function (): void { }} />
+              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-3")} buttonText={tt("learnmore")} title={ttt("container-title-3")} onButtonClick={function (): void { }} />
+              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-4")} buttonText={tt("learnmore")} title={ttt("container-title-4")} onButtonClick={function (): void { }} />
+              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-5")} buttonText={tt("learnmore")} title={ttt("container-title-5")} onButtonClick={function (): void { }} />
+              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-6")} buttonText={tt("learnmore")} title={ttt("container-title-6")} onButtonClick={function (): void { }} />
 
             </div>
           </div>
