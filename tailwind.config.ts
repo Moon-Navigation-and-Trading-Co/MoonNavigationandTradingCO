@@ -18,6 +18,10 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'custom-radial': 'radial-gradient(circle, #119285 45%, #0A5951 100%)',
+        'black-overlay': 'linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3))'
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
