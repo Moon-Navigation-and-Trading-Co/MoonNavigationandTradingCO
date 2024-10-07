@@ -7,7 +7,7 @@ const TransportationServices: React.FC = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
 
             {/* Containers Card */}
-            <div className='shadow-lg shadow-black relative rounded-2xl max-h-[250px] overflow-hidden bg-red-500'>
+            <div className='shadow-lg shadow-black relative rounded-2xl max-h-[250px] overflow-hidden bg-black'>
 
                 <div className='absolute bg-black-overlay w-full h-full' ></div>
                 <Image className='aspect-video' src={'/cargoAir.png'} width={1000} height={1000} alt='Container Services Image' />

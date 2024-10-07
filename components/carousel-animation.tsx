@@ -31,7 +31,7 @@ export default function CarouselAnimation() {
     ]
 
     return (
-        <div className="flex flex-col lg:flex-row h-[800px]  lg:h-[500px] w-full gap-3">
+        <div className="flex flex-col lg:flex-row h-[800px]  lg:h-[500px] w-full gap-5">
             <div className="w-full  shadow-md shadow-black h-[100px] lg:h-full lg:w-[160px] bg-[#6A908D] rounded-2xl flex items-center justify-start px-2">
                 <h1 className="text-center text-xl font-semibold text-white">Transportation Services</h1>
             </div>
@@ -39,7 +39,7 @@ export default function CarouselAnimation() {
             {freightTypes.map((freight, index) => (
                 <motion.div
                     key={freight.title}
-                    className="relative shadow-lg shadow-black overflow-hidden rounded-2xl"
+                    className={`relative ${expandedIndex === index ? 'shadow-xl' : 'shadow-md'} shadow-black bg-black overflow-hidden rounded-2xl`}
                     initial={false}
                     animate={{
                         flex: expandedIndex === index ? 3 : 1,
@@ -58,7 +58,7 @@ export default function CarouselAnimation() {
                                 height={1000}
                                 className="h-full w-full object-cover"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-black/30" />
+                            <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/90 to-black/30" />
                             <div className="absolute bottom-0 left-0 p-4 text-white ">
                                 <h2 className="text-2xl font-bold">{freight.title}</h2>
                                 {expandedIndex === index && (
