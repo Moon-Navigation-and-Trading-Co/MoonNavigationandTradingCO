@@ -18,6 +18,7 @@ export default function Index() {
   const t = useTranslations('HomePage');
   const tt = useTranslations('Buttons');
   const ttt = useTranslations('Services-3')
+  const tttt = useTranslations('Contact')
   const modalRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToModal = () => {
@@ -107,11 +108,11 @@ export default function Index() {
             {/* Other Services */}
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-4">
-              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-1")} buttonText={tt("learnmore")} title={ttt("container-title-1")} onButtonClick={function (): void { }} />
-              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-2")} buttonText={tt("learnmore")} title={ttt("container-title-2")} onButtonClick={function (): void { }} />
+              <ServicesMiniCard icon="/location.png" description={ttt("container-description-1")} buttonText={tt("learnmore")} title={ttt("container-title-1")} onButtonClick={function (): void { }} />
+              <ServicesMiniCard icon="/boat.png" description={ttt("container-description-2")} buttonText={tt("learnmore")} title={ttt("container-title-2")} onButtonClick={function (): void { }} />
               <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-3")} buttonText={tt("learnmore")} title={ttt("container-title-3")} onButtonClick={function (): void { }} />
-              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-4")} buttonText={tt("learnmore")} title={ttt("container-title-4")} onButtonClick={function (): void { }} />
-              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-5")} buttonText={tt("learnmore")} title={ttt("container-title-5")} onButtonClick={function (): void { }} />
+              <ServicesMiniCard icon="/containers.png" description={ttt("container-description-4")} buttonText={tt("learnmore")} title={ttt("container-title-4")} onButtonClick={function (): void { }} />
+              <ServicesMiniCard icon="/warehouse.png" description={ttt("container-description-5")} buttonText={tt("learnmore")} title={ttt("container-title-5")} onButtonClick={function (): void { }} />
               <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-6")} buttonText={tt("learnmore")} title={ttt("container-title-6")} onButtonClick={function (): void { }} />
 
             </div>
@@ -125,8 +126,8 @@ export default function Index() {
 
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="text-3xl text-[#3A5F5F] font-semibold">{t("contactTitle")}</h1>
-                <p className="text-[#003D25] pb-5 font-medium mt-10">{t("contactDescription")}</p>
+                <h1 className="text-3xl text-[#3A5F5F] font-semibold">{tttt("contactTitle")}</h1>
+                <p className="text-[#003D25] pb-5 font-medium mt-10">{tttt("contactDescription")}</p>
 
               </div>
 

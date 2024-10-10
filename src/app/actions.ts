@@ -8,6 +8,8 @@ import { redirect } from "next/navigation";
 export const signUpAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
+  const name = formData.get("name")?.toString(); // Add the name from formData
+  const phone = formData.get("phone")?.toString(); // Add the phone from formData
   const supabase = createClient();
   const origin = headers().get("origin");
 
@@ -15,7 +17,7 @@ export const signUpAction = async (formData: FormData) => {
     return { error: "Email and password are required" };
   }
 
-  const { error } = await supabase.auth.signUp({
+  const { data: signUpData, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -26,14 +28,32 @@ export const signUpAction = async (formData: FormData) => {
   if (error) {
     console.error(error.code + " " + error.message);
     return encodedRedirect("error", "/sign-up", error.message);
-  } else {
-    return encodedRedirect(
-      "success",
-      "/sign-up",
-      "Thanks for signing up! Please check your email for a verification link.",
-    );
   }
+
+  const userId = signUpData?.user?.id; // Get the user ID from the sign-up response
+
+  if (!userId) {
+    return { error: "Could not retrieve user ID after sign-up" };
+  }
+
+
+  // Insert name, email, and phone into the user table after successful sign-up
+  const { error: insertError } = await supabase
+    .from("user")
+    .insert({ id: userId, name, email, phone });
+
+  if (insertError) {
+    console.error(insertError.code + " " + insertError.message);
+    return encodedRedirect("error", "/sign-up", insertError.message);
+  }
+
+  return encodedRedirect(
+    "success",
+    "/sign-up",
+    "Thanks for signing up! Please check your email for a verification link."
+  );
 };
+
 
 export const signInAction = async (formData: FormData) => {
   const email = formData.get("email") as string;

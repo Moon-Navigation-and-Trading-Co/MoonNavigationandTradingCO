@@ -9,6 +9,7 @@ import { createClient } from '@/utils/supabase/client'; // Ensure client-side im
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from './ui/button';
+import { useTranslations } from 'next-intl';
 
 // Zod schema for validation
 const schema = z.object({
@@ -27,6 +28,7 @@ const ContactForm: React.FC = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
         resolver: zodResolver(schema),
     });
+    const t = useTranslations('Contact');
     const [loading, setLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState<string | null>(null);
@@ -72,23 +74,23 @@ const ContactForm: React.FC = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex flex-col gap-5'>
                         <div>
-                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder='Name' id="name" {...register('name')} />
+                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormName")} id="name" {...register('name')} />
                             {errors.name && <p className='text-red-500 text-xs px-4 pt-2'>{errors.name.message}</p>}
                         </div>
                         <div>
-                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder='Company Name' id="companyName" {...register('companyName')} />
+                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormCompany")} id="companyName" {...register('companyName')} />
                             {errors.companyName && <p className='text-red-500 text-xs px-4 pt-2'>{errors.companyName.message}</p>}
                         </div>
                         <div>
-                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder='example@Yahoo.eg' id="email" {...register('email')} />
+                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormEmail")} id="email" {...register('email')} />
                             {errors.email && <p className='text-red-500 text-xs px-4 pt-2'>{errors.email.message}</p>}
                         </div>
                         <div>
-                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder="(800) 555‑0100" type='number' id="number" {...register('number')} />
+                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormNumber")} type='number' id="number" {...register('number')} />
                             {errors.number && <p className='text-red-500 text-xs px-4 pt-2'>{errors.number.message}</p>}
                         </div>
                         <div>
-                            <Textarea className='border-[#6A908D] border-2 rounded-xl' placeholder='Talk to us!' id="message" {...register('message')} />
+                            <Textarea className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormMessage")} id="message" {...register('message')} />
                             {errors.message && <p className='text-red-500 text-xs px-4 pt-2'>{errors.message.message}</p>}
                         </div>
                         <Button className='bg-[#243642]' type="submit" disabled={loading}>

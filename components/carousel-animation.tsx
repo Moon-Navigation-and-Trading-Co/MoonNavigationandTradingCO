@@ -36,7 +36,7 @@ export default function CarouselAnimation() {
                 <div className="bg-black/35 z-[998] absolute w-full h-full"></div>
                 <Image src={'/container-top-v.jpeg'} className="object-cover hidden lg:flex" fill alt="Transportation Services Background" />
                 <Image src={'/container-top-h.jpeg'} className="object-cover flex lg:hidden" fill alt="Transportation Services Background" />
-                <h1 className="text-center z-[999] text-xl font-semibold text-[#E2F1E7] w-full">Transportation Services</h1>
+                <h1 className="text-center z-[999] text-xl font-semibold text-[#E2F1E7] w-full">{t("servicesTitle")}</h1>
             </div>
             <Separator className="bg-[#243642] w-[2px] lg:my-24" />
             {freightTypes.map((freight, index) => (

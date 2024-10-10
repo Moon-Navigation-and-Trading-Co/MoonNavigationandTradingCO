@@ -4,17 +4,21 @@
         "aboutImgTitle": "About Us",
         "aboutTitle": "We are a freight company",
         "aboutDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "servicesTitle": "Transportation Services",
         "servicesCard1Title": "Air Freight",
         "servicesCard1Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
         "servicesCard2Title": "Ocean Freight",
         "servicesCard2Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
         "servicesCard3Title": "Inland Freight",
-        "servicesCard3Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "servicesCard3Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+    },
+    "Contact": {
         "contactTitle": "Contact Us",
         "contactDescription": "Get in touch with our team for any inquiries about our shipping and logistics services.",
         "contactFormName": "Name",
+        "contactFormCompany": "Company Name",
         "contactFormEmail": "Email",
-        "contactFormMessage": "Message",
+        "contactFormMessage": "Talk to Us!",
         "contactFormSubmit": "Submit"
     },
     "Buttons": {
@@ -35,17 +39,17 @@
         "ship-s-4": "Heavy Lift Services"
     },
     "Services-3": {
-        "container-title-1": "Shipping Services",
+        "container-title-1": "International Trading",
         "container-description-1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "container-title-2": "Container Services",
+        "container-title-2": "Ship Management",
         "container-description-2": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "container-title-3": "Freight Services",
+        "container-title-3": "Docking and Maintenance",
         "container-description-3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "container-title-4": "Logistics Services",
+        "container-title-4": "Container H H S",
         "container-description-4": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
         "container-title-5": "Warehousing Services",
         "container-description-5": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "container-title-6": "Customs Services",
+        "container-title-6": "Customs Clearance Services",
         "container-description-6": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
     }
 }

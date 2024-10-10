@@ -62,7 +62,7 @@ export default async function RootLayout({
                 <Navbar user={isUserLoggedIn} />
 
                 {/* content */}
-                <div className="flex flex-col pt-16 max-w-[1300px] px-3 sm:px-5">
+                <div className="flex flex-col pt-16 w-full max-w-[1300px] px-3 sm:px-5">
                   {children}
                 </div>
 

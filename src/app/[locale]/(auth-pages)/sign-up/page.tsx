@@ -16,8 +16,8 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
   }
 
   return (
-    <>
-      <form className="flex flex-col min-w-64 max-w-64 mx-auto">
+    <div className="w-full h-svh flex items-center justify-center ">
+      <form className="flex flex-col min-w-64 max-w-64 mx-auto -mt-32">
         <h1 className="text-2xl font-medium">Sign up</h1>
         <p className="text-sm text text-foreground">
           Already have an account?{" "}
@@ -26,6 +26,10 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
           </Link>
         </p>
         <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
+          <Label htmlFor="name">Name</Label>
+          <Input name="name" placeholder="Your name" required />
+          <Label htmlFor="phone">Phone</Label>
+          <Input name="phone" placeholder="Your phone number" required />
           <Label htmlFor="email">Email</Label>
           <Input name="email" placeholder="you@example.com" required />
           <Label htmlFor="password">Password</Label>
@@ -36,13 +40,21 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
             minLength={6}
             required
           />
+          <Label htmlFor="passwordReconfirm">Reconfirm Password</Label>
+          <Input
+            type="password"
+            name="passwordReconfirm"
+            placeholder="Reconfirm your password"
+            minLength={6}
+            required
+          />
           <SubmitButton formAction={signUpAction} pendingText="Signing up...">
             Sign up
           </SubmitButton>
           <FormMessage message={searchParams} />
         </div>
       </form>
-      <SmtpMessage />
-    </>
+      {/* <SmtpMessage /> */}
+    </div>
   );
 }
