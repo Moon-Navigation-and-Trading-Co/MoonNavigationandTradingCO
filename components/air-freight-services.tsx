@@ -7,15 +7,16 @@ import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
-import RoutingCard from './routing-card';
-import CommoditiesCard from './commodities-card';
+import RoutingCard from './routing-card-variant-1';
+import TransportationMethodCard from './transportation-method-card';
+import CommoditiesCard from './commodities-card-variant-2';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
-
-
+import RecommendedServicesCard from './recommended-card';
+import ServiceModeCard from './service-mode-card';
 
 // 1. Define a type-safe form handler using z.infer
-const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
 
@@ -24,9 +25,18 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
         routing: z.object({
             from: z.string().min(1, { message: t("From") }),
             to: z.string().min(1, { message: t("To") }),
-            date: z.string().min(1, { message: t("Date") }).refine(value => {
-                return !isNaN(Date.parse(value)); // Ensure valid date
-            }, { message: t("InvalidDate") })
+        }),
+        service: z.object({
+            service_mode: z.enum(["cy", "sd"], {
+                required_error: "You need to select a type.",
+            }),
+            from: z.string().min(1, { message: t("From") }),
+            to: z.string().min(1, { message: t("To") }),
+        }),
+        transportation: z.object({
+            transportation_method: z.enum(["standard", "uld"], {
+                required_error: "You need to select a transportation method.",
+            }),
         }),
         commodities: z.object({
             temperature: z.boolean().optional(),
@@ -40,6 +50,10 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
             }, { message: t("File") }),
             additional_information: z.string().optional(),
+        }),
+        recommended: z.object({
+            import: z.boolean().optional(),
+            export: z.boolean().optional()
         }),
         vad: z.object({
             inland_container: z.boolean().optional(),
@@ -61,7 +75,18 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
             routing: {
                 from: '',
                 to: '',
-                date: ''
+            },
+            service: {
+                service_mode: 'cy',
+                from: '',
+                to: ''
+            },
+            transportation: {
+                transportation_method: 'standard'
+            },
+            recommended: {
+                import: false,
+                export: false,
             },
             commodities: {
                 temperature: false,
@@ -99,8 +124,17 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
+                {/* Service mode */}
+                <ServiceModeCard control={form.control} />
+
+                {/* Transportation By */}
+                <TransportationMethodCard control={form.control} />
+
                 {/* Commodities Section */}
                 <CommoditiesCard control={form.control} />
+
+                {/* Recommended Services */}
+                <RecommendedServicesCard control={form.control} />
 
                 {/* Value Added Service */}
                 <FormItem className='pb-4'>
@@ -142,4 +176,4 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
     );
 };
 
-export default InternationalInlandServicesForm;
+export default AirFreightForm;

@@ -45,7 +45,7 @@ const ContactForm: React.FC = () => {
                 company_name: data.companyName,  // Adjust to match your database column names
                 email: data.email,
                 number: data.number,
-                // message: data.message,
+                message: data.message,
             };
 
             // Insert data into Supabase
@@ -69,7 +69,9 @@ const ContactForm: React.FC = () => {
     return (
         <div className='w-full h-full '>
             {submitted ? (
-                <p>Thank you for your message!</p>
+                <div className='w-full h-full flex items-center justify-center'>
+                    <p className='text-center text-[#5F8D8D] py-10 font-bold tracking-wider'>Submission Successful, thank you!</p>
+                </div>
             ) : (
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex flex-col gap-5'>

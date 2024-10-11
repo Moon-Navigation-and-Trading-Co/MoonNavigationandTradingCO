@@ -63,28 +63,6 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                         />
                     </div>
 
-                    {/* Oversized Checkbox */}
-                    <div className="flex gap-5 w-full items-center">
-                        <Controller
-                            control={control}
-                            name="commodities.oversized"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Checkbox
-                                        checked={field.value}
-                                        onCheckedChange={field.onChange}
-                                        id="oversized"
-                                    />
-                                    <label
-                                        htmlFor="oversized"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        {t('oversized')}
-                                    </label>
-                                </>
-                            )}
-                        />
-                    </div>
                 </div>
 
                 {/* Upload File */}

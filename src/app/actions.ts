@@ -39,7 +39,7 @@ export const signUpAction = async (formData: FormData) => {
 
   // Insert name, email, and phone into the user table after successful sign-up
   const { error: insertError } = await supabase
-    .from("user")
+    .from("users")
     .insert({ id: userId, name, email, phone });
 
   if (insertError) {

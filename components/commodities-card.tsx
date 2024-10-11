@@ -16,7 +16,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Checkboxes */}
-                <div className="pt-8 pb-10 flex flex-col justify-between gap-5 p-4 col-span-2 md:col-span-1">
+                <div className="pt-8 pb-10 flex flex-col gap-3 p-4 col-span-2 md:col-span-1">
                     {/* Temperature Checkbox */}
                     <div className="flex gap-5 w-full items-center">
                         <Controller

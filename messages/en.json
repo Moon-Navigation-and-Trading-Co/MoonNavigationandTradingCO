@@ -104,5 +104,30 @@
         "ContainerType": "Container Type field is required",
         "ContainerNo": "Number of Containers field is required",
         "ContainerWeight": "Weight Per Container field is required"
+    },
+    "Air-Freight": {
+        "from": "From",
+        "to": "To",
+        "date": "Date",
+        "temperature": "This Cargo requires temperature control",
+        "dangerous": "This cargo is considered dangerous",
+        "oversized": "This cargo is oversized",
+        "length": "Cargo Length",
+        "width": "Cargo Width",
+        "height": "Cargo Height",
+        "weight": "Cargo Weight",
+        "file": "Supporting Files",
+        "optional": "Optional",
+        "additionalInformation": "Additional Information",
+        "airFreight": "Air Freight",
+        "transportation": "Transportation by",
+        "recommednedServices": "Recommended Services",
+        "recommended-1": "Standard Export Customs clearance",
+        "recommended-2": "Standard Import Customs clearance",
+        "serviceMode": "Service Mode",
+        "cy": "Container Yard (CY)",
+        "sd": "Store Door (SD)",
+        "standard": "Standard Cargo",
+        "ULD": "ULD Container"
     }
 }

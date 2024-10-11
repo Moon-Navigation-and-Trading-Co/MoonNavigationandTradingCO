@@ -18,7 +18,7 @@ export default function CarouselAnimation() {
             title: t("servicesCard1Title"),
             description: t("servicesCard1Description"),
             image: "/cargoAir.jpeg",
-            link: "/"
+            link: "/air-freight-forms"
         },
         {
             title: t("servicesCard2Title"),

@@ -21,8 +21,8 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "FormBase",
-  description: "Internationalized Forms",
+  title: "Moon Navigation",
+  description: "International Freight Solutions at Competitve Prices!",
 };
 
 type Props = {
