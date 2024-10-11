@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { useTranslations } from 'next-intl';
 import Image from "next/image";
 import { Separator } from "@radix-ui/react-dropdown-menu";
+import Link from "next/link";
 
 
 export default function CarouselAnimation() {
@@ -17,16 +18,19 @@ export default function CarouselAnimation() {
             title: t("servicesCard1Title"),
             description: t("servicesCard1Description"),
             image: "/cargoAir.jpeg",
+            link: "/"
         },
         {
             title: t("servicesCard2Title"),
             description: t("servicesCard2Description"),
             image: "/airCargo.jpg",
+            link: "/"
         },
         {
             title: t("servicesCard3Title"),
             description: t("servicesCard3Description"),
             image: "/land-cargo-2.jpeg",
+            link: "/inland-services-forms"
         },
     ]
 
@@ -71,7 +75,9 @@ export default function CarouselAnimation() {
                                     >
                                         <p className="mb-4 mt-2">{freight.description}</p>
                                         <Button variant="outline" className="bg-white text-black hover:bg-gray-200">
-                                            {tt("getQuote")}
+                                            <Link href={freight.link}>
+                                                {tt("getQuote")}
+                                            </Link>
                                         </Button>
                                     </motion.div>
                                 )}
