@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import FormTabs from '@/components/form-tabs';
 import InternationalInlandServicesForm from '@/components/international-inland-services-form';
+import LocalInlandServicesForm from '@/components/local-inland-services-form';
+import ContainerInlandServicesForm from '@/components/container-inland-services-form';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
@@ -44,38 +46,77 @@ const Page: React.FC = () => {
     }
 
 
-    const submitForm = async (formData: any) => {
+    const submitForm = async (formData: any, formType: any) => {
         // Flatten the formData before inserting into Supabase
-        const flattenedData = {
-            user_id: user.id,
-            from: formData.routing.from,
-            to: formData.routing.to,
-            date: formData.routing.date,
-            temperature: formData.commodities.temperature,
-            dangerous: formData.commodities.dangerous,
-            oversized: formData.commodities.oversized,
-            length: formData.commodities.length,
-            width: formData.commodities.width,
-            height: formData.commodities.height,
-            weight: formData.commodities.weight,
-            file: formData.commodities.file,
-            additional_information: formData.commodities.additional_information,
-            inland_container: formData.vad.inland_container,
-            company_name: formData.company_details.company_name,
-            contact_person_name: formData.company_details.contact_person_name,
-            title: formData.company_details.title,
-            country_of_origin: formData.company_details.country_of_origin,
-            company_email: formData.company_details.company_email,
-            phone: formData.company_details.phone_number
-        };
+        let flattenedData;
+
+        console.log(formType)
+
+        if (formType === "InternationalInlandServices" || formType === "LocalInlandServices") {
+            console.log("BBB")
+
+            flattenedData = {
+                user_id: user.id,
+                from: formData.routing.from,
+                to: formData.routing.to,
+                date: formData.routing.date,
+                temperature: formData.commodities.temperature,
+                dangerous: formData.commodities.dangerous,
+                oversized: formData.commodities.oversized,
+                length: formData.commodities.length,
+                width: formData.commodities.width,
+                height: formData.commodities.height,
+                weight: formData.commodities.weight,
+                file: formData.commodities.file,
+                additional_information: formData.commodities.additional_information,
+                inland_container: formData.vad.inland_container,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                phone: formData.company_details.phone_number
+            };
+        } else if (formType === "ContainerInlandServices") {
+
+            console.log("AAA")
+
+            flattenedData = {
+                user_id: user.id,
+                from: formData.routing.from,
+                to: formData.routing.to,
+                date: formData.routing.date,
+                container_type: formData.container.type,
+                number_of_containers: formData.container.number,
+                containers_weights: formData.container.weight,
+                temperature: formData.commodities.temperature,
+                dangerous: formData.commodities.dangerous,
+                oversized: formData.commodities.oversized,
+                file: formData.commodities.file,
+                additional_information: formData.commodities.additional_information,
+                service_contract: formData.service_contract.container,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                phone_number: formData.company_details.phone_number
+            };
+        } else {
+            return console.log("form type is missing");
+        }
+
+
 
         console.log(flattenedData)
 
         const { data, error } = await supabase
-            .from('InternationalInlandServices')  // Your Supabase table
+            .from(formType)  // Your Supabase table
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
+            console.log(flattenedData)
+            console.log(error)
             toast({
                 title: "Error",
                 description: "Something went wrong",
@@ -99,19 +140,23 @@ const Page: React.FC = () => {
             title: "International Inland Services",
             content:
                 <>
-                    <InternationalInlandServicesForm onSubmit={submitForm} />
+                    <InternationalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "InternationalInlandServices")} />
                 </>
-        },
-        {
-            id: "container",
-            title: "Inland Container Transportation",
-            content: "Form details for Inland Container Transportation"
         },
         {
             id: "local",
             title: "Local Inland Services",
-            content: "Form details for Local Inland Services"
-        }
+            content: <>
+                <LocalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "LocalInlandServices")} />
+            </>
+        },
+        {
+            id: "container",
+            title: "Inland Container Transportation",
+            content: <>
+                <ContainerInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "ContainerInlandServices")} />
+            </>
+        },
     ]
 
 

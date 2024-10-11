@@ -3,26 +3,26 @@ import { Input } from "@/components/ui/input";
 import { Controller } from "react-hook-form";
 import { useTranslations } from "next-intl";
 
-const RoutingCard = ({ control }: { control: any }) => {
+const ContainerCard = ({ control }: { control: any }) => {
     // Get Content
     const t = useTranslations('Inland-forms')
 
 
     return (
         <div className="">
-            <h1 className='text-xl font-semibold'>{t('routing')}</h1>
+            <h1 className='text-xl font-semibold'>{t('containerDetails')}</h1>
             <div className='pt-8 pb-10 grid md:grid-cols-3 gap-5 p-4 bg-[#ffffff] rounded-3xl'>
 
                 {/* From Field */}
                 <FormItem>
-                    <FormLabel htmlFor="routing.from" >{t('from')}</FormLabel>
+                    <FormLabel>{t('containerType')}</FormLabel>
                     <FormControl>
                         <Controller
                             control={control}
-                            name="routing.from"
+                            name="container.type"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                                    <Input className="max-w-[300px]  border-2 rounded-xl" placeholder="Type" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>)}
                         />
@@ -31,14 +31,20 @@ const RoutingCard = ({ control }: { control: any }) => {
 
                 {/* To Field */}
                 <FormItem>
-                    <FormLabel htmlFor="routing.to">{t('to')}</FormLabel>
+                    <FormLabel>{t('containerNo')}</FormLabel>
                     <FormControl>
                         <Controller
                             control={control}
-                            name="routing.to"
+                            name="container.number"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                                    <Input type="number"
+                                        className="max-w-[300px]  border-2 rounded-xl"
+                                        placeholder="No. of Containers"
+                                        {...field}
+                                        value={field.value || ''}
+                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                    />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -48,14 +54,22 @@ const RoutingCard = ({ control }: { control: any }) => {
 
                 {/* Date Field */}
                 <FormItem>
-                    <FormLabel htmlFor="routing.date">{t('date')}</FormLabel>
+                    <FormLabel>{t('containerWeight')}</FormLabel>
                     <FormControl>
                         <Controller
                             control={control}
-                            name="routing.date"
+                            name="container.weight"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input className="max-w-[180px]  border-2 rounded-xl" type="date" {...field} />
+                                    <Input
+
+                                        type="number"
+                                        className="max-w-[300px]  border-2 rounded-xl"
+                                        placeholder="Avg. Weight"
+                                        {...field}
+                                        value={field.value || ''}
+                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                    />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -67,4 +81,4 @@ const RoutingCard = ({ control }: { control: any }) => {
     );
 };
 
-export default RoutingCard;
+export default ContainerCard;

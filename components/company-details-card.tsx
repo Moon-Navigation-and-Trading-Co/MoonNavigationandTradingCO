@@ -1,17 +1,21 @@
 import { FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { useTranslations } from "next-intl";
 import { Controller } from "react-hook-form";
 
 const CompanyDetailsCard = ({ control }: { control: any }) => {
+    // Get Content
+    const t = useTranslations('Inland-forms')
+
     return (
         <div className="company-details-card">
-            <h1 className='text-2xl font-semibold my-6'>Company/Personal Details</h1>
+            <h1 className='text-xl font-semibold my-6'>{t('companyDetails')}</h1>
 
             <div className='grid grid-cols-2 gap-5'>
                 <div>
 
                     <FormItem>
-                        <FormLabel>Company Name</FormLabel>
+                        <FormLabel>{t('companyName')}</FormLabel>
                         <FormControl>
                             <Controller
                                 control={control}
@@ -29,7 +33,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                 <div>
 
                     <FormItem>
-                        <FormLabel>Contact Name</FormLabel>
+                        <FormLabel>{t('contactPersonName')}</FormLabel>
                         <FormControl>
                             <Controller
                                 control={control}
@@ -45,7 +49,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                 </div>
                 <div>
                     <FormItem>
-                        <FormLabel>Title</FormLabel>
+                        <FormLabel>{t('title')}</FormLabel>
                         <FormControl>
                             <Controller
                                 control={control}
@@ -61,7 +65,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                 </div>
                 <div>
                     <FormItem>
-                        <FormLabel>Country of Origin</FormLabel>
+                        <FormLabel>{t('countryOfOrigin')}</FormLabel>
                         <FormControl>
                             <Controller
                                 control={control}
@@ -77,7 +81,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                 </div>
                 <div>
                     <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>{t('companyEmail')}</FormLabel>
                         <FormControl>
                             <Controller
                                 control={control}
@@ -93,7 +97,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                 </div>
                 <div>
                     <FormItem>
-                        <FormLabel>Phone Number</FormLabel>
+                        <FormLabel>{t('phoneNumber')}</FormLabel>
                         <FormControl>
                             <Controller
                                 control={control}

@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import RoutingCard from './routing-card';
-import CommoditiesCard from './commodities-card';
+import CommoditiesCard from './commodities-card-variant-1';
+import ContainerCard from './container-details-card';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 useTranslations
@@ -16,9 +17,10 @@ useTranslations
 
 
 // 1. Define a type-safe form handler using z.infer
-const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
+    const tt = useTranslations('Inland-forms')
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
@@ -33,10 +35,6 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
             temperature: z.boolean().optional(),
             dangerous: z.boolean().optional(),
             oversized: z.boolean().optional(),
-            length: z.number().min(1, { message: t("Length") }),
-            width: z.number().min(1, { message: t("Width") }),
-            height: z.number().min(1, { message: t("Height") }),
-            weight: z.number().min(1, { message: t("Weight") }),
             file: z.string().optional().refine(value => {
                 return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
             }, { message: t("File") }),
@@ -45,6 +43,9 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
         vad: z.object({
             inland_container: z.boolean().optional(),
         }),
+        service_contract: z.object({
+            container: z.string().optional(),
+        }),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("CompanyName") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
@@ -52,7 +53,14 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
-        })
+        }),
+        container:
+            z.object({
+                type: z.string().min(1, { message: t("ContainerType") }),
+                number: z.number().min(1, { message: t("ContainerNo") }),
+                weight: z.number().min(1, { message: t("ContainerWeight") }),
+
+            })
         // Add more sections as needed
     });
 
@@ -64,19 +72,22 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 to: '',
                 date: ''
             },
+            container: {
+                type: '',
+
+            },
             commodities: {
                 temperature: false,
                 dangerous: false,
                 oversized: false,
-                length: 0,
-                width: 0,
-                height: 0,
-                weight: 0,
                 file: '',
                 additional_information: ''
             },
             vad: {
                 inland_container: false
+            },
+            service_contract: {
+                container: ''
             },
             company_details: {
                 company_name: '',
@@ -100,14 +111,17 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
+                {/* Container Section */}
+                <ContainerCard control={form.control} />
+
                 {/* Commodities Section */}
                 <CommoditiesCard control={form.control} />
 
                 {/* Value Added Service */}
-                <FormItem className='pb-4'>
+                <FormItem>
                     <FormControl>
                         <div>
-                            <h1 className='text-xl font-semibold mb-4'>Value Added Service</h1>
+                            <h1 className='text-2xl font-semibold mb-4'>Value Added Service</h1>
                             <div className='flex gap-5 p-4 items-center'>
                                 <Controller
                                     control={form.control}
@@ -132,6 +146,22 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                     </FormControl>
                 </FormItem>
 
+                <h1 className='text-2xl font-semibold'>{tt('serviceContract')}</h1>
+                <FormItem className='pb-4'>
+                    <FormLabel>{tt('serviceContract')} <span className='text-gray-500 text-sm'>({tt('optional')})</span></FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={form.control}
+                            name="service_contract.container"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input type="number" className="max-w-[300px]  border-2 rounded-xl" placeholder="Contract No." {...field} />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>)}
+                        />
+                    </FormControl>
+                </FormItem>
+
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
@@ -143,4 +173,4 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
     );
 };
 
-export default InternationalInlandServicesForm;
+export default ContainerInlandServicesForm;

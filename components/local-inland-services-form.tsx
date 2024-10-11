@@ -11,16 +11,15 @@ import RoutingCard from './routing-card';
 import CommoditiesCard from './commodities-card';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
-useTranslations
-
 
 
 // 1. Define a type-safe form handler using z.infer
-const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
-    // Get Content
-    const t = useTranslations('Inland-errors')
+const LocalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
 
-    // Define your Zod schema (as before)
+    // Get Errors
+    const t = useTranslations('Inland-errors');
+
+    // Define your Zod schema
     const formSchema = z.object({
         routing: z.object({
             from: z.string().min(1, { message: t("From") }),
@@ -104,10 +103,10 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 <CommoditiesCard control={form.control} />
 
                 {/* Value Added Service */}
-                <FormItem className='pb-4'>
+                <FormItem>
                     <FormControl>
                         <div>
-                            <h1 className='text-xl font-semibold mb-4'>Value Added Service</h1>
+                            <h1 className='text-2xl font-semibold mb-4'>Value Added Service</h1>
                             <div className='flex gap-5 p-4 items-center'>
                                 <Controller
                                     control={form.control}
@@ -143,4 +142,4 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
     );
 };
 
-export default InternationalInlandServicesForm;
+export default LocalInlandServicesForm;
