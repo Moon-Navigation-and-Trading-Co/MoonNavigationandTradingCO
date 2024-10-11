@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { useTranslations } from 'next-intl';
+import SignOutButton from './sign-out-button';
 
 interface NavbarProps {
     user: boolean;
@@ -33,8 +34,9 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 </div>
 
                 <div className="hidden sm:flex gap-5 items-center font-semibold">
-                    <Link href={"/sign-in"}>Sign In</Link>
-                    <Button><Link className="font-semibold" href={"/sign-up"}>Sign Up</Link></Button>
+                    {!user && <Link href={"/sign-in"}>Sign In</Link>}
+                    {!user && <Button><Link className="font-semibold" href={"/sign-up"}>Sign Up</Link></Button>}
+                    {user && <SignOutButton />}
                 </div>
 
                 {/* Hamburger Menu */}
@@ -60,6 +62,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                             <Link href={"/sign-up"}>Sign Up</Link>
                         </Button>}
                     {user && <Link href={"/"} onClick={toggleMenu}>Profile</Link>}
+                    {user && <SignOutButton />}
 
                 </div>
             </div>

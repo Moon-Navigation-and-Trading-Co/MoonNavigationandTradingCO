@@ -26,7 +26,8 @@ const Page: React.FC = () => {
             if (user) {
                 setUser(user); // User is logged in, set the state
             } else {
-                return redirect('/sign-in'); // Return null while waiting for the redirect
+                router.push('/sign-in');
+                return;
             }
             setIsLoading(false); // Stop loading after checking user
         };
