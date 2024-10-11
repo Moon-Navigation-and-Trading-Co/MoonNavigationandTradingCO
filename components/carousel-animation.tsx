@@ -74,8 +74,8 @@ export default function CarouselAnimation() {
                                         transition={{ delay: 0.1 }}
                                     >
                                         <p className="mb-4 mt-2">{freight.description}</p>
-                                        <Button variant="outline" className="bg-white text-black hover:bg-gray-200">
-                                            <Link href={freight.link}>
+                                        <Button variant="outline" className="bg-white text-black p-0 hover:bg-gray-200">
+                                            <Link className="h-10 flex items-center px-4 py-2" href={freight.link}>
                                                 {tt("getQuote")}
                                             </Link>
                                         </Button>

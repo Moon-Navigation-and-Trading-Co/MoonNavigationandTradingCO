@@ -9,6 +9,7 @@ import { createClient } from '@/utils/supabase/client'; // Make sure this is a c
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
+import Spinner from '@/components/spinner';
 
 const Page: React.FC = () => {
     // const t = useTranslations('HomePage');
@@ -39,7 +40,9 @@ const Page: React.FC = () => {
 
 
     if (isLoading) {
-        return <div className='w-full h-[500px] flex items-center justify-center'>Loading...</div>; // Display loading state while checking
+        return <div className='w-full h-[500px] flex items-center justify-center'>
+            <Spinner />
+        </div>; // Display loading state while checking
     }
 
     if (!user) {

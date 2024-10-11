@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import AirFreightForm from '@/components/air-freight-services';
+import Spinner from '@/components/spinner';
 
 const Page: React.FC = () => {
     // const t = useTranslations('HomePage');
@@ -37,16 +38,14 @@ const Page: React.FC = () => {
 
 
     if (isLoading) {
-        return <div className='w-full h-[500px] flex items-center justify-center'>Loading...</div>; // Display loading state while checking
+        return <div className='w-full h-[500px] flex items-center justify-center'>
+            <Spinner />
+        </div>;
     }
-
-    console.log("HGHH")
 
     const submitForm = async (formData: any) => {
         // Flatten the formData before inserting into Supabase
         let flattenedData;
-
-        console.log("AAAAAAAAAAAA")
 
         flattenedData = {
             user_id: user.id,
@@ -91,15 +90,12 @@ const Page: React.FC = () => {
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
-            console.log(flattenedData)
-            console.log(error)
             toast({
                 title: "Error",
                 description: "Something went wrong",
                 variant: "destructive"
             })
         } else {
-            //green toast
             toast({
                 title: "Success",
                 description: "Form Added Successfully",
