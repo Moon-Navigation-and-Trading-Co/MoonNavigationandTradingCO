@@ -33,21 +33,20 @@ const Page: React.FC = () => {
         };
 
         fetchUser();
-    }, []); // Only run once when the component mounts
+    }, [router, supabase]); // Only run once when the component mounts
 
 
     if (isLoading) {
         return <div className='w-full h-[500px] flex items-center justify-center'>Loading...</div>; // Display loading state while checking
     }
 
-    if (!user) {
-        return redirect('/sign-in'); // Return null while waiting for the redirect
-    }
-
+    console.log("HGHH")
 
     const submitForm = async (formData: any) => {
         // Flatten the formData before inserting into Supabase
         let flattenedData;
+
+        console.log("AAAAAAAAAAAA")
 
         flattenedData = {
             user_id: user.id,
@@ -70,10 +69,10 @@ const Page: React.FC = () => {
             file: formData.commodities.file,
             additional_information: formData.commodities.additional_information,
 
-            import: formData.recommended.import,
-            export: formData.recommended.export,
+            import_service: formData.recommended.import,
+            export_service: formData.recommended.export,
 
-            inland_container: formData.vad.inland_container,
+            value_added_service: formData.vad.inland_container,
 
             company_name: formData.company_details.company_name,
             contact_person_name: formData.company_details.contact_person_name,

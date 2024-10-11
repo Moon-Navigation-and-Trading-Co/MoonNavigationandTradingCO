@@ -35,7 +35,7 @@ const Page: React.FC = () => {
         };
 
         fetchUser();
-    }, []); // Only run once when the component mounts
+    }, [router, supabase]); // Only run once when the component mounts
 
 
     if (isLoading) {
