@@ -7,6 +7,7 @@ const RoutingCard = ({ control }: { control: any }) => {
         <div className="">
             <h1 className='text-2xl font-semibold'>Routing</h1>
             <div className='pt-8 pb-10 grid md:grid-cols-3 gap-5 p-4 bg-[#ffffff] rounded-3xl'>
+
                 {/* From Field */}
                 <FormItem>
                     <FormLabel>From</FormLabel>
@@ -16,7 +17,7 @@ const RoutingCard = ({ control }: { control: any }) => {
                             name="routing.from"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input placeholder="City, Country/Region" {...field} />
+                                    <Input className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>)}
                         />
@@ -32,7 +33,7 @@ const RoutingCard = ({ control }: { control: any }) => {
                             name="routing.to"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input placeholder="City, Country/Region" {...field} />
+                                    <Input className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -49,7 +50,7 @@ const RoutingCard = ({ control }: { control: any }) => {
                             name="routing.date"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input type="date" {...field} />
+                                    <Input className="max-w-[180px]  border-2 rounded-xl" type="date" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}

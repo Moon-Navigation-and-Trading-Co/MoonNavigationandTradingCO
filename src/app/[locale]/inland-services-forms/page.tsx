@@ -4,16 +4,17 @@ import { useTranslations } from 'next-intl';
 import FormTabs from '@/components/form-tabs';
 import InternationalInlandServicesForm from '@/components/international-inland-services-form';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
-import { redirect, useRouter } from 'next/navigation';
-import { createServerClient } from '@supabase/ssr';
+import { useToast } from "@/hooks/use-toast"
+import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 
 const Page: React.FC = () => {
     // const t = useTranslations('HomePage');
     const supabase = createClient();
     const [isLoading, setIsLoading] = useState(true); // Loading state
     const [user, setUser] = useState<any>(null); // State to hold the user
-
-
+    const { toast } = useToast()
+    const router = useRouter()
 
     // Fetch the authenticated user on component mount
     useEffect(() => {
@@ -44,9 +45,9 @@ const Page: React.FC = () => {
 
 
     const submitForm = async (formData: any) => {
-        console.log("whaaaaa")
         // Flatten the formData before inserting into Supabase
         const flattenedData = {
+            user_id: user.id,
             from: formData.routing.from,
             to: formData.routing.to,
             date: formData.routing.date,
@@ -60,7 +61,12 @@ const Page: React.FC = () => {
             file: formData.commodities.file,
             additional_information: formData.commodities.additional_information,
             inland_container: formData.vad.inland_container,
-            user_id: user.id
+            company_name: formData.company_details.company_name,
+            contact_person_name: formData.company_details.contact_person_name,
+            title: formData.company_details.title,
+            country_of_origin: formData.company_details.country_of_origin,
+            company_email: formData.company_details.company_email,
+            phone: formData.company_details.phone_number
         };
 
         console.log(flattenedData)
@@ -70,9 +76,19 @@ const Page: React.FC = () => {
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
-            console.error("Error submitting form:", error);
+            toast({
+                title: "Error",
+                description: "Something went wrong",
+                variant: "destructive"
+            })
         } else {
-            console.log("Form submitted successfully:", data);
+            //green toast
+            toast({
+                title: "Success",
+                description: "Form Added Successfully",
+            })
+            router.push('/inland-services-forms')
+
         }
     };
 

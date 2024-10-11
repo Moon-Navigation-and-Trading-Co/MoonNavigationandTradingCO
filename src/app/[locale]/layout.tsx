@@ -12,7 +12,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { Button } from "@/components/ui/button"
 import Navbar from "@/components/navbar";
 import { createClient } from "@/utils/supabase/server";
-
+import { Toaster } from "@/components/ui/toaster"
 
 
 const defaultUrl = process.env.VERCEL_URL
@@ -55,7 +55,7 @@ export default async function RootLayout({
         >
           <main className="min-h-screen flex flex-col items-center">
             <NextIntlClientProvider messages={messages}>
-
+              <Toaster />
               <div className="flex-1 w-full flex flex-col items-center">
 
                 {/* navbar */}
@@ -85,6 +85,7 @@ export default async function RootLayout({
             </NextIntlClientProvider>
 
           </main>
+
         </ThemeProvider>
       </body>
     </html>

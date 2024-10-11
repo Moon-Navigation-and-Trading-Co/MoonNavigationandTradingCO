@@ -1,43 +1,111 @@
-import React from 'react';
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { FormItem, FormLabel, FormControl } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Controller } from "react-hook-form";
 
-
-const CompanyDetailsCard: React.FC = () => {
+const CompanyDetailsCard = ({ control }: { control: any }) => {
     return (
         <div className="company-details-card">
             <h1 className='text-2xl font-semibold my-6'>Company/Personal Details</h1>
 
             <div className='grid grid-cols-2 gap-5'>
                 <div>
-                    <Label htmlFor="From">Company Name</Label>
-                    <Input className=' max-w-[300px] border-2 rounded-xl' type="text"
-                        id="From" placeholder="Company Name" />
+
+                    <FormItem>
+                        <FormLabel>Company Name</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="company_details.company_name"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Company Name" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+
                 </div>
                 <div>
-                    <Label htmlFor="From">Contact Person Name</Label>
-                    <Input className=' max-w-[300px] border-2 rounded-xl' type="text"
-                        id="From" placeholder="Contact Person Name" />
+
+                    <FormItem>
+                        <FormLabel>Contact Name</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="company_details.contact_person_name"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Contact Name" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
                 </div>
                 <div>
-                    <Label htmlFor="From">Title</Label>
-                    <Input className=' max-w-[300px] border-2 rounded-xl' type="text"
-                        id="From" placeholder="Mr, Ms.. etc." />
+                    <FormItem>
+                        <FormLabel>Title</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="company_details.title"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Mr, Ms.. etc." {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
                 </div>
                 <div>
-                    <Label htmlFor="From">Country of Origin</Label>
-                    <Input className=' max-w-[300px] border-2 rounded-xl' type="text"
-                        id="From" placeholder="(City, Country/Region)" />
+                    <FormItem>
+                        <FormLabel>Country of Origin</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="company_details.country_of_origin"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
                 </div>
                 <div>
-                    <Label htmlFor="From">Company Email</Label>
-                    <Input className=' max-w-[300px] border-2 rounded-xl' type="text"
-                        id="From" placeholder="example@Yahoo.eg" />
+                    <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="company_details.company_email"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Email" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
                 </div>
                 <div>
-                    <Label htmlFor="From">Phone Number</Label>
-                    <Input className=' max-w-[300px] border-2 rounded-xl' type="text"
-                        id="From" placeholder="+123456780" />
+                    <FormItem>
+                        <FormLabel>Phone Number</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="company_details.phone_number"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="+123456789" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
                 </div>
             </div>
 

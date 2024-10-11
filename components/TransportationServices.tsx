@@ -31,7 +31,7 @@ const TransportationServices: React.FC = () => {
             <div className='shadow-lg shadow-black relative rounded-2xl max-h-[250px] overflow-hidden bg-red-500'>
 
                 <div className='absolute bg-black-overlay w-full h-full' ></div>
-                <Image className='aspect-video' src={'/cargoAir.png'} width={1000} height={1000} alt='Container Services Image' />
+                <Image className='aspect-video' src={'/ship-agency.jpeg'} width={1000} height={1000} alt='Container Services Image' />
                 <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-between p-8 md:p-5'>
                     <h1 className='text-primary-foreground font-semibold text-2xl'>Ship Agency Services</h1>
 

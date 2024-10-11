@@ -35,6 +35,14 @@ const formSchema = z.object({
     }),
     vad: z.object({
         inland_container: z.boolean().optional(),
+    }),
+    company_details: z.object({
+        company_name: z.string().min(1, { message: "Company Name field is required" }),
+        contact_person_name: z.string().min(1, { message: "Contact Person Name field is required" }),
+        title: z.string().min(1, { message: "Title field is required" }),
+        country_of_origin: z.string().min(1, { message: "Country of Origin field is required" }),
+        company_email: z.string().email({ message: "Invalid email format" }),
+        phone_number: z.string().min(1, { message: "Phone Number field is required" }),
     })
     // Add more sections as needed
 });
@@ -63,6 +71,14 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
             },
             vad: {
                 inland_container: false
+            },
+            company_details: {
+                company_name: '',
+                contact_person_name: '',
+                title: '',
+                country_of_origin: '',
+                company_email: '',
+                phone_number: ''
             }
         }
     });
@@ -111,7 +127,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 </FormItem>
 
                 {/* Company Details */}
-                {/* <CompanyDetailsCard control={form.control} /> */}
+                <CompanyDetailsCard control={form.control} />
 
                 <Button type="submit" className="mt-4 w-[200px]">
                     Submit
