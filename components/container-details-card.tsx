@@ -19,7 +19,7 @@ const ContainerCard = ({ control }: { control: any }) => {
                     <FormControl>
                         <Controller
                             control={control}
-                            name="container.type"
+                            name="container.container_type"
                             render={({ field, fieldState: { error } }) => (
                                 <>
                                     <Input className="max-w-[300px]  border-2 rounded-xl" placeholder="Type" {...field} />
@@ -35,7 +35,7 @@ const ContainerCard = ({ control }: { control: any }) => {
                     <FormControl>
                         <Controller
                             control={control}
-                            name="container.number"
+                            name="container.container_number"
                             render={({ field, fieldState: { error } }) => (
                                 <>
                                     <Input type="number"
@@ -58,7 +58,7 @@ const ContainerCard = ({ control }: { control: any }) => {
                     <FormControl>
                         <Controller
                             control={control}
-                            name="container.weight"
+                            name="container.container_weight"
                             render={({ field, fieldState: { error } }) => (
                                 <>
                                     <Input

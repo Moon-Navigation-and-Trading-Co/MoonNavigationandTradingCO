@@ -9,6 +9,7 @@ import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import Spinner from '@/components/spinner';
 
+
 const Page: React.FC = () => {
     // const t = useTranslations('HomePage');
     const supabase = createClient();
@@ -48,67 +49,35 @@ const Page: React.FC = () => {
     }
 
 
+
+
     const submitForm = async (formData: any, formType: any) => {
+        console.log("hi")
         // Flatten the formData before inserting into Supabase
         let flattenedData;
 
-        console.log(formType)
-
-        if (formType === "international_inland_services" || formType === "local_inland_services") {
-            console.log("BBB")
-
-            flattenedData = {
-                user_id: user.id,
-                from: formData.routing.from,
-                to: formData.routing.to,
-                date: formData.routing.date,
-                temperature: formData.commodities.temperature,
-                dangerous: formData.commodities.dangerous,
-                oversized: formData.commodities.oversized,
-                length: formData.commodities.length,
-                width: formData.commodities.width,
-                height: formData.commodities.height,
-                weight: formData.commodities.weight,
-                file: formData.commodities.file,
-                additional_information: formData.commodities.additional_information,
-                inland_container: formData.vad.inland_container,
-                company_name: formData.company_details.company_name,
-                contact_person_name: formData.company_details.contact_person_name,
-                title: formData.company_details.title,
-                country_of_origin: formData.company_details.country_of_origin,
-                company_email: formData.company_details.company_email,
-                phone: formData.company_details.phone_number
-            };
-        } else if (formType === "container_inland_services") {
-
-            console.log("AAA")
-
-            flattenedData = {
-                user_id: user.id,
-                from: formData.routing.from,
-                to: formData.routing.to,
-                date: formData.routing.date,
-                container_type: formData.container.type,
-                number_of_containers: formData.container.number,
-                containers_weights: formData.container.weight,
-                temperature: formData.commodities.temperature,
-                dangerous: formData.commodities.dangerous,
-                oversized: formData.commodities.oversized,
-                file: formData.commodities.file,
-                additional_information: formData.commodities.additional_information,
-                service_contract: formData.service_contract.container,
-                company_name: formData.company_details.company_name,
-                contact_person_name: formData.company_details.contact_person_name,
-                title: formData.company_details.title,
-                country_of_origin: formData.company_details.country_of_origin,
-                company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
-            };
-        } else {
-            return console.log("form type is missing");
-        }
-
-
+        flattenedData = {
+            user_id: user.id,
+            from: formData.routing.from,
+            to: formData.routing.to,
+            effective_date: formData.dates.effective_date,
+            expiry_date: formData.dates.expiry_date,
+            dangerous: formData.commodities.dangerous,
+            length: formData.commodities.length,
+            width: formData.commodities.width,
+            height: formData.commodities.height,
+            weight: formData.commodities.weight,
+            file: formData.commodities.file,
+            additional_information: formData.commodities.additional_information,
+            vad: formData.vad.inland_container,
+            service_contract: formData.service_contract?.service_contract || null,
+            company_name: formData.company_details.company_name,
+            contact_person_name: formData.company_details.contact_person_name,
+            title: formData.company_details.title,
+            country_of_origin: formData.company_details.country_of_origin,
+            company_email: formData.company_details.company_email,
+            phone_number: formData.company_details.phone_number
+        };
 
         console.log(flattenedData)
 
@@ -117,7 +86,6 @@ const Page: React.FC = () => {
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
-            console.log(flattenedData)
             console.log(error)
             toast({
                 title: "Error",
@@ -130,7 +98,8 @@ const Page: React.FC = () => {
                 title: "Success",
                 description: "Form Added Successfully",
             })
-            router.push('/inland-services-forms')
+            console.log(data)
+            router.push('/ocean-freight-forms')
 
         }
     };
@@ -145,6 +114,31 @@ const Page: React.FC = () => {
                     <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "project_cargo_services")} />
                 </>
         },
+        {
+            id: "roll",
+            title: "Roll On/Off",
+            content:
+                <>
+                    <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "roll_on_off")} />
+                </>
+        },
+        {
+            id: "heavy",
+            title: "Heavy Lift",
+            content:
+                <>
+                    <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "heavy_lift")} />
+                </>
+        },
+        {
+            id: "dangerous",
+            title: "Dangerous Cargo Services",
+            content:
+                <>
+                    <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "dangerous_cargo_services")} />
+                </>
+        },
+
 
     ]
 

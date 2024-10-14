@@ -15,14 +15,14 @@ const RoutingCard = ({ control }: { control: any }) => {
 
                 {/* From Field */}
                 <FormItem>
-                    <FormLabel htmlFor="routing.from" >{t('from')}</FormLabel>
+                    <FormLabel htmlFor="routing.from" id="routing.from" >{t('from')}</FormLabel>
                     <FormControl>
                         <Controller
                             control={control}
                             name="routing.from"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                                    <Input id="routing.from" className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>)}
                         />
@@ -31,14 +31,14 @@ const RoutingCard = ({ control }: { control: any }) => {
 
                 {/* To Field */}
                 <FormItem>
-                    <FormLabel htmlFor="routing.to">{t('to')}</FormLabel>
+                    <FormLabel id="routing.to">{t('to')}</FormLabel>
                     <FormControl>
                         <Controller
                             control={control}
                             name="routing.to"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                                    <Input id="routing.to" className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}

@@ -4,6 +4,8 @@ import { Textarea } from "./ui/textarea";
 import { FormLabel, FormControl } from "@/components/ui/form";
 import { Controller } from "react-hook-form";
 import { useTranslations } from "next-intl";
+import ContainerCard from "./container-details-card";
+import HSSCheckbox from "./hss-card";
 
 
 const CommoditiesCard = ({ control }: { control: any }) => {
@@ -16,20 +18,41 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
             <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Checkboxes */}
-                <div className="pt-8 pb-10 flex flex-col justify-center gap-3 p-4 col-span-2 ">
+                <div className="pt-8 pb-10 flex flex-col gap-3 p-4 col-span-2 md:col-span-1">
+                    {/* Temperature Checkbox */}
+                    <div className="flex gap-5 w-full items-center">
+                        <Controller
+                            control={control}
+                            name="commodities.temperature"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Checkbox
+                                        checked={field.value}
+                                        onCheckedChange={field.onChange}
+                                        id="temperature"
+                                    />
+                                    <label
+                                        htmlFor="temperature"
+                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    >
+                                        {t('temperature')}
+                                    </label>
+                                </>
+                            )}
+                        />
+                    </div>
 
                     {/* Dangerous Checkbox */}
                     <div className="flex gap-5 w-full items-center">
                         <Controller
                             control={control}
                             name="commodities.dangerous"
-                            render={({ field }) => (
+                            render={({ field, fieldState: { error } }) => (
                                 <>
                                     <Checkbox
                                         checked={field.value}
                                         onCheckedChange={field.onChange}
                                         id="dangerous"
-                                        name="dang"
                                     />
                                     <label
                                         htmlFor="dangerous"
@@ -42,10 +65,33 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                         />
                     </div>
 
+                    {/* Oversized Checkbox */}
+                    <div className="flex gap-5 w-full items-center">
+                        <Controller
+                            control={control}
+                            name="commodities.oversized"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Checkbox
+                                        checked={field.value}
+                                        onCheckedChange={field.onChange}
+                                        id="oversized"
+                                    />
+                                    <label
+                                        htmlFor="oversized"
+                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    >
+                                        {t('oversized')}
+                                    </label>
+                                </>
+                            )}
+                        />
+                    </div>
                 </div>
 
+
                 {/* Cargo Details { length, weight, height, width } */}
-                <div className="grid gap-5 grid-cols-2 px-4 pb-6 col-span-2 md:col-span-1">
+                <div className="grid gap-5 grid-cols-2 px-4 pb-20 col-span-2 md:col-span-1">
                     <div>
                         <FormLabel htmlFor="length">{t('length')}</FormLabel>
                         <FormControl>
@@ -139,6 +185,14 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                         </FormControl>
                     </div>
                 </div>
+
+
+                <div className="col-span-2 pb-6">
+                    <ContainerCard control={control} />
+                    <HSSCheckbox control={control} />
+
+                </div>
+
 
                 {/* Upload File */}
                 <div className="grid px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-6 col-span-2">

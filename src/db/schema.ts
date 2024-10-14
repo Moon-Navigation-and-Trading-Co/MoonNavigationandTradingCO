@@ -17,7 +17,7 @@ export const usersTable = pgTable("users", {
     email: text("email").notNull().unique(), // Email field, must be unique
 });
 
-// Define the Air Freight Services table
+// Air Services
 export const airFreightServicesTable = pgTable("air_freight_services", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
 
@@ -63,7 +63,7 @@ export const airFreightServicesTable = pgTable("air_freight_services", {
     phone: text("phone").notNull(),
 });
 
-// Define the Local Inland Services table
+// Inland Services
 export const localInlandServicesTable = pgTable("local_inland_services", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -97,6 +97,7 @@ export const localInlandServicesTable = pgTable("local_inland_services", {
     phone: text("phone").notNull(),                            // Company phone number
 });
 
+// Inland Services
 export const InternationalInlandServicesTable = pgTable("international_inland_services", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -130,7 +131,7 @@ export const InternationalInlandServicesTable = pgTable("international_inland_se
     phone: text("phone").notNull(),                            // Company phone number
 });
 
-// Define the Container Inland Services table
+// Inland Services
 export const containerInlandServicesTable = pgTable("container_inland_services", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -181,6 +182,7 @@ export const contactRequestsTable = pgTable("ContactRequests", {
     message: text("message").notNull(), // Message from the contact
 });
 
+// Container Services
 export const lessThanContainerLoad = pgTable("less_than_container_load", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -191,17 +193,15 @@ export const lessThanContainerLoad = pgTable("less_than_container_load", {
     to: text("to").notNull(),     // To location
     pick_up: boolean("pick_up").default(false),
     delivery: boolean("delivery").default(false),
-    local_information: text("local_information"),
-    local_to: text("to"),
-    local_from: text("from"),
+    location_information: text("location_information"),
+
 
     // Commodity details
-    temperature: boolean("temperature").default(false), // Temperature-sensitive shipment
-    dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    oversized: boolean("oversized").default(false),     // Oversized goods
+    type_of_commodity: text("type_of_commodity").notNull(), // Type
     gross_volume: numeric("gross_volume").notNull(),
     cargo_weight: numeric("cargo_weight").notNull(),
     package_type: text("package_type").notNull(),
+    validity: text("validity").notNull(),
 
     // Recommedned Services
     import_service: boolean("import_service").default(false),
@@ -209,7 +209,7 @@ export const lessThanContainerLoad = pgTable("less_than_container_load", {
     additional_information: text("additional_information"), // Additional details
 
     // Value-added (VAD) details
-    inland_container: boolean("inland_container").default(false), // Value-added inland container service
+    vad: boolean("vad").default(false), // Value-added inland container service
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name
@@ -221,6 +221,7 @@ export const lessThanContainerLoad = pgTable("less_than_container_load", {
 
 });
 
+// Container Services
 export const standardContainer = pgTable("standard_container", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -237,7 +238,6 @@ export const standardContainer = pgTable("standard_container", {
     // Commodity details
     temperature: boolean("temperature").default(false), // Temperature-sensitive shipment
     dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    oversized: boolean("oversized").default(false),     // Oversized goods
 
     // Container details
     container_type: text("container_type").notNull(),          // Container type (e.g., dry, refrigerated)
@@ -245,12 +245,6 @@ export const standardContainer = pgTable("standard_container", {
     container_weight: numeric("container_weight").notNull(),   // Container weight
     own_container: boolean("own_container"),
     import_return_or_triangulation: boolean("import_return_or_triangulation"),
-
-    // cargo dimensions if oversized
-    length: numeric("length"),
-    width: numeric("width"),
-    height: numeric("height"),
-    weight: numeric("weight"),
 
     // Recommedned Services
     import_service: boolean("import_service").default(false),
@@ -278,6 +272,7 @@ export const standardContainer = pgTable("standard_container", {
 
 });
 
+// Container Services
 export const oversizedContainer = pgTable("oversized_container", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -292,21 +287,19 @@ export const oversizedContainer = pgTable("oversized_container", {
     service_from: text("service_from").notNull(),
     service_to: text("service_to").notNull(),
 
-    // Container Details
-    shipment_type: text("shipment_type").notNull(),
-
     // Cargo details
     dangerous: boolean("dangerous").default(false),          // Container type (e.g., dry, refrigerated)
+    container_type: text("container_type").notNull(),
     container_number: numeric("container_number").notNull(),   // Number of containers
-    container_weight: numeric("weight_per_container").notNull(),   // Container weight
+    container_weight: numeric("container_weight").notNull(),   // Container weight
     own_container: boolean("own_container"),
     import_return_or_triangulation: boolean("import_return_or_triangulation"),
 
     // cargo dimensions if oversized
-    length: numeric("length"),
-    width: numeric("width"),
-    height: numeric("height"),
-    weight: numeric("weight"),
+    length: numeric("length").notNull(),
+    width: numeric("width").notNull(),
+    height: numeric("height").notNull(),
+    weight: numeric("weight").notNull(),
 
     // Recommedned Services
     file: text("file"),
@@ -336,23 +329,26 @@ export const hss = pgTable("handling_stevedoring_storage", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+    location: text("location").notNull(), // Enum-like with values 'cy' or 'sd'
+    detailed: text("detailed").notNull(),
 
-    // Location Details
-    location: text("location").notNull(),
-
-    // Container/Cargo Details
-    cargo_type: text("cargo_type").notNull(),
-    number_of_containers: numeric("number_of_containers").notNull(),
-    weight_per_container: numeric("weight_per_container"),
-
-    // Commodity Details
-    temperature: boolean("temperature").default(false),
+    // Cargo details
     dangerous: boolean("dangerous").default(false),
     oversized: boolean("oversized").default(false),
+    temperature: boolean("temperature").default(false),
+    container_type: text("container_type").notNull(),
+    container_number: numeric("container_number").notNull(),   // Number of containers
+    container_weight: numeric("container_weight").notNull(),   // Container weight
+
+    // cargo dimensions if oversized
     length: numeric("length").notNull(),
     width: numeric("width").notNull(),
     height: numeric("height").notNull(),
     weight: numeric("weight").notNull(),
+
+    // Recommedned Services
+    file: text("file"),
+    additional_information: text("additional_information"), // Additional details
 
     // Handling/Stevedoring Requirements
     handling: boolean("handling").default(false),
@@ -363,9 +359,6 @@ export const hss = pgTable("handling_stevedoring_storage", {
     safekeeping_before: boolean("safekeeping_before").default(false),
     safekeeping_after: boolean("safekeeping_after").default(false),
     temporary_storage: boolean("temporary_storage").default(false),
-
-    // Additional Information
-    additional_information: text("additional_information"),
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name
@@ -709,6 +702,8 @@ export const ship_management = pgTable("ship_management", {
 
 })
 
+
+// Ocean Freight
 export const project_cargo_services = pgTable("project_cargo_services", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -719,9 +714,7 @@ export const project_cargo_services = pgTable("project_cargo_services", {
     to: text("to").notNull(),     // To location
 
     // Commodity details
-    temperature: boolean("temperature").default(false), // Temperature-sensitive shipment
     dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    oversized: boolean("oversized").default(false),     // Oversized goods
     length: numeric("length").notNull(),                // Length of the goods
     width: numeric("width").notNull(),                  // Width of the goods
     height: numeric("height").notNull(),                // Height of the goods
@@ -749,6 +742,7 @@ export const project_cargo_services = pgTable("project_cargo_services", {
 
 })
 
+// Ocean Freight
 export const roll_on_off = pgTable("roll_on_off", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -759,45 +753,6 @@ export const roll_on_off = pgTable("roll_on_off", {
     to: text("to").notNull(),     // To location
 
     // Commodity details
-    type: text("type").notNull(),
-    length: numeric("length").notNull(),                // Length of the goods
-    width: numeric("width").notNull(),                  // Width of the goods
-    height: numeric("height").notNull(),                // Height of the goods
-    weight: numeric("weight").notNull(),                // Weight of the goods
-    file: text("file"),                      // Optional file upload
-    additional_information: text("additional_information"), // Additional details
-
-    // Dates
-    effective_date: date("effective_date").notNull(),
-    expiry_date: date("expiry_date").notNull(),
-
-    // Service Contract
-    service_contract: numeric("service_contract"),
-
-    // VAD
-    vad: boolean("vad").default(false), // Value-added inland container service   
-
-    // Company Details
-    company_name: text("company_name").notNull(),              // Company name
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    phone_number: text("phone_number").notNull(),
-
-})
-
-export const heavy_lift = pgTable("heavy_lift", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
-
-    // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
-
-    // Commodity details
-    type: text("type").notNull(),
     dangerous: boolean("dangerous").default(false),     // Dangerous goods
     length: numeric("length").notNull(),                // Length of the goods
     width: numeric("width").notNull(),                  // Width of the goods
@@ -826,6 +781,46 @@ export const heavy_lift = pgTable("heavy_lift", {
 
 })
 
+// Ocean Freight
+export const heavy_lift = pgTable("heavy_lift", {
+    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
+    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+
+    // Routing details
+    from: text("from").notNull(), // From location
+    to: text("to").notNull(),     // To location
+
+    // Commodity details
+    dangerous: boolean("dangerous").default(false),     // Dangerous goods
+    length: numeric("length").notNull(),                // Length of the goods
+    width: numeric("width").notNull(),                  // Width of the goods
+    height: numeric("height").notNull(),                // Height of the goods
+    weight: numeric("weight").notNull(),                // Weight of the goods
+    file: text("file"),                      // Optional file upload
+    additional_information: text("additional_information"), // Additional details
+
+    // Dates
+    effective_date: date("effective_date").notNull(),
+    expiry_date: date("expiry_date").notNull(),
+
+    // Service Contract
+    service_contract: numeric("service_contract"),
+
+    // VAD
+    vad: boolean("vad").default(false), // Value-added inland container service   
+
+    // Company Details
+    company_name: text("company_name").notNull(),              // Company name
+    contact_person_name: text("contact_person_name").notNull(), // Contact person name
+    title: text("title").notNull(),                            // Contact person title
+    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
+    company_email: text("company_email").notNull(),            // Company email address
+    phone_number: text("phone_number").notNull(),
+
+})
+
+// Ocean Freight
 export const dangerous_cargo_services = pgTable("dangerous_cargo_services", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -836,7 +831,6 @@ export const dangerous_cargo_services = pgTable("dangerous_cargo_services", {
     to: text("to").notNull(),     // To location
 
     // Commodity details
-    type: text("type").notNull(),
     dangerous: boolean("dangerous").default(false),     // Dangerous goods
     length: numeric("length").notNull(),                // Length of the goods
     width: numeric("width").notNull(),                  // Width of the goods

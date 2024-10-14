@@ -54,6 +54,7 @@
     },
     "Inland-forms": {
         "routing": "Routing",
+        "dates": "Dates",
         "commodities": "Commodities",
         "companyDetails": "Company/Personal Details",
         "containerDetails": "Container Details",
@@ -81,7 +82,32 @@
         "containerNo": "Number of Containers",
         "containerWeight": "Weight Per Container",
         "serviceContract": "Service Contract",
-        "submit": "Submit"
+        "submit": "Submit",
+        "exp_date": "Expiry Date",
+        "eff_date": "Effective Date",
+        "type": "Type of Commodity",
+        "gross_volume": "Gross Volume",
+        "gross_weight": "Gross Weight",
+        "package_type": "Package Type",
+        "box": "Box",
+        "pallet": "Pallet",
+        "expires": "Validity (expires within)",
+        "days": "Days",
+        "no_exp": "No Expiry",
+        "shippers": "I wish to use a shipper's own container",
+        "triangulation": "I wish to use an import return container or a triangulation option",
+        "location": "Location Details",
+        "loco": "Location",
+        "detailed": "Detailed Location",
+        "hss-title": "Handling and stevedoring requirements",
+        "Handling": "Handling",
+        "Loading": "Loading of Cargo",
+        "Discharging": "Discharging of Cargo",
+        "Lashing": "Lashing of Cargo",
+        "Unlashing": "Unlashing of Cargo",
+        "before": "Reception/delivery and safekeeping of cargoes before shipment",
+        "after": "Reception/delivery and safekeeping of cargoes after shipment",
+        "temporary": "Temporary storage"
     },
     "Inland-errors": {
         "From": "From field is required",
@@ -103,7 +129,13 @@
         "PhoneNumber": "Phone Number field is required",
         "ContainerType": "Container Type field is required",
         "ContainerNo": "Number of Containers field is required",
-        "ContainerWeight": "Weight Per Container field is required"
+        "ContainerWeight": "Weight Per Container field is required",
+        "Type": "Type is required",
+        "gross_volume": "Volume is required",
+        "gross_weight": "Weight is required",
+        "package_type": "Package Type is required",
+        "Location": "Location is required",
+        "Detailed": "Detailed Location is required"
     },
     "Air-Freight": {
         "from": "From",
@@ -128,6 +160,11 @@
         "cy": "Container Yard (CY)",
         "sd": "Store Door (SD)",
         "standard": "Standard Cargo",
-        "ULD": "ULD Container"
+        "ULD": "ULD Container",
+        "pick-up": "Pick Up Required",
+        "delivery": "Delivery Required",
+        "additional_location": "Additional Location",
+        "shippers": "I wish to use a shipper's own container",
+        "triangulation": "I wish to use an import return container or a triangulation option"
     }
 }

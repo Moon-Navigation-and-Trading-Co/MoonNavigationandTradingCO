@@ -8,15 +8,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import RoutingCard from './routing-card-variant-1';
-import CommoditiesCard from './commodities-card-variant-3';
+import CommoditiesCard from './commodities-card-variant-6';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
+import RecommendedServicesCard from './recommended-card';
+import ServiceModeCard from './service-mode-card';
 import DatesCard from './dates-card';
-import { userInfo } from 'os';
-
 
 // 1. Define a type-safe form handler using z.infer
-const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const OversizedContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
 
@@ -25,6 +25,13 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
         routing: z.object({
             from: z.string().min(1, { message: t("From") }),
             to: z.string().min(1, { message: t("To") }),
+        }),
+        service: z.object({
+            service_mode: z.enum(["cy", "sd"], {
+                required_error: "You need to select a type.",
+            }),
+            from: z.string().optional(),
+            to: z.string().optional(),
         }),
         commodities: z.object({
             dangerous: z.boolean().optional(),
@@ -37,20 +44,21 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
             }, { message: t("File") }),
             additional_information: z.string().optional(),
         }),
+        container: z.object({
+            container_type: z.string().min(1, { message: t("ContainerType") }),
+            container_number: z.number().min(1, { message: t("ContainerNo") }),
+            container_weight: z.number().min(1, { message: t("ContainerWeight") }),
+            triangulation: z.boolean().optional(),
+            shippers: z.boolean().optional(),
+        }),
+        //dates
         dates: z.object({
-            effective_date: z.string().min(1, { message: t("Date") }).refine(value => {
-                return !isNaN(Date.parse(value)); // Ensure valid date
-            }, { message: t("InvalidDate") }),
-            expiry_date: z.string().min(1, { message: t("Date") }).refine(value => {
-                return !isNaN(Date.parse(value)); // Ensure valid date
-            }, { message: t("InvalidDate") })
+            effective_date: z.string().min(1, { message: t("Date") }),
+            expiry_date: z.string().min(1, { message: t("Date") }),
         }),
         vad: z.object({
             inland_container: z.boolean().optional(),
         }),
-        // service: z.object({
-        //     service_contract: z.number().optional()
-        // }),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("CompanyName") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
@@ -69,24 +77,36 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 from: '',
                 to: '',
             },
-            dates: {
-                effective_date: '',
-                expiry_date: ''
+            service: {
+                service_mode: 'cy',
+                from: '',
+                to: ''
+            },
+            transportation: {
+                transportation_method: 'standard'
+            },
+            recommended: {
+                import: false,
+                export: false,
             },
             commodities: {
+                temperature: false,
                 dangerous: false,
-                length: null,
-                width: null,
-                height: null,
-                weight: null,
+                oversized: false,
+                length: 0,
+                width: 0,
+                height: 0,
+                weight: 0,
                 file: '',
                 additional_information: ''
             },
+            container: {
+                container_type: '',
+                container_number: 0,
+                container_weight: 0
+            },
             vad: {
                 inland_container: false
-            },
-            service_contract: {
-                service_contract: ''
             },
             company_details: {
                 company_name: '',
@@ -101,26 +121,23 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
 
     // 2. Type-safe submit handler
     const handleSubmit = (values: any) => {
-        console.log("Form submitted successfully:", values);
         onSubmit(values);
-    };
-
-
-    const handleError = (errors: any) => {
-        console.error("Validation errors:", errors);
     };
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit, handleError)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
-                {/* Dates */}
-                <DatesCard control={form.control} />
+                {/* Service mode */}
+                <ServiceModeCard control={form.control} />
 
                 {/* Commodities Section */}
                 <CommoditiesCard control={form.control} />
+
+                {/* Dates */}
+                <DatesCard control={form.control} />
 
                 {/* Value Added Service */}
                 <FormItem className='pb-4'>
@@ -137,18 +154,20 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                                                 checked={field.value}
                                                 onCheckedChange={field.onChange}
                                                 id="inland_container"
-                                                name='inland_container'
                                             />
-                                            <label htmlFor='inland_container'>
+                                            <label>
                                                 Inland Container Services
+
                                             </label>
                                         </>
+
                                     )}
                                 />
                             </div>
                         </div>
                     </FormControl>
                 </FormItem>
+
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
@@ -161,4 +180,4 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
     );
 };
 
-export default ProjectCargoServicesForm;
+export default OversizedContainerCard;

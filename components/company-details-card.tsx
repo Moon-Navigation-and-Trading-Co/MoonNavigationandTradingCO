@@ -11,7 +11,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
         <div className="company-details-card">
             <h1 className='text-xl font-semibold my-6'>{t('companyDetails')}</h1>
 
-            <div className='grid grid-cols-2 gap-5'>
+            <div className='grid grid-cols-2 gap-5 px-4'>
                 <div>
 
                     <FormItem>

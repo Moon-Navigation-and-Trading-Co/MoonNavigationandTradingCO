@@ -8,15 +8,17 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import RoutingCard from './routing-card-variant-1';
-import CommoditiesCard from './commodities-card-variant-3';
+import RecommendedServicesCard from './recommended-card';
+import CommoditiesCard from './commodities-card-variant-4';
 import CompanyDetailsCard from './company-details-card';
+import PickupDeliveryCard from './pickup-delivery-card';
 import { useTranslations } from 'next-intl';
 import DatesCard from './dates-card';
 import { userInfo } from 'os';
 
 
 // 1. Define a type-safe form handler using z.infer
-const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
 
@@ -25,32 +27,25 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
         routing: z.object({
             from: z.string().min(1, { message: t("From") }),
             to: z.string().min(1, { message: t("To") }),
+            pick_up: z.boolean().optional(),
+            delivery: z.boolean().optional(),
+            location_information: z.string().optional()
         }),
         commodities: z.object({
-            dangerous: z.boolean().optional(),
-            length: z.number().min(1, { message: t("Length") }),
-            width: z.number().min(1, { message: t("Width") }),
-            height: z.number().min(1, { message: t("Height") }),
-            weight: z.number().min(1, { message: t("Weight") }),
-            file: z.string().optional().refine(value => {
-                return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
-            }, { message: t("File") }),
+            type_of_commodity: z.string().min(1, { message: t("Type") }),
+            gross_volume: z.number().min(1, { message: t("gross_volume") }),
+            gross_weight: z.number().min(1, { message: t("gross_weight") }),
+            package_type: z.string().min(1, { message: t("package_type") }),
+            validity: z.string().min(1),
             additional_information: z.string().optional(),
         }),
-        dates: z.object({
-            effective_date: z.string().min(1, { message: t("Date") }).refine(value => {
-                return !isNaN(Date.parse(value)); // Ensure valid date
-            }, { message: t("InvalidDate") }),
-            expiry_date: z.string().min(1, { message: t("Date") }).refine(value => {
-                return !isNaN(Date.parse(value)); // Ensure valid date
-            }, { message: t("InvalidDate") })
+        recommended: z.object({
+            import: z.boolean().optional(),
+            export: z.boolean().optional(),
         }),
         vad: z.object({
             inland_container: z.boolean().optional(),
         }),
-        // service: z.object({
-        //     service_contract: z.number().optional()
-        // }),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("CompanyName") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
@@ -75,10 +70,6 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
             },
             commodities: {
                 dangerous: false,
-                length: null,
-                width: null,
-                height: null,
-                weight: null,
                 file: '',
                 additional_information: ''
             },
@@ -116,11 +107,14 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
-                {/* Dates */}
-                <DatesCard control={form.control} />
+                {/* Pick up/ Delivery */}
+                <PickupDeliveryCard control={form.control} />
 
                 {/* Commodities Section */}
                 <CommoditiesCard control={form.control} />
+
+                {/* Recommended Services */}
+                <RecommendedServicesCard control={form.control} />
 
                 {/* Value Added Service */}
                 <FormItem className='pb-4'>
@@ -161,4 +155,4 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
     );
 };
 
-export default ProjectCargoServicesForm;
+export default LessThanContainerForm;
