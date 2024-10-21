@@ -689,7 +689,7 @@ export const ship_maintenance = pgTable("ship_maintenance", {
     phone_number: text("phone_number").notNull(),
 
 })
-
+// Ship Management
 export const ship_management = pgTable("ship_management", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
