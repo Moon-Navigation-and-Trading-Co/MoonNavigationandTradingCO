@@ -1,6 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 const TransportationServices: React.FC = () => {
     const t = useTranslations('Services-2');
@@ -16,12 +18,22 @@ const TransportationServices: React.FC = () => {
                 <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-between p-8 md:p-5'>
                     <h1 className='text-primary-foreground font-semibold text-2xl'>Container Services</h1>
 
-                    <div className='px-2 text-gray-300 font-semibold flex flex-col gap-2'>
-                        <p>  {t("container-s-1")}</p>
-                        <p>  {t("container-s-2")}</p>
-                        <p>  {t("container-s-3")}</p>
-                        <p>  {t("container-s-4")}</p>
+                    <div className='flex justify-between'>
+                        <div className='px-2 text-gray-300 font-semibold flex flex-col gap-2'>
+                            <p>  {t("container-s-1")}</p>
+                            <p>  {t("container-s-2")}</p>
+                            <p>  {t("container-s-3")}</p>
+                            <p>  {t("container-s-4")}</p>
+                        </div>
+                        <div className='flex items-end justify-end'>
+                            <Button variant={"outline"}>
+                                <Link href="/container-services-forms">
+                                    Get Quote
+                                </Link>
+                            </Button>
+                        </div>
                     </div>
+
 
                 </div>
 
@@ -35,14 +47,21 @@ const TransportationServices: React.FC = () => {
                 <div className='absolute top-0 left-0 w-full h-full flex flex-col justify-between p-8 md:p-5'>
                     <h1 className='text-primary-foreground font-semibold text-2xl'>Ship Agency Services</h1>
 
-                    <div className=''>
+
+                    <div className='flex justify-between'>
                         <div className='px-2 text-gray-300 font-semibold flex flex-col gap-2'>
                             <p>  {t("ship-s-1")}</p>
                             <p>  {t("ship-s-2")}</p>
                             <p>  {t("ship-s-3")}</p>
                             <p>  {t("ship-s-4")}</p>
                         </div>
-
+                        <div className='flex items-end justify-end'>
+                            <Button variant={"outline"}>
+                                <Link href="/ship-agency-forms">
+                                    Get Quote
+                                </Link>
+                            </Button>
+                        </div>
                     </div>
 
                 </div>

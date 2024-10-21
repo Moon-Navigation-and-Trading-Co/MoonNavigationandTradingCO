@@ -19,7 +19,8 @@
         "contactFormCompany": "Company Name",
         "contactFormEmail": "Email",
         "contactFormMessage": "Talk to Us!",
-        "contactFormSubmit": "Submit"
+        "contactFormSubmit": "Submit",
+        "contactFormNumber": "+123456789"
     },
     "Buttons": {
         "about": "About Us",
@@ -54,6 +55,7 @@
     },
     "Inland-forms": {
         "routing": "Routing",
+        "vessel": "Vessel",
         "dates": "Dates",
         "commodities": "Commodities",
         "companyDetails": "Company/Personal Details",
@@ -107,7 +109,38 @@
         "Unlashing": "Unlashing of Cargo",
         "before": "Reception/delivery and safekeeping of cargoes before shipment",
         "after": "Reception/delivery and safekeeping of cargoes after shipment",
-        "temporary": "Temporary storage"
+        "temporary": "Temporary storage",
+        "port-name": "Port Name",
+        "vessel-name": "Vessel Name",
+        "vessel-imo": "Vessel IMO Number",
+        "vessel-eta": "ETA (expected time of arrival)",
+        "vessel-type": "Vessel Type",
+        "vessel-flag": "Flag",
+        "ship-gross-tonnage": "Ship Gross tonnage",
+        "ship-net-tonnage": "Ship Net Tonnage",
+        "vessel-deadweight": "Dead weight",
+        "vessel-draft": "Draft",
+        "vessel-length": "Length",
+        "vessel-call-for": "Call For:",
+        "vessel-commercial": "Commercial",
+        "vessel-maintenance": "Maintenance",
+        "total-discharged-cargo": "Total Discharged Cargo",
+        "total-loaded-cargo": "Total Loaded Cargo",
+        "total-expected-berthing-days": "Total Berthing Days",
+        "total-expected-anchor-days": "Total Anchor Days",
+        "at-anchor": "At Anchor",
+        "at-berth": "At Berth",
+        "crew-on": "Sign On",
+        "crew-off": "Sign Off",
+        "crew-number": "Crew Members",
+        "crew-nationality": "Nationality",
+        "hotel": "Hotel for 1 Night:",
+        "yes": "Yes",
+        "no": "No",
+        "hotel-req": "Hotel Special Request",
+        "transportation": "Transport to/from Airport?",
+        "transportation-req": "Airport Name (Cairo - Alex)",
+        "vessel-request": "Special Request"
     },
     "Inland-errors": {
         "From": "From field is required",
@@ -135,7 +168,8 @@
         "gross_weight": "Weight is required",
         "package_type": "Package Type is required",
         "Location": "Location is required",
-        "Detailed": "Detailed Location is required"
+        "Detailed": "Detailed Location is required",
+        "crew-required": "Crew Details"
     },
     "Air-Freight": {
         "from": "From",

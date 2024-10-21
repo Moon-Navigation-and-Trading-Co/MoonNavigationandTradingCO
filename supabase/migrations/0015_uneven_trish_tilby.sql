@@ -1,0 +1,1 @@
+ALTER TABLE "request_for_pda" DROP COLUMN IF EXISTS "total_loaded_cargo";

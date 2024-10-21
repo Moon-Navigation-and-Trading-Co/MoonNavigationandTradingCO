@@ -1,4 +1,4 @@
-import { boolean, timestamp, pgSchema, pgTable, text, numeric, uuid, date } from "drizzle-orm/pg-core";
+import { boolean, timestamp, pgSchema, pgTable, text, numeric, uuid, date, jsonb } from "drizzle-orm/pg-core";
 import { Weight } from "lucide-react";
 
 // Since `auth` schema and `auth.users` table already exist, you can directly reference them
@@ -528,15 +528,16 @@ export const request_for_pda = pgTable("request_for_pda", {
     vessel_imo: numeric("vessel_imo").notNull(),
     vessel_type: text("vessel_type").notNull(),
     flag: text("flag"),
-    vessel_length: text("vessel_length").notNull(),
+    vessel_length: numeric("vessel_length").notNull(),
     eta: text("eta").notNull(),
     ship_gross_tonnage: text("ship_gross_tonnage").notNull(),
     ship_net_tonnage: text("ship_net_tonnage").notNull(),
     ship_dead_weight: text("ship_dead_weight").notNull(),
     ship_draft: text("ship_draft").notNull(),
     call_for_commercial: boolean("call_for_commercial").default(false),
-    call_for_maintenance: boolean("call_for_maintenance").default(false),
+    call_for_maintenane: boolean("call_for_maintenance").default(false),
     total_discharged_cargo: numeric("total_discharged_cargo").notNull(),
+    total_loaded_cargo: numeric("total_loaded_cargo").notNull(),
     total_expected_berthing_days: numeric("total_expected_berthing_days").notNull(),
     total_waiting_anchor: numeric("total_waiting_anchor").notNull(),
 
@@ -567,11 +568,16 @@ export const sign_crew_members = pgTable("sign_crew_members", {
     // Sign on off
     sign_on: boolean("sign_on").default(false),
     sign_off: boolean("sign_off").default(false),
-    crew_number: numeric("crew_number").notNull(),
-    hotel: boolean("hotel").default(false),
-    hotel_special_req: text("hotel_special_req"),
-    transport: boolean("transport").default(false),
-    transport_special_req: text("transport_special_req"),
+    crew_nationalities_sign_on: jsonb("crew_nationalities_sign_on").notNull(), // Stores an array of crew members
+    hotel_sign_on: boolean("hotel_sign_on").default(false),
+    hotel_special_req_sign_on: text("hotel_special_req_sign_on"),
+    transport_sign_on: boolean("transport_sign_on").default(false),
+    transport_special_req_sign_on: text("transport_special_req_sign_on"),
+    crew_nationalities_sign_off: jsonb("crew_nationalities_sign_off").notNull(), // Stores an array of crew members
+    hotel_sign_off: boolean("hotel_sign_off").default(false),
+    hotel_special_req_sign_off: text("hotel_special_req_sign_off"),
+    transport_sign_off: boolean("transport_sign_off").default(false),
+    transport_special_req_sign_off: text("transport_special_req_sign_off"),
 
     // Company Details
     company_name: text("company_name").notNull(),              // Company name

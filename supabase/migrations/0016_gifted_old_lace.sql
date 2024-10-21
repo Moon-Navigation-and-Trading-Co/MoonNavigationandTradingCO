@@ -1,0 +1,1 @@
+ALTER TABLE "request_for_pda" ADD COLUMN "total_loaded_cargo" numeric NOT NULL;
