@@ -12,7 +12,7 @@ import { useTranslations } from 'next-intl';
 
 
 // 1. Define a type-safe form handler using z.infer
-const ShipManagemnetForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
@@ -82,4 +82,4 @@ const ShipManagemnetForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
     );
 };
 
-export default ShipManagemnetForm;
+export default ShipMaintenanceForm;

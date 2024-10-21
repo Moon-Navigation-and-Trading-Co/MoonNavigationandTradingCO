@@ -6,8 +6,9 @@ import { createClient } from '@/utils/supabase/client'; // Make sure this is a c
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
-import ShipMaintenanceForm from '@/components/ship-maintenance-form';
+import InternationalTradingForm from '@/components/international-trading-form';
 import Spinner from '@/components/spinner';
+
 
 const Page: React.FC = () => {
     // const t = useTranslations('HomePage');
@@ -49,8 +50,22 @@ const Page: React.FC = () => {
 
         flattenedData = {
             user_id: user.id,
+            from: formData.routing.from,
+            to: formData.routing.to,
+            incoterm: formData.routing.incoterm,
+            shipping_method: formData.transportation.method,
 
-            request: formData.request,
+            temperature: formData.commodities.temperature,
+            dangerous: formData.commodities.dangerous,
+            oversized: formData.commodities.oversized,
+            length: formData.commodities.length,
+            width: formData.commodities.width,
+            height: formData.commodities.height,
+            weight: formData.commodities.weight,
+            file: formData.commodities.file,
+            additional_information: formData.commodities.additional_information,
+
+
 
             company_name: formData.company_details.company_name,
             contact_person_name: formData.company_details.contact_person_name,
@@ -65,7 +80,7 @@ const Page: React.FC = () => {
         console.log(flattenedData)
 
         const { data, error } = await supabase
-            .from("ship_maintenance")  // Your Supabase table
+            .from("international_trading")  // Your Supabase table
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
@@ -87,10 +102,10 @@ const Page: React.FC = () => {
     const tabData = [
         {
             id: "international",
-            title: "Ship Management Service",
+            title: "International Trading",
             content:
                 <>
-                    <ShipMaintenanceForm onSubmit={submitForm} />
+                    <InternationalTradingForm onSubmit={submitForm} />
                 </>
         }
     ]

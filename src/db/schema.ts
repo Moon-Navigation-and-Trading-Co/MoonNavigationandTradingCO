@@ -644,10 +644,14 @@ export const international_trading = pgTable("international_trading", {
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
+    // from
+    from: text("from").notNull(),
+    to: text("to").notNull(),
     incoterm: text("incoterm").notNull(),
 
-    type: text("type").notNull(),
-    quantity: numeric("quantity").notNull(),
+    dagerous: boolean("dangerous").default(false),
+    temperature: boolean("temperature").default(false),
+    oversized: boolean("oversized").default(false),
     length: numeric("length").notNull(),
     width: numeric("width").notNull(),
     height: numeric("height").notNull(),
@@ -656,10 +660,7 @@ export const international_trading = pgTable("international_trading", {
     additional_information: text("additional_information"),
 
     // Shipping Method
-    sea: boolean("sea").default(false),
-    land: boolean("land").default(false),
-    air: boolean("air").default(false),
-    more_decleration: text("more_decleration").notNull(),
+    shipping_method: text("shipping_method").notNull(),
 
     // Company Details
     company_name: text("company_name").notNull(),              // Company name

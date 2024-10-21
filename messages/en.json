@@ -140,7 +140,11 @@
         "hotel-req": "Hotel Special Request",
         "transportation": "Transport to/from Airport?",
         "transportation-req": "Airport Name (Cairo - Alex)",
-        "vessel-request": "Special Request"
+        "vessel-request": "Special Request",
+        "incoterm": "Incoterm",
+        "air": "Air Freight",
+        "sea": "Ocean Freight",
+        "land": "Inland Freight"
     },
     "Inland-errors": {
         "From": "From field is required",
@@ -169,7 +173,8 @@
         "package_type": "Package Type is required",
         "Location": "Location is required",
         "Detailed": "Detailed Location is required",
-        "crew-required": "Crew Details"
+        "crew-required": "Crew Details",
+        "Incoterm": "Incoterm field is required"
     },
     "Air-Freight": {
         "from": "From",
