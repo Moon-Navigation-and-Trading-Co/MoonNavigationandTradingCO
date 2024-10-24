@@ -32,24 +32,30 @@ export default function CarouselAnimation() {
             image: "/land-cargo-2.jpeg",
             link: "/inland-services-forms"
         },
+        {
+            title: t("servicesCard4Title"),
+            description: t("servicesCard4Description"),
+            image: "/ship-agency.jpeg",
+            link: "/inland-services-forms"
+        },
     ]
 
     return (
         <div className="flex flex-col lg:flex-row h-[800px]  lg:h-[500px] w-full gap-5">
             <div className="w-full relative shadow-md overflow-hidden shadow-black h-[150px] lg:h-full lg:w-[160px]  rounded-2xl flex items-center justify-start">
-                <div className="bg-black/35 z-[998] absolute w-full h-full"></div>
+                <div className="bg-black/35 z-[104] absolute w-full h-full"></div>
                 <Image src={'/container-top-v.jpeg'} className="object-cover hidden lg:flex" fill alt="Transportation Services Background" />
                 <Image src={'/container-top-h.jpeg'} className="object-cover flex lg:hidden" fill alt="Transportation Services Background" />
-                <h1 className="text-center z-[999] text-xl font-semibold text-[#E2F1E7] w-full">{t("servicesTitle")}</h1>
+                <h1 className="text-center z-[105] text-3xl font-semibold text-[#E2F1E7] w-full">{t("servicesTitle")}</h1>
             </div>
-            <Separator className="bg-[#243642] w-[2px] lg:my-24" />
+            <Separator className="bg-[#9696a7] w-[2px] rounded-[100px] lg:my-24" />
             {freightTypes.map((freight, index) => (
                 <motion.div
                     key={freight.title}
                     className={`relative ${expandedIndex === index ? 'shadow-xl' : 'shadow-md'} shadow-black bg-black overflow-hidden rounded-2xl`}
                     initial={false}
                     animate={{
-                        flex: expandedIndex === index ? 3 : 1,
+                        flex: expandedIndex === index ? 4 : 1,
                     }}
                     transition={{ duration: 0.9, type: 'spring' }}
                 >
@@ -62,21 +68,21 @@ export default function CarouselAnimation() {
                                 src={freight.image}
                                 alt={freight.title}
                                 fill
-                                className="h-full w-full object-cover"
+                                className="h-full w-full object-cover overflow-hidden rounded-[18px]"
                             />
                             <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/90 to-black/30" />
                             <div className="absolute bottom-0 left-0 p-4 text-white ">
-                                <h2 className="text-2xl font-bold">{freight.title}</h2>
+                                <h2 className="text-xl w-full font-semibold">{freight.title}</h2>
                                 {expandedIndex === index && (
                                     <motion.div
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.1 }}
                                     >
-                                        <p className="mb-4 mt-2">{freight.description}</p>
-                                        <Button variant="outline" className="bg-white text-black p-0 hover:bg-gray-200">
-                                            <Link className="h-10 flex items-center px-4 py-2" href={freight.link}>
-                                                {tt("getQuote")}
+                                        <p className="mb-4 mt-2 text-base font-light max-w-[500px]">{freight.description}</p>
+                                        <Button variant="outline" className="bg-white text-black p-0 hover:bg-gray-200 hover:text-gray-600">
+                                            <Link className="h-10 flex font-semibold items-center px-2 " href={freight.link}>
+                                                {tt("learnmore")}
                                             </Link>
                                         </Button>
                                     </motion.div>

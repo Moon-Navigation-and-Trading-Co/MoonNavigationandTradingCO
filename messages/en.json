@@ -1,16 +1,22 @@
 {
+    "LocaleSwitcher": {
+        "label": "Change Language",
+        "locale": "{locale, select, ar {Ar} en {En} other {Unkown}}"
+    },
     "HomePage": {
         "slogan": "Your Logistics Partner",
         "aboutImgTitle": "About Us",
         "aboutTitle": "We are a freight company",
         "aboutDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-        "servicesTitle": "Transportation Services",
-        "servicesCard1Title": "Air Freight",
+        "servicesTitle": "Our Services",
+        "servicesCard1Title": "Freight",
         "servicesCard1Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "servicesCard2Title": "Ocean Freight",
+        "servicesCard2Title": "Ship Agency",
         "servicesCard2Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-        "servicesCard3Title": "Inland Freight",
-        "servicesCard3Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+        "servicesCard3Title": "Container",
+        "servicesCard3Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "servicesCard4Title": "Other Services",
+        "servicesCard4Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
     },
     "Contact": {
         "contactTitle": "Contact Us",

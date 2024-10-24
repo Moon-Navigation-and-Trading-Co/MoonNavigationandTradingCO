@@ -10,6 +10,7 @@ import Image from "next/image";
 import CarouselAnimation from "@/components/carousel-animation";
 import TransportationServices from "@/components/TransportationServices";
 import { Separator } from "@/components/ui/separator";
+import ServicesWithLogo from "@/components/services-with-logos";
 import { useRef } from "react";
 import ServicesMiniCard from "@/components/servicesMiniCards";
 import ContactForm from "@/components/contact-form";
@@ -30,23 +31,39 @@ export default function Index() {
 
   return (
     <>
-      <main className="flex-1 flex flex-col gap-2 md:gap-10">
+      <main className="flex-1 flex flex-col gap-20">
 
         {/* Image and slogan */}
-        <div className="relative w-full h-full rounded-3xl shadow-black shadow-md md:shadow-xl md:shadow-black ">
-          <div className="w-full h-full rounded-3xl bg-black-overlay absolute"></div>
-          <Image className="rounded-3xl  w-full " src={'/cargotruck.jpg'} alt="Hero Image" width={2560} height={1600} />
-          <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  text-[#E2F1E7]/85 w-full text-center font-semibold tracking-wider text-2xl sm:text-4xl  md:text-5xl">{t("slogan")}</h1>
+        <div className=" w-full h-custom-height">
+          <div className="relative  flex items-center justify-center rounded-3xl -mt-8 md:mt-[2rem] bg-home-image bg-center  bg-cover w-full h-full md:h-[90%]  aspect-auto md:aspect-video shadow-black shadow-xl md:shadow-xl md:shadow-black  ">
+            <div className="w-full h-full z-[10] top-[1px] bg-black-overlay rounded-3xl absolute"></div>
+            <div className="flex flex-col items-center justify-center  gap-10 z-[50]">
+              <h1 className="  text-[#E2F1E7]/85 max-w-[500px] w-full text-center font-semibold tracking-wider px-3 text-4xl sm:text-4xl  md:text-5xl">{t("slogan")}</h1>
+              {/* <Button variant={"outline"} className="max-w-[300px]">Invest</Button> */}
+
+
+
+            </div>
+          </div>
         </div>
 
+        <ServicesWithLogo />
+
+        {/* Services Section */}
+        <section id="services">
+
+          <div className="flex flex-col gap-8 bg-[#E2F1E7 px-2 py-5 rounded-2xl ">
+            {/* Transportation Services */}
+            <CarouselAnimation />
+
+          </div>
+
+        </section>
+
         {/* About us section */}
-
-        {/* Box Box | Box | box */}
-        {/* Booooox |  o  |  o  */}
-
         <section >
 
-          <div className="grid md:grid-cols-4 lg:grid-cols-5 gap-10">
+          <div className="grid md:grid-cols-4 my-10 lg:grid-cols-4 gap-10 lg:gap-24 px-4">
 
             {/* First Set of Boxes || First Column */}
             <div className="grid grid-cols-3 md:grid-cols-2  col-span-2 gap-4">
@@ -56,7 +73,7 @@ export default function Index() {
                   <Image alt="about us icon" src={'/letter-i.png'} width={70} height={70} />
                 </div>
                 <button className="absolute w-full h-full" onClick={scrollToModal}></button>
-                <h1 className="absolute bottom-3 left-5 text-white text-lg font-semibold">{t("aboutImgTitle")}</h1>
+                <h1 className="absolute bottom-3 left-5 text-white text-sm md:text-lg md:font-semibold">{t("aboutImgTitle")}</h1>
               </div>
 
               <div className="bg-black shadow-md shadow-black rounded-3xl overflow-hidden aspect-square flex items-center justify-center relative">
@@ -72,62 +89,27 @@ export default function Index() {
 
             {/* Second Column */}
             <div ref={modalRef} className="col-span-2 w-full h-full flex flex-col justify-between">
-              <h1 className="text-3xl font-semibold pt-2 ">{t("aboutTitle")}</h1>
-              <p className="text-gray-600 text-base py-10">{t("aboutDescription")}</p>
-              <Button className="w-[130px]" >{tt("learnmore")}</Button>
-            </div>
-
-
-            {/* Third Column */}
-            <div className="shadow-md bg-black shadow-black flex rounded-2xl items-center justify-center h-full overflow-hidden">
-              <div className="relative w-full h-full flex justify-center items-center">
-                <Image
-                  src={'/cargoLand.jpg'}
-                  alt="Cargo Truck Image"
-                  fill
-                  objectFit="cover"
-                  objectPosition="center"
-                  className="min-h-full min-w-full"
-                />
+              <div>
+                <h1 className="text-3xl font-semibold pb-16 pt-2 text-foreground">{t("aboutTitle")}</h1>
+                <p className="text-muted-foreground text-base pb-10">{t("aboutDescription")}</p>
               </div>
+              <Button className="w-[130px]" >{tt("learnmore")}</Button>
+
             </div>
 
           </div>
 
         </section>
 
-        <section id="services">
-
-          <div className="flex flex-col gap-8 bg-[#E2F1E7] px-2 py-5 rounded-2xl ">
-            {/* Transportation Services */}
-            <CarouselAnimation />
-
-            {/* Ship/Container Services */}
-            <TransportationServices />
-
-            {/* Other Services */}
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-4">
-              <ServicesMiniCard icon="/location.png" description={ttt("container-description-1")} buttonText={tt("learnmore")} title={ttt("container-title-1")} onButtonClick={function (): void { }} />
-              <ServicesMiniCard icon="/boat.png" description={ttt("container-description-2")} buttonText={tt("learnmore")} title={ttt("container-title-2")} onButtonClick={function (): void { }} />
-              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-3")} buttonText={tt("learnmore")} title={ttt("container-title-3")} onButtonClick={function (): void { }} />
-              <ServicesMiniCard icon="/containers.png" description={ttt("container-description-4")} buttonText={tt("learnmore")} title={ttt("container-title-4")} onButtonClick={function (): void { }} />
-              <ServicesMiniCard icon="/warehouse.png" description={ttt("container-description-5")} buttonText={tt("learnmore")} title={ttt("container-title-5")} onButtonClick={function (): void { }} />
-              <ServicesMiniCard icon="/letter-i.png" description={ttt("container-description-6")} buttonText={tt("learnmore")} title={ttt("container-title-6")} onButtonClick={function (): void { }} />
-
-            </div>
-          </div>
-
-        </section>
-
+        {/* Contact Section */}
         <section id="contact">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 py-10 pb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-4 py-10 pb-36">
 
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="text-3xl text-[#3A5F5F] font-semibold">{tttt("contactTitle")}</h1>
-                <p className="text-[#003D25] pb-5 font-medium mt-10">{tttt("contactDescription")}</p>
+                <h1 className="text-3xl text-[#316363] font-semibold">{tttt("contactTitle")}</h1>
+                <p className="text-muted-foreground pb-5 font-medium mt-10">{tttt("contactDescription")}</p>
 
               </div>
 
@@ -156,15 +138,6 @@ export default function Index() {
 
         </section>
 
-        {/* <section id="otherServices">
-
-          <div>
-            <ServicesMiniCard icon="/letter-i.png" description="Lorem Ipsum is so overrated let me write my own overrated let me write my own overrated let me write my own overrated let me write my own!" buttonText="Learn More" title={"Shipping Services"} onButtonClick={function (): void {
-            }} />
-          </div>
-
-
-        </section> */}
 
       </main >
     </>

@@ -18,13 +18,16 @@ const config = {
       },
     },
     extend: {
-      // add inner shadow 
+      height: {
+        'custom-height': 'calc(100svh - 64px)', // Add your custom height value here
+      },
       boxShadow: {
         'custom-inner': "inset 0 0 6px #000;"
       },
       backgroundImage: {
         'custom-radial': 'radial-gradient(circle, #119285 45%, #0A5951 100%)',
-        'black-overlay': 'linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3))'
+        'black-overlay': 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5))',
+        'home-image': "url('/cargo-1.jpeg')",
       },
       colors: {
         border: "hsl(var(--border))",

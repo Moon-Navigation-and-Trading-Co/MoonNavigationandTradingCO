@@ -1,4 +1,8 @@
 {
+    "LocaleSwitcher": {
+        "label": "Change Language",
+        "locale": "{locale, select, ar {Ar} en {En} other {Unkown}}"
+    },
     "HomePage": {
         "title": "Home Page title Arabic"
     }

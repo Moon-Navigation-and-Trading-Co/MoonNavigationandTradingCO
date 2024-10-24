@@ -8,6 +8,7 @@ import Link from "next/link";
 import "../globals.css";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
+import Footer from "@/components/footer";
 import { Button } from "@/components/ui/button"
 import Navbar from "@/components/navbar";
 import { createClient } from "@/utils/supabase/server";
@@ -61,24 +62,14 @@ export default async function RootLayout({
                 <Navbar user={isUserLoggedIn} />
 
                 {/* content */}
-                <div className="flex flex-col pt-16 w-full max-w-[1300px] px-3 sm:px-5">
+                <div className="flex flex-col pt-16 w-full max-w-[1300px] px-0 md:px-5">
                   {children}
                 </div>
 
                 {/*  footer */}
-                <footer className="w-full flex items-center justify-center border-t mx-auto text-center text-xs gap-8 py-16">
-                  {/* <p>
-                  Powered by{" "}
-                  <a
-                    href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-                    target="_blank"
-                    className="font-bold hover:underline"
-                    rel="noreferrer"
-                  >
-                    Supabase
-                  </a>
-                </p>
-                <ThemeSwitcher /> */}
+                <footer className="w-full flex items-center justify-center text-center text-xs">
+                  <Footer />
+                  {/* <ThemeSwitcher /> */}
                 </footer>
               </div>
             </NextIntlClientProvider>

@@ -38,7 +38,6 @@ const ContactForm: React.FC = () => {
         setError(null);
         try {
             const supabase = createClient(); // Initialize the Supabase client
-            console.log(supabase)
             // Prepare data for insertion
             const transformedData = {
                 name: data.name,
@@ -76,26 +75,26 @@ const ContactForm: React.FC = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='flex flex-col gap-5'>
                         <div>
-                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormName")} id="name" {...register('name')} />
+                            <Input className='border-[#6A908D] bg-secondary border-2 rounded-xl' placeholder={t("contactFormName")} id="name" {...register('name')} />
                             {errors.name && <p className='text-red-500 text-xs px-4 pt-2'>{errors.name.message}</p>}
                         </div>
                         <div>
-                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormCompany")} id="companyName" {...register('companyName')} />
+                            <Input className='border-[#6A908D] border-2 bg-secondary rounded-xl' placeholder={t("contactFormCompany")} id="companyName" {...register('companyName')} />
                             {errors.companyName && <p className='text-red-500 text-xs px-4 pt-2'>{errors.companyName.message}</p>}
                         </div>
                         <div>
-                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormEmail")} id="email" {...register('email')} />
+                            <Input className='border-[#6A908D] border-2 bg-secondary rounded-xl' placeholder={t("contactFormEmail")} id="email" {...register('email')} />
                             {errors.email && <p className='text-red-500 text-xs px-4 pt-2'>{errors.email.message}</p>}
                         </div>
                         <div>
-                            <Input className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormNumber")} type='number' id="number" {...register('number')} />
+                            <Input className='border-[#6A908D] border-2 bg-secondary rounded-xl' placeholder={t("contactFormNumber")} type='number' id="number" {...register('number')} />
                             {errors.number && <p className='text-red-500 text-xs px-4 pt-2'>{errors.number.message}</p>}
                         </div>
                         <div>
-                            <Textarea className='border-[#6A908D] border-2 rounded-xl' placeholder={t("contactFormMessage")} id="message" {...register('message')} />
+                            <Textarea className='border-[#6A908D] border-2 bg-secondary rounded-xl' placeholder={t("contactFormMessage")} id="message" {...register('message')} />
                             {errors.message && <p className='text-red-500 text-xs px-4 pt-2'>{errors.message.message}</p>}
                         </div>
-                        <Button className='bg-[#243642]' type="submit" disabled={loading}>
+                        <Button className='bg-primary text-white font-normal' type="submit" disabled={loading}>
                             {loading ? 'Submitting...' : 'Submit'}
                         </Button>
                     </div>
