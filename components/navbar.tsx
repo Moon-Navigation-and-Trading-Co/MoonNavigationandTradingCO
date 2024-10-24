@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
 import SignOutButton from "./sign-out-button";
+import { Separator } from "./ui/separator";
+import { EllipsisVertical } from "lucide-react";
 
 interface NavbarProps {
     user: boolean;
@@ -24,63 +26,77 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         setIsServicesOpen(!isServicesOpen);
     };
 
+    const subServices = [
+        { name: "Freight", href: "/services/service1" },
+        { name: "Ship Agency", href: "/services/service2" },
+        { name: "Container", href: "/services/service3" },
+        { name: "Other", href: "/services/service4" },
+    ];
+
+    const navItems = [
+        { name: "About", href: "#about" },
+        { name: "Services", href: "#services", hasDropdown: true },
+        { name: "Contact", href: "#contact" },
+    ];
+
     return (
-        <nav className="w-full flex justify-center md:px-2 text-foreground  md:top-4 max-w-7xl h-16 fixed border-0 top-0 z-[999]">
-            <div className="w-full  flex justify-between rounded-b-2xl md:rounded-2xl drop-shadow-xl md:shadow-md shadow-gray-900 items-center py-3 px-4 sm:px-5 text-sm bg-secondary dark:bg-[#1A1A1A]">
+        <nav className="w-full flex justify-center md:px-2 text-foreground md:top-4 max-w-7xl h-16 fixed border-0 top-0 z-[999]">
+            <div className="w-full flex justify-between rounded-b-2xl md:rounded-2xl drop-shadow-xl md:shadow-md shadow-gray-900 items-center py-3 px-4 sm:px-5 text-sm bg-secondary dark:bg-[#1A1A1A]">
                 <div className="flex gap-5 items-center font-semibold text-foreground text-lg">
                     <Link href={"/"}>MoonNavigation</Link>
                 </div>
 
                 {/* Desktop Links */}
-                <div className="hidden sm:flex gap-5 font-normal">
-                    <Link href={"#about"}>About</Link>
+                <div className="hidden sm:flex items-center font-normal">
+                    {navItems.map((item, index) => (
+                        <React.Fragment key={index}>
+                            {item.hasDropdown ? (
+                                <div className="relative inline-block text-left mr-5">
+                                    <button
+                                        onClick={toggleServicesMenu}
+                                        className="hover:text-gray-300 focus:outline-none"
+                                    >
+                                        {item.name}
+                                    </button>
 
-                    {/* Services with Dropdown */}
-                    <div className="relative inline-block text-left">
-                        <button
-                            onClick={toggleServicesMenu}
-                            className="hover:text-gray-300 focus:outline-none"
-                        >
-                            Services
-                        </button>
+                                    {isServicesOpen && (
+                                        <div className="absolute left-0 mt-8 border w-48 rounded-md shadow-lg bg-[#1A1A1A] ring-1 ring-black ring-opacity-5 divide-y divide-gray-100">
+                                            <div
+                                                className="py-1 "
+                                                role="menu"
+                                                aria-orientation="vertical"
+                                            >
+                                                {subServices.map((service, index) => (
+                                                    <div className="flex flex-col items-center">
+                                                        <Link
+                                                            key={index}
+                                                            href={service.href}
+                                                            className="block w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                                            role="menuitem"
+                                                        >
+                                                            {service.name}
+                                                        </Link>
+                                                        {index !== 3 && <Separator className="w-2/3 " />
+                                                        }
+                                                    </div>
 
-                        {isServicesOpen && (
-                            <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100">
-                                <div className="py-1" role="menu" aria-orientation="vertical">
-                                    <Link
-                                        href="/services/service1"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                        role="menuitem"
-                                    >
-                                        Sub-service 1
-                                    </Link>
-                                    <Link
-                                        href="/services/service2"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                        role="menuitem"
-                                    >
-                                        Sub-service 2
-                                    </Link>
-                                    <Link
-                                        href="/services/service3"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                        role="menuitem"
-                                    >
-                                        Sub-service 3
-                                    </Link>
-                                    <Link
-                                        href="/services/service4"
-                                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                        role="menuitem"
-                                    >
-                                        Sub-service 4
-                                    </Link>
+
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
-                            </div>
-                        )}
-                    </div>
-
-                    <Link href={"#contact"}>Contact</Link>
+                            ) : (
+                                <Link href={item.href} className="mr-5">
+                                    {item.name}
+                                </Link>
+                            )}
+                            {/* Add separator if not the last item */}
+                            {index < navItems.length - 1 && (
+                                <span className="mr-5">|</span>
+                            )}
+                        </React.Fragment>
+                    ))}
                 </div>
 
                 <div className="hidden sm:flex gap-5 items-center">
@@ -98,69 +114,53 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 {/* Hamburger Menu */}
                 <div className="sm:hidden">
                     <button onClick={toggleMenu}>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="#0B877F"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="lucide lucide-menu"
-                        >
-                            <line x1="4" x2="20" y1="12" y2="12" />
-                            <line x1="4" x2="20" y1="6" y2="6" />
-                            <line x1="4" x2="20" y1="18" y2="18" />
-                        </svg>
+                        <EllipsisVertical strokeWidth="1" className="text-foreground" />
                     </button>
                 </div>
             </div>
 
             {/* Mobile Dropdown Menu */}
             <div
-                className={`fixed z-[999] px-2 mt-2 top-16 left-0 w-full bg-transparent transform transition-[max-height, opacity] duration-300 ease-in-out ${isOpen
-                        ? "max-h-screen opacity-100 translate-y-0"
-                        : "max-h-0 pointer-events-none opacity-0 -translate-y-10"
+                className={`fixed z-[999] px-2 mt-2 flex justify-end top-16 right-0 w-[280px] bg-transparent transform transition-[max-height, opacity] duration-300 ease-in-out ${isOpen
+                    ? "max-h-screen opacity-100 translate-y-0"
+                    : "max-h-0 pointer-events-none opacity-0 -translate-y-10"
                     } `}
             >
-                <div className="flex flex-col gap-5 rounded-3xl bg-secondary dark:bg-[#1A1A1A] p-6 pb-4 shadow-xl shadow-[#000000] text-md font-light">
-                    <Link href={"#About"} onClick={toggleMenu}>
-                        About
-                    </Link>
-                    <div>
-                        <Link href={"#services"} onClick={toggleMenu}>
-                            Services
-                        </Link>
-                        {/* Sub-services under Services */}
-                        <div className="ml-4 mt-1">
-                            <Link href="/services/service1" onClick={toggleMenu}>
-                                Sub-service 1
-                            </Link>
-                            <Link href="/services/service2" onClick={toggleMenu}>
-                                Sub-service 2
-                            </Link>
-                            <Link href="/services/service3" onClick={toggleMenu}>
-                                Sub-service 3
-                            </Link>
-                            <Link href="/services/service4" onClick={toggleMenu}>
-                                Sub-service 4
-                            </Link>
-                        </div>
-                    </div>
-                    <Link href={"#Contact"} onClick={toggleMenu}>
-                        Contact
-                    </Link>
+                <div className="flex flex-col w-full gap-2 rounded-3xl bg-secondary dark:bg-[#1A1A1A] px-5 py-4 max-w-[280px]  shadow-xl shadow-[#000000] text-sm font-normal">
+                    {navItems.map((item, index) => (
+                        <React.Fragment key={index}>
+                            {item.hasDropdown ? (
+                                <div>
+                                    <Link href={item.href} onClick={toggleMenu}>
+                                        {item.name}
+                                    </Link>
+                                    {/* Sub-services under Services */}
+                                    <div className="ml-4 mt-1 flex gap-2 pt-3 pb-1">
+                                        <Separator className="w-[2px] h-[100px] rounded-full bg-primary" />
+                                        <div className="flex flex-col gap-2">
+                                            {subServices.map((service, index) => (
+                                                <Link
+                                                    className="hover:text-primary"
+                                                    key={index}
+                                                    href={service.href}
+                                                    onClick={toggleMenu}
+                                                >
+                                                    {service.name}
+                                                </Link>
+                                            ))}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            ) : (
+                                <Link className="hover:text-primary" href={item.href} onClick={toggleMenu}>
+                                    {item.name}
+                                </Link>
+                            )}
+                        </React.Fragment>
+                    ))}
                     {!user && (
-                        <Link href={"/sign-in"} onClick={toggleMenu}>
-                            Sign In
-                        </Link>
-                    )}
-                    {!user && (
-                        <Button onClick={toggleMenu}>
-                            <Link href={"/sign-up"}>Sign Up</Link>
-                        </Button>
+                        <Link className="text-primary font-semibold hover:text-muted-foreground" href={"/sign-up"}>Sign In/Up</Link>
                     )}
                     {user && (
                         <Link href={"/"} onClick={toggleMenu}>

@@ -7,16 +7,16 @@ export default function Footer() {
     return (
         <footer className="bg-background max-w-7xl pb-12 w-full  ">
             <div className=" px-5">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-muted-foreground dark:border-secondary py-12">
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-8 border-t border-muted-foreground dark:border-secondary py-12">
 
-                    <div className="flex flex-col gap-2 justify-center text-start">
+                    <div className="flex flex-col gap-2 justify-center text-start col-span-2">
                         <h2 className="text-2xl font-bold  text-primary  w-full">MoonNavigation</h2>
-                        <p className=" text-muted-foreground">
+                        <p className="text-base text-muted-foreground">
                             Your trusted partner for shipping and <br /> logistics services.
                         </p>
                     </div>
-                    <div className="flex md:justify-center py-3">
-                        <ul className="flex flex-col gap-4 text-start w-[100px]">
+                    <div className="flex md:justify-center py-3 col-span-1">
+                        <ul className="flex flex-col text-[14px] gap-4 text-start w-[100px]">
                             <li>
                                 <Link href="#" className="text-muted-foreground hover:text-teal-600">
                                     Services
@@ -39,19 +39,19 @@ export default function Footer() {
                             </li>
                         </ul>
                     </div>
-                    <div className="gap-4 flex flex-col items-start md:justify-center">
-                        <h3 className="text-lg font-semibold text-teal-700">Newsletter</h3>
-                        <p className="text-muted-foreground">Stay updated with our latest news and offers.</p>
-                        <form className="flex flex-col justify-start md:justify-center sm:flex-row gap-2">
+                    <div className="gap-4 flex flex-col text-start items-start md:items-center col-span-2">
+                        <h3 className="text-xl font-semibold text-teal-700">Newsletter</h3>
+                        <p className="text-base text-muted-foreground md:text-center">Stay updated with our latest news <br /> and offers.</p>
+                        <form className="flex flex-col justify-start w-full md:justify-center sm:flex-row gap-2">
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="flex-grow px-3 py-2 max-w-[200px] border border-gray-300 rounded-md bg-secondary focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                className="flex-grow px-3 py-2 border border-gray-300 max-w-[280px] rounded-md bg-secondary focus:outline-none focus:ring-2 focus:ring-teal-500"
                                 required
                             />
                             <button
                                 type="submit"
-                                className="bg-primary text-white px-4 py-2 rounded-md hover:bg-teal-800 transition duration-300"
+                                className="bg-primary max-w-[100px] text-white px-4 py-2 rounded-md hover:bg-teal-800 transition duration-300"
                             >
                                 Subscribe
                             </button>
