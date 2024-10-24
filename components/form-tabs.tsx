@@ -59,7 +59,7 @@ const FormTabs: React.FC<FormTabsProps> = ({ tabData }) => {
                 />
             </div>
             <div className="p-1 rounded-3xl rounded-t-sm bg-green-100 dark:bg-accent">
-                <div className="bg-secondary rounded-3xl py-6 px-4 sm:px-6 shadow-sm">
+                <div className="bg-background dark:bg-secondary rounded-3xl py-6 px-4 sm:px-6 shadow-sm">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={activeTab}
