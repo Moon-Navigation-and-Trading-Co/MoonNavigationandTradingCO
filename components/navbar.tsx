@@ -41,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 
     return (
         <nav className="w-full flex justify-center md:px-2 text-foreground md:top-4 max-w-7xl h-16 fixed border-0 top-0 z-[999]">
-            <div className="w-full flex justify-between rounded-b-2xl md:rounded-2xl drop-shadow-xl md:shadow-md shadow-gray-900 items-center py-3 px-4 sm:px-5 text-sm bg-secondary dark:bg-[#1A1A1A]">
+            <div className="w-full flex justify-between rounded-b-2xl md:rounded-2xl drop-shadow-xl md:shadow-md shadow-gray-900 items-center py-3 px-4 sm:px-5 text-sm bg-secondary">
                 <div className="flex gap-5 items-center font-semibold text-foreground text-lg">
                     <Link href={"/"}>MoonNavigation</Link>
                 </div>
@@ -60,7 +60,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                     </button>
 
                                     {isServicesOpen && (
-                                        <div className="absolute left-0 mt-8 border w-48 rounded-md shadow-lg bg-[#1A1A1A] ring-1 ring-black ring-opacity-5 divide-y divide-gray-100">
+                                        <div className="absolute left-0 mt-8 border w-48 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 divide-y divide-gray-100">
                                             <div
                                                 className="py-1 "
                                                 role="menu"
@@ -71,7 +71,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                         <Link
                                                             key={index}
                                                             href={service.href}
-                                                            className="block w-full text-start px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                                            className="block w-full text-start px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
                                                             role="menuitem"
                                                         >
                                                             {service.name}
@@ -126,7 +126,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     : "max-h-0 pointer-events-none opacity-0 -translate-y-10"
                     } `}
             >
-                <div className="flex flex-col w-full gap-2 rounded-3xl bg-secondary dark:bg-[#1A1A1A] px-5 py-4 max-w-[280px]  shadow-xl shadow-[#000000] text-sm font-normal">
+                <div className="flex flex-col w-full gap-2 rounded-3xl bg-secondary px-5 py-4 max-w-[280px]  shadow-xl shadow-[#000000] text-sm font-normal">
                     {navItems.map((item, index) => (
                         <React.Fragment key={index}>
                             {item.hasDropdown ? (
