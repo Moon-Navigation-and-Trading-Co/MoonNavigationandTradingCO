@@ -35,8 +35,8 @@ export default function Index() {
 
         {/* Image and slogan */}
         <div className=" w-full h-custom-height">
-          <div className="relative  flex items-center justify-center rounded-3xl -mt-8 md:mt-[2rem] bg-home-image bg-center  bg-cover w-full h-full md:h-[90%]  aspect-auto md:aspect-video shadow-black shadow-xl md:shadow-xl md:shadow-black  ">
-            <div className="w-full h-full z-[10] top-[1px] bg-black-overlay rounded-3xl absolute"></div>
+          <div className="relative  flex items-center justify-center md:rounded-3xl -mt-8 md:mt-[2rem] bg-home-image bg-center  bg-cover w-full h-full md:h-[90%]  aspect-auto md:aspect-video shadow-black shadow-xl md:shadow-xl md:shadow-black  ">
+            <div className="w-full h-full z-[10] top-[1px] bg-black-overlay md:rounded-3xl absolute"></div>
             <div className="flex flex-col items-center justify-center  gap-10 z-[50]">
               <h1 className="  text-[#E2F1E7]/85 max-w-[500px] w-full text-center font-semibold tracking-wider px-3 text-4xl sm:text-4xl  md:text-5xl">{t("slogan")}</h1>
               {/* <Button variant={"outline"} className="max-w-[300px]">Invest</Button> */}
@@ -108,7 +108,7 @@ export default function Index() {
 
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="text-3xl text-[#316363] font-semibold">{tttt("contactTitle")}</h1>
+                <h1 className="text-3xl text-foreground font-semibold">{tttt("contactTitle")}</h1>
                 <p className="text-muted-foreground pb-5 font-medium mt-10">{tttt("contactDescription")}</p>
 
               </div>
