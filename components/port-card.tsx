@@ -12,7 +12,7 @@ const PortCard = ({ control }: { control: any }) => {
     return (
         <div className="">
             <h1 className='text-xl font-semibold'>{t('vessel')}</h1>
-            <div className='pt-8 grid md:grid-cols-3 gap-5 p-4 bg-[#ffffff] rounded-3xl'>
+            <div className='pt-8 grid md:grid-cols-3 gap-5 p-4 '>
 
                 {/* From Field */}
                 <FormItem>

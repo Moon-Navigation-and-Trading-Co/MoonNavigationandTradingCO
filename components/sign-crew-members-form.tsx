@@ -205,8 +205,8 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                                 {/* Remove Button */}
                                 <div className='flex items-end'>
-                                    <Button className='bg-white hover:bg-white' type="button" onClick={() => remove(index)}>
-                                        <CircleMinus color='black' />
+                                    <Button className='rounded-lg hover:bg-accent ' variant={'outline'} type="button" onClick={() => remove(index)}>
+                                        <CircleMinus className='text-red-500' />
                                     </Button>
                                 </div>
 
@@ -226,7 +226,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                         <div className="pt-4">
                             <h1 className="text-sm font-semibold pb-4">{tt('hotel')}</h1>
-                            <div className=" grid md:grid-cols-3 bg-[#ffffff] rounded-3xl">
+                            <div className=" grid md:grid-cols-3 rounded-3xl">
                                 {/* Radio Group with two items */}
                                 <FormItem className="space-y-3">
                                     <Controller
@@ -277,7 +277,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                         {/* radio buttons transportation? field */}
                         <div className="pt-4">
                             <h1 className="text-sm font-semibold pb-4">{tt('transportation')}</h1>
-                            <div className=" grid md:grid-cols-3 bg-[#ffffff] rounded-3xl">
+                            <div className=" grid md:grid-cols-3 rounded-3xl">
                                 {/* Radio Group with two items */}
                                 <FormItem className="space-y-3">
                                     <Controller
@@ -378,8 +378,8 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                                 {/* Remove Button */}
                                 <div className='flex items-end'>
-                                    <Button className='bg-white hover:bg-white' type="button" onClick={() => remove(index)}>
-                                        <CircleMinus color='black' />
+                                    <Button className='rounded-lg hover:bg-gray-200 dark:hover:bg-accent  ' variant={'outline'} type="button" onClick={() => remove(index)}>
+                                        <CircleMinus className='text-red-500' />
                                     </Button>
                                 </div>
 
@@ -399,7 +399,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                         <div className="pt-4">
                             <h1 className="text-sm font-semibold pb-4">{tt('hotel')}</h1>
-                            <div className=" grid md:grid-cols-3 bg-[#ffffff] rounded-3xl">
+                            <div className=" grid md:grid-cols-3  rounded-3xl">
                                 {/* Radio Group with two items */}
                                 <FormItem className="space-y-3">
                                     <Controller
@@ -450,7 +450,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                         {/* radio buttons transportation? field */}
                         <div className="pt-4">
                             <h1 className="text-sm font-semibold pb-4">{tt('transportation')}</h1>
-                            <div className=" grid md:grid-cols-3 bg-[#ffffff] rounded-3xl">
+                            <div className=" grid md:grid-cols-3 rounded-3xl">
                                 {/* Radio Group with two items */}
                                 <FormItem className="space-y-3">
                                     <Controller

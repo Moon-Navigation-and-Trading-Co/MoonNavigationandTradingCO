@@ -46,7 +46,7 @@ export default function Footer() {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="flex-grow px-3 py-2 border border-gray-300 max-w-[280px] rounded-md bg-secondary focus:outline-none focus:ring-2 focus:ring-teal-500"
+                                className="flex-grow px-3 py-2 border border-gray-300 max-w-[280px] rounded-md bg-secondary focus:outline-none focus:ring-2 focus:ring-transparent"
                                 required
                             />
                             <button

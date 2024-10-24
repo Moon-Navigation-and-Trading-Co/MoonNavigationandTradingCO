@@ -5,6 +5,8 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
 import SignOutButton from "./sign-out-button";
+import SignOutButtonVariant from "./sign-out-button-variant-1";
+
 import { Separator } from "./ui/separator";
 import { EllipsisVertical } from "lucide-react";
 
@@ -162,12 +164,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     {!user && (
                         <Link className="text-primary font-semibold hover:text-muted-foreground" href={"/sign-up"}>Sign In/Up</Link>
                     )}
-                    {user && (
-                        <Link href={"/"} onClick={toggleMenu}>
-                            Profile
-                        </Link>
-                    )}
-                    {user && <SignOutButton />}
+                    {user && <SignOutButtonVariant />}
                 </div>
             </div>
         </nav>

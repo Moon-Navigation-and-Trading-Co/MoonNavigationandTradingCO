@@ -11,7 +11,7 @@ const ServiceModeCard = ({ control }: { control: any }) => {
     return (
         <div className="">
             <h1 className="text-xl font-semibold">{t('serviceMode')}</h1>
-            <div className="pt-8 pb-10 grid md:grid-cols-3 gap-5 p-4 bg-[#ffffff] rounded-3xl">
+            <div className="pt-8 pb-10 grid md:grid-cols-3 gap-5 p-4  rounded-3xl">
                 {/* Radio Group */}
                 <FormItem className="space-y-3 flex items-center">
                     <FormControl>
