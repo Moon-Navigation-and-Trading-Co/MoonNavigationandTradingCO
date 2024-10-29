@@ -25,13 +25,13 @@ export default function LocaleSwitcherSelector({ children, defaultValue, label }
     }
 
     return (
-        <label>
+        <label className="" >
             <select
                 name="locale"
                 id="locale"
                 defaultValue={defaultValue}
                 disabled={isPending}
-                className=" rounded-md px-3 py-2 focus:outline-none"
+                className=" rounded-md px-3 py-2 bg-secondary focus:outline-none"
                 onChange={onSelectChange}
             >
                 {children}

@@ -1,28 +1,34 @@
-import { Truck, Globe, Warehouse, Shield, Route, Box, Map, Users, TrendingUp } from "lucide-react"
+import { Truck, Globe, Warehouse, Shield, Route, Box, Map } from "lucide-react";
+import Link from "next/link";
 
 const services = [
-    { icon: Truck, label: "Inland Freight" },
-    { icon: Warehouse, label: "Ocean Freight" },
-    { icon: Shield, label: "Air Freight" },
-    { icon: Route, label: "Container Management" },
-    { icon: Box, label: "Ship Agency and Management" },
-    { icon: Map, label: "Docking and Maintenance" },
-    { icon: Globe, label: "International Trading" },
-    { icon: Globe, label: "Buy/Sell Containers" },
-    { icon: Globe, label: "Buy/Sell Vessels" },
-]
+    { icon: Truck, label: "Inland Freight", href: "inland-freight" },
+    { icon: Warehouse, label: "Ocean Freight", href: "/services/ocean-freight" },
+    { icon: Shield, label: "Air Freight", href: "/services/air-freight" },
+    { icon: Route, label: "Container Management", href: "/services/container-management" },
+    { icon: Box, label: "Ship Agency and Management", href: "/services/ship-agency-management" },
+    { icon: Map, label: "Docking and Maintenance", href: "/services/docking-maintenance" },
+    { icon: Globe, label: "International Trading", href: "/services/international-trading" },
+    { icon: Globe, label: "Buy/Sell Containers", href: "/services/buy-sell-containers" },
+    { icon: Globe, label: "Buy/Sell Vessels", href: "/services/buy-sell-vessels" },
+];
 
 export default function ServicesWithLogo() {
     return (
         <div className="bg-transparent p-6 md:pt-0">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-6 text-muted-foreground">
                 {services.map((service, index) => (
-                    <div key={index} className="flex items-center space-x-4 w-full p-4 ">
+                    <Link key={index} href={service.href} className="flex items-center space-x-4 w-full hover:text-primary p-4 dark:hover:text-white rounded-lg">
                         <service.icon strokeWidth={1.3} className="w-8 h-8 text-primary" />
                         <span className="text-sm font-medium">{service.label}</span>
-                    </div>
+                    </Link>
                 ))}
             </div>
+
+            <div>
+
+            </div>
+
         </div>
-    )
+    );
 }

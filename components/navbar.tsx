@@ -6,9 +6,12 @@ import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
 import SignOutButton from "./sign-out-button";
 import SignOutButtonVariant from "./sign-out-button-variant-1";
+import { motion, AnimatePresence } from "framer-motion";
+import LocaleSwitcher from "./LocaleSwitcher";
+import { ThemeSwitcher } from "./theme-switcher";
 
 import { Separator } from "./ui/separator";
-import { EllipsisVertical } from "lucide-react";
+import { ChevronDown, EllipsisVertical } from "lucide-react";
 
 interface NavbarProps {
     user: boolean;
@@ -42,80 +45,103 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     ];
 
     return (
-        <nav className="w-full flex justify-center md:px-2 text-foreground md:top-4 max-w-7xl h-16 fixed border-0 top-0 z-[999]">
-            <div className="w-full flex justify-between rounded-b-2xl md:rounded-2xl drop-shadow-xl md:shadow-md shadow-gray-900 items-center py-3 px-4 sm:px-5 text-sm bg-secondary">
-                <div className="flex gap-5 items-center font-semibold text-foreground text-lg">
+        <nav className="w-full flex justify-center md:px-2 text-foreground
+         md:top-4 max-w-7xl h-16 fixed border-0 top-0 z-[999]">
+            <div className="w-full border-t-2 border-b flex justify-between rounded-b-2xl md:rounded-2xl 
+             md:shadow-lg shadow-current items-center py-3 px-4 sm:px-5
+             text-sm bg-secondary">
+                <div className="flex w-[220px] gap-5 items-center font-semibold text-foreground text-lg">
                     <Link href={"/"}>MoonNavigation</Link>
                 </div>
 
                 {/* Desktop Links */}
-                <div className="hidden sm:flex items-center font-normal">
+                <div className="hidden h-12 md:flex items-center font-[500]">
                     {navItems.map((item, index) => (
                         <React.Fragment key={index}>
                             {item.hasDropdown ? (
-                                <div className="relative inline-block text-left mr-5">
+                                <div className="relative text-left">
                                     <button
                                         onClick={toggleServicesMenu}
-                                        className="hover:text-gray-300 focus:outline-none"
+                                        className="hover:text-gray-400 gap-2 
+                                        focus:outline-none flex items-center "
                                     >
                                         {item.name}
+                                        <ChevronDown width={15} />
                                     </button>
+                                    <AnimatePresence>
 
-                                    {isServicesOpen && (
-                                        <div className="absolute left-0 mt-8 border w-48 rounded-md shadow-lg bg-secondary ring-1 ring-black ring-opacity-5 divide-y divide-gray-100">
-                                            <div
-                                                className="py-1 "
-                                                role="menu"
-                                                aria-orientation="vertical"
+                                        {isServicesOpen && (
+                                            <motion.div className="absolute left-0 mt-8 border w-48 rounded-md shadow-lg 
+                                        bg-secondary ring-1 ring-black ring-opacity-5 divide-y divide-gray-100"
+                                                initial={{ opacity: 0, y: -15 }}
+                                                animate={{ opacity: 1, y: 0 }}
+                                                exit={{ opacity: 0, y: -15 }}
+                                                transition={{ duration: 0.3 }}
                                             >
-                                                {subServices.map((service, index) => (
-                                                    <div className="flex flex-col items-center">
-                                                        <Link
-                                                            key={index}
-                                                            href={service.href}
-                                                            className="block w-full text-start px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
-                                                            role="menuitem"
-                                                        >
-                                                            {service.name}
-                                                        </Link>
-                                                        {index !== 3 && <Separator className="w-2/3 " />
-                                                        }
-                                                    </div>
+                                                <div
+                                                    className="py-1 "
+                                                    role="menu"
+                                                    aria-orientation="vertical"
+                                                >
+                                                    {subServices.map((service, index) => (
+                                                        <div className="flex flex-col items-center">
+                                                            <Link
+                                                                key={index}
+                                                                href={service.href}
+                                                                className="block w-full text-start px-4 py-2 
+                                                            text-sm text-muted-foreground hover:text-foreground"
+                                                                role="menuitem"
+                                                            >
+                                                                {service.name}
+                                                            </Link>
+                                                            {index !== 3 && <Separator className="w-3/4 " />
+                                                            }
+                                                        </div>
 
 
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
+                                                    ))}
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
                                 </div>
                             ) : (
-                                <Link href={item.href} className="mr-5">
+                                <Link href={item.href} className=" hover:text-gray-400">
                                     {item.name}
                                 </Link>
                             )}
                             {/* Add separator if not the last item */}
                             {index < navItems.length - 1 && (
-                                <span className="mr-5">|</span>
+                                <span className="px-3">|</span>
                             )}
                         </React.Fragment>
                     ))}
                 </div>
 
-                <div className="hidden sm:flex gap-5 items-center">
-                    {!user && <Link href={"/sign-in"}>Sign In</Link>}
+                <div className="hidden md:flex items-center gap-5">
+                    <div className="flex items-center">
+                        <ThemeSwitcher />
+                        <LocaleSwitcher />
+                    </div>
+
+                    {/* {!user && <Link href={"/sign-in"}>Sign In</Link>} */}
                     {!user && (
                         <Button className="dark:text-foreground">
-                            <Link className="font-" href={"/sign-up"}>
-                                Sign Up
-                            </Link>
+                            <Link className="text-white font-normal hover:text-background" href={"/sign-up"}>Sign In/Up</Link>
                         </Button>
                     )}
                     {user && <SignOutButton />}
                 </div>
 
                 {/* Hamburger Menu */}
-                <div className="sm:hidden">
-                    <button onClick={toggleMenu}>
+                <div className="md:hidden flex items-center gap-2">
+                    <div className="flex items-center">
+                        <ThemeSwitcher />
+                        <LocaleSwitcher />
+                    </div>
+
+                    <button className="px-2 py-1" onClick={toggleMenu}>
                         <EllipsisVertical strokeWidth="1" className="text-foreground" />
                     </button>
                 </div>
@@ -167,7 +193,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     {user && <SignOutButtonVariant />}
                 </div>
             </div>
-        </nav>
+        </nav >
     );
 };
 

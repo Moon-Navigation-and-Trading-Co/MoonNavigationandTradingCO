@@ -18,27 +18,33 @@ export default function CarouselAnimation() {
             title: t("servicesCard1Title"),
             description: t("servicesCard1Description"),
             image: "/cargoAir.jpeg",
-            link: "/air-freight-forms"
+            link: { pathname: "/freight", hash: "air" }
         },
         {
             title: t("servicesCard2Title"),
             description: t("servicesCard2Description"),
             image: "/airCargo.jpg",
-            link: "/ocean-freight-forms"
+            link: { pathname: "/freight", hash: "ocean" }
         },
         {
             title: t("servicesCard3Title"),
             description: t("servicesCard3Description"),
             image: "/land-cargo-2.jpeg",
-            link: "/inland-services-forms"
+            link: { pathname: "/freight", hash: "inland" }
         },
-        {
-            title: t("servicesCard4Title"),
-            description: t("servicesCard4Description"),
-            image: "/ship-agency.jpeg",
-            link: "/inland-services-forms"
-        },
+        // {
+        //     title: t("servicesCard4Title"),
+        //     description: t("servicesCard4Description"),
+        //     image: "/ship-agency.jpeg",
+        //     link: "/inland-services-forms"
+        // },
     ]
+
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement>, hash: string) => {
+        e.preventDefault();
+        const url = `/freight#${hash}`;
+        window.location.href = url;
+    };
 
     return (
         <div className="flex flex-col lg:flex-row h-[800px]  lg:h-[500px] w-full gap-5">
@@ -46,9 +52,9 @@ export default function CarouselAnimation() {
                 <div className="bg-black/35 z-[104] absolute w-full h-full"></div>
                 <Image src={'/container-top-v.jpeg'} className="object-cover hidden lg:flex" fill alt="Transportation Services Background" />
                 <Image src={'/container-top-h.jpeg'} className="object-cover flex lg:hidden" fill alt="Transportation Services Background" />
-                <h1 className="text-center z-[105] text-3xl font-semibold text-[#E2F1E7] w-full">{t("servicesTitle")}</h1>
+                <h1 className="text-center z-[105] text-3xl lg:text-xl font-semibold text-[#E2F1E7] w-full">{t("servicesTitle")}</h1>
             </div>
-            <Separator className="bg-[#9696a7] w-[2px] rounded-[100px] lg:my-24" />
+            <Separator className="bg-[#6b9b90] w-[2px] rounded-[100px] lg:my-24" />
             {freightTypes.map((freight, index) => (
                 <motion.div
                     key={freight.title}
@@ -79,11 +85,11 @@ export default function CarouselAnimation() {
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.1 }}
                                     >
-                                        <p className="mb-4 mt-2 text-base font-light max-w-[500px]">{freight.description}</p>
-                                        <Button variant="outline" className="bg-white text-black p-0 hover:bg-gray-200 hover:text-gray-600">
-                                            <Link className="h-10 flex font-semibold items-center px-2 " href={freight.link}>
-                                                {tt("learnmore")}
-                                            </Link>
+                                        <p className="mb-4  mt-2 text-base font-light max-w-[500px]">{freight.description}</p>
+                                        <Button
+                                            onClick={(e) => handleClick(e, freight.link.hash)}
+                                            variant="outline" className="bg-white px-2 text-black hover:bg-gray-200 hover:text-gray-600">
+                                            {tt("learnmore")}
                                         </Button>
                                     </motion.div>
                                 )}

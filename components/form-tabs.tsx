@@ -40,7 +40,7 @@ const FormTabs: React.FC<FormTabsProps> = ({ tabData }) => {
                             onClick={() => setActiveTab(tab.id)}
                             className={`flex-1 px-4 py-3 text-sm rounded-t-xl font-medium transition-colors focus:outline-none ${activeTab === tab.id
                                 ? "text-primary"
-                                : "text-foreground hover:bg-green-50 dark:hover:bg-[#171b21]"
+                                : "text-foreground bg-secondary hover:bg-green-50 dark:hover:bg-[#171b21]"
                                 } ${index === 0 ? "rounded-tl-2xl" : ""} ${index === tabData.length - 1 ? "rounded-tr-2xl" : ""
                                 }`}
                         >

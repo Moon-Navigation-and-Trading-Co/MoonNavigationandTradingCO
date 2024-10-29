@@ -4,7 +4,7 @@ import ConnectSupabaseSteps from "@/components/tutorial/connect-supabase-steps";
 import SignUpUserSteps from "@/components/tutorial/sign-up-user-steps";
 import { Button } from "@/components/ui/button";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
-import { Section } from "lucide-react";
+import { Section, TrendingUp } from "lucide-react";
 import { useTranslations } from 'next-intl';
 import Image from "next/image";
 import CarouselAnimation from "@/components/carousel-animation";
@@ -14,6 +14,7 @@ import ServicesWithLogo from "@/components/services-with-logos";
 import { useRef } from "react";
 import ServicesMiniCard from "@/components/servicesMiniCards";
 import ContactForm from "@/components/contact-form";
+import SpiralLogo from "@/components/spiral-component";
 
 export default function Index() {
   const t = useTranslations('HomePage');
@@ -37,10 +38,37 @@ export default function Index() {
         <div className=" w-full h-custom-height">
           <div className="relative  flex items-center justify-center md:rounded-3xl -mt-8 md:mt-[2rem] bg-home-image bg-center  bg-cover w-full h-full md:h-[90%]  aspect-auto md:aspect-video shadow-black shadow-xl md:shadow-xl md:shadow-black  ">
             <div className="w-full h-full z-[10] top-[1px] bg-black-overlay md:rounded-3xl absolute"></div>
-            <div className="flex flex-col items-center justify-center  gap-10 z-[50]">
-              <h1 className="  text-[#E2F1E7]/85 max-w-[500px] w-full text-center font-semibold tracking-wider px-3 text-4xl sm:text-4xl  md:text-5xl">{t("slogan")}</h1>
+            <div className="flex flex-col items-center justify-center  gap-5 z-[50]">
+              <h1 className="  text-[#E2F1E7]/85 max-w-[500px] w-full text-center font-semibold px-3 text-4xl sm:text-4xl  md:text-5xl">{t("slogan")}</h1>
               {/* <Button variant={"outline"} className="max-w-[300px]">Invest</Button> */}
 
+              <button
+                className="brightness-150 dark:brightness-100 font-light group hover:shadow-lg hover:shadow-yellow-700/60 transition ease-in-out hover:scale-105 p-[1px] rounded-lg bg-gradient-to-br from-yellow-800 via-yellow-600 to-yellow-800 hover:from-yellow-700 hover:via-yellow-800 hover:to-yellow-600"
+              >
+                <div
+                  className="px-3 text-base py-2 font-[500] backdrop-blur-xl bg-black/90 rounded-lg w-full h-full"
+                >
+                  <div
+                    className="group-hover:scale-100 flex items-center group-hover:text-yellow-500 text-yellow-600 gap-2"
+                  >
+                    {/* <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.2"
+                      className="w-6 h-6 stroke-yellow-600 group-hover:stroke-yellow-500 group-hover:stroke-{0.1}"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+                      ></path>
+                    </svg> */}
+                    <TrendingUp />
+                    Invest
+                  </div>
+                </div>
+              </button>
 
 
             </div>
@@ -49,18 +77,8 @@ export default function Index() {
 
         <ServicesWithLogo />
 
-        {/* Services Section */}
-        <section id="services">
 
-          <div className="flex flex-col gap-8 bg-[#E2F1E7 px-2 py-5 rounded-2xl ">
-            {/* Transportation Services */}
-            <CarouselAnimation />
 
-          </div>
-
-        </section>
-
-        {/* About us section */}
         <section >
 
           <div className="grid md:grid-cols-4 my-10 lg:grid-cols-4 gap-10 lg:gap-24 px-4">
@@ -100,11 +118,26 @@ export default function Index() {
           </div>
 
         </section>
+        {/* Services Section */}
+        <section id="services">
+
+          <div className="flex flex-col gap-8 bg-[#E2F1E7 px-2 py-5 rounded-2xl ">
+            {/* Transportation Services */}
+            <CarouselAnimation />
+
+            <SpiralLogo />
+
+          </div>
+
+        </section>
+
+        {/* About us section */}
+
 
         {/* Contact Section */}
         <section id="contact">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-4 py-10 pb-36">
+          <div className="grid grid-cols-1 relative md:grid-cols-2 gap-10 px-4 py-10 pb-36">
 
             <div className="flex flex-col justify-between">
               <div>
@@ -131,6 +164,7 @@ export default function Index() {
               <ContactForm />
 
             </div>
+
 
 
 

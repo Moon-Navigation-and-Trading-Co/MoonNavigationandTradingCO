@@ -39,31 +39,37 @@ export default function Footer() {
                             </li>
                         </ul>
                     </div>
-                    <div className="gap-4 flex flex-col text-start items-start md:items-center col-span-2">
-                        <h3 className="text-xl font-semibold text-teal-700">Newsletter</h3>
-                        <p className="text-base text-muted-foreground md:text-center">Stay updated with our latest news <br /> and offers.</p>
-                        <form className="flex flex-col justify-start w-full md:justify-center sm:flex-row gap-2">
-                            <input
-                                type="email"
-                                placeholder="Enter your email"
-                                className="flex-grow px-3 py-2 border border-gray-300 max-w-[280px] rounded-md bg-secondary focus:outline-none focus:ring-2 focus:ring-transparent"
-                                required
-                            />
-                            <button
-                                type="submit"
-                                className="bg-primary max-w-[100px] text-white px-4 py-2 rounded-md hover:bg-teal-800 transition duration-300"
-                            >
-                                Subscribe
-                            </button>
-                        </form>
+                    <div className='flex md:justify-end col-span-2'>
+                        <div className="gap-4 w-[290px] flex flex-col text-start items-start md:items-start col-span-2">
+                            <h3 className="text-xl font-semibold text-teal-700">Newsletter</h3>
+                            <p className="text-base text-muted-foreground ">Stay updated with our latest news <br /> and offers.</p>
+                            <form className="flex flex-col justify-start w-auto  sm:flex-row gap-2">
+                                <input
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    className="flex-grow px-3 py-2 border border-gray-300 max-w-[280px] rounded-md bg-secondary focus:outline-none focus:ring-2 focus:ring-transparent"
+                                    required
+                                />
+                                <button
+                                    type="submit"
+                                    className="bg-primary max-w-[100px] text-white px-4 py-2 rounded-md hover:bg-teal-800 transition duration-300"
+                                >
+                                    Subscribe
+                                </button>
+                            </form>
+                        </div>
                     </div>
+
                 </div>
-                <div className="mt-8 pt-8 flex justify-center gap-2 border-t border-muted-foreground dark:border-secondary text-center text-gray-500 text-sm">
-                    <h1 className='flex items-center'>
+                <div className="mt-8 pt-8 flex flex-col sm:flex-row justify-center gap-2 border-t border-muted-foreground dark:border-secondary text-center text-gray-500 text-sm">
+                    <h1 className='text-center flex items-center'>
                         © 2013 - {new Date().getFullYear()} Moon Navigation. All rights reserved.
                     </h1>
-                    <ThemeSwitcher />
-                    <LocaleSwitcher />
+                    <div className='flex items-center justify-center'>
+                        <ThemeSwitcher />
+                        <LocaleSwitcher />
+                    </div>
+
                 </div>
             </div>
         </footer>
