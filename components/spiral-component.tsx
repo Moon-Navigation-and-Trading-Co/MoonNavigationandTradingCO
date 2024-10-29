@@ -7,7 +7,7 @@ import Link from "next/link"
 export default function SpiralLogo() {
     return (
         <div className="bg-transparent mt-10 py-8 flex items-center justify-center px-2">
-            <div className="flex flex-col items-start gap-4 sm:p-8 w-full">
+            <div className="flex flex-col items-start gap-10 sm:p-8 w-full">
                 <h1 className="text-2xl font-semibold text-start text-foreground">Other <br /> Services</h1>
                 <div className="h-96 flex items-center justify-start w-full  py-4 px-4 sm:px-12">
                     <div className="w-auto  z-10">
@@ -15,32 +15,32 @@ export default function SpiralLogo() {
                             orientation="vertical" />
 
                     </div>
-                    <div className="h-full w-full  text-base flex flex-col justify-around font-semibold -ml-[2px]">
-                        <div className="flex gap-3 items-center">
-                            <div className="w-full h-full flex relative items-center p-0">
+                    <div className="h-full w-full  text-base flex flex-col justify-around font-normal dark:text-white text-primary/80 -ml-[2px]">
+                        <div className="flex gap-5 items-center ">
+                            <div className="w-auto sm:w-full h-full flex relative items-center p-0">
                                 <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_10px] shadow-primary" />
-                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-black bg-teal-700 "></div>
+                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-primary bg-primary "></div>
                             </div>
                             <p className="w-full">Ship Agency and Management</p>
                         </div>
-                        <div className="flex gap-3 items-center">
-                            <div className="w-3/4 h-full flex relative items-center p-0">
+                        <div className="flex gap-5 items-center">
+                            <div className="w-auto sm:w-3/4 h-full flex relative items-center p-0">
                                 <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_10px] shadow-primary" />
-                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-black bg-teal-700 "></div>
+                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-primary bg-primary "></div>
                             </div>
                             <p className="w-full">International Trading</p>
                         </div>
-                        <div className="flex gap-3 items-center">
-                            <div className="w-2/4 h-full flex relative items-center p-0">
+                        <div className="flex gap-5 items-center">
+                            <div className="w-auto sm:w-2/4 h-full flex relative items-center p-0">
                                 <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_10px] shadow-primary" />
-                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-black bg-teal-700 "></div>
+                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-primary bg-primary "></div>
                             </div>
                             <p className="w-full">Docking and Maintenance</p>
                         </div>
-                        <div className="flex gap-3 items-center">
-                            <div className="w-1/4 h-full flex relative items-center p-0">
+                        <div className="flex gap-5 items-center">
+                            <div className="w-auto sm:w-1/4 h-full flex relative items-center p-0">
                                 <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_10px] shadow-primary" />
-                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-black bg-teal-700 "></div>
+                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-primary bg-primary "></div>
                             </div>
                             <p className="w-full">Containers and Vessels</p>
                         </div>
@@ -59,7 +59,7 @@ export default function SpiralLogo() {
 
 
             </div>
-            <div className="w-full max-w-[500px] mt-20">
+            <div className="flex w-full max-w-[350px] mt-20">
 
                 <Image src={'/boxes.png'} alt="Container with open doors" className=" objectr-cove " width={1000} height={1000} />
 

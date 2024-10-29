@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     return (
         <nav className="w-full flex justify-center md:px-2 text-foreground
          md:top-4 max-w-7xl h-16 fixed border-0 top-0 z-[999]">
-            <div className="w-full border-t-2 border-b flex justify-between rounded-b-2xl md:rounded-2xl 
+            <div className="w-full md:border-t-2 border-b flex justify-between rounded-b-2xl md:rounded-2xl 
              md:shadow-lg shadow-current items-center py-3 px-4 sm:px-5
              text-sm bg-secondary">
                 <div className="flex w-[220px] gap-5 items-center font-semibold text-foreground text-lg">
@@ -127,8 +127,8 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 
                     {/* {!user && <Link href={"/sign-in"}>Sign In</Link>} */}
                     {!user && (
-                        <Button className="dark:text-foreground">
-                            <Link className="text-white font-normal hover:text-background" href={"/sign-up"}>Sign In/Up</Link>
+                        <Button className=" text-white hover:text-gray-300">
+                            <Link className=" font-normal " href={"/sign-up"}>Sign In/Up</Link>
                         </Button>
                     )}
                     {user && <SignOutButton />}
@@ -149,9 +149,9 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 
             {/* Mobile Dropdown Menu */}
             <div
-                className={`fixed z-[999] px-2 mt-2 flex justify-end top-16 right-0 w-[280px] bg-transparent transform transition-[max-height, opacity] duration-300 ease-in-out ${isOpen
+                className={`fixed z-[999] px-2 mt-2 flex justify-end top-16 right-0 w-[280px] bg-transparent transform transition-[max-height, opacity] duration-500 ease-in-out ${isOpen
                     ? "max-h-screen opacity-100 translate-y-0"
-                    : "max-h-0 pointer-events-none opacity-0 -translate-y-10"
+                    : "max-h-screen pointer-events-none opacity-0 -translate-y-3"
                     } `}
             >
                 <div className="flex flex-col w-full gap-2 rounded-3xl bg-secondary px-5 py-4 max-w-[280px]  shadow-xl shadow-[#000000] text-sm font-normal">
