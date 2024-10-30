@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import Image from "next/image";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
+import { ChevronRight, ChevronsLeftRight } from "lucide-react";
 
 
 export default function CarouselAnimation() {
@@ -86,11 +87,18 @@ export default function CarouselAnimation() {
                                         transition={{ delay: 0.1 }}
                                     >
                                         <p className="mb-4  mt-2 text-base font-light max-w-[500px]">{freight.description}</p>
-                                        <Button
-                                            onClick={(e) => handleClick(e, freight.link.hash)}
-                                            variant="outline" className="bg-white px-2 text-black hover:bg-gray-200 hover:text-gray-600">
-                                            {tt("learnmore")}
-                                        </Button>
+                                        <div className="flex flex-col gap-2 w-[90px] justify-center items-center">
+                                            <Link
+                                                className="bg-white w-full flex justify-center py-2  text-black hover:bg-gray-200 hover:text-gray-600 rounded-sm text-sm" href={""}>
+                                                {tt("getQuote")}
+                                            </Link>
+                                            <button onClick={(e) => handleClick(e, freight.link.hash)}
+                                                className="flex bg-transparent items-end text-xs hover:text-teal-500">
+                                                {tt("learnmore")} <ChevronRight height={14} width={14} />
+
+                                            </button>
+                                        </div>
+
                                     </motion.div>
                                 )}
                             </div>

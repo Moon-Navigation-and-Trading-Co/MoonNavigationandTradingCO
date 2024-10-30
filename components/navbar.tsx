@@ -32,7 +32,9 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     };
 
     const subServices = [
-        { name: "Freight", href: "/services/service1" },
+        { name: "Air Freight", href: "/services/service1" },
+        { name: "Ocean Freight", href: "/services/service1" },
+        { name: "Inland Freight", href: "/services/service1" },
         { name: "Ship Agency", href: "/services/service2" },
         { name: "Container", href: "/services/service3" },
         { name: "Other", href: "/services/service4" },
@@ -94,7 +96,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                             >
                                                                 {service.name}
                                                             </Link>
-                                                            {index !== 3 && <Separator className="w-3/4 " />
+                                                            {index !== 5 && <Separator className="w-3/4 " />
                                                             }
                                                         </div>
 
@@ -164,7 +166,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                     </Link>
                                     {/* Sub-services under Services */}
                                     <div className="ml-4 mt-1 flex gap-2 pt-3 pb-1">
-                                        <Separator className="w-[2px] h-[100px] rounded-full bg-primary" />
+                                        <Separator className="w-[2px] h-[155px] rounded-full bg-primary" />
                                         <div className="flex flex-col gap-2">
                                             {subServices.map((service, index) => (
                                                 <Link

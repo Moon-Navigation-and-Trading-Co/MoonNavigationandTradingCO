@@ -61,8 +61,8 @@ export default function Footer() {
                     </div>
 
                 </div>
-                <div className="mt-8 pt-8 flex flex-col sm:flex-row justify-center gap-2 border-t border-muted-foreground dark:border-secondary text-center text-gray-500 text-sm">
-                    <h1 className='text-center flex items-center'>
+                <div className="mt-8 pt-8 flex flex-col sm:flex-row justify-center gap-3 border-t border-muted-foreground dark:border-secondary text-center text-gray-500 text-sm">
+                    <h1 className='text-center flex justify-center items-center'>
                         © 2013 - {new Date().getFullYear()} Moon Navigation. All rights reserved.
                     </h1>
                     <div className='flex items-center justify-center'>
