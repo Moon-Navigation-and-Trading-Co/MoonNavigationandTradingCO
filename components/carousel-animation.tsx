@@ -19,7 +19,7 @@ export default function CarouselAnimation() {
             title: t("servicesCard1Title"),
             description: t("servicesCard1Description"),
             image: "/cargoAir.jpeg",
-            link: { pathname: "/freight", hash: "air" }
+            link: "/learn-more/air-freight"
         },
         {
             title: t("servicesCard2Title"),
@@ -41,11 +41,6 @@ export default function CarouselAnimation() {
         // },
     ]
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement>, hash: string) => {
-        e.preventDefault();
-        const url = `/freight#${hash}`;
-        window.location.href = url;
-    };
 
     return (
         <div className="flex flex-col lg:flex-row h-[800px]  lg:h-[500px] w-full gap-5">
@@ -87,15 +82,20 @@ export default function CarouselAnimation() {
                                         transition={{ delay: 0.1 }}
                                     >
                                         <p className="mb-4  mt-2 text-base font-light max-w-[500px]">{freight.description}</p>
-                                        <div className="flex flex-col gap-2 w-[90px] justify-center items-center">
-                                            <Link
-                                                className="bg-white w-full flex justify-center py-2  text-black hover:bg-gray-200 hover:text-gray-600 rounded-sm text-sm" href={""}>
-                                                {tt("getQuote")}
-                                            </Link>
-                                            <button onClick={(e) => handleClick(e, freight.link.hash)}
-                                                className="flex bg-transparent items-end text-xs hover:text-teal-500">
-                                                {tt("learnmore")} <ChevronRight height={14} width={14} />
+                                        <div className="flex gap-2 justify-start items-end">
+                                            <Button className="bg-white text-black p-0 hover:bg-gray-200">
+                                                <Link
+                                                    className="w-full h-full flex items-center px-3" href={"/air-freight-forms"}>
+                                                    {tt("getQuote")}
+                                                </Link>
+                                            </Button>
 
+                                            <button
+                                                className="flex bg-transparent text-gray-300 px-2 items-end text-xs hover:text-teal-700">
+                                                <Link
+                                                    className="flex items-end" href={freight.link}>
+                                                    {tt("learnmore")} <ChevronRight height={15} width={15} />
+                                                </Link>
                                             </button>
                                         </div>
 

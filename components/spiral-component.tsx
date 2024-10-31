@@ -11,36 +11,36 @@ export default function SpiralLogo() {
                 <h1 className="text-2xl font-semibold text-start text-foreground">Other <br /> Services</h1>
                 <div className="h-96 flex items-center justify-start w-full  py-4 px-4 sm:px-12">
                     <div className="w-auto  z-10">
-                        <Separator className="bg-primary h-96 w-[3px] rounded-full border-t border-opacity- border-primary-light shadow-[0_0_10px] shadow-primary"
+                        <Separator className="bg-primary h-96 w-[3px] rounded-full border-t border-opacity- border-primary-light shadow-[0_0_4px] dark:shadow-[0_0_8px] dark:shadow-primary shadow-primary"
                             orientation="vertical" />
 
                     </div>
-                    <div className="h-full w-full  text-base flex flex-col justify-around font-normal dark:text-white text-primary/80 -ml-[2px]">
+                    <div className="h-full w-full  text-base flex flex-col justify-around font-semibold dark:font-normal dark:text-white text-primary/80 -ml-[2px]">
                         <div className="flex gap-5 items-center ">
                             <div className="w-auto sm:w-full h-full flex relative items-center p-0">
-                                <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_10px] shadow-primary" />
-                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-primary bg-primary "></div>
+                                <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_4px] dark:shadow-[0_0_8px] dark:shadow-primary shadow-primary" />
+                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_8px] shadow-primary bg-primary "></div>
                             </div>
                             <p className="w-full">Ship Agency and Management</p>
                         </div>
                         <div className="flex gap-5 items-center">
                             <div className="w-auto sm:w-3/4 h-full flex relative items-center p-0">
-                                <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_10px] shadow-primary" />
-                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-primary bg-primary "></div>
+                                <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_4px] dark:shadow-[0_0_8px] dark:shadow-primary shadow-primary" />
+                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_8px] shadow-primary bg-primary "></div>
                             </div>
                             <p className="w-full">International Trading</p>
                         </div>
                         <div className="flex gap-5 items-center">
                             <div className="w-auto sm:w-2/4 h-full flex relative items-center p-0">
-                                <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_10px] shadow-primary" />
-                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-primary bg-primary "></div>
+                                <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_4px] dark:shadow-[0_0_8px] dark:shadow-primary shadow-primary" />
+                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_8px] shadow-primary bg-primary "></div>
                             </div>
                             <p className="w-full">Docking and Maintenance</p>
                         </div>
                         <div className="flex gap-5 items-center">
                             <div className="w-auto sm:w-1/4 h-full flex relative items-center p-0">
-                                <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_10px] shadow-primary" />
-                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_10px] shadow-primary bg-primary "></div>
+                                <Separator className="bg-primary h-[3px] border-l border-opacity-20 border-primary shadow-[0_0_4px] dark:shadow-[0_0_8px] dark:shadow-primary shadow-primary" />
+                                <div className="w-2 h-2 absolute -right-1 rounded-full shadow-[0_0_8px] shadow-primary bg-primary "></div>
                             </div>
                             <p className="w-full">Containers and Vessels</p>
                         </div>
@@ -48,7 +48,7 @@ export default function SpiralLogo() {
                     </div>
                 </div>
                 <div className="pl-[2px] sm:pl-[36px]">
-                    <Button className=" rounded-full overflow-hidden w-8 h-8 shadow-[0_0_10px] dark:shadow-primary p-0 hover:bg-white hover:text-primary">
+                    <Button className=" rounded-full overflow-hidden w-8 h-8 shadow-[0_0_8px] dark:shadow-primary p-0 hover:bg-white hover:text-primary">
                         <Link className="items-center flex justify-center w-full h-full" href="/other" >
                             <ChevronRight />
                         </Link>

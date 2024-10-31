@@ -5,8 +5,8 @@ import LocaleSwitcher from './LocaleSwitcher'
 
 export default function Footer() {
     return (
-        <footer className="bg-background max-w-7xl pb-12 w-full  ">
-            <div className=" px-5">
+        <footer className="bg-background pb-12 w-full flex justify-center ">
+            <div className=" px-5 w-full max-w-[1300px]">
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-8 border-t border-muted-foreground dark:border-secondary py-12">
 
                     <div className="flex flex-col gap-2 justify-center text-start col-span-2">
@@ -43,7 +43,7 @@ export default function Footer() {
                         <div className="gap-4 w-[290px] flex flex-col text-start items-start md:items-start col-span-2">
                             <h3 className="text-xl font-semibold text-teal-700">Newsletter</h3>
                             <p className="text-base text-muted-foreground ">Stay updated with our latest news <br /> and offers.</p>
-                            <form className="flex flex-col justify-start w-auto  sm:flex-row gap-2">
+                            <form className="flex justify-start w-auto gap-2">
                                 <input
                                     type="email"
                                     placeholder="Enter your email"
