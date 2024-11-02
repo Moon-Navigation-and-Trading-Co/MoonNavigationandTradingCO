@@ -5,27 +5,24 @@ import { Button } from "@/components/ui/button"
 import { ChevronRight, Plane } from "lucide-react"
 import LearnMoreForm from '@/components/learn-more-cards'
 
-export default function AirFreightPage() {
-    const airFreightData = {
-        title: "Air Freight",
+export default function InlandFreightPage() {
+    const Data = {
+        title: "Inland Freight",
         description: "Fast and efficient air transportation solutions",
         subcategories: [
             {
-                subcategory: "Express Air Freight",
+                subcategory: "International Inland",
                 description: "Rapid delivery for time-sensitive shipments"
             },
             {
-                subcategory: "Standard Air Freight",
+                subcategory: "Local Inland",
                 description: "Cost-effective option for less urgent air shipments"
             },
             {
-                subcategory: "Charter Services",
+                subcategory: "Inland Container",
                 description: "Dedicated aircraft for special cargo needs"
             },
-            {
-                subcategory: "Perishable Goods",
-                description: "Specialized handling for temperature-sensitive items"
-            }
+
         ],
         link: "/air-freight-forms"
     }
@@ -33,10 +30,10 @@ export default function AirFreightPage() {
     return (
         <>
             <LearnMoreForm
-                title={airFreightData.title}
-                description={airFreightData.description}
-                subcategories={airFreightData.subcategories}
-                link={airFreightData.link}
+                title={Data.title}
+                description={Data.description}
+                subcategories={Data.subcategories}
+                link={Data.link}
                 icon={<Plane />}
             />
         </>

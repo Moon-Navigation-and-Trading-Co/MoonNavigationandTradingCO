@@ -4,7 +4,7 @@ const LearnMorePage: React.FC = () => {
     return (
         <div>
             <h1>Learn More</h1>
-            <p>Welcome to the Learn More page!</p>
+            <p>Welome to the Learn More page!</p>
         </div>
     );
 };

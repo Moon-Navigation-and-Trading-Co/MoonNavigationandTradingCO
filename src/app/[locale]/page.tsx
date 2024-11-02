@@ -14,7 +14,7 @@ import ServicesWithLogo from "@/components/services-with-logos";
 import { useRef } from "react";
 import ServicesMiniCard from "@/components/servicesMiniCards";
 import ContactForm from "@/components/contact-form";
-import SpiralLogo from "@/components/spiral-component";
+import OtherServices from "@/components/spiral-component";
 
 export default function Index() {
   const t = useTranslations('HomePage');
@@ -42,7 +42,7 @@ export default function Index() {
               <h1 className="  text-[#E2F1E7]/85 max-w-[500px] w-full text-center font-semibold px-3 text-4xl sm:text-4xl  md:text-5xl">{t("slogan")}</h1>
               {/* <Button variant={"outline"} className="max-w-[300px]">Invest</Button> */}
 
-              <button
+              {/* <button
                 className="brightness-150 dark:brightness-100 font-light group hover:shadow-lg hover:shadow-yellow-700/60 transition ease-in-out hover:scale-105 p-[1px] rounded-lg bg-gradient-to-br from-yellow-800 via-yellow-600 to-yellow-800 hover:from-yellow-700 hover:via-yellow-800 hover:to-yellow-600"
               >
                 <div
@@ -55,7 +55,7 @@ export default function Index() {
                     Invest
                   </div>
                 </div>
-              </button>
+              </button> */}
 
 
             </div>
@@ -112,14 +112,15 @@ export default function Index() {
             {/* Transportation Services */}
             <CarouselAnimation />
 
-            <SpiralLogo />
+            <TransportationServices />
+
+            <OtherServices />
 
           </div>
 
         </section>
 
         {/* About us section */}
-
 
         {/* Contact Section */}
         <section id="contact">
