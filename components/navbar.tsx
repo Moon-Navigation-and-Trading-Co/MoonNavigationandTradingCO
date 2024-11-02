@@ -257,7 +257,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                             )}
                         </React.Fragment>
                     ))}
-                    <Link href={'/'} className="text-white font-semibold bg-clip-text bg-gradient-to-r text-transparent from-violet-600 to-indigo-600 hover:text-black">
+                    <Link href={'/'} className="font-semibold bg-clip-text bg-gradient-to-r text-transparent from-violet-600 to-indigo-600 hover:text-black">
                         Invest
                     </Link>
                     {!user && (
