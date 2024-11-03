@@ -1,9 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ChevronRight, Plane } from "lucide-react"
 import Image from 'next/image'
+import { Button } from "@/components/ui/button"
+import { ChevronRight } from "lucide-react"
 
 export default function AirFreightPage() {
     const airFreightData = {
@@ -13,76 +12,77 @@ export default function AirFreightPage() {
             {
                 subcategory: "International Trading",
                 description: "Rapid delivery for time-sensitive shipments",
-                link: "/international-trading-forms"
-
+                link: "/international-trading-forms",
+                image: "/airCargo.jpg"
             },
             {
                 subcategory: "Ship Management",
                 description: "Cost-effective option for less urgent air shipments",
-                link: "/ship-management-forms"
-
+                link: "/ship-management-forms",
+                image: "/airCargo.jpg"
             },
             {
                 subcategory: "Docking and Maintenance",
                 description: "Dedicated aircraft for special cargo needs",
-                link: "/air-freight-forms"
-
+                link: "/air-freight-forms",
+                image: "/airCargo.jpg"
             },
             {
                 subcategory: "Container Handling, Stevedoring, and Storage",
                 description: "Specialized handling for temperature-sensitive items",
-                link: "/container-services-forms"
-
+                link: "/container-services-forms",
+                image: "/airCargo.jpg"
             },
             {
                 subcategory: "Handling, Stevedoring, and Storage",
                 description: "Specialized handling for temperature-sensitive items",
-                link: "/air-freight-forms"
-
+                link: "/air-freight-forms",
+                image: "/airCargo.jpg"
             },
             {
                 subcategory: "Custom Clearance Services",
                 description: "Specialized handling for temperature-sensitive items",
-                link: "/air-freight-forms"
+                link: "/air-freight-forms",
+                image: "/airCargo.jpg"
             }
         ],
     }
 
     return (
-        <div className="container mx-auto px-4 py-14">
-            <header className="mb-12 text-center">
-                <h1 className="text-4xl font-bold mb-4 text-primary">{airFreightData.title}</h1>
-                <p className="text-xl text-muted-foreground">{airFreightData.description}</p>
-            </header>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-                {airFreightData.subcategories.map((subcategory, index) => (
-                    <Card key={index} className="overflow-hidden relative h-[250px] transition-all duration-300 hover:shadow-lg">
-                        <Image className='absolute top-0 left-0 w-full h-full object-cover' src={'/cargotruck.jpg'} alt={"title"} width={1500} height={1000} />
-                        <div className='w-full h-full absolute top-0 left-0 bg-black-overlay z-10' />
-                        <div className="relative h-full z-20 flex flex-col justify-between">
-                            <CardHeader className='flex flex-col gap-5'>
-                                <CardTitle className="gap-2 text-white">
-                                    {subcategory.subcategory}
-                                </CardTitle>
-                                <CardDescription className='text-gray-300'>{subcategory.description}</CardDescription>
-                            </CardHeader>
-                            <CardContent>
-                                <CardFooter className='p-0 mt-4'>
-                                    <Link href={subcategory.link}>
-                                        <Button>
-                                            Get a Quote
-                                            <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                                        </Button>
-                                    </Link>
-                                </CardFooter>
-                            </CardContent>
+        <div className="min-h-screen">
+            <div className="container mx-auto mt-16 py-12">
+                <h1 className="text-4xl font-bold text-center mb-12 text-foreground">{airFreightData.title}</h1>
+                <div className="space-y-16">
+                    {airFreightData.subcategories.map((subcategory, index) => (
+                        <div key={index} className="bg-background rounded-lg shadow-lg shadow-gray-900 overflow-hidden">
+                            <div className="md:flex">
+                                <div className=" overflow-hidden relative md:flex-shrink-0">
+                                    <Image
+                                        src={subcategory.image}
+                                        alt={subcategory.subcategory}
+                                        width={600}
+                                        height={400}
+                                        className="h-48 w-full object-cover md:h-full md:w-[250px]"
+                                    />
+                                    <div className='w-full h-[200%] bg-black-overlay absolute top-0 left-0' />
+                                </div>
+                                <div className="p-8">
+                                    <h2 className="text-2xl font-semibold text-primary mb-4">{subcategory.subcategory}</h2>
+                                    <p className="mt-2 text-muted-foreground leading-relaxed">{subcategory.description}</p>
+                                    <div className="mt-6">
+                                        <Link href={subcategory.link}>
+                                            <Button className="bg-primary hover:bg-[#275e63] text-white font-semibold py-2 px-4 rounded">
+                                                Get Quote
+                                                <ChevronRight className="ml-2 h-4 w-4" />
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </Card>
-                ))}
+                    ))}
+                </div>
             </div>
-
-
         </div>
     )
 }

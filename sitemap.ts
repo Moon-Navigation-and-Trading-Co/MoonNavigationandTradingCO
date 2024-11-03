@@ -1,10 +1,10 @@
-// app/[locale]/sitemap.ts
+// app/sitemap.ts
 import { MetadataRoute } from 'next'
 import { headers } from 'next/headers'
 
 const SITE_CONFIG = {
     defaultLocale: 'en',
-    locales: ['en', 'fr', 'de'],
+    locales: ['en', 'ar'],
     paths: [
         { path: '/', priority: 1.0, changeFrequency: 'daily' },
         { path: '/air-freight-forms', priority: 0.8, changeFrequency: 'weekly' },
@@ -36,20 +36,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const host = headersList.get('host') || 'localhost'
     const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
 
-    // Get the current locale from the URL path
-    const currentPath = headersList.get('x-invoke-path') || ''
-    const locale = currentPath.split('/')[1] || SITE_CONFIG.defaultLocale
-
-    // Generate URLs for the current locale
-    const urls = SITE_CONFIG.paths.map((page) => {
-        const path = locale === SITE_CONFIG.defaultLocale ? page.path : `/${locale}${page.path}`
-        return {
-            url: `${protocol}://${host}${path}`,
-            lastModified: new Date(),
-            changeFrequency: page.changeFrequency as MetadataRoute.Sitemap[number]['changeFrequency'],
-            priority: page.priority
-        }
-    })
+    // Generate URLs for all locales
+    const urls = SITE_CONFIG.locales.flatMap(locale =>
+        SITE_CONFIG.paths.map(page => {
+            const path = locale === SITE_CONFIG.defaultLocale ? page.path : `/${locale}${page.path}`
+            return {
+                url: `${protocol}://${host}${path}`,
+                lastModified: new Date(),
+                changeFrequency: page.changeFrequency as MetadataRoute.Sitemap[number]['changeFrequency'],
+                priority: page.priority
+            }
+        })
+    )
 
     return urls
 }

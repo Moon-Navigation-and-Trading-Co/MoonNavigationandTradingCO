@@ -81,9 +81,9 @@ export default function OtherServices() {
 
 
                 </div>
-                <div className="flex w-full max-w-[350px] mt-20">
+                <div className="hidden sm:flex w-full max-w-[350px] mt-20">
 
-                    <Image src={'/boxes.png'} alt="Container with open doors" className=" objectr-cove " width={1000} height={1000} />
+                    <Image src={'/boxes.png'} alt="Container with open doors" className=" objectr-cover " width={1000} height={1000} />
 
                 </div>
 
