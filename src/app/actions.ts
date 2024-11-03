@@ -8,10 +8,12 @@ import { redirect } from "next/navigation";
 export const signUpAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
-  const name = formData.get("name")?.toString(); // Add the name from formData
+  const firstname = formData.get("firstname")?.toString(); // Add the name from formData
+  const lastname = formData.get("lastname")?.toString(); // Add the name from formData
   const phone = formData.get("phone")?.toString(); // Add the phone from formData
   const supabase = createClient();
   const origin = headers().get("origin");
+  const name = firstname + " " + lastname;
 
   if (!email || !password) {
     return { error: "Email and password are required" };

@@ -10,8 +10,6 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { SmtpMessage } from "../smtp-message"
 import { Eye, EyeOff } from 'lucide-react'
-// import PhoneInput from 'react-phone-input-2'
-// import 'react-phone-input-2/lib/style.css'
 import { PhoneInput } from '@/components/phone-input'
 
 export default function Signup({ searchParams }: { searchParams: Message }) {
@@ -28,7 +26,7 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
   }
 
   return (
-    <div className="w-full h-auto min-h-[90svh] flex items-center justify-center">
+    <div className="w-full bg-background h-auto min-h-[90svh] flex items-center justify-center">
       <form className="flex-col min-w-96 py-10 max-w-96 mx-auto flex items-center justify-center">
         <h1 className="text-2xl font-medium">Sign up</h1>
         <p className="text-sm text-foreground">
@@ -37,22 +35,23 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
             Sign in
           </Link>
         </p>
+
         <div className="flex flex-col w-full [&>input]:mb- mt-8 gap-3">
-          <Label htmlFor="name">Name</Label>
-          <Input name="name" placeholder="Your name" required />
+          <div className='grid grid-cols-2 gap-4'>
+            <div>
+              <Label htmlFor="firstname">First Name</Label>
+              <Input name="firstname" placeholder="First name" required />
+            </div>
+            <div>
+              <Label htmlFor="lastname">Name</Label>
+              <Input name="lastname" placeholder="Last name" required />
+            </div>
+
+          </div>
+
 
           <Label htmlFor="phone">Phone</Label>
-          {/* <PhoneInput
-            country={'us'}
-            value={phone}
-            onChange={setPhone}
-            inputProps={{
-              name: 'phone',
-              required: true,
-              className: 'w-full p-2 border rounded'
-            }}
-          /> */}
-          <PhoneInput name='phone' defaultCountry="EG" placeholder='1234567890' />
+          <PhoneInput name='phone' value={phone} onChange={setPhone} defaultCountry="EG" placeholder='1234567890' />
           <Label htmlFor="email">Email</Label>
           <Input name="email" type="email" placeholder="you@example.com" required />
 
