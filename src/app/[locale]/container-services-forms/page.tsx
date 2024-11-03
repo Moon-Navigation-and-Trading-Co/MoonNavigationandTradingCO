@@ -14,7 +14,7 @@ import Spinner from '@/components/spinner';
 
 
 const Page: React.FC = () => {
-    // const t = useTranslations('HomePage');
+    const t = useTranslations('forms');
     const supabase = createClient();
     const [isLoading, setIsLoading] = useState(true); // Loading state
     const [user, setUser] = useState<any>(null); // State to hold the user
@@ -272,7 +272,11 @@ const Page: React.FC = () => {
 
 
     return (
-        <div className='w-full'>
+        <div className='flex flex-col w-full'>
+            <div className='mt-20 flex flex-col gap-5'>
+                <h1 className='text-3xl font-bold'>{t('container')}</h1>
+                <p className=''>{t('container-p')}</p>
+            </div>
             <FormTabs tabData={tabData} />
         </div>
     );

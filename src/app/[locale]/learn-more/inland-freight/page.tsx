@@ -24,7 +24,7 @@ export default function InlandFreightPage() {
             },
 
         ],
-        link: "/air-freight-forms"
+        link: "/inland-freight-forms"
     }
 
     return (

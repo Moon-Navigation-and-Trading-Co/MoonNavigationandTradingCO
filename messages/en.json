@@ -42,8 +42,8 @@
         "container-s-4": "Inland Container Transportation",
         "ship-s-1": "Request for PDA",
         "ship-s-2": "Sign on/off Crew Members",
-        "ship-s-3": "Dangerous Cargo Services",
-        "ship-s-4": "Heavy Lift Services"
+        "ship-s-3": "Transit Spare Parts",
+        "ship-s-4": "Special Services"
     },
     "Services-3": {
         "container-title-1": "International Trading",
@@ -211,5 +211,23 @@
         "additional_location": "Additional Location",
         "shippers": "I wish to use a shipper's own container",
         "triangulation": "I wish to use an import return container or a triangulation option"
+    },
+    "forms": {
+        "air": "Air Freight",
+        "air-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "ocean": "Ocean Freight",
+        "ocean-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "inland": "Inland Freight",
+        "inland-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "ship-agency": "Ship Agency",
+        "ship-agency-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "ship-management": "Ship Management",
+        "ship-management-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "international": "International Trading",
+        "international-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "ship-maintenance": "Ship Maintenance",
+        "ship-maintenance-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "container": "Container Services",
+        "container-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
     }
 }

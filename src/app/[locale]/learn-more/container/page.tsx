@@ -11,23 +11,27 @@ export default function OceanFreightPage() {
         description: "Fast and efficient air transportation solutions",
         subcategories: [
             {
-                subcategory: "Request for PDA",
+                subcategory: "Less than Container Load",
                 description: "Rapid delivery for time-sensitive shipments"
             },
             {
-                subcategory: "Sign On/Off Crew Members",
+                subcategory: "Standard Container",
                 description: "Cost-effective option for less urgent air shipments"
             },
             {
-                subcategory: "Transit Spare Parts",
+                subcategory: "Oversized Container",
                 description: "Dedicated aircraft for special cargo needs"
             },
             {
-                subcategory: "Special Services",
+                subcategory: "Inland Transportation",
+                description: "Specialized handling for temperature-sensitive items"
+            },
+            {
+                subcategory: "Stevedoring and Storage",
                 description: "Specialized handling for temperature-sensitive items"
             }
         ],
-        link: "/air-freight-forms"
+        link: "/container-services-forms"
     }
 
     return (

@@ -39,7 +39,7 @@ export default function Index() {
           <div className="relative  flex items-center justify-center md:rounded-3xl -mt-8 md:mt-[2rem] bg-home-image bg-center  bg-cover w-full h-full md:h-[90%]  aspect-auto md:aspect-video shadow-black shadow-xl md:shadow-xl md:shadow-black  ">
             <div className="w-full h-full z-[10] top-[1px] bg-black-overlay md:rounded-3xl absolute"></div>
             <div className="flex flex-col items-center justify-center  gap-5 z-[50]">
-              <h1 className="  text-[#E2F1E7]/85 max-w-[500px] w-full text-center font-semibold px-3 text-4xl sm:text-4xl  md:text-5xl">{t("slogan")}</h1>
+              <h1 className="  text-[#cff7dc] max-w-[500px] w-full text-center font-semibold px-3 text-4xl sm:text-4xl  md:text-5xl">{t("slogan")}</h1>
               {/* <Button variant={"outline"} className="max-w-[300px]">Invest</Button> */}
 
               {/* <button

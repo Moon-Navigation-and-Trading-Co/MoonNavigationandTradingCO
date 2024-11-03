@@ -27,7 +27,7 @@ export default function OceanFreightPage() {
                 description: "Specialized handling for temperature-sensitive items"
             }
         ],
-        link: "/air-freight-forms"
+        link: "/ocean-freight-forms"
     }
 
     return (

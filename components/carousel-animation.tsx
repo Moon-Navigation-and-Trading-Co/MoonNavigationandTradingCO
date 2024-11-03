@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import Image from "next/image";
 import { Separator } from "@radix-ui/react-dropdown-menu";
 import Link from "next/link";
-import { ChevronRight, ChevronsLeftRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 
 export default function CarouselAnimation() {
@@ -19,19 +19,22 @@ export default function CarouselAnimation() {
             title: t("servicesCard1Title"),
             description: t("servicesCard1Description"),
             image: "/cargoAir.jpeg",
-            link: "/learn-more/air-freight"
+            link: "/learn-more/air-freight",
+            quote: "/air-freight-forms"
         },
         {
             title: t("servicesCard2Title"),
             description: t("servicesCard2Description"),
             image: "/airCargo.jpg",
-            link: { pathname: "/freight", hash: "ocean" }
+            link: "/learn-more/ocean-freight",
+            quote: "/ocean-freight-forms"
         },
         {
             title: t("servicesCard3Title"),
             description: t("servicesCard3Description"),
             image: "/land-cargo-2.jpeg",
-            link: { pathname: "/freight", hash: "inland" }
+            link: "/learn-more/inland-freight",
+            quote: "/inland-services-forms"
         },
         // {
         //     title: t("servicesCard4Title"),
@@ -85,7 +88,7 @@ export default function CarouselAnimation() {
                                         <div className="flex gap-2 justify-start items-end">
                                             <Button className="bg-white text-black p-0 hover:bg-gray-200">
                                                 <Link
-                                                    className="w-full h-full flex items-center px-3" href={"/air-freight-forms"}>
+                                                    className="w-full h-full flex items-center px-3" href={freight.quote}>
                                                     {tt("getQuote")}
                                                 </Link>
                                             </Button>

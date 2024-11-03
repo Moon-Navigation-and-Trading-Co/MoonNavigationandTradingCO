@@ -2,13 +2,13 @@ import { Truck, Globe, Warehouse, Shield, Route, Box, Map } from "lucide-react";
 import Link from "next/link";
 
 const services = [
-    { icon: Truck, label: "Inland Freight", href: "inland-freight" },
-    { icon: Warehouse, label: "Ocean Freight", href: "/services/ocean-freight" },
-    { icon: Shield, label: "Air Freight", href: "/services/air-freight" },
-    { icon: Route, label: "Container Management", href: "/services/container-management" },
-    { icon: Box, label: "Ship Agency and Management", href: "/services/ship-agency-management" },
-    { icon: Map, label: "Docking and Maintenance", href: "/services/docking-maintenance" },
-    { icon: Globe, label: "International Trading", href: "/services/international-trading" },
+    { icon: Truck, label: "Inland Freight", href: "/inland-services-forms" },
+    { icon: Warehouse, label: "Ocean Freight", href: "/ocean-freight-forms" },
+    { icon: Shield, label: "Air Freight", href: "/air-freight-forms" },
+    { icon: Route, label: "Container Services", href: "/container-services-forms" },
+    { icon: Box, label: "Ship Agency", href: "/ship-agency-forms" },
+    { icon: Map, label: "Docking and Maintenance", href: "/docking-maintenance" },
+    { icon: Globe, label: "International Trading", href: "/international-trading-forms" },
     { icon: Globe, label: "Buy/Sell Containers", href: "/services/buy-sell-containers" },
     { icon: Globe, label: "Buy/Sell Vessels", href: "/services/buy-sell-vessels" },
 ];

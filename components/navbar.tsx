@@ -42,45 +42,45 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     };
 
     const category = [
-        { name: "Air Freight", href: "/services/service4" },
+        { name: "Air Freight", href: "/learn-more/air-freight" },
         {
             name: "Ocean Freight", subCategory: [
-                { name: "Project Cargo", link: "/ocean-freight" },
-                { name: "Roll On/Off (RoRo)", link: "/ocean-freight" },
-                { name: "Heavy Lift", link: "/ocean-freight" },
-                { name: "Dangerous Cargo", link: "/ocean-freight" },
+                { name: "Project Cargo", link: "/learn-more/ocean-freight" },
+                { name: "Roll On/Off (RoRo)", link: "/learn-more/ocean-freight" },
+                { name: "Heavy Lift", link: "/learn-more/ocean-freight" },
+                { name: "Dangerous Cargo", link: "/learn-more/ocean-freight" },
             ], href: "/services/service1"
         },
         {
             name: "Inland Freight", subCategory: [
-                { name: "International Inland", link: "/ocean-freight" },
-                { name: "Local Inland", link: "/ocean-freight" },
-                { name: "Inland Container", link: "/ocean-freight" },
+                { name: "International Inland", link: "/learn-more/inland-freight" },
+                { name: "Local Inland", link: "/learn-more/inland-freight" },
+                { name: "Inland Container", link: "/learn-more/inland-freight" },
             ], href: "/services/service1"
         },
         {
             name: "Ship Agency", subCategory: [
-                { name: "Request for PDA", link: "/ocean-freight" },
-                { name: "Sign On/Off Crew", link: "/ocean-freight" },
-                { name: "Transit Spare Parts", link: "/ocean-freight" },
-                { name: "Special Services", link: "/ocean-freight" },
+                { name: "Request for PDA", link: "/learn-more/ship-agency" },
+                { name: "Sign On/Off Crew", link: "/learn-more/ship-agency" },
+                { name: "Transit Spare Parts", link: "/learn-more/ship-agency" },
+                { name: "Special Services", link: "/learn-more/ship-agency" },
             ], href: "/services/service1"
         },
         {
             name: "Container", subCategory: [
-                { name: "Less than Container Load", link: "/ocean-freight" },
-                { name: "Standard Container", link: "/ocean-freight" },
-                { name: "Oversized Container", link: "/ocean-freight" },
-                { name: "Inland Transportation", link: "/ocean-freight" },
-                { name: "Stevedoring and Storage", link: "/ocean-freight" },
+                { name: "Less than Container Load", link: "/learn-more/container" },
+                { name: "Standard Container", link: "/learn-more/container" },
+                { name: "Oversized Container", link: "/learn-more/container" },
+                { name: "Inland Transportation", link: "/learn-more/container" },
+                { name: "Stevedoring and Storage", link: "/learn-more/container" },
             ], href: "/services/service1"
         },
-        { name: "International Trading", href: "/services/service4" },
-        { name: "Ship Management", href: "/services/service4" },
-        { name: "Docking And Maintenance ", href: "/services/service4" },
-        { name: "Container Handling, Stevedoring and Storage", href: "/services/service4" },
-        { name: "Handling, Stevedoring and Storage", href: "/services/service4" },
-        { name: "Customs Clearance Services", href: "/services/service4" },
+        { name: "International Trading", href: "/learn-more/other" },
+        { name: "Ship Management", href: "/learn-more/other" },
+        { name: "Docking And Maintenance ", href: "/learn-more/other" },
+        { name: "Container Handling, Stevedoring and Storage", href: "/learn-more/other" },
+        { name: "Handling, Stevedoring and Storage", href: "/learn-more/other" },
+        { name: "Customs Clearance Services", href: "/learn-more/other" },
     ];
 
     const navItems = [
@@ -128,8 +128,16 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                                 className="w-full text-start px-4 py-2 text-sm text-muted-foreground hover:text-foreground flex justify-between items-center"
                                                                 onClick={() => toggleCategory(service.name)}
                                                             >
-                                                                {service.name}
-                                                                {service.subCategory && <ChevronRight width={15} />}
+                                                                {service.subCategory ?
+                                                                    <>
+                                                                        {service.name}
+                                                                        <ChevronRight width={15} />
+                                                                    </>
+                                                                    :
+                                                                    <Link href={service.href} className="w-full h-full">
+                                                                        {service.name}
+                                                                    </Link>}
+
                                                             </button>
                                                             {index !== category.length - 1 && <Separator className="w-3/4 mx-auto" />}
                                                             {service.subCategory && selectedCategory === service.name && (
@@ -142,13 +150,18 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                                 >
                                                                     {service.subCategory.map((subItem, subIndex) => (
                                                                         <>
-                                                                            <Link
-                                                                                key={subIndex}
-                                                                                href={subItem.link}
-                                                                                className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
-                                                                            >
-                                                                                {subItem.name}
-                                                                            </Link>
+
+                                                                            <button onClick={
+                                                                                () => { toggleServicesMenu() }
+                                                                            }>
+                                                                                <Link
+                                                                                    key={subIndex}
+                                                                                    href={subItem.link}
+                                                                                    className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
+                                                                                >
+                                                                                    {subItem.name}
+                                                                                </Link>
+                                                                            </button>
                                                                             {subIndex !== service.subCategory.length - 1 && <Separator className="w-3/4 mx-auto" />}
                                                                         </>
 
@@ -226,18 +239,28 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                     {category.map((service, serviceIndex) => (
                                                         <div key={serviceIndex}>
                                                             <button className="hover:text-primary flex items-center text-start justify-between w-full" onClick={() => toggleSubCategory(service.name)}>
-                                                                {service.name}
-                                                                {service.subCategory && <ChevronRight width={15} className="rotate-90" />}
+                                                                {service.subCategory ?
+                                                                    <>
+                                                                        {service.name}
+                                                                        <ChevronRight width={15} />
+                                                                    </>
+                                                                    :
+                                                                    <Link href={service.href} className="w-full h-full">
+                                                                        {service.name}
+                                                                    </Link>}
                                                             </button>
                                                             <AnimatePresence>
                                                                 {selectedSubCategory === service.name && service.subCategory && (
-                                                                    <motion.div className="ml-4 mt-1 flex gap-2 pt-1 pb-1" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}>
+                                                                    <motion.div className="ml-4 mt-1 flex gap-2 pt-1 pb-1 text-start" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.2 }}>
                                                                         <Separator className="w-[2px] h-[full] rounded-full bg-muted-foreground" />
-                                                                        <div className="flex flex-col gap-1">
+                                                                        <div className="flex flex-col w-full">
                                                                             {service.subCategory.map((subItem, subIndex) => (
-                                                                                <Link key={subIndex} href={subItem.link} className="hover:text-primary text-sm" onClick={toggleMenu}>
-                                                                                    {subItem.name}
-                                                                                </Link>
+                                                                                <button className="flex items-start" onClick={() => { toggleMenu() }}>
+                                                                                    <Link key={subIndex} href={subItem.link} className="hover:text-primary  text-sm w-[full] h-full" onClick={toggleMenu}>
+                                                                                        {subItem.name}
+                                                                                    </Link>
+                                                                                </button>
+
                                                                             ))}
                                                                         </div>
                                                                     </motion.div>
