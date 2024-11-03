@@ -12,19 +12,27 @@ export default function OceanFreightPage() {
         subcategories: [
             {
                 subcategory: "Project Cargo Services",
-                description: "Rapid delivery for time-sensitive shipments"
+                description: "Rapid delivery for time-sensitive shipments",
+                image: "/airCargo.jpg"
+
             },
             {
                 subcategory: "Roll On/Off (RoRo)",
-                description: "Cost-effective option for less urgent air shipments"
+                description: "Cost-effective option for less urgent air shipments",
+                image: "/airCargo.jpg"
+
             },
             {
                 subcategory: "Heavy Lift",
-                description: "Dedicated aircraft for special cargo needs"
+                description: "Dedicated aircraft for special cargo needs",
+                image: "/airCargo.jpg"
+
             },
             {
                 subcategory: "Dangerous Cargo",
-                description: "Specialized handling for temperature-sensitive items"
+                description: "Specialized handling for temperature-sensitive items",
+                image: "/airCargo.jpg"
+
             }
         ],
         link: "/ocean-freight-forms"

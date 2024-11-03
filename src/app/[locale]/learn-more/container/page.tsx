@@ -12,23 +12,33 @@ export default function OceanFreightPage() {
         subcategories: [
             {
                 subcategory: "Less than Container Load",
-                description: "Rapid delivery for time-sensitive shipments"
+                description: "Rapid delivery for time-sensitive shipments",
+                image: "/airCargo.jpg"
+
             },
             {
                 subcategory: "Standard Container",
-                description: "Cost-effective option for less urgent air shipments"
+                description: "Cost-effective option for less urgent air shipments",
+                image: "/airCargo.jpg"
+
             },
             {
                 subcategory: "Oversized Container",
-                description: "Dedicated aircraft for special cargo needs"
+                description: "Dedicated aircraft for special cargo needs",
+                image: "/airCargo.jpg"
+
             },
             {
                 subcategory: "Inland Transportation",
-                description: "Specialized handling for temperature-sensitive items"
+                description: "Specialized handling for temperature-sensitive items",
+                image: "/airCargo.jpg"
+
             },
             {
                 subcategory: "Stevedoring and Storage",
-                description: "Specialized handling for temperature-sensitive items"
+                description: "Specialized handling for temperature-sensitive items",
+                image: "/airCargo.jpg"
+
             }
         ],
         link: "/container-services-forms"
