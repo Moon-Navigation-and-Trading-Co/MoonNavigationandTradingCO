@@ -21,8 +21,16 @@ const defaultUrl = process.env.VERCEL_URL
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: "Moon Navigation",
-  description: "International Freight Solutions at Competitve Prices!",
+  title: {
+    default: "Moon Navigation",
+    template: "%s | Moon Navigation",
+  },
+  openGraph: {
+    description: "International Freight Solutions at Competitve Prices!",
+    image: "/airCargo.jpg",
+  },
+  keywords: ["Moon Navigation", "Moon Navigation and Trading Co", "Freight", "Shipping", "Logistics", "Cargo", "Transportation", "International Freight", "Ocean Freight", "Air Freight", "Inland Freight", "Container Services", "Project Cargo Services", "Roll On/Off (RoRo)", "Heavy Lift", "Dangerous Cargo", "Express Air Freight", "Standard Air Freight", "Charter Services", "Perishable Goods", "International Inland", "Local Inland", "Inland Container", "Less than Container Load", "Standard Container", "Oversized Container", "Inland Transportation", "Stevedoring and Storage"],
+  // description: "International Freight Solutions at Competitve Prices!",
 };
 
 type Props = {
