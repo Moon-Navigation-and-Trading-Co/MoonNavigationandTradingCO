@@ -189,13 +189,13 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     <div className="flex items-center">
                         <ThemeSwitcher />
                         <LocaleSwitcher />
-                        <Button className="text-white p-2 ml-2 h-auto bg-clip-text bg-gradient-to-r text-transparent from-violet-600 to-indigo-600 hover:text-black">
+                        <Button className="text-white p-2 ml-2 h-auto bg-clip-text bg-gradient-to-r text-transparent from-violet-600 to-indigo-600 hover:text-black dark:hover:text-purple-200">
                             Invest
                         </Button>
                     </div>
                     {!user && (
-                        <Button className="text-white p-2 h-auto hover:text-gray-300">
-                            <Link className="font-normal" href={"/sign-up"}>
+                        <Button className="text-foreground  bg-transparent p-0 h-auto hover:underline hover:bg-transparent">
+                            <Link className="font-semibold" href={"/sign-up"}>
                                 Sign In/Up
                             </Link>
                         </Button>
@@ -280,7 +280,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                             )}
                         </React.Fragment>
                     ))}
-                    <Link href={'/'} className="font-semibold bg-clip-text bg-gradient-to-r text-transparent from-violet-600 to-indigo-600 hover:text-black">
+                    <Link href={'/'} className="font-semibold bg-clip-text bg-gradient-to-r text-transparent from-violet-600 to-indigo-600 hover:text-foreground">
                         Invest
                     </Link>
                     {!user && (

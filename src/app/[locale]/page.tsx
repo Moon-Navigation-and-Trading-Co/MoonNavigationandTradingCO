@@ -64,11 +64,9 @@ export default function Index() {
 
         <ServicesWithLogo />
 
+        <section id="about" className="scroll-mt-[80px]">
 
-
-        <section >
-
-          <div className="grid md:grid-cols-4 my-10 lg:grid-cols-4 gap-10 lg:gap-24 px-4">
+          <div className="w-full grid md:grid-cols-4 my-10 lg:grid-cols-4 gap-10 lg:gap-24 px-4">
 
             {/* First Set of Boxes || First Column */}
             <div className="grid grid-cols-3 md:grid-cols-2  col-span-2 gap-4">
@@ -78,7 +76,7 @@ export default function Index() {
                   <Image alt="about us icon" src={'/letter-i.png'} width={70} height={70} />
                 </div>
                 <button className="absolute w-full h-full" onClick={scrollToModal}></button>
-                <h1 className="absolute bottom-3 left-5 text-white text-sm md:text-lg md:font-semibold">{t("aboutImgTitle")}</h1>
+                <h2 className="absolute bottom-3 left-5 text-white text-sm md:text-lg md:font-semibold">{t("aboutImgTitle")}</h2>
               </div>
 
               <div className="bg-black shadow-md shadow-black rounded-3xl overflow-hidden aspect-square flex items-center justify-center relative">
@@ -95,7 +93,7 @@ export default function Index() {
             {/* Second Column */}
             <div ref={modalRef} className="col-span-2 w-full h-full flex flex-col justify-between">
               <div>
-                <h1 className="text-3xl font-semibold pb-16 pt-2 text-foreground">{t("aboutTitle")}</h1>
+                <h2 className="text-3xl font-semibold pb-16 pt-2 text-foreground">{t("aboutTitle")}</h2>
                 <p className="text-muted-foreground text-base pb-10">{t("aboutDescription")}</p>
               </div>
               <Button className="w-[130px]" >{tt("learnmore")}</Button>
@@ -105,6 +103,7 @@ export default function Index() {
           </div>
 
         </section>
+
         {/* Services Section */}
         <section id="services">
 
@@ -129,14 +128,14 @@ export default function Index() {
 
             <div className="flex flex-col justify-between">
               <div>
-                <h1 className="text-3xl text-foreground font-semibold">{tttt("contactTitle")}</h1>
+                <h2 className="text-3xl text-foreground font-semibold">{tttt("contactTitle")}</h2>
                 <p className="text-muted-foreground pb-5 font-medium mt-10">{tttt("contactDescription")}</p>
 
               </div>
 
               <ul className="flex flex-col gap-2 text-[#5F8D8D]">
                 <li className="flex gap-2">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mails"><rect width="16" height="13" x="6" y="4" rx="2" /><path d="m22 7-7.1 3.78c-.57.3-1.23.3-1.8 0L6 7" /><path d="M2 8v11c0 1.1.9 2 2 2h14" /></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mails"><rect width="16" height="13" x="6" y="4" rx="2" /><path d="m22 7-7.1 3.78c-.57.3-1.23.3-1.8 0L6 7" /><path d="M2 8v11c0 1.1.9 2 2 2h24" /></svg>
                   Info@logicbase.co.uk
                 </li>
                 <li className="flex gap-2">

@@ -12,6 +12,7 @@ import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import { CircleMinus } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { Textarea } from './ui/textarea';
 
 
 
@@ -24,11 +25,11 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
     // Define your Zod schema (as before)
     const formSchema = z.object({
         port: z.object({
-            name: z.string().min(1, { message: t("CompanyName") }),
+            name: z.string().min(1, { message: t("Required") }),
         }),
         vessel: z.object({
-            name: z.string().min(1, { message: t("CompanyName") }),
-            imo: z.number().min(0, { message: t("CompanyName") }),
+            name: z.string().min(1, { message: t("Required") }),
+            imo: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
             anchor: z.boolean().optional().default(false),
             berth: z.boolean().optional().default(false),
         }),
@@ -38,7 +39,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
             members_on: z
                 .array(
                     z.object({
-                        number: z.string().optional().default(""),
+                        number: z.number().optional().default(0),
                         nationality: z.string().optional().default(""),
                     })
                 )
@@ -46,7 +47,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
             members_off: z
                 .array(
                     z.object({
-                        number: z.string().optional().default(""),
+                        number: z.number().optional().default(0),
                         nationality: z.string().optional().default(""),
                     })
                 )
@@ -66,7 +67,9 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
+            additional_email: z.string().optional(),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            additional_phone_number: z.string().min(1, { message: t("PhoneNumber") }).optional(),
         })
         // Add more sections as needed
     });
@@ -77,14 +80,19 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
         resolver: zodResolver(formSchema),
         defaultValues: {
             crew: {
-                members_on: [{ number: "", nationality: "" }], // Initialize with one empty member
+                members_on: [{ number: 0, nationality: "" }], // Initialize with one empty member
             },
         }
     });
 
-    const { fields, append, remove } = useFieldArray({
+    const { fields: fieldsOn, append: appendOn, remove: removeOn } = useFieldArray({
         control: form.control,
         name: "crew.members_on",
+    });
+
+    const { fields: fieldsOff, append: appendOff, remove: removeOff } = useFieldArray({
+        control: form.control,
+        name: "crew.members_off",
     });
 
     const watchSignOn = form.watch("crew.on");
@@ -165,21 +173,27 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                 {watchSignOn &&
                     <div className="flex flex-col gap-4">
                         <h2 className='font-semibold'>Sign On Members</h2>
-                        {fields.map((field, index) => (
+                        {fieldsOn.map((field, index) => (
                             <div key={field.id} className="flex gap-4">
                                 {/* Crew Number Field */}
                                 <FormItem>
-                                    <FormLabel htmlFor={`crew.members_on.${index}.number`}>{tt("crew-number")}</FormLabel>
+                                    <FormLabel id={`crew.members_on.${index}.number`}>{tt('crew-number')}</FormLabel>
                                     <FormControl>
                                         <Controller
                                             control={form.control}
                                             name={`crew.members_on.${index}.number`}
-                                            render={({ field }) => (
-                                                <Input
-                                                    className="max-w-[150px] border-2 rounded-xl"
-                                                    placeholder="Crew Number"
-                                                    {...field}
-                                                />
+                                            render={({ field, fieldState: { error } }) => (
+                                                <>
+                                                    <Input
+                                                        className="max-w-[100px] border-2 rounded-xl"
+                                                        type="number"
+                                                        placeholder="No."
+                                                        {...field}
+                                                        value={field.value || ''}
+                                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                    />
+                                                    {error && <p className="text-red-500">{error.message}</p>}
+                                                </>
                                             )}
                                         />
                                     </FormControl>
@@ -194,7 +208,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                             name={`crew.members_on.${index}.nationality`}
                                             render={({ field, }) => (
                                                 <Input
-                                                    className="max-w-[300px] border-2 rounded-xl"
+                                                    className="max-w-[150px] border-2 rounded-xl"
                                                     placeholder="Nationality"
                                                     {...field}
                                                 />
@@ -205,7 +219,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                                 {/* Remove Button */}
                                 <div className='flex items-end'>
-                                    <Button className='rounded-lg hover:bg-accent ' variant={'outline'} type="button" onClick={() => remove(index)}>
+                                    <Button className='rounded-lg hover:bg-accent ' variant={'outline'} type="button" onClick={() => removeOn(index)}>
                                         <CircleMinus className='text-red-500' />
                                     </Button>
                                 </div>
@@ -216,7 +230,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                         {/* Add More Crew Button */}
                         <Button
                             type="button"
-                            onClick={() => append({ number: "", nationality: "" })}
+                            onClick={() => appendOn({ number: 0, nationality: "" })}
                             className="max-w-[200px] mt-2"
                         >
                             Add More Nationalities
@@ -239,13 +253,11 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                                 value={field.value} // The selected value
                                                 className="flex flex-col space-y-0"
                                             >
-                                                {/* Standard Transportation Method */}
                                                 <div className="flex items-center space-x-3">
                                                     <RadioGroupItem value="yes" />
                                                     <FormLabel className="font-normal">{tt("yes")}</FormLabel>
                                                 </div>
 
-                                                {/* ULD Transportation Method */}
                                                 <div className="flex items-center space-x-3">
                                                     <RadioGroupItem value="no" />
                                                     <FormLabel className="font-normal">{tt("no")}</FormLabel>
@@ -258,7 +270,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                             </div>
                         </div>
 
-                        {/* From Field */}
+                        {/* Hotel Request Field */}
                         <FormItem>
                             <FormLabel htmlFor="crew.hotel_req_on" id="crew.hotel_req_on" >{tt('hotel-req')}</FormLabel>
                             <FormControl>
@@ -267,11 +279,12 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                     name="crew.hotel_req_on"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input id="crew.hotel_req_on" className="max-w-[300px]  border-2 rounded-xl" placeholder="Hotel Request" {...field} />
+                                            <Input id="crew.hotel_req_on" className="max-w-[300px]  border-2 rounded-xl" placeholder="Hotel Special Request" {...field} />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>)}
                                 />
                             </FormControl>
+                            <p className='text-red-500 text-xs px-2'>Please declare any special requests for hotel </p>
                         </FormItem>
 
                         {/* radio buttons transportation? field */}
@@ -338,21 +351,27 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                     <div className="flex flex-col gap-4">
                         <h2 className='font-semibold'>Sign Off Members</h2>
-                        {fields.map((field, index) => (
+                        {fieldsOff.map((field, index) => (
                             <div key={field.id} className="flex gap-4">
                                 {/* Crew Number Field */}
                                 <FormItem>
-                                    <FormLabel htmlFor={`crew.members_off.${index}.number`}>{tt("crew-number")}</FormLabel>
+                                    <FormLabel id={`crew.members_off.${index}.number`}>{tt('crew-number')}</FormLabel>
                                     <FormControl>
                                         <Controller
                                             control={form.control}
                                             name={`crew.members_off.${index}.number`}
-                                            render={({ field }) => (
-                                                <Input
-                                                    className="max-w-[150px] border-2 rounded-xl"
-                                                    placeholder="Crew Number"
-                                                    {...field}
-                                                />
+                                            render={({ field, fieldState: { error } }) => (
+                                                <>
+                                                    <Input
+                                                        className="max-w-[100px] border-2 rounded-xl"
+                                                        type="number"
+                                                        placeholder="No."
+                                                        {...field}
+                                                        value={field.value || ''}
+                                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                    />
+                                                    {error && <p className="text-red-500">{error.message}</p>}
+                                                </>
                                             )}
                                         />
                                     </FormControl>
@@ -367,7 +386,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                             name={`crew.members_off.${index}.nationality`}
                                             render={({ field, }) => (
                                                 <Input
-                                                    className="max-w-[300px] border-2 rounded-xl"
+                                                    className="max-w-[150px] border-2 rounded-xl"
                                                     placeholder="Nationality"
                                                     {...field}
                                                 />
@@ -378,7 +397,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                                 {/* Remove Button */}
                                 <div className='flex items-end'>
-                                    <Button className='rounded-lg hover:bg-gray-200 dark:hover:bg-accent  ' variant={'outline'} type="button" onClick={() => remove(index)}>
+                                    <Button className='rounded-lg hover:bg-gray-200 dark:hover:bg-accent  ' variant={'outline'} type="button" onClick={() => removeOff(index)}>
                                         <CircleMinus className='text-red-500' />
                                     </Button>
                                 </div>
@@ -389,7 +408,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                         {/* Add More Crew Button */}
                         <Button
                             type="button"
-                            onClick={() => append({ number: "", nationality: "" })}
+                            onClick={() => appendOff({ number: 0, nationality: "" })}
                             className="max-w-[200px] mt-2"
                         >
                             Add More Nationalities
@@ -440,11 +459,12 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                     name="crew.hotel_req_off"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input id="crew.hotel_req_off" className="max-w-[300px]  border-2 rounded-xl" placeholder="Hotel Request" {...field} />
+                                            <Textarea id="crew.hotel_req_off" className="max-w-[300px]  border-2 rounded-xl" placeholder="Hotel Request" {...field} />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>)}
                                 />
                             </FormControl>
+                            <p className='text-red-500 text-xs px-2'>Please declare any special requests for hotel </p>
                         </FormItem>
 
                         {/* radio buttons transportation? field */}
@@ -505,28 +525,8 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                     </div>
                 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
-
-
 
                 <Button type="submit" className="mt-4 w-[200px]">
                     Submit

@@ -26,7 +26,7 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
   }
 
   return (
-    <div className="w-full bg-background h-auto min-h-[90svh] flex items-center justify-center">
+    <div className="w-full bg-background dark:bg-transparent h-auto min-h-[90svh] flex items-center justify-center">
       <form className="flex-col min-w-96 py-10 max-w-96 mx-auto flex items-center justify-center">
         <h1 className="text-2xl font-medium">Sign up</h1>
         <p className="text-sm text-foreground">

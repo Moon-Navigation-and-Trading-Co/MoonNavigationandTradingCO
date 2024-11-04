@@ -87,6 +87,17 @@
      #0000 25%,#000 0);
 }
 
+/* Hide incrementors in WebKit browsers (Chrome, Safari) */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Hide incrementors in Firefox */
+.no-spinner {
+    -moz-appearance: textfield;
+}
 
 @layer base {
   * {

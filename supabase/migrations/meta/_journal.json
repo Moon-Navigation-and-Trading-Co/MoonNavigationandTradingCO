@@ -176,6 +176,62 @@
       "when": 1729542517082,
       "tag": "0024_dear_lady_bullseye",
       "breakpoints": true
+    },
+    {
+      "idx": 25,
+      "version": "7",
+      "when": 1730726702894,
+      "tag": "0025_outgoing_bullseye",
+      "breakpoints": true
+    },
+    {
+      "idx": 26,
+      "version": "7",
+      "when": 1730727432426,
+      "tag": "0026_melodic_cargill",
+      "breakpoints": true
+    },
+    {
+      "idx": 27,
+      "version": "7",
+      "when": 1730739867500,
+      "tag": "0027_mature_joshua_kane",
+      "breakpoints": true
+    },
+    {
+      "idx": 28,
+      "version": "7",
+      "when": 1730740020132,
+      "tag": "0028_icy_demogoblin",
+      "breakpoints": true
+    },
+    {
+      "idx": 29,
+      "version": "7",
+      "when": 1730740041255,
+      "tag": "0029_volatile_butterfly",
+      "breakpoints": true
+    },
+    {
+      "idx": 30,
+      "version": "7",
+      "when": 1730745048815,
+      "tag": "0030_sharp_boomer",
+      "breakpoints": true
+    },
+    {
+      "idx": 31,
+      "version": "7",
+      "when": 1730750557414,
+      "tag": "0031_glamorous_luminals",
+      "breakpoints": true
+    },
+    {
+      "idx": 32,
+      "version": "7",
+      "when": 1730751616501,
+      "tag": "0032_chubby_captain_america",
+      "breakpoints": true
     }
   ]
 }

@@ -26,7 +26,7 @@ const TransportationServices: React.FC = () => {
                             <p>  {t("container-s-3")}</p>
                             <p>  {t("container-s-4")}</p>
                         </div>
-                        <div className='flex flex-col items-end justify-end'>
+                        <div className='flex flex-col items-end justify-end gap-2'>
                             <Button variant={"outline"}>
                                 <Link href="/container-services-forms">
                                     Get Quote
@@ -62,7 +62,7 @@ const TransportationServices: React.FC = () => {
                             <p>  {t("ship-s-3")}</p>
                             <p>  {t("ship-s-4")}</p>
                         </div>
-                        <div className='flex flex-col items-end justify-end'>
+                        <div className='flex flex-col items-end justify-end gap-2'>
                             <Button variant={"outline"}>
                                 <Link href="/ship-agency-forms">
                                     Get Quote

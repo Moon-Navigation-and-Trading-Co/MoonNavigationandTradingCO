@@ -13,7 +13,6 @@ const PDAdetails = ({ control }: { control: any }) => {
 
     return (
         <div className="">
-            <h1 className='text-xl font-semibold'>{t('routing')}</h1>
             <div className='pt-8 pb-10 grid md:grid-cols-2 gap-5 p-4  rounded-3xl'>
 
                 {/* From Field */}
@@ -59,12 +58,14 @@ const PDAdetails = ({ control }: { control: any }) => {
                             render={({ field, fieldState: { error } }) => (
                                 <>
                                     <Input
-                                        className="max-w-[200px] border-2 rounded-xl"
+                                        className="max-w-[300px] border-2 rounded-xl no-spinner"
                                         type="number"
-                                        placeholder="Length in cm"
+                                        id="vessel.imo"
+                                        placeholder="IMO Number"
                                         {...field}
                                         value={field.value || ''}
                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}
+
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -75,14 +76,14 @@ const PDAdetails = ({ control }: { control: any }) => {
 
                 {/* ETA field */}
                 <FormItem>
-                    <FormLabel id="vessel.eta">{t('vessel-eta')}</FormLabel>
+                    <FormLabel htmlFor="vessel.eta">{t('vessel-eta')}</FormLabel>
                     <FormControl>
                         <Controller
                             control={control}
                             name="vessel.eta"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.eta" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel ETA" {...field} />
+                                    <Input className="max-w-[180px]  border-2 rounded-xl" type="date" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -116,7 +117,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                             name="vessel.flag"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.flag" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Flag" {...field} />
+                                    <Input id="vessel.flag" className="max-w-[300px]  border-2 rounded-xl" placeholder="Flag" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -133,7 +134,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                             name="vessel.ship_gross_tonnage"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.ship_gross_tonnage" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Gross Tonnage" {...field} />
+                                    <Input id="vessel.ship_gross_tonnage" className="max-w-[300px]  border-2 rounded-xl" placeholder="Gross Tonnage" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -150,7 +151,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                             name="vessel.ship_net_tonnage"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.ship_net_tonnage" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Net Tonnage" {...field} />
+                                    <Input id="vessel.ship_net_tonnage" className="max-w-[300px]  border-2 rounded-xl" placeholder="Net Tonnage" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -167,7 +168,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                             name="vessel.deadweight"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.deadweight" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Deadweight" {...field} />
+                                    <Input id="vessel.deadweight" className="max-w-[300px]  border-2 rounded-xl" placeholder="Deadweight" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -184,7 +185,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                             name="vessel.draft"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.draft" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Draft" {...field} />
+                                    <Input id="vessel.draft" className="max-w-[300px]  border-2 rounded-xl" placeholder="Draft" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -267,7 +268,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                 </div>
             </FormItem>
 
-            <div className='pt-8 pb-10 grid grid-cols-2 gap-5 p-4 rounded-3xl'>
+            <div className='pt-8 pb-10 grid grid-cols-1 gap-5 p-4 rounded-3xl'>
 
                 {/* Total Discharged Cargo field */}
                 <FormItem>
@@ -281,7 +282,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                                     <Input
                                         className="max-w-[300px] border-2 rounded-xl"
                                         type="number"
-                                        placeholder="Length in cm"
+                                        placeholder="No. of Cargo"
                                         {...field}
                                         value={field.value || ''}
                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}
@@ -305,7 +306,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                                     <Input
                                         className="max-w-[300px] border-2 rounded-xl"
                                         type="number"
-                                        placeholder="Length in cm"
+                                        placeholder="No. of Cargo"
                                         {...field}
                                         value={field.value || ''}
                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}
@@ -329,7 +330,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                                     <Input
                                         className="max-w-[300px] border-2 rounded-xl"
                                         type="number"
-                                        placeholder="Length in cm"
+                                        placeholder="No. of Days"
                                         {...field}
                                         value={field.value || ''}
                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}
@@ -353,7 +354,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                                     <Input
                                         className="max-w-[300px] border-2 rounded-xl"
                                         type="number"
-                                        placeholder="Length in cm"
+                                        placeholder="No. of Days"
                                         {...field}
                                         value={field.value || ''}
                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}

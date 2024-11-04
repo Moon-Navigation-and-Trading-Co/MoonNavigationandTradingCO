@@ -12,6 +12,7 @@ import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import { CircleMinus } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { Textarea } from './ui/textarea';
 
 
 
@@ -39,7 +40,9 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
+            additional_email: z.string().email({ message: t("CompanyEmail") }).optional(),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            additional_phone_number: z.string().min(1, { message: t("PhoneNumber") }).optional(),
         })
         // Add more sections as needed
     });
@@ -80,7 +83,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                             name="vessel.request"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.request" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Name" {...field} />
+                                    <Textarea id="vessel.request" className="max-w-[300px]  border-2 rounded-xl" placeholder="Please Declare the Requested Services" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}

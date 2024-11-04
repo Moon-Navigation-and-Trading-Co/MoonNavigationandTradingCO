@@ -13,6 +13,7 @@ import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import PDAdetails from './pda-details-card';
 import { userInfo } from 'os';
+import { Separator } from '@radix-ui/react-dropdown-menu';
 
 
 // 1. Define a type-safe form handler using z.infer
@@ -23,34 +24,36 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
     // Define your Zod schema (as before)
     const formSchema = z.object({
         port: z.object({
-            name: z.string().min(1, { message: t("CompanyName") }),
+            name: z.string().min(1, { message: t("Required") }),
         }),
         vessel: z.object({
-            name: z.string().min(1, { message: t("CompanyName") }),
-            imo: z.number().min(0, { message: t("CompanyName") }),
-            eta: z.string().min(1, { message: t("CompanyName") }),
-            type: z.string().min(1, { message: t("CompanyName") }),
-            flag: z.string().min(1, { message: t("CompanyName") }),
-            ship_gross_tonnage: z.string().min(1, { message: t("CompanyName") }),
-            ship_net_tonnage: z.string().min(1, { message: t("CompanyName") }),
-            deadweight: z.string().min(1, { message: t("CompanyName") }),
-            draft: z.string().min(1, { message: t("CompanyName") }),
-            length: z.number().min(0, { message: t("CompanyName") }),
+            name: z.string().min(1, { message: t("Required") }),
+            imo: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
+            eta: z.string().min(1, { message: t("Required") }),
+            type: z.string().min(1, { message: t("Required") }),
+            flag: z.string().min(1, { message: t("Required") }),
+            ship_gross_tonnage: z.string().min(1, { message: t("Required") }),
+            ship_net_tonnage: z.string().min(1, { message: t("Required") }),
+            deadweight: z.string().min(1, { message: t("Required") }),
+            draft: z.string().min(1, { message: t("Required") }),
+            length: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
             call_for_commercial: z.boolean().optional().default(false),
             call_for_maintenance: z.boolean().optional().default(false),
-            total_discharged_cargo: z.number().min(0, { message: t("CompanyName") }),
-            total_loaded_cargo: z.number().min(0, { message: t("CompanyName") }),
-            total_expected_berthing_days: z.number().min(0, { message: t("CompanyName") }),
-            total_expected_anchor_days: z.number().min(0, { message: t("CompanyName") }),
+            total_discharged_cargo: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
+            total_loaded_cargo: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
+            total_expected_berthing_days: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
+            total_expected_anchor_days: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
 
         }),
         company_details: z.object({
-            company_name: z.string().min(1, { message: t("CompanyName") }),
+            company_name: z.string().min(1, { message: t("Required") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
+            additional_email: z.string().email({ message: t("CompanyEmail") }).optional(),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            additional_phone_number: z.string().min(1, { message: t("PhoneNumber") }).optional(),
         })
         // Add more sections as needed
     });
@@ -109,7 +112,6 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
 
                 {/* Details */}
                 <PDAdetails control={form.control} />
-
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />

@@ -94,6 +94,23 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                             />
                         </FormControl>
                     </FormItem>
+
+                </div>
+                <div>
+                    <FormItem>
+                        <FormLabel>{t('additionalEmail')}</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="company_details.additional_email"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Email" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
                 </div>
                 <div>
                     <FormItem>
@@ -111,11 +128,27 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                         </FormControl>
                     </FormItem>
                 </div>
+                <div>
+                    <FormItem>
+                        <FormLabel>{t('additionalPhoneNumber')}</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="company_details.additional_phone_number"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="+123456789" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+                </div>
             </div>
 
             <div className='mt-24'>
                 <h1 className='font-semibold text-xl mb-6'>Important Information</h1>
-                <div className='flex flex-col gap-3 font-medium'>
+                <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
                     <p>• For quote requests with long-term validity, please contact us.</p>
                     <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>
                     <p>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</p>

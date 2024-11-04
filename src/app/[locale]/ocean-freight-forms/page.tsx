@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import Spinner from '@/components/spinner';
-
+import RollOnOffForm from '@/components/roll-on-off-form';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -56,28 +56,50 @@ const Page: React.FC = () => {
         // Flatten the formData before inserting into Supabase
         let flattenedData;
 
-        flattenedData = {
-            user_id: user.id,
-            from: formData.routing.from,
-            to: formData.routing.to,
-            effective_date: formData.dates.effective_date,
-            expiry_date: formData.dates.expiry_date,
-            dangerous: formData.commodities.dangerous,
-            length: formData.commodities.length,
-            width: formData.commodities.width,
-            height: formData.commodities.height,
-            weight: formData.commodities.weight,
-            file: formData.commodities.file,
-            additional_information: formData.commodities.additional_information,
-            vad: formData.vad.inland_container,
-            service_contract: formData.service_contract?.service_contract || null,
-            company_name: formData.company_details.company_name,
-            contact_person_name: formData.company_details.contact_person_name,
-            title: formData.company_details.title,
-            country_of_origin: formData.company_details.country_of_origin,
-            company_email: formData.company_details.company_email,
-            phone_number: formData.company_details.phone_number
-        };
+        if (formType === "project_cargo_services") {
+
+            flattenedData = {
+                user_id: user.id,
+                routing: formData.routing,
+                effective_date: formData.dates.effective_date,
+                expiry_date: formData.dates.expiry_date,
+                commodity_type: formData.commodities.type,
+                dangerous: formData.commodities.dangerous,
+                commoditiy_details: formData.commodities.details,
+                length: formData.commodities.length,
+                width: formData.commodities.width,
+                height: formData.commodities.height,
+                weight: formData.commodities.weight,
+                file: formData.commodities.file,
+                additional_information: formData.commodities.additional_information,
+                value_added_service: formData.value_added_service.request,
+                service_contract: formData.service_contract.service_contract,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                phone_number: formData.company_details.phone_number
+            };
+        } else if (formType === "roll_on_off" || formType === "heavy_lift" || formType === "dangerous_cargo_services") {
+            flattenedData = {
+                user_id: user.id,
+                routing: formData.routing,
+                effective_date: formData.dates.effective_date,
+                expiry_date: formData.dates.expiry_date,
+                commodities: formData.commodities,
+                additional_information: formData.additional_information,
+                value_added_service: formData.value_added_service.request,
+                service_contract: formData.service_contract.service_contract,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                phone_number: formData.company_details.phone_number
+            };
+        }
+
 
         console.log(flattenedData)
 
@@ -119,7 +141,7 @@ const Page: React.FC = () => {
             title: "Roll On/Off",
             content:
                 <>
-                    <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "roll_on_off")} />
+                    <RollOnOffForm onSubmit={(formData: any) => submitForm(formData, "roll_on_off")} />
                 </>
         },
         {
@@ -127,7 +149,7 @@ const Page: React.FC = () => {
             title: "Heavy Lift",
             content:
                 <>
-                    <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "heavy_lift")} />
+                    <RollOnOffForm onSubmit={(formData: any) => submitForm(formData, "heavy_lift")} />
                 </>
         },
         {
@@ -135,7 +157,7 @@ const Page: React.FC = () => {
             title: "Dangerous Cargo Services",
             content:
                 <>
-                    <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "dangerous_cargo_services")} />
+                    <RollOnOffForm dangerous_bool={true} onSubmit={(formData: any) => submitForm(formData, "dangerous_cargo_services")} />
                 </>
         },
 
@@ -145,7 +167,7 @@ const Page: React.FC = () => {
 
     return (
         <div className='flex flex-col w-full'>
-            <div className='mt-20 flex flex-col gap-5'>
+            <div className='mt-20 flex flex-col gap-5 px-4'>
                 <h1 className='text-3xl font-bold'>{t('ocean')}</h1>
                 <p className=''>{t('ocean-p')}</p>
             </div>

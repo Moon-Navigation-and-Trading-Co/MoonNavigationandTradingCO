@@ -12,7 +12,7 @@ const PortCard = ({ control }: { control: any }) => {
     return (
         <div className="">
             <h1 className='text-xl font-semibold'>{t('vessel')}</h1>
-            <div className='pt-8 grid md:grid-cols-3 gap-5 p-4 '>
+            <div className='pt-8 grid gap-5 p-4 '>
 
                 {/* From Field */}
                 <FormItem>
@@ -55,14 +55,17 @@ const PortCard = ({ control }: { control: any }) => {
                             control={control}
                             name="vessel.imo"
                             render={({ field, fieldState: { error } }) => (
-                                <Input
-                                    className="max-w-[200px] border-2 rounded-xl"
-                                    type="number"
-                                    placeholder="IMO Number"
-                                    {...field}
-                                    value={field.value || ''}
-                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                                />
+                                <>
+                                    <Input
+                                        className="max-w-[300px] border-2 rounded-xl no-spinner"
+                                        type="number"
+                                        placeholder="IMO Number"
+                                        {...field}
+                                        value={field.value || ''}
+                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
                             )}
                         />
                     </FormControl>

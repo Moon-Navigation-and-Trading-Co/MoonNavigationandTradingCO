@@ -8,17 +8,20 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import RoutingCard from './routing-card-variant-2';
-import CommoditiesCard from './commodities-card-variant-3';
+import CommoditiesCard from './commodities-card-variant-7';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import DatesCard from './dates-card';
 import { userInfo } from 'os';
 import { Textarea } from './ui/textarea';
 
-
+interface RollOnOffFormProps {
+    onSubmit: (data: any) => void;
+    dangerous_bool?: boolean | null; // Optional prop that can be boolean or null
+}
 
 // 1. Define a type-safe form handler using z.infer
-const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool = false }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
 
@@ -28,7 +31,7 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
             from: z.string().min(1, { message: t("From") }),
             to: z.string().min(1, { message: t("To") }),
         })),
-        commodities: z.object({
+        commodities: z.array(z.object({
             type: z.string().min(1, { message: t("Required") }),
             dangerous: z.boolean().optional(),
             details: z.string().optional(),
@@ -39,8 +42,8 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
             file: z.string().optional().refine(value => {
                 return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
             }, { message: t("File") }),
-            additional_information: z.string().optional(),
-        }),
+        })),
+        additional_information: z.string().optional(),
         dates: z.object({
             effective_date: z.string().min(1, { message: t("Date") }).refine(value => {
                 return !isNaN(Date.parse(value)); // Ensure valid date
@@ -77,15 +80,17 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 effective_date: '',
                 expiry_date: ''
             },
-            commodities: {
-                dangerous: false,
+            commodities: [{
+                type: '',
+                dangerous: dangerous_bool,
+                details: '',
                 length: null,
                 width: null,
                 height: null,
                 weight: null,
                 file: '',
                 additional_information: ''
-            },
+            }],
             value_added_service: {
                 request: ""
             },
@@ -120,8 +125,7 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
-                {/* Commodities Section */}
-                <CommoditiesCard control={form.control} />
+                <CommoditiesCard control={form.control} dangerous_bool={dangerous_bool || false} />
 
                 {/* Dates */}
                 <DatesCard control={form.control} />
@@ -199,4 +203,4 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
     );
 };
 
-export default ProjectCargoServicesForm;
+export default RollOnOffForm;

@@ -1,5 +1,6 @@
 import { boolean, timestamp, pgSchema, pgTable, text, numeric, uuid, date, jsonb } from "drizzle-orm/pg-core";
 import { Weight } from "lucide-react";
+import { json } from "stream/consumers";
 
 // Since `auth` schema and `auth.users` table already exist, you can directly reference them
 const authUsers = pgSchema("auth").table("users", {
@@ -161,7 +162,9 @@ export const containerInlandServicesTable = pgTable("container_inland_services",
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
-    phone_number: text("phone_number").notNull(),              // Company phone number
+    additional_email: text("additional_email"),      // Additional email address
+    phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),              // Company phone number
 
     // Container details
     container_type: text("container_type").notNull(),          // Container type (e.g., dry, refrigerated)
@@ -217,7 +220,9 @@ export const lessThanContainerLoad = pgTable("less_than_container_load", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
-    phone_number: text("phone_number").notNull(),              // Company phone number
+    additional_email: text("additional_email"),      // Additional email address
+    phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),              // Company phone number
 
 });
 
@@ -268,7 +273,9 @@ export const standardContainer = pgTable("standard_container", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
-    phone_number: text("phone_number").notNull(),              // Company phone number
+    additional_email: text("additional_email"),      // Additional email address
+    phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),              // Company phone number
 
 });
 
@@ -321,7 +328,9 @@ export const oversizedContainer = pgTable("oversized_container", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
-    phone_number: text("phone_number").notNull(),              // Company phone number
+    additional_email: text("additional_email"),      // Additional email address
+    phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),              // Company phone number
 
 });
 
@@ -366,7 +375,9 @@ export const hss = pgTable("handling_stevedoring_storage", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -392,7 +403,9 @@ export const buy_container = pgTable("buy_container", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 })
 
 export const rent_container = pgTable("rent_container", {
@@ -425,7 +438,9 @@ export const rent_container = pgTable("rent_container", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -465,7 +480,9 @@ export const buy_vessel = pgTable("buy_vessel", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
     // Additional Services/Amenities
     additional_services: text("additional_services")
@@ -508,7 +525,9 @@ export const rent_vessel = pgTable("rent_vessel", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
     // Additional Services/Amenities
     additional_services: text("additional_services")
@@ -529,7 +548,7 @@ export const request_for_pda = pgTable("request_for_pda", {
     vessel_type: text("vessel_type").notNull(),
     flag: text("flag"),
     vessel_length: numeric("vessel_length").notNull(),
-    eta: text("eta").notNull(),
+    eta: date("eta").notNull(),
     ship_gross_tonnage: text("ship_gross_tonnage").notNull(),
     ship_net_tonnage: text("ship_net_tonnage").notNull(),
     ship_dead_weight: text("ship_dead_weight").notNull(),
@@ -547,7 +566,9 @@ export const request_for_pda = pgTable("request_for_pda", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -585,7 +606,9 @@ export const sign_crew_members = pgTable("sign_crew_members", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -610,7 +633,9 @@ export const transit_spare_parts = pgTable("transfer_spare_parts", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -635,7 +660,9 @@ export const special_services = pgTable("special_services", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -668,7 +695,9 @@ export const international_trading = pgTable("international_trading", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 
 })
@@ -687,7 +716,9 @@ export const ship_maintenance = pgTable("ship_maintenance", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 // Ship Management
@@ -705,7 +736,9 @@ export const ship_management = pgTable("ship_management", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -717,12 +750,12 @@ export const project_cargo_services = pgTable("project_cargo_services", {
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
     // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
+    routing: jsonb("routing").notNull(), // From location
 
     // Commodity details
-    dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    length: numeric("length").notNull(),                // Length of the goods
+    commodity_type: text("commodity_type").notNull(), // Type
+    dangerous: boolean("dangerous").default(true),     // Dangerous goods
+    commoditiy_details: text("commoditiy_details").notNull(), length: numeric("length").notNull(),                // Length of the goods
     width: numeric("width").notNull(),                  // Width of the goods
     height: numeric("height").notNull(),                // Height of the goods
     weight: numeric("weight").notNull(),                // Weight of the goods
@@ -737,7 +770,7 @@ export const project_cargo_services = pgTable("project_cargo_services", {
     service_contract: numeric("service_contract"),
 
     // VAD
-    vad: boolean("vad").default(false), // Value-added inland container service   
+    value_added_service: text("value_added_service"), // Value-added inland container service   
 
     // Company Details
     company_name: text("company_name").notNull(),              // Company name
@@ -745,7 +778,9 @@ export const project_cargo_services = pgTable("project_cargo_services", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -756,16 +791,10 @@ export const roll_on_off = pgTable("roll_on_off", {
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
     // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
+    routing: jsonb("routing").notNull(), // From location
 
     // Commodity details
-    dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    length: numeric("length").notNull(),                // Length of the goods
-    width: numeric("width").notNull(),                  // Width of the goods
-    height: numeric("height").notNull(),                // Height of the goods
-    weight: numeric("weight").notNull(),                // Weight of the goods
-    file: text("file"),                      // Optional file upload
+    commodities: jsonb("commodities").notNull(),
     additional_information: text("additional_information"), // Additional details
 
     // Dates
@@ -776,7 +805,7 @@ export const roll_on_off = pgTable("roll_on_off", {
     service_contract: numeric("service_contract"),
 
     // VAD
-    vad: boolean("vad").default(false), // Value-added inland container service   
+    value_added_service: text("value_added_service"), // Value-added inland container service   
 
     // Company Details
     company_name: text("company_name").notNull(),              // Company name
@@ -784,7 +813,9 @@ export const roll_on_off = pgTable("roll_on_off", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -795,16 +826,10 @@ export const heavy_lift = pgTable("heavy_lift", {
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
     // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
+    routing: jsonb("routing").notNull(), // From location
 
     // Commodity details
-    dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    length: numeric("length").notNull(),                // Length of the goods
-    width: numeric("width").notNull(),                  // Width of the goods
-    height: numeric("height").notNull(),                // Height of the goods
-    weight: numeric("weight").notNull(),                // Weight of the goods
-    file: text("file"),                      // Optional file upload
+    commodities: jsonb("commodities").notNull(),
     additional_information: text("additional_information"), // Additional details
 
     // Dates
@@ -815,7 +840,7 @@ export const heavy_lift = pgTable("heavy_lift", {
     service_contract: numeric("service_contract"),
 
     // VAD
-    vad: boolean("vad").default(false), // Value-added inland container service   
+    value_added_service: text("value_added_service"), // Value-added inland container service   
 
     // Company Details
     company_name: text("company_name").notNull(),              // Company name
@@ -823,7 +848,9 @@ export const heavy_lift = pgTable("heavy_lift", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
 
 })
 
@@ -834,16 +861,10 @@ export const dangerous_cargo_services = pgTable("dangerous_cargo_services", {
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
     // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
+    routing: jsonb("routing").notNull(), // From location
 
     // Commodity details
-    dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    length: numeric("length").notNull(),                // Length of the goods
-    width: numeric("width").notNull(),                  // Width of the goods
-    height: numeric("height").notNull(),                // Height of the goods
-    weight: numeric("weight").notNull(),                // Weight of the goods
-    file: text("file"),                      // Optional file upload
+    commodities: jsonb("commodities").notNull(),
     additional_information: text("additional_information"), // Additional details
 
     // Dates
@@ -854,7 +875,7 @@ export const dangerous_cargo_services = pgTable("dangerous_cargo_services", {
     service_contract: numeric("service_contract"),
 
     // VAD
-    vad: boolean("vad").default(false), // Value-added inland container service   
+    value_added_service: text("value_added_service"), // Value-added inland container service   
 
     // Company Details
     company_name: text("company_name").notNull(),              // Company name
@@ -862,8 +883,9 @@ export const dangerous_cargo_services = pgTable("dangerous_cargo_services", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
-
+    additional_phone_number: text("additional_phone_number"),
 })
 
 // Inverstor Form

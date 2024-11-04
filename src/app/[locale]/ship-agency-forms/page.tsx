@@ -84,7 +84,9 @@ const Page: React.FC = () => {
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
 
         } else if (formType === "sign_crew_members") {
@@ -104,7 +106,7 @@ const Page: React.FC = () => {
                 hotel_sign_on: formData.crew.hotel_on,
                 hotel_sign_off: formData.crew.hotel_off,
                 hotel_special_req_sign_on: formData.crew.hotel_req_on,
-                hotel_special_req_sign_off: formData.crew.hotel__req_off,
+                hotel_special_req_sign_off: formData.crew.hotel_req_off,
                 transport_sign_on: formData.crew.transportation_on,
                 transport_sign_off: formData.crew.transportation_off,
                 transport_special_req_sign_on: formData.crew.transportation_req_on,
@@ -116,7 +118,9 @@ const Page: React.FC = () => {
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
 
         } else if (formType === "transfer_spare_parts" || "special_services") {
@@ -135,12 +139,13 @@ const Page: React.FC = () => {
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
-
-            console.log(flattenedData + "AAAAAAAAAAAAAAA")
-
         }
+
+        console.log(flattenedData);
 
 
         const { data, error } = await supabase
@@ -148,7 +153,6 @@ const Page: React.FC = () => {
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
-            console.log(error)
             toast({
                 title: "Error",
                 description: "Something went wrong",
@@ -160,9 +164,7 @@ const Page: React.FC = () => {
                 title: "Success",
                 description: "Form Added Successfully",
             })
-            console.log(data)
             router.push('/ship-agency-forms')
-
         }
     };
 
@@ -205,7 +207,7 @@ const Page: React.FC = () => {
 
     return (
         <div className='flex flex-col w-full'>
-            <div className='mt-20 flex flex-col gap-5'>
+            <div className='mt-20 flex flex-col gap-5 px-4'>
                 <h1 className='text-3xl font-bold'>{t('ship-agency')}</h1>
                 <p className=''>{t('ship-agency-p')}</p>
             </div>
