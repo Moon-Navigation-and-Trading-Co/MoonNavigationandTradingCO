@@ -42,7 +42,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     };
 
     const category = [
-        { name: "Air Freight", href: "/learn-more/air-freight" },
+        { name: "Air Freight", href: "/air-freight-forms" },
         {
             name: "Ocean Freight", subCategory: [
                 { name: "Project Cargo", link: "/learn-more/ocean-freight" },
@@ -134,7 +134,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                                         <ChevronRight width={15} />
                                                                     </>
                                                                     :
-                                                                    <Link href={service.href} className="w-full h-full">
+                                                                    <Link href={service.href} onClick={toggleServicesMenu} className="w-full h-full">
                                                                         {service.name}
                                                                     </Link>}
 

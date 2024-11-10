@@ -46,39 +46,32 @@ const Page: React.FC = () => {
     const submitForm = async (formData: any) => {
         // Flatten the formData before inserting into Supabase
         let flattenedData;
+        console.log("AAAA")
 
         flattenedData = {
             user_id: user.id,
 
-            from: formData.routing.from,
-            to: formData.routing.to,
+            routing: formData.routing,
 
-            service_mode: formData.service.service_mode,
-            service_from: formData.service.from,
-            service_to: formData.service.to,
+            ready_to_load: formData.ready_to_load,
 
             transportation_method: formData.transportation.transportation_method,
 
-            temperature: formData.commodities.temperature,
-            dangerous: formData.commodities.dangerous,
-            length: formData.commodities.length,
-            width: formData.commodities.width,
-            height: formData.commodities.height,
-            weight: formData.commodities.weight,
-            file: formData.commodities.file,
-            additional_information: formData.commodities.additional_information,
+            commodities: formData.commodities,
 
             import_service: formData.recommended.import,
             export_service: formData.recommended.export,
 
-            value_added_service: formData.vad.inland_container,
+            value_added_service: formData.value_added_service.service,
 
             company_name: formData.company_details.company_name,
             contact_person_name: formData.company_details.contact_person_name,
             title: formData.company_details.title,
             country_of_origin: formData.company_details.country_of_origin,
             company_email: formData.company_details.company_email,
-            phone: formData.company_details.phone_number
+            additional_email: formData.company_details.additional_email,
+            phone_number: formData.company_details.phone_number,
+            additional_phone_number: formData.company_details.additional_phone_number
         };
 
 
@@ -90,6 +83,7 @@ const Page: React.FC = () => {
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
+            console.error(error);
             toast({
                 title: "Error",
                 description: "Something went wrong",
@@ -121,7 +115,7 @@ const Page: React.FC = () => {
     return (
         <div className='flex flex-col w-full'>
 
-            <div className='mt-20 flex flex-col gap-5'>
+            <div className='mt-20 flex flex-col gap-5 px-4'>
                 <h1 className='text-3xl font-bold'>{t('air')}</h1>
                 <p className=''>{t('air-p')}</p>
             </div>

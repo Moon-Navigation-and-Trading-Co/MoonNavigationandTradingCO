@@ -1,0 +1,1 @@
+ALTER TABLE "air_freight_services" ADD COLUMN "additional_information" text;

@@ -1,6 +1,4 @@
 import { boolean, timestamp, pgSchema, pgTable, text, numeric, uuid, date, jsonb } from "drizzle-orm/pg-core";
-import { Weight } from "lucide-react";
-import { json } from "stream/consumers";
 
 // Since `auth` schema and `auth.users` table already exist, you can directly reference them
 const authUsers = pgSchema("auth").table("users", {
@@ -27,41 +25,37 @@ export const airFreightServicesTable = pgTable("air_freight_services", {
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
 
     // Routing details
-    from: text("from").notNull(),
-    to: text("to").notNull(),
+    routing: jsonb("routing").notNull(), // From location
 
-    // Service details
-    service_mode: text("service_mode").notNull(), // Enum-like with values 'cy' or 'sd'
-    service_from: text("service_from").notNull(),
-    service_to: text("service_to").notNull(),
+    // Ready to load date
+    ready_to_load: date("ready_to_load").notNull(),
 
     // Transportation details
     transportation_method: text("transportation_method").notNull(), // Enum-like with values 'standard' or 'uld'
 
     // Commodity details
-    temperature: boolean("temperature").default(false),
-    dangerous: boolean("dangerous").default(false),
-    length: numeric("length").notNull(),
-    width: numeric("width").notNull(),
-    height: numeric("height").notNull(),
-    weight: numeric("weight").notNull(),
-    file: text("file"), // File field, allowing various file types
-    additional_information: text("additional_information"),
+    commodities: jsonb("commodities").notNull(), // From location
+
+    additional_information: text("additional_information"), // Additional details
+
 
     // Recommended actions
     import: boolean("import_service").default(false),
     export: boolean("export_service").default(false),
 
     // VAD details
-    inland_container: boolean("value_added_service").default(false),
+    value_added_service: text("value_added_service"),
 
     // Company details
     company_name: text("company_name").notNull(),
     contact_person_name: text("contact_person_name").notNull(),
     title: text("title").notNull(),
     country_of_origin: text("country_of_origin").notNull(),
-    company_email: text("company_email").notNull(),
-    phone: text("phone").notNull(),
+    company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
+    phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),              // Company phone number
+
 });
 
 // Inland Services
@@ -95,7 +89,9 @@ export const localInlandServicesTable = pgTable("local_inland_services", {
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
-    phone: text("phone").notNull(),                            // Company phone number
+    additional_email: text("additional_email"),      // Additional email address
+    phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),              // Company phone number
 });
 
 // Inland Services
@@ -129,7 +125,9 @@ export const InternationalInlandServicesTable = pgTable("international_inland_se
     title: text("title").notNull(),                            // Contact person title
     country_of_origin: text("country_of_origin").notNull(),    // Country of origin
     company_email: text("company_email").notNull(),            // Company email address
-    phone: text("phone").notNull(),                            // Company phone number
+    additional_email: text("additional_email"),      // Additional email address
+    phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),              // Company phone number
 });
 
 // Inland Services

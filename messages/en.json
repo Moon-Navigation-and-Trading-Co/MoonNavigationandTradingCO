@@ -158,9 +158,12 @@
         "additionalEmail": "Additional Email",
         "additionalPhoneNumber": "Additional Number",
         "Remove": "Remove",
-        "addCargo": "Add More Cargo Details"
+        "addCargo": "Add More Cargo Details",
+        "ready-to-load": "Ready to Load",
+        "value-added-service": "Value Added Service"
     },
     "Inland-errors": {
+        "value-added-service": "Value Added Service",
         "Required": "This field is required",
         "addCargo": "Add More Cargo Details",
         "Number": "Invalid number format",
