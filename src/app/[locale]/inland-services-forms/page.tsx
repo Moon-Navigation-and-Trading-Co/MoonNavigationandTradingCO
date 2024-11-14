@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import FormTabs from '@/components/form-tabs';
 import InternationalInlandServicesForm from '@/components/international-inland-services-form';
-import LocalInlandServicesForm from '@/components/local-inland-services-form';
 import ContainerInlandServicesForm from '@/components/container-inland-services-form';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast"
