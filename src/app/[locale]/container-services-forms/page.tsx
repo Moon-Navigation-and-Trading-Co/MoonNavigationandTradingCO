@@ -5,6 +5,7 @@ import FormTabs from '@/components/form-tabs';
 import OversizedContainerCard from '@/components/oversized-container-form';
 import LessThanContainerForm from '@/components/less-than-container-form';
 import StandardContainerCard from '@/components/standard-container-form';
+import ContainerInlandServicesForm from '@/components/container-inland-services-form';
 import HSSCard from '@/components/hss-form';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast"
@@ -62,11 +63,7 @@ const Page: React.FC = () => {
 
             flattenedData = {
                 user_id: user.id,
-                from: formData.routing.from,
-                to: formData.routing.to,
-                pick_up: formData.routing.pickup,
-                delivery: formData.routing.delivery,
-                location_information: formData.routing.location_information,
+                routing: formData.routing,
 
                 type_of_commodity: formData.commodities.type_of_commodity,
                 validity: formData.commodities.validity,
@@ -78,46 +75,29 @@ const Page: React.FC = () => {
                 import_service: formData.recommended.import,
                 export_service: formData.recommended.export,
 
-                vad: formData.vad.vad,
+                vad: formData.vad.inland_container,
 
                 company_name: formData.company_details.company_name,
                 contact_person_name: formData.company_details.contact_person_name,
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         } else if (formType === "standard_container") {
 
             flattenedData = {
                 user_id: user.id,
 
-                from: formData.routing.from,
-                to: formData.routing.to,
+                routing: formData.routing,
 
-                service_mode: formData.service.service_mode,
-                service_from: formData.service.from,
-                service_to: formData.service.to,
-
-                temperature: formData.commodities.temperature,
-                dangerous: formData.commodities.dangerous,
-                file: formData.commodities.file,
-                additional_information: formData.commodities.additional_information,
-
-                container_type: formData.container.container_type,
-                container_number: formData.container.container_number,
-                container_weight: formData.container.container_weight,
-
-                import_return_or_triangulation: formData.container.triangulation,
-                own_container: formData.container.shippers,
-
-
-                import_service: formData.recommended.import,
-                export_service: formData.recommended.export,
+                commodities: formData.commodities,
 
                 value_added_services: formData.vad.inland_container,
 
-                service_contract: formData.service.service_contract || null,
+                service_contract: formData.service_contract || null,
 
                 effective_date: formData.dates.effective_date,
                 expiry_date: formData.dates.expiry_date,
@@ -127,38 +107,24 @@ const Page: React.FC = () => {
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         } else if (formType === "oversized_container") {
 
             flattenedData = {
                 user_id: user.id,
 
-                from: formData.routing.from,
-                to: formData.routing.to,
+                routing: formData.routing,
 
-                service_mode: formData.service.service_mode,
-                service_from: formData.service.from,
-                service_to: formData.service.to,
+                commodities: formData.commodities,
 
-                dangerous: formData.commodities.dangerous,
-                length: formData.commodities.length,
-                width: formData.commodities.width,
-                height: formData.commodities.height,
-                weight: formData.commodities.weight,
-                file: formData.commodities.file,
-                additional_information: formData.commodities.additional_information,
-
-                container_type: formData.container.container_type,
-                container_number: formData.container.container_number,
-                container_weight: formData.container.container_weight,
-
-                import_return_or_triangulation: formData.container.triangulation,
-                own_container: formData.container.shippers,
+                shipment_type: formData.shipment_type,
 
                 value_added_services: formData.vad.inland_container,
 
-                service_contract: formData.service.service_contract || null,
+                service_contract: formData.service_contract,
 
                 effective_date: formData.dates.effective_date,
                 expiry_date: formData.dates.expiry_date,
@@ -168,46 +134,45 @@ const Page: React.FC = () => {
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         } else if (formType === "handling_stevedoring_storage") {
 
             flattenedData = {
                 user_id: user.id,
 
-                location: formData.location.location,
-                detailed: formData.location.detailed,
+                location: formData.location,
 
-                dangerous: formData.commodities.dangerous,
-                temperature: formData.commodities.temperature,
-                oversized: formData.commodities.oversized,
-
-                length: formData.commodities.length,
-                width: formData.commodities.width,
-                height: formData.commodities.height,
-                weight: formData.commodities.weight,
-                file: formData.commodities.file,
-                additional_information: formData.commodities.additional_information,
-
-                handling: formData.hss.handling,
-                loading: formData.hss.loading,
-                discharging: formData.hss.discharging,
-                lashing: formData.hss.lashing,
-                unlashing: formData.hss.unlashing,
-                safekeeping_before: formData.hss.before,
-                safekeeping_after: formData.hss.after,
-                temporary_storage: formData.hss.temporary,
-
-                container_type: formData.container.container_type,
-                container_number: formData.container.container_number,
-                container_weight: formData.container.container_weight,
+                commodities: formData.commodities,
 
                 company_name: formData.company_details.company_name,
                 contact_person_name: formData.company_details.contact_person_name,
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
+            };
+        }
+        else if (formType === "container_inland_services") {
+            flattenedData = {
+                user_id: user.id,
+                routing: formData.routing,
+                additional_information: formData.additional_information,
+                commodities: formData.commodities,
+                inland_container: formData.vad.inland_container,
+                service_contract: formData.service_contract.container,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         }
 
@@ -266,6 +231,14 @@ const Page: React.FC = () => {
             content:
                 <>
                     <HSSCard onSubmit={(formData: any) => submitForm(formData, "handling_stevedoring_storage")} />
+                </>
+        },
+        {
+            id: "inland",
+            title: "Inland Container Transportation",
+            content:
+                <>
+                    <ContainerInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "container_inland_services")} />
                 </>
         },
     ]

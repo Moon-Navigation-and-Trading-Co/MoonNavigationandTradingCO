@@ -302,6 +302,41 @@
       "when": 1731599591615,
       "tag": "0042_fluffy_clint_barton",
       "breakpoints": true
+    },
+    {
+      "idx": 43,
+      "version": "7",
+      "when": 1731605947496,
+      "tag": "0043_fantastic_kulan_gath",
+      "breakpoints": true
+    },
+    {
+      "idx": 44,
+      "version": "7",
+      "when": 1731613114316,
+      "tag": "0044_dark_swordsman",
+      "breakpoints": true
+    },
+    {
+      "idx": 45,
+      "version": "7",
+      "when": 1731617584764,
+      "tag": "0045_slippery_iceman",
+      "breakpoints": true
+    },
+    {
+      "idx": 46,
+      "version": "7",
+      "when": 1731617691104,
+      "tag": "0046_abandoned_skullbuster",
+      "breakpoints": true
+    },
+    {
+      "idx": 47,
+      "version": "7",
+      "when": 1731622405944,
+      "tag": "0047_petite_machine_man",
+      "breakpoints": true
     }
   ]
 }

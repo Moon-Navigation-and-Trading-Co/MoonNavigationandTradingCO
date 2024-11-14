@@ -61,6 +61,7 @@
     },
     "Inland-forms": {
         "routing": "Routing",
+        "other": "Other",
         "addRoute": "Add Additional Location",
         "vessel": "Vessel",
         "dates": "Dates",
@@ -163,9 +164,24 @@
         "value-added-service": "Value Added Service",
         "commodity": "Commodity",
         "Date": "Date",
-        "inland-containter-transportation": "Inland Container Transportation"
+        "inland-containter-transportation": "Inland Container Transportation",
+        "pick-up": "Pick Up Required",
+        "delivery": "Delivery Required",
+        "location-info": "Location Information",
+        "service-contract": "Service Contract",
+        "recommended-1": "Standard Export Customs clearance",
+        "recommended-2": "Standard Import Customs clearance",
+        "recommednedServices": "Recommended Services",
+        "in-gauge": "In Gauge",
+        "out-gauge": "Out of Gauge",
+        "break-bulk": "Break Bulk",
+        "commoditity-notes": "An additional surcharge is applicable if the weight of the cargo exceeds 28,000 kg subject to terminal approval"
     },
     "Inland-errors": {
+        "service-contract": "Service Contract",
+        "in-gauge": "In Gauge",
+        "out-gauge": "Out of Gauge",
+        "break-bulk": "Break Bulk",
         "value-added-service": "Value Added Service",
         "commodity": "Commodity",
         "inland-containter-transportation": "Inland Container Transportation",

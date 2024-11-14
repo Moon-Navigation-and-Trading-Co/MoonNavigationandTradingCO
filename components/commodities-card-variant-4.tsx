@@ -117,10 +117,10 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     <RadioGroup
                                         onValueChange={field.onChange}
                                         value={field.value}
-                                        className="flex flex-col space-y-2"
+                                        className="flex flex-col"
                                     >
                                         {/* Container yard (CY) */}
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
+                                        <FormItem className=" items-center space-x-3 space-y-0">
                                             <FormControl>
                                                 <RadioGroupItem value="box" />
                                             </FormControl>
@@ -128,7 +128,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                         </FormItem>
 
                                         {/* Store door (SD) */}
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
+                                        <FormItem className=" items-center space-x-3 space-y-0">
                                             <FormControl>
                                                 <RadioGroupItem value="pallet" />
                                             </FormControl>
@@ -159,7 +159,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     className="space-y-2 grid grid-cols-2"
                                 >
                                     {/* Container yard (CY) */}
-                                    <FormItem className="flex items-center space-x-3 space-y-0">
+                                    <FormItem className=" items-center space-x-3 space-y-0">
                                         <FormControl>
                                             <RadioGroupItem value="30" />
                                         </FormControl>
@@ -167,7 +167,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     </FormItem>
 
                                     {/* Store door (SD) */}
-                                    <FormItem className="flex items-center space-x-3 space-y-0">
+                                    <FormItem className=" items-center space-x-3 space-y-0">
                                         <FormControl>
                                             <RadioGroupItem value="60" />
                                         </FormControl>
@@ -175,7 +175,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     </FormItem>
 
                                     {/* Store door (SD) */}
-                                    <FormItem className="flex items-center space-x-3 space-y-0">
+                                    <FormItem className=" items-center space-x-3 space-y-0">
                                         <FormControl>
                                             <RadioGroupItem value="90" />
                                         </FormControl>
@@ -183,7 +183,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     </FormItem>
 
                                     {/* Store door (SD) */}
-                                    <FormItem className="flex items-center space-x-3 space-y-0">
+                                    <FormItem className=" items-center space-x-3 space-y-0">
                                         <FormControl>
                                             <RadioGroupItem value="no" />
                                         </FormControl>

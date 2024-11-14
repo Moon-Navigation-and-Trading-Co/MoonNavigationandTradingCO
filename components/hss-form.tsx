@@ -22,30 +22,23 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
-        location: z.object({
+        location: z.array(z.object({
             location: z.string().min(1, { message: t("Location") }),
             detailed: z.string().min(1, { message: t("Detailed") }),
-        }),
-        commodities: z.object({
+        })),
+        commodities: z.array(z.object({
+            type: z.string().min(1, { message: t("Type") }),
+            temperature: z.boolean().optional(),
             dangerous: z.boolean().optional(),
+            oversized: z.boolean().optional(),
+            details: z.string().optional(),
             length: z.number().min(1, { message: t("Length") }),
             width: z.number().min(1, { message: t("Width") }),
             height: z.number().min(1, { message: t("Height") }),
             weight: z.number().min(1, { message: t("Weight") }),
-            file: z.string().optional().refine(value => {
-                return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
-            }, { message: t("File") }),
-            additional_information: z.string().optional(),
-        }),
-        container: z.object({
             container_type: z.string().min(1, { message: t("ContainerType") }),
             container_number: z.number().min(1, { message: t("ContainerNo") }),
             container_weight: z.number().min(1, { message: t("ContainerWeight") }),
-            triangulation: z.boolean().optional(),
-            shippers: z.boolean().optional(),
-        }),
-        //hss
-        hss: z.object({
             handling: z.boolean().optional(),
             loading: z.boolean().optional(),
             discharging: z.boolean().optional(),
@@ -54,14 +47,21 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
             before: z.boolean().optional(),
             after: z.boolean().optional(),
             temporary: z.boolean().optional(),
-        }),
+            file: z.string().optional().refine(value => {
+                return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
+            }, { message: t("File") }),
+            additional_information: z.string().optional(),
+
+        })),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("CompanyName") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
+            additional_email: z.string().email().optional(),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            additional_phone_number: z.string().optional(),
         })
         // Add more sections as needed
     });
@@ -69,26 +69,28 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            routing: {
-                from: '',
-                to: '',
-            },
-            service: {
-                service_mode: 'cy',
-                from: '',
-                to: ''
-            },
-            transportation: {
-                transportation_method: 'standard'
-            },
-            recommended: {
-                import: false,
-                export: false,
-            },
+            location: [{
+                location: '',
+                detailed: '',
+            }],
             commodities: {
                 temperature: false,
                 dangerous: false,
                 oversized: false,
+                handling: false,
+                loading: false,
+                discharging: false,
+                lashing: false,
+                unlashing: false,
+                before: false,
+                after: false,
+                temporary: false,
+                type: '',
+                details: '',
+                other: '',
+                container_type: '',
+                container_number: 0,
+                container_weight: 0,
                 length: 0,
                 width: 0,
                 height: 0,
@@ -96,21 +98,15 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                 file: '',
                 additional_information: ''
             },
-            container: {
-                container_type: '',
-                container_number: 0,
-                container_weight: 0
-            },
-            vad: {
-                inland_container: false
-            },
             company_details: {
                 company_name: '',
                 contact_person_name: '',
                 title: '',
                 country_of_origin: '',
                 company_email: '',
-                phone_number: ''
+                additional_email: '',
+                phone_number: '',
+                additional_phone_number: ''
             }
         }
     });

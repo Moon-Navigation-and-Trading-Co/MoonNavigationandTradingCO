@@ -1,0 +1,1 @@
+ALTER TABLE "oversized_container" ADD COLUMN "shipment_type" text NOT NULL;

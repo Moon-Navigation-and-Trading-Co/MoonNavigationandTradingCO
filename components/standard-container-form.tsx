@@ -22,43 +22,38 @@ const StandardContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
-        routing: z.object({
+        routing: z.array(z.object({
             from: z.string().min(1, { message: t("From") }),
+            services_mode_from: z.string().default('cy'),
             to: z.string().min(1, { message: t("To") }),
-        }),
-        service: z.object({
-            service_mode: z.enum(["cy", "sd"], {
-                required_error: "You need to select a type.",
-            }),
-            from: z.string().optional(),
-            to: z.string().optional(),
-        }),
-        commodities: z.object({
+            services_mode_to: z.string().default('cy'),
+        })),
+        commodities: z.array(z.object({
+            type: z.string().min(1, { message: t("Type") }),
+            oversized: z.boolean().optional(),
+            details: z.string().optional(),
             temperature: z.boolean().optional(),
             dangerous: z.boolean().optional(),
             file: z.string().optional().refine(value => {
                 return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
             }, { message: t("File") }),
             additional_information: z.string().optional(),
-        }),
-        container: z.object({
             container_type: z.string().min(1, { message: t("ContainerType") }),
-            container_number: z.number().min(1, { message: t("ContainerNo") }),
+            container_no: z.number().min(1, { message: t("ContainerNo") }),
             container_weight: z.number().min(1, { message: t("ContainerWeight") }),
             triangulation: z.boolean().optional(),
             shippers: z.boolean().optional(),
-        }),
-        recommended: z.object({
             import: z.boolean().optional(),
             export: z.boolean().optional()
-        }),
+        })),
         //dates
         dates: z.object({
             effective_date: z.string().min(1, { message: t("Date") }),
             expiry_date: z.string().min(1, { message: t("Date") }),
         }),
+        service_contract: z.string().optional(),
         vad: z.object({
-            inland_container: z.boolean().optional(),
+            inland_container: z.string().optional(),
         }),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("CompanyName") }),
@@ -66,7 +61,9 @@ const StandardContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
+            additional_email: z.string().email().optional(),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            additional_phone_number: z.string().optional(),
         })
         // Add more sections as needed
     });
@@ -74,40 +71,39 @@ const StandardContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            routing: {
+            routing: [{
                 from: '',
+                services_mode_from: 'cy',
                 to: '',
-            },
-            service: {
-                service_mode: 'cy',
-                from: '',
-                to: ''
-            },
-            transportation: {
-                transportation_method: 'standard'
-            },
-            recommended: {
+                services_mode_to: 'cy'
+            }],
+            commodities: [{
+                type: '',
+                triangulation: false,
+                shippers: false,
                 import: false,
                 export: false,
-            },
-            commodities: {
+                container_type: '',
+                container_number: '',
+                container_weight: '',
+                details: '',
                 temperature: false,
                 dangerous: false,
                 oversized: false,
-                length: 0,
-                width: 0,
-                height: 0,
-                weight: 0,
+                length: '',
+                width: '',
+                height: '',
+                weight: '',
                 file: '',
                 additional_information: ''
+            }],
+            dates: {
+                effective_date: '',
+                expiry_date: ''
             },
-            container: {
-                container_type: '',
-                container_number: 0,
-                container_weight: 0
-            },
+            service_contract: '',
             vad: {
-                inland_container: false
+                inland_container: ''
             },
             company_details: {
                 company_name: '',
@@ -115,7 +111,9 @@ const StandardContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                 title: '',
                 country_of_origin: '',
                 company_email: '',
-                phone_number: ''
+                additional_email: '',
+                phone_number: '',
+                additional_phone_number: ''
             }
         }
     });
@@ -131,46 +129,55 @@ const StandardContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
-                {/* Service mode */}
-                <ServiceModeCard control={form.control} />
-
                 {/* Commodities Section */}
                 <CommoditiesCard control={form.control} />
 
-                {/* Recommended Services */}
-                <RecommendedServicesCard control={form.control} />
+                {/* Dates */}
+                <DatesCard control={form.control} />
 
-                {/* Value Added Service */}
-                <FormItem className='pb-4'>
+                {/* Service Contract */}
+                <FormItem>
+                    <FormLabel>{t('service-contract')}</FormLabel>
                     <FormControl>
-                        <div>
-                            <h1 className='text-xl font-semibold mb-4'>Value Added Service</h1>
-                            <div className='flex gap-5 p-4 items-center'>
-                                <Controller
-                                    control={form.control}
-                                    name="vad.inland_container"
-                                    render={({ field }) => (
-                                        <>
-                                            <Checkbox
-                                                checked={field.value}
-                                                onCheckedChange={field.onChange}
-                                                id="inland_container"
-                                            />
-                                            <label>
-                                                Inland Container Services
-
-                                            </label>
-                                        </>
-
-                                    )}
-                                />
-                            </div>
-                        </div>
+                        <Controller
+                            control={form.control}
+                            name={`service_contract`}
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input
+                                        className="max-w-[300px] border-2 rounded-xl"
+                                        placeholder="Insert additional services needed"
+                                        {...field}
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
+                            )}
+                        />
                     </FormControl>
                 </FormItem>
 
-                {/* Dates */}
-                <DatesCard control={form.control} />
+                {/* Value Added Service */}
+                <FormItem>
+                    <FormLabel>{t('value-added-service')}</FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={form.control}
+                            name={`vad.inland_container`}
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input
+                                        className="max-w-[300px] border-2 rounded-xl"
+                                        placeholder="Insert additional services needed"
+                                        {...field}
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
+                            )}
+                        />
+                    </FormControl>
+                </FormItem>
+
+
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />

@@ -7,7 +7,7 @@ import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
-import RoutingCard from './routing-card-variant-1';
+import RoutingCard from './routing-card-variant-3';
 import RecommendedServicesCard from './recommended-card';
 import CommoditiesCard from './commodities-card-variant-4';
 import CompanyDetailsCard from './company-details-card';
@@ -24,13 +24,13 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
-        routing: z.object({
+        routing: z.array(z.object({
             from: z.string().min(1, { message: t("From") }),
             to: z.string().min(1, { message: t("To") }),
             pick_up: z.boolean().optional(),
             delivery: z.boolean().optional(),
             location_information: z.string().optional()
-        }),
+        })),
         commodities: z.object({
             type_of_commodity: z.string().min(1, { message: t("Type") }),
             gross_volume: z.number().min(1, { message: t("gross_volume") }),
@@ -44,7 +44,7 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
             export: z.boolean().optional(),
         }),
         vad: z.object({
-            inland_container: z.boolean().optional(),
+            inland_container: z.string().optional(),
         }),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("CompanyName") }),
@@ -60,21 +60,20 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            routing: {
+            routing: [{
                 from: '',
                 to: '',
-            },
-            dates: {
-                effective_date: '',
-                expiry_date: ''
-            },
+                pick_up: false,
+                delivery: false,
+                location_information: ''
+            }],
             commodities: {
                 dangerous: false,
                 file: '',
                 additional_information: ''
             },
             vad: {
-                inland_container: false
+                inland_container: ''
             },
             service_contract: {
                 service_contract: ''
@@ -107,8 +106,6 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
-                {/* Pick up/ Delivery */}
-                <PickupDeliveryCard control={form.control} />
 
                 {/* Commodities Section */}
                 <CommoditiesCard control={form.control} />
@@ -117,30 +114,23 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                 <RecommendedServicesCard control={form.control} />
 
                 {/* Value Added Service */}
-                <FormItem className='pb-4'>
+                <FormItem>
+                    <FormLabel>{t('value-added-service')}</FormLabel>
                     <FormControl>
-                        <div>
-                            <h1 className='text-xl font-semibold mb-4'>Value Added Service</h1>
-                            <div className='flex gap-5 p-4 items-center'>
-                                <Controller
-                                    control={form.control}
-                                    name="vad.inland_container"
-                                    render={({ field }) => (
-                                        <>
-                                            <Checkbox
-                                                checked={field.value}
-                                                onCheckedChange={field.onChange}
-                                                id="inland_container"
-                                                name='inland_container'
-                                            />
-                                            <label htmlFor='inland_container'>
-                                                Inland Container Services
-                                            </label>
-                                        </>
-                                    )}
-                                />
-                            </div>
-                        </div>
+                        <Controller
+                            control={form.control}
+                            name={`vad.inland_container`}
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input
+                                        className="max-w-[300px] border-2 rounded-xl"
+                                        placeholder="Insert additional services needed"
+                                        {...field}
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
+                            )}
+                        />
                     </FormControl>
                 </FormItem>
 

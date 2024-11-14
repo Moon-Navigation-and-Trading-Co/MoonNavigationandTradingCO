@@ -169,12 +169,7 @@ export const lessThanContainerLoad = pgTable("less_than_container_load", {
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
     // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
-    pick_up: boolean("pick_up").default(false),
-    delivery: boolean("delivery").default(false),
-    location_information: text("location_information"),
-
+    routing: jsonb("routing").notNull(),
 
     // Commodity details
     type_of_commodity: text("type_of_commodity").notNull(), // Type
@@ -189,7 +184,7 @@ export const lessThanContainerLoad = pgTable("less_than_container_load", {
     additional_information: text("additional_information"), // Additional details
 
     // Value-added (VAD) details
-    vad: boolean("vad").default(false), // Value-added inland container service
+    vad: text("vad"), // Value-added inland container service
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name
@@ -210,27 +205,11 @@ export const standardContainer = pgTable("standard_container", {
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
     // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
-
-    service_mode: text("service_mode").notNull(), // Enum-like with values 'cy' or 'sd'
-    service_from: text("service_from").notNull(),
-    service_to: text("service_to").notNull(),
+    routing: jsonb("routing").notNull(),
 
     // Commodity details
-    temperature: boolean("temperature").default(false), // Temperature-sensitive shipment
-    dangerous: boolean("dangerous").default(false),     // Dangerous goods
+    commodities: jsonb("commodities").notNull(),
 
-    // Container details
-    container_type: text("container_type").notNull(),          // Container type (e.g., dry, refrigerated)
-    container_number: numeric("container_number").notNull(),   // Number of containers
-    container_weight: numeric("container_weight").notNull(),   // Container weight
-    own_container: boolean("own_container"),
-    import_return_or_triangulation: boolean("import_return_or_triangulation"),
-
-    // Recommedned Services
-    import_service: boolean("import_service").default(false),
-    export_service: boolean("export_service").default(false),
     file: text("file"),
     additional_information: text("additional_information"), // Additional details
 
@@ -263,27 +242,12 @@ export const oversizedContainer = pgTable("oversized_container", {
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
     // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
+    routing: jsonb("routing").notNull(),
 
-    // Service Mode
-    service_mode: text("service_mode").notNull(), // Enum-like with values 'cy' or 'sd'
-    service_from: text("service_from").notNull(),
-    service_to: text("service_to").notNull(),
+    // Commodity details
+    commodities: jsonb("commodities").notNull(),
 
-    // Cargo details
-    dangerous: boolean("dangerous").default(false),          // Container type (e.g., dry, refrigerated)
-    container_type: text("container_type").notNull(),
-    container_number: numeric("container_number").notNull(),   // Number of containers
-    container_weight: numeric("container_weight").notNull(),   // Container weight
-    own_container: boolean("own_container"),
-    import_return_or_triangulation: boolean("import_return_or_triangulation"),
-
-    // cargo dimensions if oversized
-    length: numeric("length").notNull(),
-    width: numeric("width").notNull(),
-    height: numeric("height").notNull(),
-    weight: numeric("weight").notNull(),
+    shipment_type: text("shipment_type").notNull(),
 
     // Recommedned Services
     file: text("file"),
@@ -315,36 +279,12 @@ export const hss = pgTable("handling_stevedoring_storage", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
-    location: text("location").notNull(), // Enum-like with values 'cy' or 'sd'
-    detailed: text("detailed").notNull(),
 
-    // Cargo details
-    dangerous: boolean("dangerous").default(false),
-    oversized: boolean("oversized").default(false),
-    temperature: boolean("temperature").default(false),
-    container_type: text("container_type").notNull(),
-    container_number: numeric("container_number").notNull(),   // Number of containers
-    container_weight: numeric("container_weight").notNull(),   // Container weight
+    // Routing details
+    location: jsonb("location").notNull(),
 
-    // cargo dimensions if oversized
-    length: numeric("length").notNull(),
-    width: numeric("width").notNull(),
-    height: numeric("height").notNull(),
-    weight: numeric("weight").notNull(),
-
-    // Recommedned Services
-    file: text("file"),
-    additional_information: text("additional_information"), // Additional details
-
-    // Handling/Stevedoring Requirements
-    handling: boolean("handling").default(false),
-    loading: boolean("loading").default(false),
-    discharging: boolean("discharging").default(false),
-    lashing: boolean("lashing").default(false),
-    unlashing: boolean("unlashing").default(false),
-    safekeeping_before: boolean("safekeeping_before").default(false),
-    safekeeping_after: boolean("safekeeping_after").default(false),
-    temporary_storage: boolean("temporary_storage").default(false),
+    // Commodity details
+    commodities: jsonb("commodities").notNull(),
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name

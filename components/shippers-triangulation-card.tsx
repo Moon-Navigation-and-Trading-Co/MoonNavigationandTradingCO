@@ -14,7 +14,7 @@ const ShippersTriangulationCard = ({ control }: { control: any }) => {
         <div className="flex flex-col w-full h-full">
             <div className="grid grid-cols-2">
                 {/* Checkboxes */}
-                <div className="pt-8 pb-6 flex flex-col gap-3 p-4 col-span-2">
+                <div className=" pb-10 flex flex-col gap-3 p-4 col-span-2">
 
                     {/* Temperature Checkbox */}
                     <div className="flex gap-5 w-full items-center">

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Minus, RemoveFormatting } from "lucide-react";
 import { Button } from "./ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Checkbox } from "./ui/checkbox";
 
 const RoutingCard = ({ control }: { control: any }) => {
     const t = useTranslations('Inland-forms');
@@ -14,6 +15,11 @@ const RoutingCard = ({ control }: { control: any }) => {
         control,
         name: "routing",
     });
+
+    // Ensure there's at least one routing pair in defaultValues
+    const defaultValues = {
+        routing: [{ from: '', to: '', services_mode_from: 'cy', services_mode_to: 'cy' }],
+    };
 
 
     return (
@@ -46,45 +52,27 @@ const RoutingCard = ({ control }: { control: any }) => {
                                 </FormControl>
                             </FormItem>
 
-                            <FormItem className="space-y-3">
-                                <FormLabel>Services mode <span className="text-muted-foreground">(from)</span></FormLabel>
-                                <FormControl>
-                                    <Controller
-                                        control={control}
-                                        name={`routing.${index}.services_mode_from`}
-                                        render={({ field, fieldState: { error } }) => (
-                                            <>
-                                                <RadioGroup
-                                                    onValueChange={field.onChange}
-                                                    defaultValue={"cy"}
-                                                    className="flex flex-col space-y-1"
-                                                >
-                                                    <FormItem className="flex items-center space-x-3 space-y-0">
-                                                        <FormControl>
-                                                            <RadioGroupItem value="cy" />
-                                                        </FormControl>
-                                                        <FormLabel className="font-normal">
-                                                            Container yard (CY)
-                                                        </FormLabel>
-                                                    </FormItem>
-
-                                                    <FormItem className="flex items-center space-x-3 space-y-0">
-                                                        <FormControl>
-                                                            <RadioGroupItem value="sd" />
-                                                        </FormControl>
-                                                        <FormLabel className="font-normal">
-                                                            Store door (SD)
-                                                        </FormLabel>
-                                                    </FormItem>
-
-                                                </RadioGroup>
-                                            </>
-                                        )}
-                                    />
-
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
+                            <div className="flex gap-5 w-full items-center">
+                                <Controller
+                                    control={control}
+                                    name={`routing.${index}.pick_up`}
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                                id={`routing.${index}.pick_up`}
+                                            />
+                                            <label
+                                                htmlFor={`routing.${index}.pick_up`}
+                                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                            >
+                                                {t('pick-up')}
+                                            </label>
+                                        </>
+                                    )}
+                                />
+                            </div>
 
                         </div>
 
@@ -111,44 +99,49 @@ const RoutingCard = ({ control }: { control: any }) => {
                                 </FormControl>
                             </FormItem>
 
-                            <FormItem className="space-y-3">
-                                <FormLabel>Services mode <span className="text-muted-foreground">(to)</span></FormLabel>
+                            <div className="flex gap-5 w-full items-center">
+                                <Controller
+                                    control={control}
+                                    name={`routing.${index}.delivery`}
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                                id={`routing.${index}.delivery`}
+                                            />
+                                            <label
+                                                htmlFor={`routing.${index}.delivery`}
+                                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                            >
+                                                {t('delivery')}
+                                            </label>
+                                        </>
+                                    )}
+                                />
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <FormItem>
+                                <FormLabel>{t('location-info')}</FormLabel>
                                 <FormControl>
                                     <Controller
                                         control={control}
-                                        name={`routing.${index}.services_mode_to`}
+                                        name={`routing.${index}.location_information`}
                                         render={({ field, fieldState: { error } }) => (
                                             <>
-                                                <RadioGroup
-                                                    onValueChange={field.onChange}
-                                                    defaultValue={"cy"}
-                                                    className="flex flex-col space-y-1"
-                                                >
-                                                    <FormItem className="flex items-center space-x-3 space-y-0">
-                                                        <FormControl>
-                                                            <RadioGroupItem value="cy" />
-                                                        </FormControl>
-                                                        <FormLabel className="font-normal">
-                                                            Container yard (CY)
-                                                        </FormLabel>
-                                                    </FormItem>
-
-                                                    <FormItem className="flex items-center space-x-3 space-y-0">
-                                                        <FormControl>
-                                                            <RadioGroupItem value="sd" />
-                                                        </FormControl>
-                                                        <FormLabel className="font-normal">
-                                                            Store door (SD)
-                                                        </FormLabel>
-                                                    </FormItem>
-
-                                                </RadioGroup>
+                                                <Input
+                                                    className="max-w-[300px] border-2 rounded-xl"
+                                                    placeholder="Address, Post Code"
+                                                    {...field}
+                                                />
+                                                {error && <p className="text-red-500">{error.message}</p>}
                                             </>
                                         )}
                                     />
-
                                 </FormControl>
-                                <FormMessage />
                             </FormItem>
                         </div>
 
