@@ -253,6 +253,55 @@
       "when": 1731199263363,
       "tag": "0035_lying_romulus",
       "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "7",
+      "when": 1731588247130,
+      "tag": "0036_amusing_human_fly",
+      "breakpoints": true
+    },
+    {
+      "idx": 37,
+      "version": "7",
+      "when": 1731588615004,
+      "tag": "0037_brown_mauler",
+      "breakpoints": true
+    },
+    {
+      "idx": 38,
+      "version": "7",
+      "when": 1731589149558,
+      "tag": "0038_moaning_mentallo",
+      "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "7",
+      "when": 1731598027083,
+      "tag": "0039_vengeful_bill_hollister",
+      "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "7",
+      "when": 1731598461801,
+      "tag": "0040_short_cable",
+      "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "7",
+      "when": 1731598690575,
+      "tag": "0041_wakeful_masked_marvel",
+      "breakpoints": true
+    },
+    {
+      "idx": 42,
+      "version": "7",
+      "when": 1731599591615,
+      "tag": "0042_fluffy_clint_barton",
+      "breakpoints": true
     }
   ]
 }

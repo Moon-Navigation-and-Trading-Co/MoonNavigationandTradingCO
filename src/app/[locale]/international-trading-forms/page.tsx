@@ -113,7 +113,7 @@ const Page: React.FC = () => {
 
     return (
         <div className='flex flex-col w-full'>
-            <div className='mt-20 flex flex-col gap-5'>
+            <div className='mt-20 flex flex-col gap-5 px-4'>
                 <h1 className='text-3xl font-bold'>{t('international')}</h1>
                 <p className=''>{t('international-p')}</p>
             </div>

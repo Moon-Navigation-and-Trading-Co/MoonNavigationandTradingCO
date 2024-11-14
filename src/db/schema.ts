@@ -65,19 +65,13 @@ export const localInlandServicesTable = pgTable("local_inland_services", {
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
     // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
-    date: date("date").notNull(), // Date of the service
+    routing: jsonb("routing").notNull(),
 
     // Commodity details
-    temperature: boolean("temperature").default(false), // Temperature-sensitive shipment
-    dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    oversized: boolean("oversized").default(false),     // Oversized goods
-    length: numeric("length").notNull(),                // Length of the goods
-    width: numeric("width").notNull(),                  // Width of the goods
-    height: numeric("height").notNull(),                // Height of the goods
-    weight: numeric("weight").notNull(),                // Weight of the goods
-    file: text("file"),                      // Optional file upload
+    commodities: jsonb("commodities").notNull(),
+
+    date: date("date").notNull(), // Date of the service
+
     additional_information: text("additional_information"), // Additional details
 
     // VAD (Value Added Services) details
@@ -100,21 +94,13 @@ export const InternationalInlandServicesTable = pgTable("international_inland_se
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
-    // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
+    routing: jsonb("routing").notNull(), // From location
+
     date: date("date").notNull(), // Date of the service
+    additional_information: text("additional_information"), // Additional details
 
     // Commodity details
-    temperature: boolean("temperature").default(false), // Temperature-sensitive shipment
-    dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    oversized: boolean("oversized").default(false),     // Oversized goods
-    length: numeric("length").notNull(),                // Length of the goods
-    width: numeric("width").notNull(),                  // Width of the goods
-    height: numeric("height").notNull(),                // Height of the goods
-    weight: numeric("weight").notNull(),                // Weight of the goods
-    file: text("file"),                      // Optional file upload
-    additional_information: text("additional_information"), // Additional details
+    commodities: jsonb("commodities").notNull(),
 
     // VAD (Value Added Services) details
     inland_container: boolean("inland_container").default(false), // Value-added inland container service
@@ -137,22 +123,19 @@ export const containerInlandServicesTable = pgTable("container_inland_services",
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
     // Routing details
-    from: text("from").notNull(), // From location
-    to: text("to").notNull(),     // To location
-    date: date("date").notNull(), // Date of the service
+    // Routing details
+    routing: jsonb("routing").notNull(),
 
     // Commodity details
-    temperature: boolean("temperature").default(false), // Temperature-sensitive shipment
-    dangerous: boolean("dangerous").default(false),     // Dangerous goods
-    oversized: boolean("oversized").default(false),     // Oversized goods
-    file: text("file"),                      // Optional file upload
+    commodities: jsonb("commodities").notNull(),
+
     additional_information: text("additional_information"), // Additional details
 
     // Value-added (VAD) details
-    inland_container: boolean("inland_container").default(false), // Value-added inland container service
+    inland_container: text("inland_container"), // Value-added inland container service
 
     // Service contract details
-    container: text("container"), // Container contract details
+    service_contract: text("service_contract"), // Container contract details
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name
@@ -164,10 +147,6 @@ export const containerInlandServicesTable = pgTable("container_inland_services",
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),              // Company phone number
 
-    // Container details
-    container_type: text("container_type").notNull(),          // Container type (e.g., dry, refrigerated)
-    container_number: numeric("container_number").notNull(),   // Number of containers
-    container_weight: numeric("container_weight").notNull(),   // Container weight
 });
 
 //Contact Requests

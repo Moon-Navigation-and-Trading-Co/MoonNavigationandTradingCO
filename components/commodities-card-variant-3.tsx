@@ -26,7 +26,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                     <div className="flex flex-col gap-5 w-full justify-center">
 
                         <FormItem>
-                            <FormLabel>{t('type')}</FormLabel>
+                            <FormLabel>{t('commodity')}</FormLabel>
                             <FormControl>
                                 <Controller
                                     control={control}

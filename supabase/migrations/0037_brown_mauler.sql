@@ -1,0 +1,1 @@
+ALTER TABLE "international_inland_services" ADD COLUMN "date" date NOT NULL;

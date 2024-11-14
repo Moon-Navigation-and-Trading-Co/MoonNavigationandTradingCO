@@ -61,50 +61,37 @@ const Page: React.FC = () => {
 
             flattenedData = {
                 user_id: user.id,
-                from: formData.routing.from,
-                to: formData.routing.to,
-                date: formData.routing.date,
-                temperature: formData.commodities.temperature,
-                dangerous: formData.commodities.dangerous,
-                oversized: formData.commodities.oversized,
-                length: formData.commodities.length,
-                width: formData.commodities.width,
-                height: formData.commodities.height,
-                weight: formData.commodities.weight,
-                file: formData.commodities.file,
-                additional_information: formData.commodities.additional_information,
+                routing: formData.routing,
+                date: formData.date,
+                additional_information: formData.additional_information,
+                commodities: formData.commodities,
                 inland_container: formData.vad.inland_container,
                 company_name: formData.company_details.company_name,
                 contact_person_name: formData.company_details.contact_person_name,
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         } else if (formType === "container_inland_services") {
 
-            console.log("AAA")
-
             flattenedData = {
                 user_id: user.id,
-                from: formData.routing.from,
-                to: formData.routing.to,
-                date: formData.routing.date,
-                container_type: formData.container.type,
-                number_of_containers: formData.container.number,
-                containers_weights: formData.container.weight,
-                temperature: formData.commodities.temperature,
-                dangerous: formData.commodities.dangerous,
-                oversized: formData.commodities.oversized,
-                file: formData.commodities.file,
-                additional_information: formData.commodities.additional_information,
+                routing: formData.routing,
+                additional_information: formData.additional_information,
+                commodities: formData.commodities,
+                inland_container: formData.vad.inland_container,
                 service_contract: formData.service_contract.container,
                 company_name: formData.company_details.company_name,
                 contact_person_name: formData.company_details.contact_person_name,
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         } else {
             return console.log("form type is missing");
@@ -151,7 +138,7 @@ const Page: React.FC = () => {
             id: "local",
             title: "Local Inland Services",
             content: <>
-                <LocalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "local_inland_services")} />
+                <InternationalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "local_inland_services")} />
             </>
         },
         {
@@ -166,7 +153,7 @@ const Page: React.FC = () => {
 
     return (
         <div className='flex flex-col w-full'>
-            <div className='mt-20 flex flex-col gap-5'>
+            <div className='mt-20 flex flex-col gap-5 px-4'>
                 <h1 className='text-3xl font-bold'>{t('inland')}</h1>
                 <p className=''>{t('inland-p')}</p>
             </div>

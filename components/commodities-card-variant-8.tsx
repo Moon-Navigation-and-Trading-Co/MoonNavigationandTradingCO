@@ -27,12 +27,16 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
 
             {fields.map((field, index) => {
                 const Watchdangerous = watch(`commodities.${index}.dangerous`);
+                const Watchtemperature = watch(`commodities.${index}.temperature`);
+                const Watchoversized = watch(`commodities.${index}.oversized`);
+
+
 
                 return (
 
                     <div key={field.id} className="grid grid-cols-1 md:grid-cols-2">
                         {/* Checkboxes */}
-                        <div className="pt-8 pb-10 flex flex-col justify-center gap-3 p-4 col-span-2 ">
+                        <div className="pt-8 pb-10 flex flex-col justify-center gap-5 p-4 col-span-2 ">
 
                             {/* Dangerous Checkbox */}
                             <div className="flex flex-col gap-5 w-full justify-center">
@@ -56,31 +60,84 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                         />
                                     </FormControl>
                                 </FormItem>
+                                <div className="flex flex-col gap-3">
+                                    <Controller
+                                        control={control}
+                                        name={`commodities.${index}.dangerous`}
+                                        render={({ field }) => (
+                                            <div className="flex gap-2 items-center">
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    defaultChecked={dangerous_bool}
+                                                    disabled={dangerous_bool}
+                                                    onCheckedChange={field.onChange}
+                                                    id={`commodities.${index}.dangerous`}
+                                                    name="dang"
+                                                />
+                                                <label
+                                                    htmlFor={`commodities.${index}.dangerous`}
+                                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                                >
+                                                    {t('dangerous')}
+                                                </label>
+                                            </div>
+                                        )}
+                                    />
+                                    <Controller
+                                        control={control}
+                                        name={`commodities.${index}.temperature`}
+                                        render={({ field }) => (
+                                            <div className="flex gap-2 items-center">
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    defaultChecked={dangerous_bool}
+                                                    disabled={dangerous_bool}
+                                                    onCheckedChange={field.onChange}
+                                                    id={`commodities.${index}.temperature`}
+                                                    name="temp"
+                                                />
+                                                <label
+                                                    htmlFor={`commodities.${index}.temperature`}
+                                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                                >
+                                                    {t('temperature')}
+                                                </label>
+                                            </div>
+                                        )}
+                                    />
+                                    <Controller
+                                        control={control}
+                                        name={`commodities.${index}.oversized`}
+                                        render={({ field }) => (
+                                            <div className="flex gap-2 items-center">
+                                                <Checkbox
+                                                    checked={field.value}
+                                                    defaultChecked={dangerous_bool}
+                                                    disabled={dangerous_bool}
+                                                    onCheckedChange={field.onChange}
+                                                    id={`commodities.${index}.oversized`}
+                                                    name="over"
+                                                />
+                                                <label
+                                                    htmlFor={`commodities.${index}.oversized`}
+                                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                                >
+                                                    {t('oversized')}
+                                                </label>
+                                            </div>
+                                        )}
+                                    />
 
-                                <Controller
-                                    control={control}
-                                    name={`commodities.${index}.dangerous`}
-                                    render={({ field }) => (
-                                        <div className="flex gap-2 items-center">
-                                            <Checkbox
-                                                checked={field.value}
-                                                defaultChecked={dangerous_bool}
-                                                disabled={dangerous_bool}
-                                                onCheckedChange={field.onChange}
-                                                id={`commodities.${index}.dangerous`}
-                                                name="dang"
-                                            />
-                                            <label
-                                                htmlFor={`commodities.${index}.dangerous`}
-                                                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                            >
-                                                {t('dangerous')}
-                                            </label>
-                                        </div>
-                                    )}
-                                />
+                                </div>
+
+
+
+
+
+
+
                             </div>
-                            {Watchdangerous && (
+                            {(Watchdangerous || Watchtemperature || Watchoversized) && (
                                 <>
                                     <FormItem>
                                         <FormLabel>{t('insert-details')}</FormLabel>
@@ -208,7 +265,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                 <FormControl className="">
                                     <Controller
                                         control={control}
-                                        name={`commodities.${index}.weight-unit`}
+                                        name={`commodities.${index}.weight_unit`}
                                         render={({ field }) => (
                                             <Select onValueChange={field.onChange} defaultValue={field.value || 'kg'}>
                                                 <SelectTrigger className="w-[100px] h-[40px]">
@@ -270,7 +327,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
 
             <Button
                 type="button"
-                className=" mb-8 w-[180px] p-2 bg-primary text-white rounded-lg"
+                className=" mb-8 w-[210px] p-2 bg-primary text-white rounded-lg"
                 onClick={() => append({
                     type: '',
                     dangerous: dangerous_bool || false,

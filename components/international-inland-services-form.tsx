@@ -7,10 +7,11 @@ import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
-import RoutingCard from './routing-card';
-import CommoditiesCard from './commodities-card';
+import RoutingCard from './routing-card-variant-2';
+import CommoditiesCard from './commodities-card-variant-8';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
+import DatesCard from './dates-card-variant-2.tsx';
 
 
 
@@ -21,26 +22,29 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
-        routing: z.object({
+        routing: z.array(z.object({
             from: z.string().min(1, { message: t("From") }),
             to: z.string().min(1, { message: t("To") }),
-            date: z.string().min(1, { message: t("Date") }).refine(value => {
-                return !isNaN(Date.parse(value)); // Ensure valid date
-            }, { message: t("InvalidDate") })
-        }),
-        commodities: z.object({
+        })),
+        date: z.string().min(1, { message: t("Date") }).refine(value => {
+            return !isNaN(Date.parse(value)); // Ensure valid date
+        }, { message: t("InvalidDate") }),
+        commodities: z.array(z.object({
+            type: z.string().min(1, { message: t("Type") }),
             temperature: z.boolean().optional(),
             dangerous: z.boolean().optional(),
             oversized: z.boolean().optional(),
+            details: z.string().optional(),
             length: z.number().min(1, { message: t("Length") }),
             width: z.number().min(1, { message: t("Width") }),
             height: z.number().min(1, { message: t("Height") }),
             weight: z.number().min(1, { message: t("Weight") }),
+            weight_unit: z.string().optional(),
             file: z.string().optional().refine(value => {
                 return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
             }, { message: t("File") }),
-            additional_information: z.string().optional(),
-        }),
+        })),
+        additional_information: z.string().optional(),
         vad: z.object({
             inland_container: z.boolean().optional(),
         }),
@@ -50,7 +54,9 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
+            additional_email: z.string().email().optional(),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            additional_phone_number: z.string().optional(),
         })
         // Add more sections as needed
     });
@@ -58,22 +64,24 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            routing: {
+            routing: [{
                 from: '',
                 to: '',
-                date: ''
-            },
-            commodities: {
+            }],
+            date: '',
+            commodities: [{
                 temperature: false,
                 dangerous: false,
                 oversized: false,
+                details: "",
                 length: 0,
                 width: 0,
                 height: 0,
                 weight: 0,
+                weight_unit: 'kg',
                 file: '',
-                additional_information: ''
-            },
+            }],
+            additional_information: '',
             vad: {
                 inland_container: false
             },
@@ -83,7 +91,10 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 title: '',
                 country_of_origin: '',
                 company_email: '',
-                phone_number: ''
+                additional_email: '',
+                phone_number: '',
+                additional_phone_number: ''
+
             }
         }
     });
@@ -99,8 +110,11 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
+                {/* Dates Section */}
+                <DatesCard control={form.control} />
+
                 {/* Commodities Section */}
-                <CommoditiesCard control={form.control} />
+                <CommoditiesCard dangerous_bool={false} control={form.control} />
 
                 {/* Value Added Service */}
                 <FormItem className='pb-4'>
@@ -116,11 +130,10 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                                             <Checkbox
                                                 checked={field.value}
                                                 onCheckedChange={field.onChange}
-                                                id="inland_container"
+                                                id="vad.inland_container"
                                             />
-                                            <label>
-                                                Inland Container Services
-
+                                            <label htmlFor='vad.inland_container'>
+                                                Inland Container Transportation
                                             </label>
                                         </>
 
@@ -130,6 +143,8 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                         </div>
                     </FormControl>
                 </FormItem>
+
+
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />

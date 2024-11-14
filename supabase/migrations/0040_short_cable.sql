@@ -1,0 +1,2 @@
+ALTER TABLE "container_inland_services" ALTER COLUMN "inland_container" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "container_inland_services" ALTER COLUMN "inland_container" DROP DEFAULT;

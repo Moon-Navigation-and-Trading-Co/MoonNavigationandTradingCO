@@ -36,7 +36,6 @@ const Page: React.FC = () => {
         fetchUser();
     }, [router, supabase]); // Only run once when the component mounts
 
-
     if (isLoading) {
         return <div className='w-full h-[500px] flex items-center justify-center'>
             <Spinner />
@@ -60,8 +59,6 @@ const Page: React.FC = () => {
             phone_number: formData.company_details.phone_number
         };
 
-
-
         console.log(flattenedData)
 
         const { data, error } = await supabase
@@ -83,7 +80,6 @@ const Page: React.FC = () => {
         }
     };
 
-
     const tabData = [
         {
             id: "international",
@@ -95,10 +91,9 @@ const Page: React.FC = () => {
         }
     ]
 
-
     return (
         <div className='flex flex-col w-full'>
-            <div className='mt-20 flex flex-col gap-5'>
+            <div className='mt-20 flex flex-col gap-5 px-4'>
                 <h1 className='text-3xl font-bold'>{t('ship-management')}</h1>
                 <p className=''>{t('ship-management-p')}</p>
             </div>

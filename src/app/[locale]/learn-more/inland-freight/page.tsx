@@ -30,7 +30,7 @@ export default function InlandFreightPage() {
             },
 
         ],
-        link: "/inland-freight-forms"
+        link: "/inland-services-forms"
     }
 
     return (

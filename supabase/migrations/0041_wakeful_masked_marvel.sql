@@ -1,0 +1,1 @@
+ALTER TABLE "container_inland_services" ADD COLUMN "additional_information" text;
