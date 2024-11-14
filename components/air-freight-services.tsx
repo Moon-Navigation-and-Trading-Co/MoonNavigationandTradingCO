@@ -42,6 +42,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
             temperature: z.boolean().optional(),
             dangerous: z.boolean().optional(),
             oversized: z.boolean().optional(),
+            details: z.string().min(1, { message: t("Details") }),
             length: z.number({ message: t("Length") }).min(1, { message: t("Length") }),
             width: z.number({ message: t("Length") }).min(1, { message: t("Width") }),
             height: z.number({ message: t("Length") }).min(1, { message: t("Height") }),
@@ -93,6 +94,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
             commodities:
                 [{
                     container_type: '',
+                    details: '',
                     temperature: false,
                     dangerous: false,
                     oversized: false,
