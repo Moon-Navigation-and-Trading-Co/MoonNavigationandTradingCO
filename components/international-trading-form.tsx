@@ -93,7 +93,7 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 </FormItem>
 
                 {/* Commodities Section */}
-                <CommoditiesCard control={form.control} />
+                {/* <CommoditiesCard control={form.control} /> */}
 
 
                 <TransportationMethodCard control={form.control} />
