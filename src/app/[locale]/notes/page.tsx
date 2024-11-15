@@ -1,39 +1,68 @@
-// app/[locale]/notes/page.tsx
-import { createClient } from '@/utils/supabase/server';
-import NoteForm from './NoteForm'; // Import the client component for inserting notes
-import { redirect } from "next/navigation";
+'use client';
 
-interface PageProps {
-    params: {
-        locale: string;
+import { useState } from 'react';
+import { EmailTemplate } from '@/components/email-template';
+
+export default function NotesPage() {
+    const [emailStatus, setEmailStatus] = useState<string | null>(null);
+
+    //send this data
+    const data = {
+        firstName: 'John',
+        formId: 'c2asd432wq3x4',
+        contactNumber: '01115243445',
+        formtype: 'Inland Services',
     };
-}
 
-export default async function Page({ params: { locale } }: PageProps) {
-    const supabase = createClient();
+    const sendEmail2 = () => {
+        fetch('/api/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                firstName: data.firstName,
+                formId: data.formId,
+                contactNumber: data.contactNumber,
+                formtype: data.formtype,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => console.log('Email sent:', data))
+            .catch((error) => console.error('Error sending email:', error));
 
-    // Check if the user is authenticated
-    const {
-        data: { user },
-    } = await supabase.auth.getUser();
 
-    if (!user) {
-        // Redirect to sign-in if the user is not authenticated
-        redirect('/sign-in');
-    }
+    };
 
-    // Fetch notes from the database
-    const { data: notes } = await supabase.from('notes').select();
+    const sendEmail = () => {
+        fetch('/api/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(async (response) => {
+                const result = await response.json();
+                if (response.ok) {
+                    setEmailStatus(`Email sent successfully: ${JSON.stringify(result)}`);
+                } else {
+                    console.log('Error sending email:', result.error);
+
+                    setEmailStatus(`Error sending email: ${result.error}`);
+                }
+            })
+            .catch((error) => {
+                console.error('Error sending email:', error);
+                setEmailStatus(`Unexpected error: ${error.message}`);
+            });
+    };
 
     return (
         <div>
-            <h1>Notes</h1>
-            <pre>
-                This only works if user is logged in: {JSON.stringify(notes, null, 2)}
-            </pre>
-
-            {/* Render the client component for adding a new note */}
-            <NoteForm locale={locale} />
+            <h1>Notes Page</h1>
+            <button onClick={sendEmail2}>Send Email</button>
+            {emailStatus && <p>{emailStatus}</p>}
+            <EmailTemplate firstName="John" formId='c2asd432wq3x4' contactNumber='01115243445' formtype='Inland Services' />
         </div>
     );
 }

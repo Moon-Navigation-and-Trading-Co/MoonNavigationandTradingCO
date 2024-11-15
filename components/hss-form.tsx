@@ -73,7 +73,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                 location: '',
                 detailed: '',
             }],
-            commodities: {
+            commodities: [{
                 temperature: false,
                 dangerous: false,
                 oversized: false,
@@ -97,7 +97,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                 weight: 0,
                 file: '',
                 additional_information: ''
-            },
+            }],
             company_details: {
                 company_name: '',
                 contact_person_name: '',

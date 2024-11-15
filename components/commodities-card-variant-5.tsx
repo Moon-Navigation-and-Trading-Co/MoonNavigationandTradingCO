@@ -28,6 +28,8 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
             {fields.map((field, index) => {
                 const Watchoversized = watch(`commodities.${index}.oversized`);
+                const Watchtemperature = watch(`commodities.${index}.temperature`);
+                const Watchdangerous = watch(`commodities.${index}.dangerous`);
 
 
 
@@ -126,10 +128,10 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                 />
                             </div>
 
-                            {(Watchoversized) && (
+                            {(Watchoversized || Watchdangerous || Watchtemperature) && (
                                 <>
                                     <FormItem>
-                                        <FormLabel>{t('insert-details')} <span className="text-xs text-gray-600">(L x W x H)</span></FormLabel>
+                                        <FormLabel>{t('insert-details')}</FormLabel>
 
                                         <FormControl>
                                             <Controller
@@ -139,7 +141,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                                     <>
                                                         <Input
                                                             className="w-[300px] border-2 rounded-xl"
-                                                            placeholder="Please insert cargo dimensions"
+                                                            placeholder="Please insert cargo details"
                                                             {...field}
                                                             value={typeof field.value === 'string' ? field.value : ''}
                                                         />
@@ -358,6 +360,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     )}
                                 />
                             </FormControl>
+                            <p className="text-sm text-gray-500">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
                         </div>
 
                         {/* Additional Info */}

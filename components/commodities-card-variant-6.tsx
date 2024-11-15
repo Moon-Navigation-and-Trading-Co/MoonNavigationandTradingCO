@@ -31,7 +31,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                 const Watchtemperature = watch(`commodities.${index}.temperature`);
 
                 return (
-                    <div key={field.id} className="grid grid-cols-1 md:grid-cols-2">
+                    <div key={field.id} className="flex flex-col">
                         {/* Checkboxes */}
                         <div className="pt-8 pb-10 flex flex-col gap-5 p-4 col-span-2 md:col-span-1">
 
@@ -147,7 +147,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
 
                         {/* Cargo Details { length, weight, height, width } */}
-                        <div className="grid gap-5 grid-cols-2 px-4 pb-20 col-span-2 md:col-span-1">
+                        <div className="grid gap-5 grid-cols-2 px-4 pb-10 col-span-2 md:col-span-1">
                             <div>
                                 <FormLabel htmlFor="length">{t('length')}</FormLabel>
                                 <FormControl>
@@ -245,8 +245,8 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
                         <div className="col-span-2 pb-6">
                             <div className="">
-                                <h1 className='text-xl font-semibold'>{t('containerDetails')}</h1>
-                                <div className='pt-8 pb-10 grid md:grid-cols-3 gap-5 p-4 rounded-3xl'>
+                                <h1 className='text-lg px-4 font-semibold'>{t('containerDetails')}</h1>
+                                <div className='pt-8 pb-10 flex flex-col gap-5 p-4 rounded-3xl'>
 
                                     {/* From Field */}
                                     <FormItem>
@@ -551,6 +551,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     )}
                                 />
                             </FormControl>
+                            <p className="text-sm text-gray-500">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
                         </div>
 
                         {/* Additional Info */}

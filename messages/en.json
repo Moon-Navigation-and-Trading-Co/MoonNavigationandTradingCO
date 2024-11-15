@@ -80,7 +80,7 @@
         "length": "Cargo Length",
         "width": "Cargo Width",
         "height": "Cargo Height",
-        "weight": "Cargo Weight",
+        "weight": "Cargo Weight (Kg)",
         "file": "Supporting Files",
         "optional": "Optional",
         "additionalInformation": "Additional Information",

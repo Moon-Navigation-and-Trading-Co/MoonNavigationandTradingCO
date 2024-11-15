@@ -223,6 +223,8 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     )}
                                 />
                             </FormControl>
+                            <p className="text-sm text-gray-500">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
+
                         </div>
 
                         {/* Additional Info */}
