@@ -39,9 +39,11 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         };
 
         document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('scroll', handleClickOutside);
         document.addEventListener('mousedown', handleClickOutsideMobile);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('scroll', handleClickOutside);
             document.removeEventListener('mousedown', handleClickOutsideMobile);
         };
     }, []);
