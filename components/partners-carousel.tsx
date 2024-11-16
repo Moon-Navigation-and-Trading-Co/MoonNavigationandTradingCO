@@ -34,27 +34,23 @@ const partnerLogos1 = [
 
 export default function PartnerLogoCarousel() {
     return (
-        <div className='flex flex-col gap-10'>
+        <div className='flex flex-col gap-10 pb-10'>
             <div className='w-full '>
-                <h1 className='w-full text-center px-3 text-3xl font-bold'>Our Partners</h1>
+                <h1 className='w-full text-center px-3 text-3xl font-semibold'>Our Partners</h1>
 
             </div>
             <Carousel
                 opts={{
                     align: 'center',
                     loop: true,
-
+                    slidesToScroll: 3,
+                    dragFree: true,
                 }}
-                // plugins={[
-                //     Autoplay({
-                //         delay: 2000,
-                //     }),
-                // ]}
-                className="w-full relative h-full max-w-5xl py-10 px-1 gap-0"
+                className="w-full relative h-full  py-10 px-1 gap-0"
             >
-                <CarouselContent className='basis-[150px] '>
+                <CarouselContent className='basis-[150px] snap-none'>
                     {partnerLogos1.map((logo, index) => (
-                        <CarouselItem key={index} className="basis-[full]  max-w-[200px] min-w-[100px]">
+                        <CarouselItem key={index} className="basis-[full] snap-none max-w-[200px] min-w-[100px]">
                             <div className="rounded-xl pointer-events-none overflow-hidden">
                                 <Image
                                     src={logo}
@@ -67,12 +63,10 @@ export default function PartnerLogoCarousel() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                {/* <div className='absolute right-0 bottom-0'> */}
                 <div className='w-full flex justify-end px-4 gap-1 absolute  left-0 top-[100%]'>
                     <CarouselPrevious className='static border-0' />
                     <CarouselNext className='static border-0' />
                 </div>
-                {/* </div> */}
             </Carousel>
         </div>
 
