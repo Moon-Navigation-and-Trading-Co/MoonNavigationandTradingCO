@@ -15,6 +15,7 @@ import { useRef } from "react";
 import ServicesMiniCard from "@/components/servicesMiniCards";
 import ContactForm from "@/components/contact-form";
 import OtherServices from "@/components/spiral-component";
+import PartnerLogoCarousel from "@/components/partners-carousel";
 
 export default function Index() {
   const t = useTranslations('HomePage');
@@ -40,24 +41,6 @@ export default function Index() {
             <div className="w-full h-full z-[10] top-[1px] bg-black-overlay md:rounded-3xl rounded-b-xl absolute"></div>
             <div className="flex flex-col items-center justify-center  gap-5 z-[50]">
               <h1 className="  text-[#cff7dc] max-w-[500px] w-full text-center font-semibold px-3 text-4xl sm:text-4xl  md:text-5xl">{t("slogan")}</h1>
-              {/* <Button variant={"outline"} className="max-w-[300px]">Invest</Button> */}
-
-              {/* <button
-                className="brightness-150 dark:brightness-100 font-light group hover:shadow-lg hover:shadow-yellow-700/60 transition ease-in-out hover:scale-105 p-[1px] rounded-lg bg-gradient-to-br from-yellow-800 via-yellow-600 to-yellow-800 hover:from-yellow-700 hover:via-yellow-800 hover:to-yellow-600"
-              >
-                <div
-                  className="px-3 text-base py-2 font-[500] backdrop-blur-xl bg-black/90 rounded-lg w-full h-full"
-                >
-                  <div
-                    className="group-hover:scale-100 flex items-center group-hover:text-yellow-500 text-yellow-600 gap-2"
-                  >
-                    <TrendingUp />
-                    Invest
-                  </div>
-                </div>
-              </button> */}
-
-
             </div>
           </div>
         </div>
@@ -119,7 +102,8 @@ export default function Index() {
 
         </section>
 
-        {/* About us section */}
+        {/* Our Partners section */}
+        <PartnerLogoCarousel />
 
         {/* Contact Section */}
         <section id="contact">

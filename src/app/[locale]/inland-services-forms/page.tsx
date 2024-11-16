@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import FormTabs from '@/components/form-tabs';
+import FormTabs from '@/components/form-tabs-variant-1';
 import InternationalInlandServicesForm from '@/components/international-inland-services-form';
 import ContainerInlandServicesForm from '@/components/container-inland-services-form';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
@@ -128,6 +128,7 @@ const Page: React.FC = () => {
         {
             id: "international",
             title: "International Inland Services",
+            description: "This is the international description",
             content:
                 <>
                     <InternationalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "international_inland_services")} />
@@ -136,6 +137,7 @@ const Page: React.FC = () => {
         {
             id: "local",
             title: "Local Inland Services",
+            description: "This is the local description",
             content: <>
                 <InternationalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "local_inland_services")} />
             </>
@@ -143,6 +145,7 @@ const Page: React.FC = () => {
         {
             id: "container",
             title: "Inland Container Transportation",
+            description: "This is the container description",
             content: <>
                 <ContainerInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "container_inland_services")} />
             </>
@@ -152,10 +155,10 @@ const Page: React.FC = () => {
 
     return (
         <div className='flex flex-col w-full'>
-            <div className='mt-20 flex flex-col gap-5 px-4'>
+            {/* <div className='mt-20 flex flex-col gap-5 px-4'>
                 <h1 className='text-3xl font-bold'>{t('inland')}</h1>
                 <p className=''>{t('inland-p')}</p>
-            </div>
+            </div> */}
             <FormTabs tabData={tabData} />
         </div>
     );
