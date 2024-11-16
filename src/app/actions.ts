@@ -8,6 +8,7 @@ import { redirect } from "next/navigation";
 export const signUpAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
+  const passwordReconfirm = formData.get("passwordReconfirm")?.toString();
   const firstname = formData.get("firstname")?.toString(); // Add the name from formData
   const lastname = formData.get("lastname")?.toString(); // Add the name from formData
   const phone = formData.get("phone")?.toString(); // Add the phone from formData
@@ -15,9 +16,22 @@ export const signUpAction = async (formData: FormData) => {
   const origin = headers().get("origin");
   const name = firstname + " " + lastname;
 
-  if (!email || !password) {
-    return { error: "Email and password are required" };
+  if (!email || !password || !passwordReconfirm) {
+    return encodedRedirect(
+      "error",
+      "/sign-up",
+      "Email and password are required",
+    );
   }
+
+  if (password !== passwordReconfirm) {
+    return encodedRedirect(
+      "error",
+      "/sign-up",
+      "Passwords Do Not Match",
+    );
+  }
+
 
   const { data: signUpData, error } = await supabase.auth.signUp({
     email,
@@ -38,7 +52,6 @@ export const signUpAction = async (formData: FormData) => {
     return { error: "Could not retrieve user ID after sign-up" };
   }
 
-
   // Insert name, email, and phone into the user table after successful sign-up
   const { error: insertError } = await supabase
     .from("users")
@@ -46,7 +59,7 @@ export const signUpAction = async (formData: FormData) => {
 
   if (insertError) {
     console.error(insertError.code + " " + insertError.message);
-    return encodedRedirect("error", "/sign-up", insertError.message);
+    return encodedRedirect("error", "/sign-up", "User already exists with that email");
   }
 
   return encodedRedirect(

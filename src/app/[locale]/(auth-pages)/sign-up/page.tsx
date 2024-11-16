@@ -17,13 +17,14 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [phone, setPhone] = useState("")
 
-  if ("message" in searchParams) {
+  if ("success" in searchParams) {
     return (
-      <div className="w-full flex-1 flex items-center h-screen sm:max-w-md justify-center gap-2 p-4">
+      <div className="w-full flex-1 font-semibold flex items-center h-full min-h-[500px]  justify-center gap-2 p-4">
         <FormMessage message={searchParams} />
       </div>
     )
   }
+
 
   return (
     <div className="w-full bg-background dark:bg-transparent h-auto min-h-[90svh] flex items-center justify-center">
@@ -100,6 +101,13 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
           <SubmitButton className='mt-2' formAction={signUpAction} pendingText="Signing up...">
             Sign up
           </SubmitButton>
+
+          {searchParams && ("error" in searchParams || "success" in searchParams) && (
+            <div className="w-full flex-1 font-normal flex items-center h-auto justify-start">
+              {/* <FormMessage message={searchParams} /> */}
+              {"error" in searchParams && <p className="text-red-500">Error occurred: {searchParams.error}</p>}
+            </div>
+          )}
           <FormMessage message={searchParams} />
         </div>
       </form>
