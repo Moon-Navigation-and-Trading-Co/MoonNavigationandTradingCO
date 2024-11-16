@@ -61,6 +61,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
             pick_up_location: '',
             detailed_location: '',
             required_specification: '',
+            rental_duration: 0,
             budget: 0,
             additional_information: '',
             company_details: {
