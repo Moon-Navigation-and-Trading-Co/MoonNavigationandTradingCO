@@ -61,7 +61,11 @@
     },
     "Inland-forms": {
         "routing": "Routing",
+        "email": "Email",
         "other": "Other",
+        "firstname": "First Name",
+        "lastname": "Last Name",
+        "organization": "Organization",
         "pu-date": "Pick Up Date",
         "unit-of-measure": "Unit of Measurement",
         "quantity": "Quantity",
@@ -168,6 +172,7 @@
         "vessel-request": "Special Request",
         "incoterm": "Incoterm",
         "air": "Air Freight",
+        "inv-form": "Investor Form",
         "sea": "By Sea",
         "land": "Land",
         "delivery-date": "Delivery Date",
@@ -198,6 +203,7 @@
     "Inland-errors": {
         "service-contract": "Service Contract",
         "in-gauge": "In Gauge",
+        "organization": "Organization",
         "out-gauge": "Out of Gauge",
         "one-trip": "One Trip",
         "new": "New",
@@ -227,6 +233,10 @@
         "Date": "Date field is required",
         "InvalidDate": "Invalid date format",
         "Length": "Length field is required",
+        "accredited-inv": "Are you an accredited investor",
+        "qualified-inv": "Are you a qualified purchaser",
+        "avgCheck-t": "Average Check Size",
+        "avgCheck": "Type your average Check size",
         "Width": "Width field is required",
         "Height": "Height field is required",
         "Weight": "Weight field is required",
@@ -306,6 +316,8 @@
         "buy-rent-container": "Buy/Rent Container",
         "buy-rent-container-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
         "buy-rent-vessel": "Buy/Rent Vessel",
-        "buy-rent-vessel-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+        "buy-rent-vessel-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "inv-form": "Investor Form",
+        "inv-form-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
     }
 }

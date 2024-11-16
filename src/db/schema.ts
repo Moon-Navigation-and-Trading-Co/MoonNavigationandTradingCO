@@ -827,11 +827,14 @@ export const investor_form = pgTable("investor_form", {
     last_name: text("last_name").notNull(),
     title: text("title").notNull(),
     email: text("email").notNull(),
+    additional_email: text("additional_email").notNull(),
     organization_name: text("organization_name").notNull(),
     phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number").notNull(),
     check_size: text("check_size").notNull(),
-    accredited: boolean("accredited").default(false),
-    qualified: boolean("qualified").default(false)
+    average_check_size: numeric("average_check_size").notNull(),
+    accredited: text("accredited").notNull(),
+    qualified: text("qualified").notNull(),
 
 })
 
