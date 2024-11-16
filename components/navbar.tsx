@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
@@ -21,6 +21,30 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     const [isServicesOpen, setIsServicesOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
     const [selectedSubCategory, setSelectedSubCategory] = useState<string | null>(null); // New state for subcategory
+    const dropdownRef = useRef<HTMLDivElement>(null);
+    const dropdownMobileRef = useRef<HTMLDivElement>(null);
+
+
+    useEffect(() => {
+        const handleClickOutside = (event: any) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsServicesOpen(false);
+            }
+        };
+
+        const handleClickOutsideMobile = (event: any) => {
+            if (dropdownMobileRef.current && !dropdownMobileRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('mousedown', handleClickOutsideMobile);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('mousedown', handleClickOutsideMobile);
+        };
+    }, []);
 
     const t = useTranslations("HomePage");
 
@@ -75,12 +99,16 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 { name: "Stevedoring and Storage", link: "/learn-more/container" },
             ], href: "/services/service1"
         },
-        { name: "International Trading", href: "/learn-more/other" },
-        { name: "Ship Management", href: "/learn-more/other" },
-        { name: "Docking And Maintenance ", href: "/learn-more/other" },
-        { name: "Container Handling, Stevedoring and Storage", href: "/learn-more/other" },
-        { name: "Handling, Stevedoring and Storage", href: "/learn-more/other" },
-        { name: "Customs Clearance Services", href: "/learn-more/other" },
+        { name: "International Trading", href: "/learn-more/other#international-trading" },
+        { name: "Ship Management", href: "/learn-more/other#ship-management" },
+        { name: "Buy/Rent Containers", href: "/learn-more/other#buy-rent-containers" },
+        { name: "Buy/Rent Vessels", href: "/learn-more/other#buy-rent-vessels" },
+        { name: "Docking And Maintenance ", href: "/learn-more/other#ship-maintenance" },
+        { name: "Container Handling, Stevedoring and Storage", href: "/learn-more/other#container-hss" },
+        { name: "Out of Gauge", href: "/learn-more/other#out-of-gauge" },
+        { name: "Handling, Stevedoring and Storage", href: "/learn-more/other#hss" },
+        { name: "Customs Clearance Services", href: "/learn-more/other#custom-clearance" },
+        { name: "Special Services", href: "/learn-more/other#special-services" }
     ];
 
     const navItems = [
@@ -120,6 +148,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                 animate={{ opacity: 1, y: 0 }}
                                                 exit={{ opacity: 0, y: -15 }}
                                                 transition={{ duration: 0.3 }}
+                                                ref={dropdownRef}
                                             >
                                                 <div className="py-1" role="menu" aria-orientation="vertical">
                                                     {category.map((service, index) => (
@@ -220,6 +249,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 
             {/* Mobile Dropdown Menu */}
             <div
+                ref={dropdownMobileRef}
                 className={`fixed z-[999] px-2 mt-2 flex justify-end top-16 right-0 w-[280px] bg-transparent transform transition-[max-height, opacity] duration-500 ease-in-out ${isOpen
                     ? "max-h-screen opacity-100 translate-y-0"
                     : "max-h-screen pointer-events-none opacity-0 -translate-y-3"

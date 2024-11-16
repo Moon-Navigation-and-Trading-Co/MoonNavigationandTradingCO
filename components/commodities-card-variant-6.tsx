@@ -602,7 +602,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                 className=" mb-8 w-[210px] p-2 bg-primary text-white rounded-lg"
                 onClick={() => append({})}
             >
-                {t('addRoute')}
+                {t('addCargo')}
             </Button>
 
         </div>

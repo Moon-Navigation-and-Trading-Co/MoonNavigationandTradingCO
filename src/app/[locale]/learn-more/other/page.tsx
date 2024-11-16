@@ -13,61 +13,72 @@ export default function AirFreightPage() {
                 subcategory: "International Trading",
                 description: "Rapid delivery for time-sensitive shipments",
                 link: "/international-trading-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "international-trading"
             },
             {
                 subcategory: "Ship Management",
                 description: "Cost-effective option for less urgent air shipments",
                 link: "/ship-management-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "ship-management"
             },
             {
                 subcategory: "Docking and Maintenance",
                 description: "Dedicated aircraft for special cargo needs",
                 link: "/ship-maintenance-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "ship-maintenance"
+
             },
             {
                 subcategory: "Buy/Rent Containers",
                 description: "Buy or Rent containers securely and efficiently",
                 link: "/buy-rent-container-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "buy-rent-containers"
             },
             {
                 subcategory: "Buy/Rent Vessels",
                 description: "Buy or Rent vessels securely and efficiently",
                 link: "/buy-rent-vessels-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "buy-rent-vessels"
             },
             {
                 subcategory: "Container Handling, Stevedoring, and Storage",
                 description: "Specialized handling for temperature-sensitive items",
                 link: "/container-services-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "container-hss"
             },
             {
                 subcategory: "Out Gauge",
                 description: "Specialized handling for temperature-sensitive items",
                 link: "/out-gauge-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "out-of-gauge"
             },
             {
                 subcategory: "Handling, Stevedoring, and Storage",
                 description: "Specialized handling for temperature-sensitive items",
                 link: "/air-freight-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "hss"
             },
             {
                 subcategory: "Custom Clearance Services",
                 description: "Specialized handling for temperature-sensitive items",
                 link: "/air-freight-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "custom-clearance"
             },
             {
                 subcategory: "Special Services",
                 description: "Specialized handling for temperature-sensitive items",
                 link: "/special-services-forms",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                id: "special-services"
             }
         ],
     }
@@ -78,32 +89,35 @@ export default function AirFreightPage() {
                 <h1 className="text-4xl font-bold text-center mb-12 text-foreground">{airFreightData.title}</h1>
                 <div className="space-y-16">
                     {airFreightData.subcategories.map((subcategory, index) => (
-                        <div key={index} className="bg-background rounded-lg shadow-lg shadow-gray-900 overflow-hidden">
-                            <div className="md:flex">
-                                <div className=" overflow-hidden relative md:flex-shrink-0">
-                                    <Image
-                                        src={subcategory.image}
-                                        alt={subcategory.subcategory}
-                                        width={600}
-                                        height={400}
-                                        className="h-48 w-full object-cover md:h-full md:w-[250px]"
-                                    />
-                                    <div className='w-full h-[200%] bg-black-overlay absolute top-0 left-0' />
-                                </div>
-                                <div className="p-8">
-                                    <h2 className="text-2xl font-semibold text-primary mb-4">{subcategory.subcategory}</h2>
-                                    <p className="mt-2 text-muted-foreground leading-relaxed">{subcategory.description}</p>
-                                    <div className="mt-6">
-                                        <Link href={subcategory.link}>
-                                            <Button className="bg-primary hover:bg-[#275e63] text-white font-semibold py-2 px-4 rounded">
-                                                Get Quote
-                                                <ChevronRight className="ml-2 h-4 w-4" />
-                                            </Button>
-                                        </Link>
+                        <section key={index} id={subcategory.id} className=' scroll-m-60' >
+                            <div key={index} className="bg-background rounded-lg shadow-lg shadow-gray-900 overflow-hidden">
+                                <div className="md:flex">
+                                    <div className=" overflow-hidden relative md:flex-shrink-0">
+                                        <Image
+                                            src={subcategory.image}
+                                            alt={subcategory.subcategory}
+                                            width={600}
+                                            height={400}
+                                            className="h-48 w-full object-cover md:h-full md:w-[250px]"
+                                        />
+                                        <div className='w-full h-[200%] bg-black-overlay absolute top-0 left-0' />
+                                    </div>
+                                    <div className="p-8">
+                                        <h2 className="text-2xl font-semibold text-primary mb-4">{subcategory.subcategory}</h2>
+                                        <p className="mt-2 text-muted-foreground leading-relaxed">{subcategory.description}</p>
+                                        <div className="mt-6">
+                                            <Link href={subcategory.link}>
+                                                <Button className="bg-primary hover:bg-[#275e63] text-white font-semibold py-2 px-4 rounded">
+                                                    Get Quote
+                                                    <ChevronRight className="ml-2 h-4 w-4" />
+                                                </Button>
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </section>
+
                     ))}
                 </div>
             </div>
