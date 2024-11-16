@@ -68,7 +68,7 @@ export default function PartnerLogoCarousel() {
                     ))}
                 </CarouselContent>
                 {/* <div className='absolute right-0 bottom-0'> */}
-                <div className='w-full flex justify-end gap-1 absolute  left-0 top-[100%]'>
+                <div className='w-full flex justify-end px-4 gap-1 absolute  left-0 top-[100%]'>
                     <CarouselPrevious className='static border-0' />
                     <CarouselNext className='static border-0' />
                 </div>
