@@ -6,9 +6,8 @@ import { createClient } from '@/utils/supabase/client'; // Make sure this is a c
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
-import InternationalTradingForm from '@/components/international-trading-form';
+import OutGaugeCard from '@/components/out-gauge-forms';
 import Spinner from '@/components/spinner';
-
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -37,7 +36,6 @@ const Page: React.FC = () => {
         fetchUser();
     }, [router, supabase]); // Only run once when the component mounts
 
-
     if (isLoading) {
         return <div className='w-full h-[500px] flex items-center justify-center'>
             <Spinner />
@@ -50,38 +48,32 @@ const Page: React.FC = () => {
 
         flattenedData = {
             user_id: user.id,
-            from: formData.routing.from,
-            to: formData.routing.to,
-            incoterm: formData.routing.incoterm,
-            shipping_method: formData.transportation.method,
-            shipping_details: formData.transportation.details,
 
-            type: formData.commodities.type,
-            quantity: formData.commodities.quantity,
+            routing: formData.routing,
 
-            length: formData.commodities.length,
-            width: formData.commodities.width,
-            height: formData.commodities.height,
-            weight: formData.commodities.weight,
-            file: formData.commodities.file,
-            additional_information: formData.commodities.additional_information,
+            commodities: formData.commodities,
 
+            value_added_services: formData.vad.inland_container,
 
+            service_contract: formData.service_contract,
+
+            effective_date: formData.dates.effective_date,
+            expiry_date: formData.dates.expiry_date,
 
             company_name: formData.company_details.company_name,
             contact_person_name: formData.company_details.contact_person_name,
             title: formData.company_details.title,
             country_of_origin: formData.company_details.country_of_origin,
             company_email: formData.company_details.company_email,
-            phone_number: formData.company_details.phone_number
+            additional_email: formData.company_details.additional_email,
+            phone_number: formData.company_details.phone_number,
+            additional_phone_number: formData.company_details.additional_phone_number
         };
-
-
 
         console.log(flattenedData)
 
         const { data, error } = await supabase
-            .from("international_trading")  // Your Supabase table
+            .from("out_of_gauge")  // Your Supabase table
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
@@ -99,24 +91,22 @@ const Page: React.FC = () => {
         }
     };
 
-
     const tabData = [
         {
             id: "international",
-            title: "International Trading",
+            title: "Out Gauge Cargo",
             content:
                 <>
-                    <InternationalTradingForm onSubmit={submitForm} />
+                    <OutGaugeCard onSubmit={submitForm} />
                 </>
         }
     ]
 
-
     return (
         <div className='flex flex-col w-full'>
             <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('international')}</h1>
-                <p className=''>{t('international-p')}</p>
+                <h1 className='text-3xl font-bold'>{t('out-gauge')}</h1>
+                <p className=''>{t('out-gauge-p')}</p>
             </div>
             <FormTabs tabData={tabData} />
         </div>

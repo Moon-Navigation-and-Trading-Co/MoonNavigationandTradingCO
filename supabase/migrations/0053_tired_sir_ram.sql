@@ -1,0 +1,1 @@
+ALTER TABLE "rent_container" ADD COLUMN "rental_duration" numeric NOT NULL;

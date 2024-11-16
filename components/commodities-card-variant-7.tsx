@@ -104,6 +104,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                     </FormItem>
                                 </>
                             )}
+                            <h1 className="-mb-7 mt-4 text-lg font-semibold">{t("unit-of-measure")}</h1>
 
                         </div>
 

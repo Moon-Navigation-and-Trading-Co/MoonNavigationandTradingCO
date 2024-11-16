@@ -7,7 +7,7 @@ import { z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import CompanyDetailsCard from './company-details-card';
+import CompanyDetailsCard from './company-details-card-variant-1';
 import { useTranslations } from 'next-intl';
 
 
@@ -56,7 +56,12 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
 
                 {/* Special Request Field */}
-                <FormItem>
+
+
+                {/* Company Details */}
+                <CompanyDetailsCard control={form.control} />
+
+                <FormItem className='px-4'>
                     <FormLabel htmlFor="request" id="request" >{tt('vessel-request')}</FormLabel>
                     <FormControl>
                         <Controller
@@ -64,15 +69,22 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                             name="request"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Textarea id="request" className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                                    <Textarea id="request" className="max-w-[500px] border-2 rounded-xl" placeholder="Please Declare the Requested Services" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>)}
                         />
                     </FormControl>
                 </FormItem>
 
-                {/* Company Details */}
-                <CompanyDetailsCard control={form.control} />
+
+                <div className='mt-24'>
+                    <h1 className='font-semibold text-xl mb-6'>Important Information</h1>
+                    <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
+                        <p>• For quote requests with long-term validity, please contact us.</p>
+                        <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>
+                        <p>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</p>
+                    </div>
+                </div>
 
                 <Button type="submit" className="mt-4 w-[200px]">
                     Submit

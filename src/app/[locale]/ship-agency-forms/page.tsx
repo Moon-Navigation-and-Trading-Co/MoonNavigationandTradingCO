@@ -194,14 +194,14 @@ const Page: React.FC = () => {
                     <TransitSparePartsForm onSubmit={(formData: any) => submitForm(formData, "transfer_spare_parts")} />
                 </>
         },
-        {
-            id: "special",
-            title: "Special Services",
-            content:
-                <>
-                    <TransitSparePartsForm onSubmit={(formData: any) => submitForm(formData, "special_services")} />
-                </>
-        },
+        // {
+        //     id: "special",
+        //     title: "Special Services",
+        //     content:
+        //         <>
+        //             <TransitSparePartsForm onSubmit={(formData: any) => submitForm(formData, "special_services")} />
+        //         </>
+        // },
     ]
 
 

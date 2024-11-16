@@ -7,8 +7,8 @@ import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
-import RoutingCard from './routing-card-variant-1';
-import CommoditiesCard from './commodities-card';
+import RoutingCard from './routing-card-variant-4';
+import CommoditiesCard from './commodities-card-variant-10';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import TransportationMethodCard from '@/components/transportation-method-card-variant-1';
@@ -32,11 +32,11 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
             method: z.enum(["sea", "land", "air"], {
                 required_error: "You need to select a transportation method.",
             }),
+            details: z.string().min(1, { message: t("Required") }),
         }),
         commodities: z.object({
-            temperature: z.boolean().optional(),
-            dangerous: z.boolean().optional(),
-            oversized: z.boolean().optional(),
+            type: z.string().min(1, { message: t("Type") }),
+            quantity: z.number().min(1, { message: t("Quantity") }),
             length: z.number().min(1, { message: t("Length") }),
             width: z.number().min(1, { message: t("Width") }),
             height: z.number().min(1, { message: t("Height") }),
@@ -52,7 +52,9 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
+            additional_email: z.string().email().optional(),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            additional_phone_number: z.string().optional(),
         })
         // Add more sections as needed
     });
@@ -62,6 +64,7 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+
 
         }
     });
@@ -93,7 +96,7 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 </FormItem>
 
                 {/* Commodities Section */}
-                {/* <CommoditiesCard control={form.control} /> */}
+                <CommoditiesCard control={form.control} />
 
 
                 <TransportationMethodCard control={form.control} />

@@ -87,7 +87,7 @@ const Page: React.FC = () => {
     const tabData = [
         {
             id: "international",
-            title: "Ship Management Service",
+            title: "Ship Maintenance",
             content:
                 <>
                     <ShipMaintenanceForm onSubmit={submitForm} />

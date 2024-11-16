@@ -2,6 +2,8 @@ import { FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/f
 import { Controller } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
 
 const TransportationMethodCard = ({ control }: { control: any }) => {
     // Get Content
@@ -10,8 +12,8 @@ const TransportationMethodCard = ({ control }: { control: any }) => {
 
     return (
         <div className="">
-            <h1 className="text-xl font-semibold">{t('transportation')}</h1>
-            <div className="pt-8 pb-10 grid md:grid-cols-3 gap-5 p-4 rounded-3xl">
+            <h1 className="text-lg px-4 font-semibold">{t('transportation')}</h1>
+            <div className=" pb-10 flex flex-col gap-5 p-4 rounded-3xl">
                 {/* Radio Group with two items */}
                 <FormItem className="space-y-3">
                     <Controller
@@ -45,6 +47,27 @@ const TransportationMethodCard = ({ control }: { control: any }) => {
                         )}
                     />
                     <FormMessage />
+                </FormItem>
+
+                <FormItem>
+                    <FormLabel>{t('insert-details')}</FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={control}
+                            name={"transportation.details"}
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Textarea
+                                        className="w-[300px] border-2 rounded-xl"
+                                        placeholder="Please declare"
+                                        {...field}
+                                        value={typeof field.value === 'string' ? field.value : ''}
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
+                            )}
+                        />
+                    </FormControl>
                 </FormItem>
             </div>
         </div>

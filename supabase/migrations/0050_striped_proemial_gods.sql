@@ -1,0 +1,1 @@
+ALTER TABLE "buy_container" ADD COLUMN "additional_information" text;

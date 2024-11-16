@@ -24,13 +24,31 @@ export default function AirFreightPage() {
             {
                 subcategory: "Docking and Maintenance",
                 description: "Dedicated aircraft for special cargo needs",
-                link: "/air-freight-forms",
+                link: "/ship-maintenance-forms",
+                image: "/airCargo.jpg"
+            },
+            {
+                subcategory: "Buy/Rent Containers",
+                description: "Buy or Rent containers securely and efficiently",
+                link: "/buy-rent-container-forms",
+                image: "/airCargo.jpg"
+            },
+            {
+                subcategory: "Buy/Rent Vessels",
+                description: "Buy or Rent vessels securely and efficiently",
+                link: "/buy-rent-vessels-forms",
                 image: "/airCargo.jpg"
             },
             {
                 subcategory: "Container Handling, Stevedoring, and Storage",
                 description: "Specialized handling for temperature-sensitive items",
                 link: "/container-services-forms",
+                image: "/airCargo.jpg"
+            },
+            {
+                subcategory: "Out Gauge",
+                description: "Specialized handling for temperature-sensitive items",
+                link: "/out-gauge-forms",
                 image: "/airCargo.jpg"
             },
             {
@@ -43,6 +61,12 @@ export default function AirFreightPage() {
                 subcategory: "Custom Clearance Services",
                 description: "Specialized handling for temperature-sensitive items",
                 link: "/air-freight-forms",
+                image: "/airCargo.jpg"
+            },
+            {
+                subcategory: "Special Services",
+                description: "Specialized handling for temperature-sensitive items",
+                link: "/special-services-forms",
                 image: "/airCargo.jpg"
             }
         ],

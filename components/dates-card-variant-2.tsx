@@ -16,6 +16,7 @@ const DatesCard = ({ control }: { control: any }) => {
 
                 {/* Expiry Date Field */}
                 <FormItem>
+                    <FormLabel>{t('date')}</FormLabel>
                     <FormControl>
                         <Controller
                             control={control}

@@ -60,7 +60,7 @@ const TransportationServices: React.FC = () => {
                             <p>  {t("ship-s-1")}</p>
                             <p>  {t("ship-s-2")}</p>
                             <p>  {t("ship-s-3")}</p>
-                            <p>  {t("ship-s-4")}</p>
+                            {/* <p>  {t("ship-s-4")}</p> */}
                         </div>
                         <div className='flex flex-col items-end justify-end gap-2'>
                             <Button variant={"outline"}>

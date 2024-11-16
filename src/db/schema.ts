@@ -304,8 +304,16 @@ export const buy_container = pgTable("buy_container", {
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
+
+    // Container Type
+    container_type: text("container_type").notNull(),
+
     // Container Condition
     container_condition: text("container_condition").notNull(),
+
+    // Number of containers
+    container_number: numeric("container_number").notNull(),
+
 
     // Pick up details
     pick_up_date: date("pick_up_date").notNull(),
@@ -313,6 +321,9 @@ export const buy_container = pgTable("buy_container", {
 
     // Budget
     budget: numeric("budget"),
+
+    // Additional information
+    additional_information: text("additional_information"),
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name
@@ -330,24 +341,29 @@ export const rent_container = pgTable("rent_container", {
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
-    // Container Details
-    container_type: text("container_type").notNull(),
-    container_size: text("container_size").notNull(),
-    number_of_containers: numeric("number_of_containers").notNull(),
 
-    // Rental Duration
-    rental_duration: text("rental_duration").notNull(),
+    // Container Type
+    container_type: text("container_type").notNull(),
 
     // Container Condition
     container_condition: text("container_condition").notNull(),
 
+    // Number of containers
+    container_number: numeric("container_number").notNull(),
+
+    rental_duration: numeric("rental_duration").notNull(),
+
     // Pick up details
     pick_up_date: date("pick_up_date").notNull(),
     pick_up_location: text("pick_up_location").notNull(),
+    drop_off_location: text("drop_off_location").notNull(),
     detailed_location: text("detailed_location"),
 
     // Budget
     budget: numeric("budget"),
+
+    // Additional information
+    additional_information: text("additional_information"),
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name
@@ -366,30 +382,30 @@ export const buy_vessel = pgTable("buy_vessel", {
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
-    // Container Details
-    vessel_type: text("vessel_type").notNull(),
-    vessel_size: text("vessel_size").notNull(),
-    number_of_containers: numeric("number_of_vessels").notNull(),
-    new: boolean("new").default(false),
-    one_trip: boolean("one_trip").default(false),
-    used: boolean("used").default(false),
 
-    // Rental Duration
-    delivery_date: date("delivery_date").notNull(),
+    // Container Type
+    container_type: text("container_type").notNull(),
 
     // Container Condition
     container_condition: text("container_condition").notNull(),
 
+    // Number of containers
+    container_number: numeric("container_number").notNull(),
+
+
     // Pick up details
-    pick_up_date: date("pick_up_date").notNull(),
+    delivery_date: date("pick_up_date").notNull(),
     pick_up_location: text("pick_up_location").notNull(),
-    detailed_location: text("detailed_location"),
+    detailed_location: text("detailed_location").notNull(),
 
     // Required Specifications
     required_specifications: text("required_specifications").notNull(),
 
     // Budget
     budget: numeric("budget"),
+
+    // Additional information
+    additional_information: text("additional_information"),
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name
@@ -400,9 +416,6 @@ export const buy_vessel = pgTable("buy_vessel", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
-
-    // Additional Services/Amenities
-    additional_services: text("additional_services")
 
 })
 
@@ -411,30 +424,31 @@ export const rent_vessel = pgTable("rent_vessel", {
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
     user_id: uuid().notNull().references(() => usersTable.id), // References user.id
 
-    // Container Details
-    vassal_type: text("vessel_type").notNull(),
-    vassal_size: text("vessel_size").notNull(),
-    number_of_vessels: numeric("number_of_vessels").notNull(),
 
-    // Rental Duration
-    rental_duration: text("rental_duration").notNull(),
+    // Container Type
+    container_type: text("container_type").notNull(),
 
     // Container Condition
     container_condition: text("container_condition").notNull(),
 
-    // Delivery Date
-    delivery_date: date("delivery_date").notNull(),
+    // Number of containers
+    container_number: numeric("container_number").notNull(),
+
+    rental_duration: numeric("rental_duration").notNull(),
 
     // Pick up details
-    pick_up_date: date("pick_up_date").notNull(),
+    delivery_date: date("pick_up_date").notNull(),
     pick_up_location: text("pick_up_location").notNull(),
-    detailed_location: text("detailed_location"),
+    detailed_location: text("detailed_location").notNull(),
 
     // Required Specifications
     required_specifications: text("required_specifications").notNull(),
 
     // Budget
     budget: numeric("budget"),
+
+    // Additional information
+    additional_information: text("additional_information"),
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name
@@ -445,9 +459,6 @@ export const rent_vessel = pgTable("rent_vessel", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
-
-    // Additional Services/Amenities
-    additional_services: text("additional_services")
 
 })
 
@@ -593,9 +604,8 @@ export const international_trading = pgTable("international_trading", {
     to: text("to").notNull(),
     incoterm: text("incoterm").notNull(),
 
-    dagerous: boolean("dangerous").default(false),
-    temperature: boolean("temperature").default(false),
-    oversized: boolean("oversized").default(false),
+    type: text("type").notNull(),
+    quantity: numeric("quantity").notNull(),
     length: numeric("length").notNull(),
     width: numeric("width").notNull(),
     height: numeric("height").notNull(),
@@ -605,6 +615,7 @@ export const international_trading = pgTable("international_trading", {
 
     // Shipping Method
     shipping_method: text("shipping_method").notNull(),
+    shipping_details: text("shipping_details").notNull(),
 
     // Company Details
     company_name: text("company_name").notNull(),              // Company name
@@ -823,3 +834,40 @@ export const investor_form = pgTable("investor_form", {
     qualified: boolean("qualified").default(false)
 
 })
+
+export const OutofGauge = pgTable("out_of_gauge", {
+    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
+    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+
+    // Routing details
+    routing: jsonb("routing").notNull(),
+
+    // Commodity details
+    commodities: jsonb("commodities").notNull(),
+
+    // Recommedned Services
+    file: text("file"),
+    additional_information: text("additional_information"), // Additional details
+
+    // Dates
+    effective_date: date("effective_date").notNull(),
+    expiry_date: date("expiry_date").notNull(),
+
+    // Service Contract
+    service_contract: text("service_contract"),
+
+    // Value-added (VAD) details
+    value_added_services: text("value_added_services"), // Value-added inland container service
+
+    // Company details
+    company_name: text("company_name").notNull(),              // Company name
+    contact_person_name: text("contact_person_name").notNull(), // Contact person name
+    title: text("title").notNull(),                            // Contact person title
+    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
+    company_email: text("company_email").notNull(),            // Company email address
+    additional_email: text("additional_email"),      // Additional email address
+    phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),              // Company phone number
+
+});

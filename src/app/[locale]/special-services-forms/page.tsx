@@ -2,11 +2,14 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import FormTabs from '@/components/form-tabs';
+import ProjectCargoServicesForm from '@/components/project-cargo-services-form';
+import SignCrewMembersForm from '@/components/sign-crew-members-form';
+import TransitSparePartsForm from '@/components/transit-spare-parts-form';
+import RequestForPdaForm from '@/components/request-for-pda-form';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
-import InternationalTradingForm from '@/components/international-trading-form';
 import Spinner from '@/components/spinner';
 
 
@@ -41,61 +44,61 @@ const Page: React.FC = () => {
     if (isLoading) {
         return <div className='w-full h-[500px] flex items-center justify-center'>
             <Spinner />
-        </div>;
+        </div>; // Display loading state while checking
     }
 
-    const submitForm = async (formData: any) => {
+    if (!user) {
+        return redirect('/sign-in'); // Return null while waiting for the redirect
+    }
+
+
+
+
+    const submitForm = async (formData: any, formType: any) => {
         // Flatten the formData before inserting into Supabase
         let flattenedData;
+        if (formType === "special_services") {
 
-        flattenedData = {
-            user_id: user.id,
-            from: formData.routing.from,
-            to: formData.routing.to,
-            incoterm: formData.routing.incoterm,
-            shipping_method: formData.transportation.method,
-            shipping_details: formData.transportation.details,
+            flattenedData = {
+                user_id: user.id,
+                port_name: formData.port.name,
+                vessel_name: formData.vessel.name,
+                vessel_imo: formData.vessel.imo,
+                at_anchor: formData.vessel.anchor,
+                at_berth: formData.vessel.berth,
+                special_request: formData.vessel.request,
 
-            type: formData.commodities.type,
-            quantity: formData.commodities.quantity,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
+            };
+        }
 
-            length: formData.commodities.length,
-            width: formData.commodities.width,
-            height: formData.commodities.height,
-            weight: formData.commodities.weight,
-            file: formData.commodities.file,
-            additional_information: formData.commodities.additional_information,
+        console.log(flattenedData);
 
-
-
-            company_name: formData.company_details.company_name,
-            contact_person_name: formData.company_details.contact_person_name,
-            title: formData.company_details.title,
-            country_of_origin: formData.company_details.country_of_origin,
-            company_email: formData.company_details.company_email,
-            phone_number: formData.company_details.phone_number
-        };
-
-
-
-        console.log(flattenedData)
 
         const { data, error } = await supabase
-            .from("international_trading")  // Your Supabase table
+            .from(formType)  // Your Supabase table
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
-            console.log(error)
             toast({
                 title: "Error",
                 description: "Something went wrong",
                 variant: "destructive"
             })
         } else {
+            //green toast
             toast({
                 title: "Success",
-                description: "Form Submitted Successfully",
+                description: "Form Added Successfully",
             })
+            router.push('/special-services-forms')
         }
     };
 
@@ -103,20 +106,20 @@ const Page: React.FC = () => {
     const tabData = [
         {
             id: "international",
-            title: "International Trading",
+            title: "Special Services",
             content:
                 <>
-                    <InternationalTradingForm onSubmit={submitForm} />
+                    <TransitSparePartsForm onSubmit={(formData: any) => submitForm(formData, "special_services")} />
                 </>
-        }
+        },
     ]
 
 
     return (
         <div className='flex flex-col w-full'>
             <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('international')}</h1>
-                <p className=''>{t('international-p')}</p>
+                <h1 className='text-3xl font-bold'>{t('special-services')}</h1>
+                <p className=''>{t('special-services')}</p>
             </div>
             <FormTabs tabData={tabData} />
         </div>

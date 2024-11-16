@@ -7,6 +7,7 @@ import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import ShipMaintenanceForm from '@/components/ship-maintenance-form';
+import ShipManagemnetForm from '@/components/ship-management-form';
 import Spinner from '@/components/spinner';
 
 const Page: React.FC = () => {
@@ -86,7 +87,7 @@ const Page: React.FC = () => {
             title: "Ship Management Service",
             content:
                 <>
-                    <ShipMaintenanceForm onSubmit={submitForm} />
+                    <ShipManagemnetForm onSubmit={submitForm} />
                 </>
         }
     ]

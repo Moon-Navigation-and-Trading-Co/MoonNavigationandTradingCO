@@ -11,7 +11,7 @@ import RoutingCard from './routing-card-variant-2';
 import CommoditiesCard from './commodities-card-variant-8';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
-import DatesCard from './dates-card-variant-2.tsx';
+import DatesCard from './dates-card-variant-2';
 
 
 

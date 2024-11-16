@@ -46,61 +46,39 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                             </FormControl>
                         </FormItem>
 
-                        <Controller
-
-                            control={control}
-                            name="commodities.dangerous"
-                            render={({ field }) => (
-                                <div className="flex gap-2 items-center">
-                                    <Checkbox
-                                        checked={field.value}
-                                        onCheckedChange={field.onChange}
-                                        id="commodities.dangerous"
-                                        name="dang"
-                                    />
-                                    <label
-                                        htmlFor="commodities.dangerous"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        {t('dangerous')}
-                                    </label>
-                                </div>
-                            )}
-                        />
+                        <FormItem>
+                            <FormLabel htmlFor="quantity">{t('quantity')}</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={control}
+                                    name="commodities.quantity"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input
+                                                className="max-w-[300px] border-2 rounded-xl"
+                                                type="number"
+                                                placeholder="Etner the Quantity"
+                                                {...field}
+                                                value={field.value || ''}
+                                                onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                            />
+                                            {error && <p className="text-red-500">{error.message}</p>}
+                                        </>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
                     </div>
-                    {Watchdangerous && (
-                        <>
-                            <FormItem>
-                                <FormLabel>{t('insert-details')}</FormLabel>
-                                <FormControl>
-                                    <Controller
-                                        control={control}
-                                        name={"commodities.details"}
-                                        render={({ field, fieldState: { error } }) => (
-                                            <>
-                                                <Input
-                                                    className="w-[300px] border-2 rounded-xl"
-                                                    placeholder="Please insert details"
-                                                    {...field}
-                                                    value={typeof field.value === 'string' ? field.value : ''}
-                                                />
-                                                {error && <p className="text-red-500">{error.message}</p>}
-                                            </>
-                                        )}
-                                    />
-                                </FormControl>
-                            </FormItem>
-                        </>
-                    )}
                     <h1 className="-mb-7 mt-4 text-lg font-semibold">{t("unit-of-measure")}</h1>
-
                 </div>
 
                 {/* Cargo Details { length, weight, height, width } */}
 
 
                 <div className="grid gap-5 grid-cols-2 px-4 pb-6 col-span-2 md:col-span-1">
+
                     <div>
+
                         <FormLabel htmlFor="length">{t('length')}</FormLabel>
                         <FormControl>
                             <Controller

@@ -7,10 +7,10 @@ const services = [
     { icon: Shield, label: "Air Freight", href: "/air-freight-forms" },
     { icon: Route, label: "Container Services", href: "/container-services-forms" },
     { icon: Box, label: "Ship Agency", href: "/ship-agency-forms" },
-    { icon: Map, label: "Docking and Maintenance", href: "/docking-maintenance" },
+    { icon: Map, label: "Docking and Maintenance", href: "/ship-maintenance-forms" },
     { icon: Globe, label: "International Trading", href: "/international-trading-forms" },
-    { icon: Globe, label: "Buy/Sell Containers", href: "/services/buy-sell-containers" },
-    { icon: Globe, label: "Buy/Sell Vessels", href: "/services/buy-sell-vessels" },
+    { icon: Globe, label: "Buy/Rent Containers", href: "/buy-rent-container-forms" },
+    { icon: Globe, label: "Buy/Rent Vessels", href: "/buy-rent-vessels-forms" },
 ];
 
 export default function ServicesWithLogo() {
