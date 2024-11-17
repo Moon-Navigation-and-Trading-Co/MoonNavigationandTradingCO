@@ -139,7 +139,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                 <div className="relative text-left">
                                     <button
                                         onClick={toggleServicesMenu}
-                                        className="hover:text-gray-400 gap-2 focus:outline-none flex items-center"
+                                        className={`hover:text-gray-400 gap-2 ${isServicesOpen ? ('pointer-events-none text-gray-400') : ('pointer-events-auto')} focus:outline-none flex items-center`}
                                     >
                                         {item.name}
                                         <ChevronDown width={15} />
