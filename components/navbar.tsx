@@ -39,12 +39,14 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         };
 
         document.addEventListener('mousedown', handleClickOutside);
-        document.addEventListener('scroll', handleClickOutside);
         document.addEventListener('mousedown', handleClickOutsideMobile);
+        document.addEventListener('scroll', handleClickOutside);
+        document.addEventListener('scroll', handleClickOutsideMobile);
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
-            document.removeEventListener('scroll', handleClickOutside);
             document.removeEventListener('mousedown', handleClickOutsideMobile);
+            document.removeEventListener('scroll', handleClickOutside);
+            document.removeEventListener('scroll', handleClickOutsideMobile);
         };
     }, []);
 
@@ -243,7 +245,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         <ThemeSwitcher />
                         <LocaleSwitcher />
                     </div>
-                    <button className="px-2 py-1" onClick={toggleMenu}>
+                    <button className={`px-2 py-1 ${isOpen ? ('pointer-events-none') : ('pointer-events-auto')}`} onClick={toggleMenu}>
                         <Menu strokeWidth="1" className="text-foreground" />
                     </button>
                 </div>
