@@ -13,19 +13,22 @@ export default function InlandFreightPage() {
             {
                 subcategory: "International Inland",
                 description: "Rapid delivery for time-sensitive shipments",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                link: "/air-cargo",
 
             },
             {
                 subcategory: "Local Inland",
                 description: "Cost-effective option for less urgent air shipments",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                link: "/air-cargo",
 
             },
             {
                 subcategory: "Inland Container",
                 description: "Dedicated aircraft for special cargo needs",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                link: "/air-cargo",
 
             },
 

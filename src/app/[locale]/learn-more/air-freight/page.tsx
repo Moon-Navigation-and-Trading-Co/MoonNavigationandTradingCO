@@ -13,23 +13,9 @@ export default function AirFreightPage() {
             {
                 subcategory: "Express Air Freight",
                 description: "Rapid delivery for time-sensitive shipments",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                link: "/learn/air-freight",
             },
-            {
-                subcategory: "Standard Air Freight",
-                description: "Cost-effective option for less urgent air shipments",
-                image: "/airCargo.jpg"
-            },
-            {
-                subcategory: "Charter Services",
-                description: "Dedicated aircraft for special cargo needs",
-                image: "/airCargo.jpg"
-            },
-            {
-                subcategory: "Perishable Goods",
-                description: "Specialized handling for temperature-sensitive items",
-                image: "/airCargo.jpg"
-            }
         ],
         link: "/air-freight-forms"
     }

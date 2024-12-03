@@ -13,25 +13,29 @@ export default function OceanFreightPage() {
             {
                 subcategory: "Request for PDA",
                 description: "Rapid delivery for time-sensitive shipments",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                link: "/learn/request-for-pda",
 
             },
             {
                 subcategory: "Sign On/Off Crew Members",
                 description: "Cost-effective option for less urgent air shipments",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                link: "/learn/sign-on-off-crew-members",
 
             },
             {
                 subcategory: "Transit Spare Parts",
                 description: "Dedicated aircraft for special cargo needs",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                link: "/learn/transit-spare-parts",
 
             },
             {
                 subcategory: "Special Services",
                 description: "Specialized handling for temperature-sensitive items",
-                image: "/airCargo.jpg"
+                image: "/airCargo.jpg",
+                link: "/learn/special-services",
 
             }
         ],
