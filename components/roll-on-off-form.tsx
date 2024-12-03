@@ -66,7 +66,7 @@ const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool 
             company_email: z.string().email({ message: t("CompanyEmail") }),
             additional_email: z.string().email({ message: t("AdditionalEmail") }).optional(),
             phone_number: z.string().min(9, { message: t("PhoneNumber") }),
-            additional_phone_number: z.string().min(9).optional(),
+            additional_phone_number: z.string().optional(),
         })
         // Add more sections as needed
     });
