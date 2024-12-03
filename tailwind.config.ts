@@ -10,6 +10,12 @@ const config = {
 	],
 	prefix: "",
 	theme: {
+		listStyleType: {
+			none: "none",
+			disc: "disc",
+			decimal: "decimal",
+			alphabet: "lower-alpha",
+		},
 		container: {
 			center: true,
 			padding: '2rem',

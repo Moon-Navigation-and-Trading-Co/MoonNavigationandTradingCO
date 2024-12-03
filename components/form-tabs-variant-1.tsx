@@ -20,7 +20,7 @@ export default function FormTabs({ tabData }: FormTabsProps) {
     const activeTabData = tabData.find((tab) => tab.id === activeTab) || tabData[0]
 
     return (
-        <div className="w-full mt-16 mx-auto flex flex-col my-10">
+        <div className="w-full mt-10 mx-auto flex flex-col my-10">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={activeTab + "-header"}
@@ -28,10 +28,10 @@ export default function FormTabs({ tabData }: FormTabsProps) {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 10 }}
                     transition={{ duration: 0.2 }}
-                    className="pb-10"
+                    className="pb-10 px-4"
                 >
-                    <h1 className="text-3xl">{activeTabData.title}</h1>
-                    <h1 className="text-lg">{activeTabData.description}</h1>
+                    <h1 className="text-3xl font-semibold mb-8">{activeTabData.title}</h1>
+                    <h1>{activeTabData.description}</h1>
                 </motion.div>
             </AnimatePresence>
 

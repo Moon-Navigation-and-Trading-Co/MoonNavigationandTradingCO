@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import FormTabs from '@/components/form-tabs';
+import FormTabs from '@/components/form-tabs-variant-1';
 import ProjectCargoServicesForm from '@/components/project-cargo-services-form';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast"
@@ -79,7 +79,9 @@ const Page: React.FC = () => {
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         } else if (formType === "roll_on_off" || formType === "heavy_lift" || formType === "dangerous_cargo_services") {
             flattenedData = {
@@ -88,7 +90,6 @@ const Page: React.FC = () => {
                 effective_date: formData.dates.effective_date,
                 expiry_date: formData.dates.expiry_date,
                 commodities: formData.commodities,
-                additional_information: formData.additional_information,
                 value_added_service: formData.value_added_service.request,
                 service_contract: formData.service_contract.service_contract,
                 company_name: formData.company_details.company_name,
@@ -96,7 +97,9 @@ const Page: React.FC = () => {
                 title: formData.company_details.title,
                 country_of_origin: formData.company_details.country_of_origin,
                 company_email: formData.company_details.company_email,
-                phone_number: formData.company_details.phone_number
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         }
 
@@ -130,7 +133,8 @@ const Page: React.FC = () => {
     const tabData = [
         {
             id: "international",
-            title: "Project Cargo Services",
+            title: t('project-cargo'),
+            description: t('project-cargo-p'),
             content:
                 <>
                     <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "project_cargo_services")} />
@@ -138,7 +142,8 @@ const Page: React.FC = () => {
         },
         {
             id: "roll",
-            title: "Roll On/Off",
+            title: t('roll-on-off'),
+            description: t('roll-on-off-p'),
             content:
                 <>
                     <RollOnOffForm onSubmit={(formData: any) => submitForm(formData, "roll_on_off")} />
@@ -146,7 +151,8 @@ const Page: React.FC = () => {
         },
         {
             id: "heavy",
-            title: "Heavy Lift",
+            title: t('heavy-lift'),
+            description: t('heavy-lift-p'),
             content:
                 <>
                     <RollOnOffForm onSubmit={(formData: any) => submitForm(formData, "heavy_lift")} />
@@ -154,12 +160,22 @@ const Page: React.FC = () => {
         },
         {
             id: "dangerous",
-            title: "Dangerous Cargo Services",
+            title: t('dangerous-cargo'),
+            description: t('dangerous-cargo-p'),
             content:
                 <>
                     <RollOnOffForm dangerous_bool={true} onSubmit={(formData: any) => submitForm(formData, "dangerous_cargo_services")} />
                 </>
         },
+        {
+            id: "breakbulk",
+            title: t('breakbulk'),
+            description: t('breakbulk-p'),
+            content:
+                <>
+                    {/* <RollOnOffForm breakbulk_bool={true} onSubmit={(formData: any) => submitForm(formData, "breakbulk")} /> */}
+                </>
+        }
 
 
     ]
@@ -167,10 +183,10 @@ const Page: React.FC = () => {
 
     return (
         <div className='flex flex-col w-full'>
-            <div className='mt-20 flex flex-col gap-5 px-4'>
+            {/* <div className='mt-20 flex flex-col gap-5 px-4'>
                 <h1 className='text-3xl font-bold'>{t('ocean')}</h1>
                 <p className=''>{t('ocean-p')}</p>
-            </div>
+            </div> */}
             <FormTabs tabData={tabData} />
         </div>
     );

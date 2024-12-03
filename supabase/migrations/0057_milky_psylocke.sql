@@ -1,0 +1,1 @@
+ALTER TABLE "roll_on_off" DROP COLUMN IF EXISTS "additional_information";

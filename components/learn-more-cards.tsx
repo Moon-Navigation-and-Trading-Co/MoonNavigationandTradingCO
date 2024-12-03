@@ -9,6 +9,7 @@ interface Subcategory {
     image: string
     subcategory: string
     description: string
+    link: string
 }
 
 interface LearnMoreFormProps {
@@ -68,14 +69,21 @@ export default function LearnMoreForm({ title, description, subcategories, link,
                                     <div className='w-full h-[200%] bg-black-overlay absolute top-0 left-0' />
                                 </div>
                                 <div className="p-8">
-                                    <h2 className="text-2xl font-semibold text-primary mb-4">{subcategory.subcategory}</h2>
+                                    <h2 className="text-2xl w-fit font-semibold text-primary mb-4">{subcategory.subcategory}</h2>
                                     <p className="mt-2 text-muted-foreground leading-relaxed">{subcategory.description}</p>
-                                    <div className="mt-6">
+
+                                    <div className="mt-6 flex flex-col gap-2 w-fit">
+                                        {/* Get quote button */}
                                         <Link href={link}>
                                             <Button className="bg-primary hover:bg-[#275e63] text-white font-semibold py-2 px-4 rounded">
                                                 Get Quote
                                                 <ChevronRight className="ml-2 h-4 w-4" />
                                             </Button>
+                                        </Link>
+
+                                        {/* Learn more button */}
+                                        <Link className='flex items-center px-2 text-sm hover:text-gray-400 w-fit' href={subcategory.link}>
+                                            Learn More <ChevronRight className="h-4 w-4" />
                                         </Link>
                                     </div>
                                 </div>

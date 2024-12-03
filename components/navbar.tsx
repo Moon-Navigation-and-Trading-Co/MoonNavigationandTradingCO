@@ -77,6 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 { name: "Roll On/Off (RoRo)", link: "/learn-more/ocean-freight" },
                 { name: "Heavy Lift", link: "/learn-more/ocean-freight" },
                 { name: "Dangerous Cargo", link: "/learn-more/ocean-freight" },
+                { name: "Break Bulk", link: "/learn-more/ocean-freight" },
             ], href: "/services/service1"
         },
         {

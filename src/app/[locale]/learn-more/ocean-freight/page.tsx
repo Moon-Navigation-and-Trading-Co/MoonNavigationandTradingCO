@@ -4,34 +4,47 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { ChevronRight, Plane } from "lucide-react"
 import LearnMoreForm from '@/components/learn-more-cards'
+import { useTranslations } from 'next-intl'
 
 export default function OceanFreightPage() {
+    const t = useTranslations("ocean-freight")
+
     const Data = {
         title: "Ocean Freight",
         description: "Fast and efficient air transportation solutions",
         subcategories: [
             {
                 subcategory: "Project Cargo Services",
-                description: "Rapid delivery for time-sensitive shipments",
-                image: "/airCargo.jpg"
+                description: t('project-p'),
+                image: "/airCargo.jpg",
+                link: "/learn/project-cargo"
 
             },
             {
                 subcategory: "Roll On/Off (RoRo)",
-                description: "Cost-effective option for less urgent air shipments",
-                image: "/airCargo.jpg"
-
-            },
-            {
-                subcategory: "Heavy Lift",
-                description: "Dedicated aircraft for special cargo needs",
-                image: "/airCargo.jpg"
+                description: t('roll-p'),
+                image: "/airCargo.jpg",
+                link: "/learn/roll"
 
             },
             {
                 subcategory: "Dangerous Cargo",
-                description: "Specialized handling for temperature-sensitive items",
-                image: "/airCargo.jpg"
+                description: t('dangerous-p'),
+                image: "/airCargo.jpg",
+                link: "/learn/dangerous"
+            },
+            {
+                subcategory: "Heavy Lift",
+                description: t('heavy-p'),
+                image: "/airCargo.jpg",
+                link: "/learn/heavy"
+
+            },
+            {
+                subcategory: "Break Bulk",
+                description: t('breakbulk-p'),
+                image: "/airCargo.jpg",
+                link: "/learn/breakbulk"
 
             }
         ],

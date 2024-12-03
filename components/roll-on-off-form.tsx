@@ -42,8 +42,8 @@ const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool 
             file: z.string().optional().refine(value => {
                 return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
             }, { message: t("File") }),
+            additional_information: z.string().optional(),
         })),
-        additional_information: z.string().optional(),
         dates: z.object({
             effective_date: z.string().min(1, { message: t("Date") }).refine(value => {
                 return !isNaN(Date.parse(value)); // Ensure valid date
@@ -64,7 +64,9 @@ const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool 
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
-            phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            additional_email: z.string().email({ message: t("AdditionalEmail") }).optional(),
+            phone_number: z.string().min(9, { message: t("PhoneNumber") }),
+            additional_phone_number: z.string().min(9).optional(),
         })
         // Add more sections as needed
     });
@@ -103,7 +105,9 @@ const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool 
                 title: '',
                 country_of_origin: '',
                 company_email: '',
-                phone_number: ''
+                additional_email: '',
+                phone_number: '',
+                additional_phone_number: ''
             }
         }
     });

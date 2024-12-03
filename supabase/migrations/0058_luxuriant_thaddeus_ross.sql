@@ -1,0 +1,1 @@
+ALTER TABLE "project_cargo_services" ALTER COLUMN "commoditiy_details" DROP NOT NULL;

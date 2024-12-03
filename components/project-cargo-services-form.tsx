@@ -61,7 +61,9 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
-            phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            additional_email: z.string().email({ message: t("AdditionalEmail") }).optional(),
+            phone_number: z.string().min(9),
+            additional_phone_number: z.string().optional(),
         })
         // Add more sections as needed
     });

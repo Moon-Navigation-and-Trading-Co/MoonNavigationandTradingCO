@@ -39,9 +39,11 @@ const Page: React.FC = () => {
 
 
     if (isLoading) {
-        return <div className='w-full h-[500px] flex items-center justify-center'>
-            <Spinner />
-        </div>; // Display loading state while checking
+        return (
+            <div className='w-full h-[500px] flex items-center justify-center'>
+                <Spinner />
+            </div>
+        ); // Display loading state while checking
     }
 
     if (!user) {

@@ -50,7 +50,7 @@ export default function PartnerLogoCarousel() {
             >
                 <CarouselContent className='basis-[150px] snap-none'>
                     {partnerLogos1.map((logo, index) => (
-                        <CarouselItem key={index} className="basis-[full] snap-none max-w-[200px] min-w-[100px]">
+                        <CarouselItem key={index} className="basis-[200px] snap-none">
                             <div className="rounded-xl pointer-events-none overflow-hidden">
                                 <Image
                                     src={logo}

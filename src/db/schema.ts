@@ -683,7 +683,8 @@ export const project_cargo_services = pgTable("project_cargo_services", {
     // Commodity details
     commodity_type: text("commodity_type").notNull(), // Type
     dangerous: boolean("dangerous").default(true),     // Dangerous goods
-    commoditiy_details: text("commoditiy_details").notNull(), length: numeric("length").notNull(),                // Length of the goods
+    commoditiy_details: text("commoditiy_details"),     // Commodity details
+    length: numeric("length").notNull(),                // Length of the goods
     width: numeric("width").notNull(),                  // Width of the goods
     height: numeric("height").notNull(),                // Height of the goods
     weight: numeric("weight").notNull(),                // Weight of the goods
@@ -723,7 +724,6 @@ export const roll_on_off = pgTable("roll_on_off", {
 
     // Commodity details
     commodities: jsonb("commodities").notNull(),
-    additional_information: text("additional_information"), // Additional details
 
     // Dates
     effective_date: date("effective_date").notNull(),
@@ -758,7 +758,6 @@ export const heavy_lift = pgTable("heavy_lift", {
 
     // Commodity details
     commodities: jsonb("commodities").notNull(),
-    additional_information: text("additional_information"), // Additional details
 
     // Dates
     effective_date: date("effective_date").notNull(),
@@ -793,7 +792,6 @@ export const dangerous_cargo_services = pgTable("dangerous_cargo_services", {
 
     // Commodity details
     commodities: jsonb("commodities").notNull(),
-    additional_information: text("additional_information"), // Additional details
 
     // Dates
     effective_date: date("effective_date").notNull(),
