@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, Plane } from "lucide-react"
+import { Plane } from "lucide-react"
 import LearnMoreForm from '@/components/learn-more-cards'
 
 export default function InlandFreightPage() {
