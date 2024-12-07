@@ -76,7 +76,7 @@ export default function InlandFreightInfo() {
 
                 {/* Get Quote Button */}
                 <div className="mt-6">
-                    <Link href="/quote">
+                    <Link href="/inland-services-forms">
                         <Button className="w-full sm:w-auto">{t('button')}</Button>
                     </Link>
                 </div>
