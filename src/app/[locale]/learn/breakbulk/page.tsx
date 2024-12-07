@@ -27,7 +27,7 @@ export default function BreakBulkInfo() {
                 </section>
 
                 <section>
-                    <h2 className="text-xl font-semibold mb-4 text-primary">{t('sub-t-2')}:</h2>
+                    <h2 className="text-xl font-semibold mb-4 text-primary">{t('sub-t-2')}</h2>
                     <ul className="list-disc pl-6  space-y-2">
                         <li><span className="font-bold">{t('reason-1')}:</span> {t('reason-1-description')}</li>
                         <li><span className="font-bold">{t('reason-2')}:</span> {t('reason-2-description')}</li>

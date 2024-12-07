@@ -3,124 +3,91 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { ChevronRight } from "lucide-react"
+import CarouselAnimation from '@/components/carousel-animation-component-variant-2'
+import { useTranslations } from 'next-intl'
 
 export default function AirFreightPage() {
-    const airFreightData = {
-        title: "Other Services",
-        description: "Fast and efficient air transportation solutions",
-        subcategories: [
+    const t = useTranslations("other-s")
+
+    const Data =
+        [
             {
-                subcategory: "International Trading",
-                description: "Rapid delivery for time-sensitive shipments",
-                link: "/international-trading-forms",
+                title: t("title-1"),
+                description: t("description-1"),
+                link: "/learn/international-trading",
                 image: "/airCargo.jpg",
-                id: "international-trading"
+                quote: "/international-trading-forms",
             },
             {
-                subcategory: "Ship Management",
-                description: "Cost-effective option for less urgent air shipments",
-                link: "/ship-management-forms",
+                title: t("title-2"),
+                description: t("description-2"),
+                link: "/learn/ship-management",
                 image: "/airCargo.jpg",
-                id: "ship-management"
+                quote: "/ship-management-forms",
             },
             {
-                subcategory: "Docking and Maintenance",
-                description: "Dedicated aircraft for special cargo needs",
-                link: "/ship-maintenance-forms",
+                title: t("title-3"),
+                description: t("description-3"),
+                link: "/learn/docking",
                 image: "/airCargo.jpg",
-                id: "ship-maintenance"
+                quote: "/ship-maintenance-forms",
 
             },
             {
-                subcategory: "Buy/Rent Containers",
-                description: "Buy or Rent containers securely and efficiently",
-                link: "/buy-rent-container-forms",
+                title: t("title-4"),
+                description: t("description-4"),
+                link: "/learn/buy-rent-container",
                 image: "/airCargo.jpg",
-                id: "buy-rent-containers"
+                quote: "/buy-rent-container-forms",
             },
             {
-                subcategory: "Buy/Rent Vessels",
-                description: "Buy or Rent vessels securely and efficiently",
-                link: "/buy-rent-vessels-forms",
+                title: t("title-5"),
+                description: t("description-5"),
+                link: "/learn/buy-rent-vessels",
                 image: "/airCargo.jpg",
-                id: "buy-rent-vessels"
+                quote: "/buy-rent-vessels-forms",
             },
             {
-                subcategory: "Container Handling, Stevedoring, and Storage",
-                description: "Specialized handling for temperature-sensitive items",
-                link: "/container-services-forms",
+                title: t("title-6"),
+                description: t("description-6"),
+                link: "/learn/container-hss",
                 image: "/airCargo.jpg",
-                id: "container-hss"
+                quote: "/container-services-forms",
             },
             {
-                subcategory: "Out Gauge",
-                description: "Specialized handling for temperature-sensitive items",
-                link: "/out-gauge-forms",
+                title: t("title-9"),
+                description: t("description-9"),
+                link: "/learn/out-gauge",
                 image: "/airCargo.jpg",
-                id: "out-of-gauge"
+                quote: "/out-gauge-forms",
             },
             {
-                subcategory: "Handling, Stevedoring, and Storage",
-                description: "Specialized handling for temperature-sensitive items",
-                link: "/air-freight-forms",
+                title: t("title-7"),
+                description: t("description-7"),
+                link: "/learn/hss",
                 image: "/airCargo.jpg",
-                id: "hss"
+                quote: "/air-freight-forms",
             },
             {
-                subcategory: "Custom Clearance Services",
-                description: "Specialized handling for temperature-sensitive items",
-                link: "/air-freight-forms",
+                title: t("title-8"),
+                description: t("description-8"),
+                link: "/learn/customs-clearance",
                 image: "/airCargo.jpg",
-                id: "custom-clearance"
+                quote: "/custom-clearance-forms",
             },
             {
-                subcategory: "Special Services",
-                description: "Specialized handling for temperature-sensitive items",
-                link: "/special-services-forms",
+                title: t("title-10"),
+                description: t("description-10"),
+                link: "/learn/special-services",
                 image: "/airCargo.jpg",
-                id: "special-services"
+                quote: "/special-services-forms",
             }
-        ],
-    }
+        ]
+
 
     return (
-        <div className="min-h-screen">
-            <div className="container mx-auto mt-16 py-12">
-                <h1 className="text-4xl font-bold text-center mb-12 text-foreground">{airFreightData.title}</h1>
-                <div className="space-y-16">
-                    {airFreightData.subcategories.map((subcategory, index) => (
-                        <section key={index} id={subcategory.id} className=' scroll-m-60' >
-                            <div key={index} className="bg-background rounded-lg shadow-lg shadow-gray-900 overflow-hidden">
-                                <div className="md:flex">
-                                    <div className=" overflow-hidden relative md:flex-shrink-0">
-                                        <Image
-                                            src={subcategory.image}
-                                            alt={subcategory.subcategory}
-                                            width={600}
-                                            height={400}
-                                            className="h-48 w-full object-cover md:h-full md:w-[250px]"
-                                        />
-                                        <div className='w-full h-[200%] bg-black-overlay absolute top-0 left-0' />
-                                    </div>
-                                    <div className="p-8">
-                                        <h2 className="text-2xl font-semibold text-primary mb-4">{subcategory.subcategory}</h2>
-                                        <p className="mt-2 text-muted-foreground leading-relaxed">{subcategory.description}</p>
-                                        <div className="mt-6">
-                                            <Link href={subcategory.link}>
-                                                <Button className="bg-primary hover:bg-[#275e63] text-white font-semibold py-2 px-4 rounded">
-                                                    Get Quote
-                                                    <ChevronRight className="ml-2 h-4 w-4" />
-                                                </Button>
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                    ))}
-                </div>
-            </div>
+        <div className='flex justify-center'>
+            <CarouselAnimation title="aaa" freightTypes={Data} />
         </div>
     )
 }

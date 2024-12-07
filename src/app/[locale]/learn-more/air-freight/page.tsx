@@ -4,31 +4,39 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { ChevronRight, Plane } from "lucide-react"
 import LearnMoreForm from '@/components/learn-more-cards'
+import CarouselAnimation from '@/components/carousel-animation-component'
+import { useTranslations } from 'next-intl'
 
 export default function AirFreightPage() {
-    const airFreightData = {
-        title: "Air Freight",
-        description: "Fast and efficient air transportation solutions",
-        subcategories: [
-            {
-                subcategory: "Express Air Freight",
-                description: "Rapid delivery for time-sensitive shipments",
-                image: "/airCargo.jpg",
-                link: "/learn/air-freight",
-            },
-        ],
-        link: "/air-freight-forms"
-    }
+    const t = useTranslations('HomePage')
+    const tt = useTranslations('Buttons')
+    const freightTypes = [
+        {
+            title: t("servicesCard1Title"),
+            description: t("servicesCard1Description"),
+            image: "/cargoAir.jpeg",
+            link: "/air-freight-forms",
+            quote: "/air-freight-forms"
+        },
+        {
+            title: t("servicesCard2Title"),
+            description: t("servicesCard2Description"),
+            image: "/airCargo.jpg",
+            link: "/learn-more/ocean-freight",
+            quote: "/ocean-freight-forms"
+        },
+        {
+            title: t("servicesCard3Title"),
+            description: t("servicesCard3Description"),
+            image: "/land-cargo-2.jpeg",
+            link: "/learn-more/inland-freight",
+            quote: "/inland-services-forms"
+        },
+    ]
 
     return (
         <>
-            <LearnMoreForm
-                title={airFreightData.title}
-                description={airFreightData.description}
-                subcategories={airFreightData.subcategories}
-                link={airFreightData.link}
-                icon={<Plane />}
-            />
+            <CarouselAnimation title={t('ocean')} freightTypes={freightTypes} />
         </>
     )
 }

@@ -14,9 +14,10 @@
         "servicesCard2Title": "Ocean Freight",
         "servicesCard2Description": " We offer a comprehensive range of ocean freight services to meet your shipping needs. Whether you are looking to transport project cargo, roll-on/roll-off (RoRo) shipments, dangerous goods, or heavy-lift cargo, we have the expertise and resources to get your goods to their destination safely and efficiently.",
         "servicesCard3Title": "Inland Freight",
-        "servicesCard3Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "servicesCard3Description": "Our inland freight services cover both international and local transportation, ensuring your goods reach their destination on time and in perfect condition. Whether you need inland container transportation, trucking services, or rail freight solutions, we have the experience and capabilities to meet your logistics needs.",
         "servicesCard4Title": "Other Services",
-        "servicesCard4Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+        "servicesCard4Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "TransportationServices": "Transportation Services"
     },
     "Contact": {
         "contactTitle": "Contact Us",
@@ -316,11 +317,9 @@
         "ship-management": "Ship Management",
         "ship-management-p": "Ship management refers to the comprehensive range of services involved in the operation, maintenance, and administration of a vessel, ensuring it operates efficiently, safely, and in compliance with international maritime regulations. It is a critical function for shipping companies, ship owners, and operators to ensure that their vessels are managed effectively and that all aspects of their operations are properly handled.",
         "international": "International Trading",
-        "international-p": "International trading refers to the exchange of goods and services across international borders. This type of trade plays a crucial role in the global economy, allowing countries and businesses to access products and markets that they may not have locally. It involves the import and export of goods, and businesses involved in international trade typically deal with factors such as customs regulations, international payment methods, logistics, tariffs, and trade agreements.",
         "ship-maintenance": "Docking and Maintenance",
         "ship-maintenance-p": "Docking and maintenance are essential parts of keeping a vessel in optimal condition and ensuring its safe, reliable, and efficient operation. These processes involve the inspection, repair, and upkeep of the vessel's structure, machinery, and systems, which must adhere to both industry regulations and safety standards.",
         "container": "Container Services",
-        "container-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
         "out-gauge": "Out of Gauge",
         "out-gauge-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
         "buy-rent-container": "Buy/Rent Container",
@@ -328,14 +327,30 @@
         "buy-rent-vessel": "Buy/Rent Vessel",
         "buy-rent-vessel-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
         "inv-form": "Investor Form",
-        "inv-form-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
+        "inv-form-p": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "int": "International Inland Services",
+        "international-p": "International Inland Freight is the transportation of goods between countries or across borders within a region. It involves the movement of cargo by road, rail, or waterway to and from ports, airports, or other transportation hubs, connecting different modes of transport to ensure the smooth flow of goods across international boundaries.",
+        "local": "Local Inland Services",
+        "local-p": "Local Inland Freight is the transportation of goods within a country or region, typically from one city to another or between different regions. It involves the movement of cargo by road, rail, or waterway to reach its final destination, whether it's a warehouse, distribution center, or retail store.",
+        "cont": "Inland Container Transportation",
+        "container-p": "Inland container transportation is the movement of shipping containers between ports, terminals, and inland locations using various modes of transport such as trucks, trains, or barges. It plays a crucial role in the logistics chain, connecting seaports with inland destinations and ensuring the efficient movement of goods from origin to destination."
     },
     "ocean-freight": {
+        "ocean": "Ocean Freight",
         "project-p": "Project cargo in ocean freight refers to the transportation of large, heavy, high-value, or complex pieces of equipment and materials. These shipments are typically associated with a specific project and often require specialized handling, equipment, and coordination.",
         "roll-p": "In ocean freight, a Roll-on Roll-off (RoRo) ship is a specialized type of vessel used to transport cargo that can be driven on and off the ship using its own wheels, without the need for cranes or other heavy lifting equipment. The cargo typically consists of vehicles (such as cars, trucks, buses, and construction machinery), as well as trailers, containers, and other wheeled or self-propelled equipment.",
         "dangerous-p": "In ocean freight, dangerous cargo refers to goods that pose a risk to the safety, health, or property of people, vessels, or the environment during transportation. These goods are classified based on their hazardous nature, and strict regulations govern their handling, packaging, labeling, and transport.",
         "heavy-p": "In ocean freight, heavy lift refers to the transportation of cargo that is unusually heavy, oversized, or requires specialized handling due to its dimensions or weight. This type of freight often exceeds the standard weight and size limitations of regular containers and requires specialized equipment, planning, and expertise for safe handling and transport.",
         "breakbulk-p": "At [ Moon Navigation And Trading Co ], we specialize in the transportation of breakbulk Cargo, perfect for large, heavy, or oversized items that cannot fit into standard shipping containers. Our breakbulk services are designed to meet the unique needs of cargo that comes in a variety of shapes, sizes, and weights."
+    },
+    "inland-freight": {
+        "title": "Inland Freight",
+        "international": "International Inland Freight",
+        "international-p": "International Inland Freight is the transportation of goods between countries or across borders within a region. It involves the movement of cargo by road, rail, or waterway to and from ports, airports, or other transportation hubs, connecting different modes of transport to ensure the smooth flow of goods across international boundaries.",
+        "local": "Local Inland Freight",
+        "local-p": "Local Inland Freight is the transportation of goods within a country or region, typically from one city to another or between different regions. It involves the movement of cargo by road, rail, or waterway to reach its final destination, whether it's a warehouse, distribution center, or retail store.",
+        "container": "Inalnd Container Transportation",
+        "container-p": "Inland container transportation is the movement of shipping containers between ports, terminals, and inland locations using various modes of transport such as trucks, trains, or barges. It plays a crucial role in the logistics chain, connecting seaports with inland destinations and ensuring the efficient movement of goods from origin to destination."
     },
     "learn-project-cargo": {
         "title": "Project Cargo",
@@ -414,7 +429,7 @@
         "sublist-3-description-2": "Transporting large and heavy machinery or equipment that is self-propelled.",
         "sublist-3-title-3": "Trade Routes",
         "sublist-3-description-3": "They are commonly used on trade routes where quick and efficient loading/unloading is important, such as between Europe, North America, and Asia.",
-        "sub-t-2": "Common Uses for RoRo Ships ",
+        "sub-t-2": "Common Uses for RoRo Ships",
         "description-2": "RoRo ships are ideal for transporting wheeled cargo like vehicles, machinery, and project cargo.",
         "list-2-title-1": "Loading",
         "list-2-description-1": "Vehicles or cargo are driven onto the RoRo ship via a ramp or multiple ramps, which may be located at the front or rear of the vessel. The cargo is secured on the decks using straps, chocks, or other securing methods.",
@@ -553,5 +568,575 @@
         "reason-3-description": "From planning to delivery, we provide end-to-end solutions that meet the specific requirements of your breakbulk shipment.",
         "description-bot": "Whether you're shipping large machinery, construction equipment, or any other oversized cargo, we ensure that your goods are transported safely, on time, and in compliance with all necessary regulations. Trust [ Moon Navigation And Trading Co ] to handle the complexities of breakbulk shipping, so you can focus on growing your business.",
         "button": "Get Quote"
+    },
+    "learn-air-freight": {
+        "button": "Get Quote",
+        "title": "Air Freight Services: Fast, Reliable, Global Reach",
+        "description": "Air freight is a critical logistics solution for businesses that require rapid delivery of goods across the globe. Using dedicated cargo aircraft or space on commercial flights, we ensure your shipments arrive on time, no matter the destination. Air freight is typically chosen for high-value, time-sensitive, or perishable items such as electronics, pharmaceuticals, fashion goods, or urgent documents.",
+        "sub-t-1": "What We Transport via Air Freight:",
+        "list-1-title-1": "High-Value Goods",
+        "list-1-description-1": "Electronics, luxury items, and machinery that require fast and secure delivery.",
+        "list-1-title-2": "Perishable Products",
+        "list-1-description-2": "Fresh food, flowers, and medical supplies that need quick transport to maintain quality.",
+        "list-1-title-3": "Time-Sensitive Shipments",
+        "list-1-description-3": "Urgent documents, samples, or parts for critical operations that cannot afford delays.",
+        "list-1-title-4": "Dangerous Goods",
+        "list-1-description-4": "Safely transporting hazardous materials in compliance with stringent regulations.",
+        "sub-t-2": "Benefits of Choosing Air Freight:",
+        "benefit-1": "Speed and Efficiency",
+        "benefit-1-description": "With the fastest delivery times, air freight ensures your products reach global markets quickly.",
+        "benefit-2": "Reliability",
+        "benefit-2-description": "We offer on-time deliveries backed by strict airline schedules, minimizing the risk of delays.",
+        "benefit-3": "Global Coverage",
+        "benefit-3-description": "Access to virtually every part of the world, ensuring your goods are always within reach.",
+        "benefit-4": "Enhanced Security",
+        "benefit-4-description": "Air freight is a secure mode of transport, minimizing the risk of theft or damage with tightly controlled handling.",
+        "benefit-5": "Optimized Inventory Management",
+        "benefit-5-description": "Fast transit allows you to keep lean inventories and respond quickly to market demands.",
+        "sub-t-3": "How We Overcome Air Freight Challenges:",
+        "challenge-1-title": "Managing Costs Without Compromise",
+        "challenge-1-description": "We enhance cost-efficiency by consolidating shipments, leveraging strong partnerships to negotiate competitive rates, and designing tailored solutions that maintain the speed and security of air freight.",
+        "challenge-2-title": "Maximizing Capacity",
+        "challenge-2-description": "By focusing on strategic cargo selection and utilizing advanced packaging techniques, we optimize space utilization and reduce weight, ensuring every shipment is handled efficiently, even with limited aircraft capacity.",
+        "challenge-3-title": "Mitigating Weather Impacts",
+        "challenge-3-description": "Our robust real-time tracking systems and adaptive scheduling strategies proactively address potential delays caused by weather, offering alternative routes or transport solutions to uphold delivery timelines.",
+        "challenge-4-title": "Ensuring Regulatory Compliance",
+        "challenge-4-description": "As specialists in managing complex cargo, including hazardous materials, we meticulously handle all aspects of compliance—from precise packaging and labeling to accurate documentation—ensuring smooth international transit."
+    },
+    "learn-inland-freight": {
+        "title": "Inland Freight",
+        "description": "Inland Freight refers to the transportation of goods over land, typically from ports to inland locations or between cities within a country. This mode of freight movement involves trucking, rail, or even inland waterways (such as rivers and canals) to deliver goods from the point of arrival (like a seaport or airport) to the final destination.",
+        "sub-t-1": "Types of Inland Freight",
+        "list-1-title-1": "Truck Freight",
+        "list-1-description-1": "Transport by road using trucks and lorries, suitable for both small and large loads.",
+        "list-1-title-2": "Rail Freight",
+        "list-1-description-2": "Transport by trains, often used for large quantities of goods over long distances.",
+        "list-1-title-3": "Inland Waterways",
+        "list-1-description-3": "Using rivers, lakes, or canals to move bulk goods across land.",
+        "list-1-title-4": "Intermodal Freight",
+        "list-1-description-4": "The combination of more than one mode of transport (e.g., truck and rail) to optimize cost and efficiency.",
+        "sub-t-2": "What We Deliver",
+        "item-1": "Breakbulk Cargo",
+        "item-1-description": "Large, heavy, or oversized items that need special handling.",
+        "item-2": "Containers",
+        "item-2-description": "Standardized cargo units that are moved via trucks or rail.",
+        "item-3": "General Cargo",
+        "item-3-description": "Includes goods packed in pallets, boxes, or other shipping materials.",
+        "item-4": "Bulk Commodities",
+        "item-4-description": "Items like grain, coal, and chemicals that are transported in large quantities without packaging.",
+        "item-5": "Dangerous Goods",
+        "item-5-description": "Hazardous materials that need specific handling procedures.",
+        "sub-t-3": "Benefits of Inland Freight",
+        "benefit-1": "Flexibility",
+        "benefit-1-description": "Inland freight can be customized for different routes and destinations, using trucks, trains, or other vehicles.",
+        "benefit-2": "Cost-effective for short distances",
+        "benefit-2-description": "It is an economical choice for transporting goods within a country or from a port to an inland location.",
+        "benefit-3": "Accessibility",
+        "benefit-3-description": "Inland freight can access remote and landlocked locations that are not reachable by sea or air.",
+        "benefit-4": "Efficient connection with ports",
+        "benefit-4-description": "Ensures timely movement of goods between inland areas and ports for international trade.",
+        "sub-t-4": "Challenges of Inland Freight",
+        "challenge-1-title": "Traffic congestion and delays",
+        "challenge-1-description": "Major roads and railways may face congestion, leading to delays in deliveries.",
+        "challenge-2-title": "Infrastructure limitations",
+        "challenge-2-description": "Poor road conditions or inadequate rail systems can impact the efficiency of inland freight.",
+        "challenge-3-title": "Cost fluctuation",
+        "challenge-3-description": "Prices for inland freight can vary based on fuel costs, tolls, and demand for transport services.",
+        "challenge-4-title": "Regulatory hurdles",
+        "challenge-4-description": "Different regions or countries may have different laws and regulations governing inland transport.",
+        "challenge-5-title": "Weather and natural disasters",
+        "challenge-5-description": "Adverse weather conditions or natural events like floods can disrupt inland transportation routes.",
+        "sub-t-5": "How We Overcome Challenges",
+        "solution-1": "Optimized Route Planning",
+        "solution-1-description": "By using advanced GPS tracking and analytics, we ensure routes are planned to avoid congested areas and optimize delivery times.",
+        "solution-2": "Investing in Infrastructure",
+        "solution-2-description": "We work with reliable logistics partners and maintain high standards of infrastructure to ensure efficient handling.",
+        "solution-3": "Flexible Scheduling",
+        "solution-3-description": "We offer flexible delivery schedules to accommodate unexpected delays and maintain consistent service.",
+        "solution-4": "Regulatory Compliance",
+        "solution-4-description": "We stay updated on local and international regulations, ensuring all necessary permits and documents are in order for smooth transit.",
+        "solution-5": "Weather Forecasting and Contingency Plans",
+        "solution-5-description": "By monitoring weather conditions and having backup plans for alternative routes, we reduce the impact of natural disruptions.",
+        "button": "Get Quote"
+    },
+    "learn-international-trading": {
+        "title": "International Trading",
+        "description": "International trading refers to the exchange of goods and services across international borders. This type of trade plays a crucial role in the global economy, allowing countries and businesses to access products and markets that they may not have locally. It involves the import and export of goods, and businesses involved in international trade typically deal with factors such as customs regulations, international payment methods, logistics, tariffs, and trade agreements.",
+        "sub-t-1": "Key Components of International Trading",
+        "component-1-item-1": "Imports and Exports",
+        "component-1-item-1-title": "Imports",
+        "component-1-item-1-description": "Imports: Goods brought into a country from abroad.",
+        "component-1-item-2-title": "Exports",
+        "component-1-item-2-description": "Exports: Goods produced in one country and shipped to another.",
+        "component-2-item-1": "Trade Agreements and Tariffs",
+        "component-2-item-1-title": " Bilateral and Multilateral Agreements",
+        "component-2-item-1-description": "(e.g., free trade agreements) reduce tariffs and allow for smoother trade.",
+        "component-2-item-2-title": "Tariffs and Quotas",
+        "component-2-item-2-description": "Tariffs and Quotas: These impact the cost of goods crossing borders.",
+        "component-3-item-1-title": "Currency Exchange",
+        "component-3-item-1-description": "Trading internationally often involves dealing with different currencies, which requires knowledge of exchange rates and global financial systems.",
+        "component-4-item-1-title": "Logistics and Transportation",
+        "component-4-item-1-description": "Efficient and reliable transportation (air, sea, land) is crucial for timely and cost-effective delivery of goods.",
+        "component-5-item-1-title": "Customs and Compliance",
+        "component-5-item-1-description": "Ensuring that all goods comply with the destination country's import regulations, including customs duties and proper documentation.",
+        "sub-t-2": "How Moon Navigation and Trading Co. Can Help with International Trading",
+        "description-2": "Moon Navigation and Trading Co. is well-equipped to support businesses in all aspects of international trading, particularly through its expertise in logistics and ocean freight. Here’s how your company can assist:",
+        "service-1-item-1": "Comprehensive Freight Solutions",
+        "service-1-item-1-title": "Ocean Freight",
+        "service-1-item-1-description": "You offer breakbulk, FCL, and LCL services, ensuring the best options for the size and type of goods being transported. This flexibility helps businesses reduce shipping costs while maintaining efficient delivery schedules.",
+        "service-1-item-2-title": "Air Freight",
+        "service-1-item-2-description": "For faster transportation of urgent goods, Moon Navigation provides reliable air freight services.",
+        "service-1-item-3-title": "Customs Clearance",
+        "service-1-item-3-description": "Handling the complexities of international trade, including clearing goods through customs efficiently and ensuring compliance with local laws.",
+        "service-2-item-1": "Risk Management and Documentation",
+        "service-2-item-1-title": "Cargo Insurance",
+        "service-2-item-1-description": "Protect your goods during transit, minimizing the risks associated with shipping internationally.",
+        "service-2-item-2-title": "Documentation Assistance",
+        "service-2-item-2-description": "From bill of lading to certificates of origin, Moon Navigation helps prepare the necessary paperwork to avoid delays and ensure smooth customs clearance.",
+        "service-3-item-1-title": "Global Network",
+        "service-3-item-1-description": "With a decade of experience, Moon Navigation has established connections with key stakeholders worldwide, ensuring that clients have access to competitive rates and seamless service.",
+        "service-4-item-1-title": "Consultancy Services",
+        "service-4-item-1-description": "Offering expert advice on trade routes, cost optimization, and supply chain efficiency, Moon Navigation provides businesses with a competitive edge in international trade.",
+        "service-5-item-1-title": "Storage and Warehousing",
+        "service-5-item-1-description": "International trade often requires warehousing solutions, and your company offers strategic storage options, ensuring goods are safely stored until they’re ready for final delivery.",
+        "service-6-item-1-title": "Seamless Handling of Dangerous Cargo",
+        "service-6-item-1-description": "Specializing in the transportation of dangerous cargo, your expertise ensures that hazardous materials are transported safely and in compliance with international regulations.",
+        "button": "Get a Quote"
+    },
+    "learn-ship-management": {
+        "title": "Ship Management",
+        "description": "Ship management refers to the comprehensive range of services involved in the operation, maintenance, and administration of a vessel, ensuring it operates efficiently, safely, and in compliance with international maritime regulations. It is a critical function for shipping companies, ship owners, and operators to ensure that their vessels are managed effectively and that all aspects of their operations are properly handled.",
+        "sub-t-1": "Key Aspects of Ship Management",
+        "component-1-item-1": "Technical Management",
+        "component-1-item-1-a": "Maintenance and Repairs",
+        "component-1-item-1-description": "Ensuring that all mechanical and technical aspects of the ship, including engines, hull, and machinery, are maintained according to manufacturer specifications and regulatory standards.",
+        "component-1-item-1-b": "Upkeep of Equipment",
+        "component-1-item-1-b-description": "Regular checks and repairs to critical equipment such as navigation systems, communication devices, and safety gear.",
+        "component-1-item-1-c": "Dry-Docking",
+        "component-1-item-1-c-description": "Scheduled periodic inspections and repairs carried out when the ship is out of service, often in a dry dock, to ensure vessel safety and regulatory compliance.",
+        "component-2-item-1": "Crew Management",
+        "component-2-item-1-a": "Recruitment",
+        "component-2-item-1-description": "Hiring qualified and experienced crew members for various roles on the vessel, from the captain to the deckhands.",
+        "component-2-item-1-b": "Training",
+        "component-2-item-1-b-description": "Ensuring crew members are trained according to maritime regulations (e.g., STCW - Standards of Training, Certification, and Watchkeeping).",
+        "component-2-item-1-c": "Crew Welfare",
+        "component-2-item-1-c-description": "Managing living conditions, health, and well-being for those on board, as well as addressing their payroll and contractual needs.",
+        "component-3-item-1": "Operational Management",
+        "component-3-item-1-a": "Voyage Planning",
+        "component-3-item-1-a-description": "Managing the logistics of the ship’s route, including port calls, cargo handling, and ensuring efficient and timely deliveries.",
+        "component-3-item-1-b": "Fuel and Provision Management",
+        "component-3-item-1-b-description": "Monitoring fuel consumption, optimizing fuel efficiency, and ensuring that provisions for the crew are adequate.",
+        "component-3-item-1-c": "Compliance with Regulations",
+        "component-3-item-1-c-description": "Ensuring the vessel operates within the legal framework set by international organizations like the IMO (International Maritime Organization) and local maritime authorities.",
+        "component-4-item-1": "Financial and Administrative Management",
+        "component-4-item-1-a": "Budgeting and Cost Control",
+        "component-4-item-1-a-description": "Managing the operating costs of the vessel, including crew wages, fuel, maintenance, and insurance.",
+        "component-4-item-1-b": "Documentation and Reporting",
+        "component-4-item-1-b-description": "Keeping all essential documents up-to-date, including certificates, permits, logbooks, and reporting necessary details to relevant authorities.",
+        "component-5-item-1": "Safety and Environmental Management",
+        "component-5-item-1-a": "Safety Procedures",
+        "component-5-item-1-a-description": "Implementing rigorous safety protocols to prevent accidents and ensure the well-being of crew members, including regular drills and the maintenance of safety equipment.",
+        "component-5-item-1-b": "Environmental Compliance",
+        "component-5-item-1-b-description": "Ensuring adherence to environmental laws related to emissions, waste disposal, and preventing water pollution from ballast water or oil spills.",
+        "component-6-item-1": "Insurance and Risk Management",
+        "component-6-item-1-a": "Insurance Management",
+        "component-6-item-1-a-description": "Ensuring that the ship and its operations are properly insured against potential risks (e.g., hull and machinery insurance, liability insurance).",
+        "component-6-item-1-b": "Risk Mitigation",
+        "component-6-item-1-b-description": "Identifying and managing operational risks, including hazards at sea, piracy, and potential damage to the vessel or cargo.",
+        "why-important-title": "Why Ship Management Is Important",
+        "why-important-1": "Effective ship management is crucial for:",
+        "why-important-item-1": "Operational Efficiency",
+        "why-important-item-1-p": "Ensures vessels are always ready for safe and efficient service.",
+        "why-important-item-2": "Compliance",
+        "why-important-item-2-p": "Helps ensure that the vessel complies with international regulations, avoiding legal issues and fines.",
+        "why-important-item-3": "Cost Control",
+        "why-important-item-3-p": "Manages the financial aspects of running the vessel, ensuring costs are kept within budget.",
+        "why-important-item-4": "Safety and Risk Prevention",
+        "why-important-item-4-p": "Prevents accidents, environmental damage, and operational disruptions.",
+        "company-description": "At [ Moon Navigation and Trading Co. ], we provide expert ship management services to ensure that vessels under our care operate at peak performance. This includes technical maintenance, crew management, regulatory compliance, and risk management. Our team handles all operational aspects, allowing vessel owners and operators to focus on their core business while we manage the intricacies of maritime operations efficiently and cost-effectively.",
+        "button": "Get Quote"
+    },
+    "learn-docking-and-maintenance": {
+        "button": "Get Quote",
+        "title": "Docking and Maintenance",
+        "description": "Docking and maintenance are essential parts of keeping a vessel in optimal condition and ensuring its safe, reliable, and efficient operation. These processes involve the inspection, repair, and upkeep of the vessel's structure, machinery, and systems, which must adhere to both industry regulations and safety standards.",
+        "what-it-is": "What it is:",
+        "purpose": "Purpose:",
+        "examples": "Examples:",
+        "activities": "Activities Involved:",
+        "sub-t-1": "Docking",
+        "sub-t-1-description": "Docking refers to the process of bringing a vessel into port or dry dock for inspection, maintenance, repairs, and cleaning. There are two primary types of docking:",
+        "docking-wet": {
+            "title": "Wet Docking (Floating Docking)",
+            "what-it-is": "The vessel remains afloat while docked in a port or harbor, and the work is usually done in a wet dock, where the water level can be controlled.",
+            "purpose": "Used for minor maintenance tasks such as cleaning the hull, inspecting the propeller and rudder, or conducting inspections of parts that can be accessed while the ship is still afloat.",
+            "activities": {
+                "item-1": "Hull cleaning and painting.",
+                "item-2": "Inspection of propeller, rudder, and underwater parts.",
+                "item-3": "Routine checks on the vessel’s systems."
+            }
+        },
+        "docking-dry": {
+            "title": "Dry Docking",
+            "what-it-is": "The vessel is taken out of the water and placed in a dry dock, where it is supported on blocks or a platform. This allows for a more thorough inspection and extensive maintenance.",
+            "purpose": "Dry docking is typically done for more intensive tasks such as structural repairs, major overhauls, and inspections required by maritime regulations.",
+            "activities": {
+                "item-1": "Hull inspection for cracks, corrosion, and structural integrity.",
+                "item-2": "Cleaning and painting of the hull to prevent corrosion.",
+                "item-3": "Repairing or replacing underwater components like the rudder, propeller, and shaft.",
+                "item-4": "Overhauling engine systems, generators, and machinery.",
+                "item-5": "Compliance checks for safety equipment (e.g., lifeboats, fire suppression systems)."
+            }
+        },
+        "sub-t-2": "Maintenance",
+        "sub-t-2-description": "Maintenance involves ongoing care and repair work to keep a vessel in good working condition throughout its operational life. It is performed on a regular schedule or when issues arise. There are several types of maintenance:",
+        "maintenance-routine": {
+            "title": "Routine Maintenance",
+            "what-it-is": "Regular, preventive maintenance tasks performed at set intervals to ensure the vessel is operating efficiently and to avoid unexpected breakdowns.",
+            "examples": {
+                "item-1": "Checking and changing oils and lubricants.",
+                "item-2": "Replacing filters, belts, and hoses.",
+                "item-3": "Inspections and calibration of navigational equipment.",
+                "item-4": "Routine tests of machinery and engines to monitor performance."
+            }
+        },
+        "maintenance-corrective": {
+            "title": "Corrective Maintenance",
+            "what-it-is": "Maintenance performed to repair specific issues or failures that occur during the vessel's operation.",
+            "examples": {
+                "item-1": "Engine repairs after a breakdown.",
+                "item-2": "Replacing damaged components such as pumps or valves.",
+                "item-3": "Correcting electrical or mechanical failures."
+            }
+        },
+        "maintenance-predictive": {
+            "title": "Predictive Maintenance",
+            "what-it-is": "Using data, sensors, and technology to predict when a part or system may fail, allowing for repairs to be planned before problems occur.",
+            "examples": {
+                "item-1": "Monitoring engine temperatures, vibrations, and wear and tear to predict failure.",
+                "item-2": "Using condition-based monitoring (CBM) to determine when machinery needs attention."
+            }
+        },
+        "sub-t-3": "Why Docking and Maintenance Are Crucial",
+        "description-3": "Docking and maintenance are essential for the safety, efficiency, and longevity of a vessel. Here’s why these processes are crucial:",
+        "reasons": {
+            "item-1": {
+                "title": "Safety Compliance",
+                "description": "Regular docking and maintenance ensure that the vessel meets international safety and environmental regulations (such as those set by the International Maritime Organization - IMO)."
+            },
+            "item-2": {
+                "title": "Operational Efficiency",
+                "description": "Regular maintenance and inspections reduce the risk of unexpected breakdowns, keeping operations smooth and cost-effective"
+            },
+            "item-3": {
+                "title": "Preventing Damage and Wear",
+                "description": "Timely repairs and cleaning (e.g., removing barnacles and other marine growth) ensure that the hull remains in good condition, which contributes to fuel efficiency and overall performance."
+            },
+            "item-4": {
+                "title": "Longevity of the Vessel",
+                "description": "Proper maintenance and periodic dry docking extend the operational life of the ship, preventing early retirement or expensive overhauls."
+            },
+            "item-5": {
+                "title": "Environmental Protection",
+                "description": "Routine maintenance ensures that vessels comply with environmental standards (e.g., preventing oil spills or water pollution). This is especially critical for keeping up with regulations like MARPOL, which governs the prevention of marine pollution."
+            }
+        },
+        "sub-t-4": "Docking and Maintenance at Moon Navigation and Trading Co.",
+        "description-4": "At Moon Navigation and Trading Co., we provide full-scale ship management services, including expert docking and maintenance solutions for our fleet and clients' vessels. Our services ensure that your vessels remain compliant with all maritime regulations and operate at peak efficiency throughout their lifecycle. Whether it's routine maintenance, dry docking, or emergency repairs, we handle all aspects of vessel upkeep, allowing you to focus on your core business activities."
+    },
+    "learn-container-hss": {
+        "button": "Get Quote",
+        "title": "Container Handling, Stevedoring, and Storage Services",
+        "description": "In the shipping and logistics industry, container handling, stevedoring, and storage are essential services that ensure cargo is moved, stored, and processed efficiently. Here’s a breakdown of these services and how they contribute to the smooth flow of goods in international trade.",
+        "what-it-is": "What it is:",
+        "purpose": "Purpose:",
+        "examples": "Examples:",
+        "activities": "Activities Involved:",
+        "sub-t-1": "Container Handling",
+        "sub-t-1-description": "Container handling refers to the process of loading, unloading, and managing shipping containers within ports, terminals, and other logistics hubs. It involves the movement of containers between ships, trucks, trains, and storage areas, ensuring the safe and efficient handling of goods.",
+        "docking-wet": {
+            "title": "Key Activities in Container Handling:",
+            "activities": {
+                "item-1": "Loading and Unloading:",
+                "item-1-p": "Transferring containers from ships to shore and vice versa, ensuring they are safely placed on the appropriate vehicles or vessels for onward transportation.",
+                "item-2": "Stacking and Positioning:",
+                "item-2-p": "Checking containers for damage, verifying contents, and ensuring compliance with customs and safety regulations.",
+                "item-3": "Handling Special Cargo: ",
+                "item-3-p": "Monitoring container movements, tracking inventory, and updating records to maintain accurate cargo information.",
+                "item-4": "Use of Equipment:",
+                "item-4-p": "Organizing containers in stacks or rows within container yards, optimizing space and facilitating easy access for retrieval and transport."
+            }
+        },
+        "sub-t-2": "Stevedoring",
+        "sub-t-2-description": "Stevedoring is the term used to describe the loading and unloading of cargo (typically containers) onto and from vessels at ports. Stevedores are the workers or companies responsible for the physical process of unloading, loading, and sometimes stowing cargo.",
+        "maintenance-routine": {
+            "title": "Key Responsibilities of Stevedores:",
+            "activities": {
+                "item-1": "Cargo Loading and Discharge: ",
+                "item-1-p": "Ensuring that cargo is safely loaded onto the vessel before departure and efficiently discharged when the vessel arrives at port.",
+                "item-2": "Stowage Plans: ",
+                "item-2-p": "Arranging cargo in a way that optimizes space and maintains safety, considering the weight and nature of the goods.",
+                "item-3": "Securing Cargo:  ",
+                "item-3-p": "Ensuring that cargo is properly secured within the containers or on the vessel to prevent movement during transit, avoiding damage to goods or the vessel.",
+                "item-4": "Safety Compliance: ",
+                "item-4-p": "Adhering to safety protocols during loading and unloading to minimize the risk of accidents and protect the crew, cargo, and equipment."
+            }
+        },
+        "sub-t-3": "Storage Services",
+        "description-3": "Storage involves providing secure and organized spaces for goods before, during, or after transportation. It is essential for businesses to have reliable storage solutions to manage inventory, provide flexibility in shipping schedules, and protect goods during transit delays.",
+        "storage": {
+            "title": "Types of Storage Services",
+            "activities": {
+                "item-1": "Container Storage: ",
+                "item-1-p": "Storing containers in designated areas within ports or storage yards, either temporarily or long-term. Containers may hold various goods, including breakbulk, machinery, and even hazardous cargo.",
+                "item-2": "Warehousing Services:  ",
+                "item-2-p": "This includes the storage of goods in warehouses, which can be either open storage (for containers) or covered storage (for sensitive items). Warehouses often offer additional services like inventory management, order fulfillment, and packaging.",
+                "item-3": "Refrigerated Storage: ",
+                "item-3-p": "For perishable goods, cold storage facilities (refrigerated warehouses or “reefer” containers) are provided to maintain goods at the required temperature.",
+                "item-4": "Bonded Warehousing: ",
+                "item-4-p": "This is a storage facility where goods can be stored without having to pay customs duties or taxes until the goods are moved out for export or import."
+            }
+        },
+        "sub-t-4": "Storage Solutions",
+        "description-4": "Storage involves providing secure and organized spaces for goods before, during, or after transportation. It is essential for businesses to have reliable storage solutions to manage inventory, provide flexibility in shipping schedules, and protect goods during transit delays.",
+        "solutions": {
+            "title": "Types of Storage Services",
+            "item-1": "Port Storage:",
+            "item-1-p": "Temporary storage of containers while awaiting shipping, unloading, or customs clearance.",
+            "item-2": "Long-Term Storage:",
+            "item-2-p": "For goods that may not need to be immediately distributed, companies offer long-term storage services, helping businesses manage excess inventory."
+        },
+        "sub-t-5": "Why These Services Are Crucial",
+        "reasons": {
+            "item-1": {
+                "title": "Efficiency in Transportation",
+                "description": "Effective container handling and stevedoring ensure smooth and fast loading and unloading of cargo, preventing delays in shipping and maximizing vessel turnaround time."
+            },
+            "item-2": {
+                "title": "Space Optimization:",
+                "description": "Proper storage practices help to organize containers efficiently, allowing quick access and reducing bottlenecks in port operations."
+            },
+            "item-3": {
+                "title": "Safety and Security",
+                "description-1": "Stevedoring ensures that goods are handled with care and properly secured, preventing damage or loss.",
+                "description-2": "Storage facilities provide a secure environment to protect goods from theft, damage, or environmental exposure."
+            },
+            "item-4": {
+                "title": "Cost Savings:",
+                "description": "Efficient container handling and storage reduce overall logistics costs by improving throughput and minimizing dwell times at ports."
+            },
+            "item-5": {
+                "title": "Flexibility and Scalability",
+                "description": "Offering storage services gives businesses flexibility to store goods temporarily or long-term, accommodating fluctuating inventory needs or changing shipping schedules."
+            }
+        }
+    },
+    "learn-hss": {
+        "button": "Get Quote",
+        "title": "Handling, Stevedoring, and Storage Services",
+        "sub-t-1": "Cargo Handling Services",
+        "sub-t-1-description": "Cargo handling involves the physical transfer and management of goods from one mode of transport to another, ensuring that goods are moved safely and efficiently across various points in the supply chain.",
+        "docking-wet": {
+            "title": "Key Cargo Handling Services:",
+            "activities": {
+                "item-1": "Loading and Unloading:",
+                "item-1-p": "Ensuring safe and timely transfer of goods from ships to shore and vice versa, using advanced equipment to handle different types of cargo, including bulk, breakbulk, and oversized items.",
+                "item-2": "Heavy Lift Handling: ",
+                "item-2-p": "Specialized equipment and expertise for managing and lifting heavy, oversized, or high-value cargo.",
+                "item-3": "Equipment Utilization: ",
+                "item-3-p": "We use modern handling equipment such as cranes, forklifts, conveyors, and reach stackers for efficient cargo movement.",
+                "item-4": "Risk Management: ",
+                "item-4-p": "Special procedures for handling sensitive or hazardous materials, ensuring compliance with safety regulations and minimizing risks during transit."
+            }
+        },
+        "sub-t-2": "Stevedoring Services",
+        "sub-t-2-description": "Stevedoring focuses on the efficient loading, unloading, and stowage of cargo on vessels at port. Stevedores are skilled workers who ensure that cargo is properly handled and secured, minimizing the risk of damage or loss.",
+        "maintenance-routine": {
+            "title": "Key Stevedoring Activities",
+            "activities": {
+                "item-1": "Cargo Stowage and Planning: ",
+                "item-1-p": "Stevedores organize cargo based on weight, size, and nature, ensuring optimal use of space on the vessel and maintaining balance for safe transportation.",
+                "item-2": "Cargo Securing: ",
+                "item-2-p": "Ensuring that all cargo is safely secured during loading and unloading to prevent movement or damage during the voyage.",
+                "item-3": "Discharge and Loading:  ",
+                "item-3-p": "Efficiently unloading containers and bulk cargo from vessels and loading them onto trucks, railcars, or other vessels for onward transport.",
+                "item-4": "Expert Crew and Safety Compliance: ",
+                "item-4-p": "Our skilled stevedores follow strict safety protocols and best practices to protect the cargo, crew, and equipment during all phases of handling."
+            }
+        },
+        "sub-t-3": "Storage Solutions",
+        "description-3": "Effective storage ensures that goods are securely held at key points in the shipping process—whether at a port, warehouse, or interim storage facility. Our storage services help clients manage their inventory while ensuring goods are available when needed for onward shipment or distribution.",
+        "storage": {
+            "title": "Types of Storage Services",
+            "activities": {
+                "item-1": "Breakbulk Storage:",
+                "item-1-p": "Dedicated storage for non-containerized cargo, where items are stored individually, such as machinery, steel, or vehicles.",
+                "item-2": "Cold Storage/Warehousing: ",
+                "item-2-p": "Refrigerated storage facilities for perishable goods, ensuring temperature-sensitive products remain intact.",
+                "item-3": "Bonded Storage:",
+                "item-3-p": "Secure storage of goods under customs control, allowing for tax and duty deferment until goods are cleared for entry or re-export.",
+                "item-4": "Temporary Storage:  ",
+                "item-4-p": "Short-term storage for goods awaiting shipment or further processing. We offer flexible and secure storage options to meet your time-sensitive needs."
+            }
+        },
+        "sub-t-4": "Benefits of Our Storage Services",
+        "solutions": {
+            "title": "Types of Storage Services",
+            "item-1": "Secure Facilities: ",
+            "item-1-p": "Our warehouses and storage areas are designed to prevent damage, theft, or environmental exposure, providing the highest level of security for goods in transit.",
+            "item-2": "Inventory Management",
+            "item-2-p": "We offer sophisticated tracking systems to ensure real-time updates on your stored cargo, streamlining inventory management.",
+            "item-3": "Flexible Storage Options",
+            "item-3-p": "Tailored storage plans to meet varying needs, whether it’s a short-term stopover for goods in transit or long-term storage for excess inventory."
+        },
+        "sub-t-5": "Why Choose Our Handling, Stevedoring, and Storage Services?",
+        "reasons": {
+            "item-1": {
+                "title": "Efficiency in Operations:",
+                "description": "Our services are designed to minimize downtime by streamlining the cargo handling process, from unloading ships to moving goods to their final destination."
+            },
+            "item-2": {
+                "title": "Safety and Compliance:",
+                "description": "We adhere to strict safety protocols and international standards to protect your cargo and ensure that all handling and storage are in line with industry regulations."
+            },
+            "item-3": {
+                "title": "Tailored Solutions:",
+                "description-1": "Whether you’re dealing with bulk, breakbulk, hazardous, or perishable cargo, we offer specialized services that meet the specific needs of your shipment."
+            },
+            "item-4": {
+                "title": "Cost-Effective and Flexible:",
+                "description": "Our efficient services help reduce handling costs, and our flexible storage solutions give you the ability to manage your cargo with precision and at the right time."
+            }
+        },
+        "sub-t-6": "Handling, Stevedoring, and Storage Services at Moon Navigation and Trading Co.",
+        "description-6": "At Moon Navigation and Trading Co., we offer expert handling, stevedoring, and storage services designed to meet the needs of businesses engaged in global trade. Whether it’s moving heavy cargo, managing intricate stevedoring operations, or providing secure storage solutions, we ensure that your goods are safely and efficiently managed throughout the entire supply chain.",
+        "services-t": "Our Services Include:",
+        "services": {
+            "item-1": "Cargo Handling",
+            "item-1-p": "Safe and efficient loading, unloading, and movement of all types of goods.",
+            "item-2": "Stevedoring",
+            "item-2-p": "Expert handling of cargo on vessels, ensuring safe stowage and compliance.",
+            "item-3": "Storage Solutions",
+            "item-3-p": "Secure, organized storage options for breakbulk, refrigerated goods, and bonded cargo."
+        }
+    },
+    "customs-clearance": {
+        "button": "Get Quote",
+        "title": "Customs Clearance Services",
+        "sub-t-1": "Cargo Handling Services",
+        "sub-t-1-description": "Customs clearance is a vital step in international trade, ensuring that goods meet all regulatory requirements for import or export. Moon Navigation and Trading Co. provides professional customs clearance services to ensure that your shipments move smoothly through customs without unnecessary delays or complications. Our expert team navigates the complex regulatory environment to streamline the clearance process for your goods.",
+        "sub-t-2": "What Are Customs Clearance Services?",
+        "sub-t-2-description": "Customs clearance services involve managing the required documentation, inspections, and compliance with government regulations to ensure that goods are legally imported or exported. This process includes preparing the necessary paperwork, paying customs duties and taxes, and ensuring that all import/export regulations are met.",
+        "docking-wet": {
+            "title": "Key Customs Clearance Activities:",
+            "activities": {
+                "item-1": "Import and Export Documentation: ",
+                "item-1-p": "Preparation and submission of all required customs forms and documents, such as invoices, bills of lading, certificates of origin, and packing lists.",
+                "item-2": "Customs Tariffs and Duty Calculation: ",
+                "item-2-p": "Determining the correct tariff classifications and calculating the applicable customs duties, taxes, and fees to ensure compliance and avoid overpayment.",
+                "item-3": "Customs Inspections: ",
+                "item-3-p": "Coordinating with customs authorities for necessary inspections, including physical checks or product verification.",
+                "item-4": "Clearing Goods through Customs: ",
+                "item-4-p": "Our team handles the complete process of clearing goods, ensuring compliance with local customs regulations and facilitating the smooth release of goods for onward delivery.",
+                "item-5": "Adherence to Import/Export Restrictions:",
+                "item-5-p": ": Ensuring that all goods comply with import/export restrictions, prohibitions, and licensing requirements imposed by authorities.",
+                "item-6": "HS Code Classification:",
+                "item-6-p": "Accurate classification of goods under the Harmonized System (HS) to ensure proper duty application and prevent clearance delays."
+            }
+        },
+        "sub-t-5": "Why Customs Clearance is Important",
+        "reasons": {
+            "item-1": {
+                "title": "Regulatory Compliance:",
+                "description": "Customs clearance ensures that goods are in compliance with international trade regulations, preventing penalties, fines, or delays due to misclassification or incomplete paperwork."
+            },
+            "item-2": {
+                "title": "Avoiding Delays:",
+                "description": "A smooth clearance process ensures that goods are delivered on time, avoiding potential disruptions in supply chains and reducing shipping delays."
+            },
+            "item-3": {
+                "title": "Cost Management:",
+                "description-1": "Proper classification and accurate duty calculations help manage costs, ensuring that businesses avoid overpaying taxes and duties while complying with all legal requirements."
+            },
+            "item-4": {
+                "title": "Security and Transparency:",
+                "description": "Proper clearance helps to ensure that goods meet safety, environmental, and security standards required by the destination country, minimizing the risk of shipping non-compliant or dangerous goods."
+            }
+        }
+    },
+    "other-s": {
+        "title-1": "International Trading",
+        "description-1": "International trading refers to the exchange of goods and services across international borders. This type of trade plays a crucial role in the global economy, allowing countries and businesses to access products and markets that they may not have locally. It involves the import and export of goods, and businesses involved in international trade typically deal with factors such as customs regulations, international payment methods, logistics, tariffs, and trade agreements.",
+        "title-2": "Ship Management",
+        "description-2": "Ship management refers to the comprehensive range of services involved in the operation, maintenance, and administration of a vessel, ensuring it operates efficiently, safely, and in compliance with international maritime regulations. It is a critical function for shipping companies, ship owners, and operators to ensure that their vessels are managed effectively and that all aspects of their operations are properly handled.",
+        "title-3": "Docking and Maintenance",
+        "description-3": "Docking and maintenance refer to the process of bringing a vessel into port for repairs, maintenance, and other services. This process is crucial for ensuring the safety and efficiency of a vessel, as well as for complying with regulatory requirements. It involves a range of activities including dry docking, hull cleaning, and repair of mechanical and electrical systems.",
+        "title-4": "Buy/Rent Containers",
+        "description-4": "Buying or renting containers is a common practice in the shipping and logistics industry. Containers are essential for transporting goods by sea, land, or air, and they come in various sizes and types to accommodate different cargo needs. Businesses can purchase or lease containers to meet their shipping requirements, whether for one-time shipments or ongoing logistics operations.",
+        "title-5": "Buy/Rent Vessels",
+        "description-5": "Buying or renting vessels is a significant investment for shipping companies, ship owners, and operators. Vessels are essential for transporting goods and passengers across oceans and waterways, and they come in various types and sizes to suit different purposes. Whether purchasing a new vessel or leasing one for a specific project, businesses must consider factors such as vessel type, size, capacity, and operational requirements.",
+        "title-6": "Container Handling and Storage",
+        "description-6": "Container handling and storage refer to the process of managing and storing containers used for transporting goods. This includes loading and unloading containers from ships, trucks, and trains, as well as storing containers in ports or warehouses. Efficient container handling and storage services are essential for ensuring the smooth flow of goods in international trade and logistics operations.",
+        "title-7": "Handling, Stevedoring, and Storage Services",
+        "description-7": "Handling, stevedoring, and storage services refer to the range of activities involved in moving, loading, unloading, and storing cargo in ports and logistics hubs. These services ensure that goods are handled safely, efficiently, and in compliance with regulations. Handling, stevedoring, and storage services are essential for managing the flow of goods in international trade and logistics operations.",
+        "title-8": "Customs Clearance Services",
+        "description-8": "Customs clearance services refer to the process of obtaining the necessary permits and approvals to import or export goods across international borders. This process involves preparing and submitting the required documentation, paying customs duties and taxes, and ensuring compliance with import/export regulations. Customs clearance services are essential for ensuring that goods move smoothly through customs and reach their destination without delays or complications.",
+        "title-9": "Out Gauge",
+        "description-9": "Out gauge refers to the process of transporting oversized or overweight cargo that exceeds the standard dimensions or weight limits for shipping containers. This type of cargo requires special handling and transportation arrangements to ensure that it is safely and securely moved from one location to another. Out gauge services are essential for businesses that need to transport large or irregularly shaped items that cannot fit into standard containers.",
+        "title-10": "Special Services",
+        "description-10": "Special services refer to the range of activities involved in providing customized solutions for unique or complex shipping and logistics requirements. These services may include handling hazardous materials, transporting perishable goods, managing high-value cargo, or coordinating multi-modal transportation. Special services are tailored to meet the specific needs of businesses with unique shipping challenges."
+    },
+    "learn-lcl": {
+        "title": "Shipping Methods and Containers",
+        "description": "This page provides detailed information about various shipping methods, including Less than Container Load (LCL), standard containers, In Gauge cargo, and Break Bulk shipping. Learn about their characteristics, advantages, and use cases to better understand the logistics process and choose the best shipping method for your needs.",
+        "lcl-title": "Less than Container Load (LCL)",
+        "lcl-description": "For businesses with shipments too small to fill an entire container, our Less than Container Load (LCL) services offer a cost-effective solution. By consolidating your goods with others, you only pay for the space you use, making LCL the ideal choice for smaller volumes of cargo. With our extensive global network and expertise in freight consolidation, we ensure that your goods are transported securely and efficiently. Our LCL services offer flexible scheduling, reliable transit times, and real-time tracking, allowing you to optimize costs without sacrificing speed or safety.",
+        "lcl-benefit-1": "Cost Efficiency",
+        "lcl-benefit-1-description": "LCL allows businesses to ship small volumes of goods without the need for full container load, reducing transportation costs.",
+        "lcl-benefit-2": "Flexible Scheduling",
+        "lcl-benefit-2-description": "With LCL, shipments are consolidated, which allows for flexible departure and arrival times.",
+        "lcl-benefit-3": "Real-time Tracking",
+        "lcl-benefit-3-description": "Benefit from real-time tracking, ensuring that you are always informed about the status of your shipment.",
+        "standard-container-title": "Standard Container",
+        "standard-container-description": "A standard container typically refers to the most common type of shipping container used in the transportation of goods. These containers are designed to be easily loaded, unloaded, and transferred between various modes of transportation (ship, rail, truck).",
+        "standard-container-dimensions": "Standard Container Dimensions",
+        "20": "20-foot container",
+        "standard-container-20ft": "(20' x 8' x 8'6\" or 6.1m x 2.44m x 2.59m)",
+        "40": "40-foot container",
+        "standard-container-40ft": "(40' x 8' x 8'6\" or 12.19m x 2.44m x 2.59m)",
+        "container-types-title": "Types of Standard Containers",
+        "dry-van-title": "Dry Van (DV)",
+        "dry-van-description": "The standard, fully enclosed container, used for transporting dry goods.",
+        "high-cube-title": "High Cube (HC)",
+        "high-cube-description": "A taller container (usually 9'6\" instead of 8'6\") providing more volume, often used for lightweight, bulky cargo.",
+        "open-top-title": "Open-Top",
+        "open-top-description": "A container with a removable top for cargo that needs to be loaded from the top (e.g., heavy machinery).",
+        "flat-rack-title": "Flat Rack",
+        "flat-rack-description": "A platform container without walls or a roof, ideal for cargo that is too large or irregularly shaped.",
+        "in-gauge-title": "In Gauge",
+        "in-gauge-description": "In gauge refers to cargo that fits within the size specifications of a standard container or a ship’s cargo hold. Specifically, the term is often used in relation to cargo or equipment that meets the required dimensions and weight limits for transport in these standard shipping containers or vessels.",
+        "in-gauge-for-containers-t": "For Containers:",
+        "in-gauge-for-containers": "Cargo that is in gauge fits within the internal dimensions of a standard shipping container and doesn’t exceed the weight or size limits.",
+        "in-gauge-for-rail-truck-t": "For Rail/Truck Transport:",
+        "in-gauge-for-rail-truck": "In the context of rail or road transport, in gauge refers to cargo that fits within the prescribed dimensions and weight limits of the tracks or roads, ensuring it can be transported without issue.",
+        "in-gauge-sub-t": "This term is commonly used to distinguish cargo that is within acceptable size limits for standard shipping, compared to out of gauge cargo, which requires special handling, larger containers, or customized transportation solutions.",
+        "break-bulk-title": "Break Bulk",
+        "break-bulk-description": "Breakbulk refers to cargo that is transported individually, rather than in standard shipping containers. Unlike containerized cargo, breakbulk cargo must be handled and stowed separately, often requiring specialized equipment for loading and unloading.",
+        "break-bulk-characteristics": "Characteristics of Breakbulk Cargo include non-containerized shipments like machinery, construction materials, or heavy equipment that cannot fit into standard containers. It must be loaded and unloaded individually.",
+        "char": "Characteristics of Breakbulk Cargo:",
+        "non": "Non-containerized",
+        "loaded": "Loaded Seperately",
+        "handling": "Handling",
+        "break-bulk-container": "It includes items like machinery, construction materials, or heavy equipment that cannot fit into standard containers.",
+        "break-bulk-loaded": "Each item is typically loaded individually onto a ship, truck, or train, as opposed to being packed into a container.",
+        "break-bulk-handling": "Breakbulk cargo often requires cranes, forklifts, or other equipment to load and unload, depending on the size and weight of the items.",
+        "break-bulk-types-title": "Breakbulk Types:",
+        "heavy-lift-title": "Heavy Lift",
+        "heavy-lift-description": "Large, heavy items such as industrial machinery or turbines that need specialized equipment for transport.",
+        "project-cargo-title": "Project Cargo",
+        "project-cargo-description": "Large, specialized shipments often related to construction projects, requiring tailored solutions.",
+        "standard-breakbulk-title": "Standard Breakbulk",
+        "standard-breakbulk-description": "Cargo like lumber, steel, or other materials that are packed and transported without containers.",
+        "button": "Request a Quote"
     }
 }

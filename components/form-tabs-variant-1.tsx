@@ -20,7 +20,7 @@ export default function FormTabs({ tabData }: FormTabsProps) {
     const activeTabData = tabData.find((tab) => tab.id === activeTab) || tabData[0]
 
     return (
-        <div className="w-full mt-10 mx-auto flex flex-col my-10">
+        <div className="w-full mt-16 mx-auto flex flex-col my-10">
             <AnimatePresence mode="wait">
                 <motion.div
                     key={activeTab + "-header"}

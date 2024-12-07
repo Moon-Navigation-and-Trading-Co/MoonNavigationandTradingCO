@@ -31,7 +31,7 @@ export default function DangerousCargoInfo() {
                 </section>
 
                 <section>
-                    <h2 className="text-xl font-semibold mb-4 text-primary">{t('sub-t-2')}:</h2>
+                    <h2 className="text-xl font-semibold mb-4 text-primary">{t('sub-t-2')}</h2>
                     <p className="mb-3">{t('description-2')}</p>
 
                     <h2 className=" font-semibold mb-4 text-primary">{t('sub-t-2')}</h2>

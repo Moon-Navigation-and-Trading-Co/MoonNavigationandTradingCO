@@ -310,6 +310,29 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
 
                         </div>
 
+                        <div className="px-4 w-full items-center gap-1.5 mt-1 col-span-2 mb-10">
+                            <FormLabel htmlFor="additional_information">
+                                {t('additionalInformation')} <span className="text-sm text-gray-500">({t('optional')})</span>
+                            </FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={control}
+                                    name={`commodities.${index}.additional_information`}
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Textarea
+                                                className="max-w-[300px] border-2 rounded-xl"
+                                                id="additional_information"
+                                                placeholder="Add any additional information"
+                                                {...field}
+                                            />
+                                            {error && <p className="text-red-500">{error.message}</p>}
+                                        </>
+                                    )}
+                                />
+                            </FormControl>
+                        </div>
+
                         {/* Remove Button */}
                         <div className="flex items-end px-4">
                             {fields.length > 1 && (
@@ -344,28 +367,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                 {t('addCargo')}
             </Button>
 
-            <div className="px-4 w-full items-center gap-1.5 mt-1 col-span-2 mb-10">
-                <FormLabel htmlFor="commodities-message">
-                    {t('additionalInformation')} <span className="text-sm text-gray-500">({t('optional')})</span>
-                </FormLabel>
-                <FormControl>
-                    <Controller
-                        control={control}
-                        name="additional_information"
-                        render={({ field, fieldState: { error } }) => (
-                            <>
-                                <Textarea
-                                    className="max-w-[300px] border-2 rounded-xl"
-                                    id="additional_information"
-                                    placeholder="Add any additional information"
-                                    {...field}
-                                />
-                                {error && <p className="text-red-500">{error.message}</p>}
-                            </>
-                        )}
-                    />
-                </FormControl>
-            </div>
+
 
 
         </div>

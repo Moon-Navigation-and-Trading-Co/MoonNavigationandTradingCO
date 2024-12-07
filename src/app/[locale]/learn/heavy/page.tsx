@@ -58,7 +58,7 @@ export default function HeavyLiftCargoInfo() {
                 </section>
 
                 <section>
-                    <h2 className="text-xl font-semibold mb-4 text-primary">{t('sub-t-5')}:</h2>
+                    <h2 className="text-xl font-semibold mb-4 text-primary">{t('sub-t-5')}</h2>
                     <ul className="list-decimal pl-6 space-y-1">
                         <li><span className="font-bold">{t('reason-1')}:</span> {t('reason-1-description')} </li>
                         <li><span className="font-bold">{t('reason-2')}:</span> {t('reason-2-description')} </li>

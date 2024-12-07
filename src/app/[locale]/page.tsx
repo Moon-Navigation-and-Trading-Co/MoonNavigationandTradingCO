@@ -7,7 +7,7 @@ import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { Section, TrendingUp } from "lucide-react";
 import { useTranslations } from 'next-intl';
 import Image from "next/image";
-import CarouselAnimation from "@/components/carousel-animation";
+import CarouselAnimation from "@/components/carousel-animation-component-variant-1";
 import TransportationServices from "@/components/TransportationServices";
 import { Separator } from "@/components/ui/separator";
 import ServicesWithLogo from "@/components/services-with-logos";
@@ -20,9 +20,32 @@ import PartnerLogoCarousel from "@/components/partners-carousel";
 export default function Index() {
   const t = useTranslations('HomePage');
   const tt = useTranslations('Buttons');
-  const ttt = useTranslations('Services-3')
   const tttt = useTranslations('Contact')
   const modalRef = useRef<HTMLDivElement | null>(null);
+
+  const freightTypes = [
+    {
+      title: t("servicesCard1Title"),
+      description: t("servicesCard1Description"),
+      image: "/cargoAir.jpeg",
+      link: "/learn/air-freight",
+      quote: "/air-freight-forms"
+    },
+    {
+      title: t("servicesCard2Title"),
+      description: t("servicesCard2Description"),
+      image: "/airCargo.jpg",
+      link: "/learn-more/ocean-freight",
+      quote: "/ocean-freight-forms"
+    },
+    {
+      title: t("servicesCard3Title"),
+      description: t("servicesCard3Description"),
+      image: "/land-cargo-2.jpeg",
+      link: "/learn-more/inland-freight",
+      quote: "/inland-services-forms"
+    },
+  ]
 
   const scrollToModal = () => {
     if (modalRef.current) {
@@ -92,7 +115,7 @@ export default function Index() {
 
           <div className="flex flex-col gap-8 bg-[#E2F1E7 px-2 py-5 rounded-2xl ">
             {/* Transportation Services */}
-            <CarouselAnimation />
+            <CarouselAnimation title={t('TransportationServices')} freightTypes={freightTypes} />
 
             <TransportationServices />
 

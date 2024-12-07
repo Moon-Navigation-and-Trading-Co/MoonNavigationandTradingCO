@@ -71,9 +71,6 @@ export const localInlandServicesTable = pgTable("local_inland_services", {
     commodities: jsonb("commodities").notNull(),
 
     date: date("date").notNull(), // Date of the service
-
-    additional_information: text("additional_information"), // Additional details
-
     // VAD (Value Added Services) details
     inland_container: boolean("inland_container").default(false), // Value-added inland container service
 
@@ -97,7 +94,6 @@ export const InternationalInlandServicesTable = pgTable("international_inland_se
     routing: jsonb("routing").notNull(), // From location
 
     date: date("date").notNull(), // Date of the service
-    additional_information: text("additional_information"), // Additional details
 
     // Commodity details
     commodities: jsonb("commodities").notNull(),
@@ -128,9 +124,6 @@ export const containerInlandServicesTable = pgTable("container_inland_services",
 
     // Commodity details
     commodities: jsonb("commodities").notNull(),
-
-    additional_information: text("additional_information"), // Additional details
-
     // Value-added (VAD) details
     inland_container: text("inland_container"), // Value-added inland container service
 

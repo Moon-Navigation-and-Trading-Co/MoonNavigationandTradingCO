@@ -40,8 +40,8 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
             file: z.string().optional().refine(value => {
                 return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
             }, { message: t("File") }),
+            additional_information: z.string().optional(),
         })),
-        additional_information: z.string().optional(),
         vad: z.object({
             inland_container: z.string().optional(),
         }),
@@ -54,7 +54,7 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
-            additional_email: z.string().email().optional(),
+            additional_email: z.string().optional(),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
             additional_phone_number: z.string().optional(),
         })

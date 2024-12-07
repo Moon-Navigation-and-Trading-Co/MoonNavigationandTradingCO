@@ -62,7 +62,6 @@ const Page: React.FC = () => {
                 user_id: user.id,
                 routing: formData.routing,
                 date: formData.date,
-                additional_information: formData.additional_information,
                 commodities: formData.commodities,
                 inland_container: formData.vad.inland_container,
                 company_name: formData.company_details.company_name,
@@ -79,7 +78,6 @@ const Page: React.FC = () => {
             flattenedData = {
                 user_id: user.id,
                 routing: formData.routing,
-                additional_information: formData.additional_information,
                 commodities: formData.commodities,
                 inland_container: formData.vad.inland_container,
                 service_contract: formData.service_contract.container,
@@ -127,8 +125,8 @@ const Page: React.FC = () => {
     const tabData = [
         {
             id: "international",
-            title: "International Inland Services",
-            description: "This is the international description",
+            title: t('int'),
+            description: t('international-p'),
             content:
                 <>
                     <InternationalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "international_inland_services")} />
@@ -136,16 +134,16 @@ const Page: React.FC = () => {
         },
         {
             id: "local",
-            title: "Local Inland Services",
-            description: "This is the local description",
+            title: t('local'),
+            description: t('local-p'),
             content: <>
                 <InternationalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "local_inland_services")} />
             </>
         },
         {
             id: "container",
-            title: "Inland Container Transportation",
-            description: "This is the container description",
+            title: t('cont'),
+            description: t('container-p'),
             content: <>
                 <ContainerInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "container_inland_services")} />
             </>

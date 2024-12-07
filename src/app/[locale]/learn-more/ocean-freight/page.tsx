@@ -5,61 +5,70 @@ import { Button } from "@/components/ui/button"
 import { ChevronRight, Plane } from "lucide-react"
 import LearnMoreForm from '@/components/learn-more-cards'
 import { useTranslations } from 'next-intl'
+import CarouselAnimation from '@/components/carousel-animation-component'
 
 export default function OceanFreightPage() {
     const t = useTranslations("ocean-freight")
 
-    const Data = {
-        title: "Ocean Freight",
-        description: "Fast and efficient air transportation solutions",
-        subcategories: [
+    const Data =
+        // title: "Ocean Freight",
+        // description: "Fast and efficient air transportation solutions",
+        [
             {
-                subcategory: "Project Cargo Services",
+                title: "Project Cargo Services",
                 description: t('project-p'),
                 image: "/airCargo.jpg",
-                link: "/learn/project-cargo"
+                link: "/learn/project-cargo",
+                quote: "/ocean-freight-forms"
 
             },
             {
-                subcategory: "Roll On/Off (RoRo)",
+                title: "Roll On/Off (RoRo)",
                 description: t('roll-p'),
                 image: "/airCargo.jpg",
-                link: "/learn/roll"
+                link: "/learn/roll",
+                quote: "/ocean-freight-forms"
+
 
             },
             {
-                subcategory: "Dangerous Cargo",
+                title: "Dangerous Cargo",
                 description: t('dangerous-p'),
                 image: "/airCargo.jpg",
-                link: "/learn/dangerous"
+                link: "/learn/dangerous",
+                quote: "/ocean-freight-forms"
+
             },
             {
-                subcategory: "Heavy Lift",
+                title: "Heavy Lift",
                 description: t('heavy-p'),
                 image: "/airCargo.jpg",
-                link: "/learn/heavy"
+                link: "/learn/heavy",
+                quote: "/ocean-freight-forms"
+
 
             },
             {
-                subcategory: "Break Bulk",
+                title: "Break Bulk",
                 description: t('breakbulk-p'),
                 image: "/airCargo.jpg",
-                link: "/learn/breakbulk"
+                link: "/learn/breakbulk",
+                quote: "/ocean-freight-forms"
 
             }
-        ],
-        link: "/ocean-freight-forms"
-    }
+        ]
+
 
     return (
         <>
-            <LearnMoreForm
+            {/* <LearnMoreForm
                 title={Data.title}
                 description={Data.description}
                 subcategories={Data.subcategories}
                 link={Data.link}
                 icon={<Plane />}
-            />
+            /> */}
+            <CarouselAnimation title={t('ocean')} freightTypes={Data} />
         </>
     )
 }
