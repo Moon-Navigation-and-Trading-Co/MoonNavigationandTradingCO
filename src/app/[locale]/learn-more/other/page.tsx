@@ -87,7 +87,7 @@ export default function AirFreightPage() {
 
     return (
         <div className='flex justify-center'>
-            <CarouselAnimation title="aaa" freightTypes={Data} />
+            <CarouselAnimation title={t('title')} freightTypes={Data} />
         </div>
     )
 }
