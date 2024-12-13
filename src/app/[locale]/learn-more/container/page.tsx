@@ -1,63 +1,55 @@
-import React from 'react'
-import Link from 'next/link'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ChevronRight, Plane } from "lucide-react"
-import LearnMoreForm from '@/components/learn-more-cards'
+import React from "react";
+import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ChevronRight, Plane } from "lucide-react";
+import { useTranslations } from "next-intl";
+import CarouselAnimation from "@/components/carousel-animation-component";
 
 export default function OceanFreightPage() {
-    const Data = {
-        title: "Container Services",
-        description: "Fast and efficient air transportation solutions",
-        subcategories: [
-            {
-                subcategory: "Less than Container Load",
-                description: "Rapid delivery for time-sensitive shipments",
-                image: "/airCargo.jpg",
-                link: "/learn/air-freight",
+  const t = useTranslations("container");
 
-            },
-            {
-                subcategory: "Standard Container",
-                description: "Cost-effective option for less urgent air shipments",
-                image: "/airCargo.jpg",
-                link: "/learn/air-freight",
+  const Data = [
+    {
+      title: t("less"),
+      description: t("less-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/less",
+      quote: "/container-services-forms",
+    },
+    {
+      title: t("standard"),
+      description: t("standard-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/standard",
+      quote: "/container-services-forms",
+    },
+    {
+      title: t("oversized"),
+      description: t("oversized-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/oversized",
+      quote: "/container-services-forms",
+    },
+    {
+      title: t("out-gauge"),
+      description: t("out-gauge-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/out-gauge",
+      quote: "/container-services-forms",
+    },
+  ];
 
-            },
-            {
-                subcategory: "Oversized Container",
-                description: "Dedicated aircraft for special cargo needs",
-                image: "/airCargo.jpg",
-                link: "/learn/air-freight",
-
-            },
-            {
-                subcategory: "Inland Transportation",
-                description: "Specialized handling for temperature-sensitive items",
-                image: "/airCargo.jpg",
-                link: "/learn/air-freight",
-
-            },
-            {
-                subcategory: "Stevedoring and Storage",
-                description: "Specialized handling for temperature-sensitive items",
-                image: "/airCargo.jpg",
-                link: "/learn/air-freight",
-
-            }
-        ],
-        link: "/container-services-forms"
-    }
-
-    return (
-        <>
-            <LearnMoreForm
-                title={Data.title}
-                description={Data.description}
-                subcategories={Data.subcategories}
-                link={Data.link}
-                icon={<Plane />}
-            />
-        </>
-    )
+  return (
+    <>
+      <CarouselAnimation title={t("container")} freightTypes={Data} />
+    </>
+  );
 }

@@ -1,56 +1,56 @@
-import React from 'react'
-import Link from 'next/link'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ChevronRight, Plane } from "lucide-react"
-import LearnMoreForm from '@/components/learn-more-cards'
+import React from "react";
+import Link from "next/link";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ChevronRight, Plane } from "lucide-react";
+import LearnMoreForm from "@/components/learn-more-cards";
+import { useTranslations } from "next-intl";
+import CarouselAnimation from "@/components/carousel-animation-component";
 
 export default function OceanFreightPage() {
-    const Data = {
-        title: "Ship Agency Services",
-        description: "Fast and efficient air transportation solutions",
-        subcategories: [
-            {
-                subcategory: "Request for PDA",
-                description: "Rapid delivery for time-sensitive shipments",
-                image: "/airCargo.jpg",
-                link: "/learn/request-for-pda",
+  const t = useTranslations("ship-agency");
 
-            },
-            {
-                subcategory: "Sign On/Off Crew Members",
-                description: "Cost-effective option for less urgent air shipments",
-                image: "/airCargo.jpg",
-                link: "/learn/sign-on-off-crew-members",
+  const Data = [
+    {
+      title: t("pda"),
+      description: t("pda-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/pda",
+      quote: "/ship-agency-forms",
+    },
+    {
+      title: t("crew"),
+      description: t("crew-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/crew",
+      quote: "/ship-agency-forms",
+    },
+    {
+      title: t("transit"),
+      description: t("transit-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/transit",
+      quote: "/ship-agency-forms",
+    },
+    {
+      title: t("special"),
+      description: t("special-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/special",
+      quote: "/ship-agency-forms",
+    },
+  ];
 
-            },
-            {
-                subcategory: "Transit Spare Parts",
-                description: "Dedicated aircraft for special cargo needs",
-                image: "/airCargo.jpg",
-                link: "/learn/transit-spare-parts",
-
-            },
-            {
-                subcategory: "Special Services",
-                description: "Specialized handling for temperature-sensitive items",
-                image: "/airCargo.jpg",
-                link: "/learn/special-services",
-
-            }
-        ],
-        link: "/ship-agency-forms"
-    }
-
-    return (
-        <>
-            <LearnMoreForm
-                title={Data.title}
-                description={Data.description}
-                subcategories={Data.subcategories}
-                link={Data.link}
-                icon={<Plane />}
-            />
-        </>
-    )
+  return (
+    <>
+      <CarouselAnimation title={t("ship-agency")} freightTypes={Data} />
+    </>
+  );
 }
