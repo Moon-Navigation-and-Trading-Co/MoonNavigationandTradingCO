@@ -37,14 +37,21 @@
         "getQuote": "Get Quote"
     },
     "Services-2": {
+        "container": "Container Services",
         "container-s-1": "Less than Load Container",
         "container-s-2": "Standard Container",
         "container-s-3": "Oversized Container",
         "container-s-4": "Inland Container Transportation",
+        "ship": "Ship Agency Services",
         "ship-s-1": "Request for PDA",
         "ship-s-2": "Sign on/off Crew Members",
         "ship-s-3": "Transit Spare Parts",
-        "ship-s-4": "Special Services"
+        "special": "Special Services",
+        "special-s-1": "Expedited Delivery",
+        "special-s-2": "Temperature-Controlled Transport",
+        "special-s-3": "Ship-to-Ship Transfers",
+        "special-s-4": "Emergency Crew Changes",
+        "buy/sell": "Buy/Rent Container/Vessel"
     },
     "Services-3": {
         "container-title-1": "International Trading",
@@ -696,7 +703,7 @@
         "list-1-description-4": "May require cranes, flat racks, open-top containers, or other tailored solutions to ensure safe transport.",
         "list-1-title-5": "Time-Sensitive",
         "list-1-description-5": "Often associated with critical infrastructure or energy projects, where delays can impact construction timelines and costs.",
-        "sub-t-2": "Industries Relying on Project Cargo:",
+        "sub-t-2": "Industries Relying on Project Cargo",
         "list-2-title-1": "Energy (e.g., wind turbines, oil rigs)",
         "list-2-title-2": "Construction and Infrastructure",
         "list-2-title-3": "Mining and Resources",

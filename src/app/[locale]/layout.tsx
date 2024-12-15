@@ -1,19 +1,12 @@
-import DeployButton from "@/components/deploy-button";
-import HeaderAuth from "@/components/header-auth";
-import { ThemeSwitcher } from "@/components/theme-switcher";
-import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "next-themes";
-import Link from "next/link";
 import "../globals.css";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
 import Footer from "@/components/footer";
-import { Button } from "@/components/ui/button"
 import Navbar from "@/components/navbar";
 import { createClient } from "@/utils/supabase/server";
-import { Toaster } from "@/components/ui/toaster"
-
+import { Toaster } from "@/components/ui/toaster";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -29,18 +22,47 @@ export const metadata = {
     description: "International Freight Solutions at Competitve Prices!",
     image: "/airCargo.jpg",
   },
-  keywords: ["Moon Navigation", "Moon Navigation and Trading Co", "Freight", "Shipping", "Logistics", "Cargo", "Transportation", "International Freight", "Ocean Freight", "Air Freight", "Inland Freight", "Container Services", "Project Cargo Services", "Roll On/Off (RoRo)", "Heavy Lift", "Dangerous Cargo", "Express Air Freight", "Standard Air Freight", "Charter Services", "Perishable Goods", "International Inland", "Local Inland", "Inland Container", "Less than Container Load", "Standard Container", "Oversized Container", "Inland Transportation", "Stevedoring and Storage"],
+  keywords: [
+    "Moon Navigation",
+    "Moon Navigation and Trading Co",
+    "Freight",
+    "Shipping",
+    "Logistics",
+    "Cargo",
+    "Transportation",
+    "International Freight",
+    "Ocean Freight",
+    "Air Freight",
+    "Inland Freight",
+    "Container Services",
+    "Project Cargo Services",
+    "Roll On/Off (RoRo)",
+    "Heavy Lift",
+    "Dangerous Cargo",
+    "Express Air Freight",
+    "Standard Air Freight",
+    "Charter Services",
+    "Perishable Goods",
+    "International Inland",
+    "Local Inland",
+    "Inland Container",
+    "Less than Container Load",
+    "Standard Container",
+    "Oversized Container",
+    "Inland Transportation",
+    "Stevedoring and Storage",
+  ],
   description: "International Freight Solutions at Competitve Prices!",
 };
 
 type Props = {
   children: React.ReactNode;
   params: { locale: string };
-}
+};
 
 export default async function RootLayout({
   children,
-  params: { locale }
+  params: { locale },
 }: Props) {
   const messages = await getMessages();
   const supabase = createClient();
@@ -52,32 +74,25 @@ export default async function RootLayout({
   const isUserLoggedIn = !!user;
 
   return (
-    <html lang={locale} className={GeistSans.className} suppressHydrationWarning>
+    <html
+      lang={locale}
+      className={GeistSans.className}
+      suppressHydrationWarning
+    >
       <body className="bg-background text-foreground">
-
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-
+        <ThemeProvider attribute="class" defaultTheme="dark">
           <main className="min-h-screen flex flex-col items-center">
             <NextIntlClientProvider messages={messages}>
               <Toaster />
               <div className="relative flex-1 w-full flex flex-col items-center">
-
                 {/* navbar */}
                 <Navbar user={isUserLoggedIn} />
 
                 {/* content */}
                 <div className="flex flex-col pt-16 w-full max-w-[1300px] px-0 md:px-5">
-
                   {children}
                 </div>
-                <div
-                  className="absolute inset-0 z-[-1] h-full w-full bg-white dark:bg-gray-800 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_30%,#000_40%,transparent_100%)] md:[mask-image:radial-gradient(ellipse_50%_50%_at_50%_35%,#000_40%,transparent_100%)]"
-                ></div>
+                <div className="absolute inset-0 z-[-1] h-full w-full bg-white dark:bg-gray-800 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_30%,#000_40%,transparent_100%)] md:[mask-image:radial-gradient(ellipse_50%_50%_at_50%_35%,#000_40%,transparent_100%)]"></div>
 
                 {/*  footer */}
                 <footer className="w-full flex items-center justify-center text-center text-xs">
@@ -86,9 +101,7 @@ export default async function RootLayout({
                 </footer>
               </div>
             </NextIntlClientProvider>
-
           </main>
-
         </ThemeProvider>
       </body>
     </html>

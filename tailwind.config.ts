@@ -31,7 +31,7 @@ const config = {
 				'custom-inner': 'inset 0 0 6px #000;'
 			},
 			backgroundImage: {
-				'custom-radial': 'radial-gradient(circle, #119285 45%, #0A5951 100%)',
+				'custom-radial': 'radial-gradient(circle, #09446d 45%, #00243e 100%)',
 				'black-overlay': 'linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5))',
 				'home-image': "url('/cargo-1.jpeg')"
 			},
