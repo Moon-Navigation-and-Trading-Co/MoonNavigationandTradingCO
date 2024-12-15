@@ -80,7 +80,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <body className="bg-background text-foreground">
-        <ThemeProvider attribute="class" defaultTheme="dark">
+        <ThemeProvider attribute="class" defaultTheme="light">
           <main className="min-h-screen flex flex-col items-center">
             <NextIntlClientProvider messages={messages}>
               <Toaster />
@@ -97,7 +97,6 @@ export default async function RootLayout({
                 {/*  footer */}
                 <footer className="w-full flex items-center justify-center text-center text-xs">
                   <Footer />
-                  {/* <ThemeSwitcher /> */}
                 </footer>
               </div>
             </NextIntlClientProvider>

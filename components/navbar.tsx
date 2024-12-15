@@ -275,7 +275,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 
         <div className="hidden md:flex items-center gap-2">
           <div className="flex items-center">
-            <ThemeSwitcher />
+            {/* <ThemeSwitcher /> */}
             <LocaleSwitcher />
             <Button className="text-white p-0 ml-2 h-[32px]  bg-clip-text bg-gradient-to-r text-transparent from-violet-600 to-indigo-600 hover:text-black dark:hover:text-purple-200">
               <Link
@@ -299,7 +299,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         {/* Hamburger Menu */}
         <div className="md:hidden flex items-center gap-2">
           <div className="flex items-center">
-            <ThemeSwitcher />
+            {/* <ThemeSwitcher /> */}
             <LocaleSwitcher />
           </div>
           <button
