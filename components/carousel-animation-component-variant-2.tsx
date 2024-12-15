@@ -131,7 +131,7 @@ export default function CarouselAnimation({
                         </Link>
                       </Button>
                       <button
-                        className="flex bg-transparent text-gray-300 px-2 items-end text-xs hover:text-teal-700"
+                        className="flex bg-transparent text-gray-300 px-2 items-end text-xs hover:text-gray-400"
                         onClick={(e) => {
                           e.stopPropagation();
                           router.push(freight.link);
