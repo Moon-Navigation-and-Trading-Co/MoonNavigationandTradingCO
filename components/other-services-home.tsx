@@ -5,22 +5,24 @@ import Image from "next/image";
 import Link from "next/link";
 
 const services = [
-  { name: "International Trading", href: "/international-trading-forms" },
-  { name: "Ship Management", href: "/ship-management-forms" },
-  { name: "Docking and Maintenance", href: "/ship-maintenance-forms" },
-  { name: "Buy/Rent Containers", href: "/buy-rent-container-forms" },
+  {
+    name: "International Trading",
+    href: "/learn/international-trading",
+  },
+  { name: "Ship Management", href: "/learn/ship-management" },
+  { name: "Docking and Maintenance", href: "/learn/docking" },
+  { name: "Buy/Rent Containers", href: "/learn/buy-rent-container-forms" },
   { name: "Buy/Rent Vessels", href: "/buy-rent-vessels-forms" },
   {
     name: "Container Handling, Stevedoring and Storage",
-    href: "container-services-forms",
+    href: "/learn/container-hss",
   },
   {
     name: "Handling, Stevedoring and Storage",
-    href: "/services/handling-storage",
+    href: "/learn/hss",
   },
-  { name: "Customs Clearance", href: "/services/customs-clearance" },
-  { name: "Special Services", href: "/special-services-forms" },
-  { name: "Out of Gauge", href: "/out-gauge-forms" },
+  { name: "Customs Clearance", href: "/lean/customs-clearance" },
+  { name: "Special Services", href: "/learn/special" },
 ];
 
 export default function OtherServices() {
@@ -28,10 +30,21 @@ export default function OtherServices() {
     <div className="flex max-w-[1000px] justify-center">
       <div className="bg-transparent mt-10 py-8 flex items-center justify-center px-2">
         <div className="flex flex-col items-start gap-10 sm:p-8 w-full">
-          <h1 className="text-2xl font-semibold text-start text-foreground">
+          <h1 className="text-3xl font-semibold text-start text-foreground">
             Other <br /> Services
           </h1>
-          <div className="h-[500px] flex items-center justify-start w-full px-4 sm:px-7">
+          <div className="">
+            <Button className="rounded-full overflow-hidden w-8 h-8 shadow-[0_0_8px] dark:shadow-primary p-0 hover:bg-white hover:text-primary">
+              <Link
+                className="items-center flex justify-center w-full h-full"
+                href="/learn-more/other"
+                aria-label="Learn more about other services"
+              >
+                <ChevronRight />
+              </Link>
+            </Button>
+          </div>
+          <div className="h-[500px] flex items-center justify-start w-full ">
             <div className="w-auto z-10">
               <Separator
                 className="bg-primary h-[500px] w-[3px] rounded-full border-t border-opacity- border-primary-light shadow-[0_0_3px] dark:shadow-[0_0_8px] dark:shadow-primary shadow-primary"
@@ -56,17 +69,6 @@ export default function OtherServices() {
                 </div>
               ))}
             </div>
-          </div>
-          <div className="pl-[2px] sm:pl-[14px]">
-            <Button className="rounded-full overflow-hidden w-8 h-8 shadow-[0_0_8px] dark:shadow-primary p-0 hover:bg-white hover:text-primary">
-              <Link
-                className="items-center flex justify-center w-full h-full"
-                href="/learn-more/other"
-                aria-label="Learn more about other services"
-              >
-                <ChevronRight />
-              </Link>
-            </Button>
           </div>
         </div>
         <div className="hidden sm:flex w-full max-w-[350px] mt-20">

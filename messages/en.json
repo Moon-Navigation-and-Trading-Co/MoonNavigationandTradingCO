@@ -4,19 +4,19 @@
         "locale": "{locale, select, ar {Ar} en {En} other {Unkown}}"
     },
     "HomePage": {
-        "slogan": "Your Logistics Partner",
+        "slogan": "Your Strategic Premier Partner for Exceptional and Innovative Maritime, Logistics, and Trading Solutions",
         "aboutImgTitle": "About Us",
-        "aboutTitle": "We are a freight company",
-        "aboutDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "aboutTitle": "Welcome to Moon Navigation and Trading Co.",
+        "aboutDescription": "We are a distinguished leader in maritime, logistics, and services since 2010. With a commitment to excellence, we have become trusted partner for clients across various industries, delivering tailor-made solutions that seamlessly integrate efficiency, reliability, and innovation. Operating from the heart of Egypt, we serve as a cornerstone of global commerce, providing unparalleled expertise n shipping, planning, and international trade. Our comprehensive services are designed to meet the complex demands of today’s dynamic business landscape, ensuring that your operations are not just supported but elevated to new levels of success.",
         "servicesTitle": "Transportation Services",
         "servicesCard1Title": "Air Freight",
         "servicesCard1Description": "Air freight is a critical logistics solution for businesses that require rapid delivery of goods across the globe. Using dedicated cargo aircraft or space on commercial flights, we ensure your shipments arrive on time, no matter the destination. Air freight is typically chosen for high-value, time-sensitive, or perishable items such as electronics, pharmaceuticals, fashion goods, or urgent documents.",
-        "servicesCard2Title": "Ocean Freight",
+        "servicesCard2Title": "Ocean Freight (Ship Chartering)",
         "servicesCard2Description": " We offer a comprehensive range of ocean freight services to meet your shipping needs. Whether you are looking to transport project cargo, roll-on/roll-off (RoRo) shipments, dangerous goods, or heavy-lift cargo, we have the expertise and resources to get your goods to their destination safely and efficiently.",
         "servicesCard3Title": "Inland Freight",
         "servicesCard3Description": "Our inland freight services cover both international and local transportation, ensuring your goods reach their destination on time and in perfect condition. Whether you need inland container transportation, trucking services, or rail freight solutions, we have the experience and capabilities to meet your logistics needs.",
-        "servicesCard4Title": "Other Services",
-        "servicesCard4Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
+        "servicesCard4Title": "Container Services",
+        "servicesCard4Description": "We offer a wide range of container services to meet your shipping needs. Whether you need less-than-container-load (LCL) services, standard containers, oversized containers, or out-of-gauge (OOG) containers, we have the expertise and resources to handle your cargo with care and efficiency.",
         "TransportationServices": "Transportation Services"
     },
     "Contact": {
@@ -34,23 +34,29 @@
         "services": "Services",
         "contact": "Contact Us",
         "learnmore": "Learn More",
-        "getQuote": "Get Quote"
+        "getQuote": "Get Quote",
+        "requestQuote": "Request a Quote"
     },
     "Services-2": {
         "container": "Container Services",
         "container-s-1": "Less than Load Container",
         "container-s-2": "Standard Container",
         "container-s-3": "Oversized Container",
-        "container-s-4": "Inland Container Transportation",
+        "container-s-4": "Out of Gauge (OOG) Container",
+        "container-s-5": "Inland Container Transportation",
         "ship": "Ship Agency Services",
         "ship-s-1": "Request for PDA",
         "ship-s-2": "Sign on/off Crew Members",
         "ship-s-3": "Transit Spare Parts",
+
         "special": "Special Services",
         "special-s-1": "Expedited Delivery",
         "special-s-2": "Temperature-Controlled Transport",
         "special-s-3": "Ship-to-Ship Transfers",
-        "special-s-4": "Emergency Crew Changes",
+        "special-s-4": "Bunkering | Oil Supply | Ship Chandlery",
+        "special-s-5": "Oil Supply",
+        "special-s-6": "Ship Chandlery",
+
         "buy/sell": "Buy/Rent Container/Vessel"
     },
     "Services-3": {
@@ -351,13 +357,15 @@
         "breakbulk-p": "At [ Moon Navigation And Trading Co ], we specialize in the transportation of breakbulk Cargo, perfect for large, heavy, or oversized items that cannot fit into standard shipping containers. Our breakbulk services are designed to meet the unique needs of cargo that comes in a variety of shapes, sizes, and weights."
     },
     "ship-agency": {
-        "ship-agency": "Ship Agency",
+        "ship-agency": "Ship Agency and Operational Services",
         "pda": "Request for PDA",
         "pda-p": "A Proforma Disbursement Account (PDA) is a comprehensive estimate of all anticipated costs for a vessel's port call or transit. It is a critical tool for ensuring smooth financial and operational planning before a vessel's arrival.",
         "crew": "Sign On/Off Crew Members",
         "crew-p": "Crew management in ship agency, specifically sign-on and sign-off, involves facilitating the smooth onboarding (sign-on) and disembarkation (sign-off) of crew members in compliance with maritime regulations, local port requirements, and international labor standards.",
         "transit":"Transit Spare Parts",
         "transit-p": "Transit spare parts refer to the transportation of critical replacement parts for vessels or machinery, which are sent to a specific location or port to ensure the continued operation or maintenance of a vessel. These parts are often essential for repairs, upgrades, or replacement of broken-down components during the vessel's voyage or when docked at a port.",
+        "bunkering":"Bunkering | Oil Supply | Ship Chandlery", 
+        "bunkering-p": "Bunkering, oil supply services, and ship chandlery are essential ship agency services that provide vessels with fuel, lubricants, and other supplies needed for their operation. These services ensure that vessels have the necessary resources to continue their journey safely and efficiently.",
         "special": "Special Services by Case",
         "special-p": "At [ Moon Navigation And Trading Co ], we understand that every shipment is unique. That's why we offer flexible solutions tailored to meet any special requirements, based on the specific needs of each case."
     },

@@ -16,6 +16,8 @@ import ServicesMiniCard from "@/components/servicesMiniCards";
 import ContactForm from "@/components/contact-form";
 import OtherServices from "@/components/other-services-home";
 import PartnerLogoCarousel from "@/components/partners-carousel";
+import { QuoteDialog } from "@/components/dialog-services";
+import IndustryCarousel from "@/components/industry-carousel";
 
 export default function Index() {
   const t = useTranslations("HomePage");
@@ -25,16 +27,16 @@ export default function Index() {
 
   const freightTypes = [
     {
-      title: t("servicesCard1Title"),
-      description: t("servicesCard1Description"),
-      image: "/cargoAir.jpeg",
-      link: "/learn/air-freight",
-      quote: "/air-freight-forms",
-    },
-    {
       title: t("servicesCard2Title"),
       description: t("servicesCard2Description"),
       image: "/airCargo.jpg",
+      link: "/learn-more/ocean-freight",
+      quote: "/ocean-freight-forms",
+    },
+    {
+      title: t("servicesCard4Title"),
+      description: t("servicesCard4Description"),
+      image: "/container-1.jpg",
       link: "/learn-more/ocean-freight",
       quote: "/ocean-freight-forms",
     },
@@ -44,6 +46,13 @@ export default function Index() {
       image: "/land-cargo-2.jpeg",
       link: "/learn-more/inland-freight",
       quote: "/inland-services-forms",
+    },
+    {
+      title: t("servicesCard1Title"),
+      description: t("servicesCard1Description"),
+      image: "/cargoAir.jpeg",
+      link: "/learn/air-freight",
+      quote: "/air-freight-forms",
     },
   ];
 
@@ -56,15 +65,23 @@ export default function Index() {
 
   return (
     <>
-      <main className="flex-1 flex flex-col gap-20">
+      <main className="flex-1 flex flex-col gap-32">
         {/* Image and slogan */}
-        <div className=" w-full h-custom-height">
+        <div className=" w-full h-[calc(100svh-164px)]">
           <div className="relative  flex items-center justify-center md:rounded-3xl -mt-8 md:mt-[2rem] bg-home-image bg-center rounded-b-xl bg-cover w-full h-full md:h-[90%]   aspect-auto md:aspect-video shadow-black shadow-xl md:shadow-xl md:shadow-black  ">
             <div className="w-full h-full z-[10] top-[1px] bg-black-overlay md:rounded-3xl rounded-b-xl absolute"></div>
-            <div className="flex flex-col items-center justify-center  gap-5 z-[50]">
-              <h1 className="  text-[#cff7dc] max-w-[500px] w-full text-center font-semibold px-3 text-4xl sm:text-4xl  md:text-5xl">
+            <div className="flex md:px-12 px-3 flex-col items-center justify-center z-[50]">
+              <h1 className="  text-[#e4e4e4]  w-full text-center font-semibold text-4xl sm:text-4xl  md:text-5xl">
                 {t("slogan")}
               </h1>
+            </div>
+            <div className="absolute z-10 bottom-6 right-6 items-end flex flex-col gap-4">
+              <h1 className=" font-light text-white  text-end w-[200px] md:w-full md:right-12 text-lg">
+                — Whenever, Wherever You Need to Trust.
+              </h1>
+              <Button className="w-fit hover:bg-primary/90">
+                <a href="#services">{tt("getQuote")}</a>
+              </Button>
             </div>
           </div>
         </div>
@@ -125,9 +142,48 @@ export default function Index() {
                   {t("aboutDescription")}
                 </p>
               </div>
-              <Button className="w-[130px]">{tt("learnmore")}</Button>
+              <div className="w-full flex justify-end">
+                <Button className="w-[130px]">{tt("learnmore")}</Button>
+              </div>
             </div>
           </div>
+        </section>
+
+        <section
+          id="GetQuote"
+          className="px-4 scroll-mt-[80px] flex flex-col gap-4"
+        >
+          <h2 className="capitalize text-3xl text-primary">
+            Get your customized quote today
+          </h2>
+          <h2 className="capitalize text-3xl text-primary">
+            Effortless Quotation Process
+          </h2>
+
+          <div className="flex max-w-[800px]">
+            <p className="py-8">
+              Our streamlined quotation process is designed with your
+              convenience in mind. At Moon Navigation and Trading Co., obtaining
+              service quotes has never been easier or faster than with our
+              Quotation by Request system. By simply filling out a short form
+              that captures your specific service requirements, you can easily
+              initiate your request. Once you have submitted your information,
+              our system ensures it is sent directly to us for prompt attention.
+              You will receive a customized quotation delivered straight to your
+              email in a timely manner. This effortlessness ensures you can
+              focus on what truly matters while receiving accurate pricing
+              without unnecessary delays.
+            </p>
+            <Image
+              src="/quotation.png"
+              alt="quotation"
+              width={250}
+              height={250}
+              className="object-contain hidden md:block"
+            />
+          </div>
+
+          <QuoteDialog />
         </section>
 
         {/* Services Section */}
@@ -144,6 +200,9 @@ export default function Index() {
             <OtherServices />
           </div>
         </section>
+
+        {/* Industry Carousel */}
+        <IndustryCarousel />
 
         {/* Our Partners section */}
         <PartnerLogoCarousel />

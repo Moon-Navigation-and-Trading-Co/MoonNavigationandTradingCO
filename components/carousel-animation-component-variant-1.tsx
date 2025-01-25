@@ -43,23 +43,18 @@ export default function CarouselAnimation({
 
   return (
     <div
-      className={`flex flex-col lg:flex-row h-[800px] lg:h-[500px] w-full gap-4 my-16 px-2`}
+      className={`flex flex-col lg:flex-row h-[950px] lg:h-[500px] w-full gap-4 my-16 px-2`}
     >
       <div className="w-full relative shadow-md overflow-hidden shadow-black h-[150px] lg:h-full lg:w-[160px] rounded-2xl flex items-center justify-start">
-        <div className="bg-black/35 z-[104] absolute w-full h-full"></div>
+        <div className="bg-black/35 z-[1] absolute aspect-video w-full h-full"></div>
         <Image
-          src={"/container-top-v.jpeg"}
-          className="object-cover hidden lg:flex"
+          // src={"/container-top-v.jpeg"}
+          src={"/blue-container.jpg"}
+          className="object-cover"
           fill
           alt="Transportation Services Background"
         />
-        <Image
-          src={"/container-top-h.jpeg"}
-          className="object-cover flex lg:hidden"
-          fill
-          alt="Transportation Services Background"
-        />
-        <h1 className="text-center z-[105] text-3xl lg:text-xl font-semibold text-[#E2F1E7] w-full">
+        <h1 className="text-center z-[2] text-3xl lg:text-xl font-semibold text-[#E2F1E7] w-full">
           {title}
         </h1>
       </div>
@@ -67,7 +62,7 @@ export default function CarouselAnimation({
       {freightTypes.map((freight, index) => (
         <motion.div
           key={freight.title}
-          className={`relative ${expandedIndex === index ? "shadow-xl" : "shadow-md"} shadow-black bg-black overflow-hidden rounded-2xl`}
+          className={`relative ${expandedIndex === index ? "shadow-xl" : "shadow-md"} shadow-black transition-shadow duration-300 bg-black overflow-hidden rounded-2xl`}
           initial={false}
           animate={{
             flex: expandedIndex === index ? 4 : 1.2,

@@ -1,13 +1,18 @@
-import React from "react";
+import type React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-interface card {
+interface Point {
+  name: string;
+  link: string;
+}
+
+interface Card {
   title: string;
-  points: string[];
+  points: Point[];
   image: string;
   link: string;
   quote: string;
@@ -16,14 +21,15 @@ interface card {
 const TransportationServices: React.FC = () => {
   const t = useTranslations("Services-2");
 
-  const cards = [
+  const cards: Card[] = [
     {
       title: t("container"),
       points: [
-        t("container-s-1"),
-        t("container-s-2"),
-        t("container-s-3"),
-        t("container-s-4"),
+        { name: t("container-s-1"), link: "/container-service-1" },
+        { name: t("container-s-2"), link: "/container-service-2" },
+        { name: t("container-s-3"), link: "/container-service-3" },
+        { name: t("container-s-4"), link: "/container-service-4" },
+        { name: t("container-s-5"), link: "/container-service-5" },
       ],
       image: "/container-1.jpg",
       link: "/learn-more/container",
@@ -31,21 +37,34 @@ const TransportationServices: React.FC = () => {
     },
     {
       title: t("ship"),
-      points: [t("ship-s-1"), t("ship-s-2"), t("ship-s-3")],
+      points: [
+        { name: t("ship-s-1"), link: "/ship-service-1" },
+        { name: t("ship-s-2"), link: "/ship-service-2" },
+        { name: t("ship-s-3"), link: "/ship-service-3" },
+      ],
       image: "/ship-agency.jpeg",
       link: "/learn-more/ship-agency",
       quote: "/ship-agency-forms",
     },
     {
       title: t("special"),
-      points: [t("special-s-1"), t("special-s-2"), t("special-s-3")],
+      points: [
+        { name: t("special-s-1"), link: "/special-services-forms" },
+        { name: t("special-s-2"), link: "/special-services-forms" },
+        { name: t("special-s-3"), link: "/special-services-forms" },
+        { name: t("special-s-4"), link: "/special-services-forms" },
+      ],
       image: "/ship-agency.jpeg",
       link: "/learn/special",
       quote: "/special-services-forms",
     },
     {
       title: t("buy/sell"),
-      points: [t("ship-s-1"), t("ship-s-2"), t("ship-s-3")],
+      points: [
+        { name: t("ship-s-1"), link: "/buy-sell-service-1" },
+        { name: t("ship-s-2"), link: "/buy-sell-service-2" },
+        { name: t("ship-s-3"), link: "/buy-sell-service-3" },
+      ],
       image: "/ship-agency.jpeg",
       link: "/learn/buy-sell-containers",
       quote: "/buy-sell-containers-forms",
@@ -54,44 +73,52 @@ const TransportationServices: React.FC = () => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-20 text-sm lg:text-base">
-      {cards.map((card: card, index) => (
+      {cards.map((card: Card, index) => (
         <div
           key={index}
-          className="shadow-lg shadow-black relative rounded-2xl max-h-[250px] overflow-hidden bg-black"
+          className="shadow-lg shadow-black relative rounded-2xl h-[300px] overflow-hidden bg-black group hover:scale-[1.02] transition-transform duration-300"
         >
-          <div className="absolute bg-black-overlay w-full h-full"></div>
           <Image
-            className="aspect-video"
-            src={card.image}
-            width={1000}
-            height={1000}
-            alt="Container Services Image"
+            className="object-cover w-full h-full"
+            src={card.image || "/placeholder.svg"}
+            layout="fill"
+            alt={`${card.title} Services Image`}
           />
-          <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-between p-5">
-            <h1 className="text-primary-foreground font-semibold text-2xl">
+          <div className="absolute inset-0 bg-black-overlay group-hover:bg-black/30 transition-all duration-300"></div>
+          <div className="absolute inset-0 flex flex-col justify-between p-5">
+            <h1 className="text-primary-foreground font-semibold text-2xl transition-colors">
               {card.title}
             </h1>
 
-            <div className="flex justify-between">
-              <div className=" text-gray-300 font-normal md:font-semibold flex flex-col gap-2">
+            <div className="flex justify-between items-end">
+              <div className="text-gray-300 flex flex-col gap-3">
                 {card.points.map((point, index) => (
-                  <p key={index}>{point}</p>
+                  <Link
+                    key={index}
+                    href={point.link}
+                    className="hover:text-sky-800 transition-colors z-10"
+                  >
+                    {point.name}
+                  </Link>
                 ))}
               </div>
               <div className="flex flex-col items-end justify-end gap-2">
                 <Link
-                  className="py-2 px-3 font-semibold bg-white rounded-md hover:opacity-90"
+                  className="py-2 px-3 font-semibold bg-white rounded-md hover:bg-primary hover:text-white transition-colors z-10"
                   href={card.quote}
                 >
                   Get Quote
                 </Link>
-                <button className="justify-center flex items-center text-white hover:text-primary w-full text-xs font-normal pt-1">
-                  <Link href={card.link}>Learn More</Link>
+                <div className="justify-center flex items-center text-white group-hover:text-sky-800 w-full text-xs font-normal pt-1 transition-colors">
+                  <span>Learn More</span>
                   <ChevronRight width={15} height={15} />
-                </button>
+                </div>
               </div>
             </div>
           </div>
+          <Link href={card.link} className="absolute inset-0 z-0">
+            <span className="sr-only">Learn more about {card.title}</span>
+          </Link>
         </div>
       ))}
     </div>

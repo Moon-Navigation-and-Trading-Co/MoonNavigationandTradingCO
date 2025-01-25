@@ -40,6 +40,13 @@ export default function OceanFreightPage() {
       quote: "/ship-agency-forms",
     },
     {
+      title: t("bunkering"),
+      description: t("bunkering-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/special",
+      quote: "/ship-agency-forms",
+    },
+    {
       title: t("special"),
       description: t("special-p"),
       image: "/airCargo.jpg",
