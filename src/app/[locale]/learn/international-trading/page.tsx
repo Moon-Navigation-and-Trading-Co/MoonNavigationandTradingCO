@@ -1,200 +1,240 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { useTranslations } from "next-intl"
-import Link from "next/link"
+import { Button } from "@/components/ui/button";
+import { useTranslations } from "next-intl";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function InternationalTrading() {
-    const t = useTranslations("learn-international-trading")
+    const t = useTranslations("learn-international-trading");
 
     return (
-        <Card className="w-full mt-10 mb-20 max-w-4xl mx-auto p-0 sm:p-5">
-            <CardHeader>
-                <CardTitle className="text-3xl font-bold mb-2">{t('title')}</CardTitle>
-                <CardContent className="p-0">
-                    {t('description')}
-                </CardContent>
-            </CardHeader>
-
-            {/* Key Components of International Trading */}
-            <CardContent className="space-y-6">
-                <section>
-                    <h2 className="mb-4 text-primary text-lg font-semibold">{t('sub-t-1')}</h2>
-                    <ol className="list-decimal pl-6 space-y-2 marker:font-semibold">
-
-                        {/* 1. Imports and Exports */}
-                        <li>
-                            <div className="flex flex-col">
-                                <span className="font-bold">{t('component-1-item-1')}:</span>
-                            </div>
-                            <ol className="list-alphabet ml-6 marker:font-normal">
-                                <li>
-                                    <div>
-                                        <span className="font-bold">{t('component-1-item-1-title')}:</span> {t('component-1-item-1-description')}
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span className="font-bold">{t('component-1-item-2-title')}:</span> {t('component-1-item-2-description')}
-                                    </div>
-                                </li>
-                            </ol>
-                        </li>
-
-                        {/* 2. Trade Agreements and Tariffs */}
-                        <li>
-                            <div className="flex flex-col">
-                                <span className="font-bold">{t('component-2-item-1')}:</span>
-                            </div>
-                            <ol className="list-alphabet ml-6 marker:font-normal">
-                                <li>
-                                    <div>
-                                        <span className="font-bold">{t('component-2-item-1-title')}:</span> {t('component-2-item-1-description')}
-                                    </div>
-                                </li>
-                                <li>
-                                    <div>
-                                        <span className="font-bold">{t('component-2-item-2-title')}:</span> {t('component-2-item-2-description')}
-                                    </div>
-                                </li>
-                            </ol>
-                        </li>
-
-                        {/* 3. Currency Exchange */}
-                        <li>
-                            <div className="flex flex-col">
-                                <span className="font-bold">{t('component-3-item-1-title')}:</span>
-                            </div>
-                            <ol className="list-alphabet ml-6 marker:font-normal">
-                                <li>
-                                    <div>
-                                        {t('component-3-item-1-description')}
-                                    </div>
-                                </li>
-
-                            </ol>
-                        </li>
-
-                        {/* 4.	Logistics and Transportation */}
-                        <li>
-                            <div className="flex flex-col">
-                                <span className="font-bold">{t('component-4-item-1-title')}:</span>
-                            </div>
-                            <ol className="list-alphabet ml-6 marker:font-normal">
-                                <li>
-                                    <div>
-                                        {t('component-4-item-1-description')}
-                                    </div>
-                                </li>
-
-                            </ol>
-                        </li>
-
-                        {/* 5.	Logistics and Transportation */}
-                        <li>
-                            <div className="flex flex-col">
-                                <span className="font-bold">{t('component-5-item-1-title')}:</span>
-                            </div>
-                            <ol className="list-alphabet ml-6 marker:font-normal">
-                                <li>
-                                    <div>
-                                        {t('component-5-item-1-description')}
-                                    </div>
-                                </li>
-
-                            </ol>
-                        </li>
-                    </ol>
-                </section>
-
-                {/* How Moon Navigation and Trading Co. Can Help */}
-                <section>
-                    <h2 className="mb-4 text-primary text-lg font-semibold">{t('sub-t-2')}</h2>
-                    <p className="mb-4">{t('description-2')}</p>
-                    <ol className="list-decimal pl-6 space-y-2 marker:font-semibold marker:text-primary">
-                        {/* 1. Comprehensive Freight Solutions  */}
-                        <li>
-                            <span className="font-bold text-primary">{t('service-1-item-1')}:</span>
-                            <ol className="list-disc ml-6 mt-2 marker:text-foreground">
-                                <li>
-                                    <span className="font-bold ">{t('service-1-item-1-title')}:</span> {t('service-1-item-1-description')}
-                                </li>
-                                <li>
-                                    <span className="font-bold">{t('service-1-item-2-title')}:</span> {t('service-1-item-2-description')}
-                                </li>
-                                <li>
-                                    <span className="font-bold">{t('service-1-item-3-title')}:</span> {t('service-1-item-3-description')}
-                                </li>
-                            </ol>
-                        </li>
-
-                        {/* 2. Comprehensive Freight Solutions  */}
-                        <li>
-                            <span className="font-bold text-primary">{t('service-2-item-1')}:</span>
-                            <ol className="list-disc ml-6 mt-2 marker:text-foreground">
-                                <li>
-                                    <span className="font-bold ">{t('service-2-item-1-title')}:</span> {t('service-2-item-1-description')}
-                                </li>
-                                <li>
-                                    <span className="font-bold">{t('service-2-item-2-title')}:</span> {t('service-2-item-2-description')}
-                                </li>
-
-                            </ol>
-                        </li>
-
-                        {/* 3. Global Network  */}
-                        <li>
-                            <span className="font-bold text-primary">{t('service-3-item-1-title')}:</span>
-                            <ol className="list-disc ml-6 mt-2 marker:text-foreground">
-                                <li>
-                                    {t('service-3-item-1-description')}
-                                </li>
-
-                            </ol>
-                        </li>
-
-                        {/* 4. Consultancy Services  */}
-                        <li>
-                            <span className="font-bold text-primary">{t('service-4-item-1-title')}:</span>
-                            <ol className="list-disc ml-6 mt-2 marker:text-foreground">
-                                <li>
-                                    {t('service-4-item-1-description')}
-                                </li>
-
-                            </ol>
-                        </li>
-
-                        {/* 5. Storage and Warehousing  */}
-                        <li>
-                            <span className="font-bold text-primary">{t('service-5-item-1-title')}:</span>
-                            <ol className="list-disc ml-6 mt-2 marker:text-foreground">
-                                <li>
-                                    {t('service-5-item-1-description')}
-                                </li>
-
-                            </ol>
-                        </li>
-
-                        {/* 6. Seamless Handling of Dangerous Cargo  */}
-                        <li>
-                            <span className="font-bold text-primary">{t('service-6-item-1-title')}:</span>
-                            <ol className="list-disc ml-6 mt-2 marker:text-foreground">
-                                <li>
-                                    {t('service-6-item-1-description')}
-                                </li>
-
-                            </ol>
-                        </li>
-
-                    </ol>
-                </section>
-
-                {/* Get Quote Button */}
-                <div className="mt-6">
-                    <Link href="/quote">
-                        <Button className="w-full sm:w-auto">{t('button')}</Button>
-                    </Link>
+        <main className="flex flex-col items-center w-full">
+            {/* Hero Section */}
+            <div className="w-full">
+                <div className="relative h-[400px] rounded-3xl overflow-hidden mb-12">
+                    <Image src="/images/international-trading-hero.jpg" alt="International Trading Network" fill className="object-cover" priority />
                 </div>
-            </CardContent>
-        </Card>
-    )
+
+                <div className="max-w-7xl mx-auto px-4 md:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div>
+                            <h1 className="text-4xl mb-6">{t("title")}</h1>
+                            <Button className="bg-[#2B3990] hover:bg-[#232d73]">{t("requestQuoteButton")}</Button>
+                        </div>
+                        <div className="space-y-6">
+                            <h2 className="text-2xl font-semibold">{t("header")}</h2>
+                            <p className="text-muted-foreground">{t("headerDescription1")}</p>
+                            <p className="text-muted-foreground">{t("headerDescription2")}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Services Section */}
+            <div className="w-full py-16">
+                <div className="max-w-7xl mx-auto px-4 md:px-8">
+                    <h2 className="text-3xl mb-4">{t("servicesHeader")}</h2>
+                    <h3 className="text-2xl mb-12">{t("servicesHeaderDescription")}</h3>
+
+                    <div className="grid lg:grid-cols-[1fr,1.5fr] gap-12">
+                        <div className="relative">
+                            <div className="relative w-full aspect-square rounded-3xl overflow-hidden bg-[#2B3990]">
+                                <div className="absolute inset-4">
+                                    <Image src="/images/globe-hand.jpg" alt="Global Trade Services" fill className="object-cover rounded-2xl" />
+                                </div>
+                            </div>
+                            <Button variant="secondary" className="mt-6 bg-[#2B3990] text-white hover:bg-[#232d73]" asChild>
+                                <Link href="/learn/international-trade-services">{t("learnMoreButton")}</Link>
+                            </Button>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-8">
+                            <div className="space-y-3">
+                                <h3 className="text-xl font-semibold">{t("services.imports.title")}</h3>
+                                <p className="text-muted-foreground">{t("services.imports.description")}</p>
+                            </div>
+
+                            <div className="space-y-3">
+                                <h3 className="text-xl font-semibold">{t("services.agreements.title")}</h3>
+                                <p className="text-muted-foreground">{t("services.agreements.description")}</p>
+                            </div>
+
+                            <div className="space-y-3">
+                                <h3 className="text-xl font-semibold">{t("services.customs.title")}</h3>
+                                <p className="text-muted-foreground">{t("services.customs.description")}</p>
+                            </div>
+
+                            <div className="space-y-3">
+                                <h3 className="text-xl font-semibold">{t("services.logistics.title")}</h3>
+                                <p className="text-muted-foreground">{t("services.logistics.description")}</p>
+                            </div>
+
+                            <div className="space-y-3 sm:col-span-2">
+                                <h3 className="text-xl font-semibold">{t("services.currency.title")}</h3>
+                                <p className="text-muted-foreground">{t("services.currency.description")}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Solutions Section */}
+            <div className="w-full py-16 bg-white">
+                <div className="max-w-7xl mx-auto px-4 md:px-8">
+                    <h2 className="text-3xl mb-12">{t("solutions.title")}</h2>
+
+                    <div className="space-y-16">
+                        {/* Freight Services */}
+                        <div className="grid md:grid-cols-2 gap-8 items-center">
+                            <div className="order-2 md:order-1">
+                                <h3 className="text-xl font-bold mb-4">{t("solutions.freight.title")}</h3>
+                                <p className="text-muted-foreground">{t("solutions.freight.description")}</p>
+                            </div>
+                            <div className="order-1 md:order-2">
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                    <Image src="/images/freight-services.jpg" alt="Freight Services" fill className="object-cover" />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Expert Customs Clearance */}
+                        <div className="grid md:grid-cols-2 gap-8 items-center">
+                            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                <Image src="/images/customs-clearance.jpg" alt="Customs Clearance" fill className="object-cover" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold mb-4">{t("solutions.customs.title")}</h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{t("solutions.customs.description")}</p>
+                            </div>
+                        </div>
+
+                        {/* Global Network */}
+                        <div className="grid md:grid-cols-2 gap-8 items-center">
+                            <div className="order-2 md:order-1">
+                                <h3 className="text-xl font-bold mb-4">{t("solutions.network.title")}</h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{t("solutions.network.description")}</p>
+                            </div>
+                            <div className="order-1 md:order-2">
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                    <Image src="/images/global-network.jpg" alt="Global Network" fill className="object-cover" />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Strategic Storage and Warehousing */}
+                        <div className="grid md:grid-cols-2 gap-8 items-center">
+                            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                <Image src="/images/warehousing.jpg" alt="Strategic Storage and Warehousing" fill className="object-cover" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold mb-4">{t("solutions.warehousing.title")}</h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{t("solutions.warehousing.description")}</p>
+                            </div>
+                        </div>
+
+                        {/* Consultancy Services */}
+                        <div className="grid md:grid-cols-2 gap-8 items-center">
+                            <div className="order-2 md:order-1">
+                                <h3 className="text-xl font-bold mb-4">{t("solutions.consultancy.title")}</h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{t("solutions.consultancy.description")}</p>
+                            </div>
+                            <div className="order-1 md:order-2">
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                    <Image src="/images/consultancy.jpg" alt="Consultancy Services" fill className="object-cover" />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Safe Handling of Dangerous Cargo */}
+                        <div className="grid md:grid-cols-2 gap-8 items-center">
+                            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                <Image src="/images/dangerous-cargo.jpg" alt="Safe Handling of Dangerous Cargo" fill className="object-cover" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold mb-4">{t("solutions.dangerousCargo.title")}</h3>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{t("solutions.dangerousCargo.description")}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Reasons to Choose Section */}
+            <div className="w-full py-16">
+                <div className="max-w-7xl mx-auto px-4 md:px-8">
+                    <h2 className="text-3xl mb-12">{t("reasons.reasonsToChoose")}</h2>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {/* Expert Trade Knowledge */}
+                        <div className="flex flex-col items-center text-center">
+                            <div className="w-16 h-16 mb-6">
+                                <Image src="/icons/expert-trade.svg" alt={t("reasons.customs.title")} width={64} height={64} />
+                            </div>
+                            <h3 className="text-xl font-semibold mb-3">{t("reasons.customs.title")}</h3>
+                            <p className="text-muted-foreground">{t("reasons.customs.description")}</p>
+                        </div>
+
+                        {/* Strong Global Network */}
+                        <div className="flex flex-col items-center text-center">
+                            <div className="w-16 h-16 mb-6">
+                                <Image src="/icons/global-network.svg" alt={t("reasons.network.title")} width={64} height={64} className="text-[#2B3990]" />
+                            </div>
+                            <h3 className="text-xl font-semibold mb-3">{t("reasons.network.title")}</h3>
+                            <p className="text-gray-600 dark:text-gray-300">{t("reasons.network.description")}</p>
+                        </div>
+
+                        {/* Custom-Tailored Trade Solutions */}
+                        <div className="flex flex-col items-center text-center">
+                            <div className="w-16 h-16 mb-6">
+                                <Image src="/icons/custom-solutions.svg" alt={t("reasons.freight.title")} width={64} height={64} className="text-[#2B3990]" />
+                            </div>
+                            <h3 className="text-xl font-semibold mb-3">{t("reasons.freight.title")}</h3>
+                            <p className="text-gray-600 dark:text-gray-300">{t("reasons.freight.description")}</p>
+                        </div>
+
+                        {/* Reliable Compliance & Risk Management */}
+                        <div className="flex flex-col items-center text-center">
+                            <div className="w-16 h-16 mb-6">
+                                <Image src="/icons/compliance.svg" alt={t("reasons.consultancy.title")} width={64} height={64} className="text-[#2B3990]" />
+                            </div>
+                            <h3 className="text-xl font-semibold mb-3">{t("reasons.consultancy.title")}</h3>
+                            <p className="text-gray-600 dark:text-gray-300">{t("reasons.consultancy.description")}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Quote Request Section */}
+            <div className="w-full py-16 bg-blue-50">
+                <div className="max-w-7xl mx-auto px-4 md:px-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div className="space-y-6">
+                            <h2 className="text-3xl font-semibold">{t("quoteRequest.title")}</h2>
+                            <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
+                            <Button className="bg-[#2B3990] hover:bg-[#232d73]">{t("quoteRequest.button")}</Button>
+                        </div>
+
+                        <div className="relative h-[400px]">
+                            <Image src="/quote-request-illustration.jpg" alt="Quote Request" fill className="object-contain" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Contact Section */}
+            <div className="w-full py-8 bg-white border-t">
+                <div className="max-w-7xl mx-auto px-4 md:px-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                        <p className="text-gray-600">
+                            {t("contact.prefix")}
+                            <Link href="/contact" className="text-[#2B3990] hover:underline">
+                                {t("contact.link")}
+                            </Link>
+                            {t("contact.suffix")}
+                        </p>
+                        <p className="text-gray-600 italic">{t("trust")}</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
 }
