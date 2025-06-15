@@ -55,7 +55,24 @@ export default function OceanFreightPage() {
                 link: "/learn/breakbulk",
                 quote: "/ocean-freight-forms"
 
+            },
+            {
+                title: "Livestock",
+                description: t('livestock-p'),
+                image: "/airCargo.jpg", //change for image accordingly 
+                link: "/learn/livestock",
+                quote: "/ocean-freight-forms"
+
+            },
+            {
+                title: "Tankers",
+                description: t('tankers-p'),
+                image: "/airCargo.jpg", //change for image accordingly 
+                link: "/learn/tankers",
+                quote: "/ocean-freight-forms"
+
             }
+            
         ]
 
 

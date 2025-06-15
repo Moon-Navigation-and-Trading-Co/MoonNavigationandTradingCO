@@ -30,14 +30,14 @@ export default function Index() {
             title: t("servicesCard2Title"),
             description: t("servicesCard2Description"),
             image: "/airCargo.jpg",
-            link: "/learn-more/ocean-freight",
+            link: "/learn-more/ocean-freight", //modify here to change linking
             quote: "/ocean-freight-forms",
         },
         {
             title: t("servicesCard4Title"),
             description: t("servicesCard4Description"),
             image: "/container-1.jpg",
-            link: "/learn-more/ocean-freight",
+            link: "/learn-more/container",
             quote: "/ocean-freight-forms",
         },
         {
@@ -135,7 +135,6 @@ export default function Index() {
                     <div className="flex flex-col gap-8 bg-[#E2F1E7 px-2 py-5 rounded-2xl ">
                         {/* Transportation Services */}
                         <CarouselAnimation title={t("TransportationServices")} freightTypes={freightTypes} />
-
                         <TransportationServices />
 
                         <OtherServices />

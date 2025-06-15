@@ -45,6 +45,20 @@ export default function OceanFreightPage() {
       link: "/learn/out-gauge",
       quote: "/container-services-forms",
     },
+    {
+      title: t("inland-container-transport"),
+      description: t("out-gauge-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/inland-container",
+      quote: "/container-services-forms",
+    },
+    {
+      title: t("Container-Stevedoring-and-Storage"),
+      description: t("out-gauge-p"),
+      image: "/airCargo.jpg",
+      link: "/learn/stevedoring-container",
+      quote: "/container-services-forms",
+    },
   ];
 
   return (

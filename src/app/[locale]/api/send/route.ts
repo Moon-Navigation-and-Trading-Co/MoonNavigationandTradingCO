@@ -12,7 +12,7 @@ export async function POST(req: Request) {
         // Send the email with dynamic props
         const { data, error } = await resend.emails.send({
             from: 'Moon Navigation <ziad-khalil@ziad-khalil.online>',
-            to: ['ziadk432@hotmail.com'], // Keep this static or pass dynamically if needed
+            to: ['Mariiamhamdyy1@gmail.com', 'Farida.ashraf@hotmail.co.uk'], // Keep this static or pass dynamically if needed
             subject: 'Moon Navigation Form Submission',
             react: EmailTemplate({
                 firstName,
