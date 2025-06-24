@@ -34,7 +34,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="/about-us"
                     className="text-muted-foreground hover:text-primary"
                   >
                     About Us
