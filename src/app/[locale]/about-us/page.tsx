@@ -89,6 +89,25 @@ export default function AboutUs() {
           </p>
         </div>
       </section>
+      {/* Our Vision Section */}
+      <section className='relative w-full h-[40rem] mb-20'>
+        {/* Background Image */}
+          <Image
+          src="/ourVision.png"
+          alt="Moon Navigation team looking at stats"
+          fill
+          className="object-cover rounded-xl"
+        />
+        {/* Overlay vision text */}
+         <div className="absolute top-1/2 left-1/2  max-w-3xl -translate-x-1/2 -translate-y-1/2 bg-white  p-10  shadow-xl flex flex-col items-center text-center z-10">
+          <h2 className="text-4xl font-bold text-blue-900 mb-4">Our Vision</h2>
+          <p className="text-lg leading-relaxed">
+            To be the premier global partner in maritime, logisitcs,
+            and international trade, known for our unwavering commitment
+            to quality, innovation, and customer satisfaction.
+          </p>
+        </div>
+      </section>
     </main>
   );
 }
