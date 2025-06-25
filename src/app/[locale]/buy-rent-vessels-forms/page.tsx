@@ -43,9 +43,6 @@ const Page: React.FC = () => {
         ); // Display loading state while checking
     }
 
-    if (!user) {
-        return redirect('/sign-in'); // Return null while waiting for the redirect
-    }
 
 
     const submitForm = async (formData: any, formType: any) => {
