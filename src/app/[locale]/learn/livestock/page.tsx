@@ -2,6 +2,54 @@ import React from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { useTranslations } from 'next-intl'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
+  description:
+    "Moon Navigation and Trading Co. specializes in safe, humane, and efficient livestock transportation worldwide. Learn about our animal welfare standards, regulatory compliance, and custom shipping solutions for cattle, horses, and more.",
+  keywords: [
+    "livestock transportation",
+    "animal shipping",
+    "cattle transport",
+    "horse shipping",
+    "animal welfare",
+    "veterinary care",
+    "biosecurity",
+    "IMO regulations",
+    "WOAH guidelines",
+    "custom livestock shipping",
+    "Moon Navigation and Trading Co.",
+    "international livestock transport",
+    "livestock carriers",
+    "animal export",
+    "animal import",
+    "compliance",
+    "safe animal transport"
+  ],
+  openGraph: {
+    title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
+    description:
+      "Discover specialized livestock shipping solutions with Moon Navigation and Trading Co. We ensure animal welfare, regulatory compliance, and seamless logistics for global livestock transport.",
+    url: "https://www.moonnavigation.com/learn/livestock",
+    type: "website",
+    images: [
+      {
+        url: "/livestock-banner.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Livestock Transportation Banner"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
+    description:
+      "Safe, humane, and efficient livestock shipping worldwide. Learn about our animal welfare standards and custom solutions.",
+    images: ["/livestock-banner.jpg"]
+  }
+}
 
 export default function ShippingMethodsInfo() {
   const t = useTranslations("livestock:");
@@ -10,9 +58,10 @@ export default function ShippingMethodsInfo() {
       {/* Banner Image */}
       <div className="w-full max-w-5xl rounded-[60px] overflow-hidden mb-12">
         <img
-          src="/livestock-banner.jpg" // Replace with your actual image path
+          src="/livestock-banner.jpg"
           alt="Livestock Transportation Banner"
           className="w-full h-[320px] object-cover"
+          loading="lazy"
         />
       </div>
       {/* Content Section */}
@@ -20,7 +69,7 @@ export default function ShippingMethodsInfo() {
         {/* Left Side: Title and Button */}
         <div className="flex flex-col justify-center items-start">
           <h1 className="text-4xl md:text-5xl font-medium mb-8 leading-tight">Live Stock<br />Transportation</h1>
-          <Link href="#request-quote" passHref>
+          <Link href="/ocean-freight-forms" passHref>
             <Button className="bg-[#3B409F] text-white text-base font-semibold rounded-full px-8 py-3 shadow-md hover:bg-[#2c307a] transition-all">
               Request a Quote
             </Button>
@@ -49,6 +98,7 @@ export default function ShippingMethodsInfo() {
               src="/industry-agriculture.jpg"
               alt="Agriculture & Dairy Farming"
               className="rounded-3xl object-cover w-full max-w-xs h-[180px] mb-4"
+              loading="lazy"
             />
             <h3 className="text-lg font-semibold mb-2 text-center">Agriculture & Dairy Farming</h3>
             <p className="text-gray-500 text-center">
@@ -61,6 +111,7 @@ export default function ShippingMethodsInfo() {
               src="/industry-equestrian.jpg"
               alt="Equestrian & Racing"
               className="rounded-3xl object-cover w-full max-w-xs h-[180px] mb-4"
+              loading="lazy"
             />
             <h3 className="text-lg font-semibold mb-2 text-center">Equestrian & Racing</h3>
             <p className="text-gray-500 text-center">
@@ -73,6 +124,7 @@ export default function ShippingMethodsInfo() {
               src="/industry-zoo.jpg"
               alt="Zoos & Wildlife Conservation"
               className="rounded-3xl object-cover w-full max-w-xs h-[180px] mb-4"
+              loading="lazy"
             />
             <h3 className="text-lg font-semibold mb-2 text-center">Zoos & Wildlife Conservation</h3>
             <p className="text-gray-500 text-center">
@@ -111,6 +163,7 @@ export default function ShippingMethodsInfo() {
               src="/livestock-ship.jpg"
               alt="Livestock Carrier Ship"
               className="rounded-3xl object-cover w-full max-w-xl h-[280px] md:h-[340px]"
+              loading="lazy"
             />
           </div>
         </div>
@@ -123,6 +176,7 @@ export default function ShippingMethodsInfo() {
               src="/animal-welfare.jpg"
               alt="Veterinarian with livestock"
               className="rounded-3xl object-cover w-full max-w-xl h-[280px] md:h-[340px]"
+              loading="lazy"
             />
           </div>
           {/* Right: Text Content */}
@@ -171,6 +225,7 @@ export default function ShippingMethodsInfo() {
               src="/compliance-safety.jpg"
               alt="Compliance and Safety at Port"
               className="rounded-3xl object-cover w-full max-w-xl h-[280px] md:h-[340px]"
+              loading="lazy"
             />
           </div>
         </div>
@@ -180,11 +235,13 @@ export default function ShippingMethodsInfo() {
             src="/logo-woah.png"
             alt="World Organisation for Animal Health"
             className="h-14 w-auto"
+            loading="lazy"
           />
           <img
             src="/logo-imo.png"
             alt="International Maritime Organization"
             className="h-14 w-auto"
+            loading="lazy"
           />
           {/* Add more logos as needed */}
         </div>
@@ -196,7 +253,7 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8">
           {/* Card 1 */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-global-network.png" alt="Global Network" className="h-16 mb-4" />
+            <img src="/icon-global-network.png" alt="Global Network" className="h-16 mb-4" loading="lazy" />
             <h3 className="font-semibold mb-2">Global Network &amp; Port Access</h3>
             <p className="text-gray-500">
               Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.
@@ -204,7 +261,7 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Card 2 */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-biosecurity.png" alt="Biosecurity" className="h-16 mb-4" />
+            <img src="/icon-biosecurity.png" alt="Biosecurity" className="h-16 mb-4" loading="lazy" />
             <h3 className="font-semibold mb-2">Advanced Biosecurity Measures</h3>
             <p className="text-gray-500">
               We implement strict hygiene protocols, quarantine measures, and disease prevention practices.
@@ -212,7 +269,7 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Card 3 */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-anchor.png" alt="Custom-Tailored" className="h-16 mb-4" />
+            <img src="/icon-anchor.png" alt="Custom-Tailored" className="h-16 mb-4" loading="lazy" />
             <h3 className="font-semibold mb-2">Custom-Tailored Transport Solutions</h3>
             <p className="text-gray-500">
               Whether you need short-haul regional shipping or long-haul transcontinental transport, we design solutions tailored to your needs.
@@ -220,7 +277,7 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Card 4 */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-docs.png" alt="Logistics & Documentation" className="h-16 mb-4" />
+            <img src="/icon-docs.png" alt="Logistics & Documentation" className="h-16 mb-4" loading="lazy" />
             <h3 className="font-semibold mb-2">Seamless Logistics &amp; Documentation Handling</h3>
             <p className="text-gray-500">
               From permits and health certificates to customs clearance, we manage all necessary documentation.
@@ -242,9 +299,11 @@ export default function ShippingMethodsInfo() {
             measures for your shipment. You will receive a customized quotation directly in your email,
             ensuring accurate pricing and the highest standards of animal welfare and safety.
           </p>
-          <button className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors">
-            Request a Quote
-          </button>
+          <Link href="/ocean-freight-forms" passHref legacyBehavior>
+            <a className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors">
+              Request a Quote
+            </a>
+          </Link>
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
@@ -253,6 +312,7 @@ export default function ShippingMethodsInfo() {
             alt="Quotation illustration"
             className="w-[320px] h-auto object-contain"
             style={{ maxWidth: 380 }}
+            loading="lazy"
           />
         </div>
       </section>

@@ -1,11 +1,51 @@
-"use client";
-
 import Image from "next/image";
 import React from "react";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Tankers | Moon Navigation and Trading Co. - Ocean Freight & Transportation",
+    description:
+        "Learn about tanker ocean freight and transportation services by Moon Navigation and Trading Co. Discover our specialized tanker types, safety features, global logistics, and reasons to choose us for your liquid cargo needs.",
+    keywords: [
+        "tankers",
+        "ocean freight",
+        "tanker transportation",
+        "crude oil tankers",
+        "chemical tankers",
+        "liquefied gas tankers",
+        "product tankers",
+        "Moon Navigation and Trading Co.",
+        "liquid cargo shipping",
+        "maritime logistics",
+        "global shipping",
+        "tanker fleet",
+        "tanker safety",
+        "environmental protection",
+        "customized tanker solutions",
+        "tanker quote"
+    ],
+    openGraph: {
+        title: "Tankers | Moon Navigation and Trading Co. - Ocean Freight & Transportation",
+        description:
+            "Moon Navigation and Trading Co. offers comprehensive tanker ocean freight services, including crude oil, chemical, product, and liquefied gas tankers. Explore our advanced fleet, safety standards, and global logistics network.",
+        images: [
+            {
+                url: "/tankers-header.jpg",
+                width: 1024,
+                height: 350,
+                alt: "Tankers at sea"
+            }
+        ],
+        type: "website"
+    },
+    alternates: {
+        canonical: "/learn/tankers"
+    }
+};
 
 export default function TankersPage() {
     return (
-        <div className="w-full flex flex-col items-center pt-8 pb-16 bg-white min-h-screen">
+        <main className="w-full flex flex-col items-center pt-8 pb-16 bg-white min-h-screen">
             {/* Top Image */}
             <div className="w-full max-w-4xl rounded-3xl overflow-hidden mb-12">
                 <Image
@@ -19,18 +59,18 @@ export default function TankersPage() {
             </div>
 
             {/* Main Content */}
-            <div className="w-full max-w-5xl flex flex-col md:flex-row gap-10 px-4 md:px-0">
+            <article className="w-full max-w-5xl flex flex-col md:flex-row gap-10 px-4 md:px-0">
                 {/* Left: Title and CTA */}
-                <div className="flex-1 flex flex-col items-start">
+                <header className="flex-1 flex flex-col items-start">
                     <h1 className="text-3xl font-normal mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Tankers
                     </h1>
                     <button className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors mb-4">
                         Request a Quote
                     </button>
-                </div>
+                </header>
                 {/* Right: Description */}
-                <div className="flex-1 flex flex-col items-start">
+                <section className="flex-1 flex flex-col items-start">
                     <h2 className="text-lg font-semibold text-[#3b4cc0] mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         What is Tankers?
                     </h2>
@@ -40,9 +80,9 @@ export default function TankersPage() {
                     <p className="text-sm md:text-base text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         At Moon Navigation and Trading Co., we specialize in comprehensive tanker transportation services. Our state-of-the-art fleet and experienced team provide scalable, reliable, and efficient solutions to support your liquid cargo needs. We prioritize safety, compliance, and environmental sustainability, ensuring every project meets the highest industry standards while delivering cost-effective and timely transportation across major global trade routes.
                     </p>
-                </div>
-            </div>
-            <div className="w-full max-w-5xl mt-16">
+                </section>
+            </article>
+            <section className="w-full max-w-5xl mt-16">
                 <h2 className="text-2xl md:text-3xl font-normal mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Our Specialized Tanker Types
                 </h2>
@@ -115,9 +155,9 @@ export default function TankersPage() {
                         </p>
                     </div>
                 </div>
-            </div>
+            </section>
             {/* Industries We Serve */}
-            <div className="mt-20 mb-10">
+            <section className="mt-20 mb-10">
                 <h2 className="text-2xl md:text-3xl font-semibold text-center mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Industries We Serve
                 </h2>
@@ -190,8 +230,8 @@ export default function TankersPage() {
                         </p>
                     </div>
                 </div>
-            </div>
-            <div className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
+            </section>
+            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
                 {/* Left: Key Features Text */}
                 <div className="flex-[1.3] md:pr-10">
                     <h2 className="text-2xl md:text-3xl font-normal mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -226,8 +266,8 @@ export default function TankersPage() {
                         priority={false}
                     />
                 </div>
-            </div>
-            <div className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
+            </section>
+            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
                 {/* Left: Safety Image */}
                 <div className="flex-1 flex justify-center">
                     <Image
@@ -262,8 +302,8 @@ export default function TankersPage() {
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            </section>
+            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -298,8 +338,8 @@ export default function TankersPage() {
                         priority={false}
                     />
                 </div>
-            </div>
-            <div className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            </section>
+            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center">
                     <Image
@@ -331,8 +371,8 @@ export default function TankersPage() {
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            </section>
+            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -367,8 +407,8 @@ export default function TankersPage() {
                         priority={false}
                     />
                 </div>
-            </div>
-            <div className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            </section>
+            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center">
                     <Image
@@ -400,8 +440,8 @@ export default function TankersPage() {
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div className="w-full max-w-5xl mt-20">
+            </section>
+            <section className="w-full max-w-5xl mt-20">
                 <h2 className="text-2xl md:text-3xl font-normal mb-8 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Reasons To Choose Us for Tanker Ocean Freight
                 </h2>
@@ -451,7 +491,7 @@ export default function TankersPage() {
                         </p>
                     </div>
                 </div>
-            </div>
+            </section>
             <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
@@ -480,6 +520,6 @@ export default function TankersPage() {
                     />
                 </div>
             </section>
-        </div>
+        </main>
     );
 }

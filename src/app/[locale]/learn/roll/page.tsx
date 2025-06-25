@@ -2,6 +2,57 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "next-intl";
+import { Metadata } from "next";
+import React from "react";
+
+// SEO Metadata for Next.js 13+ App Router
+export const metadata: Metadata = {
+  title: "Roll-on/Roll-off (RORO) Shipping | Moon Navigation and Trading Co.",
+  description:
+    "Discover efficient, secure, and cost-effective Roll-on/Roll-off (RORO) shipping solutions for vehicles, heavy machinery, and wheeled cargo. Learn about our global RoRo services, streamlined cargo handling, and get a fast quote today.",
+  keywords: [
+    "RoRo shipping",
+    "roll-on roll-off",
+    "RORO cargo",
+    "vehicle shipping",
+    "heavy machinery transport",
+    "wheeled cargo",
+    "ocean freight",
+    "Moon Navigation and Trading Co.",
+    "global shipping",
+    "freight quote",
+    "oversized cargo",
+    "project cargo",
+    "international shipping",
+    "secure transport",
+    "cost-effective shipping"
+  ],
+  openGraph: {
+    title: "Roll-on/Roll-off (RORO) Shipping | Moon Navigation and Trading Co.",
+    description:
+      "Efficient, secure, and cost-effective RoRo shipping for vehicles, machinery, and wheeled cargo. Get a quote for global RoRo transport solutions.",
+    url: "https://www.moonnavigation.com/learn/roll",
+    type: "website",
+    images: [
+      {
+        url: "/roroheroimage.jpg",
+        width: 1200,
+        height: 630,
+        alt: "RoRo Cargo Handling"
+      }
+    ]
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Roll-on/Roll-off (RORO) Shipping | Moon Navigation and Trading Co.",
+    description:
+      "Efficient, secure, and cost-effective RoRo shipping for vehicles, machinery, and wheeled cargo. Get a quote for global RoRo transport solutions.",
+    images: ["/roroheroimage.jpg"]
+  },
+  alternates: {
+    canonical: "/learn/roll"
+  }
+};
 
 export default function RollOnOffHero() {
   const locale = useLocale();
@@ -84,6 +135,7 @@ export default function RollOnOffHero() {
               height={220}
               className="rounded-2xl object-cover w-full h-[220px]"
               style={{ fontFamily: "Montserrat, sans-serif" }}
+              loading="lazy"  
             />
             <Button
               asChild
@@ -197,6 +249,7 @@ export default function RollOnOffHero() {
               height={320}
               className="rounded-2xl object-cover w-full h-[320px] shadow-lg"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
+              loading="lazy"
             />
             {/* Bottom Accent */}
             <div className="hidden md:block absolute -bottom-8 left-8 w-[320px] h-[40px] bg-[#23294d] z-0 -rotate-2" style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 0 100%)' }} />
@@ -213,6 +266,7 @@ export default function RollOnOffHero() {
             height={320}
             className="rounded-2xl object-cover w-full h-[320px] shadow-lg"
             style={{ fontFamily: 'Montserrat, sans-serif', marginRight: '50px' }}
+            loading="lazy"
           />
         </div>
         <div>
@@ -314,6 +368,7 @@ export default function RollOnOffHero() {
               alt="RoRo vessel operations"
               className="rounded-2xl object-cover w-[420px] h-[220px] md:w-[480px] md:h-[240px] shadow-lg"
               style={{ maxWidth: 480 }}
+              loading="lazy"
             />
           </div>
         </div>
@@ -328,6 +383,7 @@ export default function RollOnOffHero() {
               alt="Heavy and oversized cargo"
               className="rounded-2xl object-cover w-[420px] h-[220px] md:w-[480px] md:h-[240px] shadow-lg"
               style={{ maxWidth: 480 }}
+              loading="lazy"
             />
           </div>
           {/* Right: Text */}
@@ -403,6 +459,7 @@ export default function RollOnOffHero() {
               alt="Vehicle transport"
               className="rounded-2xl object-cover w-[420px] h-[220px] md:w-[480px] md:h-[240px] shadow-lg"
               style={{ maxWidth: 480 }}
+              loading="lazy"
             />
           </div>
         </div>
@@ -486,6 +543,7 @@ export default function RollOnOffHero() {
               alt="Worldwide RoRo coverage"
               className="rounded-2xl object-cover w-[420px] h-[220px] md:w-[480px] md:h-[180px] shadow-lg"
               style={{ maxWidth: 480 }}
+              loading="lazy"
             />
           </div>
         </div>
@@ -500,9 +558,11 @@ export default function RollOnOffHero() {
             <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Our streamlined RoRo freight quotation process is designed for speed and convenience. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will evaluate the cargo type, dimensions, and route requirements to determine the best shipping solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless transport of vehicles, machinery, and oversized rolling cargo.
             </p>
-            <button className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors">
-              Request a Quote
-            </button>
+            <Link href="/ocean-freight-forms" passHref legacyBehavior>
+              <a className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors">
+                Request a Quote
+              </a>
+            </Link>
           </div>
           {/* Right: Image */}
           <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
@@ -511,6 +571,7 @@ export default function RollOnOffHero() {
               alt="Quotation illustration"
               className="w-[320px] h-auto object-contain"
               style={{ maxWidth: 380 }}
+              loading="lazy"
             />
           </div>
         </section>
