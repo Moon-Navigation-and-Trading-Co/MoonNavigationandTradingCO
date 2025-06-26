@@ -85,14 +85,14 @@ export default function BreakBulkInfo() {
                         </Link>
                     </div>
                     {/* Right: Info Card */}
-                    <div className="flex-1 bg-white rounded-2xl shadow-md p-6">
-                        <h2 className="text-lg font-semibold mb-3 text-[#3b4cc0]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <div className="flex-1 bg-background rounded-2xl shadow-md p-6">
+                        <h2 className="text-lg font-semibold mb-3 text-primary" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             What is BreakBulk Cargo&nbsp;?
                         </h2>
-                        <p className="text-gray-700 mb-2 text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                            Breakbulk cargo refers to large, non-containerized shipments that require individual loading and unloading. Too heavy or heavy in large blocks, breakbulk demands careful handling and specialized logistics. Typically managed using durable vessels, breakbulk cargo is comprised of miscellaneous vessels (MPP’s) designed for modular cargo capabilities. Common examples of breakbulk cargo include steel, construction materials, and machinery.
+                        <p className="text-muted-foreground mb-2 text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                            Breakbulk cargo refers to large, non-containerized shipments that require individual loading and unloading. Too heavy or heavy in large blocks, breakbulk demands careful handling and specialized logistics. Typically managed using durable vessels, breakbulk cargo is comprised of miscellaneous vessels (MPP's) designed for modular cargo capabilities. Common examples of breakbulk cargo include steel, construction materials, and machinery.
                         </p>
-                        <p className="text-gray-700 text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             At Moon Navigation and Trading Co., we excel in the transportation of breakbulk cargo, leveraging our expertise to manage the unique challenges associated with each shipment. Dedicated project teams provide safety and efficiency, ensuring every project proceeds smoothly. We deliver tailored logistics solutions that meet the specific needs of our clients, delivering reliable and timely transportation for all breakbulk shipments.
                         </p>
                     </div>
@@ -102,7 +102,7 @@ export default function BreakBulkInfo() {
                     <h2 className="text-xl md:text-2xl font-semibold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Examples of BreakBulk Cargo
                     </h2>
-                    <p className="text-gray-600 mb-8 text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-muted-foreground mb-8 text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Our BreakBulk services handle various types of equipment, including:
                     </p>
                     <div className="flex flex-col md:flex-row items-center gap-8 justify-center">
@@ -159,11 +159,11 @@ export default function BreakBulkInfo() {
                     </div>
                 </section>
                 <section className="w-full flex justify-center mt-12 mb-8">
-                    <div className="bg-white rounded-2xl shadow border border-gray-100 px-6 py-7 max-w-3xl w-full">
+                    <div className="bg-background rounded-2xl shadow border border-border px-6 py-7 max-w-3xl w-full">
                         <h2 className="text-base md:text-lg font-semibold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             Key Characteristics of Breakbulk Cargo At Moon Navigation and Trading Co.
                         </h2>
-                        <ul className="space-y-3 text-sm md:text-base text-gray-700">
+                        <ul className="space-y-3 text-sm md:text-base text-muted-foreground">
                             <li>
                                 <span className="font-semibold">• Large and Manageable Weight &amp; Size:</span> Our breakbulk cargo typically exceeds pallet and truck limits in size, allowing us to handle outsized loads with custom project solutions.
                             </li>
@@ -174,13 +174,13 @@ export default function BreakBulkInfo() {
                                 <span className="font-semibold">• Transported on Trailers &amp; Multi-Purpose Vessels:</span> Often not containerized, these shipments are delivered via trailers, breakbulk vessels, and heavy-lift ships, allowing for transportation of massive individual components.
                             </li>
                             <li>
-                                <span className="font-semibold">• Ideal for Cargo That Can’t Be Unitized:</span> For oversized equipment or materials that cannot be palletized, we offer resulting loading and lashing for flexible, security-first delivery.
+                                <span className="font-semibold">• Ideal for Cargo That Can't Be Unitized:</span> For oversized equipment or materials that cannot be palletized, we offer resulting loading and lashing for flexible, security-first delivery.
                             </li>
                             <li>
                                 <span className="font-semibold">• Essential for Construction, Manufacturing &amp; Infrastructure Projects:</span> Our Breakbulk cargo plays a pivotal role in supporting industries that require the import or transshipment services involving machinery, steel structures, pre-fabricated units, and more.
                             </li>
                         </ul>
-                        <p className="text-xs text-gray-500 mt-5">
+                        <p className="text-xs text-muted-foreground mt-5">
                             At Moon Navigation &amp; Trading Co., we are dedicated to providing tailored breakbulk transportation solutions that meet the unique demands of each project, ensuring safety, efficiency, and reliability at every milestone.
                         </p>
                     </div>
@@ -195,10 +195,10 @@ export default function BreakBulkInfo() {
                             <h3 className="text-base md:text-lg font-semibold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                 1. Specialized Vessel Chartering
                             </h3>
-                            <p className="text-gray-700 text-sm md:text-base mb-2">
+                            <p className="text-muted-foreground text-sm md:text-base mb-2">
                                 Breakbulk cargo requires specific vessel types to accommodate large, irregularly shaped, and heavy loads with secure access to:
                             </p>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm md:text-base mb-2 space-y-1">
+                            <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
                                 <li>
                                     <span className="font-semibold">Breakbulk Vessels</span> – Designed to carry non-containerized cargo, allowing individual sections and heavy equipment to be loaded, stowed, and discharged efficiently.
                                 </li>
@@ -209,7 +209,7 @@ export default function BreakBulkInfo() {
                                     <span className="font-semibold">Heavy-lift Vessels</span> – Outfitted with onboard cranes and reinforced decks for project cargo and outsized machinery.
                                 </li>
                             </ul>
-                            <p className="text-gray-700 text-sm md:text-base mb-3">
+                            <p className="text-muted-foreground text-sm md:text-base mb-3">
                                 Our chartering solutions deliver cost-effective and secure transport, whether for single project lifts or long-term contracts.
                             </p>
                             <div className="flex flex-row gap-3 mt-2">
@@ -226,15 +226,15 @@ export default function BreakBulkInfo() {
                             <h3 className="text-base md:text-lg font-semibold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                 2. Custom Handling &amp; Stowage
                             </h3>
-                            <p className="text-gray-700 text-sm md:text-base mb-2">
+                            <p className="text-muted-foreground text-sm md:text-base mb-2">
                                 Precision in rigging and securing is core, carefully planning to prevent damage and maintain stability. We provide:
                             </p>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm md:text-base mb-2 space-y-1">
+                            <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
                                 <li>Custom Lashing &amp; Securing – Every piece checked, anchored, and lashed using the safest methods.</li>
                                 <li>Specialized Stowage Planning – Optimized for vessel balance, access, and cargo safety.</li>
                                 <li>On-site Supervision – Our experts oversee every stage, ensuring compliance and cargo stability.</li>
                             </ul>
-                            <p className="text-gray-700 text-sm md:text-base mb-3">
+                            <p className="text-muted-foreground text-sm md:text-base mb-3">
                                 We ensure that your cargo is safely received and protected throughout the voyage.
                             </p>
                             <div className="w-full flex justify-center mt-2">
@@ -257,10 +257,10 @@ export default function BreakBulkInfo() {
                             <h3 className="text-base md:text-lg font-semibold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                 3. Crane &amp; Port Handling
                             </h3>
-                            <p className="text-gray-700 text-sm md:text-base mb-2">
+                            <p className="text-muted-foreground text-sm md:text-base mb-2">
                                 Efficient loading and unloading is critical for breakbulk cargo due to its size and complexity. We coordinate:
                             </p>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm md:text-base mb-2 space-y-1">
+                            <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
                                 <li>
                                     <span className="font-semibold">High Capacity Port Cranes</span> – Utilizing gantry cranes, mobile cranes, and heavy systems for seamless cargo transfer.
                                 </li>
@@ -271,7 +271,7 @@ export default function BreakBulkInfo() {
                                     <span className="font-semibold">Expert Stevedore Services</span> – Ensuring professional rigging, mobile equipment operation, and on-site supervision.
                                 </li>
                             </ul>
-                            <p className="text-gray-700 text-sm md:text-base">
+                            <p className="text-muted-foreground text-sm md:text-base">
                                 With our expert handling solutions, we reduce risk and minimize delays during cargo transfer.
                             </p>
                         </div>
@@ -301,10 +301,10 @@ export default function BreakBulkInfo() {
                             <h3 className="text-base md:text-lg font-semibold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                                 4. Customs Clearance &amp; Documentation
                             </h3>
-                            <p className="text-gray-700 text-sm md:text-base mb-2">
+                            <p className="text-muted-foreground text-sm md:text-base mb-2">
                                 Navigating customs regulations for breakbulk cargo can be complex due to varying international standards and project requirements.
                             </p>
-                            <ul className="list-disc pl-5 text-gray-700 text-sm md:text-base mb-2 space-y-1">
+                            <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
                                 <li>
                                     <span className="font-semibold">Import &amp; Export Compliance</span> – Ensuring cargo adheres to maritime and port regulations worldwide.
                                 </li>
@@ -315,7 +315,7 @@ export default function BreakBulkInfo() {
                                     <span className="font-semibold">Track &amp; Transparency</span> – Handling all port notifications, customs clearances, and record processing.
                                 </li>
                             </ul>
-                            <p className="text-gray-700 text-sm md:text-base">
+                            <p className="text-muted-foreground text-sm md:text-base">
                                 Our dedicated team ensures that your cargo sails through regulatory processes, preventing unnecessary delays.
                             </p>
                         </div>
@@ -328,10 +328,10 @@ export default function BreakBulkInfo() {
                         <h3 className="text-base md:text-lg font-semibold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             5. Inland Transport &amp; Final Delivery
                         </h3>
-                        <p className="text-gray-700 text-sm md:text-base mb-2">
+                        <p className="text-muted-foreground text-sm md:text-base mb-2">
                             BNL ensures seamless cargo logistics from port to final destination, offering:
                         </p>
-                        <ul className="list-disc pl-5 text-gray-700 text-sm md:text-base mb-2 space-y-1">
+                        <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
                             <li>
                                 <span className="font-semibold">Port to Site Delivery</span> – Seamless movement from ports to project locations.
                             </li>
@@ -342,7 +342,7 @@ export default function BreakBulkInfo() {
                                 <span className="font-semibold">Escort Vehicles &amp; Route Permits</span> – Managing police escorts and special transport permits for oversized loads.
                             </li>
                         </ul>
-                        <p className="text-gray-700 text-sm md:text-base">
+                        <p className="text-muted-foreground text-sm md:text-base">
                             We ensure a smooth, end-to-end logistics process. You get control on the final delivery of project sites.
                         </p>
                     </div>
@@ -364,22 +364,22 @@ export default function BreakBulkInfo() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 max-w-5xl mx-auto">
                         {/* Specialized Expertise */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <h3 className="font-semibold mb-2">Specialized Expertise</h3>
-                            <p className="text-gray-500 text-sm">
+                            <h3 className="font-semibold mb-2 text-foreground">Specialized Expertise</h3>
+                            <p className="text-muted-foreground text-sm">
                                 Years of experience handling non-containerized, oversized, and irregular cargo with precision.
                             </p>
                         </div>
                         {/* End-to-End Logistics */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <h3 className="font-semibold mb-2">End-to-End Logistics</h3>
-                            <p className="text-gray-500 text-sm">
+                            <h3 className="font-semibold mb-2 text-foreground">End-to-End Logistics</h3>
+                            <p className="text-muted-foreground text-sm">
                                 From pickup, customs clearance, and final site handling, we orchestrate all shipment solutions.
                             </p>
                         </div>
                         {/* Advanced Handling Solutions */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <h3 className="font-semibold mb-2">Advanced Handling Solutions</h3>
-                            <p className="text-gray-500 text-sm">
+                            <h3 className="font-semibold mb-2 text-foreground">Advanced Handling Solutions</h3>
+                            <p className="text-muted-foreground text-sm">
                                 Space-efficient stowage, lifting plans, and securing techniques for safe breakbulk transport.
                             </p>
                         </div>
@@ -387,36 +387,36 @@ export default function BreakBulkInfo() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 max-w-3xl mx-auto mt-10">
                         {/* Global Shipping Network */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <h3 className="font-semibold mb-2">Global Shipping Network</h3>
-                            <p className="text-gray-500 text-sm">
+                            <h3 className="font-semibold mb-2 text-foreground">Global Shipping Network</h3>
+                            <p className="text-muted-foreground text-sm">
                                 Strong partnerships with breakbulk carriers, agents, and worldwide project partners for seamless coordination.
                             </p>
                         </div>
                         {/* Regulatory Compliance & Dedicated Support */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <h3 className="font-semibold mb-2">Regulatory Compliance &amp; Dedicated Support</h3>
-                            <p className="text-gray-500 text-sm">
+                            <h3 className="font-semibold mb-2 text-foreground">Regulatory Compliance &amp; Dedicated Support</h3>
+                            <p className="text-muted-foreground text-sm">
                                 Ensuring adherence to international shipping regulations with expert guidance at every stage.
                             </p>
                         </div>
                     </div>
                 </section>
-                <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
+                <section className="w-full bg-secondary rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
                     {/* Left: Text Content */}
                     <div className="flex-1 min-w-[260px]">
-                        <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             Get your Quote with Us
                         </h2>
-                        <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             Our steamlined breakbulk cargo quotation process is designed for speed and accuracy. At Moon
                             Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by
                             Request system. Simply fill out our short form to initiate your request. Once submitted, our team
-                            will assess your cargo’s size, weight, handling requirements, and route feasibility to determine
+                            will assess your cargo's size, weight, handling requirements, and route feasibility to determine
                             the best transport solution. You will receive a customized quotation directly in your email,
                             ensuring accurate pricing, safe handling, and seamless delivery of your cargo.
                         </p>
                         <Link href="/ocean-freight-forms" passHref legacyBehavior>
-                            <a className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors">
+                            <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
                                 Request a Quote
                             </a>
                         </Link>

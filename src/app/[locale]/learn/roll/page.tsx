@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useLocale } from "next-intl";
 import { Metadata } from "next";
-import React from "react";
 
 // SEO Metadata for Next.js 13+ App Router
 export const metadata: Metadata = {
@@ -66,20 +65,20 @@ export default function RollOnOffHero() {
           {/* Left: Title, Subtitle, Button */}
           <div className="flex-1 flex flex-col items-start">
             <h1
-              className="text-[2rem] md:text-[2.5rem] font-light text-[#23294d] mb-1 leading-tight"
+              className="text-[2rem] md:text-[2.5rem] font-light text-foreground mb-1 leading-tight"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               Roll on/roll off
             </h1>
             <div
-              className="text-[#3b4cc0] text-lg mb-8 font-normal"
+              className="text-primary text-lg mb-8 font-normal"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               (RORO)
             </div>
             <Button
               asChild
-              className="rounded-full px-6 py-2 text-sm font-semibold bg-[#23294d] text-white hover:bg-[#3b4cc0] transition-colors mb-0"
+              className="rounded-full px-6 py-2 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors mb-0"
             >
               <Link href={`/${locale}/ocean-freight-forms`}>Request a Quote</Link>
             </Button>
@@ -87,13 +86,13 @@ export default function RollOnOffHero() {
           {/* Right: Heading and Description */}
           <div className="flex-1">
             <h2
-              className="text-[1.15rem] font-semibold text-[#23294d] mb-2"
+              className="text-[1.15rem] font-semibold text-foreground mb-2"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               What is Roll on and Roll off (RORO)?
             </h2>
             <p
-              className="text-xs text-[#23294d] mb-2 leading-relaxed"
+              className="text-xs text-muted-foreground mb-2 leading-relaxed"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               Roll-on Roll-off (RoRo) ships are specialized vessels designed for the efficient transportation
@@ -103,7 +102,7 @@ export default function RollOnOffHero() {
               trailers.
             </p>
             <p
-              className="text-xs text-[#23294d] leading-relaxed"
+              className="text-xs text-muted-foreground leading-relaxed"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               At Moon Navigation And Trading Co., we pride ourselves on providing reliable and
@@ -121,7 +120,7 @@ export default function RollOnOffHero() {
       {/* --- STREAMLINED RORO SOLUTIONS SECTION --- */}
       <section className="max-w-6xl mx-auto mb-16 px-4 md:px-0">
         <h2
-          className="text-xl md:text-2xl font-semibold text-[#23294d] mb-8 text-center"
+          className="text-xl md:text-2xl font-semibold text-foreground mb-8 text-center"
           style={{ fontFamily: "Montserrat, sans-serif" }}
         >
           Our Streamlined RoRo Solutions: Efficient Transportation for Wheeled Cargo
@@ -140,7 +139,7 @@ export default function RollOnOffHero() {
             />
             <Button
               asChild
-              className="rounded-full px-6 py-2 text-sm font-semibold bg-[#23294d] text-white hover:bg-[#3b4cc0] transition-colors mt-6"
+              className="rounded-full px-6 py-2 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors mt-6"
             >
               <Link href={`/${locale}/ocean-freight-forms`}>
                 Learn More About Our RORO Cargo Solutions
@@ -152,13 +151,13 @@ export default function RollOnOffHero() {
             {/* Column 1 */}
             <div>
               <h3
-                className="text-base font-semibold mb-2 text-[#23294d]"
+                className="text-base font-semibold mb-2 text-foreground"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Our Cargo Handling
               </h3>
               <p
-                className="text-xs text-[#23294d] leading-relaxed"
+                className="text-xs text-muted-foreground leading-relaxed"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Our RoRo ships are expertly engineered for the
@@ -173,13 +172,13 @@ export default function RollOnOffHero() {
             {/* Column 2 */}
             <div>
               <h3
-                className="text-base font-semibold mb-2 text-[#23294d]"
+                className="text-base font-semibold mb-2 text-foreground"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 The Design
               </h3>
               <p
-                className="text-xs text-[#23294d] leading-relaxed"
+                className="text-xs text-muted-foreground leading-relaxed"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Our RoRo ships, featuring expansive flat decks or
@@ -193,13 +192,13 @@ export default function RollOnOffHero() {
             {/* Column 3 */}
             <div>
               <h3
-                className="text-base font-semibold mb-2 text-[#23294d]"
+                className="text-base font-semibold mb-2 text-foreground"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Cargo Types
               </h3>
               <p
-                className="text-xs text-[#23294d] leading-relaxed mb-2"
+                className="text-xs text-muted-foreground leading-relaxed mb-2"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Our RoRo vessels are engineered for the seamless transportation of a wide range of vehicles, including cars,
@@ -207,7 +206,7 @@ export default function RollOnOffHero() {
                 and timely delivery.
               </p>
               <p
-                className="text-xs text-[#23294d] leading-relaxed"
+                className="text-xs text-muted-foreground leading-relaxed"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 Beyond standard automobiles, our fleet accommodates oversized equipment, construction vehicles, and
@@ -229,7 +228,7 @@ export default function RollOnOffHero() {
           <h3 className="text-base md:text-lg font-semibold  mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Delivering Speed, Cost-Effectiveness, and Reliability for Your Cargo Needs
           </h3>
-          <div className="space-y-5 text-[#23294d] text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <div className="space-y-5 text-foreground text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             <p>We leverage the numerous benefits of RoRo shipping to optimize your logistics experience.</p>
             <p>Our operations significantly reduce cargo handling time compared to traditional crane methods, ensuring swift and efficient transport. By eliminating the need for heavy-lifting equipment, we provide a cost-effective solution for transporting vehicles and similar cargo. Additionally, our approach minimizes handling, reducing the risk of damage, and ensuring your cargo arrives in excellent condition.</p>
             <p>We frequently utilize our RoRo vessels for automobile transportation, facilitating seamless shipping from manufacturing plants to global markets.</p>
@@ -240,7 +239,7 @@ export default function RollOnOffHero() {
         {/* Right: Image with Geometric Accent */}
         <div className="flex-1 flex justify-center items-center relative min-h-[350px] md:min-h-[420px]">
           {/* Geometric Accent */}
-          <div className="hidden md:block absolute -top-10 right-0 w-[340px] h-[80px] bg-[#23294d] z-0 rotate-3" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 20% 100%)' }} />
+          <div className="hidden md:block absolute -top-10 right-0 w-[340px] h-[80px] bg-primary z-0 rotate-3" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 20% 100%)' }} />
           {/* Main Image */}
           <div className="relative z-10 w-full max-w-[420px]">
             <Image
@@ -253,7 +252,7 @@ export default function RollOnOffHero() {
               loading="lazy"
             />
             {/* Bottom Accent */}
-            <div className="hidden md:block absolute -bottom-8 left-8 w-[320px] h-[40px] bg-[#23294d] z-0 -rotate-2" style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 0 100%)' }} />
+            <div className="hidden md:block absolute -bottom-8 left-8 w-[320px] h-[40px] bg-primary z-0 -rotate-2" style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 0 100%)' }} />
           </div>
         </div>
       </section>
@@ -299,28 +298,28 @@ export default function RollOnOffHero() {
           {/* Row 1 */}
           <div className="flex flex-col items-center text-center">
             {/* Icon */}
-            <h3 className="font-semibold mt-6 mb-2 text-base">Efficiency & Reliability</h3>
-            <p className="text-sm text-gray-600">Fast, secure, and dependable shipping services for wheeled cargo.</p>
+            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Efficiency & Reliability</h3>
+            <p className="text-sm text-muted-foreground">Fast, secure, and dependable shipping services for wheeled cargo.</p>
           </div>
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold mt-6 mb-2 text-base">Expert Handling</h3>
-            <p className="text-sm text-gray-600">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</p>
+            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Expert Handling</h3>
+            <p className="text-sm text-muted-foreground">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</p>
           </div>
           <div className="flex flex-col items-center text-center">
             
-            <h3 className="font-semibold mt-6 mb-2 text-base">Secure & Cost-Effective Transport</h3>
-            <p className="text-sm text-gray-600">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</p>
+            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Secure & Cost-Effective Transport</h3>
+            <p className="text-sm text-muted-foreground">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</p>
           </div>
           </div>
           {/* Row 2 */}
           <div className="grid md:grid-cols-2">
           <div className="flex flex-col items-center text-center md:col-start-2 justify-center self-center">
-            <h3 className="font-semibold mt-6 mb-2 text-base">Global Connectivity</h3>
-            <p className="text-sm text-gray-600">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</p>
+            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Global Connectivity</h3>
+            <p className="text-sm text-muted-foreground">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</p>
           </div>
           <div className="flex flex-col items-center text-center md:col-start-3 self-center">
-            <h3 className="font-semibold mt-6 mb-2 text-base">Expert Compliance & Support</h3>
-            <p className="text-sm text-gray-600">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</p>
+            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Expert Compliance & Support</h3>
+            <p className="text-sm text-muted-foreground">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</p>
           </div>
           </div>
       </section>
@@ -329,7 +328,7 @@ export default function RollOnOffHero() {
 
 
       <section className="w-full py-20 px-4 md:px-0">
-        <h2 className="text-3xl md:text-4xl font-semibold text-[#3b4cc0] mb-16 text-left" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+        <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-16 text-left" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Our RORO Solutions—At Moon Navigation and Trading Co.
         </h2>
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-8">
@@ -338,10 +337,10 @@ export default function RollOnOffHero() {
             <h3 className="text-lg md:text-xl font-medium mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               1. RoRo Vessel Operations
             </h3>
-            <p className="text-[#3b4cc0] text-sm md:text-base mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="text-primary text-sm md:text-base mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               We offer state-of-the-art RoRo vessels equipped with specialized ramps and cargo decks to accommodate a wide range of rolling cargo.
             </p>
-            <ul className="text-[#23294d] text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <ul className="text-foreground text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               <li>
                 <span className="font-semibold">Cargo Loading & Unloading—</span>
                 Seamless roll-on and roll-off operations for quick turnaround.
@@ -391,12 +390,12 @@ export default function RollOnOffHero() {
               2. Heavy &amp; Oversized Cargo
             </h3>
             <a
-              className="text-[#3b4cc0] text-sm md:text-base mb-4 block "
+              className="text-primary text-sm md:text-base mb-4 block "
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               For heavy or oversized equipment, our RoRo services provide a cost-effective and flexible shipping solution.
             </a>
-            <ul className="text-[#23294d] text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <ul className="text-foreground text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               <li>
                 <span className="font-semibold">Machinery &amp; Equipment—</span>
                 Transporting construction machinery, mining equipment, and large vehicles.
@@ -427,12 +426,12 @@ export default function RollOnOffHero() {
               3. Vehicle Transport
             </h3>
             <a
-              className="text-[#3b4cc0] text-sm md:text-base mb-4 block"
+              className="text-primary text-sm md:text-base mb-4 block"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               RoRo services are widely used for transporting vehicles like cars, trucks, motorcycles, and buses between ports.
             </a>
-            <ul className="text-[#23294d] text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <ul className="text-foreground text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               <li>
                 <span className="font-semibold">Global Vehicle Shipping—</span>
                 Efficient transport of new and used vehicles worldwide.
@@ -482,12 +481,12 @@ export default function RollOnOffHero() {
             </h3>
             <a
               href="#"
-              className="text-[#3b4cc0] text-sm md:text-base mb-4 block hover:underline"
+              className="text-primary text-sm md:text-base mb-4 block hover:underline"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               We understand the importance of quick turnaround times, and our RoRo services are designed for maximum efficiency.
             </a>
-            <ul className="text-[#23294d] text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <ul className="text-foreground text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               <li>
                 <span className="font-semibold">Frequent Sailings—</span>
                 Regular vessel departures to meet tight schedules.
@@ -515,12 +514,12 @@ export default function RollOnOffHero() {
             </h3>
             <a
               href="#"
-              className="text-[#3b4cc0] text-sm md:text-base mb-4 block hover:underline"
+              className="text-primary text-sm md:text-base mb-4 block hover:underline"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               Our RoRo services cover major global ports, offering flexibility and accessibility for your shipments.
             </a>
-            <ul className="text-[#23294d] text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <ul className="text-foreground text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               <li>
                 <span className="font-semibold">Global Reach—</span>
                 Connecting key international ports to ensure worldwide service.
@@ -548,17 +547,17 @@ export default function RollOnOffHero() {
         </div>
       </section>
       <section>
-        <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
+        <section className="w-full bg-secondary rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
           {/* Left: Text Content */}
           <div className="flex-1 min-w-[260px]">
-            <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Get your Quote with Us
             </h2>
-            <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Our streamlined RoRo freight quotation process is designed for speed and convenience. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will evaluate the cargo type, dimensions, and route requirements to determine the best shipping solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless transport of vehicles, machinery, and oversized rolling cargo.
             </p>
             <Link href="/ocean-freight-forms" passHref legacyBehavior>
-              <a className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors">
+              <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
                 Request a Quote
               </a>
             </Link>
@@ -574,7 +573,7 @@ export default function RollOnOffHero() {
             />
           </div>
         </section>
-        <div className="text-xs text-gray-700 mt-2 px-2">
+        <div className="text-xs text-muted-foreground mt-2 px-2">
           Need a Reliable RoRo Shipping Solution? <span className="font-semibold underline cursor-pointer">Contact us</span> today for a customized Roll-On/Roll-Off (RoRo) transport plan that ensures the safe, secure, and efficient movement of your wheeled and heavy cargo!
           <br />
           <span className="float-right">-Whenever and wherever you need to trust.</span>

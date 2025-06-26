@@ -103,12 +103,14 @@ export default function DangerousCargoInfo() {
                         </Link>
                     </div>
                     {/* Right column: heading and description */}
-                    <div className="flex-1 w-full max-w-xl">
-                        <h2 className="text-2xl sm:text-3xl font-normal text-primary mb-4">What is Dangerous Cargo ?</h2>
-                        <p className="mb-6 text-base sm:text-lg text-gray-700">
+                    <div className="flex-1 bg-background rounded-2xl shadow-md p-6">
+                        <h2 className="text-lg font-semibold mb-3 text-primary" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                            What is Dangerous Cargo ?
+                        </h2>
+                        <p className="text-muted-foreground mb-2 text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             Dangerous cargo includes materials that pose significant risks to health, safety, property, and the environment due to their hazardous nature. These materials, ranging from flammable and explosive substances to toxic, radioactive, and corrosive chemicals, require meticulous handling and adherence to strict international safety regulations such as the IMDG Code, IATA DGR, and ADR. Ensuring proper classification, packaging, labeling, and documentation is essential to prevent accidents and ensure seamless transportation.
                         </p>
-                        <p className="text-base sm:text-lg text-gray-700">
+                        <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             At Moon Navigation and Trading Co., we specialize in the safe, secure, and fully compliant transportation of hazardous materials. With extensive industry expertise, we provide tailored solutions that guarantee the highest safety standards, regulatory compliance, and efficient logistics management. Trust us to handle your most challenging cargo needs with professionalism and precision.
                         </p>
                     </div>
@@ -279,17 +281,22 @@ export default function DangerousCargoInfo() {
                         </div>
                     </div>
                 </div>
-                <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
+                <section className="w-full bg-secondary rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
                     {/* Left: Text Content */}
                     <div className="flex-1 min-w-[260px]">
-                        <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             Get your Quote with Us
                         </h2>
-                        <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                            Our streamlined RoRo freight quotation process is designed for speed and convenience. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will evaluate the cargo type, dimensions, and route requirements to determine the best shipping solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless transport of vehicles, machinery, and oversized rolling cargo.
+                        <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                            Our steamlined breakbulk cargo quotation process is designed for speed and accuracy. At Moon
+                            Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by
+                            Request system. Simply fill out our short form to initiate your request. Once submitted, our team
+                            will assess your cargo's size, weight, handling requirements, and route feasibility to determine
+                            the best transport solution. You will receive a customized quotation directly in your email,
+                            ensuring accurate pricing, safe handling, and seamless delivery of your cargo.
                         </p>
                         <Link href="/ocean-freight-forms" passHref legacyBehavior>
-                            <a className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors">
+                            <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
                                 Request a Quote
                             </a>
                         </Link>

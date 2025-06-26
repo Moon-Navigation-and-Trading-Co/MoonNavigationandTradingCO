@@ -117,16 +117,16 @@ export default function ProjectCargoPage() {
           </div>
           {/* Right: What is Project Cargo */}
           <div className="flex-1">
-            <h3 className="text-lg font-semibold mb-2 text-blue-900">
+            <h3 className="text-lg font-semibold mb-2 text-primary">
               What is Project Cargo?
             </h3>
-            <p className="text-sm leading-relaxed text-gray-700 mb-4">
+            <p className="text-sm leading-relaxed text-muted-foreground mb-4">
               Project cargo in ocean freight entails the transportation of large, heavy, high-value or
               complex pieces of equipment and materials. At Moon Navigation and Trading Co., we
               specialize in managing these specialized shipments, which are intricately linked to specific
               projects and require meticulous handling, specialized equipment, and precise coordination.
             </p>
-            <p className="text-sm leading-relaxed text-gray-700">
+            <p className="text-sm leading-relaxed text-muted-foreground">
               We understand that ensuring the safe and timely delivery of project cargo is vital for the
               successful execution of industrial and infrastructure projects. Our dedicated team is
               committed to providing comprehensive solutions that address the unique challenges of
@@ -209,80 +209,80 @@ export default function ProjectCargoPage() {
           Key Differences between Project Cargo and Standard Cargo
         </h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full border border-gray-300 bg-white text-sm">
+          <table className="min-w-full border border-border bg-background text-sm">
             <thead>
-              <tr className="bg-white">
-                <th className="px-4 py-2 border-b border-gray-300 font-semibold text-left w-48">Feature</th>
-                <th className="px-4 py-2 border-b border-gray-300 font-semibold text-left w-64">Project Cargo</th>
-                <th className="px-4 py-2 border-b border-gray-300 font-semibold text-left w-64">Standard Cargo</th>
+              <tr className="bg-secondary">
+                <th className="px-4 py-2 border-b border-border font-semibold text-left w-48 text-foreground">Feature</th>
+                <th className="px-4 py-2 border-b border-border font-semibold text-left w-64 text-foreground">Project Cargo</th>
+                <th className="px-4 py-2 border-b border-border font-semibold text-left w-64 text-foreground">Standard Cargo</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Size &amp; Weight</td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Oversized, heavy, and irregular-shaped items</td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Standard-sized goods that fit in containers or pallets</td>
+                <td className="px-4 py-2 border-b border-border align-top text-foreground">Size &amp; Weight</td>
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">Oversized, heavy, and irregular-shaped items</td>
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">Standard-sized goods that fit in containers or pallets</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Handling Requirements</td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-foreground">Handling Requirements</td>
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Requires specialized handling (cranes, flat racks, heavy-lift vessels, RoRo, breakbulk)
                 </td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Handled using conventional shipping methods (pallets, boxes, containers)
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Logistics Complexity</td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-foreground">Logistics Complexity</td>
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   High – involves route surveys, permits, customs clearances, and infrastructure adjustments
                 </td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Low – follows standard transportation procedures
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Transport Equipment</td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-foreground">Transport Equipment</td>
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Heavy-lift vessels, modular trailers, open-top containers, SPMTs
                 </td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Standard containers (20ft, 40ft), trucks, forklifts
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Time Sensitivity</td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-foreground">Time Sensitivity</td>
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Often critical for large-scale projects, delays can be costly
                 </td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   More flexible in transit schedules
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Industries Served</td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-foreground">Industries Served</td>
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Energy, construction, oil &amp; gas, mining, infrastructure
                 </td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Retail, electronics, textiles, consumer goods
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Risk &amp; Insurance</td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-foreground">Risk &amp; Insurance</td>
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Higher risk due to size and complexity, requires specialized insurance
                 </td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Lower risk, covered by standard cargo insurance
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">Shipping Cost</td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-foreground">Shipping Cost</td>
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Higher due to special handling, permits, and logistics planning
                 </td>
-                <td className="px-4 py-2 border-b border-gray-200 align-top">
+                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
                   Lower, based on weight, volume, and standard tariffs
                 </td>
               </tr>
@@ -296,29 +296,29 @@ export default function ProjectCargoPage() {
         </Button>
       </section>
 
-      <section className="max-w-6xl mx-auto bg-blue-100 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
+      <section className="max-w-6xl mx-auto bg-secondary rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
         <div className="flex-1">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
             How are we overcoming challenges in project cargo transportation?
           </h2>
-          <p className="mb-4 text-gray-700">
+          <p className="mb-4 text-muted-foreground">
             At Moon Navigation and Trading Co., we recognize that project cargo is unique, as each shipment is treated as a one-of-a-kind operation that requires a tailored approach to logistics. The process begins with detailed surveys, where we assess the dimensions, weight, and transport feasibility of your cargo to ensure optimal planning.
           </p>
-          <p className="mb-4 text-gray-700">
+          <p className="mb-4 text-muted-foreground">
             We prioritize permit management, securing all necessary documentation for oversized loads to ensure compliance with regulations. Additionally, our team excels in coordination with ports, carriers, and local authorities to streamline the transportation process. As a critical segment of ocean freight, project cargo demands specialized expertise in logistics and engineering to ensure the successful delivery of valuable assets.
           </p>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
+          <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
             <li>
-              <span className="font-semibold text-gray-900">Custom Handling & Packaging:</span> Our team employs specialized handling techniques and tailored packaging solutions to guarantee the safety and stability of project cargo.
+              <span className="font-semibold text-foreground">Custom Handling & Packaging:</span> Our team employs specialized handling techniques and tailored packaging solutions to guarantee the safety and stability of project cargo.
             </li>
             <li>
-              <span className="font-semibold text-gray-900">Heavy Lifting Equipment:</span> We utilize advanced cranes, gantries, and hydraulic platforms to accurately lift and position exceptionally heavy items, ensuring secure transport.
+              <span className="font-semibold text-foreground">Heavy Lifting Equipment:</span> We utilize advanced cranes, gantries, and hydraulic platforms to accurately lift and position exceptionally heavy items, ensuring secure transport.
             </li>
             <li>
-              <span className="font-semibold text-gray-900">Intermodal Transport Coordination:</span> We seamlessly integrate sea, road, and rail transport, facilitating smooth coordination across different modes of transportation.
+              <span className="font-semibold text-foreground">Intermodal Transport Coordination:</span> We seamlessly integrate sea, road, and rail transport, facilitating smooth coordination across different modes of transportation.
             </li>
             <li>
-              <span className="font-semibold text-gray-900">Enhanced Safety & Security:</span> Our comprehensive security protocols and monitoring systems are designed to protect valuable and complex cargo throughout the entire transport process.
+              <span className="font-semibold text-foreground">Enhanced Safety & Security:</span> Our comprehensive security protocols and monitoring systems are designed to protect valuable and complex cargo throughout the entire transport process.
             </li>
           </ul>
         </div>
@@ -330,46 +330,46 @@ export default function ProjectCargoPage() {
         <h2 className="text-xl md:text-2xl font-normal text-center mb-2">
           Reasons to Choose Moon Navigation and Trading Co. for Your Project Cargo Needs
         </h2>
-        <p className="mb-8 text-center text-xs md:text-sm text-gray-700 max-w-3xl mx-auto">
+        <p className="mb-8 text-center text-xs md:text-sm text-muted-foreground max-w-3xl mx-auto">
           At Moon Navigation & Trading, we offer comprehensive end-to-end solutions for project cargo transportation, meticulously overseeing every logistical aspect from planning to delivery.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8 justify-items-center">
           {/* Dedicated Project Cargo Team */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-semibold text-xs text-blue-900 mb-1">Dedicated Project Cargo Team</div>
-            <div className="text-xs text-gray-700 max-w-xs">
+            <div className="font-semibold text-xs text-primary mb-1">Dedicated Project Cargo Team</div>
+            <div className="text-xs text-muted-foreground max-w-xs">
               Our proficient team excels in managing the complexities of project logistics, delivering customized solutions tailored to your specific requirements.
             </div>
           </div>
           {/* Specialized Equipment & Vessels */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-semibold text-xs text-blue-900 mb-1">Specialized Equipment & Vessels</div>
-            <div className="text-xs text-gray-700 max-w-xs">
+            <div className="font-semibold text-xs text-primary mb-1">Specialized Equipment & Vessels</div>
+            <div className="text-xs text-muted-foreground max-w-xs">
               From permits and health certificates to customs clearance, we manage all necessary documentation.
             </div>
           </div>
           {/* Global Reach & Local Expertise */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-semibold text-xs text-blue-900 mb-1">Global Reach & Local Expertise</div>
-            <div className="text-xs text-gray-700 max-w-xs">
+            <div className="font-semibold text-xs text-primary mb-1">Global Reach & Local Expertise</div>
+            <div className="text-xs text-muted-foreground max-w-xs">
               With a strong global network, we offer seamless project cargo transport to any destination, supported by local expertise at each stage of the journey.
             </div>
           </div>
           {/* Risk Management & Compliance */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-semibold text-xs text-blue-900 mb-1">Risk Management & Compliance</div>
-            <div className="text-xs text-gray-700 max-w-xs">
+            <div className="font-semibold text-xs text-primary mb-1">Risk Management & Compliance</div>
+            <div className="text-xs text-muted-foreground max-w-xs">
               We proactively manage any risk factors associated with project cargo, ensuring all international shipping regulations, permits, and insurance requirements are met.
             </div>
           </div>
         </div>
       </section>
       <section className="max-w-6xl mx-auto mt-12 mb-8">
-        <div className="bg-blue-100 rounded-2xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
+        <div className="bg-secondary rounded-2xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
           {/* Left: Text */}
           <div className="flex-1">
-            <h2 className="text-2xl font-semibold mb-3 text-blue-900">Get your Quote with Us</h2>
-            <p className="text-sm text-gray-800 mb-6 max-w-xl">
+            <h2 className="text-2xl font-semibold mb-3 text-foreground">Get your Quote with Us</h2>
+            <p className="text-sm text-muted-foreground mb-6 max-w-xl">
               Our steamlined project cargo quotation process is designed for efficiency and precision. At Moon
               Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by
               Request system. Simply fill out our short form to initiate your request. Once submitted, our team
@@ -397,7 +397,7 @@ export default function ProjectCargoPage() {
           </div>
         </div>
         <div className="h-8" />
-        <div className="text-xs text-gray-700 mt-2 px-2">
+        <div className="text-xs text-muted-foreground mt-2 px-2">
           Need a Reliable Project Cargo Solution? <span className="font-semibold">Contact us</span> today for a customized project cargo plan that ensures the safe, efficient, and cost-effective transport of your oversized, heavy, or complex shipment.<br />
           <span className="float-right">-Whenever and wherever you need to trust.</span>
         </div>

@@ -156,22 +156,22 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     {navItems.map((item, index) => (
                         <React.Fragment key={index}>
                             <div className="relative text-left" onMouseEnter={() => handleDesktopHover(item.name)} onMouseLeave={() => setOpenDesktopDropdown(null)}>
-                                <button className={`hover:text-gray-400 gap-2 focus:outline-none flex items-center`}>
+                                <button className={`hover:text-muted-foreground gap-2 focus:outline-none flex items-center text-foreground`}>
                                     {item.name}
                                     <ChevronDown width={15} />
                                 </button>
                                 <AnimatePresence>
                                     {openDesktopDropdown === item.name && (
-                                        <motion.div className={`absolute left-0 mt-6 border rounded-md shadow-lg bg-secondary ${item.name === "Services" ? "w-[90vw] xl:w-[900px] -left-[calc(45vw-0.9rem)] xl:-left-[450px]" : "w-56"}`} initial={{ opacity: 0, y: -15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3 }} ref={dropdownRef}>
+                                        <motion.div className={`absolute left-0 mt-6 border rounded-md shadow-lg bg-background border-border ${item.name === "Services" ? "w-[90vw] xl:w-[900px] -left-[calc(45vw-0.9rem)] xl:-left-[450px]" : "w-56"}`} initial={{ opacity: 0, y: -15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3 }} ref={dropdownRef}>
                                             {item.name === "Services" ? (
-                                                <div className="grid grid-cols-3 gap-6 p-6 white">
+                                                <div className="grid grid-cols-3 gap-6 p-6">
                                                     {Object.entries(services).map(([key, section]) => (
                                                         <div key={key} className="font-normal">
-                                                            <h3 className="font-medium mb-2">{section.title}</h3>
+                                                            <h3 className="font-medium mb-2 text-foreground">{section.title}</h3>
                                                             <p className="text-xs text-muted-foreground mb-4">{section.description}</p>
                                                             <div className="space-y-2">
                                                                 {section.items.map((service, idx) => (
-                                                                    <Link key={idx} href={service.href} className="block text-sm text-black hover:text-primary">
+                                                                    <Link key={idx} href={service.href} className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
                                                                         {service.name}
                                                                     </Link>
                                                                 ))}
@@ -185,7 +185,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                         <div key={dropdownIndex} className="relative">
                                                             <Link
                                                                 href={dropdownItem.href === "/#contact" ? "/?scroll=contact" : dropdownItem.href}
-                                                                className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
+                                                                className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
                                                                 onClick={(e) => {
                                                                     if (dropdownItem.href === "/#contact") {
                                                                         e.preventDefault();
@@ -211,7 +211,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                     )}
                                 </AnimatePresence>
                             </div>
-                            {index < navItems.length - 1 && <span className="px-3">|</span>}
+                            {index < navItems.length - 1 && <span className="px-3 text-muted-foreground">|</span>}
                         </React.Fragment>
                     ))}
                 </div>
@@ -220,14 +220,14 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 <div className="hidden md:flex items-center gap-3">
                     <div className="flex items-center gap-3">
                         <LocaleSwitcher />
-                        <Button className="text-white p-0 ml-2 h-[32px] bg-transparent hover:bg-transparent text-primary hover:text-black dark:hover:text-purple-200">
+                        <Button className="p-0 ml-2 h-[32px] bg-transparent hover:bg-transparent text-primary hover:text-primary/80 transition-colors">
                             <Link className="font-light flex items-center w-full h-full" href={"/investor-form"}>
                                 Invest
                             </Link>
                         </Button>
                     </div>
                     {!user && (
-                        <Button className="bg-white text-black hover:bg-gray-100 rounded-full px-6 py-2 font-medium text-sm">
+                        <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-2 font-medium text-sm transition-colors">
                             <Link href={"/sign-in"}>SIGN IN</Link>
                         </Button>
                     )}
@@ -249,7 +249,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div ref={dropdownMobileRef} className="fixed z-[999] px-2 mt-2 flex justify-end top-16 right-0 w-[280px] bg-transparent" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.3, ease: "easeInOut" }}>
-                        <div className="flex flex-col w-full gap-2 rounded-3xl bg-secondary px-5 py-4 max-w-[280px] shadow-xl shadow-[#000000] text-sm font-normal">
+                        <div className="flex flex-col w-full gap-2 rounded-3xl bg-background border border-border px-5 py-4 max-w-[280px] shadow-xl text-sm font-normal">
                             {/* Accordion for mobile nav items */}
                             <Accordion type="single" collapsible className="w-full">
                                 {navItems.map((item, index) => (
@@ -267,7 +267,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                             <AccordionTrigger className="flex pr-2 items-center justify-between text-start text-sm text-foreground">{section.title}</AccordionTrigger>
                                                             <AccordionContent className="ml-3 space-y-2">
                                                                 {section.items.map((service, idx) => (
-                                                                    <Link key={idx} href={service.href} className="block text-sm text-muted-foreground hover:text-foreground" onClick={toggleMobileMenu}>
+                                                                    <Link key={idx} href={service.href} className="block text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMobileMenu}>
                                                                         {service.name}
                                                                     </Link>
                                                                 ))}
@@ -279,7 +279,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                 // Render normal dropdown items if they exist
                                                 <div className="flex flex-col">
                                                     {item.dropdownItems?.map((dropdownItem, idx) => (
-                                                        <Link key={idx} href={dropdownItem.href} className="block ml-2 mt-2 text-sm text-muted-foreground hover:text-foreground" onClick={toggleMobileMenu}>
+                                                        <Link key={idx} href={dropdownItem.href} className="block ml-2 mt-2 text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMobileMenu}>
                                                             {dropdownItem.name}
                                                         </Link>
                                                     ))}
@@ -291,12 +291,12 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                             </Accordion>
 
                             {/* Other mobile links/buttons below the Accordion */}
-                            <Link href={"/investor-form"} className="font-semibold text-primary hover:text-foreground" onClick={toggleMobileMenu}>
+                            <Link href={"/investor-form"} className="font-semibold text-primary hover:text-primary/80 transition-colors" onClick={toggleMobileMenu}>
                                 Invest
                             </Link>
 
                             {!user && (
-                                <Link className="bg-white text-black hover:bg-gray-100 rounded-full px-6 py-2 font-medium text-sm text-center" href={"/sign-up"} onClick={toggleMobileMenu}>
+                                <Link className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-2 font-medium text-sm text-center transition-colors" href={"/sign-up"} onClick={toggleMobileMenu}>
                                     SIGN IN
                                 </Link>
                             )}

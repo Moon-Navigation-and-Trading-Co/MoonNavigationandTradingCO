@@ -77,18 +77,18 @@ export default function ShippingMethodsInfo() {
         </div>
         {/* Right Side: Info Card */}
         <div>
-          <h2 className="text-xl font-semibold text-[#3B409F] mb-4">What is Livestock Transportation?</h2>
-          <p className="text-gray-700 mb-4 text-sm md:text-base">
+          <h2 className="text-xl font-semibold text-primary mb-4">What is Livestock Transportation?</h2>
+          <p className="text-muted-foreground mb-4 text-sm md:text-base">
             Livestock transportation is the moving of domesticated animals from one location to another, typically for purposes such as breeding, feeding, or market sales. This specialized form of transport requires adherence to strict welfare regulations to ensure the safety and comfort of the animals during transit.
           </p>
-          <p className="text-gray-700 text-sm md:text-base">
+          <p className="text-muted-foreground text-sm md:text-base">
             At Moon Navigation and Trading Co., we specialize in the safe, humane, and efficient shipment of livestock, ensuring their well-being throughout the entire journey. Whether you need to transport cattle, sheep, horses, or other live animals, our state-of-the-art livestock carriers and expert handling services guarantee a stress-free and compliant shipping experience.
           </p>
         </div>
       </div>
       <section className="w-full max-w-6xl mx-auto mt-20 mb-20">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-2">Industries We Serve</h2>
-        <p className="mb-10 text-gray-600">
+        <p className="mb-10 text-muted-foreground">
           We provide specialized livestock shipping solutions across multiple industries, ensuring each type of animal is transported safely and in compliance with international standards.
         </p>
         <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch">
@@ -101,7 +101,7 @@ export default function ShippingMethodsInfo() {
               loading="lazy"
             />
             <h3 className="text-lg font-semibold mb-2 text-center">Agriculture & Dairy Farming</h3>
-            <p className="text-gray-500 text-center">
+            <p className="text-muted-foreground text-center">
               We support global farming operations by transporting cattle, sheep, goats, and other livestock.
             </p>
           </div>
@@ -114,7 +114,7 @@ export default function ShippingMethodsInfo() {
               loading="lazy"
             />
             <h3 className="text-lg font-semibold mb-2 text-center">Equestrian & Racing</h3>
-            <p className="text-gray-500 text-center">
+            <p className="text-muted-foreground text-center">
               We securely ship elite horses for global competitions, training, and breeding.
             </p>
           </div>
@@ -127,7 +127,7 @@ export default function ShippingMethodsInfo() {
               loading="lazy"
             />
             <h3 className="text-lg font-semibold mb-2 text-center">Zoos & Wildlife Conservation</h3>
-            <p className="text-gray-500 text-center">
+            <p className="text-muted-foreground text-center">
               Our expertise extends to the careful relocation of exotic and endangered species, supporting conservation programs and global zoo networks.
             </p>
           </div>
@@ -142,7 +142,7 @@ export default function ShippingMethodsInfo() {
             <p className="mb-6">
               Our vessels are specifically designed for the safe and efficient transport of livestock.
             </p>
-            <ul className="list-disc pl-6 space-y-3 text-gray-700">
+            <ul className="list-disc pl-6 space-y-3 text-muted-foreground">
               <li>
                 They feature multi-tiered enclosures with optimal ventilation, ensuring a consistent flow of fresh air.
               </li>
@@ -185,7 +185,7 @@ export default function ShippingMethodsInfo() {
             <p className="mb-6">
               At Moon Navigation and Trading Co., animal welfare is our top priority in every aspect of transportation.
             </p>
-            <ul className="list-disc pl-6 space-y-3 text-gray-700">
+            <ul className="list-disc pl-6 space-y-3 text-muted-foreground">
               <li>
                 Our onboard veterinarians and trained handlers provide constant monitoring and are equipped to deliver emergency medical care when necessary.
               </li>
@@ -210,7 +210,7 @@ export default function ShippingMethodsInfo() {
             <p className="mb-6">
               We strictly adhere to global livestock transportation regulations to ensure the highest standards of welfare and compliance. This includes the following:
             </p>
-            <ul className="list-disc pl-6 space-y-3 text-gray-700 mb-6">
+            <ul className="list-disc pl-6 space-y-3 text-muted-foreground mb-6">
               <li>International Maritime Organization (IMO) Animal Transport Regulations</li>
               <li>World Organization for Animal Health (WOAH) Welfare Guidelines</li>
               <li>Local Import/Export Animal Health Requirements</li>
@@ -253,41 +253,41 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8">
           {/* Card 1 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className="font-semibold mb-2">Global Network &amp; Port Access</h3>
-            <p className="text-gray-500">
+            <h3 className="font-semibold mb-2 text-foreground">Global Network &amp; Port Access</h3>
+            <p className="text-muted-foreground">
               Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.
             </p>
           </div>
           {/* Card 2 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className="font-semibold mb-2">Advanced Biosecurity Measures</h3>
-            <p className="text-gray-500">
+            <h3 className="font-semibold mb-2 text-foreground">Advanced Biosecurity Measures</h3>
+            <p className="text-muted-foreground">
               We implement strict hygiene protocols, quarantine measures, and disease prevention practices.
             </p>
           </div>
           {/* Card 3 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className="font-semibold mb-2">Custom-Tailored Transport Solutions</h3>
-            <p className="text-gray-500">
+            <h3 className="font-semibold mb-2 text-foreground">Custom-Tailored Transport Solutions</h3>
+            <p className="text-muted-foreground">
               Whether you need short-haul regional shipping or long-haul transcontinental transport, we design solutions tailored to your needs.
             </p>
           </div>
           {/* Card 4 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className="font-semibold mb-2">Seamless Logistics &amp; Documentation Handling</h3>
-            <p className="text-gray-500">
+            <h3 className="font-semibold mb-2 text-foreground">Seamless Logistics &amp; Documentation Handling</h3>
+            <p className="text-muted-foreground">
               From permits and health certificates to customs clearance, we manage all necessary documentation.
             </p>
           </div>
         </div>
       </section>
-      <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
+      <section className="w-full bg-secondary rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
         {/* Left: Text Content */}
         <div className="flex-1 min-w-[260px]">
-          <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Get your Quote with Us
           </h2>
-          <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Our steamlined livestock transportation quotation process is designed for efficiency and ease. At
             Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation
             by Request system. Simply fill out our short form to initiate your request. Once submitted, our
@@ -296,7 +296,7 @@ export default function ShippingMethodsInfo() {
             ensuring accurate pricing and the highest standards of animal welfare and safety.
           </p>
           <Link href="/ocean-freight-forms" passHref legacyBehavior>
-            <a className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors">
+            <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
               Request a Quote
             </a>
           </Link>
