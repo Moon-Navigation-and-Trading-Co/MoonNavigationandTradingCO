@@ -53,7 +53,7 @@ export default function OceanFreightPage() {
       quote: "/container-services-forms",
     },
     {
-      title: t("Container-Stevedoring-and-Storage"),
+      title: t("container-Stevedoring-and-Storage"),
       description: t("out-gauge-p"),
       image: "/airCargo.jpg",
       link: "/learn/stevedoring-container",

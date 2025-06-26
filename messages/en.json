@@ -385,7 +385,11 @@
         "oversized": "Oversized Container",
         "oversized-p": "An oversized container is a shipping container that is specifically designed to accommodate cargo that exceeds the standard dimensions of typical shipping containers (such as 20-foot or 40-foot containers). These containers are used for transporting large, heavy, or non-standard-sized goods that cannot fit into regular containers due to their size or shape.",
         "out-gauge": "Out of Gauge (OOG) Container",
-        "out-gauge-p": "Out of Gauge (OOG) refers to cargo that exceeds the standard dimensions of a regular shipping container, whether in length, width, height, or weight. This type of cargo cannot be accommodated within standard containers, and requires special handling and transport arrangements. OOG cargo is typically shipped using specialized equipment, such as flat racks, open-top containers, or platform containers."
+        "out-gauge-p": "Out of Gauge (OOG) refers to cargo that exceeds the standard dimensions of a regular shipping container, whether in length, width, height, or weight. This type of cargo cannot be accommodated within standard containers, and requires special handling and transport arrangements. OOG cargo is typically shipped using specialized equipment, such as flat racks, open-top containers, or platform containers.",
+        "inland-container-transport": "Inland Container Transportation",
+        "inland-container-transport-p": "Inland container transportation is the movement of shipping containers between ports, terminals, and inland locations using various modes of transport such as trucks, trains, or barges. It plays a crucial role in the logistics chain, connecting seaports with inland destinations and ensuring the efficient movement of goods from origin to destination.",
+        "container-stevedoring-and-storage": "Container Stevedoring and Storage",
+        "container-stevedoring-and-storage-p": "Container stevedoring and storage services are essential for the efficient handling and management of shipping containers. These services involve the loading, unloading, and storing of containers at ports, terminals, and warehouses, ensuring the safe and secure transportation of goods from origin to destination."
     },
     "learn-out-gauge": {
         "title": "Out Gauge",

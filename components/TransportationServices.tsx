@@ -33,7 +33,7 @@ const TransportationServices: React.FC = () => {
       ],
       image: "/container-1.jpg",
       link: "/learn-more/container",
-      quote: "/container-services-form",
+      quote: "/container-services-forms",
     },
     {
       title: t("ship"),
