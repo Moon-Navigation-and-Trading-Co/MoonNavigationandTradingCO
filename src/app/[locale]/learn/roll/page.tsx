@@ -60,6 +60,7 @@ export default function RollOnOffHero() {
   return (
     <>
       {/* --- HERO SECTION --- */}
+      <img src="/rorotitleimage.jpg" alt="RoRo Cargo Handling" className="w-full h-80 object-cover rounded-3xl mt-8" />
       <section className="max-w-6xl mx-auto mt-10 mb-24 px-4 md:px-0">
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
           {/* Left: Title, Subtitle, Button */}
@@ -260,7 +261,7 @@ export default function RollOnOffHero() {
       <section className="flex">
         <div className="relative z-10 w-full max-w-[420px] mr-40 ">
           <Image
-            src="/roroCargoImage.jpg"
+            src="/roroCarsImage.jpg"
             alt="Cars getting off a Moon Navigation RoRo ship"
             width={420}
             height={320}
@@ -298,32 +299,30 @@ export default function RollOnOffHero() {
           {/* Row 1 */}
           <div className="flex flex-col items-center text-center">
             {/* Icon */}
-            <svg width="48" height="48" fill="none" stroke="#3b4cc0" strokeWidth="2" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="6" /><path d="M8 13l3 3 5-5" /></svg>
             <h3 className="font-semibold mt-6 mb-2 text-base">Efficiency & Reliability</h3>
             <p className="text-sm text-gray-600">Fast, secure, and dependable shipping services for wheeled cargo.</p>
           </div>
           <div className="flex flex-col items-center text-center">
-            <svg width="48" height="48" fill="none" stroke="#3b4cc0" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /></svg>
             <h3 className="font-semibold mt-6 mb-2 text-base">Expert Handling</h3>
             <p className="text-sm text-gray-600">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</p>
           </div>
           <div className="flex flex-col items-center text-center">
-            <svg width="48" height="48" fill="none" stroke="#3b4cc0" strokeWidth="2" viewBox="0 0 24 24"><path d="M12 21c-4.97 0-9-4.03-9-9s4.03-9 9-9 9 4.03 9 9-4.03 9-9 9zm0-16v2m0 8v2m-4-4h2m8 0h2" /></svg>
+            
             <h3 className="font-semibold mt-6 mb-2 text-base">Secure & Cost-Effective Transport</h3>
             <p className="text-sm text-gray-600">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</p>
           </div>
+          </div>
           {/* Row 2 */}
-          <div className="flex flex-col items-center text-center md:col-start-2">
-            <svg width="48" height="48" fill="none" stroke="#3b4cc0" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2v20" /></svg>
+          <div className="grid md:grid-cols-2">
+          <div className="flex flex-col items-center text-center md:col-start-2 justify-center self-center">
             <h3 className="font-semibold mt-6 mb-2 text-base">Global Connectivity</h3>
             <p className="text-sm text-gray-600">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</p>
           </div>
-          <div className="flex flex-col items-center text-center md:col-start-3">
-            <svg width="48" height="48" fill="none" stroke="#3b4cc0" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 8v4l3 3" /><circle cx="12" cy="12" r="4" /></svg>
+          <div className="flex flex-col items-center text-center md:col-start-3 self-center">
             <h3 className="font-semibold mt-6 mb-2 text-base">Expert Compliance & Support</h3>
             <p className="text-sm text-gray-600">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</p>
           </div>
-        </div>
+          </div>
       </section>
 
 

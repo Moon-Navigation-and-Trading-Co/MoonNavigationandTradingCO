@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { Separator } from "./ui/separator";
 import { ChevronDown, Menu } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 // 1. Import Accordion, AccordionItem, AccordionTrigger, AccordionContent
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
@@ -22,6 +23,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const dropdownMobileRef = useRef<HTMLDivElement>(null);
+    const router = useRouter();
 
     useEffect(() => {
         // Close dropdown if clicking outside
@@ -53,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     name: "Ocean Freight (Ship Chartering)",
                     href: "/learn-more/ocean-freight",
                 },
-                { name: "Containers Services", href: "/services/containers" },
+                { name: "Containers Services", href: "/learn-more/container" },
                 { name: "Inland Freight", href: "/learn/inland-freight" },
                 { name: "Air Freight", href: "/learn/air-freight" },
             ],
@@ -182,17 +184,18 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                     {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
                                                         <div key={dropdownIndex} className="relative">
                                                             <Link
-                                                                href={dropdownItem.href}
+                                                                href={dropdownItem.href === "/#contact" ? "/?scroll=contact" : dropdownItem.href}
                                                                 className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground"
                                                                 onClick={(e) => {
-                                                                    if (dropdownItem.href.includes("#")) {
+                                                                    if (dropdownItem.href === "/#contact") {
                                                                         e.preventDefault();
-                                                                        const element = document.getElementById(dropdownItem.href.split("#")[1]);
-                                                                        if (element) {
-                                                                            element.scrollIntoView({
-                                                                                behavior: "smooth",
-                                                                                block: "start",
-                                                                            });
+                                                                        if (window.location.pathname === "/") {
+                                                                            const element = document.getElementById("contact");
+                                                                            if (element) {
+                                                                                element.scrollIntoView({ behavior: "smooth", block: "start" });
+                                                                            }
+                                                                        } else {
+                                                                            router.push("/?scroll=contact");
                                                                         }
                                                                     }
                                                                 }}

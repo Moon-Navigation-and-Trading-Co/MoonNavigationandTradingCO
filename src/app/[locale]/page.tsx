@@ -11,19 +11,21 @@ import CarouselAnimation from "@/components/carousel-animation-component-variant
 import TransportationServices from "@/components/TransportationServices";
 import { Separator } from "@/components/ui/separator";
 import ServicesWithLogo from "@/components/services-with-logos";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import ServicesMiniCard from "@/components/servicesMiniCards";
 import ContactForm from "@/components/contact-form";
 import OtherServices from "@/components/other-services-home";
 import PartnerLogoCarousel from "@/components/partners-carousel";
 import { QuoteDialog } from "@/components/dialog-services";
 import IndustryCarousel from "@/components/industry-carousel";
+import { useSearchParams } from "next/navigation";
 
 export default function Index() {
     const t = useTranslations("HomePage");
     const tt = useTranslations("Buttons");
     const tttt = useTranslations("Contact");
     const modalRef = useRef<HTMLDivElement | null>(null);
+    const searchParams = useSearchParams();
 
     const freightTypes = [
         {
@@ -63,6 +65,15 @@ export default function Index() {
         }
     };
 
+    useEffect(() => {
+        if (searchParams.get("scroll") === "contact") {
+            const el = document.getElementById("contact");
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        }
+    }, [searchParams]);
+
     return (
         <>
             <main className="flex-1 flex flex-col gap-20">
@@ -97,11 +108,11 @@ export default function Index() {
                             </div>
 
                             <div className="bg-black shadow-md shadow-black rounded-3xl overflow-hidden aspect-square flex items-center justify-center relative">
-                                <Image alt="about us icon" fill className="object-cover" src={"/cargoShip.jpeg"} />
+                                <Image alt="about us icon" fill className="object-cover" src={"/cargoShip.jpeg"} sizes="(max-width: 768px) 100vw, 50vw" />
                             </div>
 
                             <div className="bg-black shadow-md col-span-1 md:col-span-2 shadow-black rounded-2xl md:max-h-[200px] min-w-full overflow-hidden aspect-square md:aspect-video flex items-center justify-center relative">
-                                <Image className="object-cover" alt="about us icon" src={"/land-cargo-1.jpg"} fill />
+                                <Image className="object-cover" alt="about us icon" src={"/land-cargo-1.jpg"} fill sizes="(max-width: 768px) 100vw, 50vw" />
                             </div>
                         </div>
 
@@ -124,7 +135,7 @@ export default function Index() {
 
                     <div className="flex max-w-[800px]">
                         <p className="py-8">Our streamlined quotation process is designed with your convenience in mind. At Moon Navigation and Trading Co., obtaining service quotes has never been easier or faster than with our Quotation by Request system. By simply filling out a short form that captures your specific service requirements, you can easily initiate your request. Once you have submitted your information, our system ensures it is sent directly to us for prompt attention. You will receive a customized quotation delivered straight to your email in a timely manner. This effortlessness ensures you can focus on what truly matters while receiving accurate pricing without unnecessary delays.</p>
-                        <Image src="/quotation.png" alt="quotation" width={250} height={250} className="object-contain hidden md:block" />
+                        <Image src="/quotation.png" alt="quotation" width={250} height={250} className="object-contain hidden md:block" style={{ width: 'auto' }} />
                     </div>
 
                     <QuoteDialog />

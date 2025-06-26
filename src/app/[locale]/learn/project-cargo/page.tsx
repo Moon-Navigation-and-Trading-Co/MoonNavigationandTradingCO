@@ -323,15 +323,6 @@ export default function ProjectCargoPage() {
           </ul>
         </div>
         <div className="flex-1 flex justify-center">
-          <Image
-            src="/project-cargo-challenges.jpg"
-            alt="Project cargo team handling oversized shipment for Moon Navigation and Trading Co."
-            width={420}
-            height={280}
-            className="rounded-2xl object-cover shadow-xl"
-            style={{ maxWidth: 420, maxHeight: 280 }}
-            loading="lazy"
-          />
         </div>
       </section>
 
@@ -345,14 +336,6 @@ export default function ProjectCargoPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8 justify-items-center">
           {/* Dedicated Project Cargo Team */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <Image
-              src="/icon-team.svg"
-              alt="Dedicated Project Cargo Team at Moon Navigation and Trading Co."
-              width={48}
-              height={48}
-              className="mb-2"
-              loading="lazy"
-            />
             <div className="font-semibold text-xs text-blue-900 mb-1">Dedicated Project Cargo Team</div>
             <div className="text-xs text-gray-700 max-w-xs">
               Our proficient team excels in managing the complexities of project logistics, delivering customized solutions tailored to your specific requirements.
@@ -360,14 +343,6 @@ export default function ProjectCargoPage() {
           </div>
           {/* Specialized Equipment & Vessels */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <Image
-              src="/icon-equipment.svg"
-              alt="Specialized Equipment and Vessels for Project Cargo"
-              width={48}
-              height={48}
-              className="mb-2"
-              loading="lazy"
-            />
             <div className="font-semibold text-xs text-blue-900 mb-1">Specialized Equipment & Vessels</div>
             <div className="text-xs text-gray-700 max-w-xs">
               From permits and health certificates to customs clearance, we manage all necessary documentation.
@@ -375,14 +350,6 @@ export default function ProjectCargoPage() {
           </div>
           {/* Global Reach & Local Expertise */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <Image
-              src="/icon-global.svg"
-              alt="Global Reach and Local Expertise in Project Cargo"
-              width={48}
-              height={48}
-              className="mb-2"
-              loading="lazy"
-            />
             <div className="font-semibold text-xs text-blue-900 mb-1">Global Reach & Local Expertise</div>
             <div className="text-xs text-gray-700 max-w-xs">
               With a strong global network, we offer seamless project cargo transport to any destination, supported by local expertise at each stage of the journey.
@@ -390,14 +357,6 @@ export default function ProjectCargoPage() {
           </div>
           {/* Risk Management & Compliance */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <Image
-              src="/icon-risk.svg"
-              alt="Risk Management and Compliance for Project Cargo"
-              width={48}
-              height={48}
-              className="mb-2"
-              loading="lazy"
-            />
             <div className="font-semibold text-xs text-blue-900 mb-1">Risk Management & Compliance</div>
             <div className="text-xs text-gray-700 max-w-xs">
               We proactively manage any risk factors associated with project cargo, ensuring all international shipping regulations, permits, and insurance requirements are met.

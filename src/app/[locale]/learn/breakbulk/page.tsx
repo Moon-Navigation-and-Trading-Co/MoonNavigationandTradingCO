@@ -364,7 +364,6 @@ export default function BreakBulkInfo() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 max-w-5xl mx-auto">
                         {/* Specialized Expertise */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <img src="/icon-expertise.png" alt="Specialized Expertise" className="h-12 mb-4" loading="lazy" />
                             <h3 className="font-semibold mb-2">Specialized Expertise</h3>
                             <p className="text-gray-500 text-sm">
                                 Years of experience handling non-containerized, oversized, and irregular cargo with precision.
@@ -372,7 +371,6 @@ export default function BreakBulkInfo() {
                         </div>
                         {/* End-to-End Logistics */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <img src="/icon-end-to-end.png" alt="End-to-End Logistics" className="h-12 mb-4" loading="lazy" />
                             <h3 className="font-semibold mb-2">End-to-End Logistics</h3>
                             <p className="text-gray-500 text-sm">
                                 From pickup, customs clearance, and final site handling, we orchestrate all shipment solutions.
@@ -380,7 +378,6 @@ export default function BreakBulkInfo() {
                         </div>
                         {/* Advanced Handling Solutions */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <img src="/icon-advanced-handling.png" alt="Advanced Handling Solutions" className="h-12 mb-4" loading="lazy" />
                             <h3 className="font-semibold mb-2">Advanced Handling Solutions</h3>
                             <p className="text-gray-500 text-sm">
                                 Space-efficient stowage, lifting plans, and securing techniques for safe breakbulk transport.
@@ -390,7 +387,6 @@ export default function BreakBulkInfo() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 max-w-3xl mx-auto mt-10">
                         {/* Global Shipping Network */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <img src="/icon-global-network.png" alt="Global Shipping Network" className="h-12 mb-4" loading="lazy" />
                             <h3 className="font-semibold mb-2">Global Shipping Network</h3>
                             <p className="text-gray-500 text-sm">
                                 Strong partnerships with breakbulk carriers, agents, and worldwide project partners for seamless coordination.
@@ -398,7 +394,6 @@ export default function BreakBulkInfo() {
                         </div>
                         {/* Regulatory Compliance & Dedicated Support */}
                         <div className="flex flex-col items-center text-center px-4">
-                            <img src="/icon-compliance-support.png" alt="Regulatory Compliance & Dedicated Support" className="h-12 mb-4" loading="lazy" />
                             <h3 className="font-semibold mb-2">Regulatory Compliance &amp; Dedicated Support</h3>
                             <p className="text-gray-500 text-sm">
                                 Ensuring adherence to international shipping regulations with expert guidance at every stage.

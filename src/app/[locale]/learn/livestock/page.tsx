@@ -253,7 +253,6 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8">
           {/* Card 1 */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-global-network.png" alt="Global Network" className="h-16 mb-4" loading="lazy" />
             <h3 className="font-semibold mb-2">Global Network &amp; Port Access</h3>
             <p className="text-gray-500">
               Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.
@@ -261,7 +260,6 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Card 2 */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-biosecurity.png" alt="Biosecurity" className="h-16 mb-4" loading="lazy" />
             <h3 className="font-semibold mb-2">Advanced Biosecurity Measures</h3>
             <p className="text-gray-500">
               We implement strict hygiene protocols, quarantine measures, and disease prevention practices.
@@ -269,7 +267,6 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Card 3 */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-anchor.png" alt="Custom-Tailored" className="h-16 mb-4" loading="lazy" />
             <h3 className="font-semibold mb-2">Custom-Tailored Transport Solutions</h3>
             <p className="text-gray-500">
               Whether you need short-haul regional shipping or long-haul transcontinental transport, we design solutions tailored to your needs.
@@ -277,7 +274,6 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Card 4 */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-docs.png" alt="Logistics & Documentation" className="h-16 mb-4" loading="lazy" />
             <h3 className="font-semibold mb-2">Seamless Logistics &amp; Documentation Handling</h3>
             <p className="text-gray-500">
               From permits and health certificates to customs clearance, we manage all necessary documentation.

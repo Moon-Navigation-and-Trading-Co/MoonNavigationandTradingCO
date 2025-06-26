@@ -415,8 +415,8 @@ export default function TankersPage() {
                         src="/tankers-flexibility.jpg"
                         alt="Businessmen shaking hands for flexible tanker solutions"
                         width={420}
-                        height={260}
-                        className="rounded-2xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                        height={420}
+                        className="rounded-2xl w-full max-w-md "
                         priority={false}
                     />
                 </div>
@@ -449,7 +449,6 @@ export default function TankersPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 gap-x-8">
                     {/* Tanker Expertise */}
                     <div className="flex flex-col items-center text-center px-4">
-                        <img src="/icon-tanker-expertise.png" alt="Tanker Expertise" className="h-12 mb-4" />
                         <h3 className="font-semibold mb-2 text-[#23294d]">Tanker Expertise</h3>
                         <p className="text-gray-500 text-sm">
                             Extensive experience in liquid cargo transport, ensuring safe and efficient shipping solutions.
@@ -457,7 +456,6 @@ export default function TankersPage() {
                     </div>
                     {/* Advanced Fleet */}
                     <div className="flex flex-col items-center text-center px-4">
-                        <img src="/icon-advanced-fleet.png" alt="Advanced Fleet" className="h-12 mb-4" />
                         <h3 className="font-semibold mb-2 text-[#23294d]">Advanced Fleet</h3>
                         <p className="text-gray-500 text-sm">
                             Modern, high-performance tankers built to meet strict industry and safety standards.
@@ -465,7 +463,6 @@ export default function TankersPage() {
                     </div>
                     {/* Global Reach */}
                     <div className="flex flex-col items-center text-center px-4">
-                        <img src="/icon-global-reach.png" alt="Global Reach" className="h-12 mb-4" />
                         <h3 className="font-semibold mb-2 text-[#23294d]">Global Reach</h3>
                         <p className="text-gray-500 text-sm">
                             Seamless logistics coordination for timely deliveries across international markets.
@@ -476,7 +473,6 @@ export default function TankersPage() {
                 <div className="flex flex-col sm:flex-row justify-center items-center gap-y-12 gap-x-8 mt-12">
                     {/* Sustainability Focus */}
                     <div className="flex flex-col items-center text-center px-4">
-                        <img src="/icon-sustainability.png" alt="Sustainability Focus" className="h-12 mb-4" />
                         <h3 className="font-semibold mb-2 text-[#23294d]">Sustainability Focus</h3>
                         <p className="text-gray-500 text-sm">
                             Committed to eco-friendly operations, reducing environmental impact.
@@ -484,7 +480,6 @@ export default function TankersPage() {
                     </div>
                     {/* Dedicated Support */}
                     <div className="flex flex-col items-center text-center px-4">
-                        <img src="/icon-dedicated-support.png" alt="Dedicated Support" className="h-12 mb-4" />
                         <h3 className="font-semibold mb-2 text-[#23294d]">Dedicated Support</h3>
                         <p className="text-gray-500 text-sm">
                             24/7 customer assistance and expert guidance throughout the shipping process.
