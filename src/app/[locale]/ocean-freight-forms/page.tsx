@@ -27,9 +27,6 @@ const Page: React.FC = () => {
 
             if (user) {
                 setUser(user); // User is logged in, set the state
-            } else {
-                router.push('/sign-in');
-                return;
             }
             setIsLoading(false); // Stop loading after checking user
         };
@@ -43,14 +40,6 @@ const Page: React.FC = () => {
             <Spinner />
         </div>; // Display loading state while checking
     }
-
-    if (!user) {
-        return redirect('/sign-in'); // Return null while waiting for the redirect
-    }
-
-
-
-
     const submitForm = async (formData: any, formType: any) => {
         console.log("hi")
         // Flatten the formData before inserting into Supabase

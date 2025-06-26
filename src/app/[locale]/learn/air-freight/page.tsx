@@ -328,7 +328,9 @@ export default function AirFreightInfo() {
                         <div className="space-y-6">
                             <h2 className="text-3xl font-semibold">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
-                            <Button className="bg-[#3B4B8C] hover:bg-[#2d3a6d]">{t("quoteRequest.button")}</Button>
+                            <Link href="/air-freight-forms">
+                                <Button className="bg-[#3B4B8C] hover:bg-[#2d3a6d]">{t("quoteRequest.button")}</Button>
+                            </Link>
                         </div>
 
                         <div className="relative h-[400px]">

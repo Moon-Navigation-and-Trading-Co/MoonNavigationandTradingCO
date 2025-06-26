@@ -97,12 +97,12 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 //
                 {
                     name: "Vessel Rentals and Purchases",
-                    href: "/services/vessel-rentals",
+                    href: "/buy-rent-vessels-forms",
                 },
                 //
                 {
                     name: "Container Rentals and Purchases",
-                    href: "/services/container-rentals",
+                    href: "/buy-rent-container-forms",
                 },
             ],
         },
@@ -126,7 +126,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             name: "Company",
             href: "#about",
             dropdownItems: [
-                { name: "About Us", href: "#about-us" },
+                { name: "About Us", href: "/about-us" },
                 { name: "Our Partners", href: "/#partners" },
                 { name: "FAQ", href: "#careers" },
             ],

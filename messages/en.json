@@ -48,7 +48,6 @@
         "ship-s-1": "Request for PDA",
         "ship-s-2": "Sign on/off Crew Members",
         "ship-s-3": "Transit Spare Parts",
-
         "special": "Special Services",
         "special-s-1": "Expedited Delivery",
         "special-s-2": "Temperature-Controlled Transport",
@@ -56,7 +55,6 @@
         "special-s-4": "Bunkering | Oil Supply | Ship Chandlery",
         "special-s-5": "Oil Supply",
         "special-s-6": "Ship Chandlery",
-
         "buy/sell": "Buy/Rent Container/Vessel"
     },
     "Services-3": {
@@ -392,19 +390,16 @@
     "learn-out-gauge": {
         "title": "Out Gauge",
         "description": "Out of Gauge (OOG) refers to cargo that exceeds the standard dimensions of a regular shipping container, whether in length, width, height, or weight. This type of cargo cannot be accommodated within standard containers, and requires special handling and transport arrangements. OOG cargo is typically shipped using specialized equipment, such as flat racks, open-top containers, or platform containers.",
-
         "sub-t-1": "Key Aspects of Out of Gauge (OOG) Cargo:",
         "list-1-t-1": "Dimensions: OOG cargo exceeds the maximum allowable dimensions of a standard container. For example:",
         "sub-1-1-1": "Length: Cargo that is too long for a 20-foot or 40-foot container.",
         "sub-1-1-2": "Height: Cargo that is taller than the standard 8'6'' height of a container, requiring extra height capacity.",
         "sub-1-1-3": "Width: Cargo that is wider than the standard 8-foot width of a container.",
         "sub-1-1-4": "Weight: Cargo that exceeds the maximum weight capacity of a standard container.",
-
         "list-1-t-2": "Types of Out of Gauge Cargo:",
         "sub-1-2-1": "Heavy Lift Cargo: Large and heavy items like machinery, industrial equipment, and vehicles that exceed the weight capacity of regular containers.",
         "sub-1-2-2": "Oversized Items: Cargo such as construction materials, large steel beams, wind turbine components, or prefabricated structures that don’t fit within the size limitations of standard containers.",
         "sub-1-2-3": "Irregularly Shaped Cargo: Items that have unusual shapes or configurations that make them impossible to pack into standard containers.",
-
         "sub-t-2": "Common Solutions for Transporting Out of Gauge (OCG) Cargo:",
         "list-2-t-1": "Flat Rack Containers:",
         "sub-2-1-1": "Description: These containers consist of a flat platform with no sides or roof, often used for cargo that is too large or bulky to fit inside a standard container. Flat racks can be used for items like machinery, vehicles, or large construction materials.",
@@ -418,7 +413,6 @@
         "list-2-t-4": "Specialized Heavy-Lift Containers:",
         "sub-2-4-1": "Description: Some heavy-lift containers are designed specifically for extremely heavy cargo, providing extra support and reinforcement for very large items.",
         "sub-2-4-2": "Common Uses: Large-scale industrial projects, such as shipping turbines, generators, or oversized construction parts.",
-
         "sub-t-3": "Challenges of Shipping Out of Gauge Cargo:",
         "list-3-t-1": "Higher Costs:",
         "list-3-p-1": "Due to the specialized containers and handling required, shipping OOG cargo typically costs more than standard container shipping.",
@@ -428,7 +422,6 @@
         "list-3-p-3": ": The transport of OOG cargo may require additional planning, permits, and coordination, leading to longer transit times.",
         "list-3-t-4": "Port and Route Restrictions:",
         "list-3-p-4": "Some ports or shipping routes may have size or weight limitations, meaning that certain OOG cargo may need to be routed via specific terminals or ports with the necessary infrastructure.",
-
         "sub-t-4": "Advantages of Shipping Out of Gauge Cargo:",
         "list-4-t-1": "Tailored Transport Solutions:",
         "list-4-p-1": "Specialized containers and equipment ensure that OOG cargo is safely and securely transported to its destination.",
@@ -460,7 +453,6 @@
         "list-1-t-6": "Mega Containers:",
         "sub-1-6-1": "Description: Mega containers are extra-large containers designed to carry very heavy or oversized cargo. These containers can sometimes be over 45 feet long and can carry larger or heavier loads than typical containers.",
         "sub-1-6-2": "Common Uses: Heavy industrial goods, oversized equipment, or large quantities of bulk materials.",
-
         "sub-t-2": "Features of Oversized Containers:",
         "list-2-t-1": "Dimensions:",
         "list-2-p-1": "Oversized containers are typically larger than standard containers (usually exceeding the typical 8 feet wide or 8.5 feet high). Some may be as long as 45 feet, 53 feet, or even longer.",
@@ -468,7 +460,6 @@
         "list-2-p-2": "These containers can be designed to meet the specific needs of oversized cargo, including the use of adjustable platforms, additional reinforcements for heavy items, or open sides to facilitate loading.",
         "list-2-t-3": "Specialized Handling:",
         "list-2-p-3": "Oversized cargo often requires cranes, heavy lift equipment, or specialized transport vehicles for loading and unloading.",
-
         "sub-t-3": "Common Cargo for Oversized Containers:",
         "list-3-t-1": "Construction Equipment:",
         "list-3-p-1": "Cranes, bulldozers, and excavators that don't fit into standard containers.",
@@ -478,7 +469,6 @@
         "list-3-p-3": "Large vehicles (e.g., trucks, buses, or specialized construction vehicles).",
         "list-3-t-4": "Heavy Goods:",
         "list-3-p-4": "Items like steel pipes, large sheets of metal, or oversized prefabricated parts.",
-
         "sub-t-4": "Benefits of Oversized Containers:",
         "list-4-t-1": "Capacity:",
         "list-4-p-1": "These containers provide the necessary space to accommodate oversized, heavy, or irregularly shaped goods.",
@@ -569,37 +559,28 @@
         "sub-1-1": "Verification of the crew's documents, including passports, visas, and seafarer certifications.",
         "sub-1-2": "Preparation of a Crew List to be submitted to port and immigration authorities.",
         "sub-1-3": "Ensuring medical certificates and COVID-19 test results (if required) are up to date.",
-
         "list-1-title-2": "Travel Arrangements",
         "sub-2-1": "Coordinating flights, transfers, and accommodation for crew members traveling to the port.",
         "sub-2-2": "Liaising with port authorities to arrange port entry passes.",
-
         "list-1-title-3": "Port and Immigration Formalities",
         "sub-3-1": "Submission of necessary documentation to immigration and customs authorities.",
         "sub-3-2": "Assisting with customs clearance for personal effects or baggage.",
-
         "list-1-title-4": "Transportation to Vessel",
         "sub-4-1": "Organizing transportation from the airport or hotel to the vessel.",
-
         "sub-t-2": "Sign-Off (Disembarkation of Crew Members):",
         "list-2-title-1": "Coordination with Vessel and Port",
         "sub-2-1-1": "Scheduling the disembarkation in alignment with vessel operations and port timings.",
         "sub-2-1-2": "Arranging transportation from the vessel to the airport or hotel.",
-
         "list-2-title-2": "Formalities for Clearance",
         "sub-2-2-1": "Completing immigration clearance for disembarking crew.",
         "sub-2-2-2": "Submitting departure notifications to authorities.",
-
         "list-2-title-3": "Travel and Accommodation",
         "sub-2-3-1": "Arranging onward travel, including flight bookings and local transfers.",
         "sub-2-3-2": "Providing temporary accommodation if required.",
-
         "list-2-title-4": "Baggage Handling",
         "sub-2-4-1": "Assisting with the clearance and transportation of crew members' personal belongings.",
-
         "list-2-title-5": "Medical Assistance (if necessary)",
         "sub-2-5-1": "aCoordinating medical care for crew members needing urgent attention or health clearance before travel.",
-
         "sub-t-3": "Additional Responsibilities in Crew Management:",
         "list-3-title-1": "Emergency Situations",
         "list-3-description-1": "Facilitating emergency crew changes in cases of illness, injuries, or unforeseen circumstances.",
@@ -607,12 +588,10 @@
         "list-3-description-2": "Ensuring all activities align with the International Maritime Organization (IMO) standards, port state regulations, and the Maritime Labour Convention (MLC).",
         "list-3-title-3": "Reporting",
         "list-3-description-3": "Providing timely updates to shipowners, managers, or operators regarding the status of crew changes.",
-
         "sub-p-3": "We take care of all crew-related formalities, from sign-on and sign-off procedures to ensuring all necessary documentation is completed. This includes:",
         "list-4-description-1": "Managing the visa and immigration processes for crew members.",
         "list-4-description-2": "Coordinating with local authorities for timely crew changes.",
         "list-4-description-3": "Ensuring compliance with maritime labor regulations and international conventions. ",
-
         "button": "Get Quote"
     },
     "learn-special": {
@@ -639,21 +618,17 @@
         "title": "Transit spare parts",
         "description": "Transit spare parts refer to the transportation of critical replacement parts for vessels or machinery, which are sent to a specific location or port to ensure the continued operation or maintenance of a vessel. These parts are often essential for repairs, upgrades, or replacement of broken-down components during the vessel's voyage or when docked at a port. Below are the key aspects of handling transit spare parts:",
         "sub-t-1": "Key Details of Transit Spare Parts in Shipping:",
-
         "list-1-title-1": "Identification and Documentation",
         "sub-1-1": "Part Identification: Clear identification and description of each spare part, including serial numbers, part numbers, and specifications.",
         "sub-1-2": "Documentation: Proper documentation including customs paperwork, invoices, packing lists, and certificates (if necessary) to comply with international trade regulations.",
         "sub-1-3": "Customs Compliance: Ensuring that the spare parts are declared for transit in compliance with customs regulations at both the departure and destination ports.",
-
         "list-1-title-2": "Packaging and Labeling",
         "sub-2-1": "Proper Packaging: Spare parts must be packaged to avoid damage during transit. This often includes shock-resistant packaging, moisture protection, and appropriate sealing.",
         "sub-2-2": "Labeling: Clear labeling with destination details, part numbers, and any handling instructions to ensure proper identification and handling upon arrival.",
-
         "list-1-title-3": "Transport and Delivery",
         "sub-3-1": "Transportation Methods: Depending on the urgency, spare parts can be transported by air, sea, or road, either directly to the destination port or through transshipment points.",
         "sub-3-2": "Expedited Services: In some cases, expedited shipping services may be required for urgent spare parts to avoid downtime for the vessel.",
         "sub-3-3": "Tracking: Real-time tracking to monitor the shipment’s journey and ensure timely arrival at the destination.",
-
         "list-1-title-4": "Handling at Port",
         "sub-4-1": "Customs Clearance: Spare parts typically undergo customs clearance upon arrival at the destination port. This may involve inspection and declaration processes.",
         "sub-4-2": "Warehouse Storage: If not immediately needed, spare parts may be stored in a bonded warehouse at the port until they are ready to be dispatched to the vessel or designated location.",
@@ -663,20 +638,15 @@
         "list-1-title-6": "Urgent Spare Parts",
         "sub-6-1": "Emergency Shipments: In cases where the vessel cannot proceed without specific spare parts (e.g., engine failure), emergency shipments may be arranged to prevent significant delays and financial losses.",
         "sub-6-2": "Priority Routing: Special routes and services may be used to expedite delivery, such as air freight for critical components.",
-
         "sub-t-2": "How We Overcome Transit Spare Parts Challenges:",
         "list-2-title-1": "Optimized Inventory Management",
         "sub-2-1-1": "We forecast demand using predictive tools, maintain critical parts in stock, and partner with trusted suppliers to ensure quick replenishment.",
-
         "list-2-title-2": "Streamlined Customs Clearance",
         "sub-2-2-1": "By submitting documentation ahead of time and working with experienced customs brokers, we ensure smooth, fast customs processing to avoid delays.",
-
         "list-2-title-3": "Cost-Efficient Handling and Shipping",
         "sub-2-3-1": "We reduce costs by optimizing shipping routes, consolidating shipments, and negotiating favorable rates with logistics partners, while using efficient packaging.",
-
         "list-2-title-4": "Regulatory Compliance",
         "sub-2-4-1": "We stay current with global shipping regulations, conduct regular audits, and work with certified partners to handle complex or regulated parts safely and compliantly.",
-
         "sub-t-3": "Challenges in Transit Spare Parts Management:",
         "list-3-title-1": "Inventory Management",
         "list-3-description-1": "Facilitating emergency crew changes in cases of illness, injuries, or unforeseen circumstances.",
@@ -686,12 +656,9 @@
         "list-3-description-3": "Providing timely updates to shipowners, managers, or operators regarding the status of crew changes.",
         "list-3-title-4": "Regulations Compliance",
         "list-3-description-4": "Adhering to international shipping regulations, especially in cases of hazardous or restricted spare parts.",
-
         "sub-p-3": "Our agency provides timely and reliable services for the importation and delivery of spare parts, provisions, and other supplies to your vessel. Whether it's routine maintenance or emergency repairs, we ensure that:",
-
         "list-4-description-1": "Spare parts are sourced, cleared through customs, and delivered to the vessel without delays.",
         "list-4-description-2": "Crew provisions and other essential supplies are stocked efficiently to keep operations running smoothly.",
-
         "button": "Get Quote"
     },
     "learn-project-cargo": {
@@ -786,23 +753,23 @@
         "description": "In ocean freight, dangerous cargo refers to goods that pose a risk to the safety, health, or property of people, vessels, or the environment during transportation. These goods are classified based on their hazardous nature, and strict regulations govern their handling, packaging, labeling, and transport.",
         "sub-t-1": "Dangerous cargo is categorized by the International Maritime Dangerous Goods (IMDG) Code, which is a global standard set by the International Maritime Organization (IMO). The IMDG Code classifies dangerous goods into nine different classes",
         "list-1-title-1": "Class 1: Explosives",
-        "list-1-description-1": "Items that can cause explosions or generate dangerous amounts of heat, e.g., fireworks, ammunition.",
-        "list-1-title-2": "Class 2: Gases",
-        "list-1-description-2": "Includes compressed, liquefied, or dissolved gases, e.g., propane, oxygen, and acetylene.",
-        "list-1-title-3": "Class 3: Flammable Liquids",
-        "list-1-description-3": "Liquids that are easily ignitable, such as gasoline, alcohol, or paint.",
-        "list-1-title-4": "Class 4: Flammable Solids",
-        "list-1-description-4": "Solid materials that are prone to catching fire, e.g., sulfur, phosphorus.",
-        "list-1-title-5": "Class 5: Oxidizing Substances and Organic Peroxides",
-        "list-1-description-5": "Substances that can cause or enhance the combustion of other materials, e.g., hydrogen peroxide, potassium nitrate.",
-        "list-1-title-6": "Class 6: Toxic and Infectious Substances",
-        "list-1-description-6": "Harmful substances that can cause serious health issues, e.g., poisons, medical waste, or chemicals.",
-        "list-1-title-7": "Class 7: Radioactive Materials",
-        "list-1-description-7": "Items that emit radiation, e.g., uranium, medical isotopes.",
-        "list-1-title-8": "Class 8: Corrosive Substances",
-        "list-1-description-8": "Substances that can damage living tissue or other materials, e.g., acids, alkalis, cleaning agents.",
-        "list-1-title-9": "Class 9: Miscellaneous Dangerous Goods",
-        "list-1-description-9": "Items that do not fall into the other categories but are still hazardous, e.g., lithium batteries, asbestos.",
+"list-1-description-1": "Substances that can rapidly release energy through detonation or intense combustion when exposed to heat, friction, or impact. These materials require strict storage controls and specialized transport measures to prevent accidental ignition. Examples: Military-grade explosives, fireworks, blasting agents, ammunition, airbag inflators.",
+"list-1-title-2": "Class 2: Gases",
+"list-1-description-2": "Compressed, liquefied, or dissolved gases that pose flammability, toxicity, or pressure hazards. Improper handling can lead to asphyxiation, explosions, or chemical exposure. Safe transportation involves reinforced containment and continuous pressure monitoring. Examples: Propane, oxygen, helium, chlorine gas, carbon dioxide, aerosol sprays.",
+"list-1-title-3": "Class 3: Flammable Liquids",
+"list-1-description-3": "Liquids that emit highly combustible vapors, creating fire or explosion risks, especially when exposed to open flames, static electricity, or heat sources. Specialized leak-proof containment and ventilation are required during transport. Examples: Gasoline, diesel, aviation fuel, ethanol, acetone, paint thinners, alcohol-based solutions.",
+"list-1-title-4": "Class 4: Flammable Solids",
+"list-1-description-4": "Materials that can spontaneously ignite, react dangerously with water, or generate extreme heat when exposed to air or friction. These require dry storage, isolation from oxidizers, and non-sparking handling equipment. Examples: Magnesium powder, sodium, phosphorus, sulfur, matches, metal powders.",
+"list-1-title-5": "Class 5: Oxidizing Substances and Organic Peroxides",
+"list-1-description-5": "Chemicals that enhance combustion by releasing oxygen or decompose violently under certain conditions. Strict segregation from flammables, heat sources, and impact risks is necessary. Examples: Ammonium nitrate (fertilizers), hydrogen peroxide, potassium permanganate, peracetic acid, sodium chlorate.",
+"list-1-title-6": "Class 6: Toxic and Infectious Substances",
+"list-1-description-6": "Hazardous substances that cause poisoning, severe health effects, or spread infectious diseases. These materials require airtight containment, strict labeling, and biohazard control measures to prevent exposure. Examples: Cyanide, pesticides, biological samples, virus cultures, medical waste, mercury compounds.",
+"list-1-title-7": "Class 7: Radioactive Materials",
+"list-1-description-7": "Materials emitting ionizing radiation, which can cause biological harm if exposure limits are exceeded. Transport regulations mandate lead shielding, radiation monitoring, and controlled access to these substances. Examples: Uranium, plutonium, medical isotopes (iodine-131, cobalt-60), nuclear reactor fuel rods.",
+"list-1-title-8": "Class 8: Corrosive Substances",
+"list-1-description-8": "Chemicals that destroy organic tissue, metal, and other materials upon contact, causing severe burns and structural damage. Proper handling requires acid-resistant containers, ventilation, and protective gear. Examples: Sulfuric acid (battery acid), hydrochloric acid, sodium hydroxide (caustic soda), ammonia solutions.",
+"list-1-title-9": "Class 9: Miscellaneous Dangerous Goods",
+"list-1-description-9": "Substances that present unique hazards not covered in other categories, such as environmental toxicity, magnetism, or combustion risk under certain conditions. These require customized handling and transport protocols. Examples: Lithium-ion batteries, dry ice, airbags, asbestos, marine pollutants, environmentally hazardous chemicals.",
         "sub-t-2": "Why Choose Our Dangerous Cargo Services?",
         "description-2": "Transporting dangerous cargo requires expertise, precision, and an unwavering commitment to safety. At Moon Navigation And Trading Co , we understand the complexities and challenges of handling hazardous materials. Here’s why partnering with us benefits your business:",
         "benefit-1": "Unlock New Opportunities",
@@ -1846,7 +1813,6 @@
                 "description": "Our team provides round-the-clock assistance with real-time shipment monitoring"
             }
         },
-
         "quoteRequest": {
             "title": "Get your Quote with Us",
             "description": "Our streamlined Custom Clearance quotation process is designed for your convenience. At Moon Navigation and Trading Co., obtaining a custom clearance quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form —to initiate your request. Once submitted, our team promptly reviews the information and selects the best consolidation options. You will receive a customized quotation directly in your email, ensuring accurate pricing.",
