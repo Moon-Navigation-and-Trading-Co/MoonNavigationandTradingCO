@@ -142,7 +142,6 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Global Network */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-global-network.png" alt="Global Network Icon" className="w-12 h-12 mb-4" />
             <h3 className="font-semibold text-base md:text-lg mb-2 text-[#3B409F]">Global Network</h3>
             <p className="text-gray-600 text-sm md:text-base">
               Our extensive network provides reliable consolidation services that ensure seamless connections for your cargo worldwide, ensuring timely delivery.
@@ -150,7 +149,6 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Cost-Optimized Transportation */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-cost-optimized.png" alt="Cost Optimized Transportation Icon" className="w-12 h-12 mb-4" />
             <h3 className="font-semibold text-base md:text-lg mb-2 text-[#3B409F]">Cost-Optimized Transportation</h3>
             <p className="text-gray-600 text-sm md:text-base">
               We focus on delivering efficient and budget-friendly transportation options for smaller shipments without compromising on quality.
@@ -158,7 +156,6 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Secure Handling */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-secure-handling.png" alt="Secure Handling Icon" className="w-12 h-12 mb-4" />
             <h3 className="font-semibold text-base md:text-lg mb-2 text-[#3B409F]">Secure Handling</h3>
             <p className="text-gray-600 text-sm md:text-base">
               Our team employs meticulous packaging, precise labeling, and advanced tracking to ensure your shipment is always protected, even in shared shipping spaces, ensuring that it arrives in perfect condition.
@@ -168,7 +165,6 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* End-to-End Logistics */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-end-to-end-logistics.png" alt="End-to-End Logistics Icon" className="w-12 h-12 mb-4" />
             <h3 className="font-semibold text-base md:text-lg mb-2 text-[#3B409F]">End-to-End Logistics</h3>
             <p className="text-gray-600 text-sm md:text-base">
               We provide comprehensive logistics solutions that guarantee timely and reliable delivery outcomes, from pickup to final destination, allowing you to focus on your business.
@@ -176,7 +172,6 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Expert Documentation Management */}
           <div className="flex flex-col items-center text-center px-4">
-            <img src="/icon-expert-documentation.png" alt="Expert Documentation Management Icon" className="w-12 h-12 mb-4" />
             <h3 className="font-semibold text-base md:text-lg mb-2 text-[#3B409F]">Expert Documentation Management</h3>
             <p className="text-gray-600 text-sm md:text-base">
               With our deep understanding of customs regulations and compliance requirements, we expertly manage all necessary documentation, minimizing delays and ensuring a hassle-free shipping experience.

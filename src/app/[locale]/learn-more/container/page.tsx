@@ -25,10 +25,10 @@ export default function OceanFreightPage() {
       quote: "/container-services-forms",
     },
     {
-      title: t("standard"),
-      description: t("standard-p"),
+      title: "Full Container Load (FCL)",
+      description: "Full Container Load (FCL) is a shipping service that allows you to ship your cargo in a container that is filled to the brim. This is the most common type of shipping service and is ideal for large shipments.",
       image: "/airCargo.jpg",
-      link: "/learn/standard",
+      link: "/learn/full",
       quote: "/container-services-forms",
     },
     {
