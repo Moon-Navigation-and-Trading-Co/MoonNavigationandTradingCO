@@ -290,7 +290,7 @@ export default function RollOnOffHero() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-20">
         <h2 className="text-3xl md:text-4xl font-normal text-center mb-16" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Reasons to Choose Us for Your RORO Cargo
         </h2>
