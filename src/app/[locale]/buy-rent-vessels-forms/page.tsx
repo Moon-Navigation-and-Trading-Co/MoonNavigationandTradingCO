@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import Spinner from '@/components/spinner';
+import { sendFormEmail } from '@/utils/email-helper';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -104,6 +105,15 @@ const Page: React.FC = () => {
 
         console.log(flattenedData)
 
+        // Send email notification FIRST
+        try {
+            await sendFormEmail(formData, formType);
+            console.log('Email sent successfully');
+        } catch (emailError) {
+            console.error('Email sending failed:', emailError);
+            // Continue with form submission even if email fails
+        }
+
         const { data, error } = await supabase
             .from(formType)  // Your Supabase table
             .insert([flattenedData]);  // Insert the flattened data
@@ -113,7 +123,7 @@ const Page: React.FC = () => {
             console.log(error)
             toast({
                 title: "Error",
-                description: "Something went wrong",
+                description: "Database insert failed, but email was sent",
                 variant: "destructive"
             })
         } else {

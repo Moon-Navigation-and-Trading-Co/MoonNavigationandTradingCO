@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import AirFreightForm from '@/components/air-freight-services';
 import InvestorForm from '@/components/investor-form';
 import Spinner from '@/components/spinner';
+import { sendFormEmail } from '@/utils/email-helper';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -64,6 +65,16 @@ const Page: React.FC = () => {
 
         console.log(flattenedData)
 
+        // Send email notification FIRST
+        try {
+            await sendFormEmail(formData, 'investor_form');
+            console.log('Email sent successfully');
+        } catch (emailError) {
+            console.error('Email sending failed:', emailError);
+            // Continue with form submission even if email fails
+        }
+
+        // Then try to insert into database
         const { data, error } = await supabase
             .from("investor_form")  // Your Supabase table
             .insert([flattenedData]);  // Insert the flattened data
@@ -72,7 +83,7 @@ const Page: React.FC = () => {
             console.error(error);
             toast({
                 title: "Error",
-                description: "Something went wrong",
+                description: "Database insert failed, but email was sent",
                 variant: "destructive"
             })
         } else {
@@ -81,7 +92,6 @@ const Page: React.FC = () => {
                 description: "Form Added Successfully",
             })
             router.push('/investor-form')
-
         }
     };
 

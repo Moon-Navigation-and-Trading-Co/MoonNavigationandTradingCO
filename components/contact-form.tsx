@@ -10,6 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
+import { sendFormEmail } from '@/utils/email-helper';
+import { toast } from "@/components/ui/use-toast";
 
 // Zod schema for validation
 const schema = z.object({
@@ -27,6 +29,7 @@ const ContactForm: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -40,26 +43,36 @@ const ContactForm: React.FC = () => {
     setError(null);
     try {
       const supabase = createClient(); // Initialize the Supabase client
-      // Prepare data for insertion
-      const transformedData = {
-        name: data.name,
-        company_name: data.companyName, // Adjust to match your database column names
-        email: data.email,
-        number: data.number,
-        message: data.message,
-      };
 
-      // Insert data into Supabase
-      const { error: supabaseError } = await supabase
-        .from("ContactRequests")
-        .insert([transformedData]);
+      console.log(data)
 
-      if (supabaseError) {
-        throw supabaseError;
+      // Send email notification FIRST
+      try {
+        await sendFormEmail(data, 'contact_request');
+        console.log('Email sent successfully');
+      } catch (emailError) {
+        console.error('Email sending failed:', emailError);
+        // Continue with form submission even if email fails
       }
 
-      setSubmitted(true); // Set submission success
-      setLoading(false);
+      const { data: supabaseData, error } = await supabase
+        .from("ContactRequests")  // Your Supabase table
+        .insert([data]);  // Insert the data
+
+      if (error) {
+        console.log(error)
+        toast({
+          title: "Error",
+          description: "Database insert failed, but email was sent",
+          variant: "destructive"
+        })
+      } else {
+        toast({
+          title: "Success",
+          description: "Message sent successfully",
+        })
+        reset()
+      }
     } catch (err) {
       console.error("Error inserting data:", err);
       setError("Failed to submit the form. Please try again.");
