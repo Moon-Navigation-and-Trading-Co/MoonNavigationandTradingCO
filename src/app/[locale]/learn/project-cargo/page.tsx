@@ -83,23 +83,9 @@ export default function ProjectCargoPage() {
           alt="Project Cargo - Oversized and Heavy Lift Logistics by Moon Navigation and Trading Co."
           width={1600}
           height={600}
-          className="w-full h-80 object-cover"
-          priority
-          loading="eager"
+          className="object-cover object-center"
+          loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-center px-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-7xl">
-            {t("hero-title")}
-          </h1>
-          <p className="text-white text-lg mb-6 max-w-7xl">
-            {t("hero-description")}
-          </p>
-          <Button asChild className="w-fit">
-            <Link href="/project-cargo-quote" title="Request a Project Cargo Quote">
-              {t("hero-cta") || "Request a Quote"}
-            </Link>
-          </Button>
-        </div>
       </section>
 
       <section className="max-w-7xl mx-auto px-4 md:px-0">
@@ -289,11 +275,6 @@ export default function ProjectCargoPage() {
             </tbody>
           </table>
         </div>
-        <Button asChild className="mt-6 float-right">
-          <Link href="/project-cargo-solutions" title="Learn More About Our Project Cargo Solutions">
-            Learn More About Our Project Cargo Solutions
-          </Link>
-        </Button>
       </section>
 
       <section className="max-w-7xl mx-auto bg-secondary rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">

@@ -98,16 +98,16 @@ export default function BreakBulkInfo() {
                     </div>
                 </div>
                 {/* Examples of BreakBulk Cargo Section */}
-                <section className="w-full mt-16 mb-8 px-4 md:px-0">
+                <section className="w-full max-w-7xl mx-auto mt-16 mb-8 px-4">
                     <h2 className="text-xl md:text-2xl font-semibold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Examples of BreakBulk Cargo
                     </h2>
                     <p className="text-muted-foreground mb-8 text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Our BreakBulk services handle various types of equipment, including:
                     </p>
-                    <div className="flex flex-col md:flex-row items-center gap-8 justify-center">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 items-center justify-items-center">
                         {/* Card 1 */}
-                        <div className="flex flex-col items-center text-center px-4 max-w-[180px]">
+                        <div className="flex flex-col items-center text-center max-w-[200px]">
                             <img
                                 src="/breakbulk-steel-beams.jpg"
                                 alt="Steel Beams, Pipes & Coils"
@@ -117,7 +117,7 @@ export default function BreakBulkInfo() {
                             <h3 className="font-medium text-sm mb-1">Steel Beams, Pipes &amp; Coils</h3>
                         </div>
                         {/* Card 2 */}
-                        <div className="flex flex-col items-center text-center px-4 max-w-[180px]">
+                        <div className="flex flex-col items-center text-center max-w-[200px]">
                             <img
                                 src="/breakbulk-prefab-units.jpg"
                                 alt="Pre-Fabricated Housing Units & Industrial Components"
@@ -127,7 +127,7 @@ export default function BreakBulkInfo() {
                             <h3 className="font-medium text-sm mb-1">Pre-Fabricated Housing Units &amp; Industrial Components</h3>
                         </div>
                         {/* Card 3 */}
-                        <div className="flex flex-col items-center text-center px-4 max-w-[180px]">
+                        <div className="flex flex-col items-center text-center max-w-[200px]">
                             <img
                                 src="/breakbulk-construction-machinery.jpg"
                                 alt="Construction Machinery"
@@ -137,7 +137,7 @@ export default function BreakBulkInfo() {
                             <h3 className="font-medium text-sm mb-1">Construction Machinery</h3>
                         </div>
                         {/* Card 4 */}
-                        <div className="flex flex-col items-center text-center px-4 max-w-[180px]">
+                        <div className="flex flex-col items-center text-center max-w-[200px]">
                             <img
                                 src="/breakbulk-railway-equipment.jpg"
                                 alt="Railway Equipment & Vehicles"
@@ -147,7 +147,7 @@ export default function BreakBulkInfo() {
                             <h3 className="font-medium text-sm mb-1">Railway Equipment &amp; Vehicles</h3>
                         </div>
                         {/* Card 5 */}
-                        <div className="flex flex-col items-center text-center px-4 max-w-[180px]">
+                        <div className="flex flex-col items-center text-center max-w-[200px]">
                             <img
                                 src="/breakbulk-project-cargo.jpg"
                                 alt="Project/Out of Gauge Cargo"
@@ -212,14 +212,6 @@ export default function BreakBulkInfo() {
                             <p className="text-muted-foreground text-sm md:text-base mb-3">
                                 Our chartering solutions deliver cost-effective and secure transport, whether for single project lifts or long-term contracts.
                             </p>
-                            <div className="flex flex-row gap-3 mt-2">
-                                <img
-                                    src="/breakbulk-cargo-windmill.jpg"
-                                    alt="Breakbulk Windmill Cargo"
-                                    className="rounded-xl object-cover"
-                                    loading="lazy"
-                                />
-                            </div>
                         </div>
                         {/* Right Column: 2. Custom Handling & Stowage */}
                         <div className="flex-1 flex flex-col">
@@ -237,14 +229,25 @@ export default function BreakBulkInfo() {
                             <p className="text-muted-foreground text-sm md:text-base mb-3">
                                 We ensure that your cargo is safely received and protected throughout the voyage.
                             </p>
-                            <div className="w-full flex justify-center mt-2">
-                                <img
-                                    src="/breakbulk-handling-stowage.jpg"
-                                    alt="Breakbulk Handling and Stowage"
-                                    className="rounded-xl object-cover mt-6"
-                                    loading="lazy"
-                                />
-                            </div>
+                        </div>
+                    </div>
+                    {/* Images row - placed after both columns */}
+                    <div className="flex flex-col md:flex-row gap-4 mt-6">
+                        <div className="flex-1">
+                            <img
+                                src="/breakbulk-cargo-windmill.jpg"
+                                alt="Breakbulk Windmill Cargo"
+                                className="rounded-xl object-cover w-full h-60"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div className="flex-1">
+                            <img
+                                src="/breakbulk-handling-stowage.jpg"
+                                alt="Breakbulk Handling and Stowage"
+                                className="rounded-xl object-cover w-full h-60"
+                                loading="lazy"
+                            />
                         </div>
                     </div>
                 </section>

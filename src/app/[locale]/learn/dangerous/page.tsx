@@ -103,7 +103,7 @@ export default function DangerousCargoInfo() {
                         </Link>
                     </div>
                     {/* Right column: heading and description */}
-                    <div className="flex-1 bg-background rounded-2xl shadow-md p-6">
+                    <div className="flex-1  rounded-2xl  p-6">
                         <h2 className="text-lg font-semibold mb-3 text-primary" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             What is Dangerous Cargo ?
                         </h2>
@@ -140,48 +140,7 @@ export default function DangerousCargoInfo() {
                             </Accordion>
                         </section>
 
-                        <section>
-                            <h2 className="text-xl font-semibold mb-4 text-primary">{t('sub-t-2')}</h2>
-                            <p className="mb-3">{t('description-2')}</p>
 
-                            <h2 className=" font-semibold mb-4 text-primary">{t('sub-t-2')}</h2>
-                            <ul className="list-decimal pl-6 space-y-1">
-                                <li><span className="font-bold">{t('benefit-1')}:</span> {t('benefit-1-description')} </li>
-                                <li><span className="font-bold">{t('benefit-2')}:</span> {t('benefit-2-description')} </li>
-                                <li><span className="font-bold">{t('benefit-3')}:</span> {t('benefit-3-description')} </li>
-                                <li><span className="font-bold">{t('benefit-4')}:</span> {t('benefit-4-description')} </li>
-                                <li><span className="font-bold">{t('benefit-5')}:</span> {t('benefit-5-description')} </li>
-
-                            </ul>
-                        </section>
-
-                        <section>
-                            <h2 className="text-xl font-semibold mb-4 text-primary">{t('sub-t-3')}:</h2>
-                            <p className="mb-3">{t('description-3')}</p>
-                            <ul className="list-decimal pl-6 space-y-2">
-                                <li><span className="font-bold">{t('challenge-1-title')}:</span> {t('challenge-1-description')} </li>
-                                <li><span className="font-bold">{t('challenge-2-title')}:</span> {t('challenge-2-description')} </li>
-                                <li><span className="font-bold">{t('challenge-3-title')}:</span> {t('challenge-3-description')} </li>
-                            </ul>
-                        </section>
-
-                        <section>
-                            <h2 className="text-xl font-semibold mb-4 text-primary">{t('why-choose-us')}</h2>
-                            <p className="mb-3">{t('description-4')}</p>
-                            <p className="mb-3">{t('description-4-4')}</p>
-                            <ul className="list-disc pl-6 space-y-1">
-                                <li>{t('why-choose-us-1')}</li>
-                                <li>{t('why-choose-us-2')}</li>
-                                <li>{t('why-choose-us-3')}</li>
-                            </ul>
-                            <p className="mt-3">{t('why-choose-us-bot')}</p>
-                        </section>
-
-                        <Button className="p-0">
-                            <Link href={'/ocean-freight-forms'} className="w-full h-full px-4 py-2">
-                                {t('button')}
-                            </Link>
-                        </Button>
 
                     </CardContent>
                 </Card >

@@ -47,14 +47,14 @@ export default function OceanFreightPage() {
     },
     {
       title: t("inland-container-transport"),
-      description: t("out-gauge-p"),
+      description: "Inland container transport services connect ports to inland destinations, ensuring seamless cargo movement between shipping and road networks. Our specialized fleet and experienced team handle container handling, storage, and distribution to and from ports.",
       image: "/airCargo.jpg",
       link: "/learn/inland-container",
       quote: "/container-services-forms",
     },
     {
-      title: t("container-Stevedoring-and-Storage"),
-      description: t("out-gauge-p"),
+      title: "Container Stevedoring and Storage",
+      description: "Our container stevedoring and storage services ensure your cargo is safely stored and handled during transit. We offer secure, climate-controlled facilities with state-of-the-art equipment to protect your goods during storage and handling.",
       image: "/airCargo.jpg",
       link: "/learn/stevedoring-container",
       quote: "/container-services-forms",

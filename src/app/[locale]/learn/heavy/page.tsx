@@ -9,12 +9,12 @@ export default function HeavyLiftCargoInfo() {
     return (
     <div className="w-full">
       {/* Top Banner Image */}
-      <div className="w-full rounded-t-3xl overflow-hidden mb-8">
+      <div className="w-full rounded-3xl overflow-hidden mt-12 mb-8">
         <img
           src="/heavy-lift-cargo-banner.jpg"
           alt="Heavy Lift Cargo"
-          className="w-full h-[220px] object-cover object-center"
-          style={{ borderTopLeftRadius: 32, borderTopRightRadius: 32 }}
+          className="w-full object-cover h-[400px] "
+          style={{}}
           loading="lazy"
         />
       </div>
@@ -31,7 +31,7 @@ export default function HeavyLiftCargoInfo() {
           </Button>
         </div>
         {/* Right: Info Card */}
-        <div className="flex-1 bg-background rounded-2xl shadow-md p-6 border border-border">
+        <div className="flex-1 rounded-2xl p-6">
           <h2 className="text-lg font-semibold mb-3 text-primary" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             What is Heavy Lift Cargo?
           </h2>
@@ -199,83 +199,80 @@ export default function HeavyLiftCargoInfo() {
       <h2 className="text-xl md:text-2xl font-semibold mb-8 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
         Our Heavy Lift Cargo Services—At Moon Navigation and Trading Co.
       </h2>
-      <div className="flex flex-col md:flex-row gap-8">
-        {/* Two-column layout: Left = Service 1 + image, Right = Service 2 + image */}
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left: Service 1 + Image */}
-          <div className="flex-1 flex flex-col gap-6">
-            {/* 1. Heavy Lift Vessel Chartering */}
-            <div>
-              <h3 className="text-lg font-semibold mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                1. Heavy Lift Vessel Chartering
-              </h3>
-              <p className="text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Moon Navigation supplies specialized vessels with high weight capacity and lifting capability for oversized loads, including:
-              </p>
-              <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                <li>
-                  <span className="font-semibold">Semi-Submersible Vessels</span> – Made for transporting extremely heavy and awkward industrial equipment or marine structures.
-                </li>
-                <li>
-                  <span className="font-semibold">Heavy Lift Ships</span> – Purpose-built or converted vessels capable of lifting outsized machinery and modules.
-                </li>
-                <li>
-                  <span className="font-semibold">Deck Barges, Flo-Flo Ships</span> – Used for shipping massive industrial modules, construction machinery, and more.
-                </li>
-              </ul>
-              <p className="text-xs text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Our vessels' chartering solutions are tailored to cargo weight, dimensions, and destination requirements.
-              </p>
-            </div>
-            {/* Image for 1 */}
-            <div className="w-full">
-              <img
-                src="/heavy-lift-vessel-chartering.jpg"
-                alt="Heavy lift vessel chartering"
-                className="rounded-2xl w-full h-[250px] object-cover object-center"
-                loading="lazy"
-                style={{ maxHeight: 250 }}
-              />
-            </div>
+      <div className="flex flex-col gap-8">
+        {/* Service 1: Text + Image */}
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* 1. Heavy Lift Vessel Chartering */}
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              1. Heavy Lift Vessel Chartering
+            </h3>
+            <p className="text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Moon Navigation supplies specialized vessels with high weight capacity and lifting capability for oversized loads, including:
+            </p>
+            <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <li>
+                <span className="font-semibold">Semi-Submersible Vessels</span> – Made for transporting extremely heavy and awkward industrial equipment or marine structures.
+              </li>
+              <li>
+                <span className="font-semibold">Heavy Lift Ships</span> – Purpose-built or converted vessels capable of lifting outsized machinery and modules.
+              </li>
+              <li>
+                <span className="font-semibold">Deck Barges, Flo-Flo Ships</span> – Used for shipping massive industrial modules, construction machinery, and more.
+              </li>
+            </ul>
+            <p className="text-xs text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Our vessels' chartering solutions are tailored to cargo weight, dimensions, and destination requirements.
+            </p>
           </div>
-          {/* Right: Service 2 + Image */}
-          <div className="flex-1 flex flex-col gap-6">
-            {/* 2. Engineering & Load Planning */}
-            <div>
-              <h3 className="text-lg font-semibold mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                2. Engineering &amp; Load Planning
-              </h3>
-              <p className="text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Transporting heavy lift cargo requires precise engineering to prevent structural damage and ensure the safety of all involved:
-              </p>
-              <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                <li>
-                  <span className="font-semibold">Load &amp; Stability Analysis</span> – Ensuring stability is expertly determined across the transport vehicle or vessel for each cargo.
-                </li>
-                <li>
-                  <span className="font-semibold">Custom Lifting &amp; Rigging Plans</span> – Developing detailed lifting protocols to safely relocate critical equipment.
-                </li>
-                <li>
-                  <span className="font-semibold">Route Optimization</span> – Every shipment is carefully planned and executed to avoid sensitive routes and obstacles.
-                </li>
-              </ul>
-              <p className="text-xs text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                Our engineering team ensures that every shipment is expertly planned and executed with maximum safety and precision.
-              </p>
-            </div>
-            {/* Image for 2 */}
-            <div className="w-full">
-              <img
-                src="/heavy-lift-engineer.jpg"
-                alt="Heavy lift cargo engineer"
-                className="rounded-2xl w-full h-[250px] object-cover object-center"
-                loading="lazy"
-                style={{ maxHeight: 250 }}
-              />
-            </div>
+          {/* Image for 1 */}
+          <div className="w-full md:w-1/2">
+            <img
+              src="/heavy-lift-vessel-chartering.jpg"
+              alt="Heavy lift vessel chartering"
+              className="rounded-2xl w-full h-[250px] object-cover object-center"
+              loading="lazy"
+              style={{ maxHeight: 250 }}
+            />
           </div>
         </div>
+        {/* Service 2: Image + Text */}
+        <div className="flex flex-col md:flex-row gap-6">
+          {/* Image for 2 */}
+          <div className="w-full md:w-1/2">
+            <img
+              src="/heavy-lift-engineer.jpg"
+              alt="Heavy lift cargo engineer"
+              className="rounded-2xl w-full h-[250px] object-cover object-center"
+              loading="lazy"
+              style={{ maxHeight: 250 }}
+            />
+          </div>
+          {/* 2. Engineering & Load Planning */}
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              2. Engineering &amp; Load Planning
+            </h3>
+            <p className="text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Transporting heavy lift cargo requires precise engineering to prevent structural damage and ensure the safety of all involved:
+            </p>
+            <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <li>
+                <span className="font-semibold">Load &amp; Stability Analysis</span> – Ensuring stability is expertly determined across the transport vehicle or vessel for each cargo.
+              </li>
+              <li>
+                <span className="font-semibold">Custom Lifting &amp; Rigging Plans</span> – Developing detailed lifting protocols to safely relocate critical equipment.
+              </li>
+              <li>
+                <span className="font-semibold">Route Optimization</span> – Every shipment is carefully planned and executed to avoid sensitive routes and obstacles.
+              </li>
+            </ul>
+            <p className="text-xs text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              Our engineering team ensures that every shipment is expertly planned and executed with maximum safety and precision.
+            </p>
+          </div>
         </div>
+      </div>
       </section>
     {/* Section: High-Capacity Cranes & Lifting Equipment and Regulatory Compliance & Safety */}
     <section className="w-full mt-16 mb-8 px-4 md:px-0">

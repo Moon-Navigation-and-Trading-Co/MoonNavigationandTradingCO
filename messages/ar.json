@@ -1,9 +1,9 @@
 {
-  "LocaleSwitcher": {
+    "LocaleSwitcher": {
     "label": "تغيير اللغة",
     "locale": "{locale, select, ar {عربي} en {إنجليزي} other {غير معروف}}"
-  },
-  "HomePage": {
+    },
+    "HomePage": {
     "slogan": "شريكك الاستراتيجي الرائد في تقديم حلول بحرية ولوجستية وتجارية استثنائية ومبتكرة",
     "aboutImgTitle": "معلومات عنا",
     "aboutTitle": "مرحبًا بكم في شركة مون نافيغيشن آند تريدنج",
@@ -1907,5 +1907,5 @@
     "standard-breakbulk-title": "بضائع غير معبأة قياسية",
     "standard-breakbulk-description": "بضائع مثل الأخشاب، الصلب، أو مواد أخرى يتم تعبئتها ونقلها بدون حاويات.",
     "button": "طلب عرض سعر"
-  }
+    }
 }

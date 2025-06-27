@@ -46,13 +46,13 @@ export default function TankersPage() {
     return (
         <main className="w-full flex flex-col items-center pt-8 pb-16 min-h-screen">
             {/* Top Image */}
-            <div className="w-full h-[400px] rounded-3xl overflow-hidden mb-12">
+            <div className="w-full h-[400px]  overflow-hidden mb-">
                 <Image
                     src="/tankers-header.jpg"
                     alt="Tankers at sea"
                     width={1024}
                     height={350}
-                    className="object-cover w-full h-[220px] sm:h-[320px]"
+                    className="object-cover w-full h-[220px] sm:h-[320px] rounded-3xl"
                     priority
                 />
             </div>
