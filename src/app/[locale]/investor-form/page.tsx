@@ -27,9 +27,6 @@ const Page: React.FC = () => {
 
             if (user) {
                 setUser(user); // User is logged in, set the state
-            } else {
-                router.push('/sign-in');
-                return;
             }
             setIsLoading(false); // Stop loading after checking user
         };
@@ -49,7 +46,7 @@ const Page: React.FC = () => {
         let flattenedData;
 
         flattenedData = {
-            user_id: user.id,
+            user_id: user?.id || null, // Make user_id optional - null if user is not logged in
 
             first_name: formData.firstname,
             last_name: formData.lastname,
@@ -64,8 +61,6 @@ const Page: React.FC = () => {
             phone_number: formData.phone_number,
             additional_phone_number: formData.additional_phone_number
         };
-
-
 
         console.log(flattenedData)
 

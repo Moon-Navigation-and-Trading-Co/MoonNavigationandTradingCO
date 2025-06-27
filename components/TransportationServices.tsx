@@ -33,7 +33,7 @@ const TransportationServices: React.FC = () => {
       ],
       image: "/container-1.jpg",
       link: "/learn-more/container",
-      quote: "/container-services-form",
+      quote: "/container-services-forms",
     },
     {
       title: t("ship"),
@@ -66,8 +66,8 @@ const TransportationServices: React.FC = () => {
         { name: t("ship-s-3"), link: "/buy-sell-service-3" },
       ],
       image: "/ship-agency.jpeg",
-      link: "/learn/buy-sell-containers",
-      quote: "/buy-sell-containers-forms",
+      link: "/learn/buy-rent-containers",
+      quote: "/buy-rent-container-forms",
     },
   ];
 
@@ -81,8 +81,9 @@ const TransportationServices: React.FC = () => {
           <Image
             className="object-cover w-full h-full"
             src={card.image || "/placeholder.svg"}
-            layout="fill"
+            fill
             alt={`${card.title} Services Image`}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
           <div className="absolute inset-0 bg-black-overlay group-hover:bg-black/30 transition-all duration-300"></div>
           <div className="absolute inset-0 flex flex-col justify-between p-5">

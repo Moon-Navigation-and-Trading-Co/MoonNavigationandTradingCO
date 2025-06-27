@@ -55,7 +55,24 @@ export default function OceanFreightPage() {
                 link: "/learn/breakbulk",
                 quote: "/ocean-freight-forms"
 
+            },
+            {
+                title: "Livestock",
+                description: "Specialized livestock transportation services ensuring the safe and humane transport of animals across international waters. Our experienced team provides climate-controlled environments, veterinary care coordination, and compliance with international animal welfare regulations.",
+                image: "/airCargo.jpg", //change for image accordingly 
+                link: "/learn/livestock",
+                quote: "/ocean-freight-forms"
+
+            },
+            {
+                title: "Tankers",
+                description: "Specialized tanker shipping services for liquid cargo including oil, chemicals, and liquefied gases. Our fleet of modern tankers ensures safe, efficient, and environmentally compliant transportation of liquid commodities across global trade routes.",
+                image: "/airCargo.jpg", //change for image accordingly 
+                link: "/learn/tankers",
+                quote: "/ocean-freight-forms"
+
             }
+            
         ]
 
 

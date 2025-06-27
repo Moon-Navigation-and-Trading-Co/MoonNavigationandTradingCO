@@ -26,9 +26,6 @@ const Page: React.FC = () => {
 
             if (user) {
                 setUser(user); // User is logged in, set the state
-            } else {
-                router.push('/sign-in');
-                return;
             }
             setIsLoading(false); // Stop loading after checking user
         };
@@ -38,7 +35,7 @@ const Page: React.FC = () => {
 
 
     if (isLoading) {
-        return <div className='w-full h-[500px] flex items-center justify-center'>
+        return <div className='w-full h-[400px] flex items-center justify-center rounded-3xl'>
             <Spinner />
         </div>;
     }

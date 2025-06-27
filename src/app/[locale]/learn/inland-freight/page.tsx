@@ -58,7 +58,7 @@ export default function InlandFreightInfo() {
     return (
         <main className="flex flex-col items-center w-full">
             {/* Hero Section */}
-            <div className="w-full h-[400px] relative rounded-b-3xl overflow-hidden">
+            <div className="w-full h-[400px] relative rounded-3xl overflow-hidden">
                 <Image src="/inland-freight-hero.jpg" alt={t("title")} fill className="object-cover" />
                 <div className="absolute inset-0 bg-black/50" />
             </div>
@@ -68,12 +68,12 @@ export default function InlandFreightInfo() {
                     {/* Left Column - Title and Button */}
                     <div className="flex flex-col">
                         <h1 className="text-4xl md:text-5xl mb-6">{t("title")}</h1>
-                        <Button className="w-fit bg-[#3B4B8C] hover:bg-[#2d3a6d]">{t("requestQuote")}</Button>
+                        <Button className="w-fit bg-primary hover:bg-primary/90">{t("requestQuote")}</Button>
                     </div>
 
                     {/* Right Column - What is Section */}
                     <div>
-                        <h2 className="text-3xl mb-6 text-[#3B4B8C]">{t("whatIsTitle")}</h2>
+                        <h2 className="text-3xl mb-6 text-primary">{t("whatIsTitle")}</h2>
                         <div className="space-y-4 text-muted-foreground">
                             <p>{t("description1")}</p>
                             <p>{t("description2")}</p>
@@ -83,12 +83,12 @@ export default function InlandFreightInfo() {
             </div>
 
             {/* Types of Inland Freight */}
-            <div className="w-full bg-gray-50 py-16">
+            <div className="w-full bg-muted/30 py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <h2 className="text-3xl font-semibold text-center mb-12">{t("typesTitle")}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {freightTypes.map((type, index) => (
-                            <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md">
+                            <div key={index} className="bg-card rounded-xl overflow-hidden shadow-md border border-border">
                                 <div className="h-48 relative">
                                     <Image src={type.image} alt={type.title} fill className="object-cover" />
                                 </div>
@@ -104,7 +104,7 @@ export default function InlandFreightInfo() {
 
             {/* Our Diverse Inland Freight Solutions */}
             <div className="w-full relative py-16">
-                <div className="absolute inset-0 bg-[#1a237e] opacity-90">
+                <div className="absolute inset-0 bg-primary/90">
                     <Image src="/freight-bg.jpg" alt="Background" fill className="object-cover mix-blend-overlay" />
                 </div>
                 <div className="relative max-w-7xl mx-auto px-4 md:px-8 text-white">
@@ -132,7 +132,7 @@ export default function InlandFreightInfo() {
                             <div className="space-y-4">
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("roadFreight.services.ftl.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("roadFreight.services.ftl.description")}</p>
@@ -142,7 +142,7 @@ export default function InlandFreightInfo() {
 
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("roadFreight.services.ltl.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("roadFreight.services.ltl.description")}</p>
@@ -152,7 +152,7 @@ export default function InlandFreightInfo() {
 
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("roadFreight.services.heavy.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("roadFreight.services.heavy.description")}</p>
@@ -162,7 +162,7 @@ export default function InlandFreightInfo() {
 
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("roadFreight.services.reefer.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("roadFreight.services.reefer.description")}</p>
@@ -181,7 +181,7 @@ export default function InlandFreightInfo() {
                             </div>
                         </div>
 
-                        <div className="relative h-[500px] rounded-2xl overflow-hidden">
+                        <div className="relative h-[500px] rounded-3xl overflow-hidden">
                             <Image src="/road-freight-trucks.jpg" alt="Road Freight Trucks" fill className="object-cover" />
                         </div>
                     </div>
@@ -192,7 +192,7 @@ export default function InlandFreightInfo() {
             <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                        <div className="relative h-[500px] rounded-2xl overflow-hidden">
+                        <div className="relative h-[500px] rounded-3xl overflow-hidden">
                             <Image src="/rail-freight-hero.jpg" alt="Rail Freight Transport" fill className="object-cover" />
                         </div>
 
@@ -203,7 +203,7 @@ export default function InlandFreightInfo() {
                             <div className="space-y-4">
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("railFreight.services.bulk.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("railFreight.services.bulk.description")}</p>
@@ -213,7 +213,7 @@ export default function InlandFreightInfo() {
 
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("railFreight.services.containerized.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("railFreight.services.containerized.description")}</p>
@@ -223,7 +223,7 @@ export default function InlandFreightInfo() {
 
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("railFreight.services.heavy.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("railFreight.services.heavy.description")}</p>
@@ -256,7 +256,7 @@ export default function InlandFreightInfo() {
                             <div className="space-y-4">
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("waterway.services.bulk.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("waterway.services.bulk.description")}</p>
@@ -266,7 +266,7 @@ export default function InlandFreightInfo() {
 
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("waterway.services.port.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("waterway.services.port.description")}</p>
@@ -276,7 +276,7 @@ export default function InlandFreightInfo() {
 
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("waterway.services.eco.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("waterway.services.eco.description")}</p>
@@ -295,7 +295,7 @@ export default function InlandFreightInfo() {
                             </div>
                         </div>
 
-                        <div className="relative h-[500px] rounded-2xl overflow-hidden">
+                        <div className="relative h-[500px] rounded-3xl overflow-hidden">
                             <Image src="/inland-waterway-hero.jpg" alt="Inland Waterway Transport" fill className="object-cover" />
                         </div>
                     </div>
@@ -306,7 +306,7 @@ export default function InlandFreightInfo() {
             <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                        <div className="relative h-[500px] rounded-2xl overflow-hidden">
+                        <div className="relative h-[500px] rounded-3xl overflow-hidden">
                             <Image src="/intermodal-freight-hero.jpg" alt="Intermodal Freight Transport" fill className="object-cover" />
                         </div>
 
@@ -317,7 +317,7 @@ export default function InlandFreightInfo() {
                             <div className="space-y-4">
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("intermodal.services.oceanRailTruck.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("intermodal.services.oceanRailTruck.description")}</p>
@@ -327,7 +327,7 @@ export default function InlandFreightInfo() {
 
                                 <div className="space-y-2">
                                     <div className="flex items-start gap-2">
-                                        <span className="text-[#3B4B8C]">✓</span>
+                                        <span className="text-primary">✓</span>
                                         <div>
                                             <h3 className="font-semibold">{t("intermodal.services.oceanBargeTruck.title")}</h3>
                                             <p className="text-sm text-muted-foreground">{t("intermodal.services.oceanBargeTruck.description")}</p>
@@ -380,7 +380,7 @@ export default function InlandFreightInfo() {
                             </div>
                         </div>
 
-                        <div className="relative h-[500px] rounded-2xl overflow-hidden">
+                        <div className="relative h-[500px] rounded-3xl overflow-hidden">
                             <Image src="/supply-chain-trucks.jpg" alt="Supply Chain Enhancement" fill className="object-cover" />
                         </div>
                     </div>
@@ -391,7 +391,7 @@ export default function InlandFreightInfo() {
             <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="relative h-[500px] rounded-2xl overflow-hidden">
+                        <div className="relative h-[500px] rounded-3xl overflow-hidden">
                             <Image src="/inland-freight-workers.jpg" alt="Inland Freight Workers" fill className="object-cover" />
                         </div>
 
@@ -411,17 +411,17 @@ export default function InlandFreightInfo() {
             </div>
 
             {/* Quote Request Section */}
-            <div className="w-full py-16 bg-blue-50">
+            <div className="w-full py-16 bg-muted/50">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="space-y-6">
                             <h2 className="text-3xl font-semibold">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
-                            <Button className="bg-[#3B4B8C] hover:bg-[#2d3a6d]">{t("quoteRequest.button")}</Button>
+                            <Button className="bg-primary hover:bg-primary/90">{t("quoteRequest.button")}</Button>
                         </div>
 
                         <div className="relative h-[400px]">
-                            <Image src="/quote-request-illustration.jpg" alt="Quote Request" fill className="object-contain" />
+                            <Image src="/quote-illustration.png" alt="Quote Request" fill className="object-contain" />
                         </div>
                     </div>
                 </div>
@@ -435,7 +435,6 @@ export default function InlandFreightInfo() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div className="space-y-4">
                             <div className="flex justify-center mb-6">
-                                <Image src="/icons/globe-network.svg" alt="Extensive Network" width={48} height={48} />
                             </div>
                             <h3 className="text-lg font-semibold text-center">{t("reasons.network.title")}</h3>
                             <p className="text-muted-foreground text-center">{t("reasons.network.description")}</p>
@@ -443,7 +442,6 @@ export default function InlandFreightInfo() {
 
                         <div className="space-y-4">
                             <div className="flex justify-center mb-6">
-                                <Image src="/icons/forklift.svg" alt="Expert Handling" width={48} height={48} />
                             </div>
                             <h3 className="text-lg font-semibold text-center">{t("reasons.handling.title")}</h3>
                             <p className="text-muted-foreground text-center">{t("reasons.handling.description")}</p>
@@ -451,7 +449,6 @@ export default function InlandFreightInfo() {
 
                         <div className="space-y-4">
                             <div className="flex justify-center mb-6">
-                                <Image src="/icons/logistics.svg" alt="Tailored Solutions" width={48} height={48} />
                             </div>
                             <h3 className="text-lg font-semibold text-center">{t("reasons.solutions.title")}</h3>
                             <p className="text-muted-foreground text-center">{t("reasons.solutions.description")}</p>
@@ -459,7 +456,6 @@ export default function InlandFreightInfo() {
 
                         <div className="space-y-4">
                             <div className="flex justify-center mb-6">
-                                <Image src="/icons/safety.svg" alt="Safety & Compliance" width={48} height={48} />
                             </div>
                             <h3 className="text-lg font-semibold text-center">{t("reasons.safety.title")}</h3>
                             <p className="text-muted-foreground text-center">{t("reasons.safety.description")}</p>
@@ -469,7 +465,7 @@ export default function InlandFreightInfo() {
                     <div className="mt-12 text-center space-y-4">
                         <p className="text-muted-foreground">
                             {t("reasons.contact.prefix")}
-                            <Link href="/contact" className="text-[#3B4B8C] hover:underline">
+                            <Link href="/contact" className="text-primary hover:underline">
                                 {t("reasons.contact.link")}
                             </Link>
                             {t("reasons.contact.suffix")}
