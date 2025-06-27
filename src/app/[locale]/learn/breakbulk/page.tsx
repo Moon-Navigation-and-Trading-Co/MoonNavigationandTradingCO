@@ -159,7 +159,7 @@ export default function BreakBulkInfo() {
                     </div>
                 </section>
                 <section className="w-full flex justify-center mt-12 mb-8">
-                    <div className="bg-background rounded-2xl shadow border border-border px-6 py-7 max-w-3xl w-full">
+                    <div className="bg-background rounded-2xl shadow border border-border px-6 py-7 max-w-7xl w-full">
                         <h2 className="text-base md:text-lg font-semibold mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             Key Characteristics of Breakbulk Cargo At Moon Navigation and Trading Co.
                         </h2>
@@ -185,7 +185,7 @@ export default function BreakBulkInfo() {
                         </p>
                     </div>
                 </section>
-                <section className="w-full max-w-5xl mx-auto mt-16 mb-10 px-4">
+                <section className="w-full max-w-7xl mx-auto mt-16 mb-10 px-4">
                     <h2 className="text-xl md:text-2xl font-semibold mb-8 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Our Breakbulk Cargo Services - At Moon Navigation and Trading Co.
                     </h2>
@@ -361,7 +361,7 @@ export default function BreakBulkInfo() {
                     <h2 className="text-xl md:text-2xl font-semibold mb-10 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Reasons to Choose Our Breakbulk Services
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 max-w-5xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 max-w-7xl mx-auto">
                         {/* Specialized Expertise */}
                         <div className="flex flex-col items-center text-center px-4">
                             <h3 className="font-semibold mb-2 text-foreground">Specialized Expertise</h3>
@@ -384,7 +384,7 @@ export default function BreakBulkInfo() {
                             </p>
                         </div>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 max-w-3xl mx-auto mt-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 max-w-7xl mx-auto mt-10">
                         {/* Global Shipping Network */}
                         <div className="flex flex-col items-center text-center px-4">
                             <h3 className="font-semibold mb-2 text-foreground">Global Shipping Network</h3>

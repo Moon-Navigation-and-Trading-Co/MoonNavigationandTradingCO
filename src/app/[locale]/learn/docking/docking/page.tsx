@@ -15,7 +15,7 @@ export default function DockingPage() {
                     <h1 className="text-3xl md:text-4xl font-semibold text-primary mb-6">
                         Our Docking Services
                     </h1>
-                    <p className="text-muted-foreground max-w-3xl mb-12">
+                    <p className="text-muted-foreground max-w-7xl mb-12">
                         At Moon Navigation and Trading Co., we specialize in delivering secure, efficient, and professionally coordinated docking services for all port terminals. We handle berthing, major arrivals, emergency situations, and operations from various safe handling, terminal situations, and complete assistance with short and medium-term berthing. <br /><br />
                         We tailor our docking solutions to meet the needs of each vessel, ensuring smooth operations from arrival to departure.
                     </p>
@@ -63,7 +63,7 @@ export default function DockingPage() {
                             <p className="text-muted-foreground">
                                 We coordinate industry dry docking operations for vessels requiring scheduled inspection, structural maintenance, or major repairs.
                             </p>
-                            <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-md">
+                            <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-7xl">
                                 <Image
                                     src="/images/dry-docking-1.jpg"
                                     alt="Dry docking of ship for repairs"
@@ -88,7 +88,7 @@ export default function DockingPage() {
                             <p className="text-muted-foreground">
                                 For vessels that do not require full dry docking, we offer wet docking (afloat repairs) to reduce operational disruption and cost. Our services include:
                             </p>
-                            <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-md">
+                            <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-7xl">
                                 <Image
                                     src="/images/wet-docking-1.jpg"
                                     alt="Wet docking and afloat repairs"
@@ -124,7 +124,7 @@ export default function DockingPage() {
                     </ul>
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-md">
+                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-7xl">
                         <Image
                             src="/images/anchorage-services.jpg"
                             alt="Anchorage support and offshore repairs"
@@ -153,7 +153,7 @@ export default function DockingPage() {
                     </ul>
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-md">
+                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-7xl">
                         <Image
                             src="/images/emergency-docking-salvage.jpg"
                             alt="Emergency docking and salvage operations"

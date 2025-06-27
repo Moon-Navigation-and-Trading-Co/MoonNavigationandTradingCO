@@ -7,21 +7,21 @@ export default function MaintenancePage() {
     return (
         <main className="flex flex-col items-center w-full px-4 py-12 bg-background">
             {/* Our Maintenance Services Header */}
-            <section className="w-full max-w-6xl mb-12">
+            <section className="w-full max-w-7xl mb-12">
                 <h1 className="text-2xl md:text-3xl font-semibold text-[#3b5c8c] mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Our Maintenance Services
                 </h1>
-                <p className="text-muted-foreground max-w-3xl text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <p className="text-muted-foreground max-w-7xl text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     At Moon Navigation and Trading Co., we deliver dependable vessel maintenance services to ensure ships operate at peak performance while maintaining full compliance with international safety and environmental standards. From preventive care to urgent repairs, our expert teams provide comprehensive support tailored to your vessel’s operational requirements.<br /><br />
                     We combine technical expertise with efficient service execution to minimize downtime and enhance vessel reliability.
                 </p>
             </section>
 
             {/* Hull & Structural Maintenance Section */}
-            <section className="w-full max-w-6xl flex flex-col md:flex-row items-center gap-10">
+            <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center md:justify-start">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-xs">
+                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
                         <Image
                             src="/images/hull-maintenance.jpg"
                             alt="Hull maintenance on vessel"
@@ -49,7 +49,7 @@ export default function MaintenancePage() {
                 </div>
             </section>
             {/* Engine & Mechanical Repairs Section */}
-            <section className="w-full max-w-6xl flex flex-col md:flex-row items-center gap-10 mt-16">
+            <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 flex flex-col gap-2 order-2 md:order-1">
                     <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -68,7 +68,7 @@ export default function MaintenancePage() {
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-center md:justify-end order-1 md:order-2">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-xs">
+                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
                         <Image
                             src="/images/engine-repair.jpg"
                             alt="Engine and mechanical repairs"
@@ -81,10 +81,10 @@ export default function MaintenancePage() {
             </section>
 
             {/* Electrical & Automation Services Section */}
-            <section className="w-full max-w-6xl flex flex-col md:flex-row items-center gap-10 mt-16">
+            <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center md:justify-start">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-xs">
+                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
                         <Image
                             src="/images/electrical-automation.jpg"
                             alt="Electrical and automation services"
@@ -112,7 +112,7 @@ export default function MaintenancePage() {
                 </div>
             </section>
             {/* Bunkering & Fuel System Maintenance Section */}
-            <section className="w-full max-w-6xl flex flex-col md:flex-row items-center gap-10 mt-16">
+            <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 flex flex-col gap-2 order-2 md:order-1">
                     <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -132,7 +132,7 @@ export default function MaintenancePage() {
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-center md:justify-end order-1 md:order-2">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-xs">
+                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
                         <Image
                             src="/images/bunkering-fuel.jpg"
                             alt="Bunkering and fuel system maintenance"
@@ -145,10 +145,10 @@ export default function MaintenancePage() {
             </section>
 
             {/* Waste Management & Environmental Compliance Section */}
-            <section className="w-full max-w-6xl flex flex-col md:flex-row items-center gap-10 mt-16">
+            <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center md:justify-start">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-xs">
+                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
                         <Image
                             src="/images/waste-management.jpg"
                             alt="Waste management and environmental compliance"
@@ -177,7 +177,7 @@ export default function MaintenancePage() {
                 </div>
             </section>
             {/* Safety Equipment Servicing Section */}
-            <section className="w-full max-w-6xl flex flex-col md:flex-row items-center gap-10 mt-16">
+            <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 flex flex-col gap-2">
                     <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -198,7 +198,7 @@ export default function MaintenancePage() {
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-center md:justify-end">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-xs">
+                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
                         <Image
                             src="/images/safety-equipment-servicing.jpg"
                             alt="Safety equipment servicing on vessel"

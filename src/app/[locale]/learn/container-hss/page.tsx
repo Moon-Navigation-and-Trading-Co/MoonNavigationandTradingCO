@@ -7,7 +7,7 @@ export default function ContainerHSS() {
     const t = useTranslations("learn-container-hss")
 
     return (
-        <Card className="w-full mt-10 mb-20 max-w-4xl mx-auto p-0 sm:p-5">
+        <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
             <CardHeader>
                 <CardTitle className="text-3xl font-bold mb-2">{t('title')}</CardTitle>
                 <CardContent className="p-0">

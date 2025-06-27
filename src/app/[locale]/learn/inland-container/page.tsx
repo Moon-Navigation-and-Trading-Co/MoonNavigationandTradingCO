@@ -9,7 +9,7 @@ export default function InlandContainerPage() {
   return (
     <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
       {/* Top Banner */}
-      <div className="w-full max-w-5xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
+      <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
         <div className="relative w-full h-[180px] md:h-[260px]">
           <img
             src="/inland-container-banner.jpg"
@@ -21,7 +21,7 @@ export default function InlandContainerPage() {
       </div>
 
       {/* Main Content */}
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left: Title and CTA */}
         <div className="flex flex-col items-start justify-start">
           <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
@@ -47,11 +47,11 @@ export default function InlandContainerPage() {
           </p>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-2 text-center">
           Our Inland Container Transport Services
         </h2>
-        <p className="text-muted-foreground text-center mb-8 text-sm md:text-base max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-center mb-8 text-sm md:text-base max-w-7xl mx-auto">
           We offer a full range of inland transportation solutions, ensuring your cargo reaches its destination safely, on time, and in optimal condition.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -89,19 +89,19 @@ export default function InlandContainerPage() {
             <img
               src="/inland-container-road-transport.jpg"
               alt="Truck and logistics worker for inland container transport"
-              className="rounded-2xl shadow-lg w-full max-w-md object-cover"
+              className="rounded-2xl shadow-lg w-full max-w-7xl object-cover"
             />
           </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           {/* Left: Image */}
           <div className="flex justify-center items-start">
             <img
               src="/inland-container-rail-transport.jpg"
               alt="Rail transport with containers"
-              className="rounded-2xl shadow-lg w-full max-w-md object-cover"
+              className="rounded-2xl shadow-lg w-full max-w-7xl object-cover"
             />
           </div>
           {/* Right: Service Details */}
@@ -129,7 +129,7 @@ export default function InlandContainerPage() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           {/* Left: Multimodal & Transshipment Services */}
           <div>
@@ -159,16 +159,16 @@ export default function InlandContainerPage() {
             <img
               src="/inland-multimodal-transport.jpg"
               alt="Multimodal transport with ship, plane, truck, and containers"
-              className="rounded-2xl shadow-lg w-full max-w-md object-cover"
+              className="rounded-2xl shadow-lg w-full max-w-7xl object-cover"
             />
           </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-24">
+      <div className="w-full max-w-7xl mx-auto mt-24">
         <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-2 text-center">
           Our Specialized Container Transport Solutions
         </h2>
-        <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
           We handle all types of containers, ensuring proper transportation methods based on cargo requirements.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -230,7 +230,7 @@ export default function InlandContainerPage() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
           Reasons to Choose Moon Navigation and Trading Co. For Your Inland Transportation
         </h2>

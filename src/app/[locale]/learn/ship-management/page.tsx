@@ -5,7 +5,7 @@ import Link from "next/link"
 export default function ShipManagement() {
 
     return (
-    <div className="w-full mt-10 mb-20 max-w-5xl mx-auto p-0 sm:p-5">
+    <div className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
       <div className="w-full rounded-t-3xl overflow-hidden">
         <img
           src="/ship-management-hero.jpg"
@@ -506,7 +506,7 @@ export default function ShipManagement() {
     <div className="flex flex-col md:flex-row gap-10 mt-12 items-center">
       {/* Crisis & Emergency Response Management Image */}
       <div className="flex-1 flex justify-center">
-        <div className="w-full max-w-xs rounded-2xl overflow-hidden shadow-md">
+        <div className="w-full max-w-7xl rounded-2xl overflow-hidden shadow-md">
           <img
             src="/crisis-emergency-response.jpg"
             alt="Crisis and emergency response control room"
@@ -548,7 +548,7 @@ export default function ShipManagement() {
       <h2 className="text-xl md:text-2xl font-semibold text-[#253A5C] mb-8 text-center">
         Reasons to Choose Moon Navigation and Trading Co. for Your Ship Management Needs:
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center gap-2">
           <span className="font-medium text-base">360° ship management under one roof.</span>
         </div>

@@ -46,7 +46,7 @@ export default function TankersPage() {
     return (
         <main className="w-full flex flex-col items-center pt-8 pb-16 min-h-screen">
             {/* Top Image */}
-            <div className="w-full max-w-4xl rounded-3xl overflow-hidden mb-12">
+            <div className="w-full max-w-7xl rounded-3xl overflow-hidden mb-12">
                 <Image
                     src="/tankers-header.jpg"
                     alt="Tankers at sea"
@@ -58,7 +58,7 @@ export default function TankersPage() {
             </div>
 
             {/* Main Content */}
-            <article className="w-full max-w-5xl flex flex-col md:flex-row gap-10 px-4 md:px-0">
+            <article className="w-full max-w-7xl flex flex-col md:flex-row gap-10 px-4 md:px-0">
                 {/* Left: Title and CTA */}
                 <header className="flex-1 flex flex-col items-start">
                     <h1 className="text-3xl font-normal mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -81,7 +81,7 @@ export default function TankersPage() {
                     </p>
                 </section>
             </article>
-            <section className="w-full max-w-5xl mt-16">
+            <section className="w-full max-w-7xl mt-16">
                 <h2 className="text-2xl md:text-3xl font-normal mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Our Specialized Tanker Types
                 </h2>
@@ -230,7 +230,7 @@ export default function TankersPage() {
                     </div>
                 </div>
             </section>
-            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
+            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
                 {/* Left: Key Features Text */}
                 <div className="flex-[1.3] md:pr-10">
                     <h2 className="text-2xl md:text-3xl font-normal mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -261,12 +261,12 @@ export default function TankersPage() {
                         alt="Specialized Tanker Fleet"
                         width={420}
                         height={260}
-                        className="rounded-2xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
                         priority={false}
                     />
                 </div>
             </section>
-            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
+            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
                 {/* Left: Safety Image */}
                 <div className="flex-1 flex justify-center">
                     <Image
@@ -274,7 +274,7 @@ export default function TankersPage() {
                         alt="Tanker Safety Compliance"
                         width={420}
                         height={260}
-                        className="rounded-2xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
                         priority={false}
                     />
                 </div>
@@ -302,7 +302,7 @@ export default function TankersPage() {
                     </ul>
                 </div>
             </section>
-            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -333,12 +333,12 @@ export default function TankersPage() {
                         alt="Moon Navigation and Trading Co. global logistics network"
                         width={420}
                         height={260}
-                        className="rounded-2xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
                         priority={false}
                     />
                 </div>
             </section>
-            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center">
                     <Image
@@ -346,7 +346,7 @@ export default function TankersPage() {
                         alt="Advanced cargo handling and storage at Moon Navigation and Trading Co."
                         width={420}
                         height={260}
-                        className="rounded-2xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
                         priority={false}
                     />
                 </div>
@@ -371,7 +371,7 @@ export default function TankersPage() {
                     </ul>
                 </div>
             </section>
-            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -402,12 +402,12 @@ export default function TankersPage() {
                         alt="Tanker ship with environmental protection and dolphins"
                         width={420}
                         height={260}
-                        className="rounded-2xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
                         priority={false}
                     />
                 </div>
             </section>
-            <section className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center">
                     <Image
@@ -415,7 +415,7 @@ export default function TankersPage() {
                         alt="Businessmen shaking hands for flexible tanker solutions"
                         width={420}
                         height={420}
-                        className="rounded-2xl w-full max-w-md "
+                        className="rounded-2xl w-full max-w-7xl "
                         priority={false}
                     />
                 </div>
@@ -440,7 +440,7 @@ export default function TankersPage() {
                     </ul>
                 </div>
             </section>
-            <section className="w-full max-w-5xl mt-20">
+            <section className="w-full max-w-7xl mt-20">
                 <h2 className="text-2xl md:text-3xl font-normal mb-8 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                     Reasons To Choose Us for Tanker Ocean Freight
                 </h2>

@@ -11,7 +11,7 @@ export default async function ResetPassword({
 }) {
   return (
     <div className="flex justify-center py-16">
-      <form className="flex flex-col w-full max-w-md p-4 gap-2 [&>input]:mb-4">
+      <form className="flex flex-col w-full max-w-7xl p-4 gap-2 [&>input]:mb-4">
         <h1 className="text-2xl font-medium">Reset password</h1>
         <p className="text-sm text-foreground/60">
           Please enter your new password below.

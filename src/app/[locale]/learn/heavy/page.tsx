@@ -172,7 +172,7 @@ export default function HeavyLiftCargoInfo() {
       <h2 className="text-xl md:text-2xl font-semibold mb-8 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
         Key Features of Our Heavy Lift Cargo at Moon Navigation and Trading Co.
       </h2>
-      <div className="bg-secondary border border-border rounded-2xl p-6 md:p-8 max-w-3xl mx-auto shadow-sm">
+      <div className="bg-secondary border border-border rounded-2xl p-6 md:p-8 max-w-7xl mx-auto shadow-sm">
         <ul className="space-y-4 text-sm md:text-base text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           <li>
             <span className="font-semibold text-foreground">Ultra Heavy &amp; Oversized:</span> Our heavy lift cargo consists of ultra-heavy and/or ultra-oversized items, such as large-scale machinery, mining equipment, massive transformers, and industrial modules.

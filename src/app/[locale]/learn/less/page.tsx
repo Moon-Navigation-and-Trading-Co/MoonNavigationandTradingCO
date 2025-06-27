@@ -9,7 +9,7 @@ export default function ShippingMethodsInfo() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center py-8 px-4">
       {/* Banner Image */}
-      <div className="w-full max-w-5xl rounded-[60px] overflow-hidden mb-12">
+      <div className="w-full max-w-7xl rounded-[60px] overflow-hidden mb-12">
         <img
           src="/lcl-banner.jpg"
           alt="Less Than Container Load Banner"
@@ -18,7 +18,7 @@ export default function ShippingMethodsInfo() {
         />
       </div>
       {/* Content Section */}
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Left Side: Title and Button */}
         <div className="flex flex-col justify-center items-start">
           <h1 className="text-3xl md:text-4xl font-medium mb-2 leading-tight text-foreground">
@@ -45,7 +45,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       {/* When to use LCL Section */}
-      <div className="w-full max-w-5xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div className="w-full max-w-7xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left: Text */}
         <div>
           <h2 className="text-lg md:text-xl font-semibold text-primary mb-3">
@@ -63,12 +63,12 @@ export default function ShippingMethodsInfo() {
           <img
             src="/lcl-when-to-use.jpg"
             alt="Workers loading Less Than Container Load"
-            className="rounded-3xl shadow-lg w-full max-w-xs md:max-w-sm"
+            className="rounded-3xl shadow-lg w-full max-w-7xl md:max-w-7xl"
             loading="lazy"
           />
         </div>
       </div>
-      <div className="w-full max-w-5xl mt-20">
+      <div className="w-full max-w-7xl mt-20">
         <h2 className="text-xl md:text-2xl font-semibold text-primary mb-6">
           What is the difference between LCL and FCL? (LCL Vs FCL)
         </h2>
@@ -111,12 +111,12 @@ export default function ShippingMethodsInfo() {
           </table>
         </div>
       </div>
-      <div className="w-full max-w-5xl mt-20 flex flex-col md:flex-row items-center gap-8">
+      <div className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-8">
         <div className="flex-shrink-0 w-full md:w-1/2 flex justify-center">
           <img
             src="/lcl-experience.jpg"
             alt="Shipping professional with containers"
-            className="rounded-2xl shadow-lg w-full max-w-xs md:max-w-sm"
+            className="rounded-2xl shadow-lg w-full max-w-7xl md:max-w-7xl"
             loading="lazy"
           />
         </div>
@@ -135,7 +135,7 @@ export default function ShippingMethodsInfo() {
           </p>
         </div>
       </div>
-      <div className="w-full max-w-5xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-center text-2xl md:text-3xl font-semibold text-primary mb-12">
           Reasons to Choose Moon Navigation and Trading Co. for Your LCL Shipment
         </h2>
@@ -179,13 +179,13 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-5xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Image Section */}
         <div className="flex justify-center">
           <img
             src="/lcl-additional-services.jpg"
             alt="Workers discussing logistics at port"
-            className="rounded-2xl w-full max-w-xs md:max-w-sm object-cover"
+            className="rounded-2xl w-full max-w-7xl md:max-w-7xl object-cover"
           />
         </div>
         {/* Text Section */}
@@ -207,7 +207,7 @@ export default function ShippingMethodsInfo() {
         <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           How does our LCL shipping Cost is calculated?
         </h2>
-        <p className="text-muted-foreground text-sm md:text-base max-w-2xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+        <p className="text-muted-foreground text-sm md:text-base max-w-7xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           The cost of LCL shipping at Moon Navigation and Trading Co. is determined by several key factors, primarily the volume of space your cargo occupies within the container, its weight, and the chosen shipping route. Volume is measured in cubic meters (CBM), while weight is calculated in kilograms. For our services, the maximum weight for a single package is 3,000 kg, with a volume limit of 29 CBM. Additionally, the overall maximum limit per booking is 20,000 kg and 60 CBM. By accurately assessing these parameters, we ensure competitive pricing tailored to your specific shipping needs, providing transparency and value in the process.
         </p>
       </div>

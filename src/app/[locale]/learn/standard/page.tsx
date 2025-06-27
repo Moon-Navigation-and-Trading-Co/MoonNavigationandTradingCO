@@ -25,7 +25,7 @@ export default function DangerousCargoInfo() {
           />
         </div>
         {/* Main Content */}
-        <div className="w-full max-w-5xl flex flex-col md:flex-row items-start gap-8 px-4 md:px-0">
+        <div className="w-full max-w-7xl flex flex-col md:flex-row items-start gap-8 px-4 md:px-0">
           {/* Left: Title and Subtitle */}
           <div className="flex-1 min-w-[260px]">
             <h1 className="text-2xl md:text-3xl font-semibold mb-2" style={{ fontFamily: 'Montserrat, sans-serif', color: '#23294d' }}>

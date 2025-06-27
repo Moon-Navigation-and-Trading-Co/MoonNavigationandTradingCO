@@ -16,7 +16,7 @@ export default function ScheduleMeeting() {
     const [date2, setDate2] = useState<Date>();
 
     return (
-        <div className="container mx-auto px-4 py-8 max-w-3xl">
+        <div className="container mx-auto px-4 py-8 max-w-7xl">
             <h1 className="text-2xl font-semibold text-primary mb-4">Meeting Scheduling</h1>
 
             <div className="space-y-6">

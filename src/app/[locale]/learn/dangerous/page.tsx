@@ -80,7 +80,7 @@ export default function DangerousCargoInfo() {
             <div>
                 {/* Image banner at the top */}
                 <div className="w-full flex justify-center mb-8 mt-8">
-                    <div className="w-full max-w-5xl">
+                    <div className="w-full max-w-7xl">
                         <Image
                             src="/dangerous-cargo-banner.jpg"
                             alt="Dangerous Cargo Banner"
@@ -92,7 +92,7 @@ export default function DangerousCargoInfo() {
                     </div>
                 </div>
                 {/* Two-column content below the image */}
-                <div className="w-full flex flex-col md:flex-row items-start justify-center gap-8 mb-12 max-w-6xl mx-auto">
+                <div className="w-full flex flex-col md:flex-row items-start justify-center gap-8 mb-12 max-w-7xl mx-auto">
                     {/* Left column: title and button */}
                     <div className="flex-1 flex flex-col items-center md:items-start w-full">
                         <h1 className="mb-10 text-4xl font-light text-left md:text-left w-full">Dangerous<br />Cargo</h1>
@@ -116,7 +116,7 @@ export default function DangerousCargoInfo() {
                     </div>
                 </div>
                 {/* Accordion/classes section below */}
-                <Card className="w-full mt-10 mb-20 max-w-4xl mx-auto p-0 sm:p-5">
+                <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
                     <CardHeader>
                         <CardTitle className="text-3xl font-bold mb-2">{t('title')}</CardTitle>
                         <CardContent className="p-0">
@@ -185,7 +185,7 @@ export default function DangerousCargoInfo() {
 
                     </CardContent>
                 </Card >
-                <div className="w-full max-w-6xl mx-auto mt-20 mb-20">
+                <div className="w-full max-w-7xl mx-auto mt-20 mb-20">
                     <h2 className="text-3xl sm:text-4xl font-semibold text-primary mb-16">
                         Our Dangerous Cargo Handling and Transport Process
                     </h2>
@@ -207,7 +207,7 @@ export default function DangerousCargoInfo() {
                             <img
                                 src="/risk-assessment.jpg"
                                 alt="Risk Assessment"
-                                className="rounded-3xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                                className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
                                 loading="lazy"
                             />
                         </div>
@@ -230,13 +230,13 @@ export default function DangerousCargoInfo() {
                             <img
                                 src="/packaging-labeling.jpg"
                                 alt="Packaging and Labeling"
-                                className="rounded-3xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                                className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
                                 loading="lazy"
                             />
                         </div>
                     </div>
                 </div>
-                <div className="w-full max-w-6xl mx-auto mt-20 mb-20">
+                <div className="w-full max-w-7xl mx-auto mt-20 mb-20">
                     {/* Special Equipment Use */}
                     <div className="flex flex-col md:flex-row gap-10 mb-16 items-center">
                         <div className="flex-1">
@@ -255,7 +255,7 @@ export default function DangerousCargoInfo() {
                             <img
                                 src="/special-equipment.jpg"
                                 alt="Special Equipment"
-                                className="rounded-3xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                                className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
                                 loading="lazy"
                             />
                         </div>
@@ -275,7 +275,7 @@ export default function DangerousCargoInfo() {
                             <img
                                 src="/safety-protocols.jpg"
                                 alt="Safety and Emergency Protocols"
-                                className="rounded-3xl object-cover w-full max-w-md h-[220px] sm:h-[260px]"
+                                className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
                                 loading="lazy"
                             />
                         </div>

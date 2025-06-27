@@ -7,7 +7,7 @@ export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-transit");
 
   return (
-    <Card className="w-full mt-10 mb-20 max-w-4xl mx-auto p-0 sm:p-5">
+    <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
       <CardHeader>
         <CardTitle className="text-3xl font-bold">{t("title")}</CardTitle>
         <CardContent className="p-0 my-3">{t("description")}</CardContent>

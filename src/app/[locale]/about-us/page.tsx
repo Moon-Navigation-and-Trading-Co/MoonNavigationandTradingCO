@@ -80,7 +80,7 @@ export default function AboutUs() {
         />
 
         {/* Overlay Mission Text */}
-        <div className="absolute top-1/2 left-1/2  max-w-3xl -translate-x-1/2 -translate-y-1/2 bg-white  p-10  shadow-xl flex flex-col items-center text-center z-10">
+        <div className="absolute top-1/2 left-1/2  max-w-7xl -translate-x-1/2 -translate-y-1/2 bg-white  p-10  shadow-xl flex flex-col items-center text-center z-10">
           <h2 className="text-4xl font-bold text-blue-900 mb-4">Our Mission</h2>
           <p className="text-lg leading-relaxed">
             To deliver world-class solutions that connect businesses and markets, enabling seamless trade and transport
@@ -99,7 +99,7 @@ export default function AboutUs() {
           className="object-cover rounded-xl"
         />
         {/* Overlay vision text */}
-         <div className="absolute top-1/2 left-1/2  max-w-3xl -translate-x-1/2 -translate-y-1/2 bg-white  p-10  shadow-xl flex flex-col items-center text-center z-10">
+         <div className="absolute top-1/2 left-1/2  max-w-7xl -translate-x-1/2 -translate-y-1/2 bg-white  p-10  shadow-xl flex flex-col items-center text-center z-10">
           <h2 className="text-4xl font-bold text-blue-900 mb-4">Our Vision</h2>
           <p className="text-lg leading-relaxed">
             To be the premier global partner in maritime, logisitcs,

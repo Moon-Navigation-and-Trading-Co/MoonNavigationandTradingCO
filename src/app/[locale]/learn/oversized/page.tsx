@@ -9,7 +9,7 @@ export default function ShippingMethodsInfo() {
   return (
     <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
       {/* Top Banner */}
-      <div className="w-full max-w-5xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
+      <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
         <div className="relative w-full h-[180px] md:h-[260px]">
           <img
             src="/oversized-container-banner.jpg"
@@ -26,7 +26,7 @@ export default function ShippingMethodsInfo() {
       </div>
 
       {/* Main Content */}
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left: Title and CTA */}
         <div className="flex flex-col items-start justify-start">
           <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
@@ -49,11 +49,11 @@ export default function ShippingMethodsInfo() {
           </p>
         </div>
       </div>
-      <div className="w-full max-w-5xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-2xl font-semibold text-foreground mb-2 text-center">
           Our Common Cargo for Oversized Containers
         </h2>
-        <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
           Our oversized container services are designed to handle a wide range of large and irregularly shaped shipments, including but not limited to:
         </p>
         <div className="flex flex-col gap-8">
@@ -122,7 +122,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
           Our Oversized Containers Solutions—At Moon Navigation and Trading Co.
         </h2>
@@ -172,7 +172,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Left: Weather Protection & Secure Lashing */}
         <div>
           <h3 className="text-lg md:text-xl font-semibold mb-2">
@@ -214,7 +214,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         {/* Left: Seamless Multimodal Transport Compatibility */}
         <div>
           <h3 className="text-lg md:text-xl font-semibold mb-2">
@@ -261,7 +261,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-5xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">
           Oversized Containers vs. Standard Containers
         </h2>
@@ -310,7 +310,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       {/* --- LIMITS TABLE SECTION --- */}
-      <div className="w-full max-w-6xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Limits for Our Oversized Cargo & Specialized Containers
         </h2>
@@ -376,7 +376,7 @@ export default function ShippingMethodsInfo() {
           <span className="font-semibold"><a href="/contact" className="underline">Let us know</a></span> if you need a tailored explanation for a specific cargo type!
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20 flex flex-col md:flex-row items-center gap-10">
+      <div className="w-full max-w-7xl mx-auto mt-20 flex flex-col md:flex-row items-center gap-10">
         {/* Left: Image */}
         <div className="flex-shrink-0 w-full md:w-1/2 flex justify-center">
           <img

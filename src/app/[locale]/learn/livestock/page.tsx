@@ -56,7 +56,7 @@ export default function ShippingMethodsInfo() {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center py-8 px-4">
       {/* Banner Image */}
-      <div className="w-full max-w-5xl rounded-[60px] overflow-hidden mb-12">
+      <div className="w-full max-w-7xl rounded-[60px] overflow-hidden mb-12">
         <img
           src="/livestock-banner.jpg"
           alt="Livestock Transportation Banner"
@@ -65,7 +65,7 @@ export default function ShippingMethodsInfo() {
         />
       </div>
       {/* Content Section */}
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Left Side: Title and Button */}
         <div className="flex flex-col justify-center items-start">
           <h1 className="text-4xl md:text-5xl font-medium mb-8 leading-tight">Live Stock<br />Transportation</h1>
@@ -86,7 +86,7 @@ export default function ShippingMethodsInfo() {
           </p>
         </div>
       </div>
-      <section className="w-full max-w-6xl mx-auto mt-20 mb-20">
+      <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-2">Industries We Serve</h2>
         <p className="mb-10 text-muted-foreground">
           We provide specialized livestock shipping solutions across multiple industries, ensuring each type of animal is transported safely and in compliance with international standards.
@@ -97,7 +97,7 @@ export default function ShippingMethodsInfo() {
             <img
               src="/industry-agriculture.jpg"
               alt="Agriculture & Dairy Farming"
-              className="rounded-3xl object-cover w-full max-w-xs h-[180px] mb-4"
+              className="rounded-3xl object-cover w-full max-w-7xl h-[180px] mb-4"
               loading="lazy"
             />
             <h3 className="text-lg font-semibold mb-2 text-center">Agriculture & Dairy Farming</h3>
@@ -110,7 +110,7 @@ export default function ShippingMethodsInfo() {
             <img
               src="/industry-equestrian.jpg"
               alt="Equestrian & Racing"
-              className="rounded-3xl object-cover w-full max-w-xs h-[180px] mb-4"
+              className="rounded-3xl object-cover w-full max-w-7xl h-[180px] mb-4"
               loading="lazy"
             />
             <h3 className="text-lg font-semibold mb-2 text-center">Equestrian & Racing</h3>
@@ -123,7 +123,7 @@ export default function ShippingMethodsInfo() {
             <img
               src="/industry-zoo.jpg"
               alt="Zoos & Wildlife Conservation"
-              className="rounded-3xl object-cover w-full max-w-xs h-[180px] mb-4"
+              className="rounded-3xl object-cover w-full max-w-7xl h-[180px] mb-4"
               loading="lazy"
             />
             <h3 className="text-lg font-semibold mb-2 text-center">Zoos & Wildlife Conservation</h3>
@@ -133,7 +133,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </section>
-      <section className="w-full max-w-6xl mx-auto mt-20 mb-20">
+      <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
         <h2 className="text-4xl font-semibold mb-12">Our Livestock Shipping Solutions</h2>
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left: Text Content */}
@@ -162,20 +162,20 @@ export default function ShippingMethodsInfo() {
             <img
               src="/livestock-ship.jpg"
               alt="Livestock Carrier Ship"
-              className="rounded-3xl object-cover w-full max-w-xl h-[280px] md:h-[340px]"
+              className="rounded-3xl object-cover w-full max-w-7xl h-[280px] md:h-[340px]"
               loading="lazy"
             />
           </div>
         </div>
       </section>
-      <section className="w-full max-w-6xl mx-auto mt-20 mb-20">
+      <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left: Image */}
           <div className="flex-1 flex justify-center">
             <img
               src="/animal-welfare.jpg"
               alt="Veterinarian with livestock"
-              className="rounded-3xl object-cover w-full max-w-xl h-[280px] md:h-[340px]"
+              className="rounded-3xl object-cover w-full max-w-7xl h-[280px] md:h-[340px]"
               loading="lazy"
             />
           </div>
@@ -202,7 +202,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </section>
-      <section className="w-full max-w-6xl mx-auto mt-20 mb-20">
+      <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left: Text Content */}
           <div className="flex-1">
@@ -224,7 +224,7 @@ export default function ShippingMethodsInfo() {
             <img
               src="/compliance-safety.jpg"
               alt="Compliance and Safety at Port"
-              className="rounded-3xl object-cover w-full max-w-xl h-[280px] md:h-[340px]"
+              className="rounded-3xl object-cover w-full max-w-7xl h-[280px] md:h-[340px]"
               loading="lazy"
             />
           </div>
@@ -246,7 +246,7 @@ export default function ShippingMethodsInfo() {
           {/* Add more logos as needed */}
         </div>
       </section>
-      <section className="w-full max-w-6xl mx-auto mt-20 mb-20">
+      <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
         <h2 className="text-3xl sm:text-4xl font-semibold mb-12">
           Reasons to Choose Moon Navigation and Trading Co. for Your Livestock Transportation Needs
         </h2>

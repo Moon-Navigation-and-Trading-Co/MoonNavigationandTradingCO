@@ -71,7 +71,7 @@ export default function CustomsClearance() {
                     </div>
 
                     {/* Security and Transparency */}
-                    <div className="flex flex-col items-center text-center max-w-2xl mx-auto">
+                    <div className="flex flex-col items-center text-center max-w-7xl mx-auto">
                         <div className="w-16 h-16 mb-6">
                             <img src="/images/icons/security-transparency.svg" alt="Security and Transparency" className="w-full h-full" />
                         </div>

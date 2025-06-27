@@ -60,7 +60,7 @@ export default function RollOnOffHero() {
     <>
       {/* --- HERO SECTION --- */}
       <img src="/rorotitleimage.jpg" alt="RoRo Cargo Handling" className="w-full h-80 object-cover rounded-3xl mt-8" />
-      <section className="max-w-6xl mx-auto mt-10 mb-24 px-4 md:px-0">
+      <section className="max-w-7xl mx-auto mt-10 mb-24 px-4 md:px-0">
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
           {/* Left: Title, Subtitle, Button */}
           <div className="flex-1 flex flex-col items-start">
@@ -118,7 +118,7 @@ export default function RollOnOffHero() {
       <div className="h-12" />
 
       {/* --- STREAMLINED RORO SOLUTIONS SECTION --- */}
-      <section className="max-w-6xl mx-auto mb-16 px-4 md:px-0">
+      <section className="max-w-7xl mx-auto mb-16 px-4 md:px-0">
         <h2
           className="text-xl md:text-2xl font-semibold text-foreground mb-8 text-center"
           style={{ fontFamily: "Montserrat, sans-serif" }}
@@ -294,7 +294,7 @@ export default function RollOnOffHero() {
         <h2 className="text-3xl md:text-4xl font-normal text-center mb-16" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Reasons to Choose Us for Your RORO Cargo
         </h2>
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-16 gap-x-8 px-4 md:px-0">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-16 gap-x-8 px-4 md:px-0">
           {/* Row 1 */}
           <div className="flex flex-col items-center text-center">
             {/* Icon */}
@@ -331,7 +331,7 @@ export default function RollOnOffHero() {
         <h2 className="text-3xl md:text-4xl font-semibold text-primary mb-16 text-left" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Our RORO Solutions—At Moon Navigation and Trading Co.
         </h2>
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start gap-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-8">
           {/* Left: Text Content */}
           <div className="flex-1 min-w-[260px]">
             <h3 className="text-lg md:text-xl font-medium mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -373,7 +373,7 @@ export default function RollOnOffHero() {
       </section>
       {/* --- Heavy & Oversized Cargo Section --- */}
       <section className="w-full py-12 px-4 md:px-0">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
           {/* Left: Image */}
           <div className="flex-1 flex justify-center items-center">
             <img
@@ -419,7 +419,7 @@ export default function RollOnOffHero() {
 
       {/* --- Vehicle Transport Section --- */}
       <section className="w-full py-12 px-4 md:px-0">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
           {/* Left: Text */}
           <div className="flex-1 min-w-[260px]">
             <h3 className="text-lg md:text-xl font-medium mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -464,7 +464,7 @@ export default function RollOnOffHero() {
       </section>
       {/* --- Fast & Flexible Turnaround Section --- */}
       <section className="w-full py-12 px-4 md:px-0">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
           {/* Left: Image */}
           <div className="flex-1 flex justify-center items-center">
             <img
@@ -506,7 +506,7 @@ export default function RollOnOffHero() {
 
       {/* --- Worldwide Coverage Section --- */}
       <section className="w-full py-12 px-4 md:px-0">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-8">
           {/* Left: Text */}
           <div className="flex-1 min-w-[260px]">
             <h3 className="text-lg md:text-xl font-medium mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>

@@ -9,7 +9,7 @@ export default function ShippingMethodsInfo() {
   return (
     <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
       {/* Top Banner */}
-      <div className="w-full max-w-5xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
+      <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
         <div className="relative w-full h-[180px] md:h-[260px]">
           <img
             src="/out-gauge-banner.jpg"
@@ -21,7 +21,7 @@ export default function ShippingMethodsInfo() {
       </div>
 
       {/* Main Content */}
-      <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left: Title and CTA */}
         <div className="flex flex-col items-start justify-start">
           <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
@@ -44,11 +44,11 @@ export default function ShippingMethodsInfo() {
           </p>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-2xl font-semibold text-primary mb-2 text-center">
           What We Transport
         </h2>
-        <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-2xl mx-auto">
+        <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
           Our OOG cargo services are designed to accommodate a wide variety of oversized shipments, including but not limited to:
         </p>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -110,7 +110,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-5xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left: Description */}
           <div className="bg-white rounded-3xl shadow p-6 md:p-8">
@@ -133,7 +133,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-5xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
           Our Specialized Equipment for OOG Transportation
         </h2>
@@ -194,14 +194,14 @@ export default function ShippingMethodsInfo() {
           </table>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20">
+      <div className="w-full max-w-7xl mx-auto mt-20">
         <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-10">
           What Sets Us Apart:
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
           {/* Left: Image */}
           <div className="md:col-span-2 flex justify-center">
-            <div className="w-full max-w-xs rounded-2xl overflow-hidden shadow-lg">
+            <div className="w-full max-w-7xl rounded-2xl overflow-hidden shadow-lg">
               <img
                 src="/outgauge-expert.jpg"
                 alt="Out Gauge Shipping Expert"
@@ -254,7 +254,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-20 flex flex-col md:flex-row items-center gap-10">
+      <div className="w-full max-w-7xl mx-auto mt-20 flex flex-col md:flex-row items-center gap-10">
         {/* Left: Text Content */}
         <div className="flex-1">
           <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-3">
@@ -280,7 +280,7 @@ export default function ShippingMethodsInfo() {
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-center">
-          <div className="relative w-full max-w-md rounded-2xl overflow-hidden shadow-lg">
+          <div className="relative w-full max-w-7xl rounded-2xl overflow-hidden shadow-lg">
             <div className="absolute inset-x-0 top-6 h-4 bg-primary rounded-lg z-0"></div>
             <img
               src="/oog-cargo-crane.jpg"
@@ -291,7 +291,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mt-24">
+      <div className="w-full max-w-7xl mx-auto mt-24">
         <h2 className="text-xl md:text-2xl font-semibold text-primary mb-10 text-center">
           Reasons to Choose Moon Navigation and Trading Co. For Your Out-Of-Gauge Transportation
         </h2>

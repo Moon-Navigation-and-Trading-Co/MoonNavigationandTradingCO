@@ -6,7 +6,7 @@ export default function StevedoringContainerPage() {
     return (
         <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
             {/* Top Banner */}
-            <div className="w-full max-w-5xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
+            <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
                 <div className="relative w-full h-[180px] md:h-[260px]">
                     <img
                         src="/stevedoring-container-banner.jpg"
@@ -18,7 +18,7 @@ export default function StevedoringContainerPage() {
             </div>
 
             {/* Main Content */}
-            <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+            <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                 {/* Left: Title and CTA */}
                 <div className="flex flex-col items-start justify-start">
                     <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
@@ -46,11 +46,11 @@ export default function StevedoringContainerPage() {
                 </div>
             </div>
             {/* Our Container Handling Services */}
-            <div className="w-full max-w-6xl mx-auto mt-20">
+            <div className="w-full max-w-7xl mx-auto mt-20">
                 <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
                     Our Container Handling Services
                 </h2>
-                <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-2xl mx-auto">
+                <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
                     Efficient container handling is critical at port and beyond their operations. Our services include:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -128,16 +128,16 @@ export default function StevedoringContainerPage() {
                     <img
                         src="/container-lashing-cargo-protection.jpg"
                         alt="Workers securing cargo inside a shipping container"
-                        className="rounded-xl shadow object-cover w-full max-w-xs md:max-w-sm h-40 md:h-44"
+                        className="rounded-xl shadow object-cover w-full max-w-7xl md:max-w-7xl h-40 md:h-44"
                     />
                 </div>
             </div>
             {/* Stevedoring Services Overview */}
-            <div className="w-full max-w-6xl mx-auto mt-20">
+            <div className="w-full max-w-7xl mx-auto mt-20">
                 <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-4">
                     Our Stevedoring Services
                 </h2>
-                <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-2xl mx-auto">
+                <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
                     Our stevedoring operations ensure the safe and efficient handling of cargo, whether containerized, bulk, or breakbulk.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -215,16 +215,16 @@ export default function StevedoringContainerPage() {
                     <img
                         src="/stevedoring-safety-compliance.jpg"
                         alt="Stevedore in safety gear inspecting containers"
-                        className="rounded-xl shadow w-full max-w-xs object-cover"
+                        className="rounded-xl shadow w-full max-w-7xl object-cover"
                     />
                 </div>
             </div>
             {/* Storage & Warehousing Services Section */}
-            <div className="w-full max-w-6xl mx-auto mt-20">
+            <div className="w-full max-w-7xl mx-auto mt-20">
                 <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-2 text-center">
                     Our Secure Storage &amp; Warehousing Services
                 </h2>
-                <p className="text-muted-foreground text-center mb-8 text-sm md:text-base max-w-2xl mx-auto">
+                <p className="text-muted-foreground text-center mb-8 text-sm md:text-base max-w-7xl mx-auto">
                     We provide short-term and long-term storage solutions to meet diverse cargo requirements, including:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
@@ -308,7 +308,7 @@ export default function StevedoringContainerPage() {
                     </div>
                 </div>
             </div>
-            <div className="w-full max-w-5xl mx-auto mt-20">
+            <div className="w-full max-w-7xl mx-auto mt-20">
                 <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
                     Reasons to Choose Moon Navigation and Trading Co.
                 </h2>

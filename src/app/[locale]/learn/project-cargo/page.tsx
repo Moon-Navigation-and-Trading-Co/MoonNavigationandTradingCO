@@ -77,7 +77,7 @@ export default function ProjectCargoPage() {
   return (
     <div className="space-y-32">
       {/* Hero Section */}
-      <section className="rounded-3xl overflow-hidden shadow-xl mt-8 mx-auto max-w-6xl relative">
+      <section className="rounded-3xl overflow-hidden shadow-xl mt-8 mx-auto max-w-7xl relative">
         <Image
           src="/project-cargo-hero.jpg"
           alt="Project Cargo - Oversized and Heavy Lift Logistics by Moon Navigation and Trading Co."
@@ -88,10 +88,10 @@ export default function ProjectCargoPage() {
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-center px-12">
-          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-2xl">
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 max-w-7xl">
             {t("hero-title")}
           </h1>
-          <p className="text-white text-lg mb-6 max-w-xl">
+          <p className="text-white text-lg mb-6 max-w-7xl">
             {t("hero-description")}
           </p>
           <Button asChild className="w-fit">
@@ -102,7 +102,7 @@ export default function ProjectCargoPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-4 md:px-0">
+      <section className="max-w-7xl mx-auto px-4 md:px-0">
         <div className="flex flex-col md:flex-row gap-12 items-start">
           {/* Left: Title and Button */}
           <div className="flex-1 flex flex-col items-start">
@@ -136,7 +136,7 @@ export default function ProjectCargoPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto">
+      <section className="max-w-7xl mx-auto">
         <h2 className="text-xl font-semibold mb-6">
           Key Industries Leveraging Our Project Cargo Solution
         </h2>
@@ -204,7 +204,7 @@ export default function ProjectCargoPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto">
+      <section className="max-w-7xl mx-auto">
         <h2 className="text-xl font-semibold mb-4">
           Key Differences between Project Cargo and Standard Cargo
         </h2>
@@ -296,7 +296,7 @@ export default function ProjectCargoPage() {
         </Button>
       </section>
 
-      <section className="max-w-6xl mx-auto bg-secondary rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
+      <section className="max-w-7xl mx-auto bg-secondary rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
         <div className="flex-1">
           <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
             How are we overcoming challenges in project cargo transportation?
@@ -326,50 +326,50 @@ export default function ProjectCargoPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto pt-8 pb-16">
+      <section className="max-w-7xl mx-auto pt-8 pb-16">
         <h2 className="text-xl md:text-2xl font-normal text-center mb-2">
           Reasons to Choose Moon Navigation and Trading Co. for Your Project Cargo Needs
         </h2>
-        <p className="mb-8 text-center text-xs md:text-sm text-muted-foreground max-w-3xl mx-auto">
+        <p className="mb-8 text-center text-xs md:text-sm text-muted-foreground max-w-7xl mx-auto">
           At Moon Navigation & Trading, we offer comprehensive end-to-end solutions for project cargo transportation, meticulously overseeing every logistical aspect from planning to delivery.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8 justify-items-center">
           {/* Dedicated Project Cargo Team */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
             <div className="font-semibold text-xs text-primary mb-1">Dedicated Project Cargo Team</div>
-            <div className="text-xs text-muted-foreground max-w-xs">
+            <div className="text-xs text-muted-foreground max-w-7xl">
               Our proficient team excels in managing the complexities of project logistics, delivering customized solutions tailored to your specific requirements.
             </div>
           </div>
           {/* Specialized Equipment & Vessels */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
             <div className="font-semibold text-xs text-primary mb-1">Specialized Equipment & Vessels</div>
-            <div className="text-xs text-muted-foreground max-w-xs">
+            <div className="text-xs text-muted-foreground max-w-7xl">
               From permits and health certificates to customs clearance, we manage all necessary documentation.
             </div>
           </div>
           {/* Global Reach & Local Expertise */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
             <div className="font-semibold text-xs text-primary mb-1">Global Reach & Local Expertise</div>
-            <div className="text-xs text-muted-foreground max-w-xs">
+            <div className="text-xs text-muted-foreground max-w-7xl">
               With a strong global network, we offer seamless project cargo transport to any destination, supported by local expertise at each stage of the journey.
             </div>
           </div>
           {/* Risk Management & Compliance */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
             <div className="font-semibold text-xs text-primary mb-1">Risk Management & Compliance</div>
-            <div className="text-xs text-muted-foreground max-w-xs">
+            <div className="text-xs text-muted-foreground max-w-7xl">
               We proactively manage any risk factors associated with project cargo, ensuring all international shipping regulations, permits, and insurance requirements are met.
             </div>
           </div>
         </div>
       </section>
-      <section className="max-w-6xl mx-auto mt-12 mb-8">
+      <section className="max-w-7xl mx-auto mt-12 mb-8">
         <div className="bg-secondary rounded-2xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
           {/* Left: Text */}
           <div className="flex-1">
             <h2 className="text-2xl font-semibold mb-3 text-foreground">Get your Quote with Us</h2>
-            <p className="text-sm text-muted-foreground mb-6 max-w-xl">
+            <p className="text-sm text-muted-foreground mb-6 max-w-7xl">
               Our steamlined project cargo quotation process is designed for efficiency and precision. At Moon
               Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by
               Request system. Simply fill out our short form to initiate your request. Once submitted, our team

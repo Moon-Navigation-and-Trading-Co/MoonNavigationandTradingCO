@@ -26,7 +26,7 @@ export default function FullContainerLoadPage() {
             </div>
 
             {/* Main Content */}
-            <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
                 {/* Left: Title and CTA */}
                 <div className="flex flex-col items-start justify-start">
                     <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
@@ -52,7 +52,7 @@ export default function FullContainerLoadPage() {
                     </p>
                 </div>
             </div>
-            <div className="w-full max-w-5xl mt-16">
+            <div className="w-full max-w-7xl mt-16">
                 <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">
                     What is the difference between FCL and LCL?
                 </h2>
@@ -95,11 +95,11 @@ export default function FullContainerLoadPage() {
                     </table>
                 </div>
             </div>
-            <div className="w-full max-w-5xl mx-auto mt-20">
+            <div className="w-full max-w-7xl mx-auto mt-20">
                 <h2 className="text-2xl font-semibold text-foreground mb-2 text-center">
                     Our Container Types for FCL
                 </h2>
-                <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-2xl mx-auto">
+                <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
                     We offer a wide range of container types to suit different cargo requirements, ensuring your shipment is transported safely, efficiently, and in full compliance with global standards.
                 </p>
                 <div className="flex flex-col md:flex-row justify-center gap-8">
@@ -147,7 +147,7 @@ export default function FullContainerLoadPage() {
                     </div>
                 </div>
             </div>
-            <div className="max-w-3xl mx-auto mt-12 mb-16 px-4">
+            <div className="max-w-7xl mx-auto mt-12 mb-16 px-4">
                 <h3 className="text-2xl md:text-2xl font-semibold text-foreground mb-4 text-center">
                     Our Comprehensive Container Solutions includes Reefer<br className="hidden md:inline" /> &amp; Dangerous Cargo Expertise
                 </h3>
@@ -161,7 +161,7 @@ export default function FullContainerLoadPage() {
                     With a focus on precision, reliability, and risk management, we provide end-to-end solutions for shipping containers, delivering your cargo securely and efficiently to its destination.
                 </p>
             </div>
-            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 px-4">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 px-4">
                 {/* Standard Cargo (Dry Containers) */}
                 <div className="flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6">
                     <div>
@@ -267,7 +267,7 @@ export default function FullContainerLoadPage() {
                 <h2 className="text-2xl md:text-3xl font-normal text-[#3B4B8C] mb-12 text-center">
                     Standard, Reefer & Dangerous Goods Containers vs. Special Equipment Containers
                 </h2>
-                <div className="overflow-x-auto w-full max-w-6xl">
+                <div className="overflow-x-auto w-full max-w-7xl">
                     <table className="min-w-full border border-gray-300 text-center">
                         <thead>
                             <tr className="">
@@ -318,7 +318,7 @@ export default function FullContainerLoadPage() {
                     </table>
                 </div>
             </div>
-        <div className="w-full max-w-5xl mx-auto mt-20">
+        <div className="w-full max-w-7xl mx-auto mt-20">
             <h2 className="text-2xl font-semibold text-[#3B4B8C] mb-10 text-center">
                 Reasons to Choose Moon Navigation and Trading Co. for Your FCL Shipments
             </h2>

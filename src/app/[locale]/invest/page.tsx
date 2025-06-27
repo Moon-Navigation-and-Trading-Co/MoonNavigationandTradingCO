@@ -28,7 +28,7 @@ export default function InvestPage() {
 
       {/* Types of Investment Opportunities - Redesigned */}
       <section className="w-full flex justify-center py-20 bg-[#4856a2] px-2 md:px-0">
-        <div className="max-w-6xl w-full grid grid-cols-1 gap-12">
+        <div className="max-w-7xl w-full grid grid-cols-1 gap-12">
           <div className="text-white mb-2">
             <h2 className="text-3xl md:text-4xl font-semibold mb-2">Types of Investment Opportunities</h2>
             <h3 className="text-xl font-normal mb-4">Flexible Models Designed to Match Your Goals</h3>
@@ -104,13 +104,13 @@ export default function InvestPage() {
 
       {/* Partnership & Conversation Section */}
       <section className="w-full flex flex-col gap-12 items-center py-20">
-        <div className="max-w-4xl w-full bg-blue-100 rounded-2xl p-8 mb-2">
+        <div className="max-w-7xl w-full bg-blue-100 rounded-2xl p-8 mb-2">
           <h3 className="text-2xl font-semibold mb-2 flex items-center gap-2">
             <span role="img" aria-label="handshake">🤝</span> A Partnership Built on Trust
           </h3>
           <p className="text-gray-700 text-base">We value long-term relationships, shared growth, and full transparency. From personalized proposals to detailed business plans and regular reporting—we treat every investor as a true partner in progress.</p>
         </div>
-        <div id="start-conversation" className="max-w-4xl w-full bg-blue-100 rounded-2xl p-8">
+        <div id="start-conversation" className="max-w-7xl w-full bg-blue-100 rounded-2xl p-8">
           <h3 className="text-2xl font-semibold mb-2">Let's Start the Conversation</h3>
           <p className="text-gray-700 text-base mb-4">If you are interested in investing, simply submit your interest, and our team will get in touch to arrange a dedicated meeting with you.<br />During this meeting, we will:</p>
           <ul className="list-disc ml-6 text-base text-gray-700 mb-4 space-y-1">

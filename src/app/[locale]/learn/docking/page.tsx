@@ -189,7 +189,7 @@ export default function DockingAndMaintenance() {
                     </div>
                     {/* Image Content */}
                     <div className="flex justify-center items-center">
-                        <div className="relative w-full max-w-md">
+                        <div className="relative w-full max-w-7xl">
                             <div className="absolute top-4 left-0 w-full h-full bg-primary rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
                             <img
                                 src="/images/maintenance-crew.jpg"
@@ -248,7 +248,7 @@ export default function DockingAndMaintenance() {
                     </div>
                     {/* Image Content */}
                     <div className="flex justify-center items-center">
-                        <div className="relative w-full max-w-md">
+                        <div className="relative w-full max-w-7xl">
                             <div className="absolute top-4 left-0 w-full h-full bg-primary rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
                             <img
                                 src="/images/maintenance-workers-tablet.jpg"
