@@ -1,7 +1,0 @@
-{
-    "functions": {
-      "api/**/*": {
-        "region": "sfo1"  
-      }
-    }
-  }
