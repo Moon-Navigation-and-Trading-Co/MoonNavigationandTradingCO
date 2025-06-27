@@ -17,7 +17,7 @@ export default function OceanFreightPage() {
             {
                 title: "Project Cargo Services",
                 description: t('project-p'),
-                image: "/airCargo.jpg",
+                image: "/project-cargo-hero.jpg",
                 link: "/learn/project-cargo",
                 quote: "/ocean-freight-forms"
 
@@ -25,7 +25,7 @@ export default function OceanFreightPage() {
             {
                 title: "Roll On/Off (RoRo)",
                 description: t('roll-p'),
-                image: "/airCargo.jpg",
+                image: "/rorotitleimage.jpg",
                 link: "/learn/roll",
                 quote: "/ocean-freight-forms"
 
@@ -34,7 +34,7 @@ export default function OceanFreightPage() {
             {
                 title: "Dangerous Cargo",
                 description: t('dangerous-p'),
-                image: "/airCargo.jpg",
+                image: "/dangerous-cargo-banner.jpg",
                 link: "/learn/dangerous",
                 quote: "/ocean-freight-forms"
 
@@ -42,7 +42,7 @@ export default function OceanFreightPage() {
             {
                 title: "Heavy Lift",
                 description: t('heavy-p'),
-                image: "/airCargo.jpg",
+                image: "/heavy-lift-cargo-banner.jpg",
                 link: "/learn/heavy",
                 quote: "/ocean-freight-forms"
 
@@ -51,7 +51,7 @@ export default function OceanFreightPage() {
             {
                 title: "Break Bulk",
                 description: t('breakbulk-p'),
-                image: "/airCargo.jpg",
+                image: "/breakbulk-banner.jpg",
                 link: "/learn/breakbulk",
                 quote: "/ocean-freight-forms"
 
@@ -59,7 +59,7 @@ export default function OceanFreightPage() {
             {
                 title: "Livestock",
                 description: "Specialized livestock transportation services ensuring the safe and humane transport of animals across international waters. Our experienced team provides climate-controlled environments, veterinary care coordination, and compliance with international animal welfare regulations.",
-                image: "/airCargo.jpg", //change for image accordingly 
+                image: "/livestock-banner.jpg", //change for image accordingly 
                 link: "/learn/livestock",
                 quote: "/ocean-freight-forms"
 
@@ -67,7 +67,7 @@ export default function OceanFreightPage() {
             {
                 title: "Tankers",
                 description: "Specialized tanker shipping services for liquid cargo including oil, chemicals, and liquefied gases. Our fleet of modern tankers ensures safe, efficient, and environmentally compliant transportation of liquid commodities across global trade routes.",
-                image: "/airCargo.jpg", //change for image accordingly 
+                image: "/tankers-header.jpg", //change for image accordingly 
                 link: "/learn/tankers",
                 quote: "/ocean-freight-forms"
 
