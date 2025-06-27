@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { CalendarIcon, Clock } from "lucide-react";
+import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
 import { useState } from "react";
 import Calendar from "react-calendar";
@@ -14,6 +14,80 @@ import Calendar from "react-calendar";
 export default function ScheduleMeeting() {
     const [date1, setDate1] = useState<Date>();
     const [date2, setDate2] = useState<Date>();
+    const [formData, setFormData] = useState({
+        company: "",
+        contact: "",
+        title: "",
+        email: "",
+        additionalEmail: "",
+        phone: "",
+        additionalPhone: "",
+        time1: "",
+        time2: "",
+        service: ""
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
+    const handleInputChange = (field: string, value: string) => {
+        setFormData(prev => ({
+            ...prev,
+            [field]: value
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+
+        try {
+            // Prepare the meeting data
+            const meetingData = {
+                ...formData,
+                preferredDate1: date1,
+                preferredDate2: date2
+            };
+
+            // Send the data to our API endpoint
+            const response = await fetch('/api/schedule-meeting', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(meetingData),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Failed to submit meeting request');
+            }
+
+            // Show success message
+            alert("Meeting request submitted successfully! We'll get back to you soon.");
+            
+            // Reset form
+            setFormData({
+                company: "",
+                contact: "",
+                title: "",
+                email: "",
+                additionalEmail: "",
+                phone: "",
+                additionalPhone: "",
+                time1: "",
+                time2: "",
+                service: ""
+            });
+            setDate1(undefined);
+            setDate2(undefined);
+            
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("There was an error submitting your request. Please try again.");
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
 
     return (
         <div className="container mx-auto px-4 py-8 max-w-7xl">
@@ -26,43 +100,87 @@ export default function ScheduleMeeting() {
 
                 <h2 className="text-xl font-medium">Please fill out the form below to schedule a meeting with our team.</h2>
 
-                <div className="space-y-8">
+                <form onSubmit={handleSubmit} className="space-y-8">
                     <div>
                         <h3 className="text-lg font-semibold border-b pb-2">1. Personal Information</h3>
                         <div className="space-y-4 mt-4">
                             <div>
                                 <Label htmlFor="company">Company Name:</Label>
-                                <Input id="company" className="mt-1" />
+                                <Input 
+                                    id="company" 
+                                    className="mt-1" 
+                                    value={formData.company}
+                                    onChange={(e) => handleInputChange("company", e.target.value)}
+                                    required
+                                />
                             </div>
 
                             <div>
                                 <Label htmlFor="contact">Contact Person Name:</Label>
-                                <Input id="contact" className="mt-1" />
+                                <Input 
+                                    id="contact" 
+                                    className="mt-1" 
+                                    value={formData.contact}
+                                    onChange={(e) => handleInputChange("contact", e.target.value)}
+                                    required
+                                />
                             </div>
 
                             <div>
                                 <Label htmlFor="title">Title:</Label>
-                                <Input id="title" className="mt-1" />
+                                <Input 
+                                    id="title" 
+                                    className="mt-1" 
+                                    value={formData.title}
+                                    onChange={(e) => handleInputChange("title", e.target.value)}
+                                    required
+                                />
                             </div>
 
                             <div>
                                 <Label htmlFor="email">Company Email Address:</Label>
-                                <Input id="email" type="email" className="mt-1" />
+                                <Input 
+                                    id="email" 
+                                    type="email" 
+                                    className="mt-1" 
+                                    value={formData.email}
+                                    onChange={(e) => handleInputChange("email", e.target.value)}
+                                    required
+                                />
                             </div>
 
                             <div>
                                 <Label htmlFor="additionalEmail">Additional Email Address:</Label>
-                                <Input id="additionalEmail" type="email" className="mt-1" />
+                                <Input 
+                                    id="additionalEmail" 
+                                    type="email" 
+                                    className="mt-1" 
+                                    value={formData.additionalEmail}
+                                    onChange={(e) => handleInputChange("additionalEmail", e.target.value)}
+                                />
                             </div>
 
                             <div>
                                 <Label htmlFor="phone">Phone Number:</Label>
-                                <Input id="phone" type="tel" className="mt-1" />
+                                <Input 
+                                    id="phone" 
+                                    type="tel" 
+                                    className="mt-1" 
+                                    value={formData.phone}
+                                    onChange={(e) => handleInputChange("phone", e.target.value)}
+                                    required
+                                />
                             </div>
 
                             <div>
                                 <Label htmlFor="additionalPhone">Additional Phone Number:</Label>
-                                <Input id="additionalPhone" type="tel" className="mt-1" />
+                                <Input 
+                                    id="additionalPhone" 
+                                    type="tel" 
+                                    className="mt-1" 
+                                    value={formData.additionalPhone}
+                                    onChange={(e) => handleInputChange("additionalPhone", e.target.value)}
+                                />
                             </div>
                         </div>
                     </div>
@@ -75,7 +193,11 @@ export default function ScheduleMeeting() {
                                 <div className="space-y-2">
                                     <Popover>
                                         <PopoverTrigger asChild>
-                                            <Button variant={"outline"} className={cn("w-full justify-start text-left font-normal", !date1 && "text-muted-foreground")}>
+                                            <Button 
+                                                type="button"
+                                                variant={"outline"} 
+                                                className={cn("w-full justify-start text-left font-normal", !date1 && "text-muted-foreground")}
+                                            >
                                                 <CalendarIcon className="mr-2 h-4 w-4" />
                                                 {date1 ? format(date1, "PPP") : <span>Pick a date</span>}
                                             </Button>
@@ -87,7 +209,11 @@ export default function ScheduleMeeting() {
 
                                     <Popover>
                                         <PopoverTrigger asChild>
-                                            <Button variant={"outline"} className={cn("w-full justify-start text-left font-normal", !date2 && "text-muted-foreground")}>
+                                            <Button 
+                                                type="button"
+                                                variant={"outline"} 
+                                                className={cn("w-full justify-start text-left font-normal", !date2 && "text-muted-foreground")}
+                                            >
                                                 <CalendarIcon className="mr-2 h-4 w-4" />
                                                 {date2 ? format(date2, "PPP") : <span>Pick a date</span>}
                                             </Button>
@@ -102,7 +228,7 @@ export default function ScheduleMeeting() {
                             <div>
                                 <Label>Preferred Time:</Label>
                                 <div className="space-y-2">
-                                    <Select>
+                                    <Select value={formData.time1} onValueChange={(value) => handleInputChange("time1", value)}>
                                         <SelectTrigger>
                                             <SelectValue placeholder="Select time" />
                                         </SelectTrigger>
@@ -115,7 +241,7 @@ export default function ScheduleMeeting() {
                                         </SelectContent>
                                     </Select>
 
-                                    <Select>
+                                    <Select value={formData.time2} onValueChange={(value) => handleInputChange("time2", value)}>
                                         <SelectTrigger>
                                             <SelectValue placeholder="Select time" />
                                         </SelectTrigger>
@@ -132,7 +258,7 @@ export default function ScheduleMeeting() {
 
                             <div>
                                 <Label>Service of Interest:</Label>
-                                <Select>
+                                <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
                                     <SelectTrigger>
                                         <SelectValue placeholder="Select a service" />
                                     </SelectTrigger>
@@ -150,9 +276,11 @@ export default function ScheduleMeeting() {
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <Button className="w-full mt-8">Schedule Meeting</Button>
+                    <Button className="w-full mt-8" type="submit" disabled={isSubmitting}>
+                        {isSubmitting ? "Scheduling..." : "Schedule Meeting"}
+                    </Button>
+                </form>
             </div>
         </div>
     );
