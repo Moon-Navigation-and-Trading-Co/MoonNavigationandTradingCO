@@ -63,12 +63,12 @@ export default function BreakBulkInfo() {
             </Head>
             <div className="w-full">
                 {/* Top Banner Image */}
-                <div className="w-full rounded-t-3xl overflow-hidden mb-8">
+                <div className="w-full overflow-hidden mb-8">
                     <img
                         src="/breakbulk-banner.jpg"
                         alt="BreakBulk Cargo at port"
-                        className="w-full h-[220px] object-cover object-center"
-                        style={{ borderTopLeftRadius: 32, borderTopRightRadius: 32 }}
+                        className="w-full h-[300px] object-cover object-center mt-10"
+                        style={{ borderRadius: "12px" }}
                         loading="lazy"
                     />
                 </div>
@@ -85,7 +85,7 @@ export default function BreakBulkInfo() {
                         </Link>
                     </div>
                     {/* Right: Info Card */}
-                    <div className="flex-1 bg-background rounded-2xl shadow-md p-6">
+                    <div className="flex-1 rounded-2xl  p-6">
                         <h2 className="text-lg font-semibold mb-3 text-primary" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             What is BreakBulk Cargo&nbsp;?
                         </h2>
@@ -189,7 +189,7 @@ export default function BreakBulkInfo() {
                     <h2 className="text-xl md:text-2xl font-semibold mb-8 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Our Breakbulk Cargo Services - At Moon Navigation and Trading Co.
                     </h2>
-                    <div className="flex flex-col md:flex-row gap-10">
+                    <div className="flex flex-col md:flex-row gap-10 justify-center">
                         {/* Left Column: 1. Specialized Vessel Chartering */}
                         <div className="flex-1 flex flex-col">
                             <h3 className="text-base md:text-lg font-semibold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -230,9 +230,9 @@ export default function BreakBulkInfo() {
                                 Precision in rigging and securing is core, carefully planning to prevent damage and maintain stability. We provide:
                             </p>
                             <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
-                                <li>Custom Lashing &amp; Securing – Every piece checked, anchored, and lashed using the safest methods.</li>
-                                <li>Specialized Stowage Planning – Optimized for vessel balance, access, and cargo safety.</li>
-                                <li>On-site Supervision – Our experts oversee every stage, ensuring compliance and cargo stability.</li>
+                                <li><strong>Custom Lashing &amp; Securing</strong> – Every piece checked, anchored, and lashed using the safest methods.</li>
+                                <li><strong>Specialized Stowage Planning</strong> – Optimized for vessel balance, access, and cargo safety.</li>
+                                <li><strong>On-site Supervision</strong> – Our experts oversee every stage, ensuring compliance and cargo stability.</li>
                             </ul>
                             <p className="text-muted-foreground text-sm md:text-base mb-3">
                                 We ensure that your cargo is safely received and protected throughout the voyage.
@@ -241,7 +241,7 @@ export default function BreakBulkInfo() {
                                 <img
                                     src="/breakbulk-handling-stowage.jpg"
                                     alt="Breakbulk Handling and Stowage"
-                                    className="rounded-xl object-cover"
+                                    className="rounded-xl object-cover mt-6"
                                     loading="lazy"
                                 />
                             </div>
@@ -249,7 +249,7 @@ export default function BreakBulkInfo() {
                     </div>
                 </section>
                 {/* Section: 3. Crane & Port Handling and 4. Customs Clearance & Documentation */}
-                <section className="w-full mt-12 mb-8 px-4 md:px-0 flex flex-col gap-12">
+                <section className="w-full mt-12 mb-8 px-4 md:px-0 flex flex-col gap-32">
                     {/* 3. Crane & Port Handling */}
                     <div className="flex flex-col md:flex-row items-center gap-8">
                         {/* Left: Text */}
@@ -322,7 +322,7 @@ export default function BreakBulkInfo() {
                     </div>
                 </section>
                 {/* 5. Inland Transport & Final Delivery */}
-                <div className="flex flex-col md:flex-row items-center gap-8 mt-10">
+                <div className="flex flex-col md:flex-row items-center gap-8 mt-32">
                     {/* Left: Text */}
                     <div className="flex-1">
                         <h3 className="text-base md:text-lg font-semibold mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>

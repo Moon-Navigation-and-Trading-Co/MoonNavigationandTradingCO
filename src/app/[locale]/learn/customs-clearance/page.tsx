@@ -208,7 +208,7 @@ export default function CustomsClearance() {
                         </div>
 
                         <div className="relative h-[400px]">
-                            <Image src="/quote-request-illustration.jpg" alt="Quote Request" fill className="object-contain" />
+                            <Image src="/quote-illustration.png" alt="Quote Request" fill className="object-contain" />
                         </div>
                     </div>
                 </div>

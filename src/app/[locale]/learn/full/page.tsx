@@ -5,9 +5,9 @@ import Link from "next/link";
 
 export default function FullContainerLoadPage() {
     return (
-        <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
+        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
             {/* Top Banner */}
-            <div className="w-full max-w-5xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
+            <div className="w-full rounded-[2rem] overflow-hidden mb-12 shadow-lg">
                 <div className="relative w-full h-[180px] md:h-[260px]">
                     <Image
                         src="/container-banner.jpg"

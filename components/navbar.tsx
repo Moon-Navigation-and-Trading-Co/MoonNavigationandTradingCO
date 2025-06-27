@@ -84,7 +84,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             items: [
                 { name: "International Trading", href: "/learn/international-trading" },
                 { name: "Ship Management", href: "/learn/ship-management" },
-                { name: "Docking and Maintenance", href: "/services/maintenance" },
+                { name: "Docking and Maintenance", href: "/learn/docking" },
                 {
                     name: "Handling, Stevedoring, and Storage Services",
                     href: "/learn/stevedoring-container",

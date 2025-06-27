@@ -83,7 +83,7 @@ export default function Index() {
                         <div className="w-full h-full z-[10] top-[1px] bg-black-overlay md:rounded-3xl rounded-b-xl absolute"></div>
                         <div className="flex md:px-12 px-6 flex-col justify-center z-[50] gap-4">
                             <h1 className="text-[#e4e4e4] w-full text-left font-semibold text-0.5xl sm:text-1xl md:text-2xl max-w-[650px]">{t("slogan")}</h1>
-                            <h1 className="font-light text-white text-start w-[200px] md:w-full text-sm">Whenever, Wherever You Need to Trust.</h1>
+                            <h1 className="font-light text-white text-start w-[200px] md:w-full text-sm">{t("tagline")}</h1>
                         </div>
                     </div>
                     <div className="absolute right-6 mt-8">
@@ -130,11 +130,11 @@ export default function Index() {
                 </section>
 
                 <section id="GetQuote" className="px-4 scroll-mt-[80px] flex flex-col gap-4">
-                    <h2 className="capitalize text-3xl text-primary">Get your customized quote today</h2>
-                    <h2 className="capitalize text-3xl text-primary">Effortless Quotation Process</h2>
+                    <h2 className="capitalize text-3xl text-primary">{t("quoteTitle1")}</h2>
+                    <h2 className="capitalize text-3xl text-primary">{t("quoteTitle2")}</h2>
 
                     <div className="flex max-w-[800px]">
-                        <p className="py-8">Our streamlined quotation process is designed with your convenience in mind. At Moon Navigation and Trading Co., obtaining service quotes has never been easier or faster than with our Quotation by Request system. By simply filling out a short form that captures your specific service requirements, you can easily initiate your request. Once you have submitted your information, our system ensures it is sent directly to us for prompt attention. You will receive a customized quotation delivered straight to your email in a timely manner. This effortlessness ensures you can focus on what truly matters while receiving accurate pricing without unnecessary delays.</p>
+                        <p className="py-8">{t("quoteDescription")}</p>
                         <Image src="/quotation.png" alt="quotation" width={250} height={250} className="object-contain hidden md:block" style={{ width: 'auto' }} />
                     </div>
 
@@ -176,20 +176,20 @@ export default function Index() {
                                         <path d="m22 7-7.1 3.78c-.57.3-1.23.3-1.8 0L6 7" />
                                         <path d="M2 8v11c0 1.1.9 2 2 2h24" />
                                     </svg>
-                                    Info@logicbase.co.uk
+                                    {tttt("contactEmail")}
                                 </li>
                                 <li className="flex gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone">
                                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                                     </svg>
-                                    +20 111 555 2552
+                                    {tttt("contactPhone")}
                                 </li>
                                 <li className="flex gap-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-map-pin">
                                         <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
                                         <circle cx="12" cy="10" r="3" />
                                     </svg>
-                                    123 Shipping Lane, Port City, 12345
+                                    {tttt("contactAddress")}
                                 </li>
                             </ul>
                         </div>
