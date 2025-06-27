@@ -248,7 +248,7 @@ export default function FullContainerLoadPage() {
                         </ul>
                     </div>
                     <div className="mt-4">
-                        <a href="/learn/full/dangerous" className="inline-block">
+                        <a href="/learn/dangerous" className="inline-block">
                             <button className="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition">Learn more</button>
                         </a>
                     </div>
