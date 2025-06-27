@@ -234,7 +234,7 @@ export default function InlandContainerPage() {
         <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
           Reasons to Choose Moon Navigation and Trading Co. For Your Inland Transportation
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Seamless Port-to-Door Delivery */}
           <div className="flex flex-col items-center text-center">
             <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
@@ -262,6 +262,8 @@ export default function InlandContainerPage() {
               We prioritize on-time deliveries with optimized routing and continuous coordination.
             </p>
           </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Compliance & Security */}
           <div className="flex flex-col items-center text-center">
             <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
@@ -282,22 +284,22 @@ export default function InlandContainerPage() {
           </div>
         </div>
       </div>
-      <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
+      <section className="w-full bg-muted/50 rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative border">
         {/* Left: Text Content */}
         <div className="flex-1 min-w-[260px]">
-          <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Get your Quote with Us
           </h2>
-          <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Our streamlined LCL freight quotation process is designed for speed and convenience. At
+          <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Our streamlined inland container freight quotation process is designed for speed and convenience. At
             Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
             Quotation by Request system. Simply fill out our short form to initiate your request. Once
-            submitted, our team will assess your shipment’s volume, weight, and consolidation options to
+            submitted, our team will assess your shipment's volume, weight, and consolidation options to
             find the most efficient and cost-effective transport solution. You will receive a customized
             quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
             cargo movement.
           </p>
-          <Link href="/container-services-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
+          <Link href="/container-services-forms" className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors inline-block">
             Request a Quote
           </Link>
         </div>

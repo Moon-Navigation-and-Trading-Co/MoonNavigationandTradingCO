@@ -53,16 +53,11 @@ export default function StevedoringContainerPage() {
                 <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
                     Efficient container handling is critical at port and beyond their operations. Our services include:
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-                    {/* 1. Loading & Unloading Operations */}
+                
+                {/* 1. Loading & Unloading Operations - Text Left, Image Right */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-16">
+                    {/* Left: Text Content */}
                     <div>
-                        <div className="w-full rounded-xl overflow-hidden shadow mb-4">
-                            <img
-                                src="/container-handling-loading.jpg"
-                                alt="Container loading and unloading operations"
-                                className="object-cover w-full h-40 md:h-56"
-                            />
-                        </div>
                         <h3 className="text-lg md:text-xl font-semibold mb-2">
                             1. Loading &amp; Unloading Operations
                         </h3>
@@ -78,15 +73,28 @@ export default function StevedoringContainerPage() {
                             </li>
                         </ul>
                     </div>
-                    {/* 2. Specialized Container Handling */}
+                    {/* Right: Image */}
+                    <div className="w-full rounded-xl overflow-hidden shadow">
+                        <img
+                            src="/container-handling-loading.jpg"
+                            alt="Container loading and unloading operations"
+                            className="object-cover w-full h-40 md:h-56"
+                        />
+                    </div>
+                </div>
+
+                {/* 2. Specialized Container Handling - Image Left, Text Right */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                    {/* Left: Image */}
+                    <div className="w-full rounded-xl overflow-hidden shadow">
+                        <img
+                            src="/container-handling-specialized.jpg"
+                            alt="Specialized container handling with crane"
+                            className="object-cover w-full h-40 md:h-56"
+                        />
+                    </div>
+                    {/* Right: Text Content */}
                     <div>
-                        <div className="w-full rounded-xl overflow-hidden shadow mb-4">
-                            <img
-                                src="/container-handling-specialized.jpg"
-                                alt="Specialized container handling with crane"
-                                className="object-cover w-full h-40 md:h-56"
-                            />
-                        </div>
                         <h3 className="text-lg md:text-xl font-semibold mb-2">
                             2. Specialized Container Handling
                         </h3>
@@ -140,13 +148,15 @@ export default function StevedoringContainerPage() {
                 <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
                     Our stevedoring operations ensure the safe and efficient handling of cargo, whether containerized, bulk, or breakbulk.
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-                    {/* 1. Cargo Handling & Vessel Operations */}
-                    <div className="flex flex-col gap-4">
+                
+                {/* 1. Cargo Handling & Vessel Operations - Text Left, Image Right */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-16">
+                    {/* Left: Text Content */}
+                    <div>
                         <h3 className="text-lg md:text-xl font-semibold mb-2">
                             1. Cargo Handling &amp; Vessel Operations
                         </h3>
-                        <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-2">
+                        <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                             <li>
                                 <span className="font-semibold">Containerized Cargo Handling</span> – Efficient lifting, stacking, and stowage of containers.
                             </li>
@@ -157,20 +167,33 @@ export default function StevedoringContainerPage() {
                                 <span className="font-semibold">Bulk &amp; General Cargo Operations</span> – Handling of raw materials, grain, cement, and breakbulk goods.
                             </li>
                         </ul>
-                        <div className="w-full rounded-xl overflow-hidden shadow">
-                            <img
-                                src="/stevedoring-cargo-vessel.jpg"
-                                alt="Stevedores operating cranes to load cargo onto a vessel"
-                                className="object-cover w-full h-40 md:h-44"
-                            />
-                        </div>
                     </div>
-                    {/* 2. Equipment & Technology */}
-                    <div className="flex flex-col gap-4">
+                    {/* Right: Image */}
+                    <div className="w-full rounded-xl overflow-hidden shadow">
+                        <img
+                            src="/stevedoring-cargo-vessel.jpg"
+                            alt="Stevedores operating cranes to load cargo onto a vessel"
+                            className="object-cover w-full h-40 md:h-44"
+                        />
+                    </div>
+                </div>
+
+                {/* 2. Equipment & Technology - Image Left, Text Right */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                    {/* Left: Image */}
+                    <div className="w-full rounded-xl overflow-hidden shadow">
+                        <img
+                            src="/stevedoring-equipment-technology.jpg"
+                            alt="Modern container handling equipment at port"
+                            className="object-cover w-full h-40 md:h-44"
+                        />
+                    </div>
+                    {/* Right: Text Content */}
+                    <div>
                         <h3 className="text-lg md:text-xl font-semibold mb-2">
                             2. Equipment &amp; Technology
                         </h3>
-                        <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-2">
+                        <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                             <li>
                                 <span className="font-semibold">Advanced Port Cranes &amp; Spreaders</span> – High-speed operations with minimal turnaround time.
                             </li>
@@ -181,13 +204,6 @@ export default function StevedoringContainerPage() {
                                 <span className="font-semibold">Cargo Identification &amp; Monitoring</span> – Effective tracking and documentation for operational efficiency.
                             </li>
                         </ul>
-                        <div className="w-full rounded-xl overflow-hidden shadow">
-                            <img
-                                src="/stevedoring-equipment-technology.jpg"
-                                alt="Modern container handling equipment at port"
-                                className="object-cover w-full h-40 md:h-44"
-                            />
-                        </div>
                     </div>
                 </div>
             </div>
@@ -312,7 +328,7 @@ export default function StevedoringContainerPage() {
                 <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
                     Reasons to Choose Moon Navigation and Trading Co.
                 </h2>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-32 mb-20">
                     {/* Comprehensive Freight Solutions */}
                     <div className="flex flex-col items-center text-center">
                         <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
@@ -341,7 +357,7 @@ export default function StevedoringContainerPage() {
                         </p>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-32">
                     {/* Extensive Global Network */}
                     <div className="flex flex-col items-center text-center">
                         <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
@@ -371,35 +387,35 @@ export default function StevedoringContainerPage() {
                     </div>
                 </div>
             </div>
-            <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-                {/* Left: Text Content */}
-                <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Get your Quote with Us
-                    </h2>
-                    <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Our streamlined LCL freight quotation process is designed for speed and convenience. At
-                        Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
-                        Quotation by Request system. Simply fill out our short form to initiate your request. Once
-                        submitted, our team will assess your shipment’s volume, weight, and consolidation options to
-                        find the most efficient and cost-effective transport solution. You will receive a customized
-                        quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
-                        cargo movement.
-                    </p>
-                    <Link href="/container-services-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
-                        Request a Quote
-                    </Link>
-                </div>
-                {/* Right: Image */}
-                <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                    <img
-                        src="/quote-illustration.png"
-                        alt="Quotation illustration"
-                        className="w-[320px] h-auto object-contain"
-                        style={{ maxWidth: 380 }}
-                    />
-                </div>
-            </section>
+            <section className="w-full bg-muted/50 rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative border">
+        {/* Left: Text Content */}
+        <div className="flex-1 min-w-[260px]">
+          <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Get your Quote with Us
+          </h2>
+          <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Our streamlined HSS freight quotation process is designed for speed and convenience. At
+            Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
+            Quotation by Request system. Simply fill out our short form to initiate your request. Once
+            submitted, our team will assess your shipment's volume, weight, and consolidation options to
+            find the most efficient and cost-effective transport solution. You will receive a customized
+            quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
+            cargo movement.
+          </p>
+          <Link href="/container-services-forms" className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors inline-block">
+            Request a Quote
+          </Link>
+        </div>
+        {/* Right: Image */}
+        <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
+          <img
+            src="/quote-illustration.png"
+            alt="Quotation illustration"
+            className="w-[320px] h-auto object-contain"
+            style={{ maxWidth: 380 }}
+          />
+        </div>
+      </section>
         </div>
     );
 }

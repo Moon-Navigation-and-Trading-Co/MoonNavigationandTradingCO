@@ -27,7 +27,7 @@ export default function ShippingMethodsInfo() {
           <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
             Out Gauge
           </h1>
-          <Button asChild className="bg-primary text-white px-6 py-2 rounded-lg shadow hover:bg-primary/90 mt-2">
+          <Button asChild className="bg-primary text-primary-foreground px-6 py-2 rounded-lg shadow hover:bg-primary/90 mt-2">
             <a href="/container-services-forms">Request a Quote</a>
           </Button>
         </div>
@@ -61,7 +61,7 @@ export default function ShippingMethodsInfo() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center">Industrial Machinery</span>
+            <span className="font-semibold text-center text-foreground">Industrial Machinery</span>
             <span className="text-xs text-muted-foreground text-center">
               Generators, turbines, transformers, pumps
             </span>
@@ -75,7 +75,7 @@ export default function ShippingMethodsInfo() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center">Construction Equipment</span>
+            <span className="font-semibold text-center text-foreground">Construction Equipment</span>
             <span className="text-xs text-muted-foreground text-center">
               Excavators, cranes, drilling rigs
             </span>
@@ -89,7 +89,7 @@ export default function ShippingMethodsInfo() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center">Project Cargo</span>
+            <span className="font-semibold text-center text-foreground">Project Cargo</span>
             <span className="text-xs text-muted-foreground text-center">
               Oil & gas modules, wind energy equipment, industrial units
             </span>
@@ -103,7 +103,7 @@ export default function ShippingMethodsInfo() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center">Military and Aerospace Equipment</span>
+            <span className="font-semibold text-center text-foreground">Military and Aerospace Equipment</span>
             <span className="text-xs text-muted-foreground text-center">
               Vehicles, aircraft components, installations
             </span>
@@ -113,7 +113,7 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl mx-auto mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left: Description */}
-          <div className="bg-white rounded-3xl shadow p-6 md:p-8">
+          <div className="bg-card rounded-3xl shadow p-6 md:p-8 border">
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
               Handling Out-of-gauge cargo is a complex task that requires specialized equipment, custom handling techniques, and precise logistics management. Our team is highly experienced in coordinating the transportation of heavy, oversized, and project cargo, from industrial machinery to large-scale infrastructure components.
             </p>
@@ -138,19 +138,19 @@ export default function ShippingMethodsInfo() {
           Our Specialized Equipment for OOG Transportation
         </h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full border border-muted rounded-xl bg-white shadow">
+          <table className="min-w-full border border-border rounded-xl bg-card shadow">
             <thead>
               <tr className="bg-muted">
-                <th className="px-4 py-3 text-left font-semibold text-foreground border-b border-muted">
+                <th className="px-4 py-3 text-left font-semibold text-foreground border-b border-border">
                   Equipment Type
                 </th>
-                <th className="px-4 py-3 text-left font-semibold text-foreground border-b border-muted">
+                <th className="px-4 py-3 text-left font-semibold text-foreground border-b border-border">
                   Description
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-muted">
+              <tr className="border-b border-border">
                 <td className="px-4 py-3 font-medium text-foreground align-top">
                   Flat Rack Containers
                 </td>
@@ -158,7 +158,7 @@ export default function ShippingMethodsInfo() {
                   Ideal for wide and heavy cargo that exceeds standard width limits, providing open sides for easy loading and unloading.
                 </td>
               </tr>
-              <tr className="border-b border-muted">
+              <tr className="border-b border-border">
                 <td className="px-4 py-3 font-medium text-foreground align-top">
                   Open-Top Containers
                 </td>
@@ -166,7 +166,7 @@ export default function ShippingMethodsInfo() {
                   Suitable for cargo that is too tall for a standard container, allowing top-loading with cranes.
                 </td>
               </tr>
-              <tr className="border-b border-muted">
+              <tr className="border-b border-border">
                 <td className="px-4 py-3 font-medium text-foreground align-top">
                   Heavy-Lift Cranes &amp; Lifting Gear
                 </td>
@@ -174,7 +174,7 @@ export default function ShippingMethodsInfo() {
                   Used for safe loading and unloading of massive structures, ensuring stability and security.
                 </td>
               </tr>
-              <tr className="border-b border-muted">
+              <tr className="border-b border-border">
                 <td className="px-4 py-3 font-medium text-foreground align-top">
                   Modular &amp; Hydraulic Trailers
                 </td>
@@ -216,7 +216,7 @@ export default function ShippingMethodsInfo() {
                 Customized Solutions for Every Shipment
               </h3>
               <p className="text-muted-foreground text-sm md:text-base">
-                We recognize that every OOG cargo shipment is unique. Whether it’s an oversized transformer or a large construction vehicle, our team personalizes transport solutions using the best equipment and methods to suit your cargo’s industry.
+                We recognize that every OOG cargo shipment is unique. Whether it's an oversized transformer or a large construction vehicle, our team personalizes transport solutions using the best equipment and methods to suit your cargo's industry.
               </p>
             </div>
             <div>
@@ -295,7 +295,7 @@ export default function ShippingMethodsInfo() {
         <h2 className="text-xl md:text-2xl font-semibold text-primary mb-10 text-center">
           Reasons to Choose Moon Navigation and Trading Co. For Your Out-Of-Gauge Transportation
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Expert Route Planning */}
           <div className="flex flex-col items-center text-center">
             <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
@@ -323,6 +323,8 @@ export default function ShippingMethodsInfo() {
               We handle all necessary permits, authorizations, and documentation to ensure a smooth shipping process.
             </p>
           </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Global Network & Reliable Partnerships */}
           <div className="flex flex-col items-center text-center">
             <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
@@ -343,22 +345,22 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
+      <section className="w-full bg-muted/50 rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative border">
         {/* Left: Text Content */}
         <div className="flex-1 min-w-[260px]">
-          <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Get your Quote with Us
           </h2>
-          <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Our streamlined LCL freight quotation process is designed for speed and convenience. At
+          <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            Our streamlined OOG freight quotation process is designed for speed and convenience. At
             Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
             Quotation by Request system. Simply fill out our short form to initiate your request. Once
-            submitted, our team will assess your shipment’s volume, weight, and consolidation options to
+            submitted, our team will assess your shipment's volume, weight, and consolidation options to
             find the most efficient and cost-effective transport solution. You will receive a customized
             quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
             cargo movement.
           </p>
-          <Link href="/container-services-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
+          <Link href="/container-services-forms" className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors inline-block">
             Request a Quote
           </Link>
         </div>

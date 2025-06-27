@@ -132,7 +132,7 @@ export default function ShippingMethodsInfo() {
             <h3 className="text-lg md:text-xl font-semibold mb-2 text-foreground">
               Engineered for Heavy & Large Cargo
             </h3>
-            <p className="text-muted-foreground mb-4 text-sm md:text-base">
+            <p className="text-muted-foreground mb-40 text-sm md:text-base">
               At Moon Navigation and Trading Co., our oversized containers are designed to transport goods that exceed standard container dimensions or weight limits. These containers feature reinforced structures and enhanced loading capabilities, making them suitable for industrial, mining, and energy-sector cargo.
             </p>
             <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
@@ -178,7 +178,7 @@ export default function ShippingMethodsInfo() {
           <h3 className="text-lg md:text-xl font-semibold mb-2 text-foreground">
             Weather Protection &amp; Secure Lashing
           </h3>
-          <p className="text-muted-foreground mb-4 text-sm md:text-base">
+          <p className="text-muted-foreground mb-40 text-sm md:text-base">
             At Moon Navigation and Trading Co., we secure open-top containers with durable, weatherproof tarpaulin covers, safeguarding cargo from rain, wind, and environmental elements. Our flat racks and platforms are designed with custom tie-down points, steel lashing rails, and locking mechanisms, ensuring maximum stability and security throughout transportation.
           </p>
           <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
@@ -204,7 +204,7 @@ export default function ShippingMethodsInfo() {
           <p className="text-muted-foreground mb-2 text-sm md:text-base">
             Our Oversized containers can be modified with specialized reinforcements, including:
           </p>
-          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
+          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 ">
             <li>Heavy-duty lashing slots for outsize cargo</li>
             <li>Additional support beams for enhanced structural stability</li>
             <li>Custom fittings for sensitive or irregular equipment</li>
@@ -221,7 +221,7 @@ export default function ShippingMethodsInfo() {
           <p className="text-muted-foreground mb-4 text-sm md:text-base">
             We design our oversized containers to integrate with multiple transport modes, including:
           </p>
-          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-4">
+          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-10">
             <li>
               <span className="font-semibold">Ocean Freight</span>: Secure and custom-adapted stowage onto specialized flatbeds and breakbulk vessels.
             </li>
@@ -405,7 +405,7 @@ export default function ShippingMethodsInfo() {
             Get your Quote with Us
           </h2>
           <p className="text-sm md:text-base text-muted-foreground mb-6">
-            Our streamlined LCL freight quotation process is designed for speed and convenience. At
+            Our streamlined oversized container freight quotation process is designed for speed and convenience. At
             Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
             Quotation by Request system. Simply fill out our short form to initiate your request. Once
             submitted, our team will assess your shipment's volume, weight, and consolidation options to

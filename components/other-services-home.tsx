@@ -11,17 +11,17 @@ const services = [
   },
   { name: "Ship Management", href: "/learn/ship-management" },
   { name: "Docking and Maintenance", href: "/learn/docking" },
-  { name: "Buy/Rent Containers", href: "/learn/buy-rent-container-forms" },
+  { name: "Buy/Rent Containers", href: "/buy-rent-container-forms" },
   { name: "Buy/Rent Vessels", href: "/buy-rent-vessels-forms" },
   {
     name: "Container Handling, Stevedoring and Storage",
-    href: "/learn/container-hss",
+    href: "/learn/stevedoring-container",
   },
   {
     name: "Handling, Stevedoring and Storage",
     href: "/learn/hss",
   },
-  { name: "Customs Clearance", href: "/lean/customs-clearance" },
+  { name: "Customs Clearance", href: "/learn/customs-clearance" },
   { name: "Special Services", href: "/learn/special" },
 ];
 

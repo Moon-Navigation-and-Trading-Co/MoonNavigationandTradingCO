@@ -280,7 +280,6 @@ export default function AirFreightInfo() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div className="flex items-start gap-4">
                             <div className="w-12 h-12 flex-shrink-0">
-                                <Image src="/icons/specialized-cargo.svg" alt="Specialized Cargo" width={48} height={48} />
                             </div>
                             <div>
                                 <h3 className="font-medium mb-2">{t("reasons.expertHandling")}</h3>
@@ -290,7 +289,6 @@ export default function AirFreightInfo() {
 
                         <div className="flex items-start gap-4">
                             <div className="w-12 h-12 flex-shrink-0">
-                                <Image src="/icons/competitive-rates.svg" alt="Competitive Rates" width={48} height={48} />
                             </div>
                             <div>
                                 <h3 className="font-medium mb-2">{t("reasons.competitiveRates")}</h3>
@@ -300,7 +298,6 @@ export default function AirFreightInfo() {
 
                         <div className="flex items-start gap-4">
                             <div className="w-12 h-12 flex-shrink-0">
-                                <Image src="/icons/solutions.svg" alt="Solutions" width={48} height={48} />
                             </div>
                             <div>
                                 <h3 className="font-medium mb-2">{t("reasons.customizedSolutions")}</h3>
@@ -310,7 +307,6 @@ export default function AirFreightInfo() {
 
                         <div className="flex items-start gap-4">
                             <div className="w-12 h-12 flex-shrink-0">
-                                <Image src="/icons/support.svg" alt="Support" width={48} height={48} />
                             </div>
                             <div>
                                 <h3 className="font-medium mb-2">{t("reasons.support")}</h3>
@@ -328,13 +324,14 @@ export default function AirFreightInfo() {
                         <div className="space-y-6">
                             <h2 className="text-3xl font-semibold">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
+                            <br />
                             <Link href="/air-freight-forms">
                                 <Button className="bg-primary hover:bg-primary/90">{t("quoteRequest.button")}</Button>
                             </Link>
                         </div>
 
                         <div className="relative h-[400px]">
-                            <Image src="/quote-request-illustration.jpg" alt="Quote Request" fill className="object-contain" />
+                            <Image src="/quote-illustration.png" alt="Quote Request" fill className="object-contain" />
                         </div>
                     </div>
                 </div>
