@@ -78,9 +78,9 @@ export default function Index() {
         <>
             <main className="flex-1 flex flex-col gap-20">
                 {/* Image and slogan */}
-                <div className="relative w-full h-[50vh] ">
-                    <div className="relative flex items-center md:rounded-3xl -mt-8 md:mt-[2rem] bg-home-image bg-center rounded-b-xl bg-cover w-full h-full md:h-[90%] aspect-auto md:aspect-video shadow-black shadow-xl md:shadow-xl md:shadow-black">
-                        <div className="w-full h-full z-[10] top-[1px] bg-black-overlay md:rounded-3xl rounded-b-xl absolute"></div>
+                <div className="relative w-full h-[400px] ">
+                    <div className="relative flex items-center rounded-3xl bg-home-image bg-center bg-cover w-full h-full aspect-auto md:aspect-video shadow-black shadow-xl">
+                        <div className="w-full h-full z-[10] top-[1px] bg-black-overlay rounded-3xl absolute"></div>
                         <div className="flex md:px-12 px-6 flex-col justify-center z-[50] gap-4">
                             <h1 className="text-[#e4e4e4] w-full text-left font-semibold text-0.5xl sm:text-1xl md:text-2xl max-w-[650px]">{t("slogan")}</h1>
                             <h1 className="font-light text-white text-start w-[200px] md:w-full text-sm">{t("tagline")}</h1>

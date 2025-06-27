@@ -7,7 +7,7 @@ export default function InvestPage() {
     <main className="flex flex-col items-center w-full bg-white">
       {/* Hero Section */}
       <section className="w-full rounded-t-3xl overflow-hidden mb-0">
-        <div className="relative h-[340px] md:h-[360px] rounded-t-3xl overflow-hidden">
+        <div className="relative h-[400px] rounded-t-3xl overflow-hidden">
           <Image src="/images/invest-hero.jpg" alt="Invest handshake" fill className="object-cover" priority />
         </div>
         <div className="max-w-7xl mx-auto px-4 md:px-8 pt-16 pb-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">

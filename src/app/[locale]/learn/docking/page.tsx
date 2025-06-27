@@ -9,7 +9,7 @@ export default function DockingAndMaintenance() {
             <div className="w-full py-10 bg-background rounded-b-3xl overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     {/* Hero Image */}
-                    <div className="w-full h-[260px] md:h-[320px] relative rounded-2xl overflow-hidden mb-10">
+                    <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mb-10">
                         <img
                             src="/docking-hero.jpg"
                             alt="Docking and Maintenance - Ship at dock with workers"

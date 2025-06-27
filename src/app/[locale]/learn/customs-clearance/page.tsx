@@ -12,7 +12,7 @@ export default function CustomsClearance() {
             <div className="w-full py-16 bg-background">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     {/* Hero Image */}
-                    <div className="w-full h-[400px] relative rounded-2xl overflow-hidden mb-16">
+                    <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mb-16">
                         <Image src="/images/customs-worker-containers.jpg" alt="Customs clearance worker with shipping containers" fill className="object-cover" />
                     </div>
 

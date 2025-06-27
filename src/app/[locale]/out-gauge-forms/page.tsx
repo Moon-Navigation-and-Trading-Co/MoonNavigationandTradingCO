@@ -34,7 +34,7 @@ const Page: React.FC = () => {
     }, [router, supabase]); // Only run once when the component mounts
 
     if (isLoading) {
-        return <div className='w-full h-[500px] flex items-center justify-center'>
+        return <div className='w-full h-[400px] flex items-center justify-center rounded-3xl'>
             <Spinner />
         </div>;
     }

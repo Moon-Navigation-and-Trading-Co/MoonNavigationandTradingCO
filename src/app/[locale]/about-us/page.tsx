@@ -18,7 +18,7 @@ export default function AboutUs() {
 
       {/* Who Are We */}
       <section className="flex flex-col lg:flex-row gap-10 mb-20 items-center">
-        <div className="relative w-full lg:w-1/2 h-[400px] rounded-xl overflow-hidden">
+        <div className="w-full h-[400px] rounded-3xl overflow-hidden mb-8">
           <Image
             src="/teamAtPort.jpg"
             alt="Moon Navigation team working at the port"
@@ -52,7 +52,7 @@ export default function AboutUs() {
           </p>
           <p className="mb-4 leading-relaxed">
             This location provides unmatched access to international trade, placing us at the core of global logistics.
-            We provide reliable navigation, freight, and trade solutions that meet today’s demanding business needs.
+            We provide reliable navigation, freight, and trade solutions that meet today's demanding business needs.
           </p>
           <p className="leading-relaxed">
             Our strength lies in our creative approach and deep client understanding. As the "unconventional partner,"

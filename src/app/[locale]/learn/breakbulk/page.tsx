@@ -63,7 +63,7 @@ export default function BreakBulkInfo() {
             </Head>
             <div className="w-full">
                 {/* Top Banner Image */}
-                <div className="w-full overflow-hidden mb-8">
+                <div className="w-full h-[400px] object-cover object-center mt-10 rounded-3xl overflow-hidden">
                     <img
                         src="/breakbulk-banner.jpg"
                         alt="BreakBulk Cargo at port"
