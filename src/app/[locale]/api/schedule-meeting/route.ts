@@ -71,7 +71,7 @@ export async function POST(req: Request) {
         // Send the email
         const mailOptions = {
             from: process.env.GMAIL_USER, // Your Gmail address
-            to: 'ahmedassem04@gmail.com',
+            to: ['Mariiamhamdyy1@gmail.com', 'Farida.ashraf@hotmail.co.uk'],
             subject: `New Meeting Request - ${company}`,
             html: emailContent,
         };
