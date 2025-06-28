@@ -222,7 +222,7 @@ export default function MaintenancePage() {
                         options. You will receive a customized quotation directly in your email, ensuring accurate
                         pricing
                     </p>
-                    <Link href="/container-services-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
+                    <Link href="/ship-maintenance-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
                         Request a Quote
                     </Link>
                 </div>

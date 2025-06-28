@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
 import { sendFormEmail } from '@/utils/email-helper';
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 
 // Zod schema for validation
 const schema = z.object({

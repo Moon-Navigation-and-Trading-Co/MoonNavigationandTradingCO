@@ -7,6 +7,7 @@ import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import RoutingCard from './routing-card-variant-4';
 import CommoditiesCard from './commodities-card-variant-10';
 import CompanyDetailsCard from './company-details-card';
@@ -88,7 +89,17 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                             name="routing.incoterm"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input className="max-w-[300px]  border-2 rounded-xl" placeholder="Incoterm" {...field} />
+                                    <Select onValueChange={field.onChange} value={field.value}>
+                                        <SelectTrigger className="max-w-[300px] border-2 rounded-xl">
+                                            <SelectValue placeholder="Select Incoterm" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectItem value="EXW">EXW – Ex Works</SelectItem>
+                                            <SelectItem value="FOB">FOB – Free on Board</SelectItem>
+                                            <SelectItem value="CFR">CFR – Cost and Freight</SelectItem>
+                                            <SelectItem value="CIF">CIF – Cost, Insurance and Freight</SelectItem>
+                                        </SelectContent>
+                                    </Select>
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>)}
                         />

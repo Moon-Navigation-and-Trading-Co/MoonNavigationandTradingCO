@@ -18,7 +18,9 @@ export default function InternationalTrading() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div>
                             <h1 className="text-4xl mb-6 text-foreground">{t("title")}</h1>
-                            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">{t("requestQuoteButton")}</Button>
+                            <Link href="/international-trading-forms">
+                                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">{t("quoteRequest.button")}</Button>
+                            </Link>
                         </div>
                         <div className="space-y-6">
                             <h2 className="text-2xl font-semibold text-foreground">{t("header")}</h2>
@@ -206,7 +208,9 @@ export default function InternationalTrading() {
                         <div className="space-y-6">
                             <h2 className="text-3xl font-semibold text-foreground">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
-                            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">{t("quoteRequest.button")}</Button>
+                            <Link href="/international-trading-forms">
+                                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">{t("quoteRequest.button")}</Button>
+                            </Link>
                         </div>
 
                         <div className="relative h-[400px]">

@@ -6,8 +6,7 @@ import { createClient } from '@/utils/supabase/client'; // Make sure this is a c
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
-import ShipMaintenanceForm from '@/components/ship-maintenance-form';
-import ShipManagemnetForm from '@/components/ship-management-form';
+import ShipManagementForm from '@/components/ship-management-form';
 import Spinner from '@/components/spinner';
 import { sendFormEmail } from '@/utils/email-helper';
 
@@ -43,26 +42,37 @@ const Page: React.FC = () => {
 
     const submitForm = async (formData: any) => {
         // Flatten the formData before inserting into Supabase
-        let flattenedData;
-
-        flattenedData = {
+        const flattenedData = {
             user_id: user.id,
-
-            request: formData.request,
-
+            vessel_name: formData.vessel.name,
+            vessel_imo: formData.vessel.imo,
+            vessel_flag: formData.vessel.flag,
+            vessel_type: formData.vessel.type,
+            vessel_grt: formData.vessel.grt,
+            vessel_nrt: formData.vessel.nrt,
+            vessel_loa: formData.vessel.loa,
+            vessel_dwt: formData.vessel.dwt,
+            current_port: formData.vessel.current_port,
+            owner_company: formData.vessel.owner_company,
+            services: formData.services,
+            vessel_condition: formData.vessel_condition,
+            contract_duration: formData.contract_duration,
+            additional_information: formData.additional_information,
             company_name: formData.company_details.company_name,
             contact_person_name: formData.company_details.contact_person_name,
             title: formData.company_details.title,
             country_of_origin: formData.company_details.country_of_origin,
             company_email: formData.company_details.company_email,
-            phone_number: formData.company_details.phone_number
+            additional_email: formData.company_details.additional_email,
+            phone_number: formData.company_details.phone_number,
+            additional_phone_number: formData.company_details.additional_phone_number,
         };
 
         console.log(flattenedData)
 
         // Send email notification FIRST
         try {
-            await sendFormEmail(formData, 'ship_maintenance');
+            await sendFormEmail(formData, 'ship_management');
             console.log('Email sent successfully');
         } catch (emailError) {
             console.error('Email sending failed:', emailError);
@@ -70,7 +80,7 @@ const Page: React.FC = () => {
         }
 
         const { data, error } = await supabase
-            .from("ship_maintenance")  // Your Supabase table
+            .from("ship_management")  // Your Supabase table
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
@@ -85,6 +95,7 @@ const Page: React.FC = () => {
                 title: "Success",
                 description: "Form Submitted Successfully",
             })
+            router.push("/ship-management-forms");
         }
     };
 
@@ -92,10 +103,8 @@ const Page: React.FC = () => {
         {
             id: "international",
             title: "Ship Management Service",
-            content:
-                <>
-                    <ShipManagemnetForm onSubmit={submitForm} />
-                </>
+            description: "Complete ship management and operation services",
+            content: <ShipManagementForm onSubmit={submitForm} />
         }
     ]
 

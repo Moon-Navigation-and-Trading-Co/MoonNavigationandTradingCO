@@ -6,6 +6,8 @@ import ProjectCargoServicesForm from "@/components/project-cargo-services-form";
 import SignCrewMembersForm from "@/components/sign-crew-members-form";
 import TransitSparePartsForm from "@/components/transit-spare-parts-form";
 import RequestForPdaForm from "@/components/request-for-pda-form";
+import BunkeringOilSupplyForm from "@/components/bunkering-oil-supply-form";
+import SpecialServicesForm from "@/components/special-services-form";
 import { createClient } from "@/utils/supabase/client"; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast";
 import { redirect } from "next/navigation";
@@ -44,7 +46,6 @@ const Page: React.FC = () => {
       </div>
     ); // Display loading state while checking
   }
-
 
   const submitForm = async (formData: any, formType: any) => {
     // Flatten the formData before inserting into Supabase
@@ -113,7 +114,7 @@ const Page: React.FC = () => {
         additional_phone_number:
           formData.company_details.additional_phone_number,
       };
-    } else if (formType === "transfer_spare_parts" || "special_services") {
+    } else if (formType === "transfer_spare_parts") {
       flattenedData = {
         user_id: user.id,
         port_name: formData.port.name,
@@ -132,6 +133,51 @@ const Page: React.FC = () => {
         phone_number: formData.company_details.phone_number,
         additional_phone_number:
           formData.company_details.additional_phone_number,
+      };
+    } else if (formType === "bunkering_oil_supply") {
+      flattenedData = {
+        user_id: user.id,
+        vessel_name: formData.vessel.name,
+        vessel_imo: formData.vessel.imo,
+        port_name: formData.vessel.port_name,
+        flag: formData.vessel.flag,
+        eta: formData.vessel.eta,
+        etd: formData.vessel.etd,
+        location: formData.vessel.location,
+        expected_delivery_date: formData.vessel.expected_delivery_date,
+        bunkering_services: formData.services.bunkering,
+        lubricant_oil_services: formData.services.lubricant_oil,
+        ship_chandlery_services: formData.services.ship_chandlery,
+        additional_information: formData.additional_information,
+        company_name: formData.company_details.company_name,
+        contact_person_name: formData.company_details.contact_person_name,
+        title: formData.company_details.title,
+        country_of_origin: formData.company_details.country_of_origin,
+        company_email: formData.company_details.company_email,
+        additional_email: formData.company_details.additional_email,
+        phone_number: formData.company_details.phone_number,
+        additional_phone_number: formData.company_details.additional_phone_number,
+      };
+    } else if (formType === "special_services") {
+      flattenedData = {
+        user_id: user.id,
+        vessel_name: formData.vessel.name,
+        vessel_imo: formData.vessel.imo,
+        port_name: formData.vessel.port_name,
+        flag: formData.vessel.flag,
+        eta: formData.vessel.eta,
+        etd: formData.vessel.etd,
+        location: formData.vessel.location,
+        requested_services: formData.requested_services,
+        additional_information: formData.additional_information,
+        company_name: formData.company_details.company_name,
+        contact_person_name: formData.company_details.contact_person_name,
+        title: formData.company_details.title,
+        country_of_origin: formData.company_details.country_of_origin,
+        company_email: formData.company_details.company_email,
+        additional_email: formData.company_details.additional_email,
+        phone_number: formData.company_details.phone_number,
+        additional_phone_number: formData.company_details.additional_phone_number,
       };
     }
 
@@ -168,7 +214,7 @@ const Page: React.FC = () => {
 
   const tabData = [
     {
-      id: "international",
+      id: "pda",
       title: "Request For PDA",
       description: "Request for Port Disbursement Account",
       content: (
@@ -182,7 +228,7 @@ const Page: React.FC = () => {
       ),
     },
     {
-      id: "sign",
+      id: "crew",
       title: "Sign On/Off Crew Members",
       description: "Sign on/off crew members",
       content: (
@@ -209,18 +255,44 @@ const Page: React.FC = () => {
         </>
       ),
     },
-    // {
-    //     id: "special",
-    //     title: "Special Services",
-    //     content:
-    //         <>
-    //             <TransitSparePartsForm onSubmit={(formData: any) => submitForm(formData, "special_services")} />
-    //         </>
-    // },
+    {
+      id: "bunkering",
+      title: "Bunkering | Oil Supply | Ship Chandlery",
+      description: "Bunkering, oil supply, and ship chandlery services",
+      content: (
+        <>
+          <BunkeringOilSupplyForm
+            onSubmit={(formData: any) =>
+              submitForm(formData, "bunkering_oil_supply")
+            }
+          />
+        </>
+      ),
+    },
+    {
+      id: "special",
+      title: "Special Services",
+      description: "Special services and custom requests",
+      content: (
+        <>
+          <SpecialServicesForm
+            onSubmit={(formData: any) =>
+              submitForm(formData, "special_services")
+            }
+          />
+        </>
+      ),
+    },
   ];
 
   return (
     <div className="flex flex-col w-full">
+      <div className="mt-20 flex flex-col gap-5 px-4">
+        <h1 className="text-3xl font-bold">Ship Agency Services</h1>
+        <p className="text-muted-foreground">
+          All our ship agency services are exclusively available at all Egyptian ports.*
+        </p>
+      </div>
       <FormTabs tabData={tabData} />
     </div>
   );
