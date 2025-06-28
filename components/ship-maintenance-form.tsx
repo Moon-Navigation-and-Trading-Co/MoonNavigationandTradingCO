@@ -153,6 +153,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
     const watchedEmergency = useWatch({ control: form.control, name: "required_services.emergency_assistance" });
     const watchedOtherDryDocking = useWatch({ control: form.control, name: "dry_docking_repairs.other_dry_docking" });
     const watchedOtherMechanical = useWatch({ control: form.control, name: "mechanical_services.other_mechanical" });
+    const watchedMaintenanceAtCurrentLocation = useWatch({ control: form.control, name: "required_services.maintenance_at_current_location" });
 
     const handleSubmit = (values: any) => {
         onSubmit(values);
@@ -434,45 +435,39 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                         </FormControl>
                                     </FormItem>
 
-                                    <Controller
-                                        control={form.control}
-                                        name="required_services.maintenance_at_current_location"
-                                        render={({ field }) => (
-                                            field.value === 'no' && (
-                                                <div className="space-y-4">
-                                                    <FormItem>
-                                                        <FormLabel>Preferred Maintenance Date</FormLabel>
-                                                        <FormControl>
-                                                            <Controller
-                                                                control={form.control}
-                                                                name="required_services.maintenance_date"
-                                                                render={({ field, fieldState: { error } }) => (
-                                                                    <>
-                                                                        <Input className="max-w-[300px] border-2 rounded-xl" type="date" {...field} />
-                                                                        {error && <p className="text-red-500">{error.message}</p>}
-                                                                    </>)}
-                                                            />
-                                                        </FormControl>
-                                                    </FormItem>
+                                    {watchedMaintenanceAtCurrentLocation === 'no' && (
+                                        <div className="space-y-4">
+                                            <FormItem>
+                                                <FormLabel>Preferred Maintenance Date</FormLabel>
+                                                <FormControl>
+                                                    <Controller
+                                                        control={form.control}
+                                                        name="required_services.maintenance_date"
+                                                        render={({ field, fieldState: { error } }) => (
+                                                            <>
+                                                                <Input className="max-w-[300px] border-2 rounded-xl" type="date" {...field} />
+                                                                {error && <p className="text-red-500">{error.message}</p>}
+                                                            </>)}
+                                                    />
+                                                </FormControl>
+                                            </FormItem>
 
-                                                    <FormItem>
-                                                        <FormLabel>Preferred Maintenance Area (Port/Location)</FormLabel>
-                                                        <FormControl>
-                                                            <Controller
-                                                                control={form.control}
-                                                                name="required_services.maintenance_location"
-                                                                render={({ field, fieldState: { error } }) => (
-                                                                    <>
-                                                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Location" {...field} />
-                                                                        {error && <p className="text-red-500">{error.message}</p>}
-                                                                    </>)}
-                                                            />
-                                                        </FormControl>
-                                                    </FormItem>
-                                                </div>
-                                            )
-                                        )}
-                                    />
+                                            <FormItem>
+                                                <FormLabel>Preferred Maintenance Area (Port/Location)</FormLabel>
+                                                <FormControl>
+                                                    <Controller
+                                                        control={form.control}
+                                                        name="required_services.maintenance_location"
+                                                        render={({ field, fieldState: { error } }) => (
+                                                            <>
+                                                                <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Location" {...field} />
+                                                                {error && <p className="text-red-500">{error.message}</p>}
+                                                            </>)}
+                                                    />
+                                                </FormControl>
+                                            </FormItem>
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>
