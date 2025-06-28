@@ -42,7 +42,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
-            additional_email: z.string().email().optional(),
+            additional_email: z.string().email().optional().or(z.literal('')),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
             additional_phone_number: z.string().optional(),
         })

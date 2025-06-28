@@ -54,7 +54,7 @@ const Page: React.FC = () => {
 
         if (formType === "buy_vessel") {
             flattenedData = {
-                user_id: user.id,
+                user_id: user?.id || null,
                 container_type: formData.container.type,
                 container_number: formData.container.number,
                 container_condition: formData.container.condition,
@@ -77,7 +77,7 @@ const Page: React.FC = () => {
         } else if (formType === "rent_vessel") {
 
             flattenedData = {
-                user_id: user.id,
+                user_id: user?.id || null,
                 container_type: formData.container.type,
                 container_number: formData.container.number,
                 container_condition: formData.container.condition,

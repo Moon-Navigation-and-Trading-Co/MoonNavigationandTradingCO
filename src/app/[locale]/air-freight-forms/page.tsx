@@ -48,7 +48,7 @@ const Page: React.FC = () => {
         console.log("AAAA")
 
         flattenedData = {
-            user_id: user.id,
+            user_id: user?.id || null,
 
             routing: formData.routing,
 

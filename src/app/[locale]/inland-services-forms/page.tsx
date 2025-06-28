@@ -54,7 +54,7 @@ const Page: React.FC = () => {
             console.log("BBB")
 
             flattenedData = {
-                user_id: user.id,
+                user_id: user?.id || null,
                 routing: formData.routing,
                 date: formData.date,
                 commodities: formData.commodities,
@@ -71,7 +71,7 @@ const Page: React.FC = () => {
         } else if (formType === "container_inland_services") {
 
             flattenedData = {
-                user_id: user.id,
+                user_id: user?.id || null,
                 routing: formData.routing,
                 commodities: formData.commodities,
                 inland_container: formData.vad.inland_container,

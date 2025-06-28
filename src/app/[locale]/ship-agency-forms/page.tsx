@@ -53,7 +53,7 @@ const Page: React.FC = () => {
 
     if (formType === "request_for_pda") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
         port_name: formData.port.name,
         vessel_name: formData.vessel.name,
         vessel_imo: formData.vessel.imo,
@@ -84,7 +84,7 @@ const Page: React.FC = () => {
       };
     } else if (formType === "sign_crew_members") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
         port_name: formData.port.name,
         vessel_name: formData.vessel.name,
         vessel_imo: formData.vessel.imo,
@@ -116,7 +116,7 @@ const Page: React.FC = () => {
       };
     } else if (formType === "transfer_spare_parts") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
         port_name: formData.port.name,
         vessel_name: formData.vessel.name,
         vessel_imo: formData.vessel.imo,
@@ -136,7 +136,7 @@ const Page: React.FC = () => {
       };
     } else if (formType === "bunkering_oil_supply") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
         vessel_name: formData.vessel.name,
         vessel_imo: formData.vessel.imo,
         port_name: formData.vessel.port_name,
@@ -160,7 +160,7 @@ const Page: React.FC = () => {
       };
     } else if (formType === "special_services") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
         vessel_name: formData.vessel.name,
         vessel_imo: formData.vessel.imo,
         port_name: formData.vessel.port_name,

@@ -49,7 +49,7 @@ const Page: React.FC = () => {
         if (formType === "project_cargo_services") {
 
             flattenedData = {
-                user_id: user.id,
+                user_id: user?.id || null,
                 routing: formData.routing,
                 effective_date: formData.dates.effective_date,
                 expiry_date: formData.dates.expiry_date,
@@ -75,7 +75,7 @@ const Page: React.FC = () => {
             };
         } else if (formType === "roll_on_off" || formType === "heavy_lift" || formType === "dangerous_cargo_services") {
             flattenedData = {
-                user_id: user.id,
+                user_id: user?.id || null,
                 routing: formData.routing,
                 effective_date: formData.dates.effective_date,
                 expiry_date: formData.dates.expiry_date,

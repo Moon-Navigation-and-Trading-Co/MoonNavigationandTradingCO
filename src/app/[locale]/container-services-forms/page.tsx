@@ -53,7 +53,7 @@ const Page: React.FC = () => {
 
     if (formType === "less_than_container_load") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
         routing: formData.routing,
 
         type_of_commodity: formData.commodities.type_of_commodity,
@@ -80,7 +80,7 @@ const Page: React.FC = () => {
       };
     } else if (formType === "standard_container") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
 
         routing: formData.routing,
 
@@ -105,7 +105,7 @@ const Page: React.FC = () => {
       };
     } else if (formType === "oversized_container") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
 
         routing: formData.routing,
 
@@ -132,7 +132,7 @@ const Page: React.FC = () => {
       };
     } else if (formType === "handling_stevedoring_storage") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
 
         location: formData.location,
 
@@ -150,7 +150,7 @@ const Page: React.FC = () => {
       };
     } else if (formType === "container_inland_services") {
       flattenedData = {
-        user_id: user.id,
+        user_id: user?.id || null,
         routing: formData.routing,
         additional_information: formData.additional_information,
         commodities: formData.commodities,

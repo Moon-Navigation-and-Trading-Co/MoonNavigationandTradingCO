@@ -43,7 +43,7 @@ const Page: React.FC = () => {
     const submitForm = async (formData: any) => {
         // Flatten the formData before inserting into Supabase
         const flattenedData = {
-            user_id: user.id,
+            user_id: user?.id || null,
             vessel_name: formData.vessel.name,
             vessel_imo: formData.vessel.imo,
             vessel_flag: formData.vessel.flag,

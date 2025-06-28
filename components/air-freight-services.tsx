@@ -66,7 +66,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
-            additional_email: z.string().email().optional(),
+            additional_email: z.string().email().optional().or(z.literal('')),
             additional_phone_number: z.string().optional(),
         })
         // Add more sections as needed

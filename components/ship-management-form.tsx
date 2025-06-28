@@ -59,7 +59,7 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
-            additional_email: z.string().email().optional(),
+            additional_email: z.string().email().optional().or(z.literal('')),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
             additional_phone_number: z.string().optional(),
         })
@@ -505,13 +505,13 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
                             control={form.control}
                             name="services.other"
                             render={({ field }) => (
-                                field.value && (
+                                field.value ? (
                                     <Input 
                                         className="max-w-[400px] border-2 rounded-xl mt-2" 
                                         placeholder="Please specify" 
                                         {...form.register('services.other_details')} 
                                     />
-                                )
+                                ) : null
                             )}
                         />
                     </div>

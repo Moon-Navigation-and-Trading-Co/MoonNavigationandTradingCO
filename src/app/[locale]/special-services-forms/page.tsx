@@ -55,7 +55,7 @@ const Page: React.FC = () => {
         if (formType === "special_services") {
 
             flattenedData = {
-                user_id: user.id,
+                user_id: user?.id || null,
                 port_name: formData.port.name,
                 vessel_name: formData.vessel.name,
                 vessel_imo: formData.vessel.imo,
