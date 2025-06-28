@@ -505,13 +505,15 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
                             control={form.control}
                             name="services.other"
                             render={({ field }) => (
-                                field.value ? (
-                                    <Input 
-                                        className="max-w-[400px] border-2 rounded-xl mt-2" 
-                                        placeholder="Please specify" 
-                                        {...form.register('services.other_details')} 
-                                    />
-                                ) : null
+                                <>
+                                    {field.value && (
+                                        <Input 
+                                            className="max-w-[400px] border-2 rounded-xl mt-2" 
+                                            placeholder="Please specify" 
+                                            {...form.register('services.other_details')} 
+                                        />
+                                    )}
+                                </>
                             )}
                         />
                     </div>
@@ -557,26 +559,28 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
                         control={form.control}
                         name="vessel_condition.is_operational"
                         render={({ field }) => (
-                            field.value === 'no' && (
-                                <FormItem>
-                                    <FormLabel>If not, please describe its current condition or requirements</FormLabel>
-                                    <FormControl>
-                                        <Controller
-                                            control={form.control}
-                                            name="vessel_condition.current_condition"
-                                            render={({ field, fieldState: { error } }) => (
-                                                <>
-                                                    <Textarea 
-                                                        className="max-w-[600px] border-2 rounded-xl min-h-[100px]" 
-                                                        placeholder="Please describe the current condition or requirements..." 
-                                                        {...field} 
-                                                    />
-                                                    {error && <p className="text-red-500">{error.message}</p>}
-                                                </>)}
-                                        />
-                                    </FormControl>
-                                </FormItem>
-                            )
+                            <>
+                                {field.value === 'no' && (
+                                    <FormItem>
+                                        <FormLabel>If not, please describe its current condition or requirements</FormLabel>
+                                        <FormControl>
+                                            <Controller
+                                                control={form.control}
+                                                name="vessel_condition.current_condition"
+                                                render={({ field, fieldState: { error } }) => (
+                                                    <>
+                                                        <Textarea 
+                                                            className="max-w-[600px] border-2 rounded-xl min-h-[100px]" 
+                                                            placeholder="Please describe the current condition or requirements..." 
+                                                            {...field} 
+                                                        />
+                                                        {error && <p className="text-red-500">{error.message}</p>}
+                                                    </>)}
+                                            />
+                                        </FormControl>
+                                    </FormItem>
+                                )}
+                            </>
                         )}
                     />
                 </div>
