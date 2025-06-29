@@ -210,9 +210,11 @@ export default function ProjectCargoPage() {
           </table>
         </div>
         <div className="w-full flex justify-end mt-8">
+        <Link href="/learn/project-cargo/learn-more"> 
           <RequestQuoteButton className="bg-[#283593] text-white font-bold font-montserrat rounded-full px-8 py-3 text-base">
-            Learn More About Our Project Cargo Solutions
-          </RequestQuoteButton>
+            Learn More About Our Project Cargo Solutions 
+            </RequestQuoteButton>
+          </Link> 
         </div>
       </section>
 

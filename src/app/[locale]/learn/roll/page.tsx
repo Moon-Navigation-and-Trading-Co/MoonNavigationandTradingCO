@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { useLocale } from "next-intl";
 import { Metadata } from "next";
 
@@ -53,6 +52,8 @@ export const metadata: Metadata = {
   }
 };
 
+import RequestQuoteButton from "@/components/RequestQuoteButton";
+
 export default function RollOnOffHero() {
   const locale = useLocale();
 
@@ -76,12 +77,9 @@ export default function RollOnOffHero() {
             >
               (RORO)
             </div>
-            <Button
-              asChild
-              className="rounded-full px-6 py-2 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors mb-0"
-            >
+            <RequestQuoteButton>
               <Link href={`/${locale}/ocean-freight-forms`}>Request a Quote</Link>
-            </Button>
+              </RequestQuoteButton>
           </div>
           {/* Right: Heading and Description */}
           <div className="flex-1">
@@ -137,14 +135,11 @@ export default function RollOnOffHero() {
               style={{ fontFamily: "Montserrat, sans-serif" }}
               loading="lazy"  
             />
-            <Button
-              asChild
-              className="rounded-full px-6 py-2 text-sm font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors mt-6"
-            >
+            <RequestQuoteButton>
               <Link href={`/${locale}/ocean-freight-forms`}>
                 Learn More About Our RORO Cargo Solutions
               </Link>
-            </Button>
+              </RequestQuoteButton>
           </div>
           {/* Right: Three Columns */}
           <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
@@ -557,9 +552,7 @@ export default function RollOnOffHero() {
               Our streamlined RoRo freight quotation process is designed for speed and convenience. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will evaluate the cargo type, dimensions, and route requirements to determine the best shipping solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless transport of vehicles, machinery, and oversized rolling cargo.
             </p>
             <Link href="/ocean-freight-forms" passHref legacyBehavior>
-              <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
-                Request a Quote
-              </a>
+              <RequestQuoteButton>Request a Quote</RequestQuoteButton>
             </Link>
           </div>
           {/* Right: Image */}

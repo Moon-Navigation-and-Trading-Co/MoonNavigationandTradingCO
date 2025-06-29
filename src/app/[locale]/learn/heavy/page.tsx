@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
+import RequestQuoteButton from "@/components/RequestQuoteButton"  
 
 export default function HeavyLiftCargoInfo() {
     const t = useTranslations("learn-heavy-lift-cargo")
@@ -24,11 +25,11 @@ export default function HeavyLiftCargoInfo() {
           <h1 className="text-2xl md:text-3xl font-semibold mb-6 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             Heavy Lift Cargo
           </h1>
-          <Button asChild className="w-fit">
-            <Link href="/ocean-freight-forms">
+          <Link href="/ocean-freight-forms">
+            <RequestQuoteButton>
               Request a Quote
-            </Link>
-          </Button>
+            </RequestQuoteButton>
+          </Link>
         </div>
         {/* Right: Info Card */}
         <div className="flex-1 rounded-2xl p-6">
@@ -470,11 +471,11 @@ export default function HeavyLiftCargoInfo() {
                     <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Our streamlined heavy lift freight quotation process is designed for speed and convenience. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will evaluate the cargo type, dimensions, and route requirements to determine the best shipping solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless transport of vehicles, machinery, and oversized rolling cargo.
                     </p>
-                    <Button asChild>
-                        <Link href="/ocean-freight-forms">
+                    <Link href="/ocean-freight-forms">
+                        <RequestQuoteButton>
                             Request a Quote
-                        </Link>
-                    </Button>
+                        </RequestQuoteButton>
+                    </Link> 
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
