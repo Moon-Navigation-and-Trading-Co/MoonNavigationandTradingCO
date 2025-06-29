@@ -80,6 +80,9 @@ export default async function RootLayout({
       className={GeistSans.className}
       suppressHydrationWarning
     >
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body className="bg-background text-foreground">
         <ThemeProvider attribute="class" defaultTheme="light">
           <main className="min-h-screen flex flex-col items-center">
@@ -89,7 +92,7 @@ export default async function RootLayout({
                 {/* navbar */}
                 <Navbar user={isUserLoggedIn} />
                 {/* content */}
-                <div className="flex flex-col pt-16 w-full max-w-[1300px] px-0 md:px-5">
+                <div className="flex flex-col pt-16 w-full px-0 md:px-5">
                   {children}
                 </div>
                 <div className="absolute inset-0 z-[-1] h-full w-full bg-white dark:bg-gray-800 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_30%,#000_40%,transparent_100%)] md:[mask-image:radial-gradient(ellipse_50%_50%_at_50%_35%,#000_40%,transparent_100%)]"></div>
