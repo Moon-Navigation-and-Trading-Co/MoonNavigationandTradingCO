@@ -234,9 +234,11 @@ export default function AirFreightInfo() {
                         <p className="text-muted-foreground leading-relaxed">{t("seaAir.caption2")}</p>
 
                         <div className="flex justify-end mt-8">
-                            <Button variant="default" className="bg-primary hover:bg-primary/90">
-                                {t("seaAir.contactUs")}
-                            </Button>
+                            <Link href="/?scroll=contact">
+                                <RequestQuoteButton>
+                                    {t("seaAir.contactUs")}
+                                </RequestQuoteButton>
+                            </Link>
                         </div>
                     </div>
                 </div>

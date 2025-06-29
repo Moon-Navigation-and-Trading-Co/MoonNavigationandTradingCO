@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton"
 
 export default function FullContainerLoadPage() {
     return (
@@ -35,9 +36,11 @@ export default function FullContainerLoadPage() {
                     <p className="text-muted-foreground text-lg mb-4">
                         (Standard, Reefer, and Dangerous)
                     </p>
-                    <Button asChild className="bg-primary text-white px-6 py-2 rounded-lg shadow hover:bg-primary/90">
-                        <a href="/container-services-forms">Request a Quote</a>
-                    </Button>
+                    <Link href="/container-services-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
+                    </Link> 
                 </div>
 
                 {/* Right: Description */}
@@ -416,8 +419,10 @@ regulatory compliance throughout the journey.</p>
                         quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
                         cargo movement.
                     </p>
-                    <Link href="/container-services-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
-                        Request a Quote
+                    <Link href="/container-services-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
                     </Link>
                 </div>
                 {/* Right: Image */}

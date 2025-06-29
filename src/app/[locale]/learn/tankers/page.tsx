@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { Metadata } from "next";
+import RequestQuoteButton from "@/components/RequestQuoteButton" 
+import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "Tankers | Moon Navigation and Trading Co. - Ocean Freight & Transportation",
@@ -64,9 +66,11 @@ export default function TankersPage() {
                     <h1 className="text-3xl font-normal mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Tankers
                     </h1>
-                    <button className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors mb-4">
-                        Request a Quote
-                    </button>
+                    <Link href="/ocean-freight-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
+                    </Link>
                 </header>
                 {/* Right: Description */}
                 <section className="flex-1 flex flex-col items-start">
@@ -500,9 +504,11 @@ export default function TankersPage() {
                         your cargo. You will receive a customized quotation directly in your email, ensuring accurate
                         pricing and seamless delivery.
                     </p>
-                    <button className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
-                        Request a Quote
-                    </button>
+                    <Link href="/ocean-freight-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
+                    </Link> 
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">

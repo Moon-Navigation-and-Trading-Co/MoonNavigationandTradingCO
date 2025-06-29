@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { Metadata } from "next"
 import Head from "next/head"
+import RequestQuoteButton from "@/components/RequestQuoteButton"
 
 export const metadata: Metadata = {
     title: "BreakBulk Cargo Services | Moon Navigation and Trading Co.",
@@ -78,10 +79,10 @@ export default function BreakBulkInfo() {
                         <h1 className="text-2xl md:text-3xl font-semibold mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                             BreakBulk Cargo
                         </h1>
-                        <Link href="/ocean-freight-forms" passHref legacyBehavior>
-                            <a className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors w-max">
+                        <Link href="/ocean-freight-forms">
+                            <RequestQuoteButton>
                                 Request a Quote
-                            </a>
+                            </RequestQuoteButton>
                         </Link>
                     </div>
                     {/* Right: Info Card */}
@@ -419,9 +420,7 @@ export default function BreakBulkInfo() {
                             ensuring accurate pricing, safe handling, and seamless delivery of your cargo.
                         </p>
                         <Link href="/ocean-freight-forms" passHref legacyBehavior>
-                            <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
-                                Request a Quote
-                            </a>
+                            <RequestQuoteButton> Request a Quote</RequestQuoteButton>
                         </Link>
                     </div>
                     {/* Right: Image */}

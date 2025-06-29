@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { useTranslations } from 'next-intl'
 import { Metadata } from 'next'
+import RequestQuoteButton from "@/components/RequestQuoteButton" 
 
 export const metadata: Metadata = {
   title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
@@ -69,10 +70,10 @@ export default function ShippingMethodsInfo() {
         {/* Left Side: Title and Button */}
         <div className="flex flex-col justify-center items-start">
           <h1 className="text-4xl md:text-5xl font-medium mb-8 leading-tight">Live Stock<br />Transportation</h1>
-          <Link href="/ocean-freight-forms" passHref>
-            <Button className="bg-[#3B409F] text-white text-base font-semibold rounded-full px-8 py-3 shadow-md hover:bg-[#2c307a] transition-all">
+          <Link href="/ocean-freight-forms">
+            <RequestQuoteButton>
               Request a Quote
-            </Button>
+            </RequestQuoteButton>
           </Link>
         </div>
         {/* Right Side: Info Card */}
@@ -295,10 +296,10 @@ export default function ShippingMethodsInfo() {
             measures for your shipment. You will receive a customized quotation directly in your email,
             ensuring accurate pricing and the highest standards of animal welfare and safety.
           </p>
-          <Link href="/ocean-freight-forms" passHref legacyBehavior>
-            <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
+          <Link href="/ocean-freight-forms">
+            <RequestQuoteButton>
               Request a Quote
-            </a>
+            </RequestQuoteButton>
           </Link>
         </div>
         {/* Right: Image */}
