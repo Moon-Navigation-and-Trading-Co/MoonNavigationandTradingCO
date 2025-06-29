@@ -105,6 +105,8 @@ const config = {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			fontFamily: {
+				sans: ['Raleway', 'sans-serif'],
+				raleway: ['Raleway', 'sans-serif'],
 				montserrat: ['Montserrat', 'sans-serif'],
 			},
 		}

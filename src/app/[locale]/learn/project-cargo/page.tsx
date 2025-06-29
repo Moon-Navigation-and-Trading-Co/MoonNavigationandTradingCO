@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 
 //seo
 export const metadata = {
@@ -95,11 +96,11 @@ export default function ProjectCargoPage() {
             <h2 className="text-3xl md:text-4xl font-light mb-8">
               Project Cargo<br />Services
             </h2>
-            <Button asChild className="w-fit">
-              <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
+            <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
+              <RequestQuoteButton>
                 Request a Quote
-              </Link>
-            </Button>
+              </RequestQuoteButton>
+            </Link>
           </div>
           {/* Right: What is Project Cargo */}
           <div className="flex-1">
@@ -191,89 +192,66 @@ project cargo logistics, making this a critical aspect of services in global tra
       </section>
 
       <section className="max-w-7xl mx-auto">
-        <h2 className="text-xl font-semibold mb-4">
+        <h2 className="text-3xl font-bold mb-10 text-center font-sans">
           Key Differences between Project Cargo and Standard Cargo
         </h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full border border-border bg-background text-sm">
+          <table className="min-w-full bg-white border border-[#3846a5] rounded-xl text-base font-sans">
             <thead>
-              <tr className="bg-secondary">
-                <th className="px-4 py-2 border-b border-border font-semibold text-left w-48 text-foreground">Feature</th>
-                <th className="px-4 py-2 border-b border-border font-semibold text-left w-64 text-foreground">Project Cargo</th>
-                <th className="px-4 py-2 border-b border-border font-semibold text-left w-64 text-foreground">Standard Cargo</th>
+              <tr className="bg-[#f5f8ff] border-b border-[#3846a5]">
+                <th className="px-4 py-3 border-r border-[#3846a5] font-bold text-left text-black">Feature</th>
+                <th className="px-4 py-3 border-r border-[#3846a5] font-bold text-left text-black">Project Cargo</th>
+                <th className="px-4 py-3 font-bold text-left text-black">Standard Cargo</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="px-4 py-2 border-b border-border align-top text-foreground">Size &amp; Weight</td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">Oversized, heavy, and irregular-shaped items</td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">Standard-sized goods that fit in containers or pallets</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Size &amp; Weight</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Oversized, heavy, and irregular-shaped items</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] align-top">Standard-sized goods that fit in containers or pallets</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-border align-top text-foreground">Handling Requirements</td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Requires specialized handling (cranes, flat racks, heavy-lift vessels, RoRo, breakbulk)
-                </td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Handled using conventional shipping methods (pallets, boxes, containers)
-                </td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Handling Requirements</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Requires specialized handling (cranes, flat racks, heavy-lift vessels, RoRo, breakbulk)</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] align-top">Handled using conventional shipping methods (pallets, boxes, containers)</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-border align-top text-foreground">Logistics Complexity</td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  High – involves route surveys, permits, customs clearances, and infrastructure adjustments
-                </td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Low – follows standard transportation procedures
-                </td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Logistics Complexity</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">High – involves route surveys, permits, customs clearances, and infrastructure adjustments</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] align-top">Low – follows standard transportation procedures</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-border align-top text-foreground">Transport Equipment</td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Heavy-lift vessels, modular trailers, open-top containers, SPMTs
-                </td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Standard containers (20ft, 40ft), trucks, forklifts
-                </td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Transport Equipment</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Heavy-lift vessels, modular trailers, open-top containers, SPMTs</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] align-top">Standard containers (20ft, 40ft), trucks, forklifts</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-border align-top text-foreground">Time Sensitivity</td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Often critical for large-scale projects, delays can be costly
-                </td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  More flexible in transit schedules
-                </td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Time Sensitivity</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Often critical for large-scale projects, delays can be costly</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] align-top">More flexible in transit schedules</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-border align-top text-foreground">Industries Served</td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Energy, construction, oil &amp; gas, mining, infrastructure
-                </td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Retail, electronics, textiles, consumer goods
-                </td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Industries Served</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Energy, construction, oil &amp; gas, mining, infrastructure</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] align-top">Retail, electronics, textiles, consumer goods</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-border align-top text-foreground">Risk &amp; Insurance</td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Higher risk due to size and complexity, requires specialized insurance
-                </td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Lower risk, covered by standard cargo insurance
-                </td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Risk &amp; Insurance</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Higher risk due to size and complexity, requires specialized insurance</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] align-top">Lower risk, covered by standard cargo insurance</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 border-b border-border align-top text-foreground">Shipping Cost</td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Higher due to special handling, permits, and logistics planning
-                </td>
-                <td className="px-4 py-2 border-b border-border align-top text-muted-foreground">
-                  Lower, based on weight, volume, and standard tariffs
-                </td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Shipping Cost</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] border-r align-top">Higher due to special handling, permits, and logistics planning</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] align-top">Lower, based on weight, volume, and standard tariffs</td>
               </tr>
             </tbody>
           </table>
+        </div>
+        <div className="w-full flex justify-end mt-8">
+          <RequestQuoteButton className="bg-[#283593] text-white font-bold font-montserrat rounded-full px-8 py-3 text-base">
+            Learn More About Our Project Cargo Solutions
+          </RequestQuoteButton>
         </div>
       </section>
 
@@ -358,11 +336,11 @@ project cargo logistics, making this a critical aspect of services in global tra
               select the best transport solution. You will receive a customized quotation directly in your email,
               ensuring accurate pricing and seamless execution for your specialized cargo.
             </p>
-            <Button asChild>
-              <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
+            <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
+              <RequestQuoteButton>
                 Request a Quote
-              </Link>
-            </Button>
+              </RequestQuoteButton>
+            </Link>
           </div>
           {/* Right: Image */}
           <div className="flex-1 flex justify-center">
