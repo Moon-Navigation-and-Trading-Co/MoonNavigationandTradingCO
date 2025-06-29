@@ -15,7 +15,7 @@ export const signUpAction = async (formData: FormData) => {
   const name = `${firstname} ${lastname}`;
 
   const supabase = createClient();
-  const origin = headers().get("origin");
+  const origin = headers().get("origin") || process.env.NEXT_PUBLIC_SITE_URL;
 
   if (!email || !password || !passwordReconfirm) {
     return encodedRedirect("error", "/sign-up", "Email and password are required");
@@ -77,29 +77,32 @@ export const forgotPasswordAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const callbackUrl = formData.get("callbackUrl")?.toString();
   const supabase = createClient();
-  const origin = headers().get("origin");
+  const origin = headers().get("origin") || process.env.NEXT_PUBLIC_SITE_URL;
 
   if (!email) {
     return encodedRedirect("error", "/forgot-password", "Email is required");
   }
 
+  // Check if user exists in users table (for logging purposes only)
   const { data: existingUser, error: userCheckError } = await supabase
-    .from("users")
-    .select("id, email")
+    .from("auth.users")
+    .select("id")
     .eq("email", email)
     .single();
 
-  if (existingUser && !userCheckError) {
-    const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${origin}/protected/reset-password`,
-    });
+  console.log(`User check for ${email}:`, { existingUser, userCheckError });
 
-    if (resetError) {
-      console.error("Supabase reset email failed:", resetError.message);
-      return encodedRedirect("error", "/forgot-password", "Could not send reset email");
-    }
-  } else {
+  if (!existingUser) {
     console.log(`Password reset requested for non-existent email: ${email}`);
+  }
+
+  const { error: resetError } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${origin}/protected/reset-password`,
+  });
+
+  if (resetError) {
+    console.error("Supabase reset email failed:", resetError.message);
+    return encodedRedirect("error", "/forgot-password", "Could not send reset email");
   }
 
   if (callbackUrl) {

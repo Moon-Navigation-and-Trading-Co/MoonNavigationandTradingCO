@@ -2691,10 +2691,6 @@ export default function FAQSearch() {
     const [search, setSearch] = useState("");
     const faqs = defaultFAQs;
 
-    // Debug logging
-    console.log('Total FAQs available:', faqs.length);
-    console.log('First FAQ:', faqs[0]);
-
     const filteredFAQs = useMemo(() => {
         if (!search.trim()) return [];
         const lower = search.toLowerCase();
