@@ -45,15 +45,14 @@ const ReeferPage = () => {
         {/* Right: Description */}
         <div className="flex-[2] text-gray-700 text-sm md:text-base flex flex-col gap-4">
           <p>
-            When it comes to refrigerated logistics, we understand cargo assurance and reliability are critical. Our Reefer
-            Containers represent premium service, built to keep your temperature-sensitive products safe throughout the
-            shipping process. With proven performance handling valued pharmaceuticals, chemicals, or other temperature-controlled goods, we ensure optimal conditions from origin to destination.
-          </p>
+          When it comes to transporting temperature-sensitive cargo, precision and reliability are critical. Our Reefer
+Containers (refrigerated containers) provide the ideal solution for maintaining product integrity throughout the
+shipping process. Whether you are moving perishable food, pharmaceuticals, chemicals, or other temperature-
+controlled goods, we ensure optimal conditions from origin to destination.</p>
           <p>
-            At Moon Navigation and Trading Co., we offer state-of-the-art reefer container equipment with advanced
-            temperature monitoring and control systems. Our team is experienced in handling cold-chain logistics, ensuring
-            compliance with international standards, and delivering your cargo in perfect condition.
-          </p>
+          At Moon Navigation and Trading Co., we offer state-of-the-art reefer containers equipped with advanced
+temperature monitoring and control systems. Our team is experienced in handling cold chain logistics, ensuring
+compliance with international standards, and delivering your cargo in perfect condition.</p>
         </div>
       </div>
     <div className="w-full max-w-5xl mt-16 mb-8">
@@ -69,7 +68,7 @@ const ReeferPage = () => {
           <img
             src="/reefer-fresh-produce.jpg"
             alt="Fresh Produce & Perishable Foods"
-            className="rounded-2xl w-28 h-28 object-cover mb-4 border border-gray-200"
+            className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
             loading="lazy"
           />
           <h3 className="font-medium text-sm mb-1">Fresh Produce &amp; Perishable Foods</h3>
@@ -81,7 +80,7 @@ const ReeferPage = () => {
           <img
             src="/reefer-pharma.jpg"
             alt="Pharmaceuticals & Medical Supplies"
-            className="rounded-2xl w-28 h-28 object-cover mb-4 border border-gray-200"
+            className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
             loading="lazy"
           />
           <h3 className="font-medium text-sm mb-1">Pharmaceuticals &amp; Medical Supplies</h3>
@@ -93,7 +92,7 @@ const ReeferPage = () => {
           <img
             src="/reefer-chemicals.jpg"
             alt="Chemical Products"
-            className="rounded-2xl w-28 h-28 object-cover mb-4 border border-gray-200"
+            className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
             loading="lazy"
           />
           <h3 className="font-medium text-sm mb-1">Chemical Products</h3>
@@ -106,7 +105,7 @@ const ReeferPage = () => {
           <img
             src="/reefer-flowers.jpg"
             alt="Floral Products"
-            className="rounded-2xl w-28 h-28 object-cover mb-4 border border-gray-200"
+            className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
             loading="lazy"
           />
           <h3 className="font-medium text-sm mb-1">Floral Products</h3>
@@ -118,7 +117,7 @@ const ReeferPage = () => {
           <img
             src="/reefer-frozen.jpg"
             alt="Frozen Goods & Ice Cream"
-            className="rounded-2xl w-28 h-28 object-cover mb-4 border border-gray-200"
+            className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
             loading="lazy"
           />
           <h3 className="font-medium text-sm mb-1">Frozen Goods &amp; Ice Cream</h3>
@@ -130,7 +129,7 @@ const ReeferPage = () => {
           <img
             src="/reefer-beverages.jpg"
             alt="Beverages & Dairy Products"
-            className="rounded-2xl w-28 h-28 object-cover mb-4 border border-gray-200"
+            className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
             loading="lazy"
           />
           <h3 className="font-medium text-sm mb-1">Beverages &amp; Dairy Products</h3>
@@ -217,8 +216,8 @@ const ReeferPage = () => {
           </p>
           <ul className="list-disc list-inside text-muted-foreground text-sm space-y-1 pl-4">
             <li>Full compliance with international cold chain standards</li>
-            <li>Accurate documentation and inspection records</li>
-            <li>Seals and regulations used to support safe cargo</li>
+            <li>Accurate documentation and temperature logs</li>
+            <li>Customs and regulatory support for specialized cargo</li>
             <li>Pre-trip inspections (PTI) to verify container readiness</li>
           </ul>
         </div>
@@ -230,8 +229,10 @@ const ReeferPage = () => {
             Global Reach,<br className="hidden md:inline" /> Reliable Transit
           </h3>
           <p className="text-muted-foreground text-sm md:text-base">
-            Whether it's a short-haul or long-haul movement, our global network allows us to offer fast, secure, and reliable reefer transport solutions. With strong partnerships with key ports and shipping lines, we ensure timely deliveries and end-to-end coordination.
-          </p>
+          Whether it is a short-haul or long-haul shipment, our global network allows
+us to offer fast, secure, and reliable reefer transport solutions. With strong
+partnerships across key ports and shipping lines, we ensure timely
+deliveries and end-to-end coordination.</p>
         </div>
         {/* Bottom Right: Image */}
         <div className="flex flex-col items-end order-1 md:order-2">
@@ -253,7 +254,7 @@ const ReeferPage = () => {
       <h2 className="text-2xl font-semibold mb-6">Comparison: Reefer Containers vs. Standard Containers</h2>
       <table className="min-w-full border border-gray-300 dark:border-[#23294d] rounded-2xl bg-white dark:bg-[#181c2a]">
         <thead>
-          <tr className="bg-gray-100 dark:bg-[#23294d]">
+          <tr className="">
             <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Feature</th>
             <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Reefer Containers (Refrigerated)</th>
             <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Standard Containers</th>
@@ -261,54 +262,54 @@ const ReeferPage = () => {
         </thead>
         <tbody className="text-sm">
           <tr>
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Purpose</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Temperature-sensitive cargo transport</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">General cargo transport</td>
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Purpose</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Temperature-sensitive cargo transport</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">General cargo transport</td>
           </tr>
-          <tr className="bg-gray-50 dark:bg-[#20243a]">
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Temperature Control</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Adjustable temperature control (typically -30°C to +30°C)</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">No temperature control</td>
-          </tr>
-          <tr>
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Cargo Types</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Perishable food, pharmaceuticals, chemicals, etc.</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Dry goods, machinery, textiles, packaged goods</td>
-          </tr>
-          <tr className="bg-gray-50 dark:bg-[#20243a]">
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Ventilation &amp; Humidity Control</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Equipped with air circulation and humidity regulation</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Not available</td>
+          <tr className="">
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200 ">Temperature Control</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Adjustable temperature control (typically -30°C to +30°C)</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">No temperature control</td>
           </tr>
           <tr>
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Insulation</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Insulated walls, floor, and ceiling</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Not insulated</td>
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d border-r border-gray-200]">Cargo Types</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Perishable food, pharmaceuticals, chemicals, etc.</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Dry goods, machinery, textiles, packaged goods</td>
           </tr>
-          <tr className="bg-gray-50 dark:bg-[#20243a]">
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Container Cost</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Higher cost due to refrigeration equipment</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Lower cost</td>
-          </tr>
-          <tr>
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Power Supply</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Requires power source during transit and storage</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Not required</td>
-          </tr>
-          <tr className="bg-gray-50 dark:bg-[#20243a]">
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Monitoring Options</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Cargo condition monitored throughout transportation</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Basic handling only</td>
+          <tr className="">
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d border-r border-gray-200]">Ventilation &amp; Humidity Control</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Equipped with air circulation and humidity regulation</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Not available</td>
           </tr>
           <tr>
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Common Sizes</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">20ft / 40ft reefer and high cube</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">20ft / 40ft standard and high cube</td>
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d border-r border-gray-200]">Insulation</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Insulated walls, floor, and ceiling</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Not insulated</td>
           </tr>
-          <tr className="bg-gray-50 dark:bg-[#20243a]">
-            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Applications</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Cold chain logistics, food supply, medical shipments</td>
-            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Industrial, commercial, and general cargo</td>
+          <tr className="">
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Container Cost</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Higher cost due to refrigeration equipment</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Lower cost</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Power Supply</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Requires power source during transit and storage</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Not required</td>
+          </tr>
+          <tr className="">
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Monitoring Options</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Cargo condition monitored throughout transportation</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Basic handling only</td>
+          </tr>
+          <tr>
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Common Sizes</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">20ft / 40ft reefer and high cube</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">20ft / 40ft standard and high cube</td>
+          </tr>
+          <tr className="">
+            <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Applications</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Cold chain logistics, food supply, medical shipments</td>
+            <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Industrial, commercial, and general cargo</td>
           </tr>
         </tbody>
       </table>
@@ -449,8 +450,7 @@ const ReeferPage = () => {
           4. Multimodal Transport Options (Sea, Air, Inland)
         </h3>
         <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          We provide flexible multimodal transportation options, combining sea, air, and inland logistics to optimize your supply chain and distribution. Whether it's single or hybrid (e.g. conventional, break-bulk, or reefer) shipments, maintain temperature control across all transport modes.
-        </p>
+        We provide flexible multimodal transportation options, combining sea, air, and inland logistics to optimize your supply chain and distribution. Whether it's single or hybrid (e.g. conventional, break-bulk, or reefer) shipments, maintain temperature control across all transport modes.</p>
         <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           <li>Seamless cross-modal transfers without temperature disruption</li>
           <li>Efficient coordination between sea, air, and land carriers</li>
@@ -465,8 +465,7 @@ const ReeferPage = () => {
           5. Risk Management &amp; Cargo Insurance Solutions
         </h3>
         <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-          Protecting your high-value and perishable cargo is our priority. We offer tailored risk mitigation strategies and insurance coverage to safeguard your goods from unforeseen events such as equipment failure, delays, or spoilage.
-        </p>
+        Protecting your high-value and perishable cargo is our priority. We offer tailored risk mitigation strategies and insurance coverage to safeguard your goods from unforeseen events such as equipment failure, delays, or spoilage.</p>
         <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           <li>Reefer cargo-specific insurance options</li>
           <li>Risk analysis and contingency planning</li>

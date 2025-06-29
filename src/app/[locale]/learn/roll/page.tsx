@@ -258,11 +258,11 @@ export default function RollOnOffHero() {
       </section>
 
       <section className="flex">
-        <div className="relative z-10 w-full max-w-[420px] mr-40 ">
+        <div className="relative z-10 w-full mr-40 ">
           <Image
             src="/roroCarsImage.jpg"
             alt="Cars getting off a Moon Navigation RoRo ship"
-            width={420}
+            width={600}
             height={320}
             className="rounded-2xl object-cover w-full h-[320px] shadow-lg"
             style={{ fontFamily: 'Montserrat, sans-serif', marginRight: '50px' }}

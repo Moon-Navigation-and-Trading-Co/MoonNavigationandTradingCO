@@ -37,11 +37,21 @@ export default function ShippingMethodsInfo() {
             What is Less than container load?
           </h2>
           <p className="text-muted-foreground mb-4 text-sm md:text-base">
-            Less Than Container Load (LCL) is a shipping method specifically designed for businesses with shipments that do not require a whole container. This service enables multiple customers to share container space, making it an ideal solution for smaller shipments. When businesses lack the shipment volume necessary for a full container, LCL provides a cost-effective and efficient alternative. It allows you to pay only for the space you use, so your products are delivered reliably to far-reaching regions while maintaining streamlined transit times and security protocols across global markets.
+          Less than Container Load (LCL) is a shipping method specifically designed for businesses with shipments that
+do not fill an entire shipping container. This service enables multiple shipments from different clients to be
+consolidated within a single container, enabling businesses to share transportation costs effectively. Our LCL is
+an ideal solution for smaller shipments, as it allows you to pay only for the space you use. As it provides a
+cost-effective way to transport goods while maintaining efficient transit times and ensuring secure delivery
+across global markets.
+
+
           </p>
           <p className="text-muted-foreground text-sm md:text-base">
-            At Moon Navigation and Trading Company, we are committed to providing exceptional LCL shipping solutions that cater to your business's unique needs. We work to visually maximize your cost savings, while ensuring the highest standards of care and reliability. Our team of industry professionals will advise and coordinate every aspect, from packing and secure transit to shipping routes for LCL. We ensure your goods are protected and efficiently delivered, backing your business operations so that commitments are met without added stress.
-          </p>
+          At Moon Navigation and Trading Co., we are committed to providing exceptional LCL shipping solutions that
+cater to the unique needs of our clients. With years of industry experience, our team of professionals ensures
+that your cargo is managed with the highest of care and efficiency. We understand the complexities of
+international logistics and strive to simplify the shipping process for you. Trust us to deliver your safely and
+efficiently, enhancing your business operations with our comprehensive and reliable services.</p>
         </div>
       </div>
       {/* When to use LCL Section */}
@@ -52,11 +62,18 @@ export default function ShippingMethodsInfo() {
             When to use LCL?
           </h2>
           <p className="text-muted-foreground mb-3 text-sm md:text-base">
-            This method is particularly effective for businesses seeking an economical, efficient use of space. With Moon Navigation and Trading Co., if you need to ship small parcels or pallets but can't fill a full 20' or 40' container, LCL is the most flexible freight option to fit a strict container volume. LCL shipping is also ideal whenever, additionally, you encounter seasonal volume variations, demanding flexibility for changing inventory requirements and growth. It can also streamline your logistics chain while maintaining traceability and timely delivery of your goods.
-          </p>
+          This method is particularly effective for stackable cargo, ensuring efficient use of space. With Moon
+Navigation and Trading Co., If you need to ship small boxes or pallets that can fit into 20-foot or 40-foot
+containers but do not have enough cargo to fill an entire container, our LCL shipping is the ideal solution
+Additionally, it can accommodate non-stackable items, providing flexibility to meet shipping requirements.
+With our LCL, you can optimize your logistics while maintaining the security and timely delivery of your
+goods. </p>
           <p className="text-muted-foreground text-sm md:text-base">
-            LCL is especially favorable for small and medium enterprises (SMEs) that do not have the volume to fill an entire container, whether due to large and irregular orders, or highly fluctuating demand schedules for those exploring new market opportunities. By leveraging LCL shipping, businesses can consolidate their supply chain efficiency, reduce inventory costs, and maintain flexibility in response to market fluctuations, all while ensuring the reliable and timely delivery of their products.
-          </p>
+          LCL is especially beneficial for small and medium enterprises (SMEs) that do not have the volume to fill an
+entire container. It also caters to large and medium enterprises (LMEs) with fluctuating demands or those
+exploring new market opportunities. By leveraging LCL shipping, these businesses can enhance their supply
+chain efficiency, reduce inventory costs, and maintain flexibility in adapting to market fluctuations, all while
+ensuring the reliable and timely delivery of their products.</p>
         </div>
         {/* Right: Image */}
         <div className="flex justify-center items-center">
@@ -128,11 +145,17 @@ export default function ShippingMethodsInfo() {
             Tailored Freight Consolidation Services for Smooth, Efficient, and Cost-Effective Global Transport.
           </p>
           <p className="text-sm md:text-base text-muted-foreground">
-            At Moon Navigation and Trading SA, we pride ourselves on leveraging collaborative global networks and deep expertise in freight consolidation to provide seamless Less Than Container Load (LCL) shipping solutions. We streamline the complexities of international shipping with a focus on reliability, security, and cost-effectiveness. Each shipment receives exact attention and optimized routing, backed by a core commitment to ensuring that your goods are delivered securely and efficiently, tailored to your unique business needs.
-          </p>
+          At Moon Navigation and Trading Co., we pride ourselves on leveraging an extensive global
+network and deep expertise in freight consolidation to provide superior Less than Container
+Load (LCL) shipping solutions. We understand the complexities of international shipping and
+strive to simplify the process by offering consolidated services that optimize costs without
+sacrificing quality. As we are committed to ensuring that your goods are transported securely
+and efficiently, tailored to your unique business needs. </p>
           <p className="text-sm md:text-base text-muted-foreground mt-2">
-            Our comprehensive LCL services offer flexible scheduling, reliable transit times, and real-time tracking, empowering you to optimize storage and reduce costs while maintaining the highest standards of speed and safety. With our focus on meticulous detail and customer satisfaction, we strive to be your trusted partner in navigating the complexities of international logistics.
-          </p>
+          Our comprehensive LCL services offer flexible scheduling, reliable transit times, and real-time
+tracking, empowering you to optimize shipping costs while maintaining the highest standards of
+speed and safety. With our focus on excellence and customer satisfaction, we strive to be your
+trusted partner in navigating the complexities of international logistics. </p>
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-20">

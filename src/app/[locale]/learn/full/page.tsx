@@ -46,10 +46,17 @@ export default function FullContainerLoadPage() {
                         What is Full Container Load?
                     </h2>
                     <p className="text-base text-foreground leading-relaxed">
-                        Full Container Load (FCL) is the ideal shipping solution for businesses that need exclusive use of an entire container. FCL can be utilized with standard, reefer (refrigerated), or hazardous (dangerous) cargo. You'll benefit from enhanced efficiency, security, and lower handling risk—making it perfect for companies with larger shipments. Whether you need insulated containers for perishables or temperature-sensitive goods, or specialized loading for hazardous materials, FCL ensures your cargo receives dedicated attention from origin to destination.
-                        <br /><br />
-                        At Moon Navigation and Trading Co., we provide robust and cost-effective FCL shipping solutions tailored to your specific requirements. Backed by a worldwide network of carriers, customs expertise, and real-time shipment management, our team ensures your cargo reaches its destination safely and on schedule. Request your FCL quote today and gain the highest level of shipment control and precision—supporting your supply chain and business growth every step of the way.
-                    </p>
+                        Full Container Load (FCL) is a shipping method designed for businesses that require the
+                        exclusive use of an entire shipping container. This service ensures maximum security, faster
+                        transit times, and reduced handling risks, making it the ideal choice for bulk shipments. With
+                        FCL, your cargo remains sealed from origin to destination, minimizing the chances of damage,
+                        loss, or delays.<br /><br />
+                        At Moon Navigation and Trading Co., we specialize in providing efficient and cost-effective FCL
+                        shipping solutions tailored to meet your logistics needs. With years of industry experience, our
+                        dedicated team ensures seamless container management, proper documentation, and global
+                        coordination for smooth and hassle-free transportation. Trust us to handle your shipments with
+                        expertise, reliability, and precision, ensuring timely and secure deliveries that support your
+                        business growth.</p>
                 </div>
             </div>
             <div className="w-full max-w-7xl mt-12">
@@ -57,46 +64,69 @@ export default function FullContainerLoadPage() {
                     What is the difference between FCL and LCL?
                 </h2>
                 <div className="overflow-x-auto rounded-lg shadow">
-                    <table className="min-w-full border border-gray-300 bg-background text-sm md:text-base">
+                    <table className="min-w-full border border-gray-300 bg-background text-sm md:text-base text-center">
                         <thead>
-                            <tr className="bg-gray-100 dark:bg-gray-800">
-                                <th className="px-4 py-3 border-b border-gray-300 text-left font-semibold">Feature</th>
-                                <th className="px-4 py-3 border-b border-gray-300 text-left font-semibold">FCL (Full Container Load)</th>
-                                <th className="px-4 py-3 border-b border-gray-300 text-left font-semibold">LCL (Less than Container Load)</th>
+                            <tr className="table-auto">
+                                <th className="px-4 py-3 border-b border-gray-300 text-left font-semibold border-r border-gray-200 text-center">Feature</th>
+                                <th className="px-4 py-3 border-b border-gray-300 text-left font-semibold border-r border-gray-200 text-center">FCL (Full Container Load)</th>
+                                <th className="px-4 py-3 border-b border-gray-300 text-left font-semibold border-r border-gray-200 text-center">LCL (Less than Container Load)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="px-4 py-3 border-b border-gray-200">Cost</td>
-                                <td className="px-4 py-3 border-b border-gray-200">Higher (per FCL shipment)</td>
-                                <td className="px-4 py-3 border-b border-gray-200">Lower (for small cargo)</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Cost</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Higher (per FCL shipment)</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Lower (for small cargo)</td>
                             </tr>
-                            <tr className="bg-gray-50 dark:bg-gray-900">
-                                <td className="px-4 py-3 border-b border-gray-200">Volume</td>
-                                <td className="px-4 py-3 border-b border-gray-200">Large shipments</td>
-                                <td className="px-4 py-3 border-b border-gray-200">Small to medium shipments</td>
-                            </tr>
-                            <tr>
-                                <td className="px-4 py-3 border-b border-gray-200">Transit Time</td>
-                                <td className="px-4 py-3 border-b border-gray-200">Faster (direct shipping)</td>
-                                <td className="px-4 py-3 border-b border-gray-200">Slightly slower (consolidation)</td>
-                            </tr>
-                            <tr className="bg-gray-50 dark:bg-gray-900">
-                                <td className="px-4 py-3 border-b border-gray-200">Flexibility</td>
-                                <td className="px-4 py-3 border-b border-gray-200">Requires full container utilization</td>
-                                <td className="px-4 py-3 border-b border-gray-200">More frequent departures</td>
+                            <tr className="">
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Volume</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Large shipments</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Small to medium shipments</td>
                             </tr>
                             <tr>
-                                <td className="px-4 py-3">Security</td>
-                                <td className="px-4 py-3">Higher security (individual container)</td>
-                                <td className="px-4 py-3">Handled with other freight and shipments</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Transit Time</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Faster (direct shipping)</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Slightly slower (consolidation)</td>
+                            </tr>
+                            <tr className="">
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Flexibility</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Requires full container utilization</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">More frequent departures</td>
+                            </tr>
+                            <tr>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Security</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Higher security (individual container)</td>
+                                <td className="px-4 py-3 border-b border-gray-200 border-r border-gray-200">Handled with other freight and shipments</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <div className="w-full max-w-7xl mx-auto mt-16 flex flex-col md:flex-row items-center gap-10">
+                {/* Left: Text Content */}
+                <div className="flex-1">
+                    <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        When to use FCL?
+                    </h2>
+                    <p className="text-muted-foreground text-sm md:text-base mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        FCL shipping is the best choice when you have enough cargo to fill an entire or close to 20- or 40-foot container. This method ensures that your goods remain secure and untouched throughout the journey, reducing handling risks and transit time.
+                    </p>
+                    <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        FCL is particularly beneficial for businesses shipping large volumes, high-value cargo, or goods that require strict control over loading and unloading. It is also the preferred option for industries dealing with bulk commodities, machinery, and time-sensitive shipments, as it minimizes delays and provides a more predictable transit schedule. By choosing FCL, you can optimize your supply chain, streamline operations, and ensure cost efficiency for your large-scale shipping needs.
+                    </p>
+                </div>
+                {/* Right: Image */}
+                <div className="flex-1 flex justify-center">
+                    <img
+                        src="/fcl-when-to-use.jpg"
+                        alt="FCL container being lifted"
+                        className="rounded-2xl object-cover w-full max-w-xs md:max-w-sm shadow-lg"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
             <div className="w-full max-w-7xl mx-auto mt-16">
-                <h2 className="text-2xl font-semibold text-foreground mb-2 text-center">
+                <h2 className="text-2xl font-semibold text-primary mb-2 text-center">
                     Our Container Types for FCL
                 </h2>
                 <p className="text-muted-foreground text-center mb-8 text-sm md:text-base max-w-7xl mx-auto">
@@ -105,7 +135,7 @@ export default function FullContainerLoadPage() {
                 <div className="flex flex-col md:flex-row justify-center gap-8">
                     {/* Standard Containers */}
                     <div className="flex-1 flex flex-col items-center">
-                        <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg mb-4">
+                        <div className="w-50 h-32 rounded-[40px] overflow-hidden shadow-lg mb-4">
                             <img
                                 src="/container-standard.jpg"
                                 alt="Standard Containers"
@@ -119,7 +149,7 @@ export default function FullContainerLoadPage() {
                     </div>
                     {/* Reefer Containers */}
                     <div className="flex-1 flex flex-col items-center">
-                        <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg mb-4">
+                        <div className="w-50 h-32 rounded-[40px] overflow-hidden shadow-lg mb-4">
                             <img
                                 src="/container-banner.jpg"
                                 alt="Reefer Containers"
@@ -133,7 +163,7 @@ export default function FullContainerLoadPage() {
                     </div>
                     {/* Dangerous Goods Containers */}
                     <div className="flex-1 flex flex-col items-center">
-                        <div className="w-32 h-32 rounded-full overflow-hidden shadow-lg mb-4">
+                        <div className="w-[175px] h-32 rounded-[40px] overflow-hidden shadow-lg mb-4">
                             <img
                                 src="/container-dangerous.jpg"
                                 alt="Dangerous Goods Containers"
@@ -167,16 +197,18 @@ export default function FullContainerLoadPage() {
                     <div>
                         <h4 className="text-lg font-semibold text-foreground mb-2">Standard Cargo (Dry Containers)</h4>
                         <p className="text-muted-foreground text-sm mb-3">
-                            Our standard dry containers are ideal for transporting a wide range of general cargo that does not require temperature control. These containers offer a secure and robust structure suitable for most everyday shipment needs.
-                        </p>
+                        Our standard dry containers are ideal for transporting a wide range of general cargo that does
+not require temperature control. These containers offer a secure and cost-effective solution for
+your everyday shipping needs, such as:</p>
                         <ul className="list-disc list-inside text-muted-foreground text-sm mb-3 space-y-1">
-                            <li>Industrial Equipment &amp; Machinery – Heavy machinery, vehicle parts and manufacturing tools.</li>
-                            <li>Consumer Goods – Electronics, textiles, apparel, household appliances, and more.</li>
-                            <li>Raw Materials &amp; Construction Supplies – Palletized goods, metal products and packaging materials.</li>
+                            <li>Industrial Equipment &amp; Heavy machinery, spare parts, and mechanical tools.</li>
+                            <li>Consumer Goods –  Electronics, appliances, textiles, and packaged products.</li>
+                            <li>Raw Materials &amp; Construction Supplies – Palletized goods, paper products, packaging
+                            materials, and more.</li>
                         </ul>
                         <p className="text-muted-foreground text-sm">
-                            We ensure that these general items &amp; industrial parts are properly secured and handled safely from origin to destination, using high-standard containers and efficient logistics processes.
-                        </p>
+                        We ensure that your general cargo is handled with care, properly secured, and delivered safely
+                        from origin to destination, using high-quality containers and efficient logistics solutions.</p>
                     </div>
                     <div className="mt-4">
                         <a href="/learn/full/dry" className="inline-block">
@@ -205,16 +237,18 @@ export default function FullContainerLoadPage() {
                     <div>
                         <h4 className="text-lg font-semibold text-foreground mb-2">Reefer Cargo (Temperature-Sensitive Shipments)</h4>
                         <p className="text-muted-foreground text-sm mb-3">
-                            Our reefer (refrigerated) containers are perfect for transporting goods that require temperature control to maintain their quality and safety.
-                        </p>
+                        Our reefer (refrigerated) containers are perfect for transporting goods that require temperature
+                        control during transit, such as:</p>
                         <ul className="list-disc list-inside text-muted-foreground text-sm mb-3 space-y-1">
-                            <li>Perishable Food Items – Fresh produce, dairy, meat, and frozen foods.</li>
-                            <li>Pharma &amp; Chemicals – Medicines, vaccines, and sensitive chemicals.</li>
-                            <li>Floral &amp; Horticultural Products – Flowers and plants with temperature needs.</li>
+                            <li>Perishable Food Items – Fresh produce, dairy, and frozen foods.</li>
+                            <li>Pharma &amp; Chemicals – medicines and vaccines that need strict temperature control.</li>
+                            <li>Floral &amp; Horticultural Products – Goods that require constant climate monitoring.
+
+</li>
                         </ul>
                         <p className="text-muted-foreground text-sm">
-                            We provide advanced reefer solutions with real-time monitoring and 24/7 service to maintain product quality and prevent spoilage.
-                        </p>
+                        We ensure that your reefer cargo is transported at the right temperature, with real-time
+                        monitoring and 24/7 temperature control to maintain product quality and prevent spoilage.</p>
                     </div>
                     <div className="mt-4">
                         <a href="/learn/full/reefer" className="inline-block">
@@ -230,21 +264,24 @@ export default function FullContainerLoadPage() {
                     <div>
                         <h4 className="text-lg font-semibold text-foreground mb-2">Dangerous Goods in FCL</h4>
                         <p className="text-muted-foreground text-sm mb-3">
-                            When it comes to shipping dangerous goods (DG) – such as chemicals, flammable items, or toxic substances – we ensure strict compliance with international safety standards like IMO (International Maritime Organization) and ADR (European Agreement on Dangerous Goods). Our services for dangerous goods include:
-                        </p>
+                        When it comes to shipping dangerous goods (DG), such as chemicals, flammable items, or toxic
+substances, we ensure full compliance with international safety standards like IMO (International
+Maritime Organization) and ADR (European Agreement on Dangerous Goods).
+
+Our services for dangerous goods include</p>
                         <ul className="list-disc list-inside text-muted-foreground text-sm mb-3 space-y-1">
                             <li>
-                                <span className="font-medium">Proper Classification &amp; Labeling</span> – Correct packaging, labeling, and documentation for hazardous shipments.
-                            </li>
+                                <span className="font-medium">Proper Classification &amp; Labeling</span> – Correct packaging, labeling, and documentation for
+                                hazardous materials.</li>
                             <li>
-                                <span className="font-medium">Specialized Equipment</span> – Containers and equipment designed for safe transport of dangerous goods.
-                            </li>
+                                <span className="font-medium">Specialized Equipment</span> – Containers and equipment designed for safe transport of dangerous
+                                goods.</li>
                             <li>
-                                <span className="font-medium">Risk Management &amp; Emergency Response</span> – Adhering to regulations to manage risk and ensure quick action in case of emergencies.
-                            </li>
+                                <span className="font-medium">Risk Management &amp; Emergency Response</span> –  Adhering to protocols to manage risks and
+                                ensure quick action in case of emergencies.</li>
                             <li>
-                                <span className="font-medium">Regulatory Compliance</span> – Thorough coordination with international shipping regulations to avoid delays and ensure safe delivery.
-                            </li>
+                                <span className="font-medium">Regulatory Compliance</span> –  Ensuring full compliance with international shipping regulations to
+                                avoid delays and ensure safe delivery.</li>
                         </ul>
                     </div>
                     <div className="mt-4">
@@ -318,74 +355,81 @@ export default function FullContainerLoadPage() {
                     </table>
                 </div>
             </div>
-        <div className="w-full max-w-7xl mx-auto mt-20">
-            <h2 className="text-2xl font-semibold text-[#3B4B8C] mb-10 text-center">
-                Reasons to Choose Moon Navigation and Trading Co. for Your FCL Shipments
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-                <div>
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Complex Shipment Management</h3>
-                    <p className="text-muted-foreground text-sm md:text-base">
-                        We handle every phase of your FCL shipment—from booking and documentation to delivery—ensuring a smooth and hassle-free experience.
-                    </p>
+            <div className="w-full max-w-7xl mx-auto mt-20">
+                <h2 className="text-2xl font-semibold text-[#3B4B8C] mb-10 text-center">
+                    Reasons to Choose Moon Navigation and Trading Co. for Your FCL Shipments
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+                    <div>
+                        <h3 className="text-lg font-semibold mb-2 text-foreground">Complex Shipment Management</h3>
+                        <p className="text-muted-foreground text-sm md:text-base">
+                        We handle every stage of your FCL shipment—
+from booking and documentation to delivery—
+ensuring a smooth and hassle-free process.</p>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-semibold mb-2 text-foreground">Global Carrier Partnerships</h3>
+                        <p className="text-muted-foreground text-sm md:text-base">
+                        Our strong relationships with leading carriers
+guarantee competitive rates, priority space, and
+wide geographic coverage.</p>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-semibold mb-2 text-foreground">Secure & Timely Deliveries</h3>
+                        <p className="text-muted-foreground text-sm md:text-base">
+                        Reasons to Choose Moon Navigation and Trading Co. for Your FCL Shipments
+
+With proper cargo handling, sealed containers,
+and optimized transit times, your goods reach
+their destination safely and on schedule.</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Global Carrier Partnerships</h3>
-                    <p className="text-muted-foreground text-sm md:text-base">
-                        Our diverse relationships with leading carrier partners worldwide allow greater reach, and wide geographic coverage.
-                    </p>
-                </div>
-                <div>
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Secure & Timely Deliveries</h3>
-                    <p className="text-muted-foreground text-sm md:text-base">
-                        With proper security measures, robust coordination, and streamlined schedules, we ensure your goods reach their destination safely and on schedule.
-                    </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10 text-center">
+                    <div>
+                        <h3 className="text-lg font-semibold mb-2 text-foreground">Flexible Routing Solutions</h3>
+                        <p className="text-muted-foreground text-sm md:text-base">
+                        We offer tailored routing and scheduling options to
+meet your cargo requirements and delivery
+timelines.</p>
+                    </div>
+                    <div>
+                        <h3 className="text-lg font-semibold mb-2 text-foreground">Expert Support & Compliance Handling</h3>
+                        <p className="text-muted-foreground text-sm md:text-base">
+                        Our team provides timely updates, manages
+documentation, and ensures full customs and
+regulatory compliance throughout the journey.</p>
+                    </div>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10 text-center">
-                <div>
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Flexible Routing Solutions</h3>
-                    <p className="text-muted-foreground text-sm md:text-base">
-                        We offer tailored routing and scheduling options to solve cargo requirements and delivery timelines.
+            <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
+                {/* Left: Text Content */}
+                <div className="flex-1 min-w-[260px]">
+                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Get your Quote with Us
+                    </h2>
+                    <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        Our streamlined LCL freight quotation process is designed for speed and convenience. At
+                        Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
+                        Quotation by Request system. Simply fill out our short form to initiate your request. Once
+                        submitted, our team will assess your shipment’s volume, weight, and consolidation options to
+                        find the most efficient and cost-effective transport solution. You will receive a customized
+                        quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
+                        cargo movement.
                     </p>
+                    <Link href="/container-services-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
+                        Request a Quote
+                    </Link>
                 </div>
-                <div>
-                    <h3 className="text-lg font-semibold mb-2 text-foreground">Expert Support & Compliance Handling</h3>
-                    <p className="text-muted-foreground text-sm md:text-base">
-                        Our team provides timely updates, manages regulatory compliance throughout the journey.
-                    </p>
+                {/* Right: Image */}
+                <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
+                    <img
+                        src="/quote-illustration.png"
+                        alt="Quotation illustration"
+                        className="w-[320px] h-auto object-contain"
+                        style={{ maxWidth: 380 }}
+                    />
                 </div>
-            </div>
-        </div>
-        <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-        {/* Left: Text Content */}
-        <div className="flex-1 min-w-[260px]">
-          <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Get your Quote with Us
-          </h2>
-          <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Our streamlined LCL freight quotation process is designed for speed and convenience. At
-            Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
-            Quotation by Request system. Simply fill out our short form to initiate your request. Once
-            submitted, our team will assess your shipment’s volume, weight, and consolidation options to
-            find the most efficient and cost-effective transport solution. You will receive a customized
-            quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
-            cargo movement.
-          </p>
-          <Link href="/container-services-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
-            Request a Quote
-          </Link>
-        </div>
-        {/* Right: Image */}
-        <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-          <img
-            src="/quote-illustration.png"
-            alt="Quotation illustration"
-            className="w-[320px] h-auto object-contain"
-            style={{ maxWidth: 380 }}
-          />
-        </div>
-      </section>
+            </section>
         </div>
     );
 }

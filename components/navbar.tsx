@@ -131,6 +131,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 { name: "About Us", href: "/about-us" },
                 { name: "Our Partners", href: "/#partners" },
                 { name: "FAQ", href: "#careers" },
+                {name: "Forms", href: "/learn/forms"}
             ],
         },
     ];

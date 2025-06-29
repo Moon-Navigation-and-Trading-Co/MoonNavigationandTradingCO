@@ -107,16 +107,16 @@ export default function ProjectCargoPage() {
               What is Project Cargo?
             </h3>
             <p className="text-sm leading-relaxed text-muted-foreground mb-4">
-              Project cargo in ocean freight entails the transportation of large, heavy, high-value or
-              complex pieces of equipment and materials. At Moon Navigation and Trading Co., we
-              specialize in managing these specialized shipments, which are intricately linked to specific
-              projects and require meticulous handling, specialized equipment, and precise coordination.
+            Project cargo in ocean freight entails the transportation of large, heavy, high-value or
+complex pieces of equipment and materials. At Moon Navigation and Trading Co., we
+specialize in managing these specialized shipments, which are intricately linked to specific
+projects and require meticulous handling, specialized equipment, and precise coordination. 
             </p>
             <p className="text-sm leading-relaxed text-muted-foreground">
-              We understand that ensuring the safe and timely delivery of project cargo is vital for the
-              successful execution of industrial and infrastructure projects. Our dedicated team is
-              committed to providing comprehensive solutions that address the unique challenges of
-              project cargo logistics, making this a critical aspect of services in global trade.
+            We understand that ensuring the safe and timely delivery of project cargo is vital for the
+successful execution of industrial and infrastructure projects. Our dedicated team is
+committed to providing comprehensive solutions that address the unique challenges of
+project cargo logistics, making this a critical aspect of services in global trade.
             </p>
           </div>
         </div>
