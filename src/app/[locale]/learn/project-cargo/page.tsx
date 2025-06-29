@@ -78,24 +78,21 @@ export default function ProjectCargoPage() {
   return (
     <div className="space-y-32">
       {/* Hero Section */}
-      <section className="rounded-3xl overflow-hidden shadow-xl mt-8 mx-auto max-w-7xl relative h-[400px]">
-        <Image
-          src="/project-cargo-hero.jpg"
-          alt="Project Cargo - Oversized and Heavy Lift Logistics by Moon Navigation and Trading Co."
-          width={1600}
-          height={600}
-          className="object-cover object-center"
-          loading="lazy"
-        />
-      </section>
-
-      <section className="max-w-7xl mx-auto px-4 md:px-0">
-        <div className="flex flex-col md:flex-row gap-12 items-start">
+      <section className="max-w-7xl mx-auto w-full mt-8">
+        <div className="rounded-[56px] overflow-hidden w-full h-[400px] mb-12">
+          <Image
+            src="/project-cargo-hero.jpg"
+            alt="Project Cargo - Oversized and Heavy Lift Logistics by Moon Navigation and Trading Co."
+            width={1600}
+            height={600}
+            className="object-cover object-center w-full h-full"
+            loading="lazy"
+          />
+        </div>
+        <div className="flex flex-col md:flex-row gap-8 w-full bg-white">
           {/* Left: Title and Button */}
-          <div className="flex-1 flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl font-light mb-8">
-              Project Cargo<br />Services
-            </h2>
+          <div className="flex-1 flex flex-col items-start justify-center pl-8">
+            <h1 className="text-5xl font-normal font-sans mb-12 text-[#222]">Project Cargo<br />Services</h1>
             <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
               <RequestQuoteButton>
                 Request a Quote
@@ -103,91 +100,55 @@ export default function ProjectCargoPage() {
             </Link>
           </div>
           {/* Right: What is Project Cargo */}
-          <div className="flex-1">
-            <h3 className="text-lg font-semibold mb-2 text-primary">
-              What is Project Cargo?
-            </h3>
-            <p className="text-sm leading-relaxed text-muted-foreground mb-4">
-            Project cargo in ocean freight entails the transportation of large, heavy, high-value or
-complex pieces of equipment and materials. At Moon Navigation and Trading Co., we
-specialize in managing these specialized shipments, which are intricately linked to specific
-projects and require meticulous handling, specialized equipment, and precise coordination. 
+          <div className="flex-1 flex flex-col justify-center pr-8">
+            <h2 className="text-2xl font-normal mb-4 text-[#3846a5] font-sans">What is Project Cargo?</h2>
+            <p className="text-base leading-relaxed text-[#444] mb-4 font-sans">
+              Project cargo in ocean freight entails the transportation of large, heavy, high-value or complex pieces of equipment and materials. At Moon Navigation and Trading Co., we specialize in managing these specialized shipments, which are intricately linked to specific projects and require meticulous handling, specialized equipment, and precise coordination.
             </p>
-            <p className="text-sm leading-relaxed text-muted-foreground">
-            We understand that ensuring the safe and timely delivery of project cargo is vital for the
-successful execution of industrial and infrastructure projects. Our dedicated team is
-committed to providing comprehensive solutions that address the unique challenges of
-project cargo logistics, making this a critical aspect of services in global trade.
+            <p className="text-base leading-relaxed text-[#444] font-sans">
+              We understand that ensuring the safe and timely delivery of project cargo is vital for the successful execution of industrial and infrastructure projects. Our dedicated team is committed to providing comprehensive solutions that address the unique challenges of project cargo logistics, making this a critical aspect of services in global trade.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto">
-        <h2 className="text-xl font-semibold mb-6">
-          Key Industries Leveraging Our Project Cargo Solution
-        </h2>
-        <div className="flex flex-wrap md:flex-nowrap gap-6 justify-start md:justify-between">
-          {/* 1 */}
-          <div className="flex flex-col items-center w-36">
-            <Image
-              src="/industry-marine.jpg"
-              alt="Marine and Shipbuilding Industry Project Cargo"
-              width={140}
-              height={90}
-              className="rounded-2xl object-cover w-full h-[90px]"
-              loading="lazy"
-            />
-            <span className="mt-2 text-sm text-center">Marine and Shipbuilding</span>
+      <section className="max-w-7xl mx-auto w-full">
+        <hr className="mb-10 border-t border-gray-200" />
+        <h2 className="text-4xl font-normal text-center mb-12 font-sans">Key Industries Leveraging Our Project Cargo Solution</h2>
+        <div className="flex flex-row justify-center gap-8 mb-8">
+          {/* Card 1 */}
+          <div className="flex flex-col items-center">
+            <img src="/industry-marine.jpg" alt="Marine and Shipbuilding" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
+            <span className="text-base text-center">Marine and Shipbuilding</span>
           </div>
-          {/* 2 */}
-          <div className="flex flex-col items-center w-36">
-            <Image
-              src="/industry-construction.jpg"
-              alt="Construction and Infrastructure Industry Project Cargo"
-              width={140}
-              height={90}
-              className="rounded-2xl object-cover w-full h-[90px]"
-              loading="lazy"
-            />
-            <span className="mt-2 text-sm text-center">Construction and Infrastructure</span>
+          {/* Card 2 */}
+          <div className="flex flex-col items-center">
+            <img src="/industry-construction.jpg" alt="Construction and Infrastructure" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
+            <span className="text-base text-center">Construction and Infrastructure</span>
           </div>
-          {/* 3 */}
-          <div className="flex flex-col items-center w-36">
-            <Image
-              src="/industry-mining.jpg"
-              alt="Mining Industry Project Cargo"
-              width={140}
-              height={90}
-              className="rounded-2xl object-cover w-full h-[90px]"
-              loading="lazy"
-            />
-            <span className="mt-2 text-sm text-center">Mining</span>
+          {/* Card 3 */}
+          <div className="flex flex-col items-center">
+            <img src="/industry-mining.jpg" alt="Mining" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
+            <span className="text-base text-center">Mining</span>
           </div>
-          {/* 4 */}
-          <div className="flex flex-col items-center w-36">
-            <Image
-              src="/industry-aerospace.jpg"
-              alt="Aerospace Industry Project Cargo"
-              width={140}
-              height={90}
-              className="rounded-2xl object-cover w-full h-[90px]"
-              loading="lazy"
-            />
-            <span className="mt-2 text-sm text-center">Aerospace</span>
+          {/* Card 4 */}
+          <div className="flex flex-col items-center">
+            <img src="/industry-aerospace.jpg" alt="Aerospace" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
+            <span className="text-base text-center">Aerospace</span>
           </div>
-          {/* 5 */}
-          <div className="flex flex-col items-center w-36">
-            <Image
-              src="/industry-energy.jpg"
-              alt="Energy Industry Project Cargo"
-              width={140}
-              height={90}
-              className="rounded-2xl object-cover w-full h-[90px]"
-              loading="lazy"
-            />
-            <span className="mt-2 text-sm text-center">Energy</span>
+          {/* Card 5 */}
+          <div className="flex flex-col items-center">
+            <img src="/industry-energy.jpg" alt="Energy" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
+            <span className="text-base text-center">Energy</span>
           </div>
+        </div>
+        {/* Carousel Dots and Arrows */}
+        <div className="flex flex-row items-center justify-center gap-4 mt-2">
+          <span className="w-6 h-2 bg-[#222] rounded-full inline-block"></span>
+          <span className="w-2 h-2 bg-gray-300 rounded-full inline-block"></span>
+          <span className="w-10"></span>
+          <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-xl text-gray-400 mr-2">&#8592;</button>
+          <button className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-xl text-gray-400">&#8594;</button>
         </div>
       </section>
 
@@ -255,86 +216,94 @@ project cargo logistics, making this a critical aspect of services in global tra
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto bg-secondary rounded-3xl p-8 md:p-12 flex flex-col md:flex-row gap-8 items-center">
-        <div className="flex-1">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-foreground">
-            How are we overcoming challenges in project cargo transportation?
-          </h2>
-          <p className="mb-4 text-muted-foreground">
+      {/* Why is project cargo unique? Section */}
+      <section className="max-w-7xl mx-auto px-4 md:px-0 mt-16 mb-16">
+        <h2 className="text-2xl font-normal mb-8 text-[#3846a5] font-sans">Why is project cargo unique?</h2>
+        <div className="relative">
+          <div className="bg-white border border-gray-200 rounded-[48px] p-8 pt-8 pl-8 pr-8 max-w-3xl font-sans text-[16px] text-[#222] shadow-sm" style={{minHeight:'180px'}}>
+            Each shipment is treated as a one-of-a-kind operation, requiring:
+            <br /><br />
+            <b>Detailed Surveys</b>: Assessing dimensions, weight, and transport feasibility.<br />
+            <b>Permit Management</b>: Securing necessary documentation for oversized loads.<br />
+            <b>Coordination</b>: Between ports, carriers, and local authorities.<br />
+            <br />
+            It is a critical segment of ocean freight that demands expertise in logistics and engineering to ensure the successful delivery of valuable assets.
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-7xl mx-auto bg-[#d3e3f1] rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row gap-8 items-stretch mt-12 mb-12">
+        <div className="flex-1 flex flex-col justify-center">
+          <h2 className="text-3xl font-normal mb-6 font-sans">How are we overcoming challenges in project cargo transportation?</h2>
+          <p className="mb-6 font-sans text-base text-[#222]">
             At Moon Navigation and Trading Co., we recognize that project cargo is unique, as each shipment is treated as a one-of-a-kind operation that requires a tailored approach to logistics. The process begins with detailed surveys, where we assess the dimensions, weight, and transport feasibility of your cargo to ensure optimal planning.
           </p>
-          <p className="mb-4 text-muted-foreground">
+          <p className="mb-6 font-sans text-base text-[#222]">
             We prioritize permit management, securing all necessary documentation for oversized loads to ensure compliance with regulations. Additionally, our team excels in coordination with ports, carriers, and local authorities to streamline the transportation process. As a critical segment of ocean freight, project cargo demands specialized expertise in logistics and engineering to ensure the successful delivery of valuable assets.
           </p>
-          <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-            <li>
-              <span className="font-semibold text-foreground">Custom Handling & Packaging:</span> Our team employs specialized handling techniques and tailored packaging solutions to guarantee the safety and stability of project cargo.
-            </li>
-            <li>
-              <span className="font-semibold text-foreground">Heavy Lifting Equipment:</span> We utilize advanced cranes, gantries, and hydraulic platforms to accurately lift and position exceptionally heavy items, ensuring secure transport.
-            </li>
-            <li>
-              <span className="font-semibold text-foreground">Intermodal Transport Coordination:</span> We seamlessly integrate sea, road, and rail transport, facilitating smooth coordination across different modes of transportation.
-            </li>
-            <li>
-              <span className="font-semibold text-foreground">Enhanced Safety & Security:</span> Our comprehensive security protocols and monitoring systems are designed to protect valuable and complex cargo throughout the entire transport process.
-            </li>
+          <ul className="list-disc pl-6 space-y-4 font-sans text-base text-[#222]">
+            <li><b>Custom Handling & Packaging:</b> Our team employs specialized handling techniques and tailored packaging solutions to guarantee the safety and stability of project cargo.</li>
+            <li><b>Heavy Lifting Equipment:</b> We utilize advanced cranes, gantries, and hydraulic platforms to accurately lift and position exceptionally heavy items, ensuring secure transport.</li>
+            <li><b>Intermodal Transport Coordination:</b> We seamlessly integrate sea, road, and rail transport, facilitating smooth coordination across different modes of transportation.</li>
+            <li><b>Enhanced Safety & Security:</b> Our comprehensive security protocols and monitoring systems are designed to protect valuable and complex cargo throughout the entire transport process.</li>
           </ul>
         </div>
-        <div className="flex-1 flex justify-center">
+        <div className="flex-1 flex items-center justify-center">
+          <img
+            src="/project-cargo-challenge.jpg"
+            alt="Project cargo heavy lift operation"
+            className="rounded-[40px] object-cover w-full h-[350px]"
+          />
         </div>
       </section>
 
       <section className="max-w-7xl mx-auto pt-8 pb-16">
-        <h2 className="text-xl md:text-2xl font-normal text-center mb-2">
+        <h2 className="text-3xl font-normal text-center mb-4 font-sans">
           Reasons to Choose Moon Navigation and Trading Co. for Your Project Cargo Needs
         </h2>
-        <p className="mb-8 text-center text-xs md:text-sm text-muted-foreground max-w-7xl mx-auto">
+        <p className="mb-12 text-center text-base text-[#444] max-w-3xl mx-auto font-sans">
           At Moon Navigation & Trading, we offer comprehensive end-to-end solutions for project cargo transportation, meticulously overseeing every logistical aspect from planning to delivery.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8 justify-items-center">
-          {/* Dedicated Project Cargo Team */}
+          {/* Row 1 */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-semibold text-xs text-primary mb-1">Dedicated Project Cargo Team</div>
-            <div className="text-xs text-muted-foreground max-w-7xl">
+            <img src="/icons/team.svg" alt="Dedicated Project Cargo Team" className="mb-4 w-14 h-14" />
+            <div className="font-bold text-lg mb-2">Dedicated Project Cargo Team</div>
+            <div className="text-base text-[#444] max-w-xs">
               Our proficient team excels in managing the complexities of project logistics, delivering customized solutions tailored to your specific requirements.
             </div>
           </div>
-          {/* Specialized Equipment & Vessels */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-semibold text-xs text-primary mb-1">Specialized Equipment & Vessels</div>
-            <div className="text-xs text-muted-foreground max-w-7xl">
+            <img src="/icons/documents.svg" alt="Specialized Equipment & Vessels" className="mb-4 w-14 h-14" />
+            <div className="font-bold text-lg mb-2">Specialized Equipment & Vessels</div>
+            <div className="text-base text-[#444] max-w-xs">
               From permits and health certificates to customs clearance, we manage all necessary documentation.
             </div>
           </div>
-          {/* Global Reach & Local Expertise */}
+          {/* Row 2 */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-semibold text-xs text-primary mb-1">Global Reach & Local Expertise</div>
-            <div className="text-xs text-muted-foreground max-w-7xl">
+            <img src="/icons/global.svg" alt="Global Reach & Local Expertise" className="mb-4 w-14 h-14" />
+            <div className="font-bold text-lg mb-2">Global Reach & Local Expertise</div>
+            <div className="text-base text-[#444] max-w-xs">
               With a strong global network, we offer seamless project cargo transport to any destination, supported by local expertise at each stage of the journey.
             </div>
           </div>
-          {/* Risk Management & Compliance */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-semibold text-xs text-primary mb-1">Risk Management & Compliance</div>
-            <div className="text-xs text-muted-foreground max-w-7xl">
+            <img src="/icons/compliance.svg" alt="Risk Management & Compliance" className="mb-4 w-14 h-14" />
+            <div className="font-bold text-lg mb-2">Risk Management & Compliance</div>
+            <div className="text-base text-[#444] max-w-xs">
               We proactively manage any risk factors associated with project cargo, ensuring all international shipping regulations, permits, and insurance requirements are met.
             </div>
           </div>
         </div>
       </section>
       <section className="max-w-7xl mx-auto mt-12 mb-8">
-        <div className="bg-secondary rounded-2xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
+        <div className="bg-[#d3e3f1] rounded-[40px] flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
           {/* Left: Text */}
-          <div className="flex-1">
-            <h2 className="text-2xl font-semibold mb-3 text-foreground">Get your Quote with Us</h2>
-            <p className="text-sm text-muted-foreground mb-6 max-w-7xl">
-              Our steamlined project cargo quotation process is designed for efficiency and precision. At Moon
-              Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by
-              Request system. Simply fill out our short form to initiate your request. Once submitted, our team
-              will assess your shipment's dimensions, weight, handling requirements, and route feasibility to
-              select the best transport solution. You will receive a customized quotation directly in your email,
-              ensuring accurate pricing and seamless execution for your specialized cargo.
+          <div className="flex-1 flex flex-col justify-center">
+            <h2 className="text-3xl font-normal mb-4 font-sans text-black">Get your Quote with Us</h2>
+            <p className="text-base text-[#222] mb-6 max-w-2xl font-sans">
+              Our streamlined project cargo quotation process is designed for efficiency and precision. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will assess your shipment's dimensions, weight, handling requirements, and route feasibility to select the best transport solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless execution for your specialized cargo.
             </p>
             <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
               <RequestQuoteButton>
@@ -342,23 +311,21 @@ project cargo logistics, making this a critical aspect of services in global tra
               </RequestQuoteButton>
             </Link>
           </div>
-          {/* Right: Image */}
-          <div className="flex-1 flex justify-center">
-            <Image
+          {/* Right: Illustration */}
+          <div className="flex-1 flex items-center justify-center">
+            <img
               src="/quote-illustration.png"
               alt="Get your project cargo quote illustration"
-              width={320}
-              height={180}
-              className="object-contain"
-              priority={false}
+              className="object-contain w-full max-w-md h-[200px] md:h-[240px]"
               loading="lazy"
             />
           </div>
         </div>
-        <div className="h-8" />
-        <div className="text-xs text-muted-foreground mt-2 px-2">
-          Need a Reliable Project Cargo Solution? <span className="font-semibold">Contact us</span> today for a customized project cargo plan that ensures the safe, efficient, and cost-effective transport of your oversized, heavy, or complex shipment.<br />
-          <span className="float-right">-Whenever and wherever you need to trust.</span>
+        <div className="flex flex-col md:flex-row items-center justify-between mt-4 px-2 text-base font-sans">
+          <span>
+            Need a Reliable Project Cargo Solution? <Link href="#contact" className="font-bold underline">Contact us</Link> today for a customized project cargo plan that ensures the safe, efficient, and cost-effective transport of your oversized, heavy, or complex shipments!
+          </span>
+          <span className="md:text-right w-full md:w-auto">-Whenever and wherever you need to trust.</span>
         </div>
       </section>
     </div>
