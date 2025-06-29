@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 
 export default function AirFreightInfo() {
     const t = useTranslations("learn-air-freight");
@@ -21,7 +22,7 @@ export default function AirFreightInfo() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div>
                             <h1 className="text-4xl mb-6">{t("hero.title")}</h1>
-                            <Button className="bg-primary hover:bg-primary/90">{t("hero.requestQuote")}</Button>
+                            <RequestQuoteButton>{t("hero.requestQuote")}</RequestQuoteButton>
                         </div>
                         <div className="space-y-6">
                             <p className="text-muted-foreground">{t("hero.description1")}</p>
@@ -326,7 +327,7 @@ export default function AirFreightInfo() {
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
                             <br />
                             <Link href="/air-freight-forms">
-                                <Button className="bg-primary hover:bg-primary/90">{t("quoteRequest.button")}</Button>
+                                <RequestQuoteButton>{t("quoteRequest.button")}</RequestQuoteButton>
                             </Link>
                         </div>
 

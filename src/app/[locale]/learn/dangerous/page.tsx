@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { useTranslations } from "next-intl"
@@ -8,6 +7,7 @@ import Link from "next/link"
 import Image from "next/image"
 import Head from "next/head"
 import { useState } from "react"
+import RequestQuoteButton from "@/components/RequestQuoteButton"
 
 export default function DangerousCargoInfo() {
     const t = useTranslations("learn-dangerous-cargo")
@@ -102,7 +102,7 @@ export default function DangerousCargoInfo() {
                         <h1 className="mb-10 text-4xl font-light text-left md:text-left w-full">Dangerous<br />Cargo</h1>
                         <Link href="/ocean-freight-forms">
                             <Link href="/ocean-freight-forms">
-                                <Button className="px-8 py-2 rounded-full text-base font-semibold">Request a Quote</Button>
+                                <RequestQuoteButton>Request a Quote</RequestQuoteButton>
                             </Link>
                         </Link>
                     </div>
@@ -273,9 +273,7 @@ export default function DangerousCargoInfo() {
                             ensuring accurate pricing, safe handling, and seamless delivery of your cargo.
                         </p>
                         <Link href="/ocean-freight-forms" passHref legacyBehavior>
-                            <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
-                                Request a Quote
-                            </a>
+                            <RequestQuoteButton>Request a Quote</RequestQuoteButton>
                         </Link>
                     </div>
                     {/* Right: Image */}
