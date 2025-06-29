@@ -128,7 +128,9 @@ export default function InternationalTradeServices() {
                         <div className="space-y-6">
                             <h2 className="text-3xl font-semibold">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
-                            <Button className="bg-[#2B3990] hover:bg-[#232d73]">{t("quoteRequest.button")}</Button>
+                            <Link href="/international-trading-forms" className="bg-[#2B3990] hover:bg-[#232d73] text-white px-6 py-2 rounded-md inline-block transition-colors">
+                                {t("quoteRequest.button")}
+                            </Link>
                         </div>
 
                         <div className="relative h-[400px]">

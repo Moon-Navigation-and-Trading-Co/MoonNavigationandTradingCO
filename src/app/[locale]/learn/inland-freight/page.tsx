@@ -68,7 +68,9 @@ export default function InlandFreightInfo() {
                     {/* Left Column - Title and Button */}
                     <div className="flex flex-col">
                         <h1 className="text-4xl md:text-5xl mb-6">{t("title")}</h1>
-                        <Button className="w-fit bg-primary hover:bg-primary/90">{t("requestQuote")}</Button>
+                        <Link href="/inland-services-forms">
+                            <Button className="w-fit bg-primary hover:bg-primary/90">{t("requestQuote")}</Button>
+                        </Link>
                     </div>
 
                     {/* Right Column - What is Section */}
@@ -417,7 +419,9 @@ export default function InlandFreightInfo() {
                         <div className="space-y-6">
                             <h2 className="text-3xl font-semibold">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
-                            <Button className="bg-primary hover:bg-primary/90">{t("quoteRequest.button")}</Button>
+                            <Link href="/inland-services-forms">
+                                <Button className="bg-primary hover:bg-primary/90">{t("quoteRequest.button")}</Button>
+                            </Link>
                         </div>
 
                         <div className="relative h-[400px]">

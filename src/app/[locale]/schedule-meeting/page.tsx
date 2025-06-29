@@ -3,8 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "lucide-react";
 import { format } from "date-fns";
@@ -24,11 +27,15 @@ export default function ScheduleMeeting() {
         additionalPhone: "",
         time1: "",
         time2: "",
-        service: ""
+        service: "",
+        serviceOther: "",
+        meetingPreference: "",
+        message: "",
+        consent: false
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const handleInputChange = (field: string, value: string) => {
+    const handleInputChange = (field: string, value: string | boolean) => {
         setFormData(prev => ({
             ...prev,
             [field]: value
@@ -76,7 +83,11 @@ export default function ScheduleMeeting() {
                 additionalPhone: "",
                 time1: "",
                 time2: "",
-                service: ""
+                service: "",
+                serviceOther: "",
+                meetingPreference: "",
+                message: "",
+                consent: false
             });
             setDate1(undefined);
             setDate2(undefined);
@@ -91,19 +102,21 @@ export default function ScheduleMeeting() {
 
     return (
         <div className="container mx-auto px-4 py-8 max-w-7xl">
-            <h1 className="text-2xl font-semibold text-primary mb-4">Meeting Scheduling</h1>
-
             <div className="space-y-6">
-                <p className="text-muted-foreground">At Moon Navigation and Trading Co., we believe strong partnerships start with meaningful conversations. Scheduling a meeting with our experts is simple and designed to suit your needs, whether virtual or in person.</p>
-
-                <p className="text-muted-foreground">We take the time to understand your challenges, offer tailored logistics and freight solutions, and build long-term collaborations that drive efficiency and growth. Let's connect and explore how we can support your business with seamless coordination and dedicated expertise. Book your meeting today and experience the power of strategic partnerships.</p>
-
-                <h2 className="text-xl font-medium">Please fill out the form below to schedule a meeting with our team.</h2>
+                <div className="text-center space-y-4">
+                    <h1 className="text-3xl font-bold">Meeting Scheduling</h1>
+                    <p className="text-muted-foreground max-w-3xl mx-auto">
+                        At Moon Navigation and Trading Co., we believe strong partnerships start with meaningful conversations. Scheduling a meeting with our experts is simple and designed to suit your needs, whether virtual or in person.
+                    </p>
+                    <p className="text-muted-foreground max-w-3xl mx-auto">
+                        We take the time to understand your challenges, offer tailored freight, logistics and trade solutions, and build long-term collaborations that drive efficiency and growth. Let's connect and explore how we can support your business with seamless coordination and dedicated expertise. Book your meeting today and experience the power of strategic partnerships.
+                    </p>
+                </div>
 
                 <form onSubmit={handleSubmit} className="space-y-8">
                     <div>
-                        <h3 className="text-lg font-semibold border-b pb-2">1. Personal Information</h3>
-                        <div className="space-y-4 mt-4">
+                        <h3 className="text-lg font-semibold border-b pb-2 mb-4">1. Personal Information</h3>
+                        <div className="space-y-4">
                             <div>
                                 <Label htmlFor="company">Company Name:</Label>
                                 <Input 
@@ -150,7 +163,7 @@ export default function ScheduleMeeting() {
                             </div>
 
                             <div>
-                                <Label htmlFor="additionalEmail">Additional Email Address:</Label>
+                                <Label htmlFor="additionalEmail">Add Additional Email Address:</Label>
                                 <Input 
                                     id="additionalEmail" 
                                     type="email" 
@@ -173,7 +186,7 @@ export default function ScheduleMeeting() {
                             </div>
 
                             <div>
-                                <Label htmlFor="additionalPhone">Additional Phone Number:</Label>
+                                <Label htmlFor="additionalPhone">Add Additional Phone Number:</Label>
                                 <Input 
                                     id="additionalPhone" 
                                     type="tel" 
@@ -186,8 +199,8 @@ export default function ScheduleMeeting() {
                     </div>
 
                     <div>
-                        <h3 className="text-lg font-semibold border-b pb-2">2. Appointment Details</h3>
-                        <div className="space-y-4 mt-4">
+                        <h3 className="text-lg font-semibold border-b pb-2 mb-4">2. Appointment Details</h3>
+                        <div className="space-y-4">
                             <div>
                                 <Label>Preferred Dates:</Label>
                                 <div className="space-y-2">
@@ -266,15 +279,80 @@ export default function ScheduleMeeting() {
                                         <SelectItem value="freight">Freight Solutions (Ocean, Inland, Air)</SelectItem>
                                         <SelectItem value="containers">Containers services</SelectItem>
                                         <SelectItem value="trade">International Trade</SelectItem>
-                                        <SelectItem value="agency">Ship Agency and Management</SelectItem>
+                                        <SelectItem value="agency">Ship Agency</SelectItem>
+                                        <SelectItem value="suez">Suez Canal Transit</SelectItem>
                                         <SelectItem value="docking">Docking and Maintenance</SelectItem>
                                         <SelectItem value="storage">Storage and Warehousing</SelectItem>
                                         <SelectItem value="handling">Cargo Handling and Stevedoring</SelectItem>
-                                        <SelectItem value="customs">Customs Clearance Services</SelectItem>
+                                        <SelectItem value="customs">Customs Clearance and Compliance</SelectItem>
+                                        <SelectItem value="investing">Investing with us</SelectItem>
+                                        <SelectItem value="partnership">Partnership</SelectItem>
+                                        <SelectItem value="other">Other</SelectItem>
                                     </SelectContent>
                                 </Select>
+                                {formData.service === "other" && (
+                                    <div className="mt-2">
+                                        <Label>Please specify:</Label>
+                                        <Input 
+                                            className="mt-1" 
+                                            value={formData.serviceOther}
+                                            onChange={(e) => handleInputChange("serviceOther", e.target.value)}
+                                            placeholder="Please specify"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+
+                            <div>
+                                <Label>Meeting Preference:</Label>
+                                <RadioGroup 
+                                    value={formData.meetingPreference} 
+                                    onValueChange={(value) => handleInputChange("meetingPreference", value)}
+                                    className="mt-2"
+                                >
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="in-person" id="in-person" />
+                                        <Label htmlFor="in-person">In-Person Meeting</Label>
+                                    </div>
+                                    <div className="flex items-center space-x-2">
+                                        <RadioGroupItem value="virtual" id="virtual" />
+                                        <Label htmlFor="virtual">Virtual Meeting (Video Call)</Label>
+                                    </div>
+                                </RadioGroup>
                             </div>
                         </div>
+                    </div>
+
+                    <div>
+                        <h3 className="text-lg font-semibold border-b pb-2 mb-4">3. Additional Information</h3>
+                        <div className="space-y-4">
+                            <div>
+                                <Label htmlFor="message">Message or Specific Requests:</Label>
+                                <Textarea 
+                                    id="message" 
+                                    className="mt-1 min-h-[100px]" 
+                                    value={formData.message}
+                                    onChange={(e) => handleInputChange("message", e.target.value)}
+                                    placeholder="Please share any specific details or requests..."
+                                />
+                            </div>
+
+                            <div className="flex items-center space-x-2">
+                                <Checkbox 
+                                    id="consent" 
+                                    checked={formData.consent}
+                                    onCheckedChange={(checked) => handleInputChange("consent", checked as boolean)}
+                                    required
+                                />
+                                <Label htmlFor="consent" className="text-sm">
+                                    I consent to the collection and processing of my information as per the privacy policy.
+                                </Label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="text-center text-sm text-muted-foreground">
+                        For any assistance, feel free to contact us!
                     </div>
 
                     <Button className="w-full mt-8" type="submit" disabled={isSubmitting}>

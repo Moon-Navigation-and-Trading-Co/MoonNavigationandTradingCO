@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
@@ -5,9 +7,11 @@ import { useTranslations } from "next-intl"
 import Link from "next/link"
 import Image from "next/image"
 import Head from "next/head"
+import { useState } from "react"
 
 export default function DangerousCargoInfo() {
     const t = useTranslations("learn-dangerous-cargo")
+    const [selectedClass, setSelectedClass] = useState(0)
 
     // Create an array of dangerous cargo classes for the accordion
     const dangerousClasses = [
@@ -123,27 +127,41 @@ export default function DangerousCargoInfo() {
                             {t('description')}
                         </CardContent>
                     </CardHeader>
-                    <CardContent className="space-y-6">
-                        <section>
-                            <h2 className="mb-4">{t('sub-t-1')}:</h2>
-                            <Accordion type="single" collapsible className="w-full">
-                                {dangerousClasses.map((dangerousClass, index) => (
-                                    <AccordionItem key={dangerousClass.id} value={dangerousClass.id}>
-                                        <AccordionTrigger className="text-left hover:no-underline">
-                                            <span className="font-bold text-lg">{dangerousClass.title}</span>
-                                        </AccordionTrigger>
-                                        <AccordionContent className="text-base leading-relaxed">
-                                            {dangerousClass.description}
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                ))}
-                            </Accordion>
+                    <CardContent className="flex flex-col md:flex-row gap-8 p-0">
+                        {/* Sidebar: List of classes */}
+                        <aside className="w-full md:w-1/3 mb-8 md:mb-0">
+                            <nav>
+                                <ul className="space-y-2">
+                                    {dangerousClasses.map((dangerousClass, idx) => (
+                                        <li key={dangerousClass.id}>
+                                            <button
+                                                type="button"
+                                                className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                                                    selectedClass === idx
+                                                        ? "bg-primary/10 text-primary font-semibold"
+                                                        : "hover:bg-muted"
+                                                }`}
+                                                onClick={() => setSelectedClass(idx)}
+                                                aria-current={selectedClass === idx ? "page" : undefined}
+                                            >
+                                                {dangerousClass.title}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        </aside>
+                        {/* Main content: Class details */}
+                        <section className="flex-1 min-w-0">
+                            <h2 className="text-xl font-semibold mb-4">
+                                {dangerousClasses[selectedClass]?.title}
+                            </h2>
+                            <div className="text-base leading-relaxed whitespace-pre-line">
+                                {dangerousClasses[selectedClass]?.description}
+                            </div>
                         </section>
-
-
-
                     </CardContent>
-                </Card >
+                </Card>
                 <div className="w-full max-w-7xl mx-auto mt-20 mb-20">
                     <h2 className="text-3xl sm:text-4xl font-semibold text-primary mb-16">
                         Our Dangerous Cargo Handling and Transport Process

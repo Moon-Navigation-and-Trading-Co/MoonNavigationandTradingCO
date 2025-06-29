@@ -356,9 +356,9 @@
     "ocean-freight": {
         "ocean": "Ocean Freight",
         "project-p": "Project cargo in ocean freight refers to the transportation of large, heavy, high-value, or complex pieces of equipment and materials. These shipments are typically associated with a specific project and often require specialized handling, equipment, and coordination.",
-        "roll-p": "In ocean freight, a Roll-on Roll-off (RoRo) ship is a specialized type of vessel used to transport cargo that can be driven on and off the ship using its own wheels, without the need for cranes or other heavy lifting equipment. The cargo typically consists of vehicles (such as cars, trucks, buses, and construction machinery), as well as trailers, containers, and other wheeled or self-propelled equipment.",
+        "roll-p": "In ocean freight, a Roll-on Roll-off (RoRo) ship is a specialized type of vessel used to transport cargo that can be driven on and off the ship using its own wheels, without the need for cranes or other heavy lifting equipment. The cargo typically consists of vehicles, as well as trailers, containers, and other wheeled or self-propelled equipment.",
         "dangerous-p": "In ocean freight, dangerous cargo refers to goods that pose a risk to the safety, health, or property of people, vessels, or the environment during transportation. These goods are classified based on their hazardous nature, and strict regulations govern their handling, packaging, labeling, and transport.",
-        "heavy-p": "In ocean freight, heavy lift refers to the transportation of cargo that is unusually heavy, oversized, or requires specialized handling due to its dimensions or weight. This type of freight often exceeds the standard weight and size limitations of regular containers and requires specialized equipment, planning, and expertise for safe handling and transport.",
+        "heavy-p": "In ocean freight, heavy lift refers to the transportation of cargo that requires specialized handling due to its dimensions or weight. This type of freight often exceeds the standard weight and size limitations of regular containers and requires specialized equipment, planning, and expertise for safe handling and transport.",
         "breakbulk-p": "At [ Moon Navigation And Trading Co ], we specialize in the transportation of breakbulk Cargo, perfect for large, heavy, or oversized items that cannot fit into standard shipping containers. Our breakbulk services are designed to meet the unique needs of cargo that comes in a variety of shapes, sizes, and weights."
     },
     "ship-agency": {
@@ -386,7 +386,7 @@
     "container": {
         "container": "Container Services",
         "less": "Less than Load Container (LCL) Services",
-        "less-p": "For businesses with shipments too small to fill an entire container, our Less than Container Load (LCL) services offer a cost-effective solution. By consolidating your goods with others, you only pay for the space you use, making LCL the ideal choice for smaller volumes of cargo. With our extensive global network and expertise in freight consolidation, we ensure that your goods are transported securely and efficiently. Our LCL services offer flexible scheduling, reliable transit times, and real-time tracking, allowing you to optimize costs without sacrificing speed or safety.",
+        "less-p": "For businesses with shipments too small to fill an entire container, our LCL services offer a cost-effective solution. By consolidating your goods with others, you only pay for the space you use, making LCL the ideal choice for smaller volumes of cargo.",
         "standard": "Standard Container",
         "standard-p": "A standard container typically refers to the most common type of shipping container used in the transportation of goods. These containers are designed to be easily loaded, unloaded, and transferred between various modes of transportation (ship, rail, truck). ",
         "oversized": "Oversized Container",

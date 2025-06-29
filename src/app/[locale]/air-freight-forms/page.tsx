@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import AirFreightForm from '@/components/air-freight-services';
 import Spinner from '@/components/spinner';
 import { Description } from '@radix-ui/react-toast';
+import { sendFormEmail } from '@/utils/email-helper';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -47,7 +48,7 @@ const Page: React.FC = () => {
         console.log("AAAA")
 
         flattenedData = {
-            user_id: user.id,
+            user_id: user?.id || null,
 
             routing: formData.routing,
 
@@ -76,18 +77,29 @@ const Page: React.FC = () => {
 
         console.log(flattenedData)
 
+        // Send email notification FIRST
+        try {
+            await sendFormEmail(formData, 'air_freight_services');
+            console.log('Email sent successfully');
+        } catch (emailError) {
+            console.error('Email sending failed:', emailError);
+            // Continue with form submission even if email fails
+        }
+
         const { data, error } = await supabase
             .from("air_freight_services")  // Your Supabase table
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
-            console.error(error);
+            console.log(flattenedData)
+            console.log(error)
             toast({
                 title: "Error",
-                description: "Something went wrong",
+                description: "Database insert failed, but email was sent",
                 variant: "destructive"
             })
         } else {
+            //green toast
             toast({
                 title: "Success",
                 description: "Form Added Successfully",

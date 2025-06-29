@@ -8,6 +8,7 @@ import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import InternationalTradingForm from '@/components/international-trading-form';
 import Spinner from '@/components/spinner';
+import { sendFormEmail } from '@/utils/email-helper';
 
 
 const Page: React.FC = () => {
@@ -46,7 +47,7 @@ const Page: React.FC = () => {
         let flattenedData;
 
         flattenedData = {
-            user_id: user.id,
+            user_id: user?.id || null,
             from: formData.routing.from,
             to: formData.routing.to,
             incoterm: formData.routing.incoterm,
@@ -77,22 +78,35 @@ const Page: React.FC = () => {
 
         console.log(flattenedData)
 
+        // Send email notification FIRST
+        try {
+            await sendFormEmail(formData, 'international_trading');
+            console.log('Email sent successfully');
+        } catch (emailError) {
+            console.error('Email sending failed:', emailError);
+            // Continue with form submission even if email fails
+        }
+
         const { data, error } = await supabase
             .from("international_trading")  // Your Supabase table
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
+            console.log(flattenedData)
             console.log(error)
             toast({
                 title: "Error",
-                description: "Something went wrong",
+                description: "Database insert failed, but email was sent",
                 variant: "destructive"
             })
         } else {
+            //green toast
             toast({
                 title: "Success",
-                description: "Form Submitted Successfully",
+                description: "Form Added Successfully",
             })
+            router.push('/international-trading-forms')
+
         }
     };
 

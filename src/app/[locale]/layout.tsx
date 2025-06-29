@@ -7,6 +7,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { createClient } from "@/utils/supabase/server";
 import { Toaster } from "@/components/ui/toaster";
+import FAQSearch from "@/components/faq";
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -87,12 +88,16 @@ export default async function RootLayout({
               <div className="relative flex-1 w-full flex flex-col items-center">
                 {/* navbar */}
                 <Navbar user={isUserLoggedIn} />
-
                 {/* content */}
                 <div className="flex flex-col pt-16 w-full max-w-[1300px] px-0 md:px-5">
                   {children}
                 </div>
                 <div className="absolute inset-0 z-[-1] h-full w-full bg-white dark:bg-gray-800 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_30%,#000_40%,transparent_100%)] md:[mask-image:radial-gradient(ellipse_50%_50%_at_50%_35%,#000_40%,transparent_100%)]"></div>
+
+                {/* faq */}
+                <div className="w-full max-w-[1300px] px-0 md:px-5 mt-8 mb-8">
+                  <FAQSearch />
+                </div>
 
                 {/*  footer */}
                 <footer className="w-full flex items-center justify-center text-center text-xs">

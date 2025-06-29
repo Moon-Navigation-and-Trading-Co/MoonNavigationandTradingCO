@@ -6,9 +6,10 @@ import { z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from 'next-intl';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
-
+import { Checkbox } from './ui/checkbox';
 
 // 1. Define a type-safe form handler using z.infer
 const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
@@ -16,39 +17,72 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
 
-
-    // Define your Zod schema (as before)
+    // Define your Zod schema
     const formSchema = z.object({
-        firstname: z.string().min(1, { message: t("Required") }),
-        lastname: z.string().min(1, { message: t("Required") }),
-        title: z.string().min(1, { message: t("Required") }),
-        organization: z.string().min(1, { message: t("Required") }),
-        email: z.string().email(),
-        additional_email: z.string().optional(),
+        // Personal / Company Information
+        full_name: z.string().min(1, { message: t("Required") }),
+        company_name: z.string().optional(),
+        position_title: z.string().min(1, { message: t("Required") }),
+        nationality: z.string().min(1, { message: t("Required") }),
+        email: z.string().email({ message: t("Email") }),
+        additional_email: z.string().email().optional().or(z.literal('')),
         phone_number: z.string().min(1, { message: t("PhoneNumber") }),
         additional_phone_number: z.string().optional(),
-        check_size: z.string().min(1, { message: t("Required") }),
-        average_check_size: z.string().min(1, { message: t("Required") }),
-        accredited_investor: z.string().min(1, { message: t("Required") }),
-        qualified_investor: z.string().min(1, { message: t("Required") }),
-        // Add more sections as needed
+        city_country_residence: z.string().min(1, { message: t("Required") }),
+
+        // Investment Interest
+        investor_type: z.string().min(1, { message: t("Required") }),
+        investor_type_other: z.string().optional(),
+        investment_range: z.string().min(1, { message: t("Required") }),
+        average_check_size: z.string().optional(),
+        preferred_investment_type: z.string().min(1, { message: t("Required") }),
+        preferred_investment_type_other: z.string().optional(),
+
+        // Area of Interest
+        areas_of_interest: z.array(z.string()).min(1, { message: t("Required") }),
+        areas_of_interest_other: z.string().optional(),
+
+        // Preferred Interest Rate
+        interest_rate_type: z.string().optional(),
+        fixed_interest_rate: z.string().optional(),
+
+        // Background & Intent
+        background_linkedin: z.string().optional(),
+        investment_interest_reason: z.string().optional(),
+        require_nda: z.string().min(1, { message: t("Required") }),
+
+        // Additional Notes
+        additional_notes: z.string().optional(),
     });
 
-    const form = useForm({
+    type FormValues = z.infer<typeof formSchema>;
+
+    const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            firstname: '',
-            lastname: '',
-            title: '',
-            organization: '',
+            full_name: '',
+            company_name: '',
+            position_title: '',
+            nationality: '',
             email: '',
             additional_email: '',
             phone_number: '',
             additional_phone_number: '',
-            accredited_investor: '',
-            qualified_investor: '',
+            city_country_residence: '',
+            investor_type: '',
+            investor_type_other: '',
+            investment_range: '',
             average_check_size: '',
-            check_size: '',
+            preferred_investment_type: '',
+            preferred_investment_type_other: '',
+            areas_of_interest: [],
+            areas_of_interest_other: '',
+            interest_rate_type: '',
+            fixed_interest_rate: '',
+            background_linkedin: '',
+            investment_interest_reason: '',
+            require_nda: '',
+            additional_notes: '',
         }
     });
 
@@ -57,297 +91,586 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
         onSubmit(values);
     };
 
+    const areasOfInterest = [
+        "Maritime Logistics",
+        "Ship Management", 
+        "International Trade",
+        "Freight & Transit",
+        "Oil & Bunkering Services",
+        "Infrastructure / Ports",
+        "Expansion Projects"
+    ];
+
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+                {/* Header */}
+                <div className="space-y-4">
+                    <h2 className="text-2xl font-bold">Investment Inquiry Form</h2>
+                    <p className="text-muted-foreground">
+                        Thank you for your interest in investing in Moon Navigation and Trading Co. Please complete the form below and our team will get in touch.
+                    </p>
+                </div>
 
-                {/* First Name */}
-                <FormItem>
-                    <FormLabel>{tt('firstname')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="firstname"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="First Name" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                {/* Personal / Company Information */}
+                <div className="space-y-6">
+                    <h3 className="text-xl font-semibold">Personal / Company Information</h3>
+                    
+                    <FormItem>
+                        <FormLabel>Full Name *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="full_name"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Full Name" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                {/* Last Name */}
-                <FormItem>
-                    <FormLabel>{tt('lastname')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="lastname"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Last Name" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                    <FormItem>
+                        <FormLabel>Company Name (if applicable)</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="company_name"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Company Name" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                {/* Title */}
-                <FormItem>
-                    <FormLabel>{tt('title')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="title"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Title" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                    <FormItem>
+                        <FormLabel>Position / Title *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="position_title"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Job Title" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                {/* Organization Name */}
-                <FormItem>
-                    <FormLabel>{tt('organization')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="organization"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Organization" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                    <FormItem>
+                        <FormLabel>Nationality *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="nationality"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Country" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                {/* Email */}
-                <FormItem>
-                    <FormLabel>{tt('email')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="email"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Email" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                    <FormItem>
+                        <FormLabel>Email Address *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="email"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Email Address" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                <FormItem>
-                    <FormLabel>{tt('additionalEmail')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="additional_email"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Email" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                    <FormItem>
+                        <FormLabel>Add Additional Email Address</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="additional_email"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Email Address" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                <FormItem>
-                    <FormLabel>{tt('phoneNumber')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="phone_number"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="+123456789" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                    <FormItem>
+                        <FormLabel>Phone Number *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="phone_number"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Number" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                <FormItem>
-                    <FormLabel>{tt('additionalPhoneNumber')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="additional_phone_number"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="+123456789" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                    <FormItem>
+                        <FormLabel>Add Additional Phone Number</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="additional_phone_number"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Number" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                {/* Avg Check Size */}
-                <FormItem className="space-y-3">
-                    <FormLabel>{t('avgCheck-t')} </FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`check_size`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <RadioGroup
-                                        onValueChange={field.onChange}
-                                        defaultValue={"cy"}
-                                        className="flex flex-col space-y-1"
-                                    >
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                                <RadioGroupItem value="500k-1M" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                                $500k - $1M
-                                            </FormLabel>
-                                        </FormItem>
+                    <FormItem>
+                        <FormLabel>City & Country of Residence *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="city_country_residence"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Location" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+                </div>
 
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                                <RadioGroupItem value="$1M" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                                $1M
-                                            </FormLabel>
-                                        </FormItem>
+                {/* Investment Interest */}
+                <div className="space-y-6">
+                    <h3 className="text-xl font-semibold">Investment Interest</h3>
+                    
+                    <FormItem className="space-y-3">
+                        <FormLabel>Type of Investor *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="investor_type"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            className="flex flex-col space-y-1"
+                                        >
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="individual" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Individual</FormLabel>
+                                            </FormItem>
 
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                                <RadioGroupItem value="$1M-$5M" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                                $1M - $5M
-                                            </FormLabel>
-                                        </FormItem>
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="angel" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Angel Investor</FormLabel>
+                                            </FormItem>
 
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                                <RadioGroupItem value="$5M+" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                                Greater than $5M
-                                            </FormLabel>
-                                        </FormItem>
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="venture_capital" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Venture Capital</FormLabel>
+                                            </FormItem>
 
-                                    </RadioGroup>
-                                </>
-                            )}
-                        />
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="strategic_partner" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Strategic Partner</FormLabel>
+                                            </FormItem>
 
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="corporate" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Corporate Investor</FormLabel>
+                                            </FormItem>
 
-                <FormItem>
-                    <FormLabel>{t('avgCheck')} *</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="average_check_size"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className="max-w-[300px] border-2 rounded-xl" placeholder="$" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="other" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Other (Specify)</FormLabel>
+                                            </FormItem>
+                                        </RadioGroup>
+                                        {field.value === 'other' && (
+                                            <Input 
+                                                className="max-w-[400px] border-2 rounded-xl mt-2" 
+                                                placeholder="Please specify" 
+                                                {...form.register('investor_type_other')} 
+                                            />
+                                        )}
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                {/* Accredited investor? */}
-                <FormItem className="space-y-3">
-                    <FormLabel>{t('accredited-inv')} <span className="text-muted-foreground">({tt('yes')}/{tt('no')})? *</span></FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`accredited_investor`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <RadioGroup
-                                        onValueChange={field.onChange}
-                                        defaultValue={"no"}
-                                        className="flex flex-col space-y-1"
-                                    >
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                                <RadioGroupItem value="yes" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                                {tt('yes')}
-                                            </FormLabel>
-                                        </FormItem>
+                    <FormItem className="space-y-3">
+                        <FormLabel>Investment Range (USD) *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="investment_range"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            className="flex flex-col space-y-1"
+                                        >
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="100k-500k" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">$100K–$500K</FormLabel>
+                                            </FormItem>
 
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                                <RadioGroupItem value="no" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                                {tt('no')}
-                                            </FormLabel>
-                                        </FormItem>
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="500k-1m" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">$500K-$1M</FormLabel>
+                                            </FormItem>
 
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="1m-5m" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">$1M- $5M</FormLabel>
+                                            </FormItem>
 
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="5m+" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">$5M and above</FormLabel>
+                                            </FormItem>
 
-                                    </RadioGroup>
-                                </>
-                            )}
-                        />
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="undecided" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Undecided – open for discussion</FormLabel>
+                                            </FormItem>
+                                        </RadioGroup>
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>
+                    <FormItem>
+                        <FormLabel>Type your average check size (Optional)</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="average_check_size"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="$" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                {/* Accredited investor? */}
-                <FormItem className="space-y-3">
-                    <FormLabel>{t('qualified-inv')} <span className="text-muted-foreground">({tt('yes')}/{tt('no')})? *</span></FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`qualified_investor`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <RadioGroup
-                                        onValueChange={field.onChange}
-                                        defaultValue={"no"}
-                                        className="flex flex-col space-y-1"
-                                    >
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                                <RadioGroupItem value="yes" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                                {tt('yes')}
-                                            </FormLabel>
-                                        </FormItem>
+                    <FormItem className="space-y-3">
+                        <FormLabel>Preferred Investment Type *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="preferred_investment_type"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            className="flex flex-col space-y-1"
+                                        >
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="equity" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Equity</FormLabel>
+                                            </FormItem>
 
-                                        <FormItem className="flex items-center space-x-3 space-y-0">
-                                            <FormControl>
-                                                <RadioGroupItem value="no" />
-                                            </FormControl>
-                                            <FormLabel className="font-normal">
-                                                {tt('no')}
-                                            </FormLabel>
-                                        </FormItem>
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="partnership" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Partnership</FormLabel>
+                                            </FormItem>
 
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="project_based" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Project-Based</FormLabel>
+                                            </FormItem>
 
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="undecided" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Undecided / Seeking Advice</FormLabel>
+                                            </FormItem>
 
-                                    </RadioGroup>
-                                </>
-                            )}
-                        />
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="other" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Other (Specify)</FormLabel>
+                                            </FormItem>
+                                        </RadioGroup>
+                                        {field.value === 'other' && (
+                                            <Input 
+                                                className="max-w-[400px] border-2 rounded-xl mt-2" 
+                                                placeholder="Please specify" 
+                                                {...form.register('preferred_investment_type_other')} 
+                                            />
+                                        )}
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+                </div>
 
-                    </FormControl>
-                    <FormMessage />
-                </FormItem>
+                {/* Area of Interest */}
+                <div className="space-y-6">
+                    <h3 className="text-xl font-semibold">Area of Interest</h3>
+                    <p className="text-muted-foreground">(Which sectors or services are you most interested in?)</p>
+                    
+                    <FormItem className="space-y-3">
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="areas_of_interest"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <div className="space-y-2">
+                                            {areasOfInterest.map((area) => (
+                                                <FormItem key={area} className="flex items-center space-x-3 space-y-0">
+                                                    <FormControl>
+                                                        <Checkbox
+                                                            checked={field.value?.includes(area)}
+                                                            onCheckedChange={(checked) => {
+                                                                const currentValues = field.value || [];
+                                                                if (checked) {
+                                                                    field.onChange([...currentValues, area]);
+                                                                } else {
+                                                                    field.onChange(currentValues.filter((value: string) => value !== area));
+                                                                }
+                                                            }}
+                                                        />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">{area}</FormLabel>
+                                                </FormItem>
+                                            ))}
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <Checkbox
+                                                        checked={field.value?.includes('other')}
+                                                        onCheckedChange={(checked) => {
+                                                            const currentValues = field.value || [];
+                                                            if (checked) {
+                                                                field.onChange([...currentValues, 'other']);
+                                                            } else {
+                                                                field.onChange(currentValues.filter((value: string) => value !== 'other'));
+                                                            }
+                                                        }}
+                                                    />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Other (Specify)</FormLabel>
+                                            </FormItem>
+                                        </div>
+                                        {field.value?.includes('other') && (
+                                            <Input 
+                                                className="max-w-[400px] border-2 rounded-xl mt-2" 
+                                                placeholder="Please specify" 
+                                                {...form.register('areas_of_interest_other')} 
+                                            />
+                                        )}
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+                </div>
 
+                {/* Preferred Interest Rate */}
+                <div className="space-y-6">
+                    <h3 className="text-xl font-semibold">Preferred Interest Rate (for Financial Investment Structures) (Optional)</h3>
+                    <p className="text-muted-foreground">Please indicate your preference regarding the investment return structure:</p>
+                    
+                    <FormItem className="space-y-3">
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="interest_rate_type"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            className="flex flex-col space-y-1"
+                                        >
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="fixed" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Fixed Interest Rate</FormLabel>
+                                            </FormItem>
 
-                <Button type="submit" className="mt-4 w-[200px]">
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="floating" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Floating Interest Rate</FormLabel>
+                                            </FormItem>
+                                        </RadioGroup>
+                                        {field.value === 'fixed' && (
+                                            <div className="mt-2">
+                                                <p className="text-sm text-muted-foreground mb-2">If selected, kindly specify your target annual rate (%):</p>
+                                                <Input 
+                                                    className="max-w-[200px] border-2 rounded-xl" 
+                                                    placeholder="Insert %" 
+                                                    {...form.register('fixed_interest_rate')} 
+                                                />
+                                            </div>
+                                        )}
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+                </div>
+
+                {/* Background & Intent */}
+                <div className="space-y-6">
+                    <h3 className="text-xl font-semibold">Background & Intent</h3>
+                    
+                    <FormItem>
+                        <FormLabel>Brief Background or LinkedIn Profile (Optional)</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="background_linkedin"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert or Link" {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+
+                    <FormItem>
+                        <FormLabel>Why are you interested in investing in Moon Navigation and Trading Co.? (Optional)</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="investment_interest_reason"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Textarea className="max-w-[400px] border-2 rounded-xl" placeholder="Please share your interest..." {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+
+                    <FormItem className="space-y-3">
+                        <FormLabel>Do you require an NDA (Non-Disclosure Agreement) before discussions? *</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="require_nda"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            className="flex flex-col space-y-1"
+                                        >
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="yes" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Yes</FormLabel>
+                                            </FormItem>
+
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="no" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">No</FormLabel>
+                                            </FormItem>
+
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="not_sure" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">Not Sure</FormLabel>
+                                            </FormItem>
+                                        </RadioGroup>
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+                </div>
+
+                {/* Additional Notes */}
+                <div className="space-y-6">
+                    <h3 className="text-xl font-semibold">Additional Notes or Inquiries</h3>
+                    <p className="text-muted-foreground">Please include any specific comments, questions, or areas of clarification you would like us to address:</p>
+                    
+                    <FormItem>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="additional_notes"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Textarea className="max-w-[600px] border-2 rounded-xl min-h-[100px]" placeholder="Additional notes..." {...field} />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
+                </div>
+
+                {/* Important Information */}
+                <div className="space-y-4 p-4 bg-muted rounded-lg">
+                    <h3 className="text-lg font-semibold">Important Information</h3>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                        <li>• All investment-related communications and submissions are treated with strict confidentiality.</li>
+                        <li>• Completion and submission of this form does not constitute a legally binding commitment from either party.</li>
+                        <li>• A representative from Moon Navigation and Trading Co. may contact you to arrange a follow-up discussion or provide official investment documentation and materials.</li>
+                    </ul>
+                </div>
+
+                <Button type="submit" className="mt-8 w-[200px]">
                     Submit
                 </Button>
             </form>

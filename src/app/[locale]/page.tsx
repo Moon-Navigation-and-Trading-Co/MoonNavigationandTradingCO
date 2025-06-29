@@ -78,7 +78,7 @@ export default function Index() {
         <>
             <main className="flex-1 flex flex-col gap-20">
                 {/* Image and slogan */}
-                <div className="relative w-full h-[400px] ">
+                <div className="relative w-full h-[400px] mt-12">
                     <div className="relative flex items-center rounded-3xl bg-home-image bg-center bg-cover w-full h-full aspect-auto md:aspect-video shadow-black shadow-xl">
                         <div className="w-full h-full z-[10] top-[1px] bg-black-overlay rounded-3xl absolute"></div>
                         <div className="flex md:px-12 px-6 flex-col justify-center z-[50] gap-4">

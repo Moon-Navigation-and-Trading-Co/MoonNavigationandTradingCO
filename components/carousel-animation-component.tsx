@@ -43,9 +43,9 @@ export default function CarouselAnimation({
 
   return (
     <div
-      className={`flex flex-col lg:flex-row h-[1000px] lg:h-[500px] w-full gap-4 my-16 px-2`}
+      className={`flex flex-col lg:flex-row h-[1200px] lg:h-[600px] w-full gap-4 my-16 px-2`}
     >
-      <div className="w-full relative shadow-md overflow-hidden shadow-black h-[150px] lg:h-full lg:w-[160px] rounded-2xl flex items-center justify-start">
+      <div className="w-full relative shadow-md overflow-hidden shadow-black h-[180px] lg:h-full lg:w-[160px] rounded-2xl flex items-center justify-start">
         <div className="bg-black/35 z-[104] absolute w-full h-full"></div>
         <Image
           src={"/container-top-v.jpeg"}
