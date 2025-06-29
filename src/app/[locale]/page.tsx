@@ -71,6 +71,11 @@ export default function Index() {
             if (el) {
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
             }
+        } else if (searchParams.get("scroll") === "faq") {
+            const el = document.getElementById("faq");
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
         }
     }, [searchParams]);
 

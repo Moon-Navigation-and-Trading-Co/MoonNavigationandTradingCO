@@ -130,7 +130,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             dropdownItems: [
                 { name: "About Us", href: "/about-us" },
                 { name: "Our Partners", href: "/#partners" },
-                { name: "FAQ", href: "#careers" },
+                { name: "FAQ", href: "#faq" },
                 {name: "Forms", href: "/learn/forms"}
             ],
         },
@@ -197,6 +197,12 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                                             }
                                                                         } else {
                                                                             router.push("/?scroll=contact");
+                                                                        }
+                                                                    } else if (dropdownItem.href === "#faq") {
+                                                                        e.preventDefault();
+                                                                        const element = document.getElementById("faq");
+                                                                        if (element) {
+                                                                            element.scrollIntoView({ behavior: "smooth", block: "start" });
                                                                         }
                                                                     }
                                                                 }}
