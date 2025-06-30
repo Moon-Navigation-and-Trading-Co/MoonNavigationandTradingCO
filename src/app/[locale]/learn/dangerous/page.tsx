@@ -165,7 +165,13 @@ export default function DangerousCargoInfo() {
                     </CardContent>
                 </Card>
                 <div className="w-full max-w-7xl mx-auto mt-20 mb-20">
-                    <h2 className="text-3xl sm:text-4xl font-semibold text-primary mb-16" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <h2
+                        className="text-3xl sm:text-4xl  mb-16"
+                        style={{
+                            fontFamily: 'Raleway, sans-serif',
+                            color: '#1e3a8a' // Tailwind's blue-800
+                        }}
+                    >
                         Our Dangerous Cargo Handling and Transport Process
                     </h2>
                     {/* First row */}
