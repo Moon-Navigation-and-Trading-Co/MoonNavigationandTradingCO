@@ -46,6 +46,8 @@ export const metadata: Metadata = {
     }
 }
 
+import GetQuoteComponent from "@/components/getQuoteComponent"
+
 export default function BreakBulkInfo() {
     const t = useTranslations("learn-breakbulk")
 
@@ -62,7 +64,7 @@ export default function BreakBulkInfo() {
                 <meta property="og:url" content="https://www.moonnavigation.com/learn/breakbulk" />
                 <link rel="canonical" href="https://www.moonnavigation.com/learn/breakbulk" />
             </Head>
-            <div className="w-full">
+            <div className="w-4/6 place-self-center">
                 {/* Top Banner Image */}
                 <div className="w-full h-[400px] object-cover object-center mt-10 rounded-3xl overflow-hidden">
                     <img
@@ -405,34 +407,7 @@ export default function BreakBulkInfo() {
                         </div>
                     </div>
                 </section>
-                <section className="w-full bg-secondary rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-                    {/* Left: Text Content */}
-                    <div className="flex-1 min-w-[260px]">
-                        <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                            Get your Quote with Us
-                        </h2>
-                        <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                            Our steamlined breakbulk cargo quotation process is designed for speed and accuracy. At Moon
-                            Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by
-                            Request system. Simply fill out our short form to initiate your request. Once submitted, our team
-                            will assess your cargo's size, weight, handling requirements, and route feasibility to determine
-                            the best transport solution. You will receive a customized quotation directly in your email,
-                            ensuring accurate pricing, safe handling, and seamless delivery of your cargo.
-                        </p>
-                        <Link href="/ocean-freight-forms" passHref legacyBehavior>
-                            <RequestQuoteButton> Request a Quote</RequestQuoteButton>
-                        </Link>
-                    </div>
-                    {/* Right: Image */}
-                    <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                        <img
-                            src="/quote-illustration.png"
-                            alt="Quotation illustration"
-                            className="w-[320px] h-auto object-contain"
-                            style={{ maxWidth: 380 }}
-                        />
-                    </div>
-                </section>
+                <GetQuoteComponent topic="Breakbulk Cargo" link="/ocean-freight-forms" /> 
             </div>
         </>
     )

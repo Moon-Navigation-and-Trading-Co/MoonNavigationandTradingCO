@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { Metadata } from "next";
-import GetQuoteComponent from "@/components/getQuoteComponent";
 
 // SEO Metadata for Next.js 13+ App Router
 export const metadata: Metadata = {
@@ -54,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 import RequestQuoteButton from "@/components/RequestQuoteButton";
-
+import GetQuoteComponent from "@/components/getQuoteComponent";
 export default function RollOnOffHero() {
   const locale = useLocale();
 
@@ -116,8 +115,8 @@ export default function RollOnOffHero() {
               className="rounded-[48px] object-cover w-full h-[340px] mb-6"
               loading="lazy"
             />
-            <RequestQuoteButton>
-              <Link href={`/learn/roll/learn-more`}>
+            <div className="w-full flex justify-center md:justify-start">
+              <RequestQuoteButton>
                 Learn More About Our RORO Cargo Solutions
               </RequestQuoteButton>
             </div>
@@ -229,32 +228,28 @@ export default function RollOnOffHero() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-8 px-4 md:px-0">
           {/* Row 1 */}
           <div className="flex flex-col items-center text-center">
-            <img src="/icons/shield.svg" alt="Efficiency & Reliability" className="mb-6 w-16 h-16" />
             <h3 className="font-bold text-base text-[#222] font-sans mb-2">Efficiency & Reliability</h3>
             <p className="text-base text-[#444] font-sans">Fast, secure, and dependable shipping services for wheeled cargo.</p>
           </div>
           <div className="flex flex-col items-center text-center">
-            <img src="/icons/award.svg" alt="Expert Handling" className="mb-6 w-16 h-16" />
             <h3 className="font-bold text-base text-[#222] font-sans mb-2">Expert Handling</h3>
             <p className="text-base text-[#444] font-sans">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</p>
           </div>
           <div className="flex flex-col items-center text-center">
-            
-            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Secure & Cost-Effective Transport</h3>
-            <p className="text-sm text-muted-foreground">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</p>
+            <h3 className="font-bold text-base text-[#222] font-sans mb-2">Secure & Cost-Effective Transport</h3>
+            <p className="text-base text-[#444] font-sans">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</p>
           </div>
+        </div>
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-x-8 mt-20 px-4 md:px-0">
+          <div className="flex flex-col items-center text-center">
+            <h3 className="font-bold text-base text-[#222] font-sans mb-2">Global Connectivity</h3>
+            <p className="text-base text-[#444] font-sans">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</p>
           </div>
-          {/* Row 2 */}
-          <div className="grid md:grid-cols-2">
-          <div className="flex flex-col items-center text-center md:col-start-2 justify-center self-center">
-            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Global Connectivity</h3>
-            <p className="text-sm text-muted-foreground">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</p>
+          <div className="flex flex-col items-center text-center">
+            <h3 className="font-bold text-base text-[#222] font-sans mb-2">Expert Compliance & Support</h3>
+            <p className="text-base text-[#444] font-sans">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</p>
           </div>
-          <div className="flex flex-col items-center text-center md:col-start-3 self-center">
-            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Expert Compliance & Support</h3>
-            <p className="text-sm text-muted-foreground">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</p>
-          </div>
-          </div>
+        </div>
       </section>
       <GetQuoteComponent topic="RORO" link="/ocean-freight-forms" />
     </>

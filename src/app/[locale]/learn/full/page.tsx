@@ -6,7 +6,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton"
 
 export default function FullContainerLoadPage() {
     return (
-        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0">
+        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0 place-self-center">
             {/* Top Banner */}
             <div className="w-full rounded-[2rem] overflow-hidden mb-8 shadow-lg">
                 <div className="relative w-full h-[180px] md:h-[260px]">

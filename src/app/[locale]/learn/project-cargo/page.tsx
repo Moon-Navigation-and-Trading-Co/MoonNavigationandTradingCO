@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 //seo
 export const metadata = {
@@ -269,14 +270,12 @@ export default function ProjectCargoPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8 justify-items-center">
           {/* Row 1 */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <img src="/icons/team.svg" alt="Dedicated Project Cargo Team" className="mb-4 w-14 h-14" />
             <div className="font-bold text-lg mb-2">Dedicated Project Cargo Team</div>
             <div className="text-base text-[#444] max-w-xs">
               Our proficient team excels in managing the complexities of project logistics, delivering customized solutions tailored to your specific requirements.
             </div>
           </div>
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <img src="/icons/documents.svg" alt="Specialized Equipment & Vessels" className="mb-4 w-14 h-14" />
             <div className="font-bold text-lg mb-2">Specialized Equipment & Vessels</div>
             <div className="text-base text-[#444] max-w-xs">
               From permits and health certificates to customs clearance, we manage all necessary documentation.
@@ -284,14 +283,12 @@ export default function ProjectCargoPage() {
           </div>
           {/* Row 2 */}
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <img src="/icons/global.svg" alt="Global Reach & Local Expertise" className="mb-4 w-14 h-14" />
             <div className="font-bold text-lg mb-2">Global Reach & Local Expertise</div>
             <div className="text-base text-[#444] max-w-xs">
               With a strong global network, we offer seamless project cargo transport to any destination, supported by local expertise at each stage of the journey.
             </div>
           </div>
           <div className="flex flex-col items-center text-center min-h-[180px]">
-            <img src="/icons/compliance.svg" alt="Risk Management & Compliance" className="mb-4 w-14 h-14" />
             <div className="font-bold text-lg mb-2">Risk Management & Compliance</div>
             <div className="text-base text-[#444] max-w-xs">
               We proactively manage any risk factors associated with project cargo, ensuring all international shipping regulations, permits, and insurance requirements are met.
@@ -299,37 +296,7 @@ export default function ProjectCargoPage() {
           </div>
         </div>
       </section>
-      <section className="max-w-7xl mx-auto mt-12 mb-8">
-        <div className="bg-[#d3e3f1] rounded-[40px] flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
-          {/* Left: Text */}
-          <div className="flex-1 flex flex-col justify-center">
-            <h2 className="text-3xl font-normal mb-4 font-sans text-black">Get your Quote with Us</h2>
-            <p className="text-base text-[#222] mb-6 max-w-2xl font-sans">
-              Our streamlined project cargo quotation process is designed for efficiency and precision. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will assess your shipment's dimensions, weight, handling requirements, and route feasibility to select the best transport solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless execution for your specialized cargo.
-            </p>
-            <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
-              <RequestQuoteButton>
-                Request a Quote
-              </RequestQuoteButton>
-            </Link>
-          </div>
-          {/* Right: Illustration */}
-          <div className="flex-1 flex items-center justify-center">
-            <img
-              src="/quote-illustration.png"
-              alt="Get your project cargo quote illustration"
-              className="object-contain w-full max-w-md h-[200px] md:h-[240px]"
-              loading="lazy"
-            />
-          </div>
-        </div>
-        <div className="flex flex-col md:flex-row items-center justify-between mt-4 px-2 text-base font-sans">
-          <span>
-            Need a Reliable Project Cargo Solution? <Link href="#contact" className="font-bold underline">Contact us</Link> today for a customized project cargo plan that ensures the safe, efficient, and cost-effective transport of your oversized, heavy, or complex shipments!
-          </span>
-          <span className="md:text-right w-full md:w-auto">-Whenever and wherever you need to trust.</span>
-        </div>
-      </section>
+      <GetQuoteComponent topic="Project Cargo" link="/ocean-freight-forms" />
     </div>
   );
 }

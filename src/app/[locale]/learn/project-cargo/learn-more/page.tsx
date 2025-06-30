@@ -1,6 +1,7 @@
 import Image from "next/image";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function ProjectCargoLearnMore() {
   return (
@@ -205,44 +206,7 @@ export default function ProjectCargoLearnMore() {
         />
       </div>
     </div>
-    <section className="max-w-7xl mx-auto mt-12 mb-8">
-        <div className="bg-secondary rounded-2xl flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
-          {/* Left: Text */}
-          <div className="flex-1">
-            <h2 className="text-2xl font-semibold mb-3 text-foreground">Get your Quote with Us</h2>
-            <p className="text-sm text-muted-foreground mb-6 max-w-7xl">
-              Our steamlined project cargo quotation process is designed for efficiency and precision. At Moon
-              Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by
-              Request system. Simply fill out our short form to initiate your request. Once submitted, our team
-              will assess your shipment's dimensions, weight, handling requirements, and route feasibility to
-              select the best transport solution. You will receive a customized quotation directly in your email,
-              ensuring accurate pricing and seamless execution for your specialized cargo.
-            </p>
-            <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
-              <RequestQuoteButton>
-                Request a Quote
-              </RequestQuoteButton>
-            </Link>
-          </div>
-          {/* Right: Image */}
-          <div className="flex-1 flex justify-center">
-            <Image
-              src="/quote-illustration.png"
-              alt="Get your project cargo quote illustration"
-              width={320}
-              height={180}
-              className="object-contain"
-              priority={false}
-              loading="lazy"
-            />
-          </div>
-        </div>
-        <div className="h-8" />
-        <div className="text-xs text-muted-foreground mt-2 px-2">
-          Need a Reliable Project Cargo Solution? <span className="font-semibold">Contact us</span> today for a customized project cargo plan that ensures the safe, efficient, and cost-effective transport of your oversized, heavy, or complex shipment.<br />
-          <span className="float-right">-Whenever and wherever you need to trust.</span>
-        </div>
-      </section>
+    <GetQuoteComponent topic="Project Cargo" link="/ocean-freight-forms" />
     </div>
   );
 }
