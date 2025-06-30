@@ -161,9 +161,9 @@ export default function BreakBulkInfo() {
                         </div>
                     </div>
                 </section>
-                <section className="w-full flex justify-center mt-12 mb-8" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                <section className="w-full justify-center mt-12 mb-8 place-items-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     <div
-                        className="bg-white rounded-[22px] border border-[#e5e7eb] shadow-[0_2px_12px_0_rgba(0,0,0,0.03)] px-7 py-6 max-w-5xl w-full"
+                        className="rounded-[22px] border border-[#e5e7eb] shadow-[0_2px_12px_0_rgba(0,0,0,0.03)] px-7 py-6 max-w-5xl w-full"
                         style={{
                             boxShadow: "0 2px 12px 0 rgba(0,0,0,0.03)",
                             borderRadius: "22px",
@@ -172,7 +172,7 @@ export default function BreakBulkInfo() {
                         }}
                     >
                         <h2
-                            className="text-[15px] md:text-[17px] font-bold mb-4"
+                            className="text-[13px] md:text-[15px] font-bold mb-4"
                             style={{
                                 color: "#222",
                                 fontFamily: 'Raleway, sans-serif',
@@ -181,43 +181,45 @@ export default function BreakBulkInfo() {
                         >
                             Key Characteristics of Breakbulk Cargo At Moon Navigation and Trading Co.
                         </h2>
-                        <ul className="space-y-2 text-[13px] md:text-[15px] text-[#222] pl-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <ul className="space-y-2 text-[11px] md:text-[13px] text-[#222] pl-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             <li className="flex items-start">
-                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "15px" }}>✔</span>
+                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
                                     <span className="font-semibold" style={{ color: "#222" }}>Large but Manageable Weight &amp; Size:</span> Our breakbulk cargo typically eclipses basic pallet and truck limits in both size and weight, allowing us to handle substantial sections with precision and care.
                                 </span>
                             </li>
                             <li className="flex items-start">
-                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "15px" }}>✔</span>
+                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
                                     <span className="font-semibold" style={{ color: "#222" }}>Loaded &amp; Unloaded Piece by Piece:</span> Each item is loaded and unloaded piece by piece using external cranes, forklifts, or vessel lifting equipment, ensuring the utmost support from ground arrival to on-board stowage.
                                 </span>
                             </li>
                             <li className="flex items-start">
-                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "15px" }}>✔</span>
+                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
                                     <span className="font-semibold" style={{ color: "#222" }}>Transported on Breakbulk &amp; Multi-Purpose Vessels (MPVs):</span> Our solutions utilize ships designed for specific cargo handling and flexible stowage configurations, accommodating various module and piece sizes.
                                 </span>
                             </li>
                             <li className="flex items-start">
-                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "15px" }}>✔</span>
+                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
-                                    <span className="font-semibold" style={{ color: "#222" }}>Ideal for Cargo That Can’t Fit into Containers:</span> Our breakbulk shipments are secured individually for reliable, efficient loading and lashing, making them the best choice for items that defy unitization.
+                                    <span className="font-semibold" style={{ color: "#222" }}>Ideal for Cargo That Can't Fit into Containers:</span> Our breakbulk shipments are secured individually for reliable, efficient loading and lashing, making them the best choice for items that defy unitization.
                                 </span>
                             </li>
                             <li className="flex items-start">
-                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "15px" }}>✔</span>
+                                <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
                                     <span className="font-semibold" style={{ color: "#222" }}>Essential for Construction, Manufacturing, &amp; Infrastructure Projects:</span> Our breakbulk cargo plays a vital role in supporting industries that require large-scale imports and transshipment of machinery, steel structures, pre-fabricated units, and more.
                                 </span>
                             </li>
                         </ul>
-                        <p className="text-[11px] text-[#888] mt-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
+
+                    </div>
+                    <p className="text-[11px] text-[#888] mt-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             At Moon Navigation &amp; Trading Co., we are committed to providing tailored breakbulk transportation solutions that meet the unique demands of every project, ensuring safety, efficiency, and reliability at every milestone.
                         </p>
-                    </div>
                 </section>
+                
                 <section className="w-full max-w-7xl mx-auto mt-16 mb-10 px-4">
                     <h2 className="text-xl md:text-2xl mb-8 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Our Breakbulk Cargo Services - At Moon Navigation and Trading Co.
