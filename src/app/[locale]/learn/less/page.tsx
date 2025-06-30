@@ -131,7 +131,7 @@ ensuring the reliable and timely delivery of their products.</p>
         </div>
       </div>
       <div className="w-full max-w-7xl mt-10">
-      <h2 className="text-xl md:text-2xl mb-4 text-blue-600 text-left">
+      <h2 className="text-xl md:text-2xl mb-4 text-blue-600 text-left text-blue-600" >
         Elevate Your Shipping Experience with Our LCL Solutions
       </h2>
           <p className="text-sm md:text-base text-muted-foreground mb-10">
@@ -165,7 +165,7 @@ trusted partner in navigating the complexities of international logistics. </p>
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-20">
-        <h2 className="text-center text-2xl md:text-3xl text-primary mb-12">
+        <h2 className="text-center text-2xl md:text-3xl text-primary mb-12 text-blue-600">
           Reasons to Choose Moon Navigation and Trading Co. for Your LCL Shipment
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
