@@ -2,67 +2,219 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-pda");
 
   return (
-    <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
-      <CardHeader>
-        <CardTitle className="text-3xl font-bold">{t("title")}</CardTitle>
-        <CardContent className="p-0 my-3">{t("description")}</CardContent>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        <h2 className="font-semibold text-primary">{t("sub-t-1")}</h2>
-
-        <div>
-          <ul className="list-disc pl-6 space-y-2 marker:text-foreground">
-            <li>
-              <strong>{t("list-1-title-1")}:</strong>{" "}
-              {t("list-1-description-1")}
-            </li>
-            <li>
-              <strong>{t("list-1-title-2")}:</strong>{" "}
-              {t("list-1-description-2")}
-            </li>
-            <li>
-              <strong>{t("list-1-title-3")}:</strong>{" "}
-              {t("list-1-description-3")}
-            </li>
-          </ul>
+    <>
+    <div className = "w-full max-w-7xl place-self-center" style={{ fontFamily: "Raleway, sans-serif" }}>
+      <div className="flex flex-col md:flex-row items-center justify-between bg-[#f5f7fa] rounded-[2rem] p-6 md:p-12 mb-10">
+        <div className="w-full md:w-1/2 flex justify-center items-center">
+          <img
+            src="/images/financial-report-pda.jpg"
+            alt="Financial Report and Disbursement Account"
+            className="rounded-2xl w-full max-w-md shadow-lg"
+            style={{ objectFit: "cover" }}
+          />
         </div>
+      </div>
 
-        <div>
-          <h2 className="mb-4 text-lg text-primary font-semibold">
-            {t("sub-t-2")}
-          </h2>
-          <p>{t("description-2")}</p>
-          <ul className="list-disc pl-6 space-y-2 marker:text-foreground my-4">
-            <li>
-              <strong>{t("list-2-title-1")}:</strong>{" "}
-              {t("list-2-description-1")}
-            </li>
-            <li>
-              <strong>{t("list-2-title-2")}:</strong>{" "}
-              {t("list-2-description-2")}
-            </li>
-            <li>
-              <strong>{t("list-2-title-3")}:</strong>{" "}
-              {t("list-2-description-3")}
-            </li>
-            <li>
-              <strong>{t("list-2-title-4")}:</strong>{" "}
-              {t("list-2-description-4")}
-            </li>
-          </ul>
+      <div className="flex flex-col md:flex-row items-start justify-between gap-8">
+        <div className="w-full md:w-1/2">
+          <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
+            Request For a PDA
+          </h3>
+          <div>
+            {/* Replace Button with RequestQuoteButton */}
+            <RequestQuoteButton>
+              <Link href="/ship-agency-forms">
+                Request a Quote
+              </Link>
+            </RequestQuoteButton>
+          </div>
         </div>
-
-        <Button className="p-0">
-          <Link href={"/ship-agency-forms"} className="w-full h-full px-4 py-2">
-            {t("button")}
-          </Link>
-        </Button>
-      </CardContent>
-    </Card>
+        <div className="w-full md:w-1/2">
+          <h4 className="text-lg font-semibold mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
+            What Is Requesting for a PDA?
+          </h4>
+          <p className="text-base text-[#333] mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
+            A ProForma Disbursement Account (PDA) serves as a comprehensive estimate of all anticipated costs associated with a vessel’s port call. It is issued to the vessel’s operator, master, or their appointed financial representative, enabling stakeholders to prepare adequately for a vessel’s arrival.
+          </p>
+          <p className="text-base text-[#333]" style={{ fontFamily: "Raleway, sans-serif" }}>
+            By providing a clear overview of expected expenses, a PDA helps ensure a smooth and efficient operation, minimizes unforeseen costs, and facilitates transparent financial planning. The information and estimates detailed PDAs help empower our clients to make informed decisions and optimize their logistics strategies.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div className="w-full max-w-7xl mx-auto mt-16 mb-10 px-4">
+      <h2 className="text-2xl font-semibold mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
+        Key Components of Our PDA
+      </h2>
+      <p className="text-base text-[#555] mb-8" style={{ fontFamily: "Raleway, sans-serif" }}>
+        Our PDA provides full visibility into all expected port costs, allowing for better financial planning.
+      </p>
+      <div className="flex flex-wrap gap-4 mb-12">
+        <span className="bg-[#e6eef7] text-[#2a4365] px-6 py-2 rounded-full text-sm font-medium shadow-sm" style={{ fontFamily: "Raleway, sans-serif" }}>
+          Port & Terminal Charges
+        </span>
+        <span className="bg-[#e6eef7] text-[#2a4365] px-6 py-2 rounded-full text-sm font-medium shadow-sm" style={{ fontFamily: "Raleway, sans-serif" }}>
+          Pilotage & Towage Fees
+        </span>
+        <span className="bg-[#e6eef7] text-[#2a4365] px-6 py-2 rounded-full text-sm font-medium shadow-sm" style={{ fontFamily: "Raleway, sans-serif" }}>
+          Customs & Immigration Fees
+        </span>
+        <span className="bg-[#e6eef7] text-[#2a4365] px-6 py-2 rounded-full text-sm font-medium shadow-sm" style={{ fontFamily: "Raleway, sans-serif" }}>
+          Cargo Handling & Stevedoring
+        </span>
+        <span className="bg-[#e6eef7] text-[#2a4365] px-6 py-2 rounded-full text-sm font-medium shadow-sm" style={{ fontFamily: "Raleway, sans-serif" }}>
+          Bunker & Fresh Water Supply
+        </span>
+        <span className="bg-[#e6eef7] text-[#2a4365] px-6 py-2 rounded-full text-sm font-medium shadow-sm" style={{ fontFamily: "Raleway, sans-serif" }}>
+          Waste Disposal & Environmental Fees
+        </span>
+        <span className="bg-[#e6eef7] text-[#2a4365] px-6 py-2 rounded-full text-sm font-medium shadow-sm" style={{ fontFamily: "Raleway, sans-serif" }}>
+          Security & Emergency Services
+        </span>
+        <span className="bg-[#e6eef7] text-[#2a4365] px-6 py-2 rounded-full text-sm font-medium shadow-sm" style={{ fontFamily: "Raleway, sans-serif" }}>
+          Agency Fees
+        </span>
+      </div>
+      <div className="flex flex-col md:flex-row gap-8 justify-center items-center mt-8">
+        <Link href="/learn/pda/process">
+          <RequestQuoteButton>
+            Our Process
+          </RequestQuoteButton>
+        </Link>
+        <Link href="/learn/pda/breakdown">
+          <RequestQuoteButton>
+            Breakdown of our PDA
+          </RequestQuoteButton>
+        </Link>
+      </div>
+    </div>
+    <div className="w-full flex justify-center items-center mt-20 mb-24">
+      <div className="relative w-full max-w-3xl flex flex-col md:flex-row items-start">
+        {/* Illustration */}
+        <div className="hidden md:block absolute -top-20 -right-32 z-10">
+          <img
+            src="/images/pda-cost-budgeting-illustration.png"
+            alt="Cost & Budgeting Illustration"
+            style={{ width: 260, height: "auto" }}
+          />
+        </div>
+        {/* Card */}
+        <div className="bg-white rounded-xl shadow-lg px-8 py-10 w-full z-20" style={{ fontFamily: "Raleway, sans-serif" }}>
+          <h3 className="text-xl font-semibold mb-6 text-[#2a4365]">Why Request a PDA?</h3>
+          <div className="space-y-6">
+            <div>
+              <div className="font-bold text-sm mb-1 text-[#2a4365]">Accurate Budgeting</div>
+              <div className="text-[#444] text-sm">
+                Efficiently plan and allocate funds for port operations, ensuring financial resources are utilized effectively.
+              </div>
+            </div>
+            <div>
+              <div className="font-bold text-sm mb-1 text-[#2a4365]">Cost Transparency</div>
+              <div className="text-[#444] text-sm">
+                Benefit from an itemized breakdown of all charges, eliminating hidden fees and fostering trust in financial dealings.
+              </div>
+            </div>
+            <div>
+              <div className="font-bold text-sm mb-1 text-[#2a4365]">Expense Control</div>
+              <div className="text-[#444] text-sm">
+                Gain the ability to approve costs in advance, ensuring that all expenditures align with your budgetary commitments.
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Background triangle for visual effect */}
+        <div className="absolute -bottom-16 -left-24 z-0 hidden md:block">
+          <svg width="220" height="180" viewBox="0 0 220 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="0,180 220,180 110,0" fill="#b3cbe6" />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div className="w-full flex flex-col md:flex-row items-center justify-center gap-10 mb-24">
+      {/* Left: Image */}
+      <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm">
+        <img
+          src="/images/pda-what-we-provide.jpg"
+          alt="Professional at port with laptop"
+          className="w-full h-auto object-cover"
+          style={{ aspectRatio: "4/3" }}
+        />
+      </div>
+      {/* Right: Content */}
+      <div className="flex-1 max-w-xl">
+        <h2 className="text-2xl font-semibold text-[#2a4365] mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>
+          What We Provide
+        </h2>
+        <p className="text-[#444] text-sm mb-6">
+          At Moon Navigation and TradePro, we specialize in the preparation and settlement of Port Disbursement Accounts (PDAs), streamlining financial transactions between vessel owners and port authorities. Our services include:
+        </p>
+        <ul className="space-y-4 text-sm text-[#2a4365]">
+          <li>
+            <span className="font-bold">• Detailed Cost Estimates</span>
+            <span className="block text-[#444] font-normal ml-4">
+              Comprehensive coverage of port dues, pilotage, towage, stevedoring, customs, and agency fees.
+            </span>
+          </li>
+          <li>
+            <span className="font-bold">• Fast Turnaround</span>
+            <span className="block text-[#444] font-normal ml-4">
+              Prompt delivery of PDAs to align with your operational timeline.
+            </span>
+          </li>
+          <li>
+            <span className="font-bold">• Transparency and Accuracy</span>
+            <span className="block text-[#444] font-normal ml-4">
+              Clear and precise itemizing of all charges, ensuring no hidden costs.
+            </span>
+          </li>
+          <li>
+            <span className="font-bold">• Expert Cost Management</span>
+            <span className="block text-[#444] font-normal ml-4">
+              Customized advice to optimize your port call expenses effectively.
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div className="w-full max-w-6xl mx-auto mb-24">
+      <h2 className="text-xl md:text-2xl font-semibold text-[#2a4365] mb-12 text-center" style={{ fontFamily: "Raleway, sans-serif" }}>
+        Reasons to Choose Moon Navigation and Trading Co. For Your PDA
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="flex flex-col items-center text-center">
+          <h3 className="text-base font-bold text-[#2a4365] mb-2">Accurate &amp; Transparent Cost Estimates</h3>
+          <p className="text-[#444] text-sm max-w-xs">
+            We ensure realistic pricing with no hidden fees; our PDAs are based on official port tariffs and real-time market conditions.
+          </p>
+        </div>
+        <div className="flex flex-col items-center text-center">
+          <h3 className="text-base font-bold text-[#2a4365] mb-2">Strong Relationships with Port Authorities</h3>
+          <p className="text-[#444] text-sm max-w-xs">
+            We work closely with port operators, customs officials, and maritime regulators as we negotiate the best possible rates for port services.
+          </p>
+        </div>
+        <div className="flex flex-col items-center text-center">
+          <h3 className="text-base font-bold text-[#2a4365] mb-2">Expert Ship Agency Services</h3>
+          <p className="text-[#444] text-sm max-w-xs">
+            With years of experience managing vessel disbursements, we are specialized in handling bulk carriers, tankers, container ships, RORO vessels, and project cargo.
+          </p>
+        </div>
+        <div className="flex flex-col items-center text-center">
+          <h3 className="text-base font-bold text-[#2a4365] mb-2">24/7 Support</h3>
+          <p className="text-[#444] text-sm max-w-xs">
+            Our dedicated operations team is available 24/7 for inquiries and assistance.
+          </p>
+        </div>
+      </div>
+    </div>
+    <GetQuoteComponent topic = "PDA" link = "/ship-agency-forms"/> 
+    </>
   );
 }

@@ -65,6 +65,14 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             description: "Efficient management and support for vessels at port and at sea ensuring smooth operations at all Egyptian ports",
             items: [
                 { name: "Request for a PDA", href: "/learn/pda" },
+                {
+                    name: "Suez Canal Transit & Passage Services",
+                    href: "/learn/suez"
+                },
+                {
+                    name: "Breakdown of our PDA",
+                    href: "/learn/pda/breakdown"
+                },
                 { name: "Sign On/Off Crew Members", href: "/learn/crew" },
                 { name: "Transit Spare Parts", href: "/services/spare-parts" },
                 //
@@ -131,7 +139,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 { name: "About Us", href: "/about-us" },
                 { name: "Our Partners", href: "/#partners" },
                 { name: "FAQ", href: "#faq" },
-                {name: "Forms", href: "/learn/forms"}
+                { name: "Forms", href: "/learn/forms" }
             ],
         },
     ];
