@@ -113,15 +113,15 @@ export default function RollOnOffHero() {
               alt="RoRo Cargo Handling"
               width={420}
               height={320}
-              className="rounded-[48px] object-cover w-full h-[340px] mb-6"
+              className="rounded-[48px] object-cover w-full h-[440px] mb-6"
               loading="lazy"
             />
             <div className="w-full flex justify-center md:justify-start">
-              <RequestQuoteButton>
-                Learn More About Our RORO Cargo Solutions
+              <RequestQuoteButton >
+                <span className="text-sm">Learn More About Our RORO Cargo Solutions</span>
               </RequestQuoteButton>
             </div>
-          </div>
+            </div>
           {/* Right: Text Grid */}
           <div className="flex-1 flex flex-col gap-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
