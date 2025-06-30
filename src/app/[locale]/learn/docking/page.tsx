@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
+import RequestQuoteButton from "@/components/RequestQuoteButton";   
 
 export default function DockingAndMaintenance() {
     return (
@@ -22,11 +23,11 @@ export default function DockingAndMaintenance() {
                             <h1 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
                                 Docking and Maintenance
                             </h1>
-                            <Button asChild>
-                                <Link href="/ship-maintenance-forms">
+                            <Link href="/ship-maintenance-forms">
+                                <RequestQuoteButton>
                                     Request a Quote
-                                </Link>
-                            </Button>
+                                </RequestQuoteButton>
+                            </Link>
                         </div>
                         <div>
                             <h2 className="text-xl font-semibold text-primary mb-2">
@@ -146,12 +147,11 @@ export default function DockingAndMaintenance() {
                             </li>
                         </ul>
                         <div className="mt-6">
-                            <a
-                                href="/learn/docking/docking"
-                                className="inline-block px-6 py-2 rounded-md bg-primary text-white font-medium shadow hover:bg-primary/90 transition"
-                            >
+                            <Link href="/learn/docking/docking">
+                                <RequestQuoteButton>
                                 Learn more
-                            </a>
+                            </RequestQuoteButton>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -238,12 +238,11 @@ export default function DockingAndMaintenance() {
                             </li>
                         </ul>
                         <div className="mt-8">
-                            <a
-                                href="/learn/docking/maintenance"
-                                className="inline-block px-6 py-2 rounded-full bg-primary text-white font-semibold shadow hover:bg-primary/90 transition"
-                            >
+                            <Link href="/learn/docking/maintenance">
+                                <RequestQuoteButton>
                                 Learn more
-                            </a>
+                            </RequestQuoteButton>
+                            </Link>
                         </div>
                     </div>
                     {/* Image Content */}
@@ -274,8 +273,10 @@ export default function DockingAndMaintenance() {
                         options. You will receive a customized quotation directly in your email, ensuring accurate
                         pricing
                     </p>
-                    <Link href="/ship-maintenance-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
-                        Request a Quote
+                    <Link href="/ship-maintenance-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
                     </Link>
                 </div>
                 {/* Right: Image */}

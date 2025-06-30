@@ -2,10 +2,11 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton"
 
 export default function FullContainerLoadPage() {
     return (
-        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0">
+        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0 place-self-center">
             {/* Top Banner */}
             <div className="w-full rounded-[2rem] overflow-hidden mb-8 shadow-lg">
                 <div className="relative w-full h-[180px] md:h-[260px]">
@@ -35,9 +36,11 @@ export default function FullContainerLoadPage() {
                     <p className="text-muted-foreground text-lg mb-4">
                         (Standard, Reefer, and Dangerous)
                     </p>
-                    <Button asChild className="bg-primary text-white px-6 py-2 rounded-lg shadow hover:bg-primary/90">
-                        <a href="/container-services-forms">Request a Quote</a>
-                    </Button>
+                    <Link href="/container-services-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
+                    </Link> 
                 </div>
 
                 {/* Right: Description */}
@@ -211,9 +214,11 @@ your everyday shipping needs, such as:</p>
                         from origin to destination, using high-quality containers and efficient logistics solutions.</p>
                     </div>
                     <div className="mt-4">
-                        <a href="/learn/full/dry" className="inline-block">
-                            <button className="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition">Learn more</button>
-                        </a>
+                        <Link href="/learn/full/dry" className="inline-block">
+                            <RequestQuoteButton>
+                                Learn more
+                            </RequestQuoteButton>
+                        </Link>
                     </div>
                 </div>
                 <div className="flex items-center justify-center">
@@ -251,9 +256,11 @@ your everyday shipping needs, such as:</p>
                         monitoring and 24/7 temperature control to maintain product quality and prevent spoilage.</p>
                     </div>
                     <div className="mt-4">
-                        <a href="/learn/full/reefer" className="inline-block">
-                            <button className="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition">Learn more</button>
-                        </a>
+                        <Link href="/learn/full/reefer" className="inline-block">
+                            <RequestQuoteButton>
+                                Learn more
+                            </RequestQuoteButton>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -285,9 +292,11 @@ Our services for dangerous goods include</p>
                         </ul>
                     </div>
                     <div className="mt-4">
-                        <a href="/learn/dangerous" className="inline-block">
-                            <button className="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition">Learn more</button>
-                        </a>
+                        <Link href="/learn/dangerous" className="inline-block">
+                            <RequestQuoteButton>
+                                Learn more
+                            </RequestQuoteButton>
+                        </Link>
                     </div>
                 </div>
                 {/* Right: Image */}
@@ -416,8 +425,10 @@ regulatory compliance throughout the journey.</p>
                         quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
                         cargo movement.
                     </p>
-                    <Link href="/container-services-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
-                        Request a Quote
+                    <Link href="/container-services-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
                     </Link>
                 </div>
                 {/* Right: Image */}

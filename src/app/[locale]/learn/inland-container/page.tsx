@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton";  
 
 export default function InlandContainerPage() {
 
@@ -27,12 +28,11 @@ export default function InlandContainerPage() {
           <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
             Inland Container Transportation
           </h1>
-          <a
-            href="/container-services-forms"
-            className="bg-primary text-white px-6 py-2 rounded-lg shadow hover:bg-primary/90 mt-4 text-sm font-medium"
-          >
-            Request a Quote
-          </a>
+          <Link href="/container-services-forms">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
+          </Link>
         </div>
 
         {/* Right: Description */}
@@ -299,8 +299,10 @@ export default function InlandContainerPage() {
             quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
             cargo movement.
           </p>
-          <Link href="/container-services-forms" className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors inline-block">
-            Request a Quote
+          <Link href="/container-services-forms">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
           </Link>
         </div>
         {/* Right: Image */}

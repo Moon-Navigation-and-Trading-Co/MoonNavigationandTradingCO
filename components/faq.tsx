@@ -2691,10 +2691,6 @@ export default function FAQSearch() {
     const [search, setSearch] = useState("");
     const faqs = defaultFAQs;
 
-    // Debug logging
-    console.log('Total FAQs available:', faqs.length);
-    console.log('First FAQ:', faqs[0]);
-
     const filteredFAQs = useMemo(() => {
         if (!search.trim()) return [];
         const lower = search.toLowerCase();
@@ -2709,7 +2705,7 @@ export default function FAQSearch() {
     }, [search, faqs]);
 
     return (
-        <div className="w-full bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6">
+        <div id="faq" className="w-full bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6">
             <div className="text-center mb-6">
                 <h2 className="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
                 <Input
@@ -2721,7 +2717,7 @@ export default function FAQSearch() {
                 />
             </div>
 
-            {search.trim() && (
+            {search.trim() ? (
                 <div className="max-h-[300px] overflow-y-auto">
                     {filteredFAQs.length > 0 ? (
                         <Accordion type="single" collapsible className="w-full">
@@ -2737,6 +2733,20 @@ export default function FAQSearch() {
                             No answers found for "{search}"
                         </div>
                     )}
+                </div>
+            ) : (
+                <div className="max-h-[300px] overflow-y-auto">
+                    <Accordion type="single" collapsible className="w-full">
+                        {faqs
+                            .sort(() => Math.random() - 0.5)
+                            .slice(0, 3)
+                            .map((faq, idx) => (
+                                <AccordionItem value={`faq-${idx}`} key={idx}>
+                                    <AccordionTrigger>{faq.question}</AccordionTrigger>
+                                    <AccordionContent>{faq.answer}</AccordionContent>
+                                </AccordionItem>
+                            ))}
+                    </Accordion>
                 </div>
             )}
         </div>

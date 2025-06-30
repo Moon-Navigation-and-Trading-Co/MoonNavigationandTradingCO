@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-
+import RequestQuoteButton from "@/components/RequestQuoteButton"
+ 
 export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-less");
 
@@ -25,11 +26,11 @@ export default function ShippingMethodsInfo() {
             Less Than Container Load
           </h1>
           <span className="text-lg text-primary mb-6">(LCL)</span>
-          <Button asChild>
-            <Link href="/container-services-forms">
+          <Link href="/container-services-forms">
+            <RequestQuoteButton>
               Request a Quote
-            </Link>
-          </Button>
+            </RequestQuoteButton>
+          </Link>
         </div>
         {/* Right Side: Info Card */}
         <div>
@@ -250,11 +251,11 @@ trusted partner in navigating the complexities of international logistics. </p>
             quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
             cargo movement.
           </p>
-          <Button asChild>
-            <Link href="/container-services-forms">
+          <Link href="/container-services-forms">
+            <RequestQuoteButton>
               Request a Quote
-            </Link>
-          </Button>
+            </RequestQuoteButton>
+          </Link>
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">

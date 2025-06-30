@@ -65,12 +65,16 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             description: "Efficient management and support for vessels at port and at sea ensuring smooth operations at all Egyptian ports",
             items: [
                 { name: "Request for a PDA", href: "/learn/pda" },
+                {
+                    name: "Suez Canal Transit & Passage Services",
+                    href: "/learn/suez"
+                },
                 { name: "Sign On/Off Crew Members", href: "/learn/crew" },
-                { name: "Transit Spare Parts", href: "/services/spare-parts" },
+                { name: "Transit Spare Parts", href: "/learn/spare-parts" },
                 //
                 {
                     name: "Bunkering | Oil Supply | Ship Chandlery",
-                    href: "/services/bunkering",
+                    href: "/learn/bunkering",
                 },
                 {
                     name: "Special Services by Case",
@@ -130,8 +134,8 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             dropdownItems: [
                 { name: "About Us", href: "/about-us" },
                 { name: "Our Partners", href: "/#partners" },
-                { name: "FAQ", href: "#careers" },
-                {name: "Forms", href: "/learn/forms"}
+                { name: "FAQ", href: "#faq" },
+                { name: "Forms", href: "/learn/forms" }
             ],
         },
     ];
@@ -197,6 +201,12 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                                             }
                                                                         } else {
                                                                             router.push("/?scroll=contact");
+                                                                        }
+                                                                    } else if (dropdownItem.href === "#faq") {
+                                                                        e.preventDefault();
+                                                                        const element = document.getElementById("faq");
+                                                                        if (element) {
+                                                                            element.scrollIntoView({ behavior: "smooth", block: "start" });
                                                                         }
                                                                     }
                                                                 }}

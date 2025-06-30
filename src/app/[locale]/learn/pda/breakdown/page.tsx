@@ -1,0 +1,202 @@
+import Image from "next/image";
+import GetQuoteComponent from "@/components/getQuoteComponent";
+
+export default function PDABreakdownPage() {
+  return (
+    <div className="w-full max-w-6xl mx-auto py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
+      <h1 className="text-2xl md:text-3xl font-semibold text-[#2a4365] mb-2">
+        Breakdown of our PDA – What It Includes
+      </h1>
+      <p className="text-[#444] mb-8 max-w-2xl text-sm">
+        Our Proforma Disbursement Account covers all critical cost components related to port operations, ensuring clarity in financial planning. Below is a detailed breakdown of what is included.
+      </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 className="text-lg font-bold text-[#2a4365] mb-2">1. Port & Terminal Charges</h2>
+          <p className="text-[#444] mb-4">
+            We provide comprehensive insight into the various associated with port operations, ensuring your costs remain as streamlined and accurate as possible.
+          </p>
+          <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
+            <li>
+              <span className="font-semibold">Port Funds & Berthing Fees:</span> Charges for utilizing port infrastructure and anchorage, inclusive of quay & berthage costs. Fees associated with vessels keeping at designated port zones.
+            </li>
+            <li>
+              <span className="font-semibold">Harbor & Customs Duties:</span> Costs for compliance with local customs regulations and official port dues.
+            </li>
+            <li>
+              <span className="font-semibold">Mooring & Unmooring Fees:</span> Charges for securing and releasing the vessel at/from the port.
+            </li>
+          </ul>
+          <p className="text-[#444] text-sm">
+            With our commitment to transparency and accuracy, we guide business owners through the complexities of port fees, empowering them to make informed disbursement choices while managing their shipping efficiently.
+          </p>
+        </div>
+        <div className="flex justify-center">
+          <Image
+            src="/images/pda-breakdown-port-terminal.jpg"
+            alt="Port terminal with ship and worker"
+            width={350}
+            height={200}
+            className="rounded-xl shadow-md object-cover"
+            style={{ maxWidth: "100%", height: "auto" }}
+          />
+        </div>
+      </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+      <div className="flex justify-center order-2 md:order-1">
+        <Image
+          src="/images/pda-breakdown-pilotage-towage.jpg"
+          alt="Harbor pilot observing ship arrival"
+          width={350}
+          height={200}
+          className="rounded-xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
+      <div className="order-1 md:order-2">
+        <h2 className="text-lg font-bold text-[#2a4365] mb-2">2. Pilotage &amp; Towage Fees</h2>
+        <p className="text-[#444] mb-4">
+          We recognize the importance of pilotage and towage services in ensuring safe and efficient maritime operations.
+        </p>
+        <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
+          <li>
+            <span className="font-semibold">Pilotage Charges:</span> Paid to highly trained local pilots who navigate vessels safely into the port.
+          </li>
+          <li>
+            <span className="font-semibold">Towage Services:</span> Cover assistance from tugboats that assist in berthing, maneuvering, and unberthing vessels.
+          </li>
+        </ul>
+        <p className="text-[#444] text-sm">
+          These services are crucial, as they guarantee that vessels can safely and efficiently enter and exit the port under expert supervision. Our commitment to managing these essential services enhances the overall cost-effectiveness of maritime activities for our clients.
+        </p>
+      </div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+      <div>
+        <h2 className="text-lg font-bold text-[#2a4365] mb-2">3. Customs &amp; Immigration Clearance Fees</h2>
+        <p className="text-[#444] mb-4">
+          We understand the critical role that customs processing and related fees play in facilitating smooth maritime operations.
+        </p>
+        <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
+          <li>
+            <span className="font-semibold">Customs Processing Fees:</span> Charges for cargo and vessel clearance through all customs authorities and for routine formal inspections.
+          </li>
+          <li>
+            <span className="font-semibold">Crew Immigration Fees:</span> Costs associated with processing crew members’ entry and exit at the port, ensuring compliance with immigration regulations.
+          </li>
+          <li>
+            <span className="font-semibold">Health &amp; Sanitary Inspection Charges:</span> Fees required for compliance with port health regulations, safety, and public health and safety.
+          </li>
+        </ul>
+        <p className="text-[#444] text-sm">
+          By addressing these fees and requirements, we help prevent delays, penalties, and regulatory issues, ensuring that all customs and crew obligations are met efficiently.
+        </p>
+      </div>
+      <div className="flex justify-center order-2 md:order-2">
+        <Image
+          src="/images/pda-breakdown-customs-immigration.jpg"
+          alt="Customs officer inspecting shipping documents at port"
+          width={350}
+          height={200}
+          className="rounded-xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+      <div className="flex justify-center order-1 md:order-1">
+        <Image
+          src="/images/pda-breakdown-waste-disposal.jpg"
+          alt="Port worker managing waste disposal on ship"
+          width={350}
+          height={200}
+          className="rounded-xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
+      <div className="order-2 md:order-2">
+        <h2 className="text-lg font-bold text-[#2a4365] mb-2">6. Waste Disposal &amp; Environmental Fees</h2>
+        <p className="text-[#444] mb-4">
+          We prioritize environmental responsibility in maritime operations by managing essential waste disposal and compliance costs.
+        </p>
+        <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
+          <li>
+            <span className="font-semibold">Garbage Collection &amp; Disposal Fees:</span> Charges for removing waste from the vessel, ensuring compliance with environmental standards.
+          </li>
+          <li>
+            <span className="font-semibold">Sludge &amp; Bilge Water Disposal:</span> Costs associated with handling oil-contaminated waste in accordance with local waste management.
+          </li>
+          <li>
+            <span className="font-semibold">Ballast Water Treatment Fees:</span> Fees for ensuring compliance with global environmental regulations on ballast water management.
+          </li>
+        </ul>
+        <p className="text-[#444] text-sm">
+          By effectively managing these services, we help our clients meet both environmental and sustainability standards set by international organizations (IMO) and authorities, promoting responsible shipping worldwide.
+        </p>
+      </div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+      <div className="order-1 md:order-1">
+        <h2 className="text-lg font-bold text-[#2a4365] mb-2">7. Security &amp; Emergency Services</h2>
+        <p className="text-[#444] mb-4">
+          We prioritize the safety and security of maritime operations.
+        </p>
+        <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
+          <li>
+            <span className="font-semibold">Port Security Charges:</span> Cost associated with compliance with the International Ship and Port Facility Security (ISPS) Code, including necessary security patrols and surveillance at the port.
+          </li>
+          <li>
+            <span className="font-semibold">Firefighting &amp; Emergency Response Fees:</span> Charges for emergency support at the port, ensuring vessels’ safety in critical situations.
+          </li>
+        </ul>
+        <p className="text-[#444] text-sm">
+          By effectively coordinating these services, we ensure that our clients’ vessels comply with maritime security and emergency protocols. Trusting us reduces overall risk to all maritime activities.
+        </p>
+      </div>
+      <div className="flex justify-center order-2 md:order-2">
+        <Image
+          src="/images/pda-breakdown-security-emergency.jpg"
+          alt="Port security officers monitoring ship arrivals"
+          width={350}
+          height={200}
+          className="rounded-xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+      <div className="flex justify-center order-2 md:order-1">
+        <Image
+          src="/images/pda-breakdown-agency-fees.jpg"
+          alt="Ship agent at desk with port in background"
+          width={350}
+          height={200}
+          className="rounded-xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
+      <div className="order-1 md:order-2">
+        <h2 className="text-lg font-bold text-[#2a4365] mb-2">8. Agency Fees &amp; Documentation</h2>
+        <p className="text-[#444] mb-4">
+          We offer comprehensive financial and administrative support to ensure smooth operations during a vessel’s port stay.
+        </p>
+        <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
+          <li>
+            <span className="font-semibold">Our Ship Agency Fees:</span> Cover the charges for our professionals’ ship agency services, providing expert guidance and management throughout the process.
+          </li>
+          <li>
+            <span className="font-semibold">Administrative Costs:</span> which include fees for managing paperwork, permits, and legal formalities, ensuring compliance with regulatory requirements.
+          </li>
+          <li>
+            <span className="font-semibold">Final Disbursement Account (FDA):</span> Ensuring that actual expenses match initial estimates, providing clarity and transparency in financial management.
+          </li>
+        </ul>
+        <p className="text-[#444] text-sm">
+          By effectively coordinating these services, we provide our clients with the peace of mind that comes from knowing their financial and administrative needs are expertly managed during their time in port.
+        </p>
+      </div>
+    </div>
+    <GetQuoteComponent topic = "PDA" link = "/ship-agency-forms"/> 
+    </div>
+  );
+}

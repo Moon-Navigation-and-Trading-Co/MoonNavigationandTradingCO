@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 
 export default function DockingPage() {
     const t = useTranslations("docking");
@@ -178,8 +179,10 @@ export default function DockingPage() {
                         send you a customized quotation directly to your email, offering clear
                         pricing and solutions tailored to your vessel.
                     </p>
-                    <Link href="/ship-maintenance-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
-                        Request a Quote
+                    <Link href="/ship-maintenance-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
                     </Link>
                 </div>
                 {/* Right: Image */}

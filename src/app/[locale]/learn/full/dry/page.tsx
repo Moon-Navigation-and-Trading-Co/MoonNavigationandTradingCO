@@ -2,7 +2,8 @@
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-
+import RequestQuoteButton from "@/components/RequestQuoteButton";
+ 
 export default function DryContainerPage() {
   return (
     <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0 mx-auto">
@@ -33,10 +34,10 @@ export default function DryContainerPage() {
             Efficient, Secure, and Cost-Effective Shipping Solutions
           </span>
           <Link href="/container-services-forms">
-            <button className="w-fit px-6 py-2 bg-[#3B4B8C] text-white rounded-full font-medium shadow hover:bg-[#2a3566] transition text-base mt-2">
+             <RequestQuoteButton>
               Request a Quote
-            </button>
-          </Link>
+            </RequestQuoteButton>
+          </Link> 
         </div>
         {/* Right: Description */}
         <div className="flex-[2] text-gray-700 dark:text-gray-200 text-base flex flex-col gap-6">
@@ -326,11 +327,11 @@ export default function DryContainerPage() {
                                   the best transport solution. You will receive a customized quotation directly in your email,
                                   ensuring accurate pricing, safe handling, and seamless delivery of your cargo.
                               </p>
-                              <Link href="/container-services-forms" passHref legacyBehavior>
-                                  <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
+                              <Link href="/container-services-forms">
+                                  <RequestQuoteButton>
                                       Request a Quote
-                                  </a>
-                              </Link>
+                                  </RequestQuoteButton>
+                              </Link> 
                           </div>
                           {/* Right: Image */}
                           <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">

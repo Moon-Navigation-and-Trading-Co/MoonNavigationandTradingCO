@@ -19,7 +19,9 @@ import PartnerLogoCarousel from "@/components/partners-carousel";
 import { QuoteDialog } from "@/components/dialog-services";
 import IndustryCarousel from "@/components/industry-carousel";
 import { useSearchParams } from "next/navigation";
-
+import RequestQuoteButton from "@/components/RequestQuoteButton";
+import Link from "next/link";
+ 
 export default function Index() {
     const t = useTranslations("HomePage");
     const tt = useTranslations("Buttons");
@@ -71,6 +73,11 @@ export default function Index() {
             if (el) {
                 el.scrollIntoView({ behavior: "smooth", block: "start" });
             }
+        } else if (searchParams.get("scroll") === "faq") {
+            const el = document.getElementById("faq");
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
         }
     }, [searchParams]);
 
@@ -87,9 +94,11 @@ export default function Index() {
                         </div>
                     </div>
                     <div className="absolute right-6 mt-8">
-                        <Button className="w-fit hover:bg-primary/90">
-                            <a href="#services">{tt("getQuote")}</a>
-                        </Button>
+                        <Link href="#services">
+                            <RequestQuoteButton>
+                                {tt("getQuote")}
+                            </RequestQuoteButton>
+                        </Link> 
                     </div>
                 </div>
 
@@ -123,7 +132,10 @@ export default function Index() {
                                 <p className="text-muted-foreground text-base pb-10">{t("aboutDescription")}</p>
                             </div>
                             <div className="w-full flex justify-end">
-                                <Button className="w-[130px]">{tt("learnmore")}</Button>
+                                    <RequestQuoteButton>
+                                        {tt("learnmore")}
+                                    </RequestQuoteButton>
+                                
                             </div>
                         </div>
                     </div>
