@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 
 export default function StevedoringContainerPage() {
     return (
@@ -24,11 +25,10 @@ export default function StevedoringContainerPage() {
                     <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
                         Container Handling, Stevedoring and Storage
                     </h1>
-                    <Link
-                        href="/container-services-forms"
-                        className="bg-primary text-white px-6 py-2 rounded-lg shadow hover:bg-primary/90 mt-4 text-sm font-medium"
-                    >
-                        Request a Quote
+                        <Link href="/container-services-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
                     </Link>
                 </div>
 
@@ -402,9 +402,11 @@ export default function StevedoringContainerPage() {
             quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
             cargo movement.
           </p>
-          <Link href="/container-services-forms" className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors inline-block">
-            Request a Quote
-          </Link>
+          <Link href="/container-services-forms">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
+          </Link> 
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">

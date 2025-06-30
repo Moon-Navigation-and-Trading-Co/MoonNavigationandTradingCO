@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 
 const ReeferPage = () => {
   const router = useRouter();
@@ -35,12 +36,11 @@ const ReeferPage = () => {
               (Refrigerated Shipping Solutions)
             </span>
           </h1>
-          <button
-            className="w-fit px-4 py-2 bg-[#3B4B8C] text-white rounded-md font-medium shadow hover:bg-[#2a3566] transition"
-            onClick={() => router.push("/container-services-forms")}
-          >
-            Request a Quote
-          </button>
+          <Link href="/container-services-forms">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
+          </Link> 
         </div>
         {/* Right: Description */}
         <div className="flex-[2] text-gray-700 text-sm md:text-base flex flex-col gap-4">
@@ -542,11 +542,11 @@ deliveries and end-to-end coordination.</p>
                         <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                         Our streamlined quotation process for refrigerated container shipments is designed for efficiency, accuracy, and ease. At Moon Navigation and Trading Co., obtaining a quotation is quick and hassle-free through our Quotation by Request system. Simply fill out a short request form, and our team will evaluate your cargo's volume, weight, temperature requirements, and routing details to offer the most suitable and cost-effective solution. You will receive a customized quotation directly via email—ensuring clear pricing, secure handling, and smooth coordination for your refrigerated cargo.
                         </p>
-                        <Link href="/ocean-freight-forms" passHref legacyBehavior>
-                            <a className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors">
+                        <Link href="/container-services-forms">
+                            <RequestQuoteButton>
                                 Request a Quote
-                            </a>
-                        </Link>
+                            </RequestQuoteButton>
+                        </Link> 
                     </div>
                     {/* Right: Image */}
                     <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">

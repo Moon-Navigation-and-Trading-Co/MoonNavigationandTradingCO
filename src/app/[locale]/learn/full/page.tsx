@@ -214,9 +214,11 @@ your everyday shipping needs, such as:</p>
                         from origin to destination, using high-quality containers and efficient logistics solutions.</p>
                     </div>
                     <div className="mt-4">
-                        <a href="/learn/full/dry" className="inline-block">
-                            <button className="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition">Learn more</button>
-                        </a>
+                        <Link href="/learn/full/dry" className="inline-block">
+                            <RequestQuoteButton>
+                                Learn more
+                            </RequestQuoteButton>
+                        </Link>
                     </div>
                 </div>
                 <div className="flex items-center justify-center">
@@ -254,9 +256,11 @@ your everyday shipping needs, such as:</p>
                         monitoring and 24/7 temperature control to maintain product quality and prevent spoilage.</p>
                     </div>
                     <div className="mt-4">
-                        <a href="/learn/full/reefer" className="inline-block">
-                            <button className="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition">Learn more</button>
-                        </a>
+                        <Link href="/learn/full/reefer" className="inline-block">
+                            <RequestQuoteButton>
+                                Learn more
+                            </RequestQuoteButton>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -288,9 +292,11 @@ Our services for dangerous goods include</p>
                         </ul>
                     </div>
                     <div className="mt-4">
-                        <a href="/learn/dangerous" className="inline-block">
-                            <button className="px-4 py-2 bg-primary text-white rounded-md font-medium hover:bg-primary/90 transition">Learn more</button>
-                        </a>
+                        <Link href="/learn/dangerous" className="inline-block">
+                            <RequestQuoteButton>
+                                Learn more
+                            </RequestQuoteButton>
+                        </Link>
                     </div>
                 </div>
                 {/* Right: Image */}
