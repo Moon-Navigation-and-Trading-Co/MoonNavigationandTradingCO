@@ -58,7 +58,8 @@ export default function RollOnOffHero() {
   const locale = useLocale();
 
   return (
-    <>
+    <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center"
+    style={{ fontFamily: "Raleway, sans-serif" }}>
       {/* --- HERO IMAGE --- */}
       <img
         src="/rorotitleimage.jpg"
@@ -252,6 +253,6 @@ export default function RollOnOffHero() {
         </div>
       </section>
       <GetQuoteComponent topic="RORO" link="/ocean-freight-forms" />
-    </>
+    </div>
   );
 }
