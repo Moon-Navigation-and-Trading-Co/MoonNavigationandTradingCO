@@ -3,12 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-out-gauge");
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
+    <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
       {/* Top Banner */}
       <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
         <div className="relative w-full h-[180px] md:h-[260px]">
@@ -25,7 +26,7 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left: Title and CTA */}
         <div className="flex flex-col items-start justify-start">
-          <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+          <h1 className="text-2xl md:text-3xl  text-foreground mb-2">
             Out Gauge
           </h1>
           <Link href="/container-services-forms">
@@ -37,7 +38,7 @@ export default function ShippingMethodsInfo() {
 
         {/* Right: Description */}
         <div>
-          <h2 className="text-lg font-semibold text-primary mb-2">
+          <h2 className="text-lg  text-primary mb-2">
             What is Out Gauge?
           </h2>
           <p className="text-base text-foreground leading-relaxed">
@@ -48,7 +49,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-20">
-        <h2 className="text-2xl font-semibold text-primary mb-2 text-center">
+        <h2 className="text-2xl  text-primary mb-2 text-center">
           What We Transport
         </h2>
         <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
@@ -57,56 +58,56 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Industrial Machinery */}
           <div className="flex flex-col items-center">
-            <div className="w-32 h-32 rounded-2xl overflow-hidden mb-3 shadow">
+            <div className="w-50 h-40 rounded-[3rem] overflow-hidden mb-3 shadow">
               <img
                 src="/oog-industrial-machinery.jpg"
                 alt="Industrial machinery"
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center text-foreground">Industrial Machinery</span>
+            <span className=" text-center text-foreground">Industrial Machinery</span>
             <span className="text-xs text-muted-foreground text-center">
               Generators, turbines, transformers, pumps
             </span>
           </div>
           {/* Construction Equipment */}
           <div className="flex flex-col items-center">
-            <div className="w-32 h-32 rounded-2xl overflow-hidden mb-3 shadow">
+            <div className="w-50 h-40 rounded-[3rem] overflow-hidden mb-3 shadow">
               <img
                 src="/oog-construction-equipment.jpg"
                 alt="Construction equipment"
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center text-foreground">Construction Equipment</span>
+            <span className=" text-center text-foreground">Construction Equipment</span>
             <span className="text-xs text-muted-foreground text-center">
               Excavators, cranes, drilling rigs
             </span>
           </div>
           {/* Project Cargo */}
           <div className="flex flex-col items-center">
-            <div className="w-32 h-32 rounded-2xl overflow-hidden mb-3 shadow">
+            <div className="w-50 h-40 rounded-[3rem] overflow-hidden mb-3 shadow">
               <img
                 src="/oog-project-cargo.jpg"
                 alt="Project cargo"
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center text-foreground">Project Cargo</span>
+            <span className=" text-center text-foreground">Project Cargo</span>
             <span className="text-xs text-muted-foreground text-center">
               Oil & gas modules, wind energy equipment, industrial units
             </span>
           </div>
           {/* Military and Aerospace Equipment */}
           <div className="flex flex-col items-center">
-            <div className="w-32 h-32 rounded-2xl overflow-hidden mb-3 shadow">
+            <div className="w-50 h-40 rounded-[3rem] overflow-hidden mb-3 shadow">
               <img
                 src="/oog-military-aerospace.jpg"
                 alt="Military and aerospace equipment"
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center text-foreground">Military and Aerospace Equipment</span>
+            <span className=" text-center text-foreground">Military and Aerospace Equipment</span>
             <span className="text-xs text-muted-foreground text-center">
               Vehicles, aircraft components, installations
             </span>
@@ -129,7 +130,7 @@ export default function ShippingMethodsInfo() {
                 alt="Out-of-gauge cargo experts"
                 className="object-cover w-full h-full"
               />
-              <span className="absolute top-3 left-1/2 -translate-x-1/2 text-white text-base md:text-lg font-semibold drop-shadow-lg">
+              <span className="absolute top-3 left-1/2 -translate-x-1/2 text-white text-base md:text-lg  drop-shadow-lg">
                 OOG Experts
               </span>
             </div>
@@ -137,59 +138,59 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-20">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
+        <h2 className="text-2xl md:text-3xl  text-center text-primary mb-8">
           Our Specialized Equipment for OOG Transportation
         </h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full border border-border rounded-xl bg-card shadow">
+          <table className="min-w-full border border-border bg-card shadow">
             <thead>
-              <tr className="bg-muted">
-                <th className="px-4 py-3 text-left font-semibold text-foreground border-b border-border">
+              <tr className="">
+                <th className="px-4 py-3 text-left text-foreground border-b border-border border-r">
                   Equipment Type
                 </th>
-                <th className="px-4 py-3 text-left font-semibold text-foreground border-b border-border">
+                <th className="px-4 py-3 text-left text-foreground border-b border-border border-r">
                   Description
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr className="border-b border-border">
-                <td className="px-4 py-3 font-medium text-foreground align-top">
+                <td className="px-4 py-3 font-medium text-foreground align-top border-r">
                   Flat Rack Containers
                 </td>
-                <td className="px-4 py-3 text-muted-foreground align-top">
+                <td className="px-4 py-3 text-muted-foreground align-top border-r">
                   Ideal for wide and heavy cargo that exceeds standard width limits, providing open sides for easy loading and unloading.
                 </td>
               </tr>
               <tr className="border-b border-border">
-                <td className="px-4 py-3 font-medium text-foreground align-top">
+                <td className="px-4 py-3 font-medium text-foreground align-top border-r">
                   Open-Top Containers
                 </td>
-                <td className="px-4 py-3 text-muted-foreground align-top">
+                <td className="px-4 py-3 text-muted-foreground align-top border-r">
                   Suitable for cargo that is too tall for a standard container, allowing top-loading with cranes.
                 </td>
               </tr>
               <tr className="border-b border-border">
-                <td className="px-4 py-3 font-medium text-foreground align-top">
+                <td className="px-4 py-3 font-medium text-foreground align-top border-r">
                   Heavy-Lift Cranes &amp; Lifting Gear
                 </td>
-                <td className="px-4 py-3 text-muted-foreground align-top">
+                <td className="px-4 py-3 text-muted-foreground align-top border-r">
                   Used for safe loading and unloading of massive structures, ensuring stability and security.
                 </td>
               </tr>
               <tr className="border-b border-border">
-                <td className="px-4 py-3 font-medium text-foreground align-top">
+                <td className="px-4 py-3 font-medium text-foreground align-top border-r">
                   Modular &amp; Hydraulic Trailers
                 </td>
-                <td className="px-4 py-3 text-muted-foreground align-top">
+                <td className="px-4 py-3 text-muted-foreground align-top border-r">
                   Designed for transporting extremely heavy and oversized loads over land, offering flexibility in weight distribution.
                 </td>
               </tr>
               <tr>
-                <td className="px-4 py-3 font-medium text-foreground align-top">
+                <td className="px-4 py-3 font-medium text-foreground align-top border-r">
                   Roll-On/Roll-Off (RORO) Solutions
                 </td>
-                <td className="px-4 py-3 text-muted-foreground align-top">
+                <td className="px-4 py-3 text-muted-foreground align-top border-r">
                   Best for self-propelled cargo such as heavy machinery, trucks, and large vehicles, ensuring efficient loading and unloading.
                 </td>
               </tr>
@@ -198,7 +199,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-20">
-        <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-10">
+        <h2 className="text-2xl md:text-3xl  text-primary mb-10">
           What Sets Us Apart:
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
@@ -215,7 +216,7 @@ export default function ShippingMethodsInfo() {
           {/* Right: Features */}
           <div className="md:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold text-foreground mb-1 text-base md:text-lg">
+              <h3 className=" text-foreground mb-1 text-base md:text-lg">
                 Customized Solutions for Every Shipment
               </h3>
               <p className="text-muted-foreground text-sm md:text-base">
@@ -223,7 +224,7 @@ export default function ShippingMethodsInfo() {
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-foreground mb-1 text-base md:text-lg">
+              <h3 className=" text-foreground mb-1 text-base md:text-lg">
                 Access to Specialized Equipment
               </h3>
               <p className="text-muted-foreground text-sm md:text-base">
@@ -231,7 +232,7 @@ export default function ShippingMethodsInfo() {
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-foreground mb-1 text-base md:text-lg">
+              <h3 className=" text-foreground mb-1 text-base md:text-lg">
                 Expert Handling and Securing
               </h3>
               <p className="text-muted-foreground text-sm md:text-base">
@@ -239,7 +240,7 @@ export default function ShippingMethodsInfo() {
               </p>
             </div>
             <div>
-              <h3 className="font-semibold text-foreground mb-1 text-base md:text-lg">
+              <h3 className=" text-foreground mb-1 text-base md:text-lg">
                 Global Logistics Network
               </h3>
               <p className="text-muted-foreground text-sm md:text-base">
@@ -247,7 +248,7 @@ export default function ShippingMethodsInfo() {
               </p>
             </div>
             <div className="md:col-span-2">
-              <h3 className="font-semibold text-foreground mb-1 text-base md:text-lg">
+              <h3 className=" text-foreground mb-1 text-base md:text-lg">
                 Route Planning and Compliance
               </h3>
               <p className="text-muted-foreground text-sm md:text-base">
@@ -260,7 +261,7 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl mx-auto mt-20 flex flex-col md:flex-row items-center gap-10">
         {/* Left: Text Content */}
         <div className="flex-1">
-          <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-3">
+          <h2 className="text-2xl md:text-3xl  text-primary mb-3">
             End-to-End OOG Cargo Logistics Services
           </h2>
           <p className="text-muted-foreground mb-5 text-base md:text-lg">
@@ -268,16 +269,16 @@ export default function ShippingMethodsInfo() {
           </p>
           <ul className="list-disc list-inside space-y-3 text-base text-foreground pl-2">
             <li>
-              <span className="font-semibold">Port Handling &amp; Stevedoring</span> – Safe loading, unloading, and storage at ports.
+              <span className="">Port Handling &amp; Stevedoring</span> – Safe loading, unloading, and storage at ports.
             </li>
             <li>
-              <span className="font-semibold">Customs Clearance &amp; Documentation</span> – We handle all approvals, ensuring smooth cross-border transport.
+              <span className="">Customs Clearance &amp; Documentation</span> – We handle all approvals, ensuring smooth cross-border transport.
             </li>
             <li>
-              <span className="font-semibold">Inland Transportation</span> – Seamless delivery using heavy-duty trucks, modular trailers, and rail transport.
+              <span className="">Inland Transportation</span> – Seamless delivery using heavy-duty trucks, modular trailers, and rail transport.
             </li>
             <li>
-              <span className="font-semibold">Final Delivery &amp; Project Logistics</span> – We manage delivery to construction sites, industrial zones, and remote project locations.
+              <span className="">Final Delivery &amp; Project Logistics</span> – We manage delivery to construction sites, industrial zones, and remote project locations.
             </li>
           </ul>
         </div>
@@ -295,13 +296,13 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-24">
-        <h2 className="text-xl md:text-2xl font-semibold text-primary mb-10 text-center">
+        <h2 className="text-xl md:text-2xl  text-primary mb-10 text-center">
           Reasons to Choose Moon Navigation and Trading Co. For Your Out-Of-Gauge Transportation
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Expert Route Planning */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Expert Route Planning
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -310,7 +311,7 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Specialized Handling & Equipment */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Specialized Handling &amp; Equipment
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -319,7 +320,7 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Customs & Regulatory Compliance */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Customs &amp; Regulatory Compliance
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -330,7 +331,7 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Global Network & Reliable Partnerships */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Global Network &amp; Reliable Partnerships
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -339,7 +340,7 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Tailored Logistics Solutions */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Tailored Logistics Solutions
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -348,37 +349,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
       </div>
-      <section className="w-full bg-muted/50 rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative border">
-        {/* Left: Text Content */}
-        <div className="flex-1 min-w-[260px]">
-          <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Get your Quote with Us
-          </h2>
-          <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Our streamlined OOG freight quotation process is designed for speed and convenience. At
-            Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
-            Quotation by Request system. Simply fill out our short form to initiate your request. Once
-            submitted, our team will assess your shipment's volume, weight, and consolidation options to
-            find the most efficient and cost-effective transport solution. You will receive a customized
-            quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
-            cargo movement.
-          </p>
-          <Link href="/container-services-forms">
-            <RequestQuoteButton>
-              Request a Quote
-            </RequestQuoteButton>
-          </Link>
-        </div>
-        {/* Right: Image */}
-        <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-          <img
-            src="/quote-illustration.png"
-            alt="Quotation illustration"
-            className="w-[320px] h-auto object-contain"
-            style={{ maxWidth: 380 }}
-          />
-        </div>
-      </section>
+      <GetQuoteComponent topic="Out Gauge" link="/container-services-forms" />
     </div>
   );
 }

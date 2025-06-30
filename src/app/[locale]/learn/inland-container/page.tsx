@@ -4,11 +4,12 @@ import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";  
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function InlandContainerPage() {
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
+    <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
       {/* Top Banner */}
       <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
         <div className="relative w-full h-[180px] md:h-[260px]">
@@ -25,7 +26,7 @@ export default function InlandContainerPage() {
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Left: Title and CTA */}
         <div className="flex flex-col items-start justify-start">
-          <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+          <h1 className="text-2xl md:text-3xl  text-foreground mb-2">
             Inland Container Transportation
           </h1>
           <Link href="/container-services-forms">
@@ -37,7 +38,7 @@ export default function InlandContainerPage() {
 
         {/* Right: Description */}
         <div>
-          <h2 className="text-lg font-semibold text-primary mb-2">
+          <h2 className="text-lg  text-primary mb-2">
             What is inland container transportation?
           </h2>
           <p className="text-base text-foreground leading-relaxed">
@@ -48,7 +49,7 @@ export default function InlandContainerPage() {
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-20">
-        <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-2 text-center">
+        <h2 className="text-2xl md:text-3xl  text-primary mb-2 text-center">
           Our Inland Container Transport Services
         </h2>
         <p className="text-muted-foreground text-center mb-8 text-sm md:text-base max-w-7xl mx-auto">
@@ -57,7 +58,7 @@ export default function InlandContainerPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           {/* Left: Service Details */}
           <div>
-            <h3 className="text-lg md:text-xl font-semibold mb-4">
+            <h3 className="text-lg md:text-xl  mb-4">
               1. Road Transportation
             </h3>
             <p className="text-base text-foreground mb-4">
@@ -65,22 +66,22 @@ export default function InlandContainerPage() {
             </p>
             <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
               <li>
-                <span className="font-semibold">FCL (Full Container Load) &amp; LCL (Less than Container Load) Trucking:</span> Dedicated or consolidated container haulage, including white-glove handling and cargo security.
+                <span className="">FCL (Full Container Load) &amp; LCL (Less than Container Load) Trucking:</span> Dedicated or consolidated container haulage, including white-glove handling and cargo security.
               </li>
               <li>
-                <span className="font-semibold">Special Container Transport:</span> Movement of reefer, hazardous, and high-value/sensitive materials with strict temperature and safety controls.
+                <span className="">Special Container Transport:</span> Movement of reefer, hazardous, and high-value/sensitive materials with strict temperature and safety controls.
               </li>
               <li>
-                <span className="font-semibold">Heavy &amp; Out-of-Gauge Haulage:</span> Specialized equipment and routing for large and weight-restricted cargo, including flat racks, open-top containers, and project cargo.
+                <span className="">Heavy &amp; Out-of-Gauge Haulage:</span> Specialized equipment and routing for large and weight-restricted cargo, including flat racks, open-top containers, and project cargo.
               </li>
               <li>
-                <span className="font-semibold">Customs-Cleared Delivery:</span> Transport to/from free-trade zones, bonded areas, and sites requiring compliance with customs and regulatory requirements.
+                <span className="">Customs-Cleared Delivery:</span> Transport to/from free-trade zones, bonded areas, and sites requiring compliance with customs and regulatory requirements.
               </li>
               <li>
-                <span className="font-semibold">Intercity &amp; Cross-Border Trucking:</span> Reliable connections for domestic and international routes.
+                <span className="">Intercity &amp; Cross-Border Trucking:</span> Reliable connections for domestic and international routes.
               </li>
               <li>
-                <span className="font-semibold">Container Storage &amp; Last-Mile Delivery:</span> Short-distance container transfers between ports, rail yards, and warehouses; efficient distribution solutions for door-to-door cargo delivery.
+                <span className="">Container Storage &amp; Last-Mile Delivery:</span> Short-distance container transfers between ports, rail yards, and warehouses; efficient distribution solutions for door-to-door cargo delivery.
               </li>
             </ul>
           </div>
@@ -106,7 +107,7 @@ export default function InlandContainerPage() {
           </div>
           {/* Right: Service Details */}
           <div>
-            <h3 className="text-lg md:text-xl font-semibold mb-4">
+            <h3 className="text-lg md:text-xl  mb-4">
               2. Rail Transportation
             </h3>
             <p className="text-base text-foreground mb-4">
@@ -114,16 +115,16 @@ export default function InlandContainerPage() {
             </p>
             <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
               <li>
-                <span className="font-semibold">Long-Distance Container Rail Transport:</span> Reliable connections between ports, inland container depots (ICDs), and major industrial hubs—best effective for bulk movement of FCL, LCL, or OOG shipments.
+                <span className="">Long-Distance Container Rail Transport:</span> Reliable connections between ports, inland container depots (ICDs), and major industrial hubs—best effective for bulk movement of FCL, LCL, or OOG shipments.
               </li>
               <li>
-                <span className="font-semibold">Flexible Scheduling Capabilities:</span> Enhanced for regular and ad-hoc cycles through efficient slotting, suitable for standard, reefer, and heavy/oversize containers.
+                <span className="">Flexible Scheduling Capabilities:</span> Enhanced for regular and ad-hoc cycles through efficient slotting, suitable for standard, reefer, and heavy/oversize containers.
               </li>
               <li>
-                <span className="font-semibold">Intermodal Rail Solutions:</span> Seamless integration of rail and surface transport for optimized routing; smooth coordination of cargo from pickup to inland destinations.
+                <span className="">Intermodal Rail Solutions:</span> Seamless integration of rail and surface transport for optimized routing; smooth coordination of cargo from pickup to inland destinations.
               </li>
               <li>
-                <span className="font-semibold">Secure & Controlled Operations:</span> Increased levels of control and damage compared to road transport; regular monitoring and tracking via in-train transport solutions.
+                <span className="">Secure & Controlled Operations:</span> Increased levels of control and damage compared to road transport; regular monitoring and tracking via in-train transport solutions.
               </li>
             </ul>
           </div>
@@ -133,7 +134,7 @@ export default function InlandContainerPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           {/* Left: Multimodal & Transshipment Services */}
           <div>
-            <h3 className="text-lg md:text-xl font-semibold mb-4">
+            <h3 className="text-lg md:text-xl  mb-4">
               3. Multimodal &amp; Transshipment Services
             </h3>
             <p className="text-base text-foreground mb-4">
@@ -141,15 +142,15 @@ export default function InlandContainerPage() {
             </p>
             <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
               <li>
-                <span className="font-semibold">Seamless Port-to-Door &amp; Door-to-Port Transport:</span>
+                <span className="">Seamless Port-to-Door &amp; Door-to-Port Transport:</span>
                 End-to-end logistics coordination from shipping sites to inland delivery points. Eliminating delays with optimized scheduling and cargo handling.
               </li>
               <li>
-                <span className="font-semibold">Intermediate Transshipment Solutions:</span>
+                <span className="">Intermediate Transshipment Solutions:</span>
                 Flexibility in transport mode selection to optimize cost and efficiency. Reducing transit risks and expenses through smart reloading.
               </li>
               <li>
-                <span className="font-semibold">Cross-Border Inland Transit Transport:</span>
+                <span className="">Cross-Border Inland Transit Transport:</span>
                 Container-based transport between countries with full regulatory compliance. Ensuring smooth operations through efficient border clearance processes.
               </li>
             </ul>
@@ -165,7 +166,7 @@ export default function InlandContainerPage() {
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-24">
-        <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-2 text-center">
+        <h2 className="text-2xl md:text-3xl  text-primary mb-2 text-center">
           Our Specialized Container Transport Solutions
         </h2>
         <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
@@ -181,7 +182,7 @@ export default function InlandContainerPage() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center text-sm md:text-base">Standard &amp; High Cube Containers</span>
+            <span className=" text-center text-sm md:text-base">Standard &amp; High Cube Containers</span>
             <span className="text-xs text-muted-foreground text-center">
               20ft, 40ft, and self-container transport.
             </span>
@@ -195,7 +196,7 @@ export default function InlandContainerPage() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center text-sm md:text-base">Reefer &amp; Temperature-Sensitive Cargo</span>
+            <span className=" text-center text-sm md:text-base">Reefer &amp; Temperature-Sensitive Cargo</span>
             <span className="text-xs text-muted-foreground text-center">
               Ensuring protected temperature for foods throughout the journey.
             </span>
@@ -209,7 +210,7 @@ export default function InlandContainerPage() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center text-sm md:text-base">Dangerous Goods/DG Containers</span>
+            <span className=" text-center text-sm md:text-base">Dangerous Goods/DG Containers</span>
             <span className="text-xs text-muted-foreground text-center">
               Safe requirements with strict safety protocols.
             </span>
@@ -223,7 +224,7 @@ export default function InlandContainerPage() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className="font-semibold text-center text-sm md:text-base">Flat Rack &amp; Open-Top Containers</span>
+            <span className=" text-center text-sm md:text-base">Flat Rack &amp; Open-Top Containers</span>
             <span className="text-xs text-muted-foreground text-center">
               For out-of-gauge, heavy, OOG, and industrial project cargo.
             </span>
@@ -231,13 +232,13 @@ export default function InlandContainerPage() {
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-20">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
+        <h2 className="text-2xl md:text-3xl  text-center text-primary mb-8">
           Reasons to Choose Moon Navigation and Trading Co. For Your Inland Transportation
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Seamless Port-to-Door Delivery */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Seamless Port-to-Door Delivery
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -246,7 +247,7 @@ export default function InlandContainerPage() {
           </div>
           {/* Diverse Transport Options */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Diverse Transport Options
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -255,7 +256,7 @@ export default function InlandContainerPage() {
           </div>
           {/* Timely & Reliable Service */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Timely &amp; Reliable Service
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -266,7 +267,7 @@ export default function InlandContainerPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Compliance & Security */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Compliance &amp; Security
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -275,7 +276,7 @@ export default function InlandContainerPage() {
           </div>
           {/* Customized Logistics Solutions */}
           <div className="flex flex-col items-center text-center">
-            <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+            <h3 className=" text-foreground mb-2 text-base md:text-lg">
               Customized Logistics Solutions
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -284,37 +285,7 @@ export default function InlandContainerPage() {
           </div>
         </div>
       </div>
-      <section className="w-full bg-muted/50 rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative border">
-        {/* Left: Text Content */}
-        <div className="flex-1 min-w-[260px]">
-          <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Get your Quote with Us
-          </h2>
-          <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Our streamlined inland container freight quotation process is designed for speed and convenience. At
-            Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
-            Quotation by Request system. Simply fill out our short form to initiate your request. Once
-            submitted, our team will assess your shipment's volume, weight, and consolidation options to
-            find the most efficient and cost-effective transport solution. You will receive a customized
-            quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
-            cargo movement.
-          </p>
-          <Link href="/container-services-forms">
-            <RequestQuoteButton>
-              Request a Quote
-            </RequestQuoteButton>
-          </Link>
-        </div>
-        {/* Right: Image */}
-        <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-          <img
-            src="/quote-illustration.png"
-            alt="Quotation illustration"
-            className="w-[320px] h-auto object-contain"
-            style={{ maxWidth: 380 }}
-          />
-        </div>
-      </section>
+      <GetQuoteComponent topic="Inland Container" link="/container-services-forms" />
     </div>
   );
 }
