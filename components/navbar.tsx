@@ -74,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 //
                 {
                     name: "Bunkering | Oil Supply | Ship Chandlery",
-                    href: "/services/bunkering",
+                    href: "/learn/bunkering",
                 },
                 {
                     name: "Special Services by Case",

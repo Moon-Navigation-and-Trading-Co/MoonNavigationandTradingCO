@@ -1,0 +1,96 @@
+import Image from "next/image";
+import GetQuoteComponent from "@/components/getQuoteComponent";
+
+export default function LearnMoreChandleryPage() {
+  return (
+    <div className="w-full min-h-screen bg-white flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
+      <div className="w-full max-w-6xl">
+        <h1 className="text-2xl md:text-3xl font-semibold mb-8">
+          Ship Chandlery Services – At Moon Navigation and Trading Co.
+        </h1>
+        <p className="text-[#444] text-sm md:text-base mb-10">
+          A well-supplied vessel is crucial for smooth maritime operations. Our ship chandlery services ensure vessels are fully supplied with everything they need, from provisions to engine parts.
+        </p>
+        <div className="flex flex-col md:flex-row gap-8 mb-12">
+          <div className="flex-1">
+            <h2 className="text-lg font-bold mb-2">1. Deck &amp; Engine Stores</h2>
+            <ul className="list-disc pl-6 text-[#222] text-sm md:text-base mb-4 space-y-1">
+              <li>Pipes, Mooring Lines &amp; Rigging Equipment – For ship berthing and anchorage</li>
+              <li>Paints, Coatings &amp; Corrosion Protection – Ensuring hull durability &amp; rust prevention</li>
+              <li>Tools, Cleaning Equipment &amp; Safety Items – For all maintenance and operations needs</li>
+              <li>Spare Parts for Engines &amp; Auxiliaries – Ensuring smooth ongoing repairs</li>
+              <li>Safety Gear &amp; Firefighting Equipment – Meeting SOLAS &amp; ISM safety regulations</li>
+            </ul>
+          </div>
+          <div className="flex-1 flex items-center justify-center">
+            <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/chandlery-deck-engine.jpg"
+                alt="Deck & Engine Stores"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row gap-8 mb-12">
+          <div className="flex-1 flex items-center justify-center mb-6 md:mb-0">
+            <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/chandlery-provisions.jpg"
+                alt="Provisions & Catering Supplies"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </div>
+          </div>
+          <div className="flex-1">
+            <h2 className="text-lg font-bold mb-2">2. Provisions &amp; Catering Supplies</h2>
+            <ul className="list-disc pl-6 text-[#222] text-sm md:text-base space-y-1">
+              <li>Fresh &amp; Frozen Food – Fruits, vegetables, meat, seafood, dairy, and bakery products</li>
+              <li>Dry Goods &amp; Beverages – Coffee, tea, canned goods, and snacks</li>
+              <li>Bonded &amp; Hygiene Supplies – Fine wines &amp; spirits, toiletries, and personal care products</li>
+              <li>Cooking Utensils &amp; Galley Gear – Essential for creating well-equipped kitchens for crew meals</li>
+            </ul>
+          </div>
+        </div>
+        <div className="flex flex-col md:flex-row gap-8 mb-12">
+          <div className="flex-1">
+            <h2 className="text-lg font-bold mb-2">3. Bonded Stores &amp; Duty-Free Items</h2>
+            <ul className="list-disc pl-6 text-[#222] text-sm md:text-base space-y-1">
+              <li>
+                Tobacco &amp; Alcohol – Cigarettes, cans, beer, wine, and spirits
+              </li>
+              <li>
+                Soft Drinks &amp; Snacks – Energy drinks, juices, chips, and confectionery
+              </li>
+              <li>
+                Electronics &amp; Medical Items – TV screens, radios, tablets, and emergency essentials
+              </li>
+              <li>
+                Cleaning Agents &amp; Detergents – Laundry, dishwashing, and industrial cleaning supplies
+              </li>
+            </ul>
+          </div>
+          <div className="flex-1 flex items-center justify-center">
+            <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
+              <Image
+                src="/images/chandlery-bonded-store.jpg"
+                alt="Bonded Stores & Duty-Free Items"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </div>
+          </div>
+        </div>
+        <GetQuoteComponent topic="Ship Chandlery Services" link="/ship-agency-forms" />
+      </div>
+    </div>
+  );
+}
