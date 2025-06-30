@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { Metadata } from "next";
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 // SEO Metadata for Next.js 13+ App Router
 export const metadata: Metadata = {
@@ -115,8 +116,8 @@ export default function RollOnOffHero() {
               className="rounded-[48px] object-cover w-full h-[340px] mb-6"
               loading="lazy"
             />
-            <div className="w-full flex justify-center md:justify-start">
-              <RequestQuoteButton>
+            <RequestQuoteButton>
+              <Link href={`/learn/roll/learn-more`}>
                 Learn More About Our RORO Cargo Solutions
               </RequestQuoteButton>
             </div>
@@ -238,52 +239,24 @@ export default function RollOnOffHero() {
             <p className="text-base text-[#444] font-sans">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</p>
           </div>
           <div className="flex flex-col items-center text-center">
-            <img src="/icons/scale.svg" alt="Secure & Cost-Effective Transport" className="mb-6 w-16 h-16" />
-            <h3 className="font-bold text-base text-[#222] font-sans mb-2">Secure & Cost-Effective Transport</h3>
-            <p className="text-base text-[#444] font-sans">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</p>
+            
+            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Secure & Cost-Effective Transport</h3>
+            <p className="text-sm text-muted-foreground">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</p>
           </div>
-        </div>
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-x-8 mt-20 px-4 md:px-0">
-          <div className="flex flex-col items-center text-center">
-            <img src="/icons/global.svg" alt="Global Connectivity" className="mb-6 w-16 h-16" />
-            <h3 className="font-bold text-base text-[#222] font-sans mb-2">Global Connectivity</h3>
-            <p className="text-base text-[#444] font-sans">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</p>
           </div>
-          <div className="flex flex-col items-center text-center">
-            <img src="/icons/support.svg" alt="Expert Compliance & Support" className="mb-6 w-16 h-16" />
-            <h3 className="font-bold text-base text-[#222] font-sans mb-2">Expert Compliance & Support</h3>
-            <p className="text-base text-[#444] font-sans">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</p>
+          {/* Row 2 */}
+          <div className="grid md:grid-cols-2">
+          <div className="flex flex-col items-center text-center md:col-start-2 justify-center self-center">
+            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Global Connectivity</h3>
+            <p className="text-sm text-muted-foreground">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</p>
           </div>
-        </div>
+          <div className="flex flex-col items-center text-center md:col-start-3 self-center">
+            <h3 className="font-semibold mt-6 mb-2 text-base text-foreground">Expert Compliance & Support</h3>
+            <p className="text-sm text-muted-foreground">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</p>
+          </div>
+          </div>
       </section>
-
-      <section className="w-full py-20 px-4 md:px-0">
-        <div className="max-w-7xl mx-auto bg-[#d3e3f1] rounded-[40px] flex flex-col md:flex-row items-center justify-between p-8 md:p-12 gap-8">
-          {/* Left: Text */}
-          <div className="flex-1 flex flex-col justify-center min-w-[260px]">
-            <h2 className="text-3xl font-normal mb-4 text-[#222] font-sans">Get your Quote with Us</h2>
-            <p className="text-base text-[#222] mb-8 font-sans">
-              Our streamlined RoRo freight quotation process is designed for speed and convenience. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will evaluate the cargo type, dimensions, and route requirements to determine the best shipping solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless transport of vehicles, machinery, and oversized rolling cargo.
-            </p>
-            <RequestQuoteButton>Request a Quote</RequestQuoteButton>
-          </div>
-          {/* Right: Illustration */}
-          <div className="flex-1 flex items-center justify-end">
-            <img
-              src="/quote-illustration.png"
-              alt="Quotation illustration"
-              className="object-contain w-full max-w-md h-[200px] md:h-[240px]"
-              loading="lazy"
-            />
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between mt-2 px-2 text-base font-sans">
-          <span>
-            Need a Reliable RoRo Shipping Solution? <a href="#contact" className="font-bold underline">Contact us</a> today for a customized Roll-On/Roll-Off (RoRo) transport plan that ensures the safe, secure, and efficient movement of your wheeled and heavy cargo!
-          </span>
-          <span className="md:text-right w-full md:w-auto">-Whenever and wherever you need to trust.</span>
-        </div>
-      </section>
+      <GetQuoteComponent topic="RORO" link="/ocean-freight-forms" />
     </>
   );
 }

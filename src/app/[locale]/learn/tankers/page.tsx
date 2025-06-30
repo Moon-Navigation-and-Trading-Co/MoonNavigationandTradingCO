@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Metadata } from "next";
 import RequestQuoteButton from "@/components/RequestQuoteButton" 
 import Link from "next/link";
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export const metadata: Metadata = {
     title: "Tankers | Moon Navigation and Trading Co. - Ocean Freight & Transportation",
@@ -44,6 +45,8 @@ export const metadata: Metadata = {
     }
 };
 
+
+
 export default function TankersPage() {
     return (
         <main className="w-full flex flex-col items-center pt-8 pb-16 min-h-screen">
@@ -63,7 +66,7 @@ export default function TankersPage() {
             <article className="w-full max-w-7xl flex flex-col md:flex-row gap-10 px-4 md:px-0">
                 {/* Left: Title and CTA */}
                 <header className="flex-1 flex flex-col items-start">
-                    <h1 className="text-3xl font-normal mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h1 className="text-3xl font-normal mb-8" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Tankers
                     </h1>
                     <Link href="/ocean-freight-forms">
@@ -74,22 +77,22 @@ export default function TankersPage() {
                 </header>
                 {/* Right: Description */}
                 <section className="flex-1 flex flex-col items-start">
-                    <h2 className="text-lg font-semibold text-primary mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-lg font-semibold text-primary mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         What is Tankers?
                     </h2>
-                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Tankers in ocean freight and transportation are specialized vessels designed for the bulk transport of liquids, including crude oil, refined petroleum products, chemicals, and liquefied gases. Engineered with advanced safety features and adhering to stringent industry regulations, these ships ensure the secure and efficient handling of hazardous cargo.
                     </p>
-                    <p className="text-sm md:text-base text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-sm md:text-base text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., we specialize in comprehensive tanker transportation services. Our state-of-the-art fleet and experienced team provide scalable, reliable, and efficient solutions to support your liquid cargo needs. We prioritize safety, compliance, and environmental sustainability, ensuring every project meets the highest industry standards while delivering cost-effective and timely transportation across major global trade routes.
                     </p>
                 </section>
             </article>
             <section className="w-full max-w-7xl mt-16">
-                <h2 className="text-2xl md:text-3xl font-normal mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl font-normal mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Our Specialized Tanker Types
                 </h2>
-                <p className="text-sm md:text-base text-muted-foreground mb-8" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <p className="text-sm md:text-base text-muted-foreground mb-8" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     At Moon Navigation and Trading Co., we specialize in all types of tankers, ensuring safe and efficient transportation solutions tailored to meet diverse industry needs.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -100,12 +103,12 @@ export default function TankersPage() {
                             alt="Crude Oil Tanker"
                             width={320}
                             height={180}
-                            className="rounded-full object-cover mb-4 w-[180px] h-[110px]"
+                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Crude Oil Tankers
                         </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             These are designed for transporting crude oil in bulk with large capacity and robust safety features, ensuring secure delivery from extraction sites to refineries.
                         </p>
                     </div>
@@ -116,12 +119,12 @@ export default function TankersPage() {
                             alt="Liquefied Gas Tanker"
                             width={320}
                             height={180}
-                            className="rounded-full object-cover mb-4 w-[180px] h-[110px]"
+                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Liquefied Gas Tankers
                         </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             These vessels transport LNG and LPG under high pressure and low temperature, equipped with advanced containment systems for maximum safety.
                         </p>
                     </div>
@@ -132,12 +135,12 @@ export default function TankersPage() {
                             alt="Product Tanker"
                             width={320}
                             height={180}
-                            className="rounded-full object-cover mb-4 w-[180px] h-[110px]"
+                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Product Tankers
                         </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Specialized for refined petroleum products like gasoline, diesel, and jet fuel, these tankers offer compartmentalized storage for safe, contamination-free transport.
                         </p>
                     </div>
@@ -148,12 +151,12 @@ export default function TankersPage() {
                             alt="Chemical Tanker"
                             width={320}
                             height={180}
-                            className="rounded-full object-cover mb-4 w-[180px] h-[110px]"
+                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Chemical Tankers
                         </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Engineered to carry hazardous chemicals, these tankers feature stainless steel tanks, advanced coatings, and specialized safety systems for secure handling.
                         </p>
                     </div>
@@ -161,10 +164,10 @@ export default function TankersPage() {
             </section>
             {/* Industries We Serve */}
             <section className="mt-20 mb-10">
-                <h2 className="text-2xl md:text-3xl font-semibold text-center mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl font-semibold text-center mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Industries We Serve
                 </h2>
-                <p className="text-center text-sm md:text-base text-muted-foreground mb-10" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <p className="text-center text-sm md:text-base text-muted-foreground mb-10" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Our tanker ocean freight services cater to a diverse range of industries, including:
                 </p>
                 <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-6">
@@ -175,12 +178,12 @@ export default function TankersPage() {
                             alt="Oil & Gas"
                             width={320}
                             height={200}
-                            className="rounded-full object-cover mb-4 w-[200px] h-[130px] md:w-[240px] md:h-[150px]"
+                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Oil & Gas
                         </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Transportation of crude, refined petroleum, and natural gas with precision and safety.
                         </p>
                     </div>
@@ -191,12 +194,12 @@ export default function TankersPage() {
                             alt="Chemical Manufacturing"
                             width={320}
                             height={200}
-                            className="rounded-full object-cover mb-4 w-[200px] h-[130px] md:w-[240px] md:h-[150px]"
+                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Chemical Manufacturing
                         </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Providing safe and reliable transport for bulk chemicals and hazardous chemicals.
                         </p>
                     </div>
@@ -207,12 +210,12 @@ export default function TankersPage() {
                             alt="Agriculture & Food Industry"
                             width={320}
                             height={200}
-                            className="rounded-full object-cover mb-4 w-[200px] h-[130px] md:w-[240px] md:h-[150px]"
+                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Agriculture & Food Industry
                         </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Bulk liquid transportation solutions for edible and agricultural oils.
                         </p>
                     </div>
@@ -223,12 +226,12 @@ export default function TankersPage() {
                             alt="Industrial & Energy Sectors"
                             width={320}
                             height={200}
-                            className="rounded-full object-cover mb-4 w-[200px] h-[130px] md:w-[240px] md:h-[150px]"
+                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Industrial & Energy Sectors
                         </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Supplying essential fuels and raw materials to support operational needs.
                         </p>
                     </div>
@@ -237,13 +240,13 @@ export default function TankersPage() {
             <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
                 {/* Left: Key Features Text */}
                 <div className="flex-[1.3] md:pr-10">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-2xl md:text-3xl font-normal mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Key Features of Our Tankers Transportation
                     </h2>
-                    <h3 className="text-lg font-semibold mb-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h3 className="text-lg font-semibold mb-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Specialized Tanker Fleet
                     </h3>
-                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         <li>
                             <span className="font-semibold">Crude Oil Tankers:</span> Designed for the large-scale transportation of unrefined crude oil. These tankers feature high-capacity, double-hull designs for added safety, ensuring the secure shipment across global trade routes.
                         </li>
@@ -264,8 +267,8 @@ export default function TankersPage() {
                         src="/tankers-features.jpg"
                         alt="Specialized Tanker Fleet"
                         width={420}
-                        height={260}
-                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
+                        height={420}
+                        className="rounded-2xl object-cover w-full h-[400px]"
                         priority={false}
                     />
                 </div>
@@ -278,19 +281,19 @@ export default function TankersPage() {
                         alt="Tanker Safety Compliance"
                         width={420}
                         height={260}
-                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
+                        className="rounded-2xl object-cover w-full h-[400px]"
                         priority={false}
                     />
                 </div>
                 {/* Right: Advanced Safety & Compliance */}
                 <div className="flex-[1.3] md:pl-10">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Advanced Safety &amp; Compliance
                     </h2>
-                    <p className="text-sm md:text-base text-muted-foreground mb-5" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-sm md:text-base text-muted-foreground mb-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., our tankers are engineered to meet the highest safety standards in the maritime industry.
                     </p>
-                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         <li>
                             <span className="font-semibold">Regulatory Compliance:</span> We strictly adhere to international regulations, including IMO, SOLAS, MARPOL, and ISGOTT, ensuring the safe handling and transportation of hazardous goods.
                         </li>
@@ -309,13 +312,13 @@ export default function TankersPage() {
             <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Global Logistics Network with Moon Navigation and Trading Co.
                     </h2>
-                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., we specialize in a comprehensive global logistics network, ensuring timely, dependable tankers that reach every major oil, chemical, and gas port worldwide.
                     </p>
-                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         <li>
                             <span className="font-semibold">Global Trade Routes:</span> Our extensive shipping routes and partnerships ensure your liquid cargo is routed via the safest, fastest international maritime lanes with streamlined coordination across the globe.
                         </li>
@@ -337,7 +340,7 @@ export default function TankersPage() {
                         alt="Moon Navigation and Trading Co. global logistics network"
                         width={420}
                         height={260}
-                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
+                        className="rounded-2xl object-cover w-full h-[400px]"
                         priority={false}
                     />
                 </div>
@@ -350,19 +353,19 @@ export default function TankersPage() {
                         alt="Advanced cargo handling and storage at Moon Navigation and Trading Co."
                         width={420}
                         height={260}
-                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
+                        className="rounded-2xl object-cover w-full h-[400px]"
                         priority={false}
                     />
                 </div>
                 {/* Right: Text Content */}
                 <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Advanced Cargo Handling &amp; Storage
                     </h2>
-                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., our tankers are equipped with cutting-edge technology to ensure safe and efficient cargo transfers:
                     </p>
-                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         <li>
                             <span className="font-semibold">Temperature Controlled Cargo Holds:</span> Our tankers are equipped with advanced temperature regulation systems, allowing for the transport of sensitive cargoes like chemicals, edible oils, and liquefied gases while maintaining full required temperature control throughout the journey.
                         </li>
@@ -378,13 +381,13 @@ export default function TankersPage() {
             <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Risk Management &amp; Environmental Protection
                     </h2>
-                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., we prioritize safety, sustainability, and environmental responsibility in every aspect of our operations.
                     </p>
-                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         <li>
                             <span className="font-semibold">Assurance &amp; Mitigation:</span> We use audit programs, crew training, and robust vessel maintenance to identify hazards and mitigate all shipping risks, ensuring safe and secure tanker transportation through industry-leading protocols and emergency response drills.
                         </li>
@@ -406,7 +409,7 @@ export default function TankersPage() {
                         alt="Tanker ship with environmental protection and dolphins"
                         width={420}
                         height={260}
-                        className="rounded-2xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
+                        className="rounded-2xl object-cover w-full h-[400px]"
                         priority={false}
                     />
                 </div>
@@ -419,19 +422,19 @@ export default function TankersPage() {
                         alt="Businessmen shaking hands for flexible tanker solutions"
                         width={420}
                         height={420}
-                        className="rounded-2xl w-full max-w-7xl "
+                        className="rounded-2xl object-cover w-full h-[400px]"
                         priority={false}
                     />
                 </div>
                 {/* Right: Text Content */}
                 <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Flexibility &amp; Customized Solutions
                     </h2>
-                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., we recognize that each cargo type has unique transportation needs, which is why we offer flexible and tailored tanker transportation solutions.
                     </p>
-                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         <li>
                             <span className="font-semibold">Spot &amp; Long-Term Contracts:</span> We provide both spot shipments for one-off transport and long-term contract options for recurring needs. This flexible approach helps maximize flexibility to meet your requirements.
                         </li>
@@ -445,7 +448,7 @@ export default function TankersPage() {
                 </div>
             </section>
             <section className="w-full max-w-7xl mt-20">
-                <h2 className="text-2xl md:text-3xl font-normal mb-8 text-center" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl font-normal mb-8 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Reasons To Choose Us for Tanker Ocean Freight
                 </h2>
                 {/* First row: 3 items */}
@@ -490,36 +493,7 @@ export default function TankersPage() {
                     </div>
                 </div>
             </section>
-            <section className="w-full bg-secondary rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-                {/* Left: Text Content */}
-                <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Get your Quote with Us
-                    </h2>
-                    <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Our steamlined tanker freight quotation process is designed for speed and convenience. At Moon
-                        Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by
-                        Request system. Simply fill out our short form to initiate your request. Once submitted, our team
-                        will review the details and determine the best vessel type, routing, and compliance measures for
-                        your cargo. You will receive a customized quotation directly in your email, ensuring accurate
-                        pricing and seamless delivery.
-                    </p>
-                    <Link href="/ocean-freight-forms">
-                        <RequestQuoteButton>
-                            Request a Quote
-                        </RequestQuoteButton>
-                    </Link> 
-                </div>
-                {/* Right: Image */}
-                <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                    <img
-                        src="/quote-illustration.png"
-                        alt="Quotation illustration"
-                        className="w-[320px] h-auto object-contain"
-                        style={{ maxWidth: 380 }}
-                    />
-                </div>
-            </section>
+            <GetQuoteComponent topic="Tankers" link="/ocean-freight-forms" />
         </main>
     );
 }

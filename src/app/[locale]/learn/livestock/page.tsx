@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { useTranslations } from 'next-intl'
 import { Metadata } from 'next'
 import RequestQuoteButton from "@/components/RequestQuoteButton" 
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export const metadata: Metadata = {
   title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
@@ -69,7 +70,7 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Left Side: Title and Button */}
         <div className="flex flex-col justify-center items-start">
-          <h1 className="text-4xl md:text-5xl font-medium mb-8 leading-tight">Live Stock<br />Transportation</h1>
+          <h1 className="text-4xl md:text-5xl font-medium mb-8 leading-tight" style={{ fontFamily: 'Raleway, sans-serif' }}>Live Stock<br />Transportation</h1>
           <Link href="/ocean-freight-forms">
             <RequestQuoteButton>
               Request a Quote
@@ -78,18 +79,18 @@ export default function ShippingMethodsInfo() {
         </div>
         {/* Right Side: Info Card */}
         <div>
-          <h2 className="text-xl font-semibold text-primary mb-4">What is Livestock Transportation?</h2>
-          <p className="text-muted-foreground mb-4 text-sm md:text-base">
+          <h2 className="text-xl font-semibold text-primary mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>What is Livestock Transportation?</h2>
+          <p className="text-muted-foreground mb-4 text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
             Livestock transportation is the moving of domesticated animals from one location to another, typically for purposes such as breeding, feeding, or market sales. This specialized form of transport requires adherence to strict welfare regulations to ensure the safety and comfort of the animals during transit.
           </p>
-          <p className="text-muted-foreground text-sm md:text-base">
+          <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
             At Moon Navigation and Trading Co., we specialize in the safe, humane, and efficient shipment of livestock, ensuring their well-being throughout the entire journey. Whether you need to transport cattle, sheep, horses, or other live animals, our state-of-the-art livestock carriers and expert handling services guarantee a stress-free and compliant shipping experience.
           </p>
         </div>
       </div>
       <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
-        <h2 className="text-3xl sm:text-4xl font-semibold mb-2">Industries We Serve</h2>
-        <p className="mb-10 text-muted-foreground">
+        <h2 className="text-3xl sm:text-4xl font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>Industries We Serve</h2>
+        <p className="mb-10 text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
           We provide specialized livestock shipping solutions across multiple industries, ensuring each type of animal is transported safely and in compliance with international standards.
         </p>
         <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch">
@@ -101,8 +102,8 @@ export default function ShippingMethodsInfo() {
               className="rounded-3xl object-cover w-full max-w-7xl h-[180px] mb-4"
               loading="lazy"
             />
-            <h3 className="text-lg font-semibold mb-2 text-center">Agriculture & Dairy Farming</h3>
-            <p className="text-muted-foreground text-center">
+            <h3 className="text-lg font-semibold mb-2 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Agriculture & Dairy Farming</h3>
+            <p className="text-muted-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
               We support global farming operations by transporting cattle, sheep, goats, and other livestock.
             </p>
           </div>
@@ -114,8 +115,8 @@ export default function ShippingMethodsInfo() {
               className="rounded-3xl object-cover w-full max-w-7xl h-[180px] mb-4"
               loading="lazy"
             />
-            <h3 className="text-lg font-semibold mb-2 text-center">Equestrian & Racing</h3>
-            <p className="text-muted-foreground text-center">
+            <h3 className="text-lg font-semibold mb-2 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Equestrian & Racing</h3>
+            <p className="text-muted-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
               We securely ship elite horses for global competitions, training, and breeding.
             </p>
           </div>
@@ -127,23 +128,23 @@ export default function ShippingMethodsInfo() {
               className="rounded-3xl object-cover w-full max-w-7xl h-[180px] mb-4"
               loading="lazy"
             />
-            <h3 className="text-lg font-semibold mb-2 text-center">Zoos & Wildlife Conservation</h3>
-            <p className="text-muted-foreground text-center">
+            <h3 className="text-lg font-semibold mb-2 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Zoos & Wildlife Conservation</h3>
+            <p className="text-muted-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Our expertise extends to the careful relocation of exotic and endangered species, supporting conservation programs and global zoo networks.
             </p>
           </div>
         </div>
       </section>
       <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
-        <h2 className="text-4xl font-semibold mb-12">Our Livestock Shipping Solutions</h2>
+        <h2 className="text-4xl font-semibold mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>Our Livestock Shipping Solutions</h2>
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left: Text Content */}
           <div className="flex-1">
-            <h3 className="text-2xl font-medium mb-6">Specialized Livestock Carriers</h3>
-            <p className="mb-6">
+            <h3 className="text-2xl font-medium mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>Specialized Livestock Carriers</h3>
+            <p className="mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Our vessels are specifically designed for the safe and efficient transport of livestock.
             </p>
-            <ul className="list-disc pl-6 space-y-3 text-muted-foreground">
+            <ul className="list-disc pl-6 space-y-3 text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
               <li>
                 They feature multi-tiered enclosures with optimal ventilation, ensuring a consistent flow of fresh air.
               </li>
@@ -182,11 +183,11 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Right: Text Content */}
           <div className="flex-1">
-            <h3 className="text-2xl font-medium mb-6">Animal Welfare & Veterinary Care</h3>
-            <p className="mb-6">
+            <h3 className="text-2xl font-medium mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>Animal Welfare & Veterinary Care</h3>
+            <p className="mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
               At Moon Navigation and Trading Co., animal welfare is our top priority in every aspect of transportation.
             </p>
-            <ul className="list-disc pl-6 space-y-3 text-muted-foreground">
+            <ul className="list-disc pl-6 space-y-3 text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
               <li>
                 Our onboard veterinarians and trained handlers provide constant monitoring and are equipped to deliver emergency medical care when necessary.
               </li>
@@ -207,16 +208,16 @@ export default function ShippingMethodsInfo() {
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left: Text Content */}
           <div className="flex-1">
-            <h3 className="text-2xl font-medium mb-6">Regulatory Compliance &amp; Safety Standards</h3>
-            <p className="mb-6">
+            <h3 className="text-2xl font-medium mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>Regulatory Compliance &amp; Safety Standards</h3>
+            <p className="mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
               We strictly adhere to global livestock transportation regulations to ensure the highest standards of welfare and compliance. This includes the following:
             </p>
-            <ul className="list-disc pl-6 space-y-3 text-muted-foreground mb-6">
+            <ul className="list-disc pl-6 space-y-3 text-muted-foreground mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
               <li>International Maritime Organization (IMO) Animal Transport Regulations</li>
               <li>World Organization for Animal Health (WOAH) Welfare Guidelines</li>
               <li>Local Import/Export Animal Health Requirements</li>
             </ul>
-            <p>
+            <p style={{ fontFamily: 'Raleway, sans-serif' }}>
               By maintaining compliance with these standards, we ensure a smooth customs clearance process and prevent unnecessary delays at ports.
             </p>
           </div>
@@ -248,71 +249,41 @@ export default function ShippingMethodsInfo() {
         </div>
       </section>
       <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
-        <h2 className="text-3xl sm:text-4xl font-semibold mb-12">
+        <h2 className="text-3xl sm:text-4xl font-semibold mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>
           Reasons to Choose Moon Navigation and Trading Co. for Your Livestock Transportation Needs
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8">
           {/* Card 1 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className="font-semibold mb-2 text-foreground">Global Network &amp; Port Access</h3>
-            <p className="text-muted-foreground">
+            <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Global Network &amp; Port Access</h3>
+            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.
             </p>
           </div>
           {/* Card 2 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className="font-semibold mb-2 text-foreground">Advanced Biosecurity Measures</h3>
-            <p className="text-muted-foreground">
+            <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Advanced Biosecurity Measures</h3>
+            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
               We implement strict hygiene protocols, quarantine measures, and disease prevention practices.
             </p>
           </div>
           {/* Card 3 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className="font-semibold mb-2 text-foreground">Custom-Tailored Transport Solutions</h3>
-            <p className="text-muted-foreground">
+            <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Custom-Tailored Transport Solutions</h3>
+            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Whether you need short-haul regional shipping or long-haul transcontinental transport, we design solutions tailored to your needs.
             </p>
           </div>
           {/* Card 4 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className="font-semibold mb-2 text-foreground">Seamless Logistics &amp; Documentation Handling</h3>
-            <p className="text-muted-foreground">
+            <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Seamless Logistics &amp; Documentation Handling</h3>
+            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
               From permits and health certificates to customs clearance, we manage all necessary documentation.
             </p>
           </div>
         </div>
       </section>
-      <section className="w-full bg-secondary rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-        {/* Left: Text Content */}
-        <div className="flex-1 min-w-[260px]">
-          <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Get your Quote with Us
-          </h2>
-          <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Our steamlined livestock transportation quotation process is designed for efficiency and ease. At
-            Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation
-            by Request system. Simply fill out our short form to initiate your request. Once submitted, our
-            team will review the details and select the best transportation method, routing, and compliance
-            measures for your shipment. You will receive a customized quotation directly in your email,
-            ensuring accurate pricing and the highest standards of animal welfare and safety.
-          </p>
-          <Link href="/ocean-freight-forms">
-            <RequestQuoteButton>
-              Request a Quote
-            </RequestQuoteButton>
-          </Link>
-        </div>
-        {/* Right: Image */}
-        <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-          <img
-            src="/quote-illustration.png"
-            alt="Quotation illustration"
-            className="w-[320px] h-auto object-contain"
-            style={{ maxWidth: 380 }}
-            loading="lazy"
-          />
-        </div>
-      </section>
+      <GetQuoteComponent topic="Livestock" link="/ocean-freight-forms" />
     </div>
   )
 }
