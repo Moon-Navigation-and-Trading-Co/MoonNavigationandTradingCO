@@ -240,10 +240,10 @@ export default function TankersPage() {
             <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
                 {/* Left: Key Features Text */}
                 <div className="flex-[1.3] md:pr-10">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <h2 className="text-2xl md:text-3xl font-normal mb-20" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Key Features of Our Tankers Transportation
                     </h2>
-                    <h3 className="text-lg font-semibold mb-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <h3 className="text-2xl md:text-3xl mb-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Specialized Tanker Fleet
                     </h3>
                     <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -448,7 +448,7 @@ export default function TankersPage() {
                 </div>
             </section>
             <section className="w-full max-w-7xl mt-20">
-                <h2 className="text-2xl md:text-3xl font-normal mb-8 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                <h2 className="text-2xl md:text-3xl font-normal mb-20 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Reasons To Choose Us for Tanker Ocean Freight
                 </h2>
                 {/* First row: 3 items */}
