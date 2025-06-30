@@ -69,10 +69,6 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     name: "Suez Canal Transit & Passage Services",
                     href: "/learn/suez"
                 },
-                {
-                    name: "Breakdown of our PDA",
-                    href: "/learn/pda/breakdown"
-                },
                 { name: "Sign On/Off Crew Members", href: "/learn/crew" },
                 { name: "Transit Spare Parts", href: "/services/spare-parts" },
                 //
