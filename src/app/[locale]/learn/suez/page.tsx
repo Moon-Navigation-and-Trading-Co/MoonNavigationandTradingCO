@@ -227,7 +227,7 @@ while we ensure a hassle-free canal passage.
         </div>
       </div>
     </div>
-    <GetQuoteComponent topic = "Suez Canal Transit" link = "/ship-agency-forms"/> 
+    <GetQuoteComponent topic = "Suez Canal Transit" link = "/suez-canal-form"/> 
     </div>
   );
 }
