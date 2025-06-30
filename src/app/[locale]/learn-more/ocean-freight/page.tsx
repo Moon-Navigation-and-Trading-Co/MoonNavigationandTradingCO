@@ -119,6 +119,69 @@ export default function OceanFreightPage() {
             </div>
             {/* Carousel Section */}
             <CarouselAnimation title={t('ocean')} freightTypes={Data} />
+        <section className="w-full max-w-7xl mx-auto mt-20 mb-12 px-2 md:px-0">
+            <h2 className="text-xl md:text-2xl mb-8 text-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                Reasons to Choose Moon Navigation and Trading Co. for Your Ocean Freight
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                {/* Comprehensive Freight Solutions */}
+                <div className="flex flex-col items-center px-4">
+                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Comprehensive Freight Solutions
+                    </h3>
+                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        We handle a wide range of cargo, including FCL, LCL, breakbulk, heavy lift, project, and charter services, providing tailored solutions for every shipment.
+                    </p>
+                </div>
+                {/* Expertise in Complex Shipments */}
+                <div className="flex flex-col items-center px-4">
+                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Expertise in Complex Shipments
+                    </h3>
+                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Our specialized team leverages their out-of-gauge and hazardous cargo experience to efficiently plan all international shipping regulations and the highest safety standards.
+                    </p>
+                </div>
+                {/* Optimized Routes & Cost-Effective Shipping */}
+                <div className="flex flex-col items-center px-4">
+                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Optimized Routes &amp; Cost-Effective Shipping
+                    </h3>
+                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Through advanced route selection and carrier partnerships, we reduce transit times while providing competitive rates for your global ocean freight.
+                    </p>
+                </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 text-center">
+                {/* Extensive Global Network */}
+                <div className="flex flex-col items-center px-4">
+                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Extensive Global Network
+                    </h3>
+                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        With our strong partnerships, we’ll manage shipping lines, customs clearance, and last-mile solutions worldwide—ensuring international border and cargo movement worldwide.
+                    </p>
+                </div>
+                {/* Custom Expertise & Secure Handling */}
+                <div className="flex flex-col items-center px-4">
+                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Custom Expertise &amp; Secure Handling
+                    </h3>
+                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Our team combines local knowledge, dynamic project documentation, and compliance with international regulations, guaranteeing safe and reliable flow of cargo movement.
+                    </p>
+                </div>
+                {/* Customer-Focused Service */}
+                <div className="flex flex-col items-center px-4">
+                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Customer-Focused Service
+                    </h3>
+                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        We offer transparent support and flexible tracking, and provide personalized communication, keeping you informed every step of the way.
+                    </p>
+                </div>
+            </div>
+        </section>
         </>
     )
 }
