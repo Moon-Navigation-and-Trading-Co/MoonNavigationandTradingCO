@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
+
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton";   
 
 export default function CustomsClearance() {
     const t = useTranslations("customs-clearance");
@@ -20,11 +21,11 @@ export default function CustomsClearance() {
                         <div>
                             <h1 className="text-4xl font-bold mb-8 text-foreground">{t("hero.title")}</h1>
                             <div className="mt-8">
-                                <Button asChild>
-                                    <Link href="/contact">
+                                <Link href="/ship-agency-forms">
+                                    <RequestQuoteButton>
                                         {t("quoteRequest.button")}
-                                    </Link>
-                                </Button>
+                                    </RequestQuoteButton> 
+                                </Link>
                             </div>
                         </div>
 
@@ -139,11 +140,11 @@ export default function CustomsClearance() {
 
                     {/* Learn More Button */}
                     <div className="flex justify-end mt-8">
-                        <Button asChild variant="outline">
-                            <Link href="/learn/custom-clearance-services">
+                        <Link href="/learn/ship-agency-forms">
+                            <RequestQuoteButton>
                                 {t("key-activities.learn-more")}
-                            </Link>
-                        </Button>
+                            </RequestQuoteButton>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -200,11 +201,11 @@ export default function CustomsClearance() {
                         <div className="space-y-6">
                             <h2 className="text-3xl font-semibold text-foreground">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
-                            <Button asChild>
-                                <Link href="/contact">
-                                    {t("quoteRequest.button")}
-                                </Link>
-                            </Button>
+                            <Link href="/ship-agency-forms">
+                                <RequestQuoteButton>
+                                        {t("quoteRequest.button")}
+                                </RequestQuoteButton>
+                            </Link>
                         </div>
 
                         <div className="relative h-[400px]">

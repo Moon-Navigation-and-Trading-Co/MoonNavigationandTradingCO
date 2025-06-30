@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 
 export default function InternationalTrading() {
     const t = useTranslations("learn-international-trading");
@@ -19,7 +20,9 @@ export default function InternationalTrading() {
                         <div>
                             <h1 className="text-4xl mb-6 text-foreground">{t("title")}</h1>
                             <Link href="/international-trading-forms">
-                                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">{t("quoteRequest.button")}</Button>
+                                <RequestQuoteButton>
+                                    {t("quoteRequest.button")}
+                                </RequestQuoteButton>
                             </Link>
                         </div>
                         <div className="space-y-6">
@@ -44,9 +47,11 @@ export default function InternationalTrading() {
                                     <Image src="/images/globe-hand.jpg" alt="Global Trade Services" fill className="object-cover rounded-2xl" />
                                 </div>
                             </div>
-                            <Button variant="secondary" className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
-                                <Link href="/learn/international-trade-services">{t("learnMoreButton")}</Link>
-                            </Button>
+                            <Link href="/learn/international-trade-services">
+                                <RequestQuoteButton>
+                                    {t("learnMoreButton")}
+                                </RequestQuoteButton>
+                            </Link>
                         </div>
 
                         <div className="grid sm:grid-cols-2 gap-8">
@@ -209,7 +214,9 @@ export default function InternationalTrading() {
                             <h2 className="text-3xl font-semibold text-foreground">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
                             <Link href="/international-trading-forms">
-                                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">{t("quoteRequest.button")}</Button>
+                                <RequestQuoteButton>
+                                    {t("quoteRequest.button")}
+                                </RequestQuoteButton>
                             </Link>
                         </div>
 

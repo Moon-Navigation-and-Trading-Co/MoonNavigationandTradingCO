@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
+import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 
 export default function ShipManagement() {
 
@@ -19,11 +20,11 @@ export default function ShipManagement() {
           {/* Left: Title and CTA */}
           <div className="flex-1 flex flex-col gap-6">
             <h1 className="text-2xl md:text-3xl font-semibold text-[#377393]">Ship Management</h1>
-            <Link href="/ship-management-forms" className="w-fit">
-              <Button className="bg-[#253A5C] text-white px-4 py-2 rounded-md text-xs font-semibold hover:bg-[#1a2942]">
+            <Link href="/ship-management-forms">
+              <RequestQuoteButton>
                 Request a Quote
-              </Button>
-            </Link>
+              </RequestQuoteButton>
+            </Link> 
           </div>
           {/* Right: What is Ship Management */}
           <div className="flex-1">
@@ -584,9 +585,11 @@ export default function ShipManagement() {
             quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
             cargo movement.
           </p>
-          <Link href="/ship-management-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
-            Request a Quote
-          </Link>
+          <Link href="/ship-management-forms">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
+          </Link> 
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">

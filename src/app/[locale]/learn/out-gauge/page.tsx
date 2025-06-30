@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 
 export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-out-gauge");
@@ -27,9 +28,11 @@ export default function ShippingMethodsInfo() {
           <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
             Out Gauge
           </h1>
-          <Button asChild className="bg-primary text-primary-foreground px-6 py-2 rounded-lg shadow hover:bg-primary/90 mt-2">
-            <a href="/container-services-forms">Request a Quote</a>
-          </Button>
+          <Link href="/container-services-forms">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
+          </Link> 
         </div>
 
         {/* Right: Description */}
@@ -360,8 +363,10 @@ export default function ShippingMethodsInfo() {
             quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
             cargo movement.
           </p>
-          <Link href="/container-services-forms" className="bg-primary text-primary-foreground rounded-full px-6 py-2 font-medium text-sm hover:bg-primary/90 transition-colors inline-block">
-            Request a Quote
+          <Link href="/container-services-forms">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
           </Link>
         </div>
         {/* Right: Image */}

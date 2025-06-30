@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton";  
 
 export default function MaintenancePage() {
     return (
@@ -222,9 +223,11 @@ export default function MaintenancePage() {
                         options. You will receive a customized quotation directly in your email, ensuring accurate
                         pricing
                     </p>
-                    <Link href="/ship-maintenance-forms" className="bg-[#23294d] text-white rounded-full px-6 py-2 font-medium text-sm hover:bg-[#3b4cc0] transition-colors inline-block">
-                        Request a Quote
-                    </Link>
+                    <Link href="/ship-maintenance-forms">
+                        <RequestQuoteButton>
+                            Request a Quote
+                        </RequestQuoteButton>
+                    </Link> 
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
