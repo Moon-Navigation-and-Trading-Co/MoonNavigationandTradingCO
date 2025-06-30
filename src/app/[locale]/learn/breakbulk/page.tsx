@@ -220,180 +220,107 @@ export default function BreakBulkInfo() {
                         </p>
                 </section>
                 
-                <section className="w-full max-w-7xl mx-auto mt-16 mb-10 px-4">
-                    <h2 className="text-xl md:text-2xl mb-8 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Our Breakbulk Cargo Services - At Moon Navigation and Trading Co.
+                <section className="w-full max-w-[1600px] mx-auto mt-20 mb-10 px-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <h2 className="text-4xl md:text-5xl font-light text-[#3a4fcf] mb-16 text-left md:text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Our Breakbulk Cargo Services -At Moon Navigation and Trading Co.
                     </h2>
-                    <div className="flex flex-col md:flex-row gap-10 justify-center">
-                        {/* Left Column: 1. Specialized Vessel Chartering */}
-                        <div className="flex-1 flex flex-col">
-                            <h3 className="text-base md:text-lg mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <div className="flex flex-col md:flex-row gap-12 items-start">
+                        {/* Left: 1. Specialized Vessel Chartering */}
+                        <div className="flex-1 min-w-[340px]">
+                            <h3 className="text-3xl md:text-4xl font-normal mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                 1. Specialized Vessel Chartering
                             </h3>
-                            <p className="text-muted-foreground text-sm md:text-base mb-2">
-                                Breakbulk cargo requires specific vessel types to accommodate large, irregularly shaped, and heavy loads with secure access to:
-                            </p>
-                            <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
-                                <li>
-                                    <span className="font-semibold">Breakbulk Vessels</span> – Designed to carry non-containerized cargo, allowing individual sections and heavy equipment to be loaded, stowed, and discharged efficiently.
-                                </li>
-                                <li>
-                                    <span className="font-semibold">Multi-purpose Vessels</span> – Used to boost cargo flow and flexibility for shipments of differing sizes and flexibility.
-                                </li>
-                                <li>
-                                    <span className="font-semibold">Heavy-lift Vessels</span> – Outfitted with onboard cranes and reinforced decks for project cargo and outsized machinery.
-                                </li>
+                            <p className="text-lg mb-4">Breakbulk cargo requires specific vessel types to accommodate large, irregularly shaped, and heavy loads. We provide access to:</p>
+                            <ul className="list-disc pl-6 text-lg mb-4 space-y-2">
+                                <li><span className="font-medium">Breakbulk Vessels</span> – Designed to carry non-containerized cargo, allowing individual loading and securing.</li>
+                                <li><span className="font-medium">Multi-Purpose Vessels (MPVs)</span> – Used for both containerized and breakbulk shipments, offering flexibility.</li>
+                                <li><span className="font-medium">Heavy Lift Vessels</span> – Equipped with onboard cranes to handle oversized and heavy cargo without relying on port cranes.</li>
                             </ul>
-                            <p className="text-muted-foreground text-sm md:text-base mb-3">
-                                Our chartering solutions deliver cost-effective and secure transport, whether for single project lifts or long-term contracts.
-                            </p>
+                            <p className="text-lg mt-4">Our chartering solutions ensure cost-effective and secure transport, whether for single shipments or long-term contracts.</p>
                         </div>
-                        {/* Right Column: 2. Custom Handling & Stowage */}
-                        <div className="flex-1 flex flex-col">
-                            <h3 className="text-base md:text-lg mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                2. Custom Handling &amp; Stowage
-                            </h3>
-                            <p className="text-muted-foreground text-sm md:text-base mb-2">
-                                Precision in rigging and securing is core, carefully planning to prevent damage and maintain stability. We provide:
-                            </p>
-                            <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
-                                <li><strong>Custom Lashing &amp; Securing</strong> – Every piece checked, anchored, and lashed using the safest methods.</li>
-                                <li><strong>Specialized Stowage Planning</strong> – Optimized for vessel balance, access, and cargo safety.</li>
-                                <li><strong>On-site Supervision</strong> – Our experts oversee every stage, ensuring compliance and cargo stability.</li>
-                            </ul>
-                            <p className="text-muted-foreground text-sm md:text-base mb-3">
-                                We ensure that your cargo is safely received and protected throughout the voyage.
-                            </p>
+                        {/* Right: Images */}
+                        <div className="flex-1 flex flex-row gap-4 justify-center items-start">
+                            <img src="/breakbulk-cargo-windmill.jpg" alt="Breakbulk Windmill Cargo" className="rounded-[70px] w-[600px] h-[400px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
+                        
                         </div>
                     </div>
-                    {/* Images row - placed after both columns */}
-                    <div className="flex flex-col md:flex-row gap-4 mt-6">
-                        <div className="flex-1">
-                            <img
-                                src="/breakbulk-cargo-windmill.jpg"
-                                alt="Breakbulk Windmill Cargo"
-                                className="rounded-xl object-cover w-full h-60"
-                                loading="lazy"
-                            />
+                    <div className="flex flex-col md:flex-row gap-12 items-center mt-16">
+                        {/* Left: Image for 2. Custom Handling & Stowage */}
+                        <div className="flex-1 flex justify-center">
+                            <img src="/breakbulk-handling-stowage.jpg" alt="Breakbulk Handling and Stowage" className="rounded-[60px] w-[600px] h-[400px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
                         </div>
-                        <div className="flex-1">
-                            <img
-                                src="/breakbulk-handling-stowage.jpg"
-                                alt="Breakbulk Handling and Stowage"
-                                className="rounded-xl object-cover w-full h-60"
-                                loading="lazy"
-                            />
+                        {/* Right: Text for 2. Custom Handling & Stowage */}
+                        <div className="flex-1 min-w-[340px]">
+                            <h3 className="text-3xl md:text-4xl font-normal mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                2. Custom Handling & Stowage
+                            </h3>
+                            <p className="text-lg mb-4">Breakbulk cargo handling requires careful planning to prevent damage and ensure stability. We provide:</p>
+                            <ul className="list-disc pl-6 text-lg mb-4 space-y-2">
+                                <li><span className="font-medium">Custom Lashing & Securing</span> – Using steel chains, wooden bracing, and straps for stability.</li>
+                                <li><span className="font-medium">Cargo Protection Measures</span> – Weatherproofing and shock-absorbing techniques.</li>
+                                <li><span className="font-medium">Load Balancing & Stowage Optimization</span> – Preventing shifting and maintaining vessel stability.</li>
+                            </ul>
+                            <p className="text-lg mt-4">We ensure that your cargo is fully secured and protected throughout the voyage.</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col md:flex-row gap-12 items-center mt-16">
+                        {/* Left: Text for 3. Crane & Port Handling */}
+                        <div className="flex-1 min-w-[340px]">
+                            <h3 className="text-3xl md:text-4xl font-normal mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                3. Crane & Port Handling
+                            </h3>
+                            <p className="text-lg mb-4">Efficient loading and unloading is critical for breakbulk cargo due to its size and complexity. We coordinate:</p>
+                            <ul className="list-disc pl-6 text-lg mb-4 space-y-2">
+                                <li><span className="font-medium">High-Capacity Port Cranes</span> – Utilizing gantry cranes, mobile cranes, and floating cranes for seamless lifting.</li>
+                                <li><span className="font-medium">Reach Stackers & Forklifts</span> – For efficient handling of medium-weight breakbulk shipments.</li>
+                                <li><span className="font-medium">Expert Stevedoring Services</span> – Ensuring smooth port-to-vessel cargo transfer.</li>
+                            </ul>
+                            <p className="text-lg mt-4">With our expert handling operations, we reduce risks and minimize delays during cargo transfer.</p>
+                        </div>
+                        {/* Right: Image for 3. Crane & Port Handling */}
+                        <div className="flex-1 flex justify-center">
+                            <img src="/breakbulk-inland-delivery.jpg" alt="Breakbulk Inland Delivery" className="rounded-[60px] w-[600px] h-[400px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
+                        </div>
+                    </div>
+                    <div className="flex flex-col md:flex-row gap-12 items-center mt-16">
+                        {/* Left: Image for 4. Customs Clearance & Documentation */}
+                        <div className="flex-1 flex justify-center order-2 md:order-1">
+                            <img src="/breakbulk-customs-docs.jpg" alt="Breakbulk Customs Clearance" className="rounded-[60px] w-[600px] h-[400px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
+                        </div>
+                        {/* Right: Text for 4. Customs Clearance & Documentation */}
+                        <div className="flex-1 min-w-[340px] order-1 md:order-2">
+                            <h3 className="text-3xl md:text-4xl font-normal mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                4. Customs Clearance & Documentation
+                            </h3>
+                            <p className="text-lg mb-4">Navigating customs regulations for breakbulk cargo can be complex due to varying international standards. We provide:</p>
+                            <ul className="list-disc pl-6 text-lg mb-4 space-y-2">
+                                <li><span className="font-medium">Import & Export Compliance</span> – Ensuring cargo adheres to maritime and port regulations worldwide.</li>
+                                <li><span className="font-medium">Cargo Documentation & Permits</span> – Managing bills of lading, packing lists, cargo manifests, and customs declarations.</li>
+                                <li><span className="font-medium">Tax & Duty Management</span> – Handling tariff classifications, duty exemptions, and payment processing for smooth clearance.</li>
+                            </ul>
+                            <p className="text-lg mt-4">Our customs experts ensure that your cargo moves swiftly through regulatory processes, preventing unnecessary delays.</p>
+                        </div>
+                    </div>
+                    <div className="flex flex-col md:flex-row gap-12 items-center mt-16">
+                        {/* Left: Text for 5. Inland Transport & Final Delivery */}
+                        <div className="flex-1 min-w-[340px]">
+                            <h3 className="text-3xl md:text-4xl font-normal mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                5. Inland Transport & Final Delivery
+                            </h3>
+                            <p className="text-lg mb-4">We ensure seamless cargo transport from ports to final destinations, offering:</p>
+                            <ul className="list-disc pl-6 text-lg mb-4 space-y-2">
+                                <li><span className="font-medium">Port-to-Site Delivery</span> – Seamless movement from ports to project locations.</li>
+                                <li><span className="font-medium">Specialized Trucks & Trailers</span> – Including low-bed trailers, modular hydraulic transporters, and extendable trailers.</li>
+                                <li><span className="font-medium">Escort Vehicles & Road Permits</span> – Managing police escorts and special transport permits for oversized loads.</li>
+                            </ul>
+                            <p className="text-lg mt-4">We ensure a smooth, end-to-end logistics process, from port arrival to final delivery at project sites.</p>
+                        </div>
+                        {/* Right: Image for 5. Inland Transport & Final Delivery */}
+                        <div className="flex-1 flex justify-center">
+                            <img src="/breakbulk-project-cargo.jpg" alt="Breakbulk Project Cargo" className="rounded-[60px] w-[600px] h-[400px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
                         </div>
                     </div>
                 </section>
-                {/* Section: 3. Crane & Port Handling and 4. Customs Clearance & Documentation */}
-                <section className="w-full mt-12 mb-8 px-4 md:px-0 flex flex-col gap-32">
-                    {/* 3. Crane & Port Handling */}
-                    <div className="flex flex-col md:flex-row items-center gap-8">
-                        {/* Left: Text */}
-                        <div className="flex-1">
-                            <h3 className="text-base md:text-lg mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                3. Crane &amp; Port Handling
-                            </h3>
-                            <p className="text-muted-foreground text-sm md:text-base mb-2">
-                                Efficient loading and unloading is critical for breakbulk cargo due to its size and complexity. We coordinate:
-                            </p>
-                            <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
-                                <li>
-                                    <span className="font-semibold">High Capacity Port Cranes</span> – Utilizing gantry cranes, mobile cranes, and heavy systems for seamless cargo transfer.
-                                </li>
-                                <li>
-                                    <span className="font-semibold">Rapid Berth-to-Freight</span> – Fast discharge/loading at modern multipurpose terminals or private project berths.
-                                </li>
-                                <li>
-                                    <span className="font-semibold">Expert Stevedore Services</span> – Ensuring professional rigging, mobile equipment operation, and on-site supervision.
-                                </li>
-                            </ul>
-                            <p className="text-muted-foreground text-sm md:text-base">
-                                With our expert handling solutions, we reduce risk and minimize delays during cargo transfer.
-                            </p>
-                        </div>
-                        {/* Right: Image */}
-                        <div className="flex-shrink-0 w-full md:w-[320px]">
-                            <img
-                                src="/breakbulk-crane-port.jpg"
-                                alt="Breakbulk Crane and Port Handling"
-                                className="rounded-2xl w-full h-[140px] md:h-[160px] object-cover object-center"
-                                loading="lazy"
-                            />
-                        </div>
-                    </div>
-                    {/* 4. Customs Clearance & Documentation */}
-                    <div className="flex flex-col md:flex-row items-center gap-8">
-                        {/* Left: Image */}
-                        <div className="flex-shrink-0 w-full md:w-[320px] order-1 md:order-none">
-                            <img
-                                src="/breakbulk-customs-docs.jpg"
-                                alt="Breakbulk Customs Clearance"
-                                className="rounded-2xl w-full h-[140px] md:h-[160px] object-cover object-center"
-                                loading="lazy"
-                            />
-                        </div>
-                        {/* Right: Text */}
-                        <div className="flex-1">
-                            <h3 className="text-base md:text-lg mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                4. Customs Clearance &amp; Documentation
-                            </h3>
-                            <p className="text-muted-foreground text-sm md:text-base mb-2">
-                                Navigating customs regulations for breakbulk cargo can be complex due to varying international standards and project requirements.
-                            </p>
-                            <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
-                                <li>
-                                    <span className="font-semibold">Import &amp; Export Compliance</span> – Ensuring cargo adheres to maritime and port regulations worldwide.
-                                </li>
-                                <li>
-                                    <span className="font-semibold">Cargo Documentation</span> – Proactive handling of manifests, waybills, certificates, and insurance.
-                                </li>
-                                <li>
-                                    <span className="font-semibold">Track &amp; Transparency</span> – Handling all port notifications, customs clearances, and record processing.
-                                </li>
-                            </ul>
-                            <p className="text-muted-foreground text-sm md:text-base">
-                                Our dedicated team ensures that your cargo sails through regulatory processes, preventing unnecessary delays.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-                {/* 5. Inland Transport & Final Delivery */}
-                <div className="flex flex-col md:flex-row items-center gap-8 mt-32">
-                    {/* Left: Text */}
-                    <div className="flex-1">
-                        <h3 className="text-base md:text-lg mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            5. Inland Transport &amp; Final Delivery
-                        </h3>
-                        <p className="text-muted-foreground text-sm md:text-base mb-2">
-                            BNL ensures seamless cargo logistics from port to final destination, offering:
-                        </p>
-                        <ul className="list-disc pl-5 text-muted-foreground text-sm md:text-base mb-2 space-y-1">
-                            <li>
-                                <span className="font-semibold">Port to Site Delivery</span> – Seamless movement from ports to project locations.
-                            </li>
-                            <li>
-                                <span className="font-semibold">Specialized Trucks &amp; Trailers</span> – Including low-bed trucks, modular hydraulic transporters, and extendable trailers if needed.
-                            </li>
-                            <li>
-                                <span className="font-semibold">Escort Vehicles &amp; Route Permits</span> – Managing police escorts and special transport permits for oversized loads.
-                            </li>
-                        </ul>
-                        <p className="text-muted-foreground text-sm md:text-base">
-                            We ensure a smooth, end-to-end logistics process. You get control on the final delivery of project sites.
-                        </p>
-                    </div>
-                    {/* Right: Image */}
-                    <div className="flex-shrink-0 w-full md:w-[320px]">
-                        <img
-                            src="/breakbulk-inland-delivery.jpg"
-                            alt="Breakbulk Inland Transport and Final Delivery"
-                            className="rounded-2xl w-full h-[140px] md:h-[160px] object-cover object-center"
-                            loading="lazy"
-                        />
-                    </div>
-                </div>
                 {/* Reasons to Choose Our Breakbulk Services */}
                 <section className="w-full mt-20 mb-8 px-4 md:px-0">
                     <h2 className="text-xl md:text-2xl mb-10 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
