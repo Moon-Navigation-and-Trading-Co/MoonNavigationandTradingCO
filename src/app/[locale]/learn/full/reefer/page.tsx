@@ -11,9 +11,9 @@ const ReeferPage = () => {
   const router = useRouter();
 
   return (
-    <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0 place-self-center">
+    <div className="w-full space-y-32  max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0 place-self-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
       {/* Top image and company name */}
-      <div className="w-full max-w-7xl rounded-2xl overflow-hidden mb-8">
+      <div className="w-full max-w-7xl rounded-2xl overflow-hidden">
         <div className="relative w-full h-[400px]">
           <Image
             src="/reefer-header.jpg"
@@ -32,11 +32,8 @@ const ReeferPage = () => {
       <div className="w-full max-w-5xl flex flex-col md:flex-row gap-8">
         {/* Left: Title and button */}
         <div className="flex-1 flex flex-col gap-6">
-          <h1 className="text-xl md:text-2xl font-semibold">
-            Reefer Containers <br />
-            <span className="font-normal text-lg">
-              (Refrigerated Shipping Solutions)
-            </span>
+          <h1 className="text-3xl font-normal font-sans mb-12 text-[#222]">
+            Reefer Containers (Refrigerated Shipping Solutions) 
           </h1>
           <Link href="/container-services-forms">
             <RequestQuoteButton>
@@ -58,86 +55,127 @@ const ReeferPage = () => {
         </div>
       </div>
       <div className="w-full max-w-5xl mt-16 mb-8">
-        <h2 className="text-xl md:text-2xl font-semibold mb-2 text-[#3B4B8C]">
+        <h2 className="text-xl md:text-2xl  mb-2 text-[#3B4B8C]">
           Cargo Types We Handle
         </h2>
         <p className="text-muted-foreground mb-8 text-sm md:text-base">
           Our reefer solutions are tailored for a wide range of industries, including:
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-y-10 gap-x-6">
-          {/* Top Row */}
-          <div className="flex flex-col items-center text-center">
-            <img
-              src="/reefer-fresh-produce.jpg"
-              alt="Fresh Produce & Perishable Foods"
-              className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
-              loading="lazy"
-            />
-            <h3 className="font-medium text-sm mb-1">Fresh Produce &amp; Perishable Foods</h3>
-            <p className="text-xs text-muted-foreground">
-              Salads, vegetables, fruit, seafood, dairy
-            </p>
+        {/* Horizontally scrollable cargo types with scroll buttons */}
+        <div className="relative w-full">
+          {/* Scrollable container */}
+          <div
+            id="reefer-cargo-scroll"
+            className="flex overflow-x-auto gap-8 py-2 px-8 scroll-smooth hide-scrollbar"
+            style={{ scrollBehavior: 'smooth' }}
+          >
+            {/* Card 1 */}
+            <div className="flex flex-col items-center text-center min-w-[200px]">
+              <img
+                src="/reefer-fresh-produce.jpg"
+                alt="Fresh Produce & Perishable Foods"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                loading="lazy"
+              />
+              <h3 className="font-medium text-sm mb-1">Fresh Produce &amp; Perishable Foods</h3>
+              <p className="text-xs text-muted-foreground">
+                Salads, vegetables, fruit, seafood, dairy
+              </p>
+            </div>
+            {/* Card 2 */}
+            <div className="flex flex-col items-center text-center min-w-[200px]">
+              <img
+                src="/reefer-pharma.jpg"
+                alt="Pharmaceuticals & Medical Supplies"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                loading="lazy"
+              />
+              <h3 className="font-medium text-sm mb-1">Pharmaceuticals &amp; Medical Supplies</h3>
+              <p className="text-xs text-muted-foreground">
+                Vaccines, biologics &amp; temperature-sensitive drugs
+              </p>
+            </div>
+            {/* Card 3 */}
+            <div className="flex flex-col items-center text-center min-w-[200px]">
+              <img
+                src="/reefer-chemicals.jpg"
+                alt="Chemical Products"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                loading="lazy"
+              />
+              <h3 className="font-medium text-sm mb-1">Chemical Products</h3>
+              <p className="text-xs text-muted-foreground">
+                Industrial chemicals, specialty liquids
+              </p>
+            </div>
+            {/* Card 4 */}
+            <div className="flex flex-col items-center text-center min-w-[200px]">
+              <img
+                src="/reefer-flowers.jpg"
+                alt="Floral Products"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                loading="lazy"
+              />
+              <h3 className="font-medium text-sm mb-1">Floral Products</h3>
+              <p className="text-xs text-muted-foreground">
+                Flowers, plants, horticultural cargo
+              </p>
+            </div>
+            {/* Card 5 */}
+            <div className="flex flex-col items-center text-center min-w-[200px]">
+              <img
+                src="/reefer-frozen.jpg"
+                alt="Frozen Goods & Ice Cream"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                loading="lazy"
+              />
+              <h3 className="font-medium text-sm mb-1">Frozen Goods &amp; Ice Cream</h3>
+              <p className="text-xs text-muted-foreground">
+                Frozen foods, desserts, ready meals
+              </p>
+            </div>
+            {/* Card 6 */}
+            <div className="flex flex-col items-center text-center min-w-[200px]">
+              <img
+                src="/reefer-beverages.jpg"
+                alt="Beverages & Dairy Products"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                loading="lazy"
+              />
+              <h3 className="font-medium text-sm mb-1">Beverages &amp; Dairy Products</h3>
+              <p className="text-xs text-muted-foreground">
+                Milk, juices, soft drinks, yogurt
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col items-center text-center">
-            <img
-              src="/reefer-pharma.jpg"
-              alt="Pharmaceuticals & Medical Supplies"
-              className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
-              loading="lazy"
-            />
-            <h3 className="font-medium text-sm mb-1">Pharmaceuticals &amp; Medical Supplies</h3>
-            <p className="text-xs text-muted-foreground">
-              Vaccines, biologics &amp; temperature-sensitive drugs
-            </p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <img
-              src="/reefer-chemicals.jpg"
-              alt="Chemical Products"
-              className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
-              loading="lazy"
-            />
-            <h3 className="font-medium text-sm mb-1">Chemical Products</h3>
-            <p className="text-xs text-muted-foreground">
-              Industrial chemicals, specialty liquids
-            </p>
-          </div>
-          {/* Bottom Row */}
-          <div className="flex flex-col items-center text-center">
-            <img
-              src="/reefer-flowers.jpg"
-              alt="Floral Products"
-              className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
-              loading="lazy"
-            />
-            <h3 className="font-medium text-sm mb-1">Floral Products</h3>
-            <p className="text-xs text-muted-foreground">
-              Flowers, plants, horticultural cargo
-            </p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <img
-              src="/reefer-frozen.jpg"
-              alt="Frozen Goods & Ice Cream"
-              className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
-              loading="lazy"
-            />
-            <h3 className="font-medium text-sm mb-1">Frozen Goods &amp; Ice Cream</h3>
-            <p className="text-xs text-muted-foreground">
-              Frozen foods, desserts, ready meals
-            </p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <img
-              src="/reefer-beverages.jpg"
-              alt="Beverages & Dairy Products"
-              className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
-              loading="lazy"
-            />
-            <h3 className="font-medium text-sm mb-1">Beverages &amp; Dairy Products</h3>
-            <p className="text-xs text-muted-foreground">
-              Milk, juices, soft drinks, yogurt
-            </p>
+          {/* Scroll buttons at bottom right */}
+          <div className="w-full flex justify-end gap-2 mt-4 pr-8">
+            <button
+              type="button"
+              aria-label="Scroll left"
+              className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full transition hover:bg-gray-100 active:scale-95 disabled:opacity-30"
+              onClick={() => {
+                const el = document.getElementById('reefer-cargo-scroll');
+                if (el) el.scrollBy({ left: -260, behavior: 'smooth' });
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 6L9 12L15 18" stroke="#B0B3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <button
+              type="button"
+              aria-label="Scroll right"
+              className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full transition hover:bg-gray-100 active:scale-95 disabled:opacity-30"
+              onClick={() => {
+                const el = document.getElementById('reefer-cargo-scroll');
+                if (el) el.scrollBy({ left: 260, behavior: 'smooth' });
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 6L15 12L9 18" stroke="#B0B3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
@@ -156,7 +194,7 @@ const ReeferPage = () => {
             </div>
             {/* 24/7 Monitoring & Technical Support */}
             <div className="flex flex-col justify-center h-full">
-              <h3 className="text-xl font-semibold mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <h3 className="text-xl  mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 24/7 Monitoring &amp;<br />Technical Support
               </h3>
               <p className="text-muted-foreground text-sm md:text-base max-w-md">
@@ -168,7 +206,7 @@ const ReeferPage = () => {
           <div className="flex flex-col gap-8">
             {/* Advanced Temperature Control */}
             <div className="flex flex-col justify-center h-full mb-32">
-              <h3 className="text-xl font-semibold mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+              <h3 className="text-xl  mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Advanced<br />Temperature Control
               </h3>
               <p className="text-muted-foreground text-sm md:text-base mb-3 max-w-md">
@@ -210,7 +248,7 @@ const ReeferPage = () => {
           </div>
           {/* Top Right: Title + Description */}
           <div className="flex flex-col justify-center">
-            <h3 className="text-2xl font-semibold mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h3 className="text-2xl  mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Cold Chain Compliance &amp; Documentation
             </h3>
             <p className="text-muted-foreground text-sm md:text-base mb-2">
@@ -227,7 +265,7 @@ const ReeferPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
           {/* Bottom Left: Title + Description */}
           <div className="flex flex-col justify-center order-2 md:order-1">
-            <h3 className="text-2xl font-semibold mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h3 className="text-2xl  mb-2 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               Global Reach,<br className="hidden md:inline" /> Reliable Transit
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
@@ -253,13 +291,13 @@ const ReeferPage = () => {
         </div>
       </div>
       <div className="overflow-x-auto mt-12 w-full max-w-7xl">
-        <h2 className="text-2xl font-semibold mb-6">Comparison: Reefer Containers vs. Standard Containers</h2>
+        <h2 className="text-2xl  mb-6">Comparison: Reefer Containers vs. Standard Containers</h2>
         <table className="min-w-full border border-gray-300 dark:border-[#23294d] rounded-2xl bg-white dark:bg-[#181c2a]">
           <thead>
             <tr className="">
-              <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Feature</th>
-              <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Reefer Containers (Refrigerated)</th>
-              <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Standard Containers</th>
+              <th className="px-4 py-3 text-left  border-b border-gray-300 dark:border-[#23294d]">Feature</th>
+              <th className="px-4 py-3 text-left  border-b border-gray-300 dark:border-[#23294d]">Reefer Containers (Refrigerated)</th>
+              <th className="px-4 py-3 text-left  border-b border-gray-300 dark:border-[#23294d]">Standard Containers</th>
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -288,7 +326,7 @@ const ReeferPage = () => {
               <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Insulated walls, floor, and ceiling</td>
               <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Not insulated</td>
             </tr>
-            <tr className="">
+            <tr>
               <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Container Cost</td>
               <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Higher cost due to refrigeration equipment</td>
               <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Lower cost</td>
@@ -317,7 +355,7 @@ const ReeferPage = () => {
         </table>
       </div>
       <div className="mt-16 mb-12 max-w-5xl mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-semibold text-left md:text-left mb-16 text-[#3B4B8C] dark:text-[#bfc8f8]">
+        <h2 className="text-2xl md:text-3xl  text-left md:text-left mb-16 text-[#3B4B8C] dark:text-[#bfc8f8]">
           Reasons to Choose Moon Navigation and Trading Co. for Your Reefer Container Shipments
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-8 md:gap-x-16 lg:gap-x-32 justify-items-center">
@@ -354,7 +392,7 @@ const ReeferPage = () => {
 
 
       <section className="w-full max-w-7xl mx-auto mt-20 mb-12 px-4 md:px-0">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+        <h2 className="text-2xl md:text-3xl  mb-4 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
           Our Solutions
         </h2>
         <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-3xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -372,7 +410,7 @@ const ReeferPage = () => {
           </div>
           {/* Right: Solution Details */}
           <div className="flex-1">
-            <h3 className="text-lg md:text-xl font-semibold mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               1. Door-to-Door Reefer Transport Solutions
             </h3>
             <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -398,7 +436,7 @@ const ReeferPage = () => {
         </div>
         {/* Right: Solution Details */}
         <div className="flex-1">
-          <h3 className="text-lg md:text-xl font-semibold mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             2. Custom Routing for Perishable Cargo
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -414,7 +452,7 @@ const ReeferPage = () => {
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Solution Details */}
         <div className="flex-1 order-2 md:order-1">
-          <h3 className="text-lg md:text-xl font-semibold mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             3. Integrated Warehousing &amp; Cold Storage Services
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -448,7 +486,7 @@ const ReeferPage = () => {
         </div>
         {/* Right: Solution Details */}
         <div className="flex-1">
-          <h3 className="text-lg md:text-xl font-semibold mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             4. Multimodal Transport Options (Sea, Air, Inland)
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -463,7 +501,7 @@ const ReeferPage = () => {
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Solution Details */}
         <div className="flex-1 order-2 md:order-1">
-          <h3 className="text-lg md:text-xl font-semibold mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             5. Risk Management &amp; Cargo Insurance Solutions
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -496,7 +534,7 @@ const ReeferPage = () => {
         </div>
         {/* Right: Solution Details */}
         <div className="flex-1">
-          <h3 className="text-lg md:text-xl font-semibold mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             6. Cargo Tracking &amp; Temperature Monitoring Systems
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -513,7 +551,7 @@ const ReeferPage = () => {
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Solution Details */}
         <div className="flex-1 order-2 md:order-1">
-          <h3 className="text-lg md:text-xl font-semibold mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             7. Special Handling for Hazardous Temperature-Sensitive Cargo
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -536,6 +574,15 @@ const ReeferPage = () => {
         </div>
       </div>
       <GetQuoteComponent topic="Reefer Container" link="/container-services-forms" />
+      <style jsx global>{`
+        .hide-scrollbar {
+          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none;  /* IE 10+ */
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none; /* Chrome/Safari/Webkit */
+        }
+      `}</style>
     </div>
   );
 };
