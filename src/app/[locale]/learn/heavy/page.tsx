@@ -9,7 +9,7 @@ export default function HeavyLiftCargoInfo() {
     const t = useTranslations("learn-heavy-lift-cargo")
 
     return (
-    <div className="w-4/6 place-self-center">
+    <div className="w-full max-w-7xl mx-auto flex flex-col items-center pt-8 pb-16 min-h-screen">
       {/* Top Banner Image */}
       <div className="w-full rounded-3xl overflow-hidden mt-12 mb-8">
         <img
@@ -23,7 +23,7 @@ export default function HeavyLiftCargoInfo() {
       <div className="flex flex-col md:flex-row gap-8 px-4 md:px-12">
         {/* Left: Title & Button */}
         <div className="flex-1 flex flex-col justify-start">
-          <h1 className="text-2xl md:text-3xl font-semibold mb-6 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <h1 className="text-5xl font-normal font-sans mb-12 text-[#222]" style={{ fontFamily: 'Raleway, sans-serif' }}>
             Heavy Lift Cargo
           </h1>
           <Link href="/ocean-freight-forms">
