@@ -70,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     href: "/learn/suez"
                 },
                 { name: "Sign On/Off Crew Members", href: "/learn/crew" },
-                { name: "Transit Spare Parts", href: "/services/spare-parts" },
+                { name: "Transit Spare Parts", href: "/learn/spare-parts" },
                 //
                 {
                     name: "Bunkering | Oil Supply | Ship Chandlery",
