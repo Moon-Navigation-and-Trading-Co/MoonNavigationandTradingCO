@@ -249,7 +249,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </section>
       <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
-        <h2 className="text-3xl sm:text-4xl font-semibold mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <h2 className="text-3xl sm:text-4xl mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>
           Reasons to Choose Moon Navigation and Trading Co. for Your Livestock Transportation Needs
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8">

@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function TankersPage() {
     return (
-        <main className="w-full flex flex-col items-center pt-8 pb-16 min-h-screen">
+        <main className="w-full max-w-7xl mx-auto flex flex-col items-center pt-8 pb-16 min-h-screen">
             {/* Top Image */}
             <div className="w-full h-[400px]  overflow-hidden mb-">
                 <Image
@@ -105,7 +105,7 @@ export default function TankersPage() {
                             height={180}
                             className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <h3 className="text-lg mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Crude Oil Tankers
                         </h3>
                         <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -121,7 +121,7 @@ export default function TankersPage() {
                             height={180}
                             className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <h3 className="text-lg mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Liquefied Gas Tankers
                         </h3>
                         <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -137,7 +137,7 @@ export default function TankersPage() {
                             height={180}
                             className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <h3 className="text-lg mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Product Tankers
                         </h3>
                         <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -153,7 +153,7 @@ export default function TankersPage() {
                             height={180}
                             className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
                         />
-                        <h3 className="text-lg font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <h3 className="text-lg mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Chemical Tankers
                         </h3>
                         <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
