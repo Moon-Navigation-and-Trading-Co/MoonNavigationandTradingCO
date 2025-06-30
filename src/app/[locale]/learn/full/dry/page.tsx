@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
+import GetQuoteComponent from "@/components/getQuoteComponent";
  
 export default function DryContainerPage() {
   return (
@@ -101,65 +102,65 @@ export default function DryContainerPage() {
           Standard Dry Containers vs. Specialized Container Types
         </h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full border border-gray-300 dark:border-[#23294d] rounded-2xl bg-white dark:bg-[#181c2a]">
+          <table className="min-w-full border dark:border-[#23294d] rounded-2xl bg-white dark:bg-[#181c2a]">
             <thead>
-              <tr className="bg-gray-100 dark:bg-[#23294d]">
-                <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Feature / Specification</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Standard Dry Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Reefer Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Open Top Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Flat Rack Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-gray-300 dark:border-[#23294d]">Tank Container</th>
+              <tr>
+                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Feature / Specification</th>
+                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Standard Dry Container</th>
+                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Reefer Container</th>
+                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Open Top Container</th>
+                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Flat Rack Container</th>
+                <th className="px-4 py-3 text-left font-semibold border-b dark:border-[#23294d]">Tank Container</th>
               </tr>
             </thead>
             <tbody className="text-sm">
               <tr>
-                <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Purpose</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">General cargo transport</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Temperature-controlled cargo</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Oversized or tall cargo</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Heavy or irregular cargo</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Liquid and chemical cargo</td>
-              </tr>
-              <tr className="bg-gray-50 dark:bg-[#20243a]">
-                <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Cargo Suitability</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Dry goods, cartons, pallets</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Food, pharmaceuticals, perishables</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Machinery, equipment, pipes</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Vehicles, machinery, boats</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Liquids, gases, chemicals</td>
+                <td className="px-4 py-2 font-medium border-b border-r dark:border-[#23294d]">Purpose</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">General cargo transport</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Temperature-controlled cargo</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Oversized or tall cargo</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Heavy or irregular cargo</td>
+                <td className="px-4 py-2 border-b dark:border-[#23294d]">Liquid and chemical cargo</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Temperature Control</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">No</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Adjustable -20°C to +25°C</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">No</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">No</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">No</td>
-              </tr>
-              <tr className="bg-gray-50 dark:bg-[#20243a]">
-                <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Size Availability</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">20ft / 40ft</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">20ft / 40ft</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">20ft / 40ft</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">20ft / 40ft</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Usually 20ft</td>
+                <td className="px-4 py-2 font-medium border-b border-r dark:border-[#23294d]">Cargo Suitability</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Dry goods, cartons, pallets</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Food, pharmaceuticals, perishables</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Machinery, equipment, pipes</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Vehicles, machinery, boats</td>
+                <td className="px-4 py-2 border-b dark:border-[#23294d]">Liquids, gases, chemicals</td>
               </tr>
               <tr>
-                <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Special Features</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Fully enclosed, <b>weatherproof</b></td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Insulated walls, cooling unit</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Open roof, top-loading access</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">No side walls, collapsible ends</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Stainless steel tank, pressurized, insulated</td>
+                <td className="px-4 py-2 font-medium border-b border-r dark:border-[#23294d]">Temperature Control</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">No</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Adjustable -20°C to +25°C</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">No</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">No</td>
+                <td className="px-4 py-2 border-b dark:border-[#23294d]">No</td>
               </tr>
-              <tr className="bg-gray-50 dark:bg-[#20243a]">
-                <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d]">Typical Use Cases</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Consumer goods, textiles, electronics</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Frozen goods, dairy, medicines</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Construction cargo, large machines</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Construction, boats, oversized loads</td>
-                <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d]">Fuel, food-grade liquids, chemicals</td>
+              <tr>
+                <td className="px-4 py-2 font-medium border-b border-r dark:border-[#23294d]">Size Availability</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">20ft / 40ft</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">20ft / 40ft</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">20ft / 40ft</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">20ft / 40ft</td>
+                <td className="px-4 py-2 border-b dark:border-[#23294d]">Usually 20ft</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 font-medium border-b border-r dark:border-[#23294d]">Special Features</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Fully enclosed, <b>weatherproof</b></td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Insulated walls, cooling unit</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Open roof, top-loading access</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">No side walls, collapsible ends</td>
+                <td className="px-4 py-2 border-b dark:border-[#23294d]">Stainless steel tank, pressurized, insulated</td>
+              </tr>
+              <tr>
+                <td className="px-4 py-2 font-medium border-b border-r dark:border-[#23294d]">Typical Use Cases</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Consumer goods, textiles, electronics</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Frozen goods, dairy, medicines</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Construction cargo, large machines</td>
+                <td className="px-4 py-2 border-b border-r dark:border-[#23294d]">Construction, boats, oversized loads</td>
+                <td className="px-4 py-2 border-b dark:border-[#23294d]">Fuel, food-grade liquids, chemicals</td>
               </tr>
             </tbody>
           </table>
@@ -203,146 +204,196 @@ export default function DryContainerPage() {
     </div>
   </div>
 </div>
-
-
-      {/* Solutions Section */}
-      <div className="w-full max-w-7xl mx-auto mt-20 mb-12 px-4 md:px-0">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-[#3B4B8C] dark:text-[#bfc8f8]">
-          Our Dry Standard Container Shipping Solutions
-        </h2>
-        <p className="text-base text-gray-500 dark:text-gray-300 mb-8 max-w-3xl">
-          At Moon Navigation and Trading Co., we offer more than just container bookings—we provide comprehensive, end-to-end solutions to ensure your standard dry container shipments are transported efficiently, securely, and in full compliance with international logistics standards. Our services are tailored to simplify your supply chain, reduce transit risks, and ensure smooth cargo movement from origin to destination.
-        </p>
-        {/* Solutions Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-          {/* Solution 1 */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">1. Cargo Classification and Planning</h3>
-            <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
-              Before shipment, our experts assess your cargo's nature, dimensions, and packaging to determine the most efficient container configuration. We help you plan the right load capacity to reduce wasted space and ensure safe transit—whether it's palletized goods, cartons, or oversized units.
-            </p>
-            <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-cargo-planning.jpg" alt="Cargo Classification and Planning" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
-            </div>
-          </div>
-          {/* Solution 2 */}
-          <div>
-            <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-space-optimization.jpg" alt="Space Optimization and Container Stuffing Guidance" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">2. Space Optimization and Container Stuffing Guidance</h3>
-            <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
-              Proper space utilization is key to cost savings and cargo safety. We provide detailed stuffing plans, cargo securing methods, and weight distribution strategies to prevent shifting or damage during transit. Our team ensures that your goods are packed logically and securely to maximize efficiency and minimize risks.
-            </p>
-          </div>
-          {/* Solution 3 */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">3. Customized Container Booking and Routing</h3>
-            <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
-              We offer flexible and reliable container booking options based on your cargo type, destination, transit time, and budget goals. Our global partner network allows us to coordinate the best shipping schedules and routing solutions, ensuring timely departures and arrivals at your desired ports.
-            </p>
-            <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-booking-routing.jpg" alt="Customized Container Booking and Routing" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
-            </div>
-          </div>
-          {/* Solution 4 */}
-          <div>
-            <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-documentation.jpg" alt="Full Documentation and Customs Clearance Support" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">4. Full Documentation and Customs Clearance Support</h3>
-            <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
-              Shipping success depends on accurate paperwork. We handle all required export/import documentation, including:
-            </p>
-            <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 mb-4">
-              <li>Commercial invoices</li>
-              <li>Packing lists</li>
-              <li>Bills of Lading</li>
-              <li>Certificates of origin</li>
-              <li>Cargo manifest submissions</li>
-              <li>Customs declarations</li>
-              <li>Our experienced team ensures full compliance with international trade regulations, reducing the risk of customs delays or penalties.</li>
-            </ul>
-          </div>
-          {/* Solution 5 */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">5. Inland Transportation Coordination</h3>
-            <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
-              Beyond sea freight, we manage the first-mile and last-mile delivery of your containers. Whether it is trucking from your factory to the port or delivery to your consignee's warehouse, we ensure smooth and timely inland movement of your cargo using our network of reliable local transport partners.
-            </p>
-            <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-inland-transport.jpg" alt="Inland Transportation Coordination" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
-            </div>
-          </div>
-          {/* Solution 6 */}
-          <div>
-            <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-cargo-sealing.jpg" alt="Cargo Supervision and Secure Container Sealing" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
-            </div>
-            <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">6. Cargo Supervision and Secure Container Sealing</h3>
-            <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
-              We oversee the loading process to ensure cargo is handled properly and secured inside the container. Once packed, containers are sealed with tamper-proof seals to ensure cargo integrity throughout the journey. Our team follows standard sealing protocols for both FCL and LCL shipments.
-            </p>
-          </div>
-          {/* Solution 7 */}
-          <div>
-            <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">7. Loading/Unloading Assistance at Port or Final Destination</h3>
-            <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
-              To support your operations end-to-end, we also arrange for on-site loading/unloading teams at port terminals or final destinations. Whether its forklifts, cranes, or labor assistance, we ensure safe cargo handling, especially for bulky or heavy goods.
-            </p>
-            <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-loading-unloading.jpg" alt="Loading/Unloading Assistance at Port or Final Destination" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
-            </div>
+      {/* End-to-End Cargo Handling Section */}
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
+        {/* Image */}
+        <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
+          <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+            <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
+            <Image
+              src="/container-cargo-handling.jpg"
+              alt="End-to-End Cargo Handling"
+              fill
+              className="object-cover rounded-2xl z-10"
+              sizes="(max-width: 768px) 100vw, 320px"
+            />
           </div>
         </div>
-      </div>
-
-      {/* Supporting Section */}
-      <div className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-12 mt-20 mb-12 px-2 md:px-0">
-        <div className="flex-1 flex flex-col gap-4">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#23294d] dark:text-[#bfc8f8] mb-2">
-            Supporting Your Supply Chain, Every Step of the Way
+        {/* Text Content */}
+        <div className="flex-1 flex flex-col justify-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            End-to-End Cargo Handling
           </h2>
-          <p className="text-base text-gray-700 dark:text-gray-200">
-            From origin pickup to final delivery, Moon Navigation and Trading Co. is committed to offering a seamless, transparent, and professional container shipping experience. Our standard container solutions are designed to reduce complexity, save time, and empower your business to scale efficiently.
+          <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
+            We manage the entire logistics chain—right from cargo pickup at the origin location to final delivery at the consignee’s doorstep. Our team ensures:
           </p>
+          <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1">
+            <li>Careful coordination of inland transportation (trucking or rail)</li>
+            <li>Efficient scheduling with minimal downtime</li>
+            <li>Door-to-door or port-to-port service depending on client needs</li>
+            <li>Continuous monitoring of every shipping stage to maintain efficiency and minimize disruptions</li>
+          </ul>
         </div>
-        <div className="flex-1">
-          <div className="w-full rounded-2xl overflow-hidden">
-            <img src="/dry-supply-chain.jpg" alt="Supporting Your Supply Chain" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
+      </div>
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
+        {/* Text Content */}
+        <div className="flex-1 flex flex-col justify-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            Container Stuffing &amp; Cargo Securing
+          </h2>
+          <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
+            Proper container loading is critical for safe transit. We provide:
+          </p>
+          <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1">
+            <li>Professional stuffing operations supervised by trained personnel</li>
+            <li>Strategic cargo arrangement and weight distribution to optimize space and reduce movement</li>
+            <li>Application of lashing, blocking, bracing, and dunnage materials to prevent cargo shifting</li>
+            <li>Specialized stuffing for fragile or irregular-shaped goods</li>
+            <li>Compliance with international cargo securing standards to ensure cargo integrity during long-haul transportation</li>
+          </ul>
+        </div>
+        {/* Image */}
+        <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
+          <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+            <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
+            <Image
+              src="/container-stuffing-cargo-securing.jpg"
+              alt="Container Stuffing & Cargo Securing"
+              fill
+              className="object-cover rounded-2xl z-10"
+              sizes="(max-width: 768px) 100vw, 320px"
+            />
           </div>
         </div>
       </div>
-       <section className="w-full bg-secondary rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-                          {/* Left: Text Content */}
-                          <div className="flex-1 min-w-[260px]">
-                              <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                                  Get your Quote with Us
-                              </h2>
-                              <p className="text-sm md:text-base text-muted-foreground mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                                  Our steamlined standard dry container quotation process is designed for speed and accuracy. At Moon
-                                  Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by
-                                  Request system. Simply fill out our short form to initiate your request. Once submitted, our team
-                                  will assess your cargo's size, weight, handling requirements, and route feasibility to determine
-                                  the best transport solution. You will receive a customized quotation directly in your email,
-                                  ensuring accurate pricing, safe handling, and seamless delivery of your cargo.
-                              </p>
-                              <Link href="/container-services-forms">
-                                  <RequestQuoteButton>
-                                      Request a Quote
-                                  </RequestQuoteButton>
-                              </Link> 
-                          </div>
-                          {/* Right: Image */}
-                          <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                              <img
-                                  src="/quote-illustration.png"
-                                  alt="Quotation illustration"
-                                  className="w-[320px] h-auto object-contain"
-                                  style={{ maxWidth: 380 }}
-                              />
-                          </div>
-                      </section>
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
+        {/* Image */}
+        <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center mb-6 md:mb-0">
+          <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#23316d] flex items-center justify-center">
+            <div className="absolute inset-0 z-0 bg-[#23316d]" />
+            <Image
+              src="/customs-documentation-clearance.jpg"
+              alt="Customs Documentation & Clearance"
+              fill
+              className="object-cover rounded-2xl z-10"
+              sizes="(max-width: 768px) 100vw, 320px"
+            />
+          </div>
+        </div>
+        {/* Text Content */}
+        <div className="flex-1 flex flex-col justify-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            Customs Documentation &amp; Clearance
+          </h2>
+          <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
+            Our experienced team simplifies the complex world of import/export formalities. We offer:
+          </p>
+          <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1">
+            <li>Complete preparation and verification of commercial documents: invoice, packing list, bill of lading, certificate of origin, etc.</li>
+            <li>Assistance with customs clearance procedures at both origin and destination</li>
+            <li>In-house staff (with close stakeholder &amp; account duty assignment)</li>
+            <li>Compliance with all relevant government regulations and trade agreements</li>
+            <li>Close coordination with customs authorities to prevent shipment delays</li>
+          </ul>
+        </div>
+      </div>
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
+        {/* Text Content */}
+        <div className="flex-1 flex flex-col justify-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            Port &amp; Inland Transport Coordination
+          </h2>
+          <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
+            We ensure smooth cargo flow by coordinating:
+          </p>
+          <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1">
+            <li> Inland transport from the depot or warehouse to the container stuffing yard or port terminal</li>
+            <li> Timely delivery of containers for vessel loading</li>
+            <li> Fast handling arrangements including terminal entry, container staging, and loading onto the vessel</li>
+            <li> Port arrival tracking and fast delivery to the receiver’s location</li>
+            <li> Flexibility to work with multimodal transport routes: road, rail, barge</li>
+          </ul>
+        </div>
+        {/* Image */}
+        <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
+          <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+            <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
+            <Image
+              src="/port-inland-transport.jpg"
+              alt="Port & Inland Transport Coordination"
+              fill
+              className="object-cover rounded-2xl z-10"
+              sizes="(max-width: 768px) 100vw, 320px"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
+        {/* Image */}
+        <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
+          <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+            <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
+            <Image
+              src="/cargo-inspection.jpg"
+              alt="Cargo Inspection & Container Condition Checks"
+              fill
+              className="object-cover rounded-2xl z-10"
+              sizes="(max-width: 768px) 100vw, 320px"
+            />
+          </div>
+        </div>
+        {/* Text Content */}
+        <div className="flex-1 flex flex-col justify-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            Cargo Inspection &amp; Container Condition Checks
+          </h2>
+          <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
+            To safeguard cargo and comply with quality standards, we implement:
+          </p>
+          <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1">
+            <li>Thorough pre-shipment inspection of cargo condition and packaging</li>
+            <li>Container integrity checks before loading (including floor, walls, seals, and doors)</li>
+            <li>Monitoring for potential hazards like moisture, odor, or contamination</li>
+            <li>Verifying proper distribution, surface seal, and placement</li>
+            <li>Options for third-party inspection and certification upon request</li>
+          </ul>
+        </div>
+      </div>
+      <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
+        {/* Text Content */}
+        <div className="flex-1 flex flex-col justify-center">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            Additional Value-Added Solutions
+          </h2>
+          <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1 mb-6">
+            <li>Cargo insurance assistance for impactful transit risks</li>
+            <li>Real-time, in-transit updates and tracking services</li>
+            <li>Flexible storage and warehousing options before or after shipment</li>
+            <li>Easy coordination for re-packing/labelling and customs requirements</li>
+            <li>24/7 customer support to keep you informed at every stage</li>
+          </ul>
+          <Link href="/learn/full/dry/learn-more">
+            <RequestQuoteButton>
+              Learn more about our standard Standard Dry Container shipment solutions
+            </RequestQuoteButton> 
+          </Link>
+        </div>
+        {/* Image */}
+        <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
+          <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+            <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
+            <Image
+              src="/value-added-solutions.jpg"
+              alt="Value Added Solutions Team"
+              fill
+              className="object-cover rounded-2xl z-10"
+              sizes="(max-width: 768px) 100vw, 320px"
+            />
+          </div>
+        </div>
+      </div>
+      <GetQuoteComponent topic="Dry Container" link="/container-services-forms" />
+
     </div>
   );
 }
