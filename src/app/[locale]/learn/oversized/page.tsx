@@ -1,56 +1,45 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useTranslations } from "next-intl";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 
 export default function ShippingMethodsInfo() {
-  const t = useTranslations("learn-oversized");
 
   return (
     <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
-      {/* Top Banner */}
-      <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
-        <div className="relative w-full h-[180px] md:h-[260px]">
-          <img
-            src="/oversized-container-banner.jpg"
-            alt="Oversized containers at port"
-            className="object-cover w-full h-full"
-            style={{ objectFit: "cover" }}
-          />
-          <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-            <span className="text-white text-xl md:text-3xl font-semibold text-center drop-shadow-lg">
-              Oversized Container
-            </span>
-          </div>
-        </div>
+      {/* Top Banner - Wide Image with Large Rounded Corners */}
+      <div className="w-full max-w-[1600px] rounded-[3rem] overflow-hidden mb-12" style={{ marginTop: 0 }}>
+        <img
+          src="/oversized-container-banner.jpg"
+          alt="Oversized containers at port"
+          className="object-cover w-full h-[320px] md:h-[380px] lg:h-[420px]"
+          style={{ borderRadius: '3rem', objectFit: 'cover' }}
+        />
       </div>
 
-      {/* Main Content */}
-      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
+      {/* Main Content - Two Column Layout */}
+      <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-16 px-2 md:px-0">
         {/* Left: Title and CTA */}
         <div className="flex flex-col items-start justify-start">
-          <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+          <h1 className="text-[2.5rem] md:text-[2.8rem] font-normal mb-8" style={{ color: '#3B4B8C', fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.1 }}>
             Oversized Container
           </h1>
-          
-            <Link href="/container-services-forms">
-              <RequestQuoteButton>
-                Request a Quote
-              </RequestQuoteButton>
-            </Link>
-          
+          <Link href="/container-services-forms">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
+          </Link>
         </div>
-
         {/* Right: Description */}
-        <div>
-          <h2 className="text-lg font-semibold text-primary mb-2">
+        <div className="flex flex-col items-start justify-start">
+          <h2 className="text-xl md:text-2xl font-normal mb-4" style={{ color: '#3B4B8C', fontFamily: 'Raleway, Montserrat, sans-serif' }}>
             What is Oversized Container?
           </h2>
-          <p className="text-base text-foreground leading-relaxed">
-            An oversized container is cargo that exceeds the standard dimensions of a conventional shipping container, requiring specialized handling solutions. These shipments are either too long, wide, heavy, or tall to be loaded and fitted in a standard container, and must be transported using flat racks, open-top containers, or platform containers.
-            <br /><br />
-            At Moon Navigation and Trading Co., we specialize in handling oversized container shipments, offering expert cargo securing, routing planning, and compliance management to ensure safe and efficient transport. Whether you need to move project cargo, shipping modules, or specialized equipment, we provide tailored solutions for industries requiring the movement of large, heavy, or irregularly shaped cargo.
+          <p className="text-base md:text-lg text-[#444] mb-2" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
+            An oversized container is cargo that exceeds the standard dimensions of a conventional shipping container, requiring specialized transport solutions. These shipments are often too tall, wide, or heavy to fit within standard 20-foot or 40-foot containers and must be transported using flat racks, open-top containers, or platform containers.
+          </p>
+          <p className="text-base md:text-lg text-[#444]" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
+            At Moon Navigation and Trading Co., we specialize in handling oversized container shipments, offering expert cargo securing, route planning, and compliance management to ensure safe and efficient transport. With access to global shipping routes and specialized equipment, we provide tailored solutions for industries requiring the movement of large, heavy, or irregularly shaped cargo.
           </p>
         </div>
       </div>
