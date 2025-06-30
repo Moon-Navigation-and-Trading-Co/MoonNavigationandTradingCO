@@ -6,7 +6,7 @@ export default function ContainerStoragePage() {
         style={{ fontFamily: "Raleway, sans-serif" }}>
              {/* Storage & Warehousing Services Section */}
              <div className="w-full max-w-7xl mx-auto mt-20">
-                <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-2 text-center">
+                <h2 className="text-2xl md:text-3xl  text-primary mb-2 text-center">
                     Our Secure Storage &amp; Warehousing Services
                 </h2>
                 <p className="text-muted-foreground text-center mb-8 text-sm md:text-base max-w-7xl mx-auto">
@@ -15,18 +15,18 @@ export default function ContainerStoragePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                     {/* 1. Container Yard & Open Storage */}
                     <div>
-                        <h3 className="text-lg md:text-xl font-semibold mb-3">
+                        <h3 className="text-lg md:text-xl  mb-3">
                             1. Container Yard &amp; Open Storage
                         </h3>
                         <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
                             <li>
-                                <span className="font-semibold">Port &amp; Empty Container Storage</span> – Secure area for both import/export cargo.
+                                <span className="">Port &amp; Empty Container Storage</span> – Secure area for both import/export cargo.
                             </li>
                             <li>
-                                <span className="font-semibold">Bonded Warehousing</span> – Duty-free storage for transshipment and customs-cleared locations.
+                                <span className="">Bonded Warehousing</span> – Duty-free storage for transshipment and customs-cleared locations.
                             </li>
                             <li>
-                                <span className="font-semibold">Reefer Plug-in Points</span> – Temperature storage for perishable goods with constant temperature monitoring.
+                                <span className="">Reefer Plug-in Points</span> – Temperature storage for perishable goods with constant temperature monitoring.
                             </li>
                         </ul>
                         <div className="w-full rounded-xl overflow-hidden shadow mb-2">
@@ -39,18 +39,18 @@ export default function ContainerStoragePage() {
                     </div>
                     {/* 2. Specialized Warehousing Solutions */}
                     <div>
-                        <h3 className="text-lg md:text-xl font-semibold mb-3">
+                        <h3 className="text-lg md:text-xl  mb-3">
                             2. Specialized Warehousing Solutions
                         </h3>
                         <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
                             <li>
-                                <span className="font-semibold">Temperature-Controlled Warehouses</span> – Ideal for pharmaceuticals, perishables, and sensitive goods.
+                                <span className="">Temperature-Controlled Warehouses</span> – Ideal for pharmaceuticals, perishables, and sensitive goods.
                             </li>
                             <li>
-                                <span className="font-semibold">Hazardous Goods Storage</span> – Secure and compliant storage for flammables and dangerous materials.
+                                <span className="">Hazardous Goods Storage</span> – Secure and compliant storage for flammables and dangerous materials.
                             </li>
                             <li>
-                                <span className="font-semibold">Breakbulk &amp; Heavy Lift Cargo Storage</span> – Custom storage areas for oversized shipments.
+                                <span className="">Breakbulk &amp; Heavy Lift Cargo Storage</span> – Custom storage areas for oversized shipments.
                             </li>
                         </ul>
                         <div className="w-full rounded-xl overflow-hidden shadow">
@@ -67,18 +67,18 @@ export default function ContainerStoragePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-10">
                 {/* Left: Description */}
                 <div>
-                    <h3 className="text-lg md:text-xl font-semibold mb-3">
+                    <h3 className="text-lg md:text-xl  mb-3">
                         3. Inventory &amp; Cargo Management
                     </h3>
                     <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
                         <li>
-                            <span className="font-semibold">Systematic Inventory Tracking</span> – Efficient cargo handling and stock management.
+                            <span className="">Systematic Inventory Tracking</span> – Efficient cargo handling and stock management.
                         </li>
                         <li>
-                            <span className="font-semibold">Packing &amp; Consolidation Services</span> – Repacking, cutting, and cargo preparation for final shipment.
+                            <span className="">Packing &amp; Consolidation Services</span> – Repacking, cutting, and cargo preparation for final shipment.
                         </li>
                         <li>
-                            <span className="font-semibold">Customized Storage Plans</span> – Flexible solutions tailored to client needs.
+                            <span className="">Customized Storage Plans</span> – Flexible solutions tailored to client needs.
                         </li>
                     </ul>
                 </div>

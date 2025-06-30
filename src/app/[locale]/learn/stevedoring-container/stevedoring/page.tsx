@@ -6,7 +6,7 @@ export default function StevedoringPage() {
         style={{ fontFamily: "Raleway, sans-serif" }}>
             {/* Stevedoring Services Overview */}
             <div className="w-full max-w-7xl mx-auto mt-20">
-                <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-4">
+                <h2 className="text-2xl md:text-3xl  text-center text-primary mb-4">
                     Our Stevedoring Services
                 </h2>
                 <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
@@ -17,18 +17,18 @@ export default function StevedoringPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-16">
                     {/* Left: Text Content */}
                     <div>
-                        <h3 className="text-lg md:text-xl font-semibold mb-2">
+                        <h3 className="text-lg md:text-xl  mb-2">
                             1. Cargo Handling &amp; Vessel Operations
                         </h3>
                         <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                             <li>
-                                <span className="font-semibold">Containerized Cargo Handling</span> – Efficient lifting, stacking, and stowage of containers.
+                                <span className="">Containerized Cargo Handling</span> – Efficient lifting, stacking, and stowage of containers.
                             </li>
                             <li>
-                                <span className="font-semibold">Heavy Lift &amp; Project Cargo Handling</span> – Custom solutions for oversized shipments, using high-capacity cranes and specialized lifting equipment.
+                                <span className="">Heavy Lift &amp; Project Cargo Handling</span> – Custom solutions for oversized shipments, using high-capacity cranes and specialized lifting equipment.
                             </li>
                             <li>
-                                <span className="font-semibold">Bulk &amp; General Cargo Operations</span> – Handling of raw materials, grain, cement, and breakbulk goods.
+                                <span className="">Bulk &amp; General Cargo Operations</span> – Handling of raw materials, grain, cement, and breakbulk goods.
                             </li>
                         </ul>
                     </div>
@@ -54,18 +54,18 @@ export default function StevedoringPage() {
                     </div>
                     {/* Right: Text Content */}
                     <div>
-                        <h3 className="text-lg md:text-xl font-semibold mb-2">
+                        <h3 className="text-lg md:text-xl  mb-2">
                             2. Equipment &amp; Technology
                         </h3>
                         <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                             <li>
-                                <span className="font-semibold">Advanced Port Cranes &amp; Spreaders</span> – High-speed operations with minimal turnaround time.
+                                <span className="">Advanced Port Cranes &amp; Spreaders</span> – High-speed operations with minimal turnaround time.
                             </li>
                             <li>
-                                <span className="font-semibold">Forklifts, Reach Stackers &amp; Terminal Tractors</span> – Efficient movement of containers and cargo within terminals.
+                                <span className="">Forklifts, Reach Stackers &amp; Terminal Tractors</span> – Efficient movement of containers and cargo within terminals.
                             </li>
                             <li>
-                                <span className="font-semibold">Cargo Identification &amp; Monitoring</span> – Effective tracking and documentation for operational efficiency.
+                                <span className="">Cargo Identification &amp; Monitoring</span> – Effective tracking and documentation for operational efficiency.
                             </li>
                         </ul>
                     </div>
@@ -75,18 +75,18 @@ export default function StevedoringPage() {
             <div className="flex flex-col md:flex-row gap-8 items-start mt-8">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
-                    <h3 className="text-lg md:text-xl font-semibold mb-2">
+                    <h3 className="text-lg md:text-xl  mb-2">
                         3. Safety &amp; Compliance
                     </h3>
                     <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0">
                         <li>
-                            <span className="font-semibold">Trained Stevedoring Crews</span>: Experienced professionals for safe cargo handling.
+                            <span className="">Trained Stevedoring Crews</span>: Experienced professionals for safe cargo handling.
                         </li>
                         <li>
-                            <span className="font-semibold">IMO &amp; Port Authority Regulation Compliance</span>: Full adherence to international and local safety standards.
+                            <span className="">IMO &amp; Port Authority Regulation Compliance</span>: Full adherence to international and local safety standards.
                         </li>
                         <li>
-                            <span className="font-semibold">Risk Assessment &amp; Emergency Response</span>: Proactive measures to prevent operations hazards.
+                            <span className="">Risk Assessment &amp; Emergency Response</span>: Proactive measures to prevent operations hazards.
                         </li>
                     </ul>
                 </div>

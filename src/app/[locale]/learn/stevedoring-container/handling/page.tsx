@@ -8,7 +8,7 @@ export default function ContainerHandlingPage() {
             
             {/* Our Container Handling Services */}
            <div className="w-full max-w-7xl mx-auto mt-20">
-           <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
+           <h2 className="text-2xl md:text-3xl  text-center text-primary mb-8">
                Our Container Handling Services
            </h2>
            <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
@@ -19,18 +19,18 @@ export default function ContainerHandlingPage() {
            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-16">
                {/* Left: Text Content */}
                <div>
-                   <h3 className="text-lg md:text-xl font-semibold mb-2">
+                   <h3 className="text-lg md:text-xl  mb-2">
                        1. Loading &amp; Unloading Operations
                    </h3>
                    <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                        <li>
-                           <span className="font-semibold">Ship-to-Shore &amp; Shore-to-Ship Handling</span>—Fast, secure loading and unloading of containers.
+                           <span className="">Ship-to-Shore &amp; Shore-to-Ship Handling</span>—Fast, secure loading and unloading of containers.
                        </li>
                        <li>
-                           <span className="font-semibold">Rail &amp; Truck Transfers</span>—Seamless movement between vessel, port, rail, and inland transport.
+                           <span className="">Rail &amp; Truck Transfers</span>—Seamless movement between vessel, port, rail, and inland transport.
                        </li>
                        <li>
-                           <span className="font-semibold">Rapid Transshipment</span>—Quick transfer of containers between vessels at critical storage depots.
+                           <span className="">Rapid Transshipment</span>—Quick transfer of containers between vessels at critical storage depots.
                        </li>
                    </ul>
                </div>
@@ -56,18 +56,18 @@ export default function ContainerHandlingPage() {
                </div>
                {/* Right: Text Content */}
                <div>
-                   <h3 className="text-lg md:text-xl font-semibold mb-2">
+                   <h3 className="text-lg md:text-xl  mb-2">
                        2. Specialized Container Handling
                    </h3>
                    <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                        <li>
-                           <span className="font-semibold">Reefer Containers (Refrigerated Cargo)</span>—Temperature-controlled handling with 24/7 monitoring.
+                           <span className="">Reefer Containers (Refrigerated Cargo)</span>—Temperature-controlled handling with 24/7 monitoring.
                        </li>
                        <li>
-                           <span className="font-semibold">Oversized &amp; Out-of-Gauge Cargo</span>—Expert lifting solutions for heavy machinery, project cargo, and special shipments.
+                           <span className="">Oversized &amp; Out-of-Gauge Cargo</span>—Expert lifting solutions for heavy machinery, project cargo, and special shipments.
                        </li>
                        <li>
-                           <span className="font-semibold">Dangerous Goods Containers (IMO Cargo)</span>—Safe and regulation-compliant handling for hazardous materials.
+                           <span className="">Dangerous Goods Containers (IMO Cargo)</span>—Safe and regulation-compliant handling for hazardous materials.
                        </li>
                    </ul>
                </div>
@@ -77,18 +77,18 @@ export default function ContainerHandlingPage() {
        <div className="md:col-span-2 flex flex-col md:flex-row items-center gap-8 mt-8">
            {/* Left: Text Content */}
            <div className="flex-1">
-               <h3 className="text-lg md:text-xl font-semibold mb-2">
+               <h3 className="text-lg md:text-xl  mb-2">
                    3. Secure Lashing &amp; Cargo Protection
                </h3>
                <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                    <li>
-                       <span className="font-semibold">Lashing &amp; Securing</span> – Proper execution of restraints to prevent movement during transit.
+                       <span className="">Lashing &amp; Securing</span> – Proper execution of restraints to prevent movement during transit.
                    </li>
                    <li>
-                       <span className="font-semibold">Container Inspection &amp; Damage Assessment</span> – Routine checks to ensure cargo integrity.
+                       <span className="">Container Inspection &amp; Damage Assessment</span> – Routine checks to ensure cargo integrity.
                    </li>
                    <li>
-                       <span className="font-semibold">Weighing &amp; Compliance Checks</span> – VGM (Verified Gross Mass) certification for SOLAS compliance.
+                       <span className="">Weighing &amp; Compliance Checks</span> – VGM (Verified Gross Mass) certification for SOLAS compliance.
                    </li>
                </ul>
            </div>

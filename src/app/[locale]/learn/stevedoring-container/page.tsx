@@ -24,7 +24,7 @@ export default function StevedoringContainerPage() {
             <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                 {/* Left: Title and CTA */}
                 <div className="flex flex-col items-start justify-start">
-                    <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+                    <h1 className="text-2xl md:text-3xl  text-foreground mb-2">
                         Container Handling, Stevedoring and Storage
                     </h1>
                         <Link href="/container-services-forms">
@@ -36,7 +36,7 @@ export default function StevedoringContainerPage() {
 
                 {/* Right: Description */}
                 <div>
-                    <h2 className="text-lg font-semibold text-primary mb-2">
+                    <h2 className="text-lg  text-primary mb-2">
                         What is Container handling, stevedoring and storage?
                     </h2>
                     <p className="text-base text-foreground leading-relaxed mb-4">
@@ -48,13 +48,13 @@ export default function StevedoringContainerPage() {
                 </div>
             </div>
         <div className="w-full max-w-7xl mx-auto mt-20" style={{ fontFamily: "Raleway, sans-serif" }}>
-            <h2 className="text-2xl md:text-3xl font-semibold text-center text-foreground mb-12">
+            <h2 className="text-2xl md:text-3xl  text-center text-foreground mb-12">
                 Our Container Handling, Stevedoring, and Storage Services
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                 {/* Left: Text Content */}
                 <div className="flex flex-col justify-center">
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-foreground">
+                    <h3 className="text-lg md:text-xl  mb-2 text-foreground">
                         Container Handling
                     </h3>
                     <p className="text-muted-foreground text-sm md:text-base mb-4">
@@ -62,16 +62,16 @@ export default function StevedoringContainerPage() {
                     </p>
                     <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0 mb-6">
                         <li>
-                            <span className="font-semibold">Loading &amp; Unloading</span> – Fast and secure transfer of containers from vessels, trucks, and rail.
+                            <span className="">Loading &amp; Unloading</span> – Fast and secure transfer of containers from vessels, trucks, and rail.
                         </li>
                         <li>
-                            <span className="font-semibold">Custom Handling Solutions</span> – Expertise in handling standard, reefer, oversized, and hazardous cargo containers.
+                            <span className="">Custom Handling Solutions</span> – Expertise in handling standard, reefer, oversized, and hazardous cargo containers.
                         </li>
                         <li>
-                            <span className="font-semibold">Secure Lashing &amp; Securing</span> – Ensuring cargo stability and safety in every transit.
+                            <span className="">Secure Lashing &amp; Securing</span> – Ensuring cargo stability and safety in every transit.
                         </li>
                         <li>
-                            <span className="font-semibold">Container Inspection &amp; Damage Assessment</span> – Quality checks to maintain cargo integrity.
+                            <span className="">Container Inspection &amp; Damage Assessment</span> – Quality checks to maintain cargo integrity.
                         </li>
                     </ul>
                     <Link href="/learn/stevedoring-container/handling">
@@ -103,7 +103,7 @@ export default function StevedoringContainerPage() {
                 </div>
                 {/* Right: Text Content */}
                 <div className="flex flex-col justify-center">
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-foreground">
+                    <h3 className="text-lg md:text-xl  mb-2 text-foreground">
                         Stevedoring Services
                     </h3>
                     <p className="text-muted-foreground text-sm md:text-base mb-4">
@@ -111,16 +111,16 @@ export default function StevedoringContainerPage() {
                     </p>
                     <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0 mb-6">
                         <li>
-                            <span className="font-semibold">Heavy Lift &amp; Breakbulk Handling</span> – Specialized equipment for oversized and project cargo.
+                            <span className="">Heavy Lift &amp; Breakbulk Handling</span> – Specialized equipment for oversized and project cargo.
                         </li>
                         <li>
-                            <span className="font-semibold">Bulk &amp; General Cargo Operations</span> – Efficient management of diverse cargo types from containers to raw materials.
+                            <span className="">Bulk &amp; General Cargo Operations</span> – Efficient management of diverse cargo types from containers to raw materials.
                         </li>
                         <li>
-                            <span className="font-semibold">Specialized Equipment &amp; Cranes</span> – High-capacity cranes, forklifts, and spreaders for seamless port operations.
+                            <span className="">Specialized Equipment &amp; Cranes</span> – High-capacity cranes, forklifts, and spreaders for seamless port operations.
                         </li>
                         <li>
-                            <span className="font-semibold">Port-to-Warehouse Delivery</span> – End-to-end logistics solutions for cargo movement beyond the port.
+                            <span className="">Port-to-Warehouse Delivery</span> – End-to-end logistics solutions for cargo movement beyond the port.
                         </li>
                     </ul>
                     <Link href="/learn/stevedoring-container/stevedoring">
@@ -135,21 +135,21 @@ export default function StevedoringContainerPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                 {/* Left: Text Content */}
                 <div>
-                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-foreground">
+                    <h3 className="text-lg md:text-xl  mb-2 text-foreground">
                         Secure Storage &amp; Warehousing
                     </h3>
                     <ul className="list-none text-sm md:text-base text-muted-foreground space-y-1 pl-0 mb-4">
                         <li>
-                            <span className="font-semibold">Container Yard Storage</span> – We secure open storage for FCL, LCL, and reefer containers.
+                            <span className="">Container Yard Storage</span> – We secure open storage for FCL, LCL, and reefer containers.
                         </li>
                         <li>
-                            <span className="font-semibold">Bonded Warehousing</span> – Duty-free storage with customs-controlled facilities.
+                            <span className="">Bonded Warehousing</span> – Duty-free storage with customs-controlled facilities.
                         </li>
                         <li>
-                            <span className="font-semibold">Temperature-Controlled Storage</span> – Climate-controlled solutions for perishable goods.
+                            <span className="">Temperature-Controlled Storage</span> – Climate-controlled solutions for perishable goods.
                         </li>
                         <li>
-                            <span className="font-semibold">Inventory Management &amp; Tracking</span> – Real-time monitoring for efficient cargo handling.
+                            <span className="">Inventory Management &amp; Tracking</span> – Real-time monitoring for efficient cargo handling.
                         </li>
                     </ul>
                     <Link href="/learn/stevedoring-container/storage">
@@ -171,13 +171,13 @@ export default function StevedoringContainerPage() {
             
         {/* {Reasonsssss} */}
             <div className="w-full max-w-7xl mx-auto mt-20">
-                <h2 className="text-2xl md:text-3xl font-semibold text-center text-primary mb-8">
+                <h2 className="text-2xl md:text-3xl  text-center text-primary mb-8">
                     Reasons to Choose Moon Navigation and Trading Co.
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-32 mb-20">
                     {/* Comprehensive Freight Solutions */}
                     <div className="flex flex-col items-center text-center">
-                        <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+                        <h3 className=" text-foreground mb-2 text-base md:text-lg">
                             Comprehensive Freight Solutions
                         </h3>
                         <p className="text-muted-foreground text-sm md:text-base">
@@ -186,7 +186,7 @@ export default function StevedoringContainerPage() {
                     </div>
                     {/* Expertise in Complex Shipments */}
                     <div className="flex flex-col items-center text-center">
-                        <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+                        <h3 className=" text-foreground mb-2 text-base md:text-lg">
                             Expertise in Complex Shipments
                         </h3>
                         <p className="text-muted-foreground text-sm md:text-base">
@@ -195,7 +195,7 @@ export default function StevedoringContainerPage() {
                     </div>
                     {/* Optimized Routes & Cost-Efficient Shipping */}
                     <div className="flex flex-col items-center text-center">
-                        <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+                        <h3 className=" text-foreground mb-2 text-base md:text-lg">
                             Optimized Routes &amp; Cost-Efficient Shipping
                         </h3>
                         <p className="text-muted-foreground text-sm md:text-base">
@@ -206,7 +206,7 @@ export default function StevedoringContainerPage() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-32">
                     {/* Extensive Global Network */}
                     <div className="flex flex-col items-center text-center">
-                        <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+                        <h3 className=" text-foreground mb-2 text-base md:text-lg">
                             Extensive Global Network
                         </h3>
                         <p className="text-muted-foreground text-sm md:text-base">
@@ -215,7 +215,7 @@ export default function StevedoringContainerPage() {
                     </div>
                     {/* Customs Expertise & Secure Handling */}
                     <div className="flex flex-col items-center text-center">
-                        <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+                        <h3 className=" text-foreground mb-2 text-base md:text-lg">
                             Customs Expertise &amp; Secure Handling
                         </h3>
                         <p className="text-muted-foreground text-sm md:text-base">
@@ -224,7 +224,7 @@ export default function StevedoringContainerPage() {
                     </div>
                     {/* Customer-Focused Service */}
                     <div className="flex flex-col items-center text-center">
-                        <h3 className="font-semibold text-foreground mb-2 text-base md:text-lg">
+                        <h3 className=" text-foreground mb-2 text-base md:text-lg">
                             Customer-Focused Service
                         </h3>
                         <p className="text-muted-foreground text-sm md:text-base">
