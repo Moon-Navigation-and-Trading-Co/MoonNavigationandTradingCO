@@ -1,0 +1,120 @@
+"use client"
+import React, { useState } from 'react';
+import { FormItem, FormLabel, FormControl } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { useTranslations } from "next-intl";
+import { Controller } from "react-hook-form";
+import RequestQuoteButton from './RequestQuoteButton';
+import { Mail, Phone } from 'lucide-react';
+
+interface AdditionalContactFieldsProps {
+  control: any;
+  className?: string;
+}
+
+const AdditionalContactFields: React.FC<AdditionalContactFieldsProps> = ({ 
+  control, 
+  className = "" 
+}) => {
+  const t = useTranslations('Inland-forms');
+  const [showAdditionalEmail, setShowAdditionalEmail] = useState(false);
+  const [showAdditionalPhone, setShowAdditionalPhone] = useState(false);
+
+  return (
+    <div className={`space-y-4 ${className}`}>
+      {/* Additional Email Section */}
+      <div className="space-y-3">
+        {!showAdditionalEmail && (
+          <RequestQuoteButton
+            variant="outline"
+            onClick={() => setShowAdditionalEmail(true)}
+            className="w-fit"
+          >
+            <Mail className="h-4 w-4 mr-2" />
+            Add Additional Email
+          </RequestQuoteButton>
+        )}
+        
+        {showAdditionalEmail && (
+          <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <FormItem>
+              <FormLabel>{t('additionalEmail')}</FormLabel>
+              <FormControl>
+                <Controller
+                  control={control}
+                  name="company_details.additional_email"
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Input 
+                        className="max-w-[300px] border-2 rounded-xl" 
+                        placeholder="Email" 
+                        {...field} 
+                      />
+                      {error && <p className="text-red-500">{error.message}</p>}
+                    </>
+                  )}
+                />
+              </FormControl>
+            </FormItem>
+            
+            <RequestQuoteButton
+              variant="secondary"
+              onClick={() => setShowAdditionalEmail(false)}
+              className="w-fit"
+            >
+              Remove Additional Email
+            </RequestQuoteButton>
+          </div>
+        )}
+      </div>
+
+      {/* Additional Phone Section */}
+      <div className="space-y-3">
+        {!showAdditionalPhone && (
+          <RequestQuoteButton
+            variant="outline"
+            onClick={() => setShowAdditionalPhone(true)}
+            className="w-fit"
+          >
+            <Phone className="h-4 w-4 mr-2" />
+            Add Additional Phone
+          </RequestQuoteButton>
+        )}
+        
+        {showAdditionalPhone && (
+          <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+            <FormItem>
+              <FormLabel>{t('additionalPhoneNumber')}</FormLabel>
+              <FormControl>
+                <Controller
+                  control={control}
+                  name="company_details.additional_phone_number"
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Input 
+                        className="max-w-[300px] border-2 rounded-xl" 
+                        placeholder="+123456789" 
+                        {...field} 
+                      />
+                      {error && <p className="text-red-500">{error.message}</p>}
+                    </>
+                  )}
+                />
+              </FormControl>
+            </FormItem>
+            
+            <RequestQuoteButton
+              variant="secondary"
+              onClick={() => setShowAdditionalPhone(false)}
+              className="w-fit"
+            >
+              Remove Additional Phone
+            </RequestQuoteButton>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default AdditionalContactFields; 
