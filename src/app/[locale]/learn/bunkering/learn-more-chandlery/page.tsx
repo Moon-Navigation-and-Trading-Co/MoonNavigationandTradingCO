@@ -5,7 +5,7 @@ export default function LearnMoreChandleryPage() {
   return (
     <div className="w-full min-h-screen bg-white flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
       <div className="w-full max-w-6xl">
-        <h1 className="text-2xl md:text-3xl font-semibold mb-8">
+        <h1 className="text-2xl md:text-3xl  mb-8">
           Ship Chandlery Services – At Moon Navigation and Trading Co.
         </h1>
         <p className="text-[#444] text-sm md:text-base mb-10">
@@ -13,7 +13,7 @@ export default function LearnMoreChandleryPage() {
         </p>
         <div className="flex flex-col md:flex-row gap-8 mb-12">
           <div className="flex-1">
-            <h2 className="text-lg font-bold mb-2">1. Deck &amp; Engine Stores</h2>
+            <h2 className="text-lg  mb-2">1. Deck &amp; Engine Stores</h2>
             <ul className="list-disc pl-6 text-[#222] text-sm md:text-base mb-4 space-y-1">
               <li>Pipes, Mooring Lines &amp; Rigging Equipment – For ship berthing and anchorage</li>
               <li>Paints, Coatings &amp; Corrosion Protection – Ensuring hull durability &amp; rust prevention</li>
@@ -49,7 +49,7 @@ export default function LearnMoreChandleryPage() {
             </div>
           </div>
           <div className="flex-1">
-            <h2 className="text-lg font-bold mb-2">2. Provisions &amp; Catering Supplies</h2>
+            <h2 className="text-lg  mb-2">2. Provisions &amp; Catering Supplies</h2>
             <ul className="list-disc pl-6 text-[#222] text-sm md:text-base space-y-1">
               <li>Fresh &amp; Frozen Food – Fruits, vegetables, meat, seafood, dairy, and bakery products</li>
               <li>Dry Goods &amp; Beverages – Coffee, tea, canned goods, and snacks</li>
@@ -60,7 +60,7 @@ export default function LearnMoreChandleryPage() {
         </div>
         <div className="flex flex-col md:flex-row gap-8 mb-12">
           <div className="flex-1">
-            <h2 className="text-lg font-bold mb-2">3. Bonded Stores &amp; Duty-Free Items</h2>
+            <h2 className="text-lg  mb-2">3. Bonded Stores &amp; Duty-Free Items</h2>
             <ul className="list-disc pl-6 text-[#222] text-sm md:text-base space-y-1">
               <li>
                 Tobacco &amp; Alcohol – Cigarettes, cans, beer, wine, and spirits

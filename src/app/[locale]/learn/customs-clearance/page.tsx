@@ -141,7 +141,7 @@ export default function CustomsClearance() {
 
                     {/* Learn More Button */}
                     <div className="flex justify-end mt-8">
-                        <Link href="/learn/ship-agency-forms">
+                        <Link href="/learn/customs-clearance/learn-more">
                             <RequestQuoteButton>
                                 {t("key-activities.learn-more")}
                             </RequestQuoteButton>

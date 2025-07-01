@@ -16,30 +16,36 @@ export default function CarouselAnimation() {
   const t = useTranslations("HomePage");
   const tt = useTranslations("Buttons");
   const router = useRouter();
-
   const freightTypes = [
     {
-      title: t("servicesCard1Title"),
-      description: t("servicesCard1Description"),
-      image: "/cargoAir.jpeg",
-      link: "/air-freight-forms",
-      quote: "/air-freight-forms",
+        title: t("servicesCard2Title"),
+        description: t("servicesCard2Description"),
+        image: "/airCargo.jpg",
+        link: "/learn-more/ocean-freight", //modify here to change linking
+        quote: "/ocean-freight-forms",
     },
     {
-      title: t("servicesCard2Title"),
-      description: t("servicesCard2Description"),
-      image: "/airCargo.jpg",
-      link: "/learn-more/ocean-freight",
-      quote: "/ocean-freight-forms",
+        title: t("servicesCard4Title"),
+        description: t("servicesCard4Description"),
+        image: "/container-1.jpg",
+        link: "/learn-more/container",
+        quote: "/ocean-freight-forms",
     },
     {
-      title: t("servicesCard3Title"),
-      description: t("servicesCard3Description"),
-      image: "/land-cargo-2.jpeg",
-      link: "/learn-more/inland-freight",
-      quote: "/inland-services-forms",
+        title: t("servicesCard3Title"),
+        description: t("servicesCard3Description"),
+        image: "/land-cargo-2.jpeg",
+        link: "/learn-more/inland-freight",
+        quote: "/inland-services-forms",
     },
-  ];
+    {
+        title: t("servicesCard1Title"),
+        description: t("servicesCard1Description"),
+        image: "/cargoAir.jpeg",
+        link: "/learn/air-freight",
+        quote: "/air-freight-forms",
+    },
+];
 
   const handleCardInteraction = (index: number, link: string) => {
     if (window.innerWidth >= 1024) {

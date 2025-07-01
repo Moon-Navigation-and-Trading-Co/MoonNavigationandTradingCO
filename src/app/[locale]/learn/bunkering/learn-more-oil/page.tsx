@@ -5,12 +5,12 @@ export default function LearnMoreOilPage() {
   return (
     <div className="w-full min-h-screen bg-white flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
       <div className="w-full max-w-6xl">
-        <h1 className="text-2xl md:text-3xl font-semibold mb-8">
+        <h1 className="text-2xl md:text-3xl  mb-8">
           Oil &amp; Lubricants Supply - At Moon Navigation and Trading Co.
         </h1>
         <div className="flex flex-col md:flex-row gap-8 items-center mb-12">
           <div className="flex-1">
-            <h2 className="text-lg font-bold mb-2">Types of Marine Lubricants We Provide:</h2>
+            <h2 className="text-lg  mb-2">Types of Marine Lubricants We Provide:</h2>
             <ul className="list-none pl-0 text-[#222] text-sm md:text-base space-y-2">
               <li>
                 <span className="mr-2" aria-hidden="true">✔️</span>

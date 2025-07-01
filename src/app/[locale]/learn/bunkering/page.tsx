@@ -6,7 +6,7 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 export default function BunkeringPage() {
   return (
     <div
-      className="w-full min-h-screen bg-white flex flex-col items-center justify-start"
+      className="w-full max-w-7xl min-h-screen bg-white flex flex-col items-center place-self-center"
       style={{ fontFamily: "Raleway, sans-serif" }}
     >
       <div className="w-full max-w-6xl mt-8 mb-0 px-4">
@@ -42,7 +42,7 @@ export default function BunkeringPage() {
           </div>
         </div>
       </div>
-    <div className="w-full flex flex-col md:flex-row items-center justify-between bg-[#f5f7fa] rounded-[2rem] p-6 md:p-12 mt-8 mb-12">
+    <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mt-8 mb-12">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start z-10">
         <h2 className="text-xl md:text-2xl  mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
           Bunkering Services (Marine Fuel Supply)
@@ -72,7 +72,7 @@ export default function BunkeringPage() {
         </div>
       </div>
     </div>
-    <div className="w-full flex flex-col md:flex-row items-center justify-between bg-white rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
+    <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
       <div className="w-full md:w-1/2 flex justify-center items-center">
         <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
           <Image
@@ -86,7 +86,7 @@ export default function BunkeringPage() {
         </div>
       </div>
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start px-0 md:px-8 mt-8 md:mt-0 z-10">
-        <div className="bg-white/80 rounded-xl p-6 shadow-md max-w-lg">
+        <div className="rounded-xl p-6 max-w-lg">
           <h2 className="text-xl md:text-2xl  mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
             Oil &amp; Lubricants Supply
           </h2>
@@ -104,9 +104,9 @@ export default function BunkeringPage() {
         </div>
       </div>
     </div>
-    <div className="w-full flex flex-col md:flex-row items-center justify-between bg-white rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
+    <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start px-0 md:px-8 mt-8 md:mt-0 z-10">
-        <div className="bg-white/80 rounded-xl p-6 shadow-md max-w-lg">
+        <div className="rounded-xl p-6  max-w-lg">
           <h2 className="text-xl md:text-2xl  mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
             Ship Chandlery
           </h2>

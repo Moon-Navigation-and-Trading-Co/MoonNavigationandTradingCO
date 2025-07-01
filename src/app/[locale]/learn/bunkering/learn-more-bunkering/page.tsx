@@ -25,7 +25,7 @@ export default function LearnMoreBunkeringPage() {
         </div>
       </div>
       <div className="w-full max-w-6xl">
-        <h1 className="text-2xl md:text-3xl font-semibold mb-2">
+        <h1 className="text-2xl md:text-3xl  mb-2">
           Bunkering Services (Marine Fuel Supply) – At Moon Navigation and Trading Co.
         </h1>
         <p className="text-[#444] text-sm md:text-base mb-8">
@@ -33,7 +33,7 @@ export default function LearnMoreBunkeringPage() {
         </p>
         <div className="flex flex-col md:flex-row gap-8 mb-12">
           <div className="flex-1">
-            <h2 className="text-lg font-bold mb-2">1. Types of Marine Fuels We Provide:</h2>
+            <h2 className="text-lg  mb-2">1. Types of Marine Fuels We Provide:</h2>
             <ul className="list-disc pl-6 text-[#222] text-sm md:text-base mb-4">
               <li>Very Low Sulfur Fuel Oil (VLSFO) – IMO 2020 compliant fuel</li>
               <li>Marine Gas Oil (MGO) &amp; Marine Diesel Oil (MDO) – Cleaner-burning alternatives</li>
@@ -68,7 +68,7 @@ export default function LearnMoreBunkeringPage() {
             </div>
           </div>
           <div className="flex-1">
-            <h2 className="text-lg font-bold mb-2">2. Bunkering Methods:</h2>
+            <h2 className="text-lg  mb-2">2. Bunkering Methods:</h2>
             <ul className="list-disc pl-6 text-[#222] text-sm md:text-base">
               <li>
                 <span className="font-medium">Ship-to-Ship (STS) Transfer</span> – Direct fueling via anchorage or offshore.
