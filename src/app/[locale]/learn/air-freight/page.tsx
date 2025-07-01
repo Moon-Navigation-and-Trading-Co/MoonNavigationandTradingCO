@@ -6,15 +6,16 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function AirFreightInfo() {
     const t = useTranslations("learn-air-freight");
 
     return (
-        <main className="flex flex-col items-center w-full">
+        <main className="flex flex-col items-center w-full max-w-7xl mx-auto" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Hero Section */}
             <div className="w-full">
-                <div className="relative h-[400px] rounded-3xl overflow-hidden mb-12">
+                <div className="relative h-[400px] rounded-3xl overflow-hidden mb-12 mt-10">
                     <Image src="/air-freight-hero.jpg" alt="Air Freight Services" fill className="object-cover" priority />
                 </div>
 
@@ -22,7 +23,9 @@ export default function AirFreightInfo() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div>
                             <h1 className="text-4xl mb-6">{t("hero.title")}</h1>
-                            <RequestQuoteButton>{t("hero.requestQuote")}</RequestQuoteButton>
+                            <Link href="/air-freight-forms">
+                                <RequestQuoteButton>{t("hero.requestQuote")}</RequestQuoteButton>
+                            </Link>
                         </div>
                         <div className="space-y-6">
                             <p className="text-muted-foreground">{t("hero.description1")}</p>
@@ -39,9 +42,6 @@ export default function AirFreightInfo() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <Card className="border-0 bg-card">
                             <CardHeader className="items-center text-center">
-                                <div className="w-16 h-16 mb-4">
-                                    <Image src="/icons/speed-icon.svg" alt="Speed and Efficiency" width={64} height={64} />
-                                </div>
                                 <CardTitle className="font-normal">{t("principles.speed.title")}</CardTitle>
                             </CardHeader>
                             <CardContent className="text-center">
@@ -51,9 +51,6 @@ export default function AirFreightInfo() {
 
                         <Card className="border-0 bg-card">
                             <CardHeader className="items-center text-center">
-                                <div className="w-16 h-16 mb-4">
-                                    <Image src="/icons/reliability-icon.svg" alt="Reliability" width={64} height={64} />
-                                </div>
                                 <CardTitle className="font-normal">{t("principles.reliability.title")}</CardTitle>
                             </CardHeader>
                             <CardContent className="text-center">
@@ -63,9 +60,6 @@ export default function AirFreightInfo() {
 
                         <Card className="border-0 bg-card">
                             <CardHeader className="items-center text-center">
-                                <div className="w-16 h-16 mb-4">
-                                    <Image src="/icons/security-icon.svg" alt="Security" width={64} height={64} />
-                                </div>
                                 <CardTitle className="font-normal">{t("principles.security.title")}</CardTitle>
                             </CardHeader>
                             <CardContent className="text-center">
@@ -121,7 +115,7 @@ export default function AirFreightInfo() {
             {/* Cost Management and Compliance Section */}
             <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <h2 className="text-3xl font-semibold text-center mb-12">{t("costManagement.title")}</h2>
+                    <h2 className="text-3xl  text-center mb-12">{t("costManagement.title")}</h2>
 
                     {/* First paragraph with image */}
                     <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
@@ -189,9 +183,9 @@ export default function AirFreightInfo() {
 
                     <div className="mt-8">
                         <Link href="/learn/air-freight-special-cargo">
-                            <Button variant="default" className="bg-primary hover:bg-primary/90">
+                            <RequestQuoteButton>
                                 {t("shippingOptions.learnMore")}
-                            </Button>
+                            </RequestQuoteButton>
                         </Link>
                     </div>
                 </div>
@@ -319,42 +313,7 @@ export default function AirFreightInfo() {
                     </div>
                 </div>
             </div>
-
-            {/* Quote Request Section */}
-            <div className="w-full py-16 bg-muted/50">
-                <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6">
-                            <h2 className="text-3xl font-semibold">{t("quoteRequest.title")}</h2>
-                            <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
-                            <br />
-                            <Link href="/air-freight-forms">
-                                <RequestQuoteButton>{t("quoteRequest.button")}</RequestQuoteButton>
-                            </Link>
-                        </div>
-
-                        <div className="relative h-[400px]">
-                            <Image src="/quote-illustration.png" alt="Quote Request" fill className="object-contain" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Contact Section */}
-            <div className="w-full py-8 bg-background border-t border-border">
-                <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-muted-foreground">
-                            {t("contact.description")}
-                            <Link href="/contact" className="text-primary hover:underline">
-                                {t("contact.button")}
-                            </Link>
-                            {t("contact.trust")}
-                        </p>
-                        <p className="text-muted-foreground italic">{t("contact.caption")}</p>
-                    </div>
-                </div>
-            </div>
+            <GetQuoteComponent topic="air-freight" link="/air-freight-forms"/> 
         </main>
     );
 }

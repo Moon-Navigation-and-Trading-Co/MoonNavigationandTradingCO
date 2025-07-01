@@ -24,7 +24,7 @@ export default function ShippingMethodsInfo() {
 
       <div className="flex flex-col md:flex-row items-start justify-between gap-8">
         <div className="w-full md:w-1/2">
-          <h3 className="text-2xl font-semibold mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
+          <h3 className="text-2xl  mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
             Request For a PDA
           </h3>
           <div>
@@ -37,7 +37,7 @@ export default function ShippingMethodsInfo() {
           </div>
         </div>
         <div className="w-full md:w-1/2">
-          <h4 className="text-lg font-semibold mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
+          <h4 className="text-lg  mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
             What Is Requesting for a PDA?
           </h4>
           <p className="text-base text-[#333] mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -50,7 +50,7 @@ export default function ShippingMethodsInfo() {
       </div>
     </div>
     <div className="w-full max-w-7xl mx-auto mt-16 mb-10 px-4">
-      <h2 className="text-2xl font-semibold mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
+      <h2 className="text-2xl  mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
         Key Components of Our PDA
       </h2>
       <p className="text-base text-[#555] mb-8" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -107,7 +107,7 @@ export default function ShippingMethodsInfo() {
         </div>
         {/* Card */}
         <div className="bg-white rounded-xl shadow-lg px-8 py-10 w-full z-20" style={{ fontFamily: "Raleway, sans-serif" }}>
-          <h3 className="text-xl font-semibold mb-6 text-[#2a4365]">Why Request a PDA?</h3>
+          <h3 className="text-xl  mb-6 text-[#2a4365]">Why Request a PDA?</h3>
           <div className="space-y-6">
             <div>
               <div className="font-bold text-sm mb-1 text-[#2a4365]">Accurate Budgeting</div>
@@ -149,7 +149,7 @@ export default function ShippingMethodsInfo() {
       </div>
       {/* Right: Content */}
       <div className="flex-1 max-w-xl">
-        <h2 className="text-2xl font-semibold text-[#2a4365] mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>
+        <h2 className="text-2xl  text-[#2a4365] mb-3" style={{ fontFamily: "Raleway, sans-serif" }}>
           What We Provide
         </h2>
         <p className="text-[#444] text-sm mb-6">
@@ -184,7 +184,7 @@ export default function ShippingMethodsInfo() {
       </div>
     </div>
     <div className="w-full max-w-6xl mx-auto mb-24">
-      <h2 className="text-xl md:text-2xl font-semibold text-[#2a4365] mb-12 text-center" style={{ fontFamily: "Raleway, sans-serif" }}>
+      <h2 className="text-xl md:text-2xl  text-[#2a4365] mb-12 text-center" style={{ fontFamily: "Raleway, sans-serif" }}>
         Reasons to Choose Moon Navigation and Trading Co. For Your PDA
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">

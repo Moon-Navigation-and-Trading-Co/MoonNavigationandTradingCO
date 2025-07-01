@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function InternationalTrading() {
     const t = useTranslations("learn-international-trading");
@@ -26,7 +27,7 @@ export default function InternationalTrading() {
                             </Link>
                         </div>
                         <div className="space-y-6">
-                            <h2 className="text-2xl font-semibold text-foreground">{t("header")}</h2>
+                            <h2 className="text-2xl  text-foreground">{t("header")}</h2>
                             <p className="text-muted-foreground">{t("headerDescription1")}</p>
                             <p className="text-muted-foreground">{t("headerDescription2")}</p>
                         </div>
@@ -47,6 +48,7 @@ export default function InternationalTrading() {
                                     <Image src="/images/globe-hand.jpg" alt="Global Trade Services" fill className="object-cover rounded-2xl" />
                                 </div>
                             </div>
+                            <br />
                             <Link href="/learn/international-trade-services">
                                 <RequestQuoteButton>
                                     {t("learnMoreButton")}
@@ -56,27 +58,27 @@ export default function InternationalTrading() {
 
                         <div className="grid sm:grid-cols-2 gap-8">
                             <div className="space-y-3">
-                                <h3 className="text-xl font-semibold text-foreground">{t("services.imports.title")}</h3>
+                                <h3 className="text-xl  text-foreground">{t("services.imports.title")}</h3>
                                 <p className="text-muted-foreground">{t("services.imports.description")}</p>
                             </div>
 
                             <div className="space-y-3">
-                                <h3 className="text-xl font-semibold text-foreground">{t("services.agreements.title")}</h3>
+                                <h3 className="text-xl  text-foreground">{t("services.agreements.title")}</h3>
                                 <p className="text-muted-foreground">{t("services.agreements.description")}</p>
                             </div>
 
                             <div className="space-y-3">
-                                <h3 className="text-xl font-semibold text-foreground">{t("services.customs.title")}</h3>
+                                <h3 className="text-xl  text-foreground">{t("services.customs.title")}</h3>
                                 <p className="text-muted-foreground">{t("services.customs.description")}</p>
                             </div>
 
                             <div className="space-y-3">
-                                <h3 className="text-xl font-semibold text-foreground">{t("services.logistics.title")}</h3>
+                                <h3 className="text-xl  text-foreground">{t("services.logistics.title")}</h3>
                                 <p className="text-muted-foreground">{t("services.logistics.description")}</p>
                             </div>
 
                             <div className="space-y-3 sm:col-span-2">
-                                <h3 className="text-xl font-semibold text-foreground">{t("services.currency.title")}</h3>
+                                <h3 className="text-xl  text-foreground">{t("services.currency.title")}</h3>
                                 <p className="text-muted-foreground">{t("services.currency.description")}</p>
                             </div>
                         </div>
@@ -93,7 +95,7 @@ export default function InternationalTrading() {
                         {/* Freight Services */}
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div className="order-2 md:order-1">
-                                <h3 className="text-xl font-bold mb-4 text-foreground">{t("solutions.freight.title")}</h3>
+                                <h3 className="text-xl  mb-4 text-foreground">{t("solutions.freight.title")}</h3>
                                 <p className="text-muted-foreground">{t("solutions.freight.description")}</p>
                             </div>
                             <div className="order-1 md:order-2">
@@ -109,7 +111,7 @@ export default function InternationalTrading() {
                                 <Image src="/images/customs-clearance.jpg" alt="Customs Clearance" fill className="object-cover" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold mb-4 text-foreground">{t("solutions.customs.title")}</h3>
+                                <h3 className="text-xl  mb-4 text-foreground">{t("solutions.customs.title")}</h3>
                                 <p className="text-muted-foreground leading-relaxed">{t("solutions.customs.description")}</p>
                             </div>
                         </div>
@@ -117,7 +119,7 @@ export default function InternationalTrading() {
                         {/* Global Network */}
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div className="order-2 md:order-1">
-                                <h3 className="text-xl font-bold mb-4 text-foreground">{t("solutions.network.title")}</h3>
+                                <h3 className="text-xl  mb-4 text-foreground">{t("solutions.network.title")}</h3>
                                 <p className="text-muted-foreground leading-relaxed">{t("solutions.network.description")}</p>
                             </div>
                             <div className="order-1 md:order-2">
@@ -133,7 +135,7 @@ export default function InternationalTrading() {
                                 <Image src="/images/warehousing.jpg" alt="Strategic Storage and Warehousing" fill className="object-cover" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold mb-4 text-foreground">{t("solutions.warehousing.title")}</h3>
+                                <h3 className="text-xl  mb-4 text-foreground">{t("solutions.warehousing.title")}</h3>
                                 <p className="text-muted-foreground leading-relaxed">{t("solutions.warehousing.description")}</p>
                             </div>
                         </div>
@@ -141,7 +143,7 @@ export default function InternationalTrading() {
                         {/* Consultancy Services */}
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div className="order-2 md:order-1">
-                                <h3 className="text-xl font-bold mb-4 text-foreground">{t("solutions.consultancy.title")}</h3>
+                                <h3 className="text-xl  mb-4 text-foreground">{t("solutions.consultancy.title")}</h3>
                                 <p className="text-muted-foreground leading-relaxed">{t("solutions.consultancy.description")}</p>
                             </div>
                             <div className="order-1 md:order-2">
@@ -157,7 +159,7 @@ export default function InternationalTrading() {
                                 <Image src="/images/dangerous-cargo.jpg" alt="Safe Handling of Dangerous Cargo" fill className="object-cover" />
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold mb-4 text-foreground">{t("solutions.dangerousCargo.title")}</h3>
+                                <h3 className="text-xl  mb-4 text-foreground">{t("solutions.dangerousCargo.title")}</h3>
                                 <p className="text-muted-foreground leading-relaxed">{t("solutions.dangerousCargo.description")}</p>
                             </div>
                         </div>
@@ -175,7 +177,7 @@ export default function InternationalTrading() {
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
                             </div>
-                            <h3 className="text-xl font-semibold mb-3 text-foreground">{t("reasons.customs.title")}</h3>
+                            <h3 className="text-xl  mb-3 text-foreground">{t("reasons.customs.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.customs.description")}</p>
                         </div>
 
@@ -183,7 +185,7 @@ export default function InternationalTrading() {
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
                             </div>
-                            <h3 className="text-xl font-semibold mb-3 text-foreground">{t("reasons.network.title")}</h3>
+                            <h3 className="text-xl  mb-3 text-foreground">{t("reasons.network.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.network.description")}</p>
                         </div>
 
@@ -191,7 +193,7 @@ export default function InternationalTrading() {
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
                             </div>
-                            <h3 className="text-xl font-semibold mb-3 text-foreground">{t("reasons.freight.title")}</h3>
+                            <h3 className="text-xl  mb-3 text-foreground">{t("reasons.freight.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.freight.description")}</p>
                         </div>
 
@@ -199,49 +201,13 @@ export default function InternationalTrading() {
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
                             </div>
-                            <h3 className="text-xl font-semibold mb-3 text-foreground">{t("reasons.consultancy.title")}</h3>
+                            <h3 className="text-xl  mb-3 text-foreground">{t("reasons.consultancy.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.consultancy.description")}</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            {/* Quote Request Section */}
-            <div className="w-full py-16 bg-muted/50">
-                <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6">
-                            <h2 className="text-3xl font-semibold text-foreground">{t("quoteRequest.title")}</h2>
-                            <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
-                            <Link href="/international-trading-forms">
-                                <RequestQuoteButton>
-                                    {t("quoteRequest.button")}
-                                </RequestQuoteButton>
-                            </Link>
-                        </div>
-
-                        <div className="relative h-[400px]">
-                            <Image src="/quote-illustration.png" alt="Quote Request" fill className="object-contain" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {/* Contact Section */}
-            <div className="w-full py-8 bg-card border-t border-border">
-                <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-muted-foreground">
-                            {t("contact.prefix")}
-                            <Link href="/contact" className="text-primary hover:underline">
-                                {t("contact.link")}
-                            </Link>
-                            {t("contact.suffix")}
-                        </p>
-                        <p className="text-muted-foreground italic">{t("trust")}</p>
-                    </div>
-                </div>
-            </div>
+            <GetQuoteComponent topic = "International Trading" link = "/international-trading-forms"/> 
         </main>
     );
 }

@@ -35,7 +35,7 @@ export default function ShippingMethodsInfo() {
           </Link>
         </div>
         <div className="flex-1">
-          <h3 className="text-base md:text-lg font-semibold text-[#2a4365] mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
+          <h3 className="text-base md:text-lg  text-[#2a4365] mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
             Special Requirements Tailored to Your Needs
           </h3>
           <p className="text-[#444] text-sm md:text-base mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -49,7 +49,7 @@ export default function ShippingMethodsInfo() {
     </div>
   <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mb-12">
     <div className="w-full md:w-1/2 flex flex-col justify-center items-start mb-8 md:mb-0">
-      <h2 className="text-xl md:text-2xl font-semibold mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
+      <h2 className="text-xl md:text-2xl  mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
         Our Tailored Shipping Solutions<br className="hidden md:block" /> for Every Unique Shipment
       </h2>
       <p className="text-[#444] text-sm md:text-base mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -94,37 +94,37 @@ export default function ShippingMethodsInfo() {
     </div>
   </div>
   <div className="w-full max-w-6xl mx-auto mb-24">
-    <h2 className="text-xl md:text-2xl font-semibold text-[#2a4365] mb-12 text-center" style={{ fontFamily: "Raleway, sans-serif" }}>
+    <h2 className="text-xl md:text-2xl  text-[#2a4365] mb-12 text-center" style={{ fontFamily: "Raleway, sans-serif" }}>
       Reasons to Choose Moon Navigation and Trading Co. For Your Special Services
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-base font-bold text-[#2a4365] mb-2">24/7 Support</h3>
+        <h3 className="text-base  text-[#2a4365] mb-2">24/7 Support</h3>
         <p className="text-[#444] text-sm max-w-xs">
           Available anytime, anywhere.
         </p>
       </div>
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-base font-bold text-[#2a4365] mb-2">Industry Experts</h3>
+        <h3 className="text-base  text-[#2a4365] mb-2">Industry Experts</h3>
         <p className="text-[#444] text-sm max-w-xs">
           Highly skilled team with extensive expertise.
         </p>
       </div>
       <div className="flex flex-col items-center text-center">
-        <h3 className="text-base font-bold text-[#2a4365] mb-2">End-to-End Solutions</h3>
+        <h3 className="text-base  text-[#2a4365] mb-2">End-to-End Solutions</h3>
         <p className="text-[#444] text-sm max-w-xs">
           One-stop service for all vessel & cargo needs.
         </p>
       </div>
       <div className="col-span-full flex flex-col md:flex-row items-center justify-center gap-12 mt-4">
         <div className="flex flex-col items-center text-center">
-          <h3 className="text-base font-bold text-[#2a4365] mb-2">Regulatory Compliance</h3>
+          <h3 className="text-base  text-[#2a4365] mb-2">Regulatory Compliance</h3>
           <p className="text-[#444] text-sm max-w-xs">
             Meeting IMO, SOLAS, MARPOL, and port regulations.
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="text-base font-bold text-[#2a4365] mb-2">Cost-Effective & Transparent Pricing</h3>
+          <h3 className="text-base  text-[#2a4365] mb-2">Cost-Effective & Transparent Pricing</h3>
           <p className="text-[#444] text-sm max-w-xs">
             No hidden fees, optimized budgeting.
           </p>

@@ -24,7 +24,7 @@ export default function BunkeringPage() {
         </div>
         <div className="flex flex-col md:flex-row w-full gap-8">
           <div className="flex-1">
-            <h1 className="text-2xl md:text-3xl font-semibold mb-2 leading-tight">
+            <h1 className="text-2xl md:text-3xl  mb-2 leading-tight">
               Bunkering | Oil Supply |<br />Ship Chandlery
             </h1>
             <div className="mt-6">
@@ -44,7 +44,7 @@ export default function BunkeringPage() {
       </div>
     <div className="w-full flex flex-col md:flex-row items-center justify-between bg-[#f5f7fa] rounded-[2rem] p-6 md:p-12 mt-8 mb-12">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start z-10">
-        <h2 className="text-xl md:text-2xl font-semibold mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
+        <h2 className="text-xl md:text-2xl  mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
           Bunkering Services (Marine Fuel Supply)
         </h2>
         <p className="text-[#222] text-sm md:text-base mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -87,7 +87,7 @@ export default function BunkeringPage() {
       </div>
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start px-0 md:px-8 mt-8 md:mt-0 z-10">
         <div className="bg-white/80 rounded-xl p-6 shadow-md max-w-lg">
-          <h2 className="text-xl md:text-2xl font-semibold mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
+          <h2 className="text-xl md:text-2xl  mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
             Oil &amp; Lubricants Supply
           </h2>
           <p className="text-[#222] text-sm md:text-base mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -107,7 +107,7 @@ export default function BunkeringPage() {
     <div className="w-full flex flex-col md:flex-row items-center justify-between bg-white rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start px-0 md:px-8 mt-8 md:mt-0 z-10">
         <div className="bg-white/80 rounded-xl p-6 shadow-md max-w-lg">
-          <h2 className="text-xl md:text-2xl font-semibold mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
+          <h2 className="text-xl md:text-2xl  mb-2" style={{ fontFamily: "Raleway, sans-serif" }}>
             Ship Chandlery
           </h2>
           <p className="text-[#222] text-sm md:text-base mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -137,24 +137,24 @@ export default function BunkeringPage() {
       </div>
     </div>
     <div className="w-full max-w-6xl mx-auto mb-24">
-      <h2 className="text-xl md:text-2xl font-semibold text-[#2a4365] mb-12 text-center" style={{ fontFamily: "Raleway, sans-serif" }}>
+      <h2 className="text-xl md:text-2xl  text-[#2a4365] mb-12 text-center" style={{ fontFamily: "Raleway, sans-serif" }}>
         Reasons to Choose Moon Navigation and Trading Co. For Your Bunkering | Oil Supply | Ship Chandlery
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
         <div className="flex flex-col items-center text-center">
-          <h3 className="text-base font-bold text-[#2a4365] mb-2">24/7 Service Availability</h3>
+          <h3 className="text-base  text-[#2a4365] mb-2">24/7 Service Availability</h3>
           <p className="text-[#444] text-sm max-w-xs">
             Supporting vessels at all times.
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="text-base font-bold text-[#2a4365] mb-2">Cost-Effective &amp; Transparent Pricing</h3>
+          <h3 className="text-base  text-[#2a4365] mb-2">Cost-Effective &amp; Transparent Pricing</h3>
           <p className="text-[#444] text-sm max-w-xs">
             No hidden fees.
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="text-base font-bold text-[#2a4365] mb-2">Compliance with International Standards</h3>
+          <h3 className="text-base  text-[#2a4365] mb-2">Compliance with International Standards</h3>
           <p className="text-[#444] text-sm max-w-xs">
             Ensuring regulatory adherence.
           </p>

@@ -3,16 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";  
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function MaintenancePage() {
     return (
         <main className="flex flex-col items-center w-full px-4 py-12 bg-background">
             {/* Our Maintenance Services Header */}
             <section className="w-full max-w-7xl mb-12">
-                <h1 className="text-2xl md:text-3xl font-semibold text-[#3b5c8c] mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <h1 className="text-2xl md:text-3xl  text-[#3b5c8c] mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Our Maintenance Services
                 </h1>
-                <p className="text-muted-foreground max-w-7xl text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                <p className="text-muted-foreground max-w-7xl text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     At Moon Navigation and Trading Co., we deliver dependable vessel maintenance services to ensure ships operate at peak performance while maintaining full compliance with international safety and environmental standards. From preventive care to urgent repairs, our expert teams provide comprehensive support tailored to your vessel’s operational requirements.<br /><br />
                     We combine technical expertise with efficient service execution to minimize downtime and enhance vessel reliability.
                 </p>
@@ -34,10 +35,10 @@ export default function MaintenancePage() {
                 </div>
                 {/* Right: Text Content */}
                 <div className="flex-1 flex flex-col gap-2">
-                    <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-xl md:text-2xl  text-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         1. Hull &amp; Structural Maintenance
                     </h2>
-                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         We ensure the integrity and seaworthiness of your vessel through professional hull care and structural upkeep. Our services include:
                     </p>
                     <ul className="list-disc pl-6 space-y-1 text-muted-foreground text-sm md:text-base">
@@ -53,10 +54,10 @@ export default function MaintenancePage() {
             <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 flex flex-col gap-2 order-2 md:order-1">
-                    <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-xl md:text-2xl  text-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         2. Engine &amp; Mechanical Repairs
                     </h2>
-                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Our skilled engineers perform thorough diagnostics and repairs for a wide range of engine and mechanical systems. Our services include:
                     </p>
                     <ul className="list-disc pl-6 space-y-1 text-muted-foreground text-sm md:text-base">
@@ -97,10 +98,10 @@ export default function MaintenancePage() {
                 </div>
                 {/* Right: Text Content */}
                 <div className="flex-1 flex flex-col gap-2">
-                    <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-xl md:text-2xl  text-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         3. Electrical &amp; Automation Services
                     </h2>
-                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         We maintain and troubleshoot your vessel’s electrical and automation infrastructure for safe and efficient operation. Our services include:
                     </p>
                     <ul className="list-disc pl-6 space-y-1 text-muted-foreground text-sm md:text-base">
@@ -116,10 +117,10 @@ export default function MaintenancePage() {
             <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 flex flex-col gap-2 order-2 md:order-1">
-                    <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-xl md:text-2xl  text-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         4. Bunkering &amp; Fuel System Maintenance
                     </h2>
-                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Proper fuel system maintenance is key to vessel efficiency and compliance. We ensure fuel delivery systems are operating smoothly.<br />
                         <span className="font-medium">Our services include:</span>
                     </p>
@@ -161,10 +162,10 @@ export default function MaintenancePage() {
                 </div>
                 {/* Right: Text Content */}
                 <div className="flex-1 flex flex-col gap-2">
-                    <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-xl md:text-2xl  text-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         5. Waste Management &amp; Environmental Compliance
                     </h2>
-                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         We help you meet international marine pollution (MARPOL) standards with effective waste handling solutions.<br />
                         <span className="font-medium">Our services include:</span>
                     </p>
@@ -181,10 +182,10 @@ export default function MaintenancePage() {
             <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Text Content */}
                 <div className="flex-1 flex flex-col gap-2">
-                    <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-xl md:text-2xl  text-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         6. Safety Equipment Servicing
                     </h2>
-                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Your crew’s safety is non-negotiable—we ensure all life-saving appliances and firefighting equipment are fully operational.
                         <br />
                         <span className="font-medium">Our services include:</span>
@@ -210,35 +211,7 @@ export default function MaintenancePage() {
                     </div>
                 </div>
             </section>
-            <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-                {/* Left: Text Content */}
-                <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Get your Quote with Us
-                    </h2>
-                    <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>Our Docking and Maintenance quotation process is designed for your convenience. At
-                        Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
-                        Quotation by Request system. Simply fill out our short form to initiate your request. Once
-                        submitted, our team promptly reviews the information and selects the best consolidation
-                        options. You will receive a customized quotation directly in your email, ensuring accurate
-                        pricing
-                    </p>
-                    <Link href="/ship-maintenance-forms">
-                        <RequestQuoteButton>
-                            Request a Quote
-                        </RequestQuoteButton>
-                    </Link> 
-                </div>
-                {/* Right: Image */}
-                <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                    <img
-                        src="/quote-illustration.png"
-                        alt="Quotation illustration"
-                        className="w-[320px] h-auto object-contain"
-                        style={{ maxWidth: 380 }}
-                    />
-                </div>
-            </section>
+            <GetQuoteComponent topic = "Docking and Maintenance" link = "/ship-maintenance-forms"/> 
         </main>
     );
 }
