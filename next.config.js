@@ -1,15 +1,11 @@
 const createNextIntlPlugin = require('next-intl/plugin');
 
+console.log('🧪 next.config.js is running'); // For sanity check
+
 const withNextIntl = createNextIntlPlugin();
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true
-  },
-  // 👇 This tells Next.js that your app lives in /src
-  // (Vercel will now build correctly)
-  srcDir: 'src',
-  
   async headers() {
     return [
       {
@@ -18,7 +14,7 @@ const nextConfig = {
           {
             key: 'Content-Type',
             value: 'text/plain',
-          }
+          },
         ],
       },
       {
@@ -27,7 +23,7 @@ const nextConfig = {
           {
             key: 'Content-Type',
             value: 'application/xml',
-          }
+          },
         ],
       },
       {
@@ -36,11 +32,11 @@ const nextConfig = {
           {
             key: 'Content-Type',
             value: 'application/xml',
-          }
+          },
         ],
-      }
+      },
     ];
-  }
+  },
 };
 
 module.exports = withNextIntl(nextConfig);
