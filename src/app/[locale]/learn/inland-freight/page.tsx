@@ -15,22 +15,22 @@ export default function InlandFreightInfo() {
         {
             title: t("types.intermodal.title"),
             description: t("types.intermodal.description"),
-            image: "/intermodal-freight.jpg",
+            image: "/f-inland-1.jpg",
         },
         {
             title: t("types.rail.title"),
             description: t("types.rail.description"),
-            image: "/rail-freight.jpg",
+            image: "/f-inland-2.jpg",
         },
         {
             title: t("types.truck.title"),
             description: t("types.truck.description"),
-            image: "/truck-freight.jpg",
+            image: "/f-inland-3.jpg",
         },
         {
             title: t("types.waterways.title"),
             description: t("types.waterways.description"),
-            image: "/inland-waterways.jpg",
+            image: "/f-inland-4.jpg",
         },
     ];
 
@@ -61,7 +61,7 @@ export default function InlandFreightInfo() {
         <main className="flex flex-col items-center w-full max-w-7xl place-self-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Hero Section */}
             <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mt-10">
-                <Image src="/inland-freight-hero.jpg" alt={t("title")} fill className="object-cover" />
+                <Image src="/f-inland-5.jpg" alt={t("title")} fill className="object-cover" />
                 <div className="absolute inset-0 bg-black/50" />
             </div>
 
@@ -109,7 +109,7 @@ export default function InlandFreightInfo() {
             {/* Our Diverse Inland Freight Solutions */}
             <div className="w-full relative py-16">
                 <div className="absolute inset-0 bg-primary/90">
-                    <Image src="/freight-bg.jpg" alt="Background" fill className="object-cover mix-blend-overlay" />
+                    <Image src="/f-inland-6.jpg" alt="Background" fill className="object-cover mix-blend-overlay" />
                 </div>
                 <div className="relative max-w-7xl mx-auto px-4 md:px-8 text-white">
                     <h2 className="text-3xl  mb-8">{t("solutionsTitle")}</h2>
@@ -186,7 +186,7 @@ export default function InlandFreightInfo() {
                         </div>
 
                         <div className="relative h-[500px] rounded-3xl overflow-hidden">
-                            <Image src="/road-freight-trucks.jpg" alt="Road Freight Trucks" fill className="object-cover" />
+                            <Image src="/f-inland-7.jpg" alt="Road Freight Trucks" fill className="object-cover" />
                         </div>
                     </div>
                 </div>
@@ -197,7 +197,7 @@ export default function InlandFreightInfo() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div className="relative h-[500px] rounded-3xl overflow-hidden">
-                            <Image src="/rail-freight-hero.jpg" alt="Rail Freight Transport" fill className="object-cover" />
+                            <Image src="/f-inland-8.jpg" alt="Rail Freight Transport" fill className="object-cover" />
                         </div>
 
                         <div className="space-y-6">
@@ -300,7 +300,7 @@ export default function InlandFreightInfo() {
                         </div>
 
                         <div className="relative h-[500px] rounded-3xl overflow-hidden">
-                            <Image src="/inland-waterway-hero.jpg" alt="Inland Waterway Transport" fill className="object-cover" />
+                            <Image src="/f-inland-9.jpg" alt="Inland Waterway Transport" fill className="object-cover" />
                         </div>
                     </div>
                 </div>
@@ -311,7 +311,7 @@ export default function InlandFreightInfo() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div className="relative h-[500px] rounded-3xl overflow-hidden">
-                            <Image src="/intermodal-freight-hero.jpg" alt="Intermodal Freight Transport" fill className="object-cover" />
+                            <Image src="/f-inland-10.jpg" alt="Intermodal Freight Transport" fill className="object-cover" />
                         </div>
 
                         <div className="space-y-6">
@@ -385,7 +385,7 @@ export default function InlandFreightInfo() {
                         </div>
 
                         <div className="relative h-[500px] rounded-3xl overflow-hidden">
-                            <Image src="/supply-chain-trucks.jpg" alt="Supply Chain Enhancement" fill className="object-cover" />
+                            <Image src="/f-inland-11.jpg" alt="Supply Chain Enhancement" fill className="object-cover" />
                         </div>
                     </div>
                 </div>
@@ -396,7 +396,7 @@ export default function InlandFreightInfo() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="relative h-[500px] rounded-3xl overflow-hidden">
-                            <Image src="/inland-freight-workers.jpg" alt="Inland Freight Workers" fill className="object-cover" />
+                            <Image src="/f-inland-12.jpg" alt="Inland Freight Workers" fill className="object-cover" />
                         </div>
 
                         <div className="space-y-6">
