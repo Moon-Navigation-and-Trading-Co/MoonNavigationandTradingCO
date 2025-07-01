@@ -18,9 +18,17 @@ interface NavbarProps {
     user: boolean;
 }
 
+interface ServiceItem {
+    name: string;
+    href: string;
+    isDropdown?: boolean;
+    dropdownItems?: { name: string; href: string; }[];
+}
+
 const Navbar: React.FC<NavbarProps> = ({ user }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [openDesktopDropdown, setOpenDesktopDropdown] = useState<string | null>(null);
+    const [openServiceDropdown, setOpenServiceDropdown] = useState<string | null>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const dropdownMobileRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
@@ -34,19 +42,27 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             if (dropdownMobileRef.current && !dropdownMobileRef.current.contains(event.target as Node)) {
                 setIsMobileMenuOpen(false);
             }
+            // Close service dropdowns when clicking outside
+            setOpenServiceDropdown(null);
         };
 
         document.addEventListener("mousedown", handleClickOutside);
-        document.addEventListener("scroll", () => setOpenDesktopDropdown(null));
+        document.addEventListener("scroll", () => {
+            setOpenDesktopDropdown(null);
+            setOpenServiceDropdown(null);
+        });
 
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
-            document.removeEventListener("scroll", () => setOpenDesktopDropdown(null));
+            document.removeEventListener("scroll", () => {
+                setOpenDesktopDropdown(null);
+                setOpenServiceDropdown(null);
+            });
         };
     }, []);
 
     // Example services object used in desktop and mobile
-    const services = {
+    const services: Record<string, { title: string; description: string; items: ServiceItem[] }> = {
         transportation: {
             title: "Transportation Services",
             description: "Comprehensive solutions for moving goods across sea and air",
@@ -54,8 +70,37 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 {
                     name: "Ocean Freight (Ship Chartering)",
                     href: "/learn-more/ocean-freight",
+                    isDropdown: true,
+                    dropdownItems: [
+                        { name: "Full Container Load (FCL)", href: "/learn/full" },
+                        { name: "Less Than Container Load (LCL)", href: "/learn/lcl" },
+                        { name: "Reefer Containers", href: "/learn/full/reefer" },
+                        { name: "Dry Cargo", href: "/learn/full/dry" },
+                        { name: "Breakbulk Cargo", href: "/learn/breakbulk" },
+                        { name: "Project Cargo", href: "/learn/project-cargo" },
+                        { name: "Heavy Lift & Oversized Cargo", href: "/learn/heavy" },
+                        { name: "Out of Gauge Cargo", href: "/learn/out-gauge" },
+                        { name: "Dangerous Goods", href: "/learn/dangerous" },
+                        { name: "Livestock Transportation", href: "/learn/livestock" },
+                        { name: "Tankers", href: "/learn/tankers" },
+                    ],
                 },
-                { name: "Containers Services", href: "/learn-more/container" },
+                {
+                    name: "Containers Services",
+                    href: "/learn-more/container",
+                    isDropdown: true,
+                    dropdownItems: [
+                        { name: "Standard Containers", href: "/learn/standard" },
+                        { name: "High Cube Containers", href: "/learn/container-hss" },
+                        { name: "Reefer Containers", href: "/learn/full/reefer" },
+                        { name: "Open Top Containers", href: "/learn/out-gauge" },
+                        { name: "Flat Rack Containers", href: "/learn/out-gauge" },
+                        { name: "Tank Containers", href: "/learn/tankers" },
+                        { name: "Container HSS Services", href: "/learn/container-hss" },
+                        { name: "Container Inland Services", href: "/learn/inland-container" },
+                        { name: "Container Stevedoring", href: "/learn/stevedoring-container" },
+                    ],
+                },
                 { name: "Inland Freight", href: "/learn/inland-freight" },
                 { name: "Air Freight", href: "/learn/air-freight" },
             ],
@@ -155,6 +200,13 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         setOpenDesktopDropdown(itemName);
     };
 
+    // Handle service dropdown toggle
+    const handleServiceDropdownToggle = (serviceName: string, event: React.MouseEvent) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setOpenServiceDropdown(openServiceDropdown === serviceName ? null : serviceName);
+    };
+
     return (
         <nav className="w-full flex justify-center md:px-2 text-foreground md:top-4 max-w-7xl h-16 fixed border-0 top-0 z-[999]">
             <div className="w-full md:border-t-2 border-b flex justify-between rounded-b-2xl md:rounded-2xl md:shadow-lg shadow-current items-center py-3 px-4 sm:px-5 text-sm bg-secondary">
@@ -183,9 +235,50 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                             <p className="text-xs text-muted-foreground mb-4">{section.description}</p>
                                                             <div className="space-y-2">
                                                                 {section.items.map((service, idx) => (
-                                                                    <Link key={idx} href={service.href} className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
-                                                                        {service.name}
-                                                                    </Link>
+                                                                    <div key={idx} className="relative group">
+                                                                        {service.isDropdown ? (
+                                                                            <React.Fragment>
+                                                                                <div className="flex items-center gap-2">
+                                                                                    <Link href={service.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                                                                                        {service.name}
+                                                                                    </Link>
+                                                                                    <button
+                                                                                        onClick={(e) => handleServiceDropdownToggle(service.name, e)}
+                                                                                        className="text-muted-foreground hover:text-foreground transition-colors"
+                                                                                    >
+                                                                                        <ChevronDown width={12} className={`transition-transform duration-200 ${openServiceDropdown === service.name ? 'rotate-180' : ''}`} />
+                                                                                    </button>
+                                                                                </div>
+                                                                                <AnimatePresence>
+                                                                                    {openServiceDropdown === service.name && (
+                                                                                        <motion.div 
+                                                                                            className="absolute left-0 top-full mt-1 w-48 bg-background border border-border rounded-md shadow-lg z-10"
+                                                                                            initial={{ opacity: 0, y: -10 }}
+                                                                                            animate={{ opacity: 1, y: 0 }}
+                                                                                            exit={{ opacity: 0, y: -10 }}
+                                                                                            transition={{ duration: 0.2 }}
+                                                                                        >
+                                                                                            <div className="py-2">
+                                                                                                {service.dropdownItems?.map((subItem, subIdx) => (
+                                                                                                    <Link 
+                                                                                                        key={subIdx} 
+                                                                                                        href={subItem.href} 
+                                                                                                        className="block px-3 py-1 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                                                                                                    >
+                                                                                                        {subItem.name}
+                                                                                                    </Link>
+                                                                                                ))}
+                                                                                            </div>
+                                                                                        </motion.div>
+                                                                                    )}
+                                                                                </AnimatePresence>
+                                                                            </React.Fragment>
+                                                                        ) : (
+                                                                            <Link href={service.href} className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
+                                                                                {service.name}
+                                                                            </Link>
+                                                                        )}
+                                                                    </div>
                                                                 ))}
                                                             </div>
                                                         </div>
@@ -285,9 +378,33 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                             <AccordionTrigger className="flex pr-2 items-center justify-between text-start text-sm text-foreground">{section.title}</AccordionTrigger>
                                                             <AccordionContent className="ml-3 space-y-2">
                                                                 {section.items.map((service, idx) => (
-                                                                    <Link key={idx} href={service.href} className="block text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMobileMenu}>
-                                                                        {service.name}
-                                                                    </Link>
+                                                                    <div key={idx}>
+                                                                        {service.isDropdown ? (
+                                                                            <Accordion type="single" collapsible className="w-full">
+                                                                                <AccordionItem value={service.name}>
+                                                                                    <AccordionTrigger className="flex pr-2 items-center justify-between text-start text-sm text-foreground">
+                                                                                        {service.name}
+                                                                                    </AccordionTrigger>
+                                                                                    <AccordionContent className="ml-3 space-y-2">
+                                                                                        {service.dropdownItems?.map((subItem, subIdx) => (
+                                                                                            <Link 
+                                                                                                key={subIdx} 
+                                                                                                href={subItem.href} 
+                                                                                                className="block text-sm text-muted-foreground hover:text-foreground transition-colors" 
+                                                                                                onClick={toggleMobileMenu}
+                                                                                            >
+                                                                                                {subItem.name}
+                                                                                            </Link>
+                                                                                        ))}
+                                                                                    </AccordionContent>
+                                                                                </AccordionItem>
+                                                                            </Accordion>
+                                                                        ) : (
+                                                                            <Link href={service.href} className="block text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMobileMenu}>
+                                                                                {service.name}
+                                                                            </Link>
+                                                                        )}
+                                                                    </div>
                                                                 ))}
                                                             </AccordionContent>
                                                         </AccordionItem>
