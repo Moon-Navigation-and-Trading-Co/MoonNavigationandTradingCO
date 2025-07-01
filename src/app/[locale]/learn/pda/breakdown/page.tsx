@@ -4,7 +4,7 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 export default function PDABreakdownPage() {
   return (
     <div className="w-full max-w-6xl mx-auto py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
-      <h1 className="text-2xl md:text-3xl font-semibold text-[#2a4365] mb-2">
+      <h1 className="text-2xl md:text-3xl  text-[#2a4365] mb-2">
         Breakdown of our PDA – What It Includes
       </h1>
       <p className="text-[#444] mb-8 max-w-2xl text-sm">
@@ -12,19 +12,19 @@ export default function PDABreakdownPage() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         <div>
-          <h2 className="text-lg font-bold text-[#2a4365] mb-2">1. Port & Terminal Charges</h2>
+          <h2 className="text-lg  text-[#2a4365] mb-2">1. Port & Terminal Charges</h2>
           <p className="text-[#444] mb-4">
             We provide comprehensive insight into the various associated with port operations, ensuring your costs remain as streamlined and accurate as possible.
           </p>
           <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
             <li>
-              <span className="font-semibold">Port Funds & Berthing Fees:</span> Charges for utilizing port infrastructure and anchorage, inclusive of quay & berthage costs. Fees associated with vessels keeping at designated port zones.
+              <span className="">Port Funds & Berthing Fees:</span> Charges for utilizing port infrastructure and anchorage, inclusive of quay & berthage costs. Fees associated with vessels keeping at designated port zones.
             </li>
             <li>
-              <span className="font-semibold">Harbor & Customs Duties:</span> Costs for compliance with local customs regulations and official port dues.
+              <span className="">Harbor & Customs Duties:</span> Costs for compliance with local customs regulations and official port dues.
             </li>
             <li>
-              <span className="font-semibold">Mooring & Unmooring Fees:</span> Charges for securing and releasing the vessel at/from the port.
+              <span className="">Mooring & Unmooring Fees:</span> Charges for securing and releasing the vessel at/from the port.
             </li>
           </ul>
           <p className="text-[#444] text-sm">
@@ -54,16 +54,16 @@ export default function PDABreakdownPage() {
         />
       </div>
       <div className="order-1 md:order-2">
-        <h2 className="text-lg font-bold text-[#2a4365] mb-2">2. Pilotage &amp; Towage Fees</h2>
+        <h2 className="text-lg  text-[#2a4365] mb-2">2. Pilotage &amp; Towage Fees</h2>
         <p className="text-[#444] mb-4">
           We recognize the importance of pilotage and towage services in ensuring safe and efficient maritime operations.
         </p>
         <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
           <li>
-            <span className="font-semibold">Pilotage Charges:</span> Paid to highly trained local pilots who navigate vessels safely into the port.
+            <span className="">Pilotage Charges:</span> Paid to highly trained local pilots who navigate vessels safely into the port.
           </li>
           <li>
-            <span className="font-semibold">Towage Services:</span> Cover assistance from tugboats that assist in berthing, maneuvering, and unberthing vessels.
+            <span className="">Towage Services:</span> Cover assistance from tugboats that assist in berthing, maneuvering, and unberthing vessels.
           </li>
         </ul>
         <p className="text-[#444] text-sm">
@@ -73,19 +73,19 @@ export default function PDABreakdownPage() {
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
       <div>
-        <h2 className="text-lg font-bold text-[#2a4365] mb-2">3. Customs &amp; Immigration Clearance Fees</h2>
+        <h2 className="text-lg  text-[#2a4365] mb-2">3. Customs &amp; Immigration Clearance Fees</h2>
         <p className="text-[#444] mb-4">
           We understand the critical role that customs processing and related fees play in facilitating smooth maritime operations.
         </p>
         <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
           <li>
-            <span className="font-semibold">Customs Processing Fees:</span> Charges for cargo and vessel clearance through all customs authorities and for routine formal inspections.
+            <span className="">Customs Processing Fees:</span> Charges for cargo and vessel clearance through all customs authorities and for routine formal inspections.
           </li>
           <li>
-            <span className="font-semibold">Crew Immigration Fees:</span> Costs associated with processing crew members’ entry and exit at the port, ensuring compliance with immigration regulations.
+            <span className="">Crew Immigration Fees:</span> Costs associated with processing crew members’ entry and exit at the port, ensuring compliance with immigration regulations.
           </li>
           <li>
-            <span className="font-semibold">Health &amp; Sanitary Inspection Charges:</span> Fees required for compliance with port health regulations, safety, and public health and safety.
+            <span className="">Health &amp; Sanitary Inspection Charges:</span> Fees required for compliance with port health regulations, safety, and public health and safety.
           </li>
         </ul>
         <p className="text-[#444] text-sm">
@@ -106,6 +106,70 @@ export default function PDABreakdownPage() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
       <div className="flex justify-center order-1 md:order-1">
         <Image
+          src="/images/pda-breakdown-cargo-handling.jpg"
+          alt="Container being loaded and unloaded at port"
+          width={350}
+          height={200}
+          className="rounded-xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
+      <div className="order-2 md:order-2">
+        <h2 className="text-lg  text-[#2a4365] mb-2">4. Cargo Handling &amp; Stevedoring</h2>
+        <p className="text-[#444] mb-4">
+          We are dedicated to facilitating efficient cargo handling at port through our management of essential services.
+        </p>
+        <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
+          <li>
+            <span className="">Loading &amp; Unloading Fees:</span> Cover labor and the necessary equipment to load and unload, ensuring smooth transition during the ship’s presence.
+          </li>
+          <li>
+            <span className="">Stevedore Services:</span> Which incorporates labor charges for skilled cargo handling, guaranteeing that your goods are managed with care and expertise.
+          </li>
+          <li>
+            <span className="">Equipment Rental Fees:</span> For essential cranes, forklifts, and other necessary port equipment to support cargo operations.
+          </li>
+        </ul>
+        <p className="text-[#444] text-sm">
+          By efficiently managing these expenses, we ensure all cargo is handled and unloaded efficiently and safely, minimizing delays and supporting your supply chain’s reliability.
+        </p>
+      </div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+      <div className="order-1 md:order-1">
+        <h2 className="text-lg  text-[#2a4365] mb-2">5. Bunker, Fresh Water &amp; Provisions Supply</h2>
+        <p className="text-[#444] mb-4">
+          We recognize the importance of essential services that keep vessels operational and compliant with safety regulations.
+        </p>
+        <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
+          <li>
+            <span className="">Bunkering Fees:</span> Costs associated with refueling the vessel, ensuring it has energy for its next journey.
+          </li>
+          <li>
+            <span className="">Fresh Water Supply Charges:</span> For delivering potable water to the vessel, essential for crew health and safety.
+          </li>
+          <li>
+            <span className="">Provisions &amp; Stores Delivery:</span> Costs for food, beverages, and other essentials for the crew, maintaining comfort and efficiency onboard.
+          </li>
+        </ul>
+        <p className="text-[#444] text-sm">
+          By efficiently coordinating these services, we ensure that vessels are fully operational and meet all necessary compliance standards, allowing for seamless and safe operations.
+        </p>
+      </div>
+      <div className="flex justify-center order-2 md:order-2">
+        <Image
+          src="/images/pda-breakdown-bunker-provisions.jpg"
+          alt="Truck delivering fresh water and crane loading provisions onto ship"
+          width={350}
+          height={200}
+          className="rounded-xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto" }}
+        />
+      </div>
+    </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+      <div className="flex justify-center order-1 md:order-1">
+        <Image
           src="/images/pda-breakdown-waste-disposal.jpg"
           alt="Port worker managing waste disposal on ship"
           width={350}
@@ -115,19 +179,19 @@ export default function PDABreakdownPage() {
         />
       </div>
       <div className="order-2 md:order-2">
-        <h2 className="text-lg font-bold text-[#2a4365] mb-2">6. Waste Disposal &amp; Environmental Fees</h2>
+        <h2 className="text-lg  text-[#2a4365] mb-2">6. Waste Disposal &amp; Environmental Fees</h2>
         <p className="text-[#444] mb-4">
           We prioritize environmental responsibility in maritime operations by managing essential waste disposal and compliance costs.
         </p>
         <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
           <li>
-            <span className="font-semibold">Garbage Collection &amp; Disposal Fees:</span> Charges for removing waste from the vessel, ensuring compliance with environmental standards.
+            <span className="">Garbage Collection &amp; Disposal Fees:</span> Charges for removing waste from the vessel, ensuring compliance with environmental standards.
           </li>
           <li>
-            <span className="font-semibold">Sludge &amp; Bilge Water Disposal:</span> Costs associated with handling oil-contaminated waste in accordance with local waste management.
+            <span className="">Sludge &amp; Bilge Water Disposal:</span> Costs associated with handling oil-contaminated waste in accordance with local waste management.
           </li>
           <li>
-            <span className="font-semibold">Ballast Water Treatment Fees:</span> Fees for ensuring compliance with global environmental regulations on ballast water management.
+            <span className="">Ballast Water Treatment Fees:</span> Fees for ensuring compliance with global environmental regulations on ballast water management.
           </li>
         </ul>
         <p className="text-[#444] text-sm">
@@ -137,16 +201,16 @@ export default function PDABreakdownPage() {
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
       <div className="order-1 md:order-1">
-        <h2 className="text-lg font-bold text-[#2a4365] mb-2">7. Security &amp; Emergency Services</h2>
+        <h2 className="text-lg  text-[#2a4365] mb-2">7. Security &amp; Emergency Services</h2>
         <p className="text-[#444] mb-4">
           We prioritize the safety and security of maritime operations.
         </p>
         <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
           <li>
-            <span className="font-semibold">Port Security Charges:</span> Cost associated with compliance with the International Ship and Port Facility Security (ISPS) Code, including necessary security patrols and surveillance at the port.
+            <span className="">Port Security Charges:</span> Cost associated with compliance with the International Ship and Port Facility Security (ISPS) Code, including necessary security patrols and surveillance at the port.
           </li>
           <li>
-            <span className="font-semibold">Firefighting &amp; Emergency Response Fees:</span> Charges for emergency support at the port, ensuring vessels’ safety in critical situations.
+            <span className="">Firefighting &amp; Emergency Response Fees:</span> Charges for emergency support at the port, ensuring vessels’ safety in critical situations.
           </li>
         </ul>
         <p className="text-[#444] text-sm">
@@ -176,19 +240,19 @@ export default function PDABreakdownPage() {
         />
       </div>
       <div className="order-1 md:order-2">
-        <h2 className="text-lg font-bold text-[#2a4365] mb-2">8. Agency Fees &amp; Documentation</h2>
+        <h2 className="text-lg  text-[#2a4365] mb-2">8. Agency Fees &amp; Documentation</h2>
         <p className="text-[#444] mb-4">
           We offer comprehensive financial and administrative support to ensure smooth operations during a vessel’s port stay.
         </p>
         <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
           <li>
-            <span className="font-semibold">Our Ship Agency Fees:</span> Cover the charges for our professionals’ ship agency services, providing expert guidance and management throughout the process.
+            <span className="">Our Ship Agency Fees:</span> Cover the charges for our professionals’ ship agency services, providing expert guidance and management throughout the process.
           </li>
           <li>
-            <span className="font-semibold">Administrative Costs:</span> which include fees for managing paperwork, permits, and legal formalities, ensuring compliance with regulatory requirements.
+            <span className="">Administrative Costs:</span> which include fees for managing paperwork, permits, and legal formalities, ensuring compliance with regulatory requirements.
           </li>
           <li>
-            <span className="font-semibold">Final Disbursement Account (FDA):</span> Ensuring that actual expenses match initial estimates, providing clarity and transparency in financial management.
+            <span className="">Final Disbursement Account (FDA):</span> Ensuring that actual expenses match initial estimates, providing clarity and transparency in financial management.
           </li>
         </ul>
         <p className="text-[#444] text-sm">

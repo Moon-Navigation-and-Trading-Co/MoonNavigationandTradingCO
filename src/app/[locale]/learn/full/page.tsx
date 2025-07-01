@@ -6,7 +6,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton"
 
 export default function FullContainerLoadPage() {
     return (
-        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0 place-self-center">
+        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0 place-self-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Top Banner */}
             <div className="w-full rounded-[2rem] overflow-hidden mb-8 shadow-lg">
                 <div className="relative w-full h-[180px] md:h-[260px]">
@@ -19,7 +19,7 @@ export default function FullContainerLoadPage() {
                         sizes="(max-width: 768px) 100vw, 900px"
                     />
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
-                        <span className="text-white text-xl md:text-3xl font-semibold text-center drop-shadow-lg">
+                        <span className="text-white text-xl md:text-3xl  text-center drop-shadow-lg">
                             Moon Navigation and<br />Trading Co.
                         </span>
                     </div>
@@ -30,7 +30,7 @@ export default function FullContainerLoadPage() {
             <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Left: Title and CTA */}
                 <div className="flex flex-col items-start justify-start">
-                    <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+                    <h1 className="text-5xl font-normal font-sans mb-12 text-[#222] mt-12">
                         Full Container Load
                     </h1>
                     <p className="text-muted-foreground text-lg mb-4">
@@ -45,7 +45,7 @@ export default function FullContainerLoadPage() {
 
                 {/* Right: Description */}
                 <div>
-                    <h2 className="text-lg font-semibold text-primary mb-2">
+                    <h2 className="text-lg  text-primary mb-2">
                         What is Full Container Load?
                     </h2>
                     <p className="text-base text-foreground leading-relaxed">
@@ -63,16 +63,16 @@ export default function FullContainerLoadPage() {
                 </div>
             </div>
             <div className="w-full max-w-7xl mt-12">
-                <h2 className="text-2xl font-semibold text-foreground mb-6 text-center">
+                <h2 className="text-2xl text-foreground mb-6 text-left text-blue-600">
                     What is the difference between FCL and LCL?
                 </h2>
                 <div className="overflow-x-auto rounded-lg shadow">
                     <table className="min-w-full border border-gray-300 bg-background text-sm md:text-base text-center">
                         <thead>
                             <tr className="table-auto">
-                                <th className="px-4 py-3 border-b border-gray-300 text-left font-semibold border-r border-gray-200 text-center">Feature</th>
-                                <th className="px-4 py-3 border-b border-gray-300 text-left font-semibold border-r border-gray-200 text-center">FCL (Full Container Load)</th>
-                                <th className="px-4 py-3 border-b border-gray-300 text-left font-semibold border-r border-gray-200 text-center">LCL (Less than Container Load)</th>
+                                <th className="px-4 py-3 border-b border-gray-300 text-left  border-r border-gray-200 text-center">Feature</th>
+                                <th className="px-4 py-3 border-b border-gray-300 text-left  border-r border-gray-200 text-center">FCL (Full Container Load)</th>
+                                <th className="px-4 py-3 border-b border-gray-300 text-left  border-r border-gray-200 text-center">LCL (Less than Container Load)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,7 +108,7 @@ export default function FullContainerLoadPage() {
             <div className="w-full max-w-7xl mx-auto mt-16 flex flex-col md:flex-row items-center gap-10">
                 {/* Left: Text Content */}
                 <div className="flex-1">
-                    <h2 className="text-xl md:text-2xl font-semibold text-primary mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-xl md:text-2xl  text-primary mb-4 text-blue-600">
                         When to use FCL?
                     </h2>
                     <p className="text-muted-foreground text-sm md:text-base mb-3" style={{ fontFamily: 'Montserrat, sans-serif' }}>
@@ -129,7 +129,7 @@ export default function FullContainerLoadPage() {
                 </div>
             </div>
             <div className="w-full max-w-7xl mx-auto mt-16">
-                <h2 className="text-2xl font-semibold text-primary mb-2 text-center">
+                <h2 className="text-2xl  text-primary mb-2 text-center text-blue-600">
                     Our Container Types for FCL
                 </h2>
                 <p className="text-muted-foreground text-center mb-8 text-sm md:text-base max-w-7xl mx-auto">
@@ -138,59 +138,87 @@ export default function FullContainerLoadPage() {
                 <div className="flex flex-col md:flex-row justify-center gap-8">
                     {/* Standard Containers */}
                     <div className="flex-1 flex flex-col items-center">
-                        <div className="w-50 h-32 rounded-[40px] overflow-hidden shadow-lg mb-4">
+                        <div className="rounded-[40px] overflow-hidden shadow-lg mb-4">
                             <img
                                 src="/container-standard.jpg"
                                 alt="Standard Containers"
-                                className="object-cover w-full h-full"
+                                className="object-cover w-[250px] h-[150px]"
                             />
                         </div>
                         <div className="text-center">
-                            <div className="font-semibold text-foreground">Standard Containers</div>
+                            <div className=" text-foreground">Standard Containers</div>
                             <div className="text-xs text-muted-foreground mt-1">– General Cargo</div>
                         </div>
                     </div>
                     {/* Reefer Containers */}
                     <div className="flex-1 flex flex-col items-center">
-                        <div className="w-50 h-32 rounded-[40px] overflow-hidden shadow-lg mb-4">
+                        <div className="rounded-[40px] overflow-hidden shadow-lg mb-4">
                             <img
                                 src="/container-banner.jpg"
                                 alt="Reefer Containers"
-                                className="object-cover w-full h-full"
+                                className="object-cover w-[250px] h-[150px]"
                             />
                         </div>
                         <div className="text-center">
-                            <div className="font-semibold text-foreground">Reefer Containers</div>
+                            <div className=" text-foreground">Reefer Containers</div>
                             <div className="text-xs text-muted-foreground mt-1">– Temperature-Sensitive Cargo</div>
                         </div>
                     </div>
                     {/* Dangerous Goods Containers */}
                     <div className="flex-1 flex flex-col items-center">
-                        <div className="w-[175px] h-32 rounded-[40px] overflow-hidden shadow-lg mb-4">
+                        <div className="rounded-[40px] overflow-hidden shadow-lg mb-4">
                             <img
                                 src="/container-dangerous.jpg"
                                 alt="Dangerous Goods Containers"
-                                className="object-cover w-full h-full"
+                                className="object-cover w-[250px] h-[150px]"
                             />
                         </div>
                         <div className="text-center">
-                            <div className="font-semibold text-foreground">Dangerous Goods Containers</div>
+                            <div className=" text-foreground">Dangerous Goods Containers</div>
                             <div className="text-xs text-muted-foreground mt-1">– Hazardous Cargo</div>
                         </div>
                     </div>
                 </div>
+                <br />
+                <br />
+            </div>
+            <div className="flex flex-col md:flex-row justify-center gap-8 mb-8">
+                <Link href="/learn/full/dry" className="flex-1 flex justify-center">
+                    <button
+                        className="bg-[#25348b] hover:bg-[#1a255e] text-white text-xs md:text-sm font-medium rounded-full px-6 py-2 transition-colors duration-200 shadow-none"
+                        style={{ minWidth: "200px" }}
+                    >
+                        Standard Dry Containers
+                    </button>
+                </Link>
+                <Link href="/learn/full/reefer" className="flex-1 flex justify-center">
+                    <button
+                        className="bg-[#25348b] hover:bg-[#1a255e] text-white text-xs md:text-sm font-medium rounded-full px-6 py-2 transition-colors duration-200 shadow-none"
+                        style={{ minWidth: "200px" }}
+                    >
+                        Reefer Containers (Refrigerated)
+                    </button>
+                </Link>
+                <Link href="/learn/full/dangerous" className="flex-1 flex justify-center">
+                    <button
+                        className="bg-[#25348b] hover:bg-[#1a255e] text-white text-xs md:text-sm font-medium rounded-full px-6 py-2 transition-colors duration-200 shadow-none"
+                        style={{ minWidth: "200px" }}
+                    >
+                        Containers for Dangerous Goods
+                    </button>
+                </Link>
             </div>
             <div className="max-w-7xl mx-auto mt-10 mb-12 px-4">
-                <h3 className="text-2xl md:text-2xl font-semibold text-foreground mb-4 text-center">
+                <h3 className="text-2xl md:text-2xl  text-foreground mb-4 text-blue-600">
                     Our Comprehensive Container Solutions includes Reefer<br className="hidden md:inline" /> &amp; Dangerous Cargo Expertise
                 </h3>
-                <p className="text-muted-foreground text-sm md:text-base mb-2 text-center">
+                <p className="text-muted-foreground text-sm md:text-base mb-2">
                     At Moon Navigation and Trading Co., we specialize in providing comprehensive container transportation solutions, ensuring the safe and efficient handling of a wide range of cargo, including refrigerated reefer and dangerous goods.
                 </p>
-                <p className="text-muted-foreground text-sm md:text-base mb-2 text-center">
+                <p className="text-muted-foreground text-sm md:text-base mb-2">
                     Our expertise spans areas managing and transporting temperature-sensitive shipments, ensuring the integrity of perishable goods through reliable reefer container services. We also specialize in the safety of hazardous materials, offering strict adherence to regulations, essential containerization, and proper packaging to meet global compliance standards.
                 </p>
-                <p className="text-muted-foreground text-sm md:text-base text-center">
+                <p className="text-muted-foreground text-sm md:text-base">
                     With a focus on precision, reliability, and risk management, we provide end-to-end solutions for shipping containers, delivering your cargo securely and efficiently to its destination.
                 </p>
             </div>
@@ -198,7 +226,7 @@ export default function FullContainerLoadPage() {
                 {/* Standard Cargo (Dry Containers) */}
                 <div className="flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6">
                     <div>
-                        <h4 className="text-lg font-semibold text-foreground mb-2">Standard Cargo (Dry Containers)</h4>
+                        <h4 className="text-lg  text-foreground mb-2">Standard Cargo (Dry Containers)</h4>
                         <p className="text-muted-foreground text-sm mb-3">
                         Our standard dry containers are ideal for transporting a wide range of general cargo that does
 not require temperature control. These containers offer a secure and cost-effective solution for
@@ -213,7 +241,7 @@ your everyday shipping needs, such as:</p>
                         We ensure that your general cargo is handled with care, properly secured, and delivered safely
                         from origin to destination, using high-quality containers and efficient logistics solutions.</p>
                     </div>
-                    <div className="mt-4">
+                    <div className="mt-4 text-end">
                         <Link href="/learn/full/dry" className="inline-block">
                             <RequestQuoteButton>
                                 Learn more
@@ -240,7 +268,7 @@ your everyday shipping needs, such as:</p>
                 </div>
                 <div className="flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6 order-4 md:order-3">
                     <div>
-                        <h4 className="text-lg font-semibold text-foreground mb-2">Reefer Cargo (Temperature-Sensitive Shipments)</h4>
+                        <h4 className="text-lg  text-foreground mb-2">Reefer Cargo (Temperature-Sensitive Shipments)</h4>
                         <p className="text-muted-foreground text-sm mb-3">
                         Our reefer (refrigerated) containers are perfect for transporting goods that require temperature
                         control during transit, such as:</p>
@@ -255,7 +283,7 @@ your everyday shipping needs, such as:</p>
                         We ensure that your reefer cargo is transported at the right temperature, with real-time
                         monitoring and 24/7 temperature control to maintain product quality and prevent spoilage.</p>
                     </div>
-                    <div className="mt-4">
+                    <div className="mt-4 text-end">
                         <Link href="/learn/full/reefer" className="inline-block">
                             <RequestQuoteButton>
                                 Learn more
@@ -269,7 +297,7 @@ your everyday shipping needs, such as:</p>
                 {/* Left: Text Content */}
                 <div className="flex-1 flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6">
                     <div>
-                        <h4 className="text-lg font-semibold text-foreground mb-2">Dangerous Goods in FCL</h4>
+                        <h4 className="text-lg  text-foreground mb-2">Dangerous Goods in FCL</h4>
                         <p className="text-muted-foreground text-sm mb-3">
                         When it comes to shipping dangerous goods (DG), such as chemicals, flammable items, or toxic
 substances, we ensure full compliance with international safety standards like IMO (International
@@ -291,7 +319,7 @@ Our services for dangerous goods include</p>
                                 avoid delays and ensure safe delivery.</li>
                         </ul>
                     </div>
-                    <div className="mt-4">
+                    <div className="mt-4 text-end">
                         <Link href="/learn/dangerous" className="inline-block">
                             <RequestQuoteButton>
                                 Learn more
@@ -310,7 +338,7 @@ Our services for dangerous goods include</p>
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center py-12">
-                <h2 className="text-2xl md:text-3xl font-normal text-[#3B4B8C] mb-8 mt-8 text-center">
+                <h2 className="text-2xl md:text-3xl font-normal text-[#3B4B8C] mb-8 mt-8 text-center text-blue-600">
                     Standard, Reefer & Dangerous Goods Containers vs. Special Equipment Containers
                 </h2>
                 <div className="overflow-x-auto w-full max-w-7xl">
@@ -365,26 +393,26 @@ Our services for dangerous goods include</p>
                 </div>
             </div>
             <div className="w-full max-w-7xl mx-auto mt-20">
-                <h2 className="text-2xl font-semibold text-[#3B4B8C] mb-10 text-center">
+                <h2 className="text-2xl  text-[#3B4B8C] mb-10 text-center text-blue-600">
                     Reasons to Choose Moon Navigation and Trading Co. for Your FCL Shipments
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
                     <div>
-                        <h3 className="text-lg font-semibold mb-2 text-foreground">Complex Shipment Management</h3>
+                        <h3 className="text-lg  mb-2 text-foreground">Complex Shipment Management</h3>
                         <p className="text-muted-foreground text-sm md:text-base">
                         We handle every stage of your FCL shipment—
 from booking and documentation to delivery—
 ensuring a smooth and hassle-free process.</p>
                     </div>
                     <div>
-                        <h3 className="text-lg font-semibold mb-2 text-foreground">Global Carrier Partnerships</h3>
+                        <h3 className="text-lg  mb-2 text-foreground">Global Carrier Partnerships</h3>
                         <p className="text-muted-foreground text-sm md:text-base">
                         Our strong relationships with leading carriers
 guarantee competitive rates, priority space, and
 wide geographic coverage.</p>
                     </div>
                     <div>
-                        <h3 className="text-lg font-semibold mb-2 text-foreground">Secure & Timely Deliveries</h3>
+                        <h3 className="text-lg  mb-2 text-foreground">Secure & Timely Deliveries</h3>
                         <p className="text-muted-foreground text-sm md:text-base">
                         Reasons to Choose Moon Navigation and Trading Co. for Your FCL Shipments
 
@@ -395,14 +423,14 @@ their destination safely and on schedule.</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10 text-center">
                     <div>
-                        <h3 className="text-lg font-semibold mb-2 text-foreground">Flexible Routing Solutions</h3>
+                        <h3 className="text-lg  mb-2 text-foreground">Flexible Routing Solutions</h3>
                         <p className="text-muted-foreground text-sm md:text-base">
                         We offer tailored routing and scheduling options to
 meet your cargo requirements and delivery
 timelines.</p>
                     </div>
                     <div>
-                        <h3 className="text-lg font-semibold mb-2 text-foreground">Expert Support & Compliance Handling</h3>
+                        <h3 className="text-lg  mb-2 text-foreground">Expert Support & Compliance Handling</h3>
                         <p className="text-muted-foreground text-sm md:text-base">
                         Our team provides timely updates, manages
 documentation, and ensures full customs and
@@ -413,10 +441,10 @@ regulatory compliance throughout the journey.</p>
             <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Get your Quote with Us
                     </h2>
-                    <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+                    <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Our streamlined LCL freight quotation process is designed for speed and convenience. At
                         Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
                         Quotation by Request system. Simply fill out our short form to initiate your request. Once

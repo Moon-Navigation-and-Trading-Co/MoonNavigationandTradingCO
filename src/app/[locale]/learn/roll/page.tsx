@@ -58,7 +58,8 @@ export default function RollOnOffHero() {
   const locale = useLocale();
 
   return (
-    <>
+    <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center"
+    style={{ fontFamily: "Raleway, sans-serif" }}>
       {/* --- HERO IMAGE --- */}
       <img
         src="/rorotitleimage.jpg"
@@ -112,15 +113,17 @@ export default function RollOnOffHero() {
               alt="RoRo Cargo Handling"
               width={420}
               height={320}
-              className="rounded-[48px] object-cover w-full h-[340px] mb-6"
+              className="rounded-[48px] object-cover w-full h-[440px] mb-6"
               loading="lazy"
             />
             <div className="w-full flex justify-center md:justify-start">
-              <RequestQuoteButton>
-                Learn More About Our RORO Cargo Solutions
+              <RequestQuoteButton >
+                <Link href="/learn/roll/learn-more">
+                  Learn more about our RORO cargo solutions
+                </Link>
               </RequestQuoteButton>
             </div>
-          </div>
+            </div>
           {/* Right: Text Grid */}
           <div className="flex-1 flex flex-col gap-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -179,7 +182,6 @@ export default function RollOnOffHero() {
         {/* Right: Image with Geometric Accent */}
         <div className="flex-1 flex justify-center items-center relative min-h-[350px] md:min-h-[420px]">
           {/* Geometric Accent */}
-          <div className="hidden md:block absolute -top-10 right-0 w-[340px] h-[80px] bg-[#2d3973] z-0 rotate-3" style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 20% 100%)' }} />
           {/* Main Image */}
           <div className="relative z-10 w-full max-w-[420px]">
             <Image
@@ -187,12 +189,12 @@ export default function RollOnOffHero() {
               alt="Moon Navigation employee checking RoRo cargo"
               width={420}
               height={320}
-              className="rounded-2xl object-cover w-full h-[320px] shadow-lg"
+              className="object-cover w-full h-[520px] shadow-lg"
               loading="lazy"
             />
             {/* Bottom Accent */}
-            <div className="hidden md:block absolute -bottom-8 left-8 w-[320px] h-[40px] bg-[#2d3973] z-0 -rotate-2" style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 0 100%)' }} />
-          </div>
+            
+        </div>
         </div>
       </section>
 
@@ -252,6 +254,6 @@ export default function RollOnOffHero() {
         </div>
       </section>
       <GetQuoteComponent topic="RORO" link="/ocean-freight-forms" />
-    </>
+    </div>
   );
 }

@@ -165,13 +165,19 @@ export default function DangerousCargoInfo() {
                     </CardContent>
                 </Card>
                 <div className="w-full max-w-7xl mx-auto mt-20 mb-20">
-                    <h2 className="text-3xl sm:text-4xl font-semibold text-primary mb-16" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <h2
+                        className="text-3xl sm:text-4xl  mb-16"
+                        style={{
+                            fontFamily: 'Raleway, sans-serif',
+                            color: '#1e3a8a' // Tailwind's blue-800
+                        }}
+                    >
                         Our Dangerous Cargo Handling and Transport Process
                     </h2>
                     {/* First row */}
                     <div className="flex flex-col md:flex-row gap-10 mb-16 items-center">
                         <div className="flex-1">
-                            <h3 className="text-2xl font-medium mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Risk Assessment and Planning</h3>
+                            <h3 className="text-2xl font-medium mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>Risk Assessment and Planning</h3>
                             <p className="mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                 The initial phase in transporting hazardous cargo involves a thorough risk assessment to identify potential hazards and risks associated with the materials.
                             </p>
@@ -194,7 +200,7 @@ export default function DangerousCargoInfo() {
                     {/* Second row */}
                     <div className="flex flex-col md:flex-row-reverse gap-10 items-center">
                         <div className="flex-1">
-                            <h3 className="text-2xl font-medium mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Packaging and Labeling</h3>
+                            <h3 className="text-2xl font-medium mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>Packaging and Labeling</h3>
                             <p className="mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                 Proper packaging and labeling are critical for the secure transport of dangerous goods.
                             </p>
@@ -219,7 +225,7 @@ export default function DangerousCargoInfo() {
                     {/* Special Equipment Use */}
                     <div className="flex flex-col md:flex-row gap-10 mb-16 items-center">
                         <div className="flex-1">
-                        <h3 className="text-2xl font-medium mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Special Equipment Use</h3><p className="mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <h3 className="text-2xl font-medium mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>Special Equipment Use</h3><p className="mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                 At Moon Navigation and Trading Co., we employ specialized equipment designed specifically for the transport of dangerous cargo, including:
                             </p>
                             <ul className="mb-4 list-disc pl-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -241,7 +247,7 @@ export default function DangerousCargoInfo() {
                     {/* Safety and Emergency Protocols */}
                     <div className="flex flex-col md:flex-row-reverse gap-10 items-center">
                         <div className="flex-1">
-                            <h3 className="text-2xl font-medium mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Safety and Emergency Protocols</h3>
+                            <h3 className="text-2xl font-medium mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>Safety and Emergency Protocols</h3>
                             <p className="mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                 Safety is a top priority when transporting dangerous goods. We ensure that all staff are thoroughly trained in hazmat handling and that our drivers and operators are well-versed in emergency response procedures.
                             </p>

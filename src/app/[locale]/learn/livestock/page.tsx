@@ -70,7 +70,7 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Left Side: Title and Button */}
         <div className="flex flex-col justify-center items-start">
-          <h1 className="text-4xl md:text-5xl font-medium mb-8 leading-tight" style={{ fontFamily: 'Raleway, sans-serif' }}>Live Stock<br />Transportation</h1>
+          <h1 className="text-5xl font-normal font-sans mb-12 text-[#222]" style={{ fontFamily: 'Raleway, sans-serif' }}>Live Stock<br />Transportation</h1>
           <Link href="/ocean-freight-forms">
             <RequestQuoteButton>
               Request a Quote
@@ -249,7 +249,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </section>
       <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
-        <h2 className="text-3xl sm:text-4xl font-semibold mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <h2 className="text-3xl sm:text-4xl mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>
           Reasons to Choose Moon Navigation and Trading Co. for Your Livestock Transportation Needs
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8">

@@ -112,6 +112,13 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 },
             ],
         },
+        AllServices: {
+            title: "Extras",
+            description: "",
+            items: [
+                { name: "All Services", href: "/all-services" },
+            ],
+        },
     };
 
     // Example navItems used in desktop and mobile

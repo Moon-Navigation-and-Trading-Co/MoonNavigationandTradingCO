@@ -32,7 +32,7 @@ export default function SparePartsPage() {
         </div>
         {/* Right: Description */}
         <div>
-          <h2 className="text-base md:text-lg font-semibold text-[#2a3a8c] mb-2">
+          <h2 className="text-base md:text-lg  text-[#2a3a8c] mb-2">
             What is Transit spare parts ?
           </h2>
           <p className="text-[#444] text-sm mb-4 leading-relaxed">
@@ -46,10 +46,10 @@ export default function SparePartsPage() {
     <div className="w-full bg-[#3b478b] rounded-[32px] px-4 md:px-12 py-10 mt-16 flex flex-col md:flex-row items-center gap-8">
       {/* Left: Text Content */}
       <div className="flex-1 text-white">
-        <h2 className="text-lg md:text-xl font-semibold mb-6">
+        <h2 className="text-lg md:text-xl  mb-6">
           Our Transit Spare Parts Process – At Moon Navigation and Trading Co.
         </h2>
-        <h3 className="text-base md:text-lg font-semibold mb-2">
+        <h3 className="text-base md:text-lg  mb-2">
           1. Spare Parts Reception
         </h3>
         <p className="text-sm md:text-base mb-4">
@@ -61,7 +61,7 @@ export default function SparePartsPage() {
           <li>Real-time tracking for inbound shipments.</li>
         </ul>
         <p className="text-xs mt-3">
-          <span className="font-semibold">Benefit:</span> We minimize delays by ensuring efficient collection.
+          <span className="">Benefit:</span> We minimize delays by ensuring efficient collection.
         </p>
       </div>
       {/* Right: Image */}
@@ -87,7 +87,7 @@ export default function SparePartsPage() {
       </div>
       {/* Right: Customs Clearance Content */}
       <div className="flex-1 text-white">
-        <h3 className="text-base md:text-lg font-semibold mb-2">
+        <h3 className="text-base md:text-lg  mb-2">
           2. Customs Clearance
         </h3>
         <p className="text-sm md:text-base mb-2">
@@ -95,24 +95,24 @@ export default function SparePartsPage() {
         </p>
         <ul className="list-disc ml-6 text-sm md:text-base space-y-1 mb-2">
           <li>
-            <span className="font-semibold">Custom documentation verification</span>
+            <span className="">Custom documentation verification</span>
           </li>
           <li>
-            <span className="font-semibold">Duty waivers &amp; formalities</span> as required for ship spares-in-transit
+            <span className="">Duty waivers &amp; formalities</span> as required for ship spares-in-transit
           </li>
           <li>
-            <span className="font-semibold">Liaison with port &amp; airport authorities</span> for smooth release
+            <span className="">Liaison with port &amp; airport authorities</span> for smooth release
           </li>
         </ul>
         <p className="text-xs mt-3">
-          <span className="font-semibold">Benefit:</span> No unnecessary hold-ups, ensuring fast delivery to the vessel.
+          <span className="">Benefit:</span> No unnecessary hold-ups, ensuring fast delivery to the vessel.
         </p>
       </div>
     </div>
     <div className="w-full bg-[#3b478b] rounded-[32px] px-4 md:px-12 py-10 mt-10 flex flex-col md:flex-row items-center gap-8">
       {/* Left: Direct Delivery Content */}
       <div className="flex-1 text-white order-2 md:order-1">
-        <h3 className="text-base md:text-lg font-semibold mb-2">
+        <h3 className="text-base md:text-lg  mb-2">
           3. Direct Delivery to Ship
         </h3>
         <p className="text-sm md:text-base mb-2">
@@ -124,7 +124,7 @@ export default function SparePartsPage() {
           <li>Secure handling &amp; damage prevention measures</li>
         </ul>
         <p className="text-xs mt-3">
-          <span className="font-semibold">Benefit:</span> Ensures spare parts reach the ship without detour or delay.
+          <span className="">Benefit:</span> Ensures spare parts reach the ship without detour or delay.
         </p>
       </div>
       {/* Right: Image */}
@@ -138,31 +138,31 @@ export default function SparePartsPage() {
       </div>
     </div>
     <div className="w-full max-w-6xl mx-auto mt-20 mb-10 px-4">
-      <h2 className="text-xl md:text-2xl font-semibold text-[#2a4365] mb-8 text-center">
+      <h2 className="text-xl md:text-2xl  text-[#2a4365] mb-8 text-center">
         Reasons to Choose Moon Navigation and Trading Co.<br />
         For Your Transit Spare Parts
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
         <div className="flex flex-col items-center text-center">
-          <h3 className="font-semibold mb-2">Fast &amp; Reliable Service</h3>
+          <h3 className=" mb-2">Fast &amp; Reliable Service</h3>
           <p className="text-[#444] text-sm">
             No delays in spare parts delivery.
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="font-semibold mb-2">Customs Clearance Expertise</h3>
+          <h3 className=" mb-2">Customs Clearance Expertise</h3>
           <p className="text-[#444] text-sm">
             Smooth handling of all regulatory procedures.
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="font-semibold mb-2">24/7 Support</h3>
+          <h3 className=" mb-2">24/7 Support</h3>
           <p className="text-[#444] text-sm">
             Available for urgent and emergency deliveries.
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="font-semibold mb-2">End-to-End Coordination</h3>
+          <h3 className=" mb-2">End-to-End Coordination</h3>
           <p className="text-[#444] text-sm">
             From reception to final ship delivery.
           </p>

@@ -4,16 +4,17 @@ import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function DockingPage() {
     const t = useTranslations("docking");
 
     return (
-        <main className="flex flex-col items-center w-full">
+        <main className="flex flex-col items-center w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Our Docking Services Section */}
             <div className="w-full py-16 bg-background">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <h1 className="text-3xl md:text-4xl font-semibold text-primary mb-6">
+                    <h1 className="text-3xl md:text-4xl  text-primary mb-6">
                         Our Docking Services
                     </h1>
                     <p className="text-muted-foreground max-w-7xl mb-12">
@@ -36,7 +37,7 @@ export default function DockingPage() {
                         </div>
                         {/* Service Details */}
                         <div>
-                            <h2 className="text-2xl font-bold mb-4 text-foreground">
+                            <h2 className="text-2xl  mb-4 text-foreground">
                                 1. Port Docking &amp; Berthing
                             </h2>
                             <p className="text-muted-foreground mb-4">
@@ -58,7 +59,7 @@ export default function DockingPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                         {/* Dry Docking */}
                         <div className="flex flex-col gap-6">
-                            <h2 className="text-2xl font-bold text-foreground">
+                            <h2 className="text-2xl  text-foreground">
                                 2. Dry Docking (Scheduled Repairs &amp; Overhauls)
                             </h2>
                             <p className="text-muted-foreground">
@@ -83,7 +84,7 @@ export default function DockingPage() {
                         </div>
                         {/* Wet Docking */}
                         <div className="flex flex-col gap-6">
-                            <h2 className="text-2xl font-bold text-foreground">
+                            <h2 className="text-2xl  text-foreground">
                                 3. Wet Docking (Afloat Repairs &amp; Onboard Servicing)
                             </h2>
                             <p className="text-muted-foreground">
@@ -111,7 +112,7 @@ export default function DockingPage() {
             {/* Anchorage Services (Offshore Support & Repairs) */}
             <div className="flex flex-col md:flex-row gap-12 items-center my-16">
                 <div className="flex-1 flex flex-col gap-4">
-                    <h2 className="text-2xl font-bold text-foreground">
+                    <h2 className="text-2xl  text-foreground">
                         4. Anchorage Services <span className="font-normal text-lg">(Offshore Support &amp; Repairs)</span>
                     </h2>
                     <p className="text-muted-foreground">
@@ -140,7 +141,7 @@ export default function DockingPage() {
             {/* Emergency Docking & Salvage Operations */}
             <div className="flex flex-col md:flex-row-reverse gap-12 items-center my-16">
                 <div className="flex-1 flex flex-col gap-4">
-                    <h2 className="text-2xl font-bold text-foreground">
+                    <h2 className="text-2xl  text-foreground">
                         5. Emergency Docking &amp; Salvage Operations
                     </h2>
                     <p className="text-muted-foreground">
@@ -165,36 +166,7 @@ export default function DockingPage() {
                     </div>
                 </div>
             </div>
-            <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-                {/* Left: Text Content */}
-                <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Get your Quote with Us
-                    </h2>
-                    <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Getting a quote for our Docking and Maintenance Services at Moon
-                        Navigation and Trading Co. is simple and hassle-free.
-
-                        Just fill out our short form — our experts will assess your requirements and
-                        send you a customized quotation directly to your email, offering clear
-                        pricing and solutions tailored to your vessel.
-                    </p>
-                    <Link href="/ship-maintenance-forms">
-                        <RequestQuoteButton>
-                            Request a Quote
-                        </RequestQuoteButton>
-                    </Link>
-                </div>
-                {/* Right: Image */}
-                <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                    <img
-                        src="/quote-illustration.png"
-                        alt="Quotation illustration"
-                        className="w-[320px] h-auto object-contain"
-                        style={{ maxWidth: 380 }}
-                    />
-                </div>
-            </section>
+            <GetQuoteComponent topic = "Docking and Maintenance" link = "/ship-maintenance-forms"/> 
         </main>
     );
 }
