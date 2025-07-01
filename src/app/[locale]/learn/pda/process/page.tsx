@@ -22,7 +22,7 @@ export default function PDAProcessPage() {
         </div>
         <div className="flex justify-center">
           <Image
-            src="/images/pda-process-laptop-ship.jpg"
+            src="/p-pda-1.jpg"
             alt="Laptop showing shipping analytics with ship in background"
             width={350}
             height={200}
@@ -34,7 +34,7 @@ export default function PDAProcessPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         <div className="flex justify-center order-2 md:order-1">
           <Image
-            src="/images/pda-process-tablet-meeting.jpg"
+            src="/p-pda-2.jpg"
             alt="Tablet with analytics in meeting room"
             width={350}
             height={200}
@@ -75,7 +75,7 @@ export default function PDAProcessPage() {
       </div>
       <div className="flex justify-center">
         <Image
-          src="/images/pda-process-fda-submission.jpg"
+          src="/p-pda-3.jpg"
           alt="Businesswoman reviewing financial documents at port"
           width={350}
           height={200}

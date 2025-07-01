@@ -37,7 +37,7 @@ export default function LearnMoreOilPage() {
           <div className="flex-1 flex items-center justify-center">
             <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/images/oil-lubricants-shelf.jpg"
+                src="/lm-oil-1.jpg"
                 alt="Oil & Lubricants Shelf"
                 fill
                 style={{ objectFit: "cover" }}

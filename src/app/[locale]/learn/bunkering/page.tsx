@@ -9,15 +9,14 @@ export default function BunkeringPage() {
       className="w-full max-w-7xl min-h-screen bg-white flex flex-col items-center place-self-center"
       style={{ fontFamily: "Raleway, sans-serif" }}
     >
-      <div className="w-full max-w-6xl mt-8 mb-0 px-4">
+      <div className="w-full mt-8 mb-0 px-4">
         <div className="w-full flex flex-row gap-0 rounded-[2rem] overflow-hidden mb-8">
           <div className="w-full h-[180px] md:h-[220px] relative">
             <Image
-              src="/images/bunkering-truck.jpg"
+              src="/bunkering-1.jpg"
               alt="Bunkering Truck"
               fill
               style={{ objectFit: "cover" }}
-              sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
           </div>
@@ -62,7 +61,7 @@ export default function BunkeringPage() {
       <div className="w-full md:w-1/2 flex justify-center items-center mt-8 md:mt-0">
         <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
           <Image
-            src="/bunkering-tank.jpg"
+            src="/bunkering-2.jpg"
             alt="Bunkering Tank"
             fill
             style={{ objectFit: "cover" }}
@@ -76,7 +75,7 @@ export default function BunkeringPage() {
       <div className="w-full md:w-1/2 flex justify-center items-center">
         <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
           <Image
-            src="/images/oil-barrel-lubricants.jpg"
+            src="/bunkering-3.jpg"
             alt="Oil & Lubricants Supply"
             fill
             style={{ objectFit: "cover" }}
@@ -111,7 +110,7 @@ export default function BunkeringPage() {
             Ship Chandlery
           </h2>
           <p className="text-[#222] text-sm md:text-base mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
-            We offer extensive ship chandlery services dedicated to serving your vessel’s every requirement with onboard supplies and equipment for smooth operations. Our global network enables seamless sourcing of top-tier products, including fresh provisions, deck and engine consumables, cleaning agents, and safety equipment.
+            We offer extensive ship chandlery services dedicated to serving your vessel's every requirement with onboard supplies and equipment for smooth operations. Our global network enables seamless sourcing of top-tier products, including fresh provisions, deck and engine consumables, cleaning agents, and safety equipment.
           </p>
           <p className="text-[#222] text-sm md:text-base mb-6" style={{ fontFamily: "Raleway, sans-serif" }}>
             We take pride in providing high-quality food and beverages, technical stores, safety equipment, bonded items, and cleaning materials, all tailored to your specific needs. Our experienced team understands the unique challenges of the maritime industry, so you can trust that your supplies will always be delivered efficiently and in compliance with the highest standards. Our service is available globally, ensuring your vessel receives the right products wherever you operate.
@@ -126,7 +125,7 @@ export default function BunkeringPage() {
       <div className="w-full md:w-1/2 flex justify-center items-center mt-8 md:mt-0">
         <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
           <Image
-            src="/chandlery-ship.jpg"
+            src="/bunkering-4.jpg"
             alt="Ship Chandlery"
             fill
             style={{ objectFit: "cover" }}

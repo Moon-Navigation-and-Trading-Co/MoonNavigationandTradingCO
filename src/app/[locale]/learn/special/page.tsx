@@ -10,13 +10,13 @@ export default function ShippingMethodsInfo() {
 
   return (
   <div
-    className="w-full min-h-screen flex flex-col items-center py-12 px-4"
+    className="w-full max-w-7xl place-self-center min-h-screen flex flex-col items-center py-12 px-4"
     style={{ fontFamily: "Raleway, sans-serif" }}
   >
-    <div className="w-full max-w-6xl mb-12">
+    <div className="w-full mb-12">
       <div className="w-full rounded-[2rem] overflow-hidden mb-10">
         <img
-          src="/images/special-services-crew.jpg"
+          src="/special-1.jpg"
           alt="Special Services Crew"
           className="w-full h-[260px] md:h-[320px] object-cover"
           style={{ display: "block" }}
@@ -62,7 +62,7 @@ export default function ShippingMethodsInfo() {
     <div className="w-full md:w-1/2 flex justify-center items-center">
       <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
         <img
-          src="/images/special-shipping-tailored.jpg"
+          src="/special-2.jpg"
           alt="Tailored Shipping Solutions"
           className="object-cover w-full h-full"
           style={{ display: "block" }}
@@ -74,7 +74,7 @@ export default function ShippingMethodsInfo() {
     <div className="w-full md:w-1/2 flex justify-center items-center mb-8 md:mb-0">
       <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
         <img
-          src="/images/special-handshake.jpg"
+          src="/special-3.jpg"
           alt="Business Handshake in Field"
           className="object-cover w-full h-full"
           style={{ display: "block" }}

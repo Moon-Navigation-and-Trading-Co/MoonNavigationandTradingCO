@@ -11,7 +11,7 @@ export default function SparePartsPage() {
       {/* Top full-width image */}
       <div className="w-full mb-10">
         <img
-          src="/images/spare-parts-hero.jpg"
+          src="/spare-1.jpg"
           alt="Spare parts on dock ready for vessel transit"
           className="w-full h-[220px] md:h-[320px] object-cover rounded-[40px] md:rounded-[48px] mt-2"
           style={{ width: "100%", objectFit: "cover" }}
@@ -67,7 +67,7 @@ export default function SparePartsPage() {
       {/* Right: Image */}
       <div className="flex-1 flex justify-center">
         <img
-          src="/images/spare-parts-process-1.jpg"
+          src="/spare-2.jpg"
           alt="Spare parts reception at port with agent and delivery vehicle"
           className="rounded-xl shadow-md object-cover w-[320px] h-[180px]"
           style={{ maxWidth: "100%", height: "auto" }}
@@ -79,7 +79,7 @@ export default function SparePartsPage() {
       {/* Left: Image */}
       <div className="flex-1 flex justify-center mb-6 md:mb-0">
         <img
-          src="/images/spare-parts-customs.jpg"
+          src="/spare-3.jpg"
           alt="Customs officer inspecting documents for spare parts at port"
           className="rounded-xl shadow-md object-cover w-[320px] h-[180px]"
           style={{ maxWidth: "100%", height: "auto" }}
@@ -130,7 +130,7 @@ export default function SparePartsPage() {
       {/* Right: Image */}
       <div className="flex-1 flex justify-center order-1 md:order-2 mb-6 md:mb-0">
         <img
-          src="/images/spare-parts-delivery.jpg"
+          src="/spare-4.jpg"
           alt="Spare parts being delivered directly to ship at port"
           className="rounded-xl shadow-md object-cover w-[320px] h-[180px]"
           style={{ maxWidth: "100%", height: "auto" }}
