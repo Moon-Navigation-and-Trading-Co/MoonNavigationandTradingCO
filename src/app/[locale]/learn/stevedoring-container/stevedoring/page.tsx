@@ -35,7 +35,7 @@ export default function StevedoringPage() {
                     {/* Right: Image */}
                     <div className="w-full rounded-xl overflow-hidden shadow">
                         <img
-                            src="/stevedoring-cargo-vessel.jpg"
+                            src="/s-hss-1.jpg"
                             alt="Stevedores operating cranes to load cargo onto a vessel"
                             className="object-cover w-full h-40 md:h-44"
                         />
@@ -47,7 +47,7 @@ export default function StevedoringPage() {
                     {/* Left: Image */}
                     <div className="w-full rounded-xl overflow-hidden shadow">
                         <img
-                            src="/stevedoring-equipment-technology.jpg"
+                            src="/s-hss-2.jpg"
                             alt="Modern container handling equipment at port"
                             className="object-cover w-full h-40 md:h-44"
                         />
@@ -93,7 +93,7 @@ export default function StevedoringPage() {
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-end items-start">
                     <img
-                        src="/stevedoring-safety-compliance.jpg"
+                        src="/s-hss-3.jpg"
                         alt="Stevedore in safety gear inspecting containers"
                         className="rounded-xl shadow w-full max-w-7xl object-cover"
                     />
