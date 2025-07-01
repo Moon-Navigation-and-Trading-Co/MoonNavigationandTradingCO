@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from 'zod';
@@ -10,12 +10,18 @@ import { Textarea } from "@/components/ui/textarea";
 import { useTranslations } from 'next-intl';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Checkbox } from './ui/checkbox';
+import RequestQuoteButton from './RequestQuoteButton';
+import { Mail, Phone } from 'lucide-react';
 
 // 1. Define a type-safe form handler using z.infer
 const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
+    
+    // State for additional contact fields
+    const [showAdditionalEmail, setShowAdditionalEmail] = useState(false);
+    const [showAdditionalPhone, setShowAdditionalPhone] = useState(false);
 
     // Define your Zod schema
     const formSchema = z.object({
@@ -191,20 +197,46 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                         </FormControl>
                     </FormItem>
 
-                    <FormItem>
-                        <FormLabel>Add Additional Email Address</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="additional_email"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Email Address" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
+                    {/* Additional Email */}
+                    <div className="space-y-3">
+                        {!showAdditionalEmail && (
+                            <RequestQuoteButton
+                                variant="outline"
+                                onClick={() => setShowAdditionalEmail(true)}
+                                className="w-fit"
+                            >
+                                <Mail className="h-4 w-4 mr-2" />
+                                Add Additional Email
+                            </RequestQuoteButton>
+                        )}
+                        
+                        {showAdditionalEmail && (
+                            <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                <FormItem>
+                                    <FormLabel>Additional Email Address</FormLabel>
+                                    <FormControl>
+                                        <Controller
+                                            control={form.control}
+                                            name="additional_email"
+                                            render={({ field, fieldState: { error } }) => (
+                                                <>
+                                                    <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Email Address" {...field} />
+                                                    {error && <p className="text-red-500">{error.message}</p>}
+                                                </>)}
+                                        />
+                                    </FormControl>
+                                </FormItem>
+                                
+                                <RequestQuoteButton
+                                    variant="secondary"
+                                    onClick={() => setShowAdditionalEmail(false)}
+                                    className="w-fit"
+                                >
+                                    Remove Additional Email
+                                </RequestQuoteButton>
+                            </div>
+                        )}
+                    </div>
 
                     <FormItem>
                         <FormLabel>Phone Number *</FormLabel>
@@ -221,20 +253,46 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                         </FormControl>
                     </FormItem>
 
-                    <FormItem>
-                        <FormLabel>Add Additional Phone Number</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="additional_phone_number"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Number" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
+                    {/* Additional Phone */}
+                    <div className="space-y-3">
+                        {!showAdditionalPhone && (
+                            <RequestQuoteButton
+                                variant="outline"
+                                onClick={() => setShowAdditionalPhone(true)}
+                                className="w-fit"
+                            >
+                                <Phone className="h-4 w-4 mr-2" />
+                                Add Additional Phone
+                            </RequestQuoteButton>
+                        )}
+                        
+                        {showAdditionalPhone && (
+                            <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                                <FormItem>
+                                    <FormLabel>Additional Phone Number</FormLabel>
+                                    <FormControl>
+                                        <Controller
+                                            control={form.control}
+                                            name="additional_phone_number"
+                                            render={({ field, fieldState: { error } }) => (
+                                                <>
+                                                    <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Number" {...field} />
+                                                    {error && <p className="text-red-500">{error.message}</p>}
+                                                </>)}
+                                        />
+                                    </FormControl>
+                                </FormItem>
+                                
+                                <RequestQuoteButton
+                                    variant="secondary"
+                                    onClick={() => setShowAdditionalPhone(false)}
+                                    className="w-fit"
+                                >
+                                    Remove Additional Phone
+                                </RequestQuoteButton>
+                            </div>
+                        )}
+                    </div>
 
                     <FormItem>
                         <FormLabel>City & Country of Residence *</FormLabel>

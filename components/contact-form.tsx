@@ -12,13 +12,17 @@ import { Button } from "./ui/button";
 import { useTranslations } from "next-intl";
 import { sendFormEmail } from '@/utils/email-helper';
 import { toast } from "@/hooks/use-toast";
+import RequestQuoteButton from './RequestQuoteButton';
+import { Mail, Phone } from 'lucide-react';
 
 // Zod schema for validation
 const schema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   companyName: z.string().min(1, { message: "Company name is required" }),
   email: z.string().email({ message: "Invalid email address" }),
+  additionalEmail: z.string().email({ message: "Invalid email address" }).optional(),
   number: z.string().min(1, { message: "Number is required" }),
+  additionalNumber: z.string().optional(),
   message: z.string().min(1, { message: "Message is required" }),
 });
 
@@ -37,6 +41,8 @@ const ContactForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showAdditionalEmail, setShowAdditionalEmail] = useState(false);
+  const [showAdditionalPhone, setShowAdditionalPhone] = useState(false);
 
   const onSubmit = async (data: FormData) => {
     setLoading(true);
@@ -130,6 +136,47 @@ const ContactForm: React.FC = () => {
                 </p>
               )}
             </div>
+
+            {/* Additional Email */}
+            <div className="space-y-3">
+              {!showAdditionalEmail && (
+                <RequestQuoteButton
+                  variant="outline"
+                  onClick={() => setShowAdditionalEmail(true)}
+                  className="w-fit"
+                >
+                  <Mail className="h-4 w-4 mr-2" />
+                  Add Additional Email
+                </RequestQuoteButton>
+              )}
+              
+              {showAdditionalEmail && (
+                <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                  <div>
+                    <Input
+                      className="border-primary/70 border-2 bg-secondary rounded-xl"
+                      placeholder="Additional Email"
+                      id="additionalEmail"
+                      {...register("additionalEmail")}
+                    />
+                    {errors.additionalEmail && (
+                      <p className="text-red-500 text-xs px-4 pt-2">
+                        {errors.additionalEmail.message}
+                      </p>
+                    )}
+                  </div>
+                  
+                  <RequestQuoteButton
+                    variant="secondary"
+                    onClick={() => setShowAdditionalEmail(false)}
+                    className="w-fit"
+                  >
+                    Remove Additional Email
+                  </RequestQuoteButton>
+                </div>
+              )}
+            </div>
+
             <div>
               <Input
                 className="border-primary/70 border-2 bg-secondary rounded-xl"
@@ -142,6 +189,47 @@ const ContactForm: React.FC = () => {
                 <p className="text-red-500 text-xs px-4 pt-2">
                   {errors.number.message}
                 </p>
+              )}
+            </div>
+
+            {/* Additional Phone */}
+            <div className="space-y-3">
+              {!showAdditionalPhone && (
+                <RequestQuoteButton
+                  variant="outline"
+                  onClick={() => setShowAdditionalPhone(true)}
+                  className="w-fit"
+                >
+                  <Phone className="h-4 w-4 mr-2" />
+                  Add Additional Phone
+                </RequestQuoteButton>
+              )}
+              
+              {showAdditionalPhone && (
+                <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                  <div>
+                    <Input
+                      className="border-primary/70 border-2 bg-secondary rounded-xl"
+                      placeholder="Additional Phone Number"
+                      type="number"
+                      id="additionalNumber"
+                      {...register("additionalNumber")}
+                    />
+                    {errors.additionalNumber && (
+                      <p className="text-red-500 text-xs px-4 pt-2">
+                        {errors.additionalNumber.message}
+                      </p>
+                    )}
+                  </div>
+                  
+                  <RequestQuoteButton
+                    variant="secondary"
+                    onClick={() => setShowAdditionalPhone(false)}
+                    className="w-fit"
+                  >
+                    Remove Additional Phone
+                  </RequestQuoteButton>
+                </div>
               )}
             </div>
             <div>

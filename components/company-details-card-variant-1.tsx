@@ -2,6 +2,7 @@ import { FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
 import { Controller } from "react-hook-form";
+import AdditionalContactFields from './additional-contact-fields';
 
 const CompanyDetailsCard = ({ control }: { control: any }) => {
     // Get Content
@@ -13,7 +14,6 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
 
             <div className='grid grid-cols-2 gap-5 px-4'>
                 <div>
-
                     <FormItem>
                         <FormLabel>{t('companyName')}</FormLabel>
                         <FormControl>
@@ -28,10 +28,8 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                             />
                         </FormControl>
                     </FormItem>
-
                 </div>
                 <div>
-
                     <FormItem>
                         <FormLabel>{t('contactPersonName')}</FormLabel>
                         <FormControl>
@@ -94,23 +92,6 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                             />
                         </FormControl>
                     </FormItem>
-
-                </div>
-                <div>
-                    <FormItem>
-                        <FormLabel>{t('additionalEmail')}</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={control}
-                                name="company_details.additional_email"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Email" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
                 </div>
                 <div>
                     <FormItem>
@@ -128,22 +109,11 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                         </FormControl>
                     </FormItem>
                 </div>
-                <div>
-                    <FormItem>
-                        <FormLabel>{t('additionalPhoneNumber')}</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={control}
-                                name="company_details.additional_phone_number"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="+123456789" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
-                </div>
+            </div>
+
+            {/* Additional Contact Fields */}
+            <div className="px-4 mt-6">
+                <AdditionalContactFields control={control} />
             </div>
 
 
