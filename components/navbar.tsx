@@ -86,7 +86,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                     href: "/learn-more/container",
                     isDropdown: true,
                     dropdownItems: [
-                        { name: "Less Than Container Load (LCL)", href: "/learn/lcl" },
+                        { name: "Less Than Container Load (LCL)", href: "/learn/less" },
                         { name: "Full Container Load (FCL)", href: "/learn/full" },
                         { name: "Oversized Containers", href: "/learn/oversized" },
                         { name: "Out of Gauge Cargo", href: "/learn/out-gauge" },
