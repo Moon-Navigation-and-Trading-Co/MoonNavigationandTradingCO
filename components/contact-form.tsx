@@ -14,15 +14,16 @@ import { sendFormEmail } from '@/utils/email-helper';
 import { toast } from "@/hooks/use-toast";
 import RequestQuoteButton from './RequestQuoteButton';
 import { Mail, Phone } from 'lucide-react';
+import { PhoneInput } from "@/components/phone-input";
 
 // Zod schema for validation
 const schema = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
-  companyName: z.string().min(1, { message: "Company name is required" }),
+  firstName: z.string().min(1, { message: "First name is required" }),
+  lastName: z.string().min(1, { message: "Last name is required" }),
+  title: z.string().optional(),
+  companyName: z.string().optional(),
   email: z.string().email({ message: "Invalid email address" }),
-  additionalEmail: z.string().email({ message: "Invalid email address" }).optional(),
-  number: z.string().min(1, { message: "Number is required" }),
-  additionalNumber: z.string().optional(),
+  phone: z.string().min(1, { message: "Phone number is required" }),
   message: z.string().min(1, { message: "Message is required" }),
 });
 
@@ -34,6 +35,7 @@ const ContactForm: React.FC = () => {
     handleSubmit,
     formState: { errors },
     reset,
+    setValue,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -43,6 +45,7 @@ const ContactForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [showAdditionalEmail, setShowAdditionalEmail] = useState(false);
   const [showAdditionalPhone, setShowAdditionalPhone] = useState(false);
+  const [phoneValue, setPhoneValue] = useState("");
 
   const onSubmit = async (data: FormData) => {
     setLoading(true);
@@ -95,163 +98,85 @@ const ContactForm: React.FC = () => {
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col gap-5">
-            <div>
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full font-raleway">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
+            <div className="flex flex-col">
+              <label htmlFor="firstName" className="uppercase font-bold text-xs text-[#232B50] mb-2 tracking-wide">First Name</label>
               <Input
-                className="border-primary/70 bg-secondary border-2 rounded-xl"
-                placeholder={t("contactFormName")}
-                id="name"
-                {...register("name")}
+                id="firstName"
+                {...register("firstName")}
+                className="border border-[#E5EAF1] rounded-lg h-12 bg-white text-base focus:ring-2 focus:ring-[#283593]"
               />
-              {errors.name && (
-                <p className="text-red-500 text-xs px-4 pt-2">
-                  {errors.name.message}
-                </p>
-              )}
+              {errors.firstName && <span className="text-red-500 text-xs mt-1">{errors.firstName.message}</span>}
             </div>
-            <div>
+            <div className="flex flex-col">
+              <label htmlFor="lastName" className="uppercase font-bold text-xs text-[#232B50] mb-2 tracking-wide">Last Name</label>
               <Input
-                className="border-primary/70 border-2 bg-secondary rounded-xl"
-                placeholder={t("contactFormCompany")}
+                id="lastName"
+                {...register("lastName")}
+                className="border border-[#E5EAF1] rounded-lg h-12 bg-white text-base focus:ring-2 focus:ring-[#283593]"
+              />
+              {errors.lastName && <span className="text-red-500 text-xs mt-1">{errors.lastName.message}</span>}
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="title" className="uppercase font-bold text-xs text-[#232B50] mb-2 tracking-wide">Title</label>
+              <Input
+                id="title"
+                {...register("title")}
+                className="border border-[#E5EAF1] rounded-lg h-12 bg-white text-base focus:ring-2 focus:ring-[#283593]"
+              />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="companyName" className="uppercase font-bold text-xs text-[#232B50] mb-2 tracking-wide">Company Name</label>
+              <Input
                 id="companyName"
                 {...register("companyName")}
+                className="border border-[#E5EAF1] rounded-lg h-12 bg-white text-base focus:ring-2 focus:ring-[#283593]"
               />
-              {errors.companyName && (
-                <p className="text-red-500 text-xs px-4 pt-2">
-                  {errors.companyName.message}
-                </p>
-              )}
             </div>
-            <div>
+            <div className="flex flex-col">
+              <label htmlFor="email" className="uppercase font-bold text-xs text-[#232B50] mb-2 tracking-wide">Company Email Address</label>
               <Input
-                className="border-primary/70 border-2 bg-secondary rounded-xl"
-                placeholder={t("contactFormEmail")}
                 id="email"
+                type="email"
                 {...register("email")}
+                className="border border-[#E5EAF1] rounded-lg h-12 bg-white text-base focus:ring-2 focus:ring-[#283593]"
               />
-              {errors.email && (
-                <p className="text-red-500 text-xs px-4 pt-2">
-                  {errors.email.message}
-                </p>
-              )}
+              {errors.email && <span className="text-red-500 text-xs mt-1">{errors.email.message}</span>}
             </div>
-
-            {/* Additional Email */}
-            <div className="space-y-3">
-              {!showAdditionalEmail && (
-                <RequestQuoteButton
-                  variant="outline"
-                  onClick={() => setShowAdditionalEmail(true)}
-                  className="w-fit"
-                >
-                  <Mail className="h-4 w-4 mr-2" />
-                  Add Additional Email
-                </RequestQuoteButton>
-              )}
-              
-              {showAdditionalEmail && (
-                <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
-                  <div>
-                    <Input
-                      className="border-primary/70 border-2 bg-secondary rounded-xl"
-                      placeholder="Additional Email"
-                      id="additionalEmail"
-                      {...register("additionalEmail")}
-                    />
-                    {errors.additionalEmail && (
-                      <p className="text-red-500 text-xs px-4 pt-2">
-                        {errors.additionalEmail.message}
-                      </p>
-                    )}
-                  </div>
-                  
-                  <RequestQuoteButton
-                    variant="secondary"
-                    onClick={() => setShowAdditionalEmail(false)}
-                    className="w-fit"
-                  >
-                    Remove Additional Email
-                  </RequestQuoteButton>
-                </div>
-              )}
-            </div>
-
-            <div>
-              <Input
-                className="border-primary/70 border-2 bg-secondary rounded-xl"
-                placeholder={t("contactFormNumber")}
-                type="number"
-                id="number"
-                {...register("number")}
+            <div className="flex flex-col">
+              <label htmlFor="phone" className="uppercase font-bold text-xs text-[#232B50] mb-2 tracking-wide">Phone Number</label>
+              <PhoneInput
+                id="phone"
+                value={phoneValue}
+                onChange={(value) => {
+                  setPhoneValue(value as string);
+                  setValue("phone", value as string);
+                }}
+                className="border border-[#E5EAF1] rounded-lg h-12 bg-white text-base focus:ring-2 focus:ring-[#283593]"
+                defaultCountry="EG"
+                international
+                countryCallingCodeEditable={false}
               />
-              {errors.number && (
-                <p className="text-red-500 text-xs px-4 pt-2">
-                  {errors.number.message}
-                </p>
-              )}
+              {errors.phone && <span className="text-red-500 text-xs mt-1">{errors.phone.message}</span>}
             </div>
-
-            {/* Additional Phone */}
-            <div className="space-y-3">
-              {!showAdditionalPhone && (
-                <RequestQuoteButton
-                  variant="outline"
-                  onClick={() => setShowAdditionalPhone(true)}
-                  className="w-fit"
-                >
-                  <Phone className="h-4 w-4 mr-2" />
-                  Add Additional Phone
-                </RequestQuoteButton>
-              )}
-              
-              {showAdditionalPhone && (
-                <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
-                  <div>
-                    <Input
-                      className="border-primary/70 border-2 bg-secondary rounded-xl"
-                      placeholder="Additional Phone Number"
-                      type="number"
-                      id="additionalNumber"
-                      {...register("additionalNumber")}
-                    />
-                    {errors.additionalNumber && (
-                      <p className="text-red-500 text-xs px-4 pt-2">
-                        {errors.additionalNumber.message}
-                      </p>
-                    )}
-                  </div>
-                  
-                  <RequestQuoteButton
-                    variant="secondary"
-                    onClick={() => setShowAdditionalPhone(false)}
-                    className="w-fit"
-                  >
-                    Remove Additional Phone
-                  </RequestQuoteButton>
-                </div>
-              )}
-            </div>
-            <div>
-              <Textarea
-                className="border-primary/70 border-2 bg-secondary rounded-xl"
-                placeholder={t("contactFormMessage")}
-                id="message"
-                {...register("message")}
-              />
-              {errors.message && (
-                <p className="text-red-500 text-xs px-4 pt-2">
-                  {errors.message.message}
-                </p>
-              )}
-            </div>
-            <Button
-              className="bg-primary text-white font-normal"
+          </div>
+          <div className="flex flex-col mt-8">
+            <label htmlFor="message" className="uppercase font-bold text-xs text-[#232B50] mb-2 tracking-wide">Message</label>
+            <Textarea
+              id="message"
+              {...register("message")}
+              className="border border-[#E5EAF1] rounded-lg min-h-[120px] bg-white text-base focus:ring-2 focus:ring-[#283593]"
+            />
+            {errors.message && <span className="text-red-500 text-xs mt-1">{errors.message.message}</span>}
+          </div>
+          <div className="flex justify-end mt-8">
+            <RequestQuoteButton
               type="submit"
-              disabled={loading}
+              className="w-[200px] h-12 text-base font-bold font-raleway bg-[#232B50] hover:bg-[#283593] rounded-lg"
             >
-              {loading ? "Submitting..." : "Submit"}
-            </Button>
+              Send Message
+            </RequestQuoteButton>
           </div>
         </form>
       )}
