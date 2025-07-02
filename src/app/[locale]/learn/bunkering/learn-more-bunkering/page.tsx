@@ -5,7 +5,7 @@ export default function LearnMoreBunkeringPage() {
   return (
     <div className="w-full min-h-screen bg-white flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
       <div className="w-full flex justify-center items-center mb-12">
-        <div className="relative w-full max-w-2xl aspect-[2/1] rounded-[2rem] overflow-hidden shadow-lg">
+        <div className="relative w-full max-w-5xl aspect-[2/1] rounded-[2rem] overflow-hidden shadow-lg">
           <Image
             src="/lm-bunkering-1.jpg"
             alt="Person overlooking the sea with a port in the distance"
@@ -15,10 +15,10 @@ export default function LearnMoreBunkeringPage() {
             priority
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white/90 rounded-2xl p-6 m-4 shadow-md max-w-xl text-center">
+            <div className="bg-white/90 rounded-3xl p-6 m-4 shadow-md max-w-4xl text-center">
               <p className="text-[#222] text-sm md:text-base">
                 With Moon Navigation and Trading Co., you can count on reliable, timely and cost-effective bunkering solutions and support, and fully customizable solutions to your vessel's needs, ensuring uninterrupted service and operational efficiency.<br /><br />
-                Wherever and whenever you need to fuel.
+                -Wherever and whenever you need to trust.
               </p>
             </div>
           </div>

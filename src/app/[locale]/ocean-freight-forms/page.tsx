@@ -172,7 +172,7 @@ const Page: React.FC = () => {
             description: t('breakbulk-p'),
             content:
                 <>
-                    {/* <RollOnOffForm breakbulk_bool={true} onSubmit={(formData: any) => submitForm(formData, "breakbulk")} /> */}
+                     <RollOnOffForm breakbulk_bool={true} onSubmit={(formData: any) => submitForm(formData, "breakbulk")} /> 
                 </>
         }
 
