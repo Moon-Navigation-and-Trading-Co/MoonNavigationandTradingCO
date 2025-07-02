@@ -141,16 +141,33 @@ export default function Index() {
                     </div>
                 </section>
 
-                <section id="GetQuote" className="px-4 scroll-mt-[80px] flex flex-col gap-4">
-                    <h2 className="capitalize text-3xl text-primary">{t("quoteTitle1")}</h2>
-                    <h2 className="capitalize text-3xl text-primary">{t("quoteTitle2")}</h2>
-
-                    <div className="flex max-w-[800px]">
-                        <p className="py-8">{t("quoteDescription")}</p>
-                        <Image src="/quotation.png" alt="quotation" width={250} height={250} className="object-contain hidden md:block" style={{ width: 'auto' }} />
+                {/* Get Your Customized Quote Section */}
+                <section id="GetQuote" className="w-full flex flex-col items-center justify-center py-24 px-4 font-raleway">
+                  <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-12 mx-auto">
+                    {/* Left: Text */}
+                    <div className="flex-1 flex flex-col items-start justify-center max-w-xl">
+                      <h2 className="text-[2.5rem] leading-tight font-extrabold text-[#232B50] mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Get Your Customized Quote Today</h2>
+                      <h3 className="text-xl font-normal text-[#6B6B6B] mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>Effortless Quotation Process—Now Simpler Than Ever!</h3>
+                      <p className="text-base text-[#6B6B6B] mb-4" style={{fontFamily: 'Raleway, sans-serif'}}>
+                        Our streamlined quotation process is designed with your convenience in mind. At Moon Navigation and Trading Co., obtaining service quotes has never been easier or faster than with our Quotation by Request system.
+                      </p>
+                      <p className="text-base text-[#6B6B6B] mb-4" style={{fontFamily: 'Raleway, sans-serif'}}>
+                        By simply filling out a short form that captures your specific service requirements, you can easily initiate your request. Once you have submitted your information, our system ensures it is sent directly to us for prompt attention.
+                      </p>
+                      <p className="text-base text-[#6B6B6B] mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>
+                        You will receive a customized quotation delivered straight to your email in a timely manner. This effortlessness ensures you can focus on what truly matters while receiving accurate pricing without unnecessary delays.
+                      </p>
+                      <RequestQuoteButton className="rounded-full px-8 py-3 text-base font-raleway font-medium mt-2" type="button">
+                        Request a Quote
+                      </RequestQuoteButton>
                     </div>
-
-                    <QuoteDialog />
+                    {/* Right: Image Placeholder */}
+                    <div className="flex-1 flex items-center justify-center">
+                      <div className="w-[450px] h-[450px] rounded-[48px] bg-[#e5e7eb] flex items-center justify-center overflow-hidden">
+                        {/* Place your image here. Example: <img src="/your-image.jpg" alt="Quote" className="w-full h-full object-cover rounded-[48px]" /> */}
+                      </div>
+                    </div>
+                  </div>
                 </section>
 
                 {/* Services Section */}
@@ -166,6 +183,64 @@ export default function Index() {
 
                 {/* Industry Carousel */}
                 <IndustryCarousel />
+
+                {/* Benefits Section - Overlapping Cards Reference Layout */}
+                <section className="w-full flex flex-col items-center justify-center py-16 px-4 font-raleway relative">
+                  <h2 className="text-4xl font-normal text-[#232B50] text-center mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Your Benefits with Moon Navigation and Trading Co.</h2>
+                  <h3 className="text-2xl font-light text-[#232B50] text-center mb-12" style={{fontFamily: 'Raleway, sans-serif'}}>Simplified Solutions and Seamless Support</h3>
+                  <div className="w-full max-w-7xl mx-auto min-h-[700px] relative" style={{height: '700px'}}>
+                    {/* Top Row */}
+                    {/* Card 1: Integrated Maritime Expertise */}
+                    <div className="absolute left-0 top-0 w-[28%] h-[46%] bg-white rounded-[32px] border border-gray-200 shadow-sm p-8 flex flex-col justify-between z-10">
+                      <h4 className="text-lg font-semibold text-[#232B50] mb-3">Integrated Maritime Expertise</h4>
+                      <p className="text-gray-500 text-base">At Moon Navigation and Trading Co., we do not just provide services—we offer complete maritime solutions tailored to your needs. From vessel chartering and container logistics to inland and air freight, our expertise ensures every aspect of your operation is covered. Trust us to deliver reliable, end-to-end support for all your shipping and trading challenges.</p>
+                    </div>
+                    {/* Card 2: Customized Solutions for Long-Term Partners (with image) */}
+                    <div className="absolute left-[25%] top-[-3%] w-[28%] h-[46%] bg-white rounded-[32px] border border-gray-200 shadow-sm flex flex-col justify-start z-20 overflow-hidden">
+                      <div className="w-full h-[44%] bg-gray-200 flex items-center justify-center">
+                        {/* Replace src with your image link */}
+                        <img src="/placeholder1.jpg" alt="Custom Solutions" className="w-full h-full object-cover rounded-t-[32px]" />
+                      </div>
+                      <div className="p-8 pt-4">
+                        <h4 className="text-lg font-semibold text-[#232B50] mb-3">Customized Solutions for Long-Term Partners</h4>
+                        <p className="text-gray-500 text-base">We value partnerships over transactions. That is why we work closely with our clients to understand their unique requirements. With loyalty incentives, bespoke service packages, and strategic planning, we ensure that your business benefits from cost savings and operational efficiency at every step.</p>
+                      </div>
+                    </div>
+                    {/* Card 3: Fast, Reliable, and Accurate Quotations */}
+                    <div className="absolute left-[50%] top-0 w-[25%] h-[46%] bg-white rounded-[32px] border border-gray-200 shadow-sm p-8 flex flex-col justify-between z-10">
+                      <h4 className="text-lg font-semibold text-[#232B50] mb-3">Fast, Reliable, and Accurate Quotations</h4>
+                      <p className="text-gray-500 text-base">Moon Navigation and Trading Co. is committed to delivering clarity and precision in every transaction. With a straightforward quotation process, we provide detailed, accurate, and competitive pricing tailored to your specific needs. Whether you are planning long-term investments or seeking immediate shipping solutions, we have got you covered—anytime, day or night, with our 24/7 availability to assist you.</p>
+                    </div>
+                    {/* Card 4: Operational Excellence for Your Fleet (with image) */}
+                    <div className="absolute left-[73%] top-[-3%] w-[27%] h-[46%] bg-white rounded-[32px] border border-gray-200 shadow-sm flex flex-col justify-start z-20 overflow-hidden">
+                      <div className="w-full h-[44%] bg-gray-200 flex items-center justify-center">
+                        {/* Replace src with your image link */}
+                        <img src="/placeholder2.jpg" alt="Fleet Excellence" className="w-full h-full object-cover rounded-t-[32px]" />
+                      </div>
+                      <div className="p-8 pt-4">
+                        <h4 className="text-lg font-semibold text-[#232B50] mb-3">Operational Excellence for Your Fleet</h4>
+                        <p className="text-gray-500 text-base">Our team specializes in seamless ship agency and operational management. From crew onboarding/offboarding and transit spare parts to bunkering and ship chandlery, we provide efficient services to keep your fleet running smoothly. With expertise across Egyptian ports and beyond, we guarantee reliability and on-time delivery.</p>
+                      </div>
+                    </div>
+                    {/* Bottom Row */}
+                    {/* Card 5: Global Logistics Made Simple */}
+                    <div className="absolute left-0 top-[50%] w-[38%] h-[38%] bg-white rounded-[32px] border border-gray-200 shadow-sm p-8 flex flex-col justify-between z-10">
+                      <h4 className="text-lg font-semibold text-[#232B50] mb-3">Global Logistics Made Simple</h4>
+                      <p className="text-gray-500 text-base">Handling global trade requires a partner you can trust. We offer comprehensive support for international trading, ship management, customs clearance, and cargo handling. With Moon Navigation and Trading Co., you will experience streamlined logistics, reduced downtime, and personalized attention to every shipment.</p>
+                    </div>
+                    {/* Card 6: Partner with Us Today (with image) */}
+                    <div className="absolute left-[38%] top-[60%] w-[38%] h-[38%] bg-white rounded-[32px] border border-gray-200 shadow-sm flex flex-col justify-start z-20 overflow-hidden">
+                      <div className="w-full h-[44%] bg-gray-200 flex items-center justify-center">
+                        {/* Replace src with your image link */}
+                        <img src="/placeholder3.jpg" alt="Team" className="w-full h-full object-cover rounded-t-[32px]" />
+                      </div>
+                      <div className="p-8 pt-4">
+                        <h4 className="text-lg font-semibold text-[#232B50] mb-3">Partner with Us Today</h4>
+                        <p className="text-gray-500 text-base">At Moon Navigation and Trading Co., we believe in building relationships that last. Let's work together to create solutions that meet your needs and exceed your expectations. <a href="#" className="text-blue-600 underline">Schedule a meeting</a> with us today to see how we can help you navigate your maritime operations more efficiently.</p>
+                      </div>
+                    </div>
+                  </div>
+                </section>
 
                 {/* Our Partners section */}
                 <section id="partners" className="scroll-mt-[100px]">
