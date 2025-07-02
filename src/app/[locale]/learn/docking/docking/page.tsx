@@ -22,16 +22,19 @@ export default function DockingPage() {
                         We tailor our docking solutions to meet the needs of each vessel, ensuring smooth operations from arrival to departure.
                     </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+                </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-7xl">
                         {/* Image */}
                         <div className="flex justify-center">
-                            <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2">
+                            <div className="rounded-xl overflow-hidden p-2 w-full max-w-[400px] mx-auto mb-6">
                                 <Image
-                                    src="/images/docking-berthing.jpg"
+                                    src="/lm-docking-1.jpg"
                                     alt="Docking and berthing of ships at port"
                                     width={400}
                                     height={250}
-                                    className="object-cover rounded-lg"
+                                    className="object-cover rounded-xl w-full h-[250px]"
                                 />
                             </div>
                         </div>
@@ -51,57 +54,57 @@ export default function DockingPage() {
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-            {/* Dry Docking & Wet Docking Section */}
-            <div className="w-full py-16 bg-secondary">
+            {/* Dry Docking & Wet Docking Section - Styled to Match Slide */}
+            <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                         {/* Dry Docking */}
-                        <div className="flex flex-col gap-6">
-                            <h2 className="text-2xl  text-foreground">
-                                2. Dry Docking (Scheduled Repairs &amp; Overhauls)
+                        <div>
+                            <h2 className="text-[1.5rem] md:text-[1.5rem] font-normal text-[#222] mb-2">
+                                2. Dry Docking (Scheduled<br className="hidden md:block" /> Repairs &amp; Overhauls)
                             </h2>
-                            <p className="text-muted-foreground">
-                                We coordinate industry dry docking operations for vessels requiring scheduled inspection, structural maintenance, or major repairs.
+                            <p className="text-[.95rem] text-[#444] mb-2 leading-snug">
+                                We coordinate full scale dry docking operations for vessels requiring scheduled inspection, structural maintenance, or major repairs.<br />
+                                <span className="font-semibold">Our Services Include:</span>
                             </p>
-                            <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-7xl">
-                                <Image
-                                    src="/images/dry-docking-1.jpg"
-                                    alt="Dry docking of ship for repairs"
-                                    width={400}
-                                    height={250}
-                                    className="object-cover rounded-lg"
-                                />
-                            </div>
-                            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                            <ul className="list-disc pl-5 text-[.95rem] text-[#444] mb-6 space-y-1">
                                 <li>Hull inspections, steel renewal, and surface treatment</li>
                                 <li>Propeller and rudder repairs</li>
                                 <li>Ballast tank maintenance and refitting supervision</li>
                                 <li>Class survey preparation and technical supervision</li>
                                 <li>Close collaboration with certified dry dock facilities</li>
                             </ul>
+                            <div className="relative w-full max-w-[400px] mx-auto mb-6 rounded-xl overflow-hidden p-2">
+                                <Image
+                                    src="/lm-docking-2.jpg"
+                                    alt="Dry docking of ship for repairs"
+                                    width={400}
+                                    height={250}
+                                    className="object-cover rounded-xl w-full h-[250px]"
+                                />
+                            </div>
                         </div>
                         {/* Wet Docking */}
-                        <div className="flex flex-col gap-6">
-                            <h2 className="text-2xl  text-foreground">
-                                3. Wet Docking (Afloat Repairs &amp; Onboard Servicing)
-                            </h2>
-                            <p className="text-muted-foreground">
-                                For vessels that do not require full dry docking, we offer wet docking (afloat repairs) to reduce operational disruption and cost. Our services include:
-                            </p>
-                            <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-7xl">
+                        <div>
+                            <div className="relative w-full max-w-[400px] mx-auto mb-6 rounded-xl overflow-hidden p-2">
                                 <Image
-                                    src="/images/wet-docking-1.jpg"
+                                    src="/lm-docking-3.jpg"
                                     alt="Wet docking and afloat repairs"
                                     width={400}
                                     height={250}
-                                    className="object-cover rounded-lg"
+                                    className="object-cover rounded-xl w-full h-[250px]"
                                 />
                             </div>
-                            <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
+                            <h2 className="text-[1.5rem] md:text-[1.5rem] font-normal text-[#222] mb-2">
+                                3. Wet Docking (Afloat<br className="hidden md:block" /> Repairs &amp; Onboard Servicing)
+                            </h2>
+                            <p className="text-[.95rem] text-[#444] mb-2 leading-snug">
+                                For vessels that don&#39;t require full dry docking, we offer wet docking (afloat repairs) to reduce operational disruption and cost.<br />
+                                <span className="font-semibold">Our Services Include:</span>
+                            </p>
+                            <ul className="list-disc pl-5 text-[.95rem] text-[#444] space-y-1">
                                 <li>Onboard mechanical and electrical system repairs</li>
-                                <li>Hull cleaning and underwater antifouling</li>
+                                <li>Hull cleaning, painting, and coating without dry docking</li>
                                 <li>Tank cleaning, painting, and coating without dry docking</li>
                                 <li>Supply of spares, tools, and consumables directly onboard</li>
                             </ul>
@@ -110,7 +113,7 @@ export default function DockingPage() {
                 </div>
             </div>
             {/* Anchorage Services (Offshore Support & Repairs) */}
-            <div className="flex flex-col md:flex-row gap-12 items-center my-16">
+            <div className="flex flex-col md:flex-row gap-12 items-center">
                 <div className="flex-1 flex flex-col gap-4">
                     <h2 className="text-2xl  text-foreground">
                         4. Anchorage Services <span className="font-normal text-lg">(Offshore Support &amp; Repairs)</span>
@@ -126,13 +129,13 @@ export default function DockingPage() {
                     </ul>
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-7xl">
+                    <div className="rounded-xl overflow-hidden p-2 w-full max-w-[400px] mx-auto mb-6">
                         <Image
-                            src="/images/anchorage-services.jpg"
+                            src="/lm-docking-4.jpg"
                             alt="Anchorage support and offshore repairs"
                             width={400}
                             height={250}
-                            className="object-cover rounded-lg"
+                            className="object-cover rounded-xl w-full h-[250px]"
                         />
                     </div>
                 </div>
@@ -155,13 +158,13 @@ export default function DockingPage() {
                     </ul>
                 </div>
                 <div className="flex-1 flex justify-center">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 w-full max-w-7xl">
+                    <div className="rounded-xl overflow-hidden p-2 w-full max-w-[400px] mx-auto mb-6">
                         <Image
-                            src="/images/emergency-docking-salvage.jpg"
+                            src="/lm-docking-5.jpg"
                             alt="Emergency docking and salvage operations"
                             width={400}
                             height={250}
-                            className="object-cover rounded-lg"
+                            className="object-cover rounded-xl w-full h-[250px]"
                         />
                     </div>
                 </div>

@@ -7,14 +7,14 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function MaintenancePage() {
     return (
-        <main className="flex flex-col items-center w-full px-4 py-12 bg-background">
+        <main className="flex flex-col items-center w-full px-4 py-12 bg-background max-w-7xl mx-auto">
             {/* Our Maintenance Services Header */}
             <section className="w-full max-w-7xl mb-12">
                 <h1 className="text-2xl md:text-3xl  text-[#3b5c8c] mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Our Maintenance Services
                 </h1>
                 <p className="text-muted-foreground max-w-7xl text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                    At Moon Navigation and Trading Co., we deliver dependable vessel maintenance services to ensure ships operate at peak performance while maintaining full compliance with international safety and environmental standards. From preventive care to urgent repairs, our expert teams provide comprehensive support tailored to your vessel’s operational requirements.<br /><br />
+                    At Moon Navigation and Trading Co., we deliver dependable vessel maintenance services to ensure ships operate at peak performance while maintaining full compliance with international safety and environmental standards. From preventive care to urgent repairs, our expert teams provide comprehensive support tailored to your vessel's operational requirements.<br /><br />
                     We combine technical expertise with efficient service execution to minimize downtime and enhance vessel reliability.
                 </p>
             </section>
@@ -23,9 +23,9 @@ export default function MaintenancePage() {
             <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center md:justify-start">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
+                    <div className="rounded-xl overflow-hidden   -  p-2 max-w-7xl">
                         <Image
-                            src="/images/hull-maintenance.jpg"
+                            src="/m-1.jpg"
                             alt="Hull maintenance on vessel"
                             width={320}
                             height={200}
@@ -70,9 +70,9 @@ export default function MaintenancePage() {
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-center md:justify-end order-1 md:order-2">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
+                    <div className="rounded-xl overflow-hidden   -  p-2 max-w-7xl">
                         <Image
-                            src="/images/engine-repair.jpg"
+                            src="/m-2.jpg"
                             alt="Engine and mechanical repairs"
                             width={320}
                             height={200}
@@ -86,9 +86,9 @@ export default function MaintenancePage() {
             <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center md:justify-start">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
+                    <div className="rounded-xl overflow-hidden   -  p-2 max-w-7xl">
                         <Image
-                            src="/images/electrical-automation.jpg"
+                            src="/m-3.jpg"
                             alt="Electrical and automation services"
                             width={320}
                             height={200}
@@ -102,7 +102,7 @@ export default function MaintenancePage() {
                         3. Electrical &amp; Automation Services
                     </h2>
                     <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        We maintain and troubleshoot your vessel’s electrical and automation infrastructure for safe and efficient operation. Our services include:
+                        We maintain and troubleshoot your vessel's electrical and automation infrastructure for safe and efficient operation. Our services include:
                     </p>
                     <ul className="list-disc pl-6 space-y-1 text-muted-foreground text-sm md:text-base">
                         <li>Generator and distribution board servicing</li>
@@ -134,9 +134,9 @@ export default function MaintenancePage() {
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-center md:justify-end order-1 md:order-2">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
+                    <div className="rounded-xl overflow-hidden   -  p-2 max-w-7xl">
                         <Image
-                            src="/images/bunkering-fuel.jpg"
+                            src="/m-4.jpg"
                             alt="Bunkering and fuel system maintenance"
                             width={320}
                             height={200}
@@ -150,9 +150,9 @@ export default function MaintenancePage() {
             <section className="w-full max-w-7xl flex flex-col md:flex-row items-center gap-10 mt-16">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center md:justify-start">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
+                    <div className="rounded-xl overflow-hidden   -  p-2 max-w-7xl">
                         <Image
-                            src="/images/waste-management.jpg"
+                            src="/m-5.jpg"
                             alt="Waste management and environmental compliance"
                             width={320}
                             height={200}
@@ -200,9 +200,9 @@ export default function MaintenancePage() {
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-center md:justify-end">
-                    <div className="rounded-xl overflow-hidden shadow-lg border border-border bg-white p-2 max-w-7xl">
+                    <div className="rounded-xl overflow-hidden   -  p-2 max-w-7xl">
                         <Image
-                            src="/images/safety-equipment-servicing.jpg"
+                            src="/m-6.jpg"
                             alt="Safety equipment servicing on vessel"
                             width={320}
                             height={200}

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import RequestQuoteButton from "@/components/RequestQuoteButton";   
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function DockingAndMaintenance() {
     return (
@@ -12,7 +13,7 @@ export default function DockingAndMaintenance() {
                     {/* Hero Image */}
                     <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mb-10">
                         <img
-                            src="/docking-hero.jpg"
+                            src="/docking-1.jpg"
                             alt="Docking and Maintenance - Ship at dock with workers"
                             className="object-cover w-full h-full"
                             style={{ objectPosition: "center" }}
@@ -86,7 +87,7 @@ export default function DockingAndMaintenance() {
                         <div className="relative rounded-2xl overflow-hidden shadow-lg" style={{ background: "#2D3A7B", padding: "24px" }}>
                             <div className="relative w-[340px] h-[200px] md:w-[400px] md:h-[240px] rounded-xl overflow-hidden bg-background">
                                 <img
-                                    src="/images/docking-services-ship.jpg"
+                                    src="/docking-2.jpg" 
                                     alt="Docked ship with cranes and workers"
                                     className="object-cover w-full h-full"
                                     style={{ borderRadius: "12px" }}
@@ -104,7 +105,7 @@ export default function DockingAndMaintenance() {
                         <div className="relative rounded-2xl overflow-hidden shadow-lg" style={{ background: "#3B4B8A", padding: "18px" }}>
                             <div className="relative w-[320px] h-[180px] md:w-[400px] md:h-[220px] rounded-xl overflow-hidden bg-background">
                                 <img
-                                    src="/images/docking-services-ship.jpg"
+                                    src="/docking-3.jpg"
                                     alt="Docked ship with cranes and workers"
                                     className="object-cover w-full h-full"
                                     style={{ borderRadius: "12px" }}
@@ -192,7 +193,7 @@ export default function DockingAndMaintenance() {
                         <div className="relative w-full max-w-7xl">
                             <div className="absolute top-4 left-0 w-full h-full bg-primary rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
                             <img
-                                src="/images/maintenance-crew.jpg"
+                                src="/docking-4.jpg"
                                 alt="Maintenance crew working on vessel"
                                 className="rounded-lg w-full object-cover"
                                 style={{ minHeight: "250px", maxHeight: "340px" }}
@@ -250,7 +251,7 @@ export default function DockingAndMaintenance() {
                         <div className="relative w-full max-w-7xl">
                             <div className="absolute top-4 left-0 w-full h-full bg-primary rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
                             <img
-                                src="/images/maintenance-workers-tablet.jpg"
+                                    src="/docking-5.jpg"
                                 alt="Two maintenance workers discussing with a tablet"
                                 className="rounded-lg w-full object-cover"
                                 style={{ minHeight: "250px", maxHeight: "340px" }}
@@ -259,36 +260,7 @@ export default function DockingAndMaintenance() {
                     </div>
                 </div>
             </div>
-            <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-                {/* Left: Text Content */}
-                <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Get your Quote with Us
-                    </h2>
-                    <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-                        Our Docking and Maintenance quotation process is designed for your convenience. At
-                        Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
-                        Quotation by Request system. Simply fill out our short form to initiate your request. Once
-                        submitted, our team promptly reviews the information and selects the best consolidation
-                        options. You will receive a customized quotation directly in your email, ensuring accurate
-                        pricing
-                    </p>
-                    <Link href="/ship-maintenance-forms">
-                        <RequestQuoteButton>
-                            Request a Quote
-                        </RequestQuoteButton>
-                    </Link>
-                </div>
-                {/* Right: Image */}
-                <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                    <img
-                        src="/quote-illustration.png"
-                        alt="Quotation illustration"
-                        className="w-[320px] h-auto object-contain"
-                        style={{ maxWidth: 380 }}
-                    />
-                </div>
-            </section>
+            <GetQuoteComponent topic="Docking and Maintenance" link="/ship-maintenance-forms" />
         </main>
     )
 }

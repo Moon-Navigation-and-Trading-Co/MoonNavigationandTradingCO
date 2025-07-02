@@ -120,13 +120,20 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 },
             ],
         },
+        
         logistics: {
             title: "Logistics and Support Services",
             description: "End-to-end services to facilitate smooth operations and cargo handling",
             items: [
-                { name: "International Trading", href: "/learn/international-trading" },
                 { name: "Ship Management", href: "/learn/ship-management" },
                 { name: "Docking and Maintenance", href: "/learn/docking" },
+
+            ],
+        },
+        OtherServices:{
+            title: "Other Logistics Services",
+            description: "Seamless coordination for custom clearance and handling",
+            items: [
                 {
                     name: "Handling, Stevedoring, and Storage Services",
                     href: "/learn/stevedoring-container",
@@ -134,6 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 { name: "Customs Clearance Services", href: "/learn/customs-clearance" },
             ],
         },
+        
         fleet: {
             title: "Expand Your Fleet and Capacity",
             description: "Flexible options to support and scale your operations",
@@ -150,13 +158,21 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 },
             ],
         },
-        AllServices: {
-            title: "Extras",
-            description: "",
+        TradeSolutions:{
+            title: "Trade Solutions",
+            description: "Streamlined solutions for efficient international trade execution",
             items: [
-                { name: "All Services", href: "/all-services" },
+                { name: "International Trading", href: "/learn/international-trading" }
             ],
         },
+
+        investment:{
+            title: "Investment",
+            description:"",
+            items:[
+                {name:"Investor Form", href:"/investor-form"}
+            ]
+        }
     };
 
     // Example navItems used in desktop and mobile
@@ -331,8 +347,17 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         </Button>
                     </div>
                     {!user && (
-                        <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-2 font-medium text-sm transition-colors">
-                            <Link href={"/sign-in"}>SIGN IN</Link>
+                        <Button
+                            className="bg-[#F3F5F9] text-[#23294d] border border-[#E0E3EB] hover:bg-[#e0e3eb] hover:border-[#c5c9d6] rounded-full px-4 py-1.5 font-bold text-sm shadow-none transition-colors"
+                            style={{ boxShadow: "none", minWidth: 0, height: "34px" }}
+                        >
+                            <Link
+                                href={"/sign-in"}
+                                className="w-full h-full flex items-center justify-center"
+                                style={{ fontWeight: 700, letterSpacing: 0.5 }}
+                            >
+                                SIGN IN
+                            </Link>
                         </Button>
                     )}
                     {user && <SignOutButton />}
