@@ -211,7 +211,7 @@ export default function DryContainerPage() {
           <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
             <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
             <Image
-              src="/container-cargo-handling.jpg"
+              src="/dry-1.jpg"
               alt="End-to-End Cargo Handling"
               fill
               className="object-cover rounded-2xl z-10"
@@ -257,7 +257,7 @@ export default function DryContainerPage() {
           <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
             <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
             <Image
-              src="/container-stuffing-cargo-securing.jpg"
+              src="/dry-2.jpg"
               alt="Container Stuffing & Cargo Securing"
               fill
               className="object-cover rounded-2xl z-10"
@@ -272,7 +272,7 @@ export default function DryContainerPage() {
           <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#23316d] flex items-center justify-center">
             <div className="absolute inset-0 z-0 bg-[#23316d]" />
             <Image
-              src="/customs-documentation-clearance.jpg"
+              src="/dry-3.jpg"
               alt="Customs Documentation & Clearance"
               fill
               className="object-cover rounded-2xl z-10"
@@ -319,7 +319,7 @@ export default function DryContainerPage() {
           <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
             <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
             <Image
-              src="/port-inland-transport.jpg"
+              src="/dry-4.jpg"
               alt="Port & Inland Transport Coordination"
               fill
               className="object-cover rounded-2xl z-10"
@@ -334,7 +334,7 @@ export default function DryContainerPage() {
           <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
             <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
             <Image
-              src="/cargo-inspection.jpg"
+              src="/dry-5.jpg"
               alt="Cargo Inspection & Container Condition Checks"
               fill
               className="object-cover rounded-2xl z-10"
@@ -383,7 +383,7 @@ export default function DryContainerPage() {
           <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
             <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
             <Image
-              src="/value-added-solutions.jpg"
+              src="/dry-6.jpg"
               alt="Value Added Solutions Team"
               fill
               className="object-cover rounded-2xl z-10"
