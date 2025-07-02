@@ -16,7 +16,7 @@ export default function ShippingMethodsInfo() {
     {/* Top full-width image */}
     <div className="w-full">
       <img
-        src="/images/crew-signon-hero.jpg"
+        src="/crew-1.jpg"
         alt="Ship agent assisting crew member with paperwork"
         className="w-full h-[220px] md:h-[320px] object-cover rounded-[40px] md:rounded-[48px] mt-2"
         style={{ width: "100%", objectFit: "cover" }}
@@ -89,7 +89,7 @@ compliance with maritime regulations and local port requirements.
     {/* Right: Image */}
     <div className="flex justify-center">
       <img
-        src="/images/crew-onboarding.jpg"
+        src="/crew-2.jpg"
         alt="Ship agent assisting crew member with onboarding paperwork"
         className="rounded-2xl shadow-md object-cover w-[350px] h-[220px]"
         style={{ maxWidth: "100%", height: "auto" }}
@@ -100,7 +100,7 @@ compliance with maritime regulations and local port requirements.
     {/* Left: Image */}
     <div className="flex justify-center order-1 md:order-1">
       <img
-        src="/images/crew-signoff.jpg"
+        src="/crew-3.jpg"
         alt="Ship agent reviewing crew member documents for sign-off"
         className="rounded-2xl shadow-md object-cover w-[350px] h-[220px]"
         style={{ maxWidth: "100%", height: "auto" }}

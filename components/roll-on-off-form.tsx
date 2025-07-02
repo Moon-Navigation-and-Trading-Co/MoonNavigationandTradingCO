@@ -17,11 +17,12 @@ import { Textarea } from './ui/textarea';
 
 interface RollOnOffFormProps {
     onSubmit: (data: any) => void;
-    dangerous_bool?: boolean | null; // Optional prop that can be boolean or null
+    dangerous_bool?: boolean | null;
+    breakbulk_bool?: boolean | null; // Optional prop that can be boolean or null
 }
 
 // 1. Define a type-safe form handler using z.infer
-const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool = false }) => {
+const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool = false, breakbulk_bool = false }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
 

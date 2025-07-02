@@ -12,7 +12,7 @@ export default function SuezPage() {
       {/* Top full-width image */}
       <div className="w-full">
         <Image
-          src="/images/suez-canal-hero.jpg"
+          src="/suez-1.jpg"
           alt="Container ship transiting Suez Canal"
           width={1920}
           height={600}
@@ -76,10 +76,10 @@ while we ensure a hassle-free canal passage.
         {/* Right: Image */}
         <div className="flex justify-center">
           <Image
-            src="/images/suez-pretransit.jpg"
+            src="/suez-2.jpg"
             alt="Ship agent preparing Suez Canal paperwork"
-            width={350}
-            height={200}
+            width={500}
+            height={500}
             className="rounded-xl shadow-md object-cover"
             style={{ maxWidth: "100%", height: "auto" }}
           />
@@ -90,10 +90,10 @@ while we ensure a hassle-free canal passage.
       {/* Left: Image */}
       <div className="flex justify-center order-2 md:order-1">
         <Image
-          src="/images/suez-ontransit.jpg"
+          src="/suez-3.jpg"
           alt="Ship transiting Suez Canal at sunrise with agent observing"
-          width={350}
-          height={200}
+          width={500}
+          height={500}
           className="rounded-xl shadow-md object-cover"
           style={{ maxWidth: "100%", height: "auto" }}
         />
@@ -132,10 +132,10 @@ while we ensure a hassle-free canal passage.
         <div className="relative">
           <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-[90%] h-[90%] bg-[#2a3a8c] rounded-xl -z-10" />
           <Image
-            src="/images/suez-postpassage.jpg"
+            src="/suez-4.jpg"
             alt="Port agent with clipboard at dock after Suez Canal transit"
-            width={350}
-            height={200}
+            width={500}
+            height={500}
             className="rounded-xl shadow-md object-cover"
             style={{ maxWidth: "100%", height: "auto" }}
           />
@@ -178,10 +178,10 @@ while we ensure a hassle-free canal passage.
       {/* Right: Image */}
       <div className="flex justify-center">
         <Image
-          src="/images/suez-agency-services.jpg"
+          src="/suez-5.jpg"
           alt="Ship agents at Suez Canal port"
-          width={350}
-          height={220}
+          width={600}
+          height={600}
           className="rounded-xl shadow-md object-cover"
           style={{ maxWidth: "100%", height: "auto" }}
         />
@@ -231,4 +231,3 @@ while we ensure a hassle-free canal passage.
     </div>
   );
 }
-

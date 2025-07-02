@@ -33,7 +33,7 @@ export default function PDABreakdownPage() {
         </div>
         <div className="flex justify-center">
           <Image
-            src="/images/pda-breakdown-port-terminal.jpg"
+            src="/b-pda-1.jpg"
             alt="Port terminal with ship and worker"
             width={350}
             height={200}
@@ -45,7 +45,7 @@ export default function PDABreakdownPage() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
       <div className="flex justify-center order-2 md:order-1">
         <Image
-          src="/images/pda-breakdown-pilotage-towage.jpg"
+          src="/b-pda-2.jpg"
           alt="Harbor pilot observing ship arrival"
           width={350}
           height={200}
@@ -94,7 +94,7 @@ export default function PDABreakdownPage() {
       </div>
       <div className="flex justify-center order-2 md:order-2">
         <Image
-          src="/images/pda-breakdown-customs-immigration.jpg"
+          src="/b-pda-3.jpg"
           alt="Customs officer inspecting shipping documents at port"
           width={350}
           height={200}
@@ -106,7 +106,7 @@ export default function PDABreakdownPage() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
       <div className="flex justify-center order-1 md:order-1">
         <Image
-          src="/images/pda-breakdown-cargo-handling.jpg"
+          src="/b-pda-4.jpg"
           alt="Container being loaded and unloaded at port"
           width={350}
           height={200}
@@ -158,7 +158,7 @@ export default function PDABreakdownPage() {
       </div>
       <div className="flex justify-center order-2 md:order-2">
         <Image
-          src="/images/pda-breakdown-bunker-provisions.jpg"
+          src="/b-pda-5.jpg"
           alt="Truck delivering fresh water and crane loading provisions onto ship"
           width={350}
           height={200}
@@ -170,7 +170,7 @@ export default function PDABreakdownPage() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
       <div className="flex justify-center order-1 md:order-1">
         <Image
-          src="/images/pda-breakdown-waste-disposal.jpg"
+          src="/b-pda-6.jpg"
           alt="Port worker managing waste disposal on ship"
           width={350}
           height={200}
@@ -219,7 +219,7 @@ export default function PDABreakdownPage() {
       </div>
       <div className="flex justify-center order-2 md:order-2">
         <Image
-          src="/images/pda-breakdown-security-emergency.jpg"
+          src="/b-pda-7.jpg"
           alt="Port security officers monitoring ship arrivals"
           width={350}
           height={200}
@@ -231,7 +231,7 @@ export default function PDABreakdownPage() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
       <div className="flex justify-center order-2 md:order-1">
         <Image
-          src="/images/pda-breakdown-agency-fees.jpg"
+          src="/b-pda-8.jpg"
           alt="Ship agent at desk with port in background"
           width={350}
           height={200}

@@ -2,14 +2,15 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
+import GetQuoteComponent from "@/components/getQuoteComponent";
 
 export default function ShipManagement() {
 
     return (
     <div className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
-      <div className="w-full rounded-t-3xl overflow-hidden">
+      <div className="w-full rounded-3xl overflow-hidden">
         <img
-          src="/ship-management-hero.jpg"
+          src="/sm-1.jpg"
           alt="Ship management at port"
           className="w-full h-[200px] md:h-[300px] object-cover"
           style={{ borderTopLeftRadius: "1.5rem", borderTopRightRadius: "1.5rem" }}
@@ -42,7 +43,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/ship-management-technical.jpg"
+              src="/sm-2.jpg"
               alt="Technical management team reviewing ship operations"
               className="w-full h-[220px] object-cover"
             />
@@ -113,7 +114,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/crew-management.jpg"
+              src="/sm-3.jpg"
               alt="Two crew members in uniform smiling on deck"
               className="w-full h-[220px] object-cover"
             />
@@ -126,7 +127,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/operational-management.jpg"
+              src="/sm-4.jpg"
               alt="Ship operational management team at port"
               className="w-full h-[220px] object-cover"
             />
@@ -190,7 +191,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/procurement-supply-chain.jpg"
+              src="/sm-5.jpg"
               alt="Warehouse worker in high-visibility vest standing in aisle of stocked shelves"
               className="w-full h-[220px] object-cover"
             />
@@ -202,7 +203,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/maintenance-condition-monitoring.jpg"
+              src="/sm-6.jpg"
               alt="Engineers monitoring vessel maintenance and condition data on digital screens"
               className="w-full h-[220px] object-cover"
             />
@@ -243,7 +244,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/safety-quality-management.jpg"
+              src="/sm-7.jpg"
               alt="Engineer in safety gear inspecting control panels for quality management"
               className="w-full h-[220px] object-cover"
             />
@@ -307,7 +308,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/fuel-provision-management.jpg"
+              src="/sm-8.jpg"
               alt="Engineer in safety gear managing fuel and provisions on a ship"
               className="w-full h-[220px] object-cover"
             />
@@ -319,7 +320,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/regulatory-compliance-certification.jpg"
+              src="/sm-9.jpg"
               alt="Ship management professionals reviewing compliance documents"
               className="w-full h-[220px] object-cover"
             />
@@ -386,7 +387,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/financial-management-budget-control.jpg"
+              src="/sm-10.jpg"
               alt="Ship management financial expert reviewing budget documents"
               className="w-full h-[220px] object-cover"
             />
@@ -398,7 +399,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/insurance-claims-handling.jpg"
+              src="/sm-11.jpg"
               alt="Insurance and claims handling meeting"
               className="w-full h-[220px] object-cover"
             />
@@ -465,7 +466,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/dry-docking-project-management.jpg"
+              src="/sm-12.jpg"
               alt="Shipyard team planning dry docking project"
               className="w-full h-[220px] object-cover"
             />
@@ -477,7 +478,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/performance-monitoring-reporting.jpg"
+              src="/sm-13.jpg"
               alt="Team analyzing ship performance data on screens"
               className="w-full h-[220px] object-cover"
             />
@@ -532,7 +533,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/images/customized-ship-management.jpg"
+              src="/sm-14.jpg"
               alt="Business meeting for customized ship management solutions with ships in background"
               className="w-full h-[220px] object-cover"
             />
@@ -545,7 +546,7 @@ export default function ShipManagement() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-7xl rounded-2xl overflow-hidden shadow-md">
             <img
-              src="/crisis-emergency-response.jpg"
+              src="/sm-15.jpg"
               alt="Crisis and emergency response control room"
               className="w-full h-[400px] object-cover"
             />
@@ -606,37 +607,7 @@ export default function ShipManagement() {
           </div>
         </div>
       </div>
-      <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-        {/* Left: Text Content */}
-        <div className="flex-1 min-w-[260px]">
-          <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Get your Quote with Us
-          </h2>
-          <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-            Our streamlined LCL freight quotation process is designed for speed and convenience. At
-            Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
-            Quotation by Request system. Simply fill out our short form to initiate your request. Once
-            submitted, our team will assess your shipment's volume, weight, and consolidation options to
-            find the most efficient and cost-effective transport solution. You will receive a customized
-            quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
-            cargo movement.
-          </p>
-          <Link href="/ship-management-forms">
-            <RequestQuoteButton>
-              Request a Quote
-            </RequestQuoteButton>
-          </Link> 
-        </div>
-        {/* Right: Image */}
-        <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-          <img
-            src="/quote-illustration.png"
-            alt="Quotation illustration"
-            className="w-[320px] h-auto object-contain"
-            style={{ maxWidth: 380 }}
-          />
-        </div>
-      </section>
+      <GetQuoteComponent topic="Ship Management" link="/ship-management-forms" />
     </div>
         
     )

@@ -9,7 +9,7 @@ export default function CrewLearnMorePage() {
     >
       <div className="relative w-full max-w-3xl rounded-[40px] overflow-hidden shadow-lg">
         <Image
-          src="/images/crew-compliance-bg.jpg"
+          src="/lm-crew-1.jpg"
           alt="Ship crew in safety gear at port"
           width={900}
           height={420}
@@ -67,7 +67,7 @@ export default function CrewLearnMorePage() {
         {/* Right: Image */}
         <div className="flex-1 flex justify-center">
           <Image
-            src="/images/crew-signon-learnmore.jpg"
+            src="/lm-crew-2.jpg"
             alt="Female ship crew member in safety gear at port"
             width={320}
             height={180}
@@ -81,7 +81,7 @@ export default function CrewLearnMorePage() {
       {/* Left: Image */}
       <div className="flex-1 flex justify-center order-1 md:order-1">
         <Image
-          src="/images/crew-signoff-learnmore.jpg"
+          src="/lm-crew-3.jpg"
           alt="Ship agent assisting crew member with sign-off procedures"
           width={320}
           height={180}
@@ -135,7 +135,7 @@ export default function CrewLearnMorePage() {
       {/* Right: Image */}
       <div className="flex-1 flex justify-center order-2 md:order-2">
         <Image
-          src="/images/crew-emergency-learnmore.jpg"
+          src="/lm-crew-4.jpg"
           alt="Emergency crew change with helicopter and ship crew member"
           width={320}
           height={180}

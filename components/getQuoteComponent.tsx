@@ -35,7 +35,7 @@ export default function GetQuoteComponent({ topic, link = "/ocean-freight-forms"
       </div>
       <div className="flex flex-col md:flex-row items-center justify-between mt-4 px-2 text-base font-sans">
         <span>
-          Need a Reliable {topic} Solution? <Link href="/?scroll=contact" className="font-bold underline">Contact us</Link> today for a customized {topic} plan that ensures the safe, efficient, and cost-effective transport of your oversized, heavy, or complex shipments!
+          Need a Reliable {topic} Solution? <Link href="/?scroll=contact" className="font-bold underline">Contact us</Link> today for a customized {topic} plan that ensures the safe, efficient, and cost-effective shipment transportation and navigation!
         </span>
         <span className="md:text-right w-full md:w-auto">-Whenever and wherever you need to trust.</span>
       </div>

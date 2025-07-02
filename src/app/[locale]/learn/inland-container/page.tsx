@@ -14,7 +14,7 @@ export default function InlandContainerPage() {
       <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
         <div className="relative w-full h-[180px] md:h-[260px]">
           <img
-            src="/inland-container-banner.jpg"
+            src="/inland-1.jpg"
             alt="Moon Navigation and Trading Co. Inland Container Transportation"
             className="object-cover w-full h-full"
             style={{ objectFit: "cover" }}
@@ -88,7 +88,7 @@ export default function InlandContainerPage() {
           {/* Right: Image */}
           <div className="flex justify-center items-start">
             <img
-              src="/inland-container-road-transport.jpg"
+              src="/inland-2.jpg"
               alt="Truck and logistics worker for inland container transport"
               className="rounded-2xl shadow-lg w-full max-w-7xl object-cover"
             />
@@ -100,7 +100,7 @@ export default function InlandContainerPage() {
           {/* Left: Image */}
           <div className="flex justify-center items-start">
             <img
-              src="/inland-container-rail-transport.jpg"
+              src="/inland-3.jpg"
               alt="Rail transport with containers"
               className="rounded-2xl shadow-lg w-full max-w-7xl object-cover"
             />
@@ -158,7 +158,7 @@ export default function InlandContainerPage() {
           {/* Right: Multimodal Transport Image */}
           <div className="flex justify-center items-start">
             <img
-              src="/inland-multimodal-transport.jpg"
+              src="/inland-4.jpg"
               alt="Multimodal transport with ship, plane, truck, and containers"
               className="rounded-2xl shadow-lg w-full max-w-7xl object-cover"
             />
@@ -177,7 +177,7 @@ export default function InlandContainerPage() {
           <div className="flex flex-col items-center">
             <div className="w-32 h-28 rounded-2xl overflow-hidden mb-3 shadow">
               <img
-                src="/container-standard-high-cube.jpg"
+                src="/inland-5.jpg"
                 alt="Standard and high cube containers"
                 className="object-cover w-full h-full"
               />
@@ -191,7 +191,7 @@ export default function InlandContainerPage() {
           <div className="flex flex-col items-center">
             <div className="w-32 h-28 rounded-2xl overflow-hidden mb-3 shadow">
               <img
-                src="/container-reefer.jpg"
+                src="/inland-6.jpg"
                 alt="Reefer and temperature-sensitive cargo"
                 className="object-cover w-full h-full"
               />
@@ -205,7 +205,7 @@ export default function InlandContainerPage() {
           <div className="flex flex-col items-center">
             <div className="w-32 h-28 rounded-2xl overflow-hidden mb-3 shadow">
               <img
-                src="/container-dangerous.jpg"
+                src="/inland-7.jpg"
                 alt="Dangerous goods container"
                 className="object-cover w-full h-full"
               />
@@ -219,7 +219,7 @@ export default function InlandContainerPage() {
           <div className="flex flex-col items-center">
             <div className="w-32 h-28 rounded-2xl overflow-hidden mb-3 shadow">
               <img
-                src="/container-flat-rack.jpg"
+                src="/inland-8.jpg"
                 alt="Flat rack and open-top containers"
                 className="object-cover w-full h-full"
               />

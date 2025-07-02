@@ -19,13 +19,13 @@ export default function LearnMore() {
               Before shipment, our experts assess your cargo's nature, dimensions, and packaging to determine the most efficient container configuration. We help you plan the right load capacity to reduce wasted space and ensure safe transit—whether it's palletized goods, cartons, or oversized units.
             </p>
             <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-cargo-planning.jpg" alt="Cargo Classification and Planning" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
+              <img src="/lm-dry-1.jpg" alt="Cargo Classification and Planning" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
             </div>
           </div>
           {/* Solution 2 */}
           <div>
             <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-space-optimization.jpg" alt="Space Optimization and Container Stuffing Guidance" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
+              <img src="/lm-dry-2.jpg" alt="Space Optimization and Container Stuffing Guidance" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
             </div>
             <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">2. Space Optimization and Container Stuffing Guidance</h3>
             <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
@@ -39,13 +39,13 @@ export default function LearnMore() {
               We offer flexible and reliable container booking options based on your cargo type, destination, transit time, and budget goals. Our global partner network allows us to coordinate the best shipping schedules and routing solutions, ensuring timely departures and arrivals at your desired ports.
             </p>
             <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-booking-routing.jpg" alt="Customized Container Booking and Routing" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
+              <img src="/lm-dry-3.jpg" alt="Customized Container Booking and Routing" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
             </div>
           </div>
           {/* Solution 4 */}
           <div>
             <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-documentation.jpg" alt="Full Documentation and Customs Clearance Support" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
+              <img src="/lm-dry-4.jpg" alt="Full Documentation and Customs Clearance Support" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
             </div>
             <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">4. Full Documentation and Customs Clearance Support</h3>
             <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
@@ -68,13 +68,13 @@ export default function LearnMore() {
               Beyond sea freight, we manage the first-mile and last-mile delivery of your containers. Whether it is trucking from your factory to the port or delivery to your consignee's warehouse, we ensure smooth and timely inland movement of your cargo using our network of reliable local transport partners.
             </p>
             <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-inland-transport.jpg" alt="Inland Transportation Coordination" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
+              <img src="/lm-dry-5.jpg" alt="Inland Transportation Coordination" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
             </div>
           </div>
           {/* Solution 6 */}
           <div>
             <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-cargo-sealing.jpg" alt="Cargo Supervision and Secure Container Sealing" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
+              <img src="/lm-dry-6.jpg" alt="Cargo Supervision and Secure Container Sealing" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
             </div>
             <h3 className="text-xl font-semibold mb-2 text-[#23294d] dark:text-[#e0e7ff]">6. Cargo Supervision and Secure Container Sealing</h3>
             <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
@@ -88,7 +88,7 @@ export default function LearnMore() {
               To support your operations end-to-end, we also arrange for on-site loading/unloading teams at port terminals or final destinations. Whether its forklifts, cranes, or labor assistance, we ensure safe cargo handling, especially for bulky or heavy goods.
             </p>
             <div className="w-full rounded-2xl overflow-hidden mb-4">
-              <img src="/dry-loading-unloading.jpg" alt="Loading/Unloading Assistance at Port or Final Destination" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
+              <img src="/lm-dry-7.jpg" alt="Loading/Unloading Assistance at Port or Final Destination" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
             </div>
           </div>
         </div>
@@ -104,7 +104,7 @@ export default function LearnMore() {
         </div>
         <div className="flex-1">
           <div className="w-full rounded-2xl overflow-hidden">
-            <img src="/dry-supply-chain.jpg" alt="Supporting Your Supply Chain" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
+            <img src="/lm-dry-8.jpg" alt="Supporting Your Supply Chain" className="object-cover w-full h-48 md:h-56 rounded-2xl" />
           </div>
         </div>
       </div>

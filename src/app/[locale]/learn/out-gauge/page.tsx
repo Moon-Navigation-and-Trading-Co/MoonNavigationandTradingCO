@@ -14,7 +14,7 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
         <div className="relative w-full h-[180px] md:h-[260px]">
           <img
-            src="/out-gauge-banner.jpg"
+            src="/oog-1.jpg"
             alt="Out gauge cargo secured on flat rack"
             className="object-cover w-full h-full"
             style={{ objectFit: "cover" }}
@@ -60,7 +60,7 @@ export default function ShippingMethodsInfo() {
           <div className="flex flex-col items-center">
             <div className="w-50 h-40 rounded-[3rem] overflow-hidden mb-3 shadow">
               <img
-                src="/oog-industrial-machinery.jpg"
+                src="/oog-2.jpg"
                 alt="Industrial machinery"
                 className="object-cover w-full h-full"
               />
@@ -74,7 +74,7 @@ export default function ShippingMethodsInfo() {
           <div className="flex flex-col items-center">
             <div className="w-50 h-40 rounded-[3rem] overflow-hidden mb-3 shadow">
               <img
-                src="/oog-construction-equipment.jpg"
+                src="/oog-3.jpg"
                 alt="Construction equipment"
                 className="object-cover w-full h-full"
               />
@@ -88,7 +88,7 @@ export default function ShippingMethodsInfo() {
           <div className="flex flex-col items-center">
             <div className="w-50 h-40 rounded-[3rem] overflow-hidden mb-3 shadow">
               <img
-                src="/oog-project-cargo.jpg"
+                src="/oog-4.jpg"
                 alt="Project cargo"
                 className="object-cover w-full h-full"
               />
@@ -102,7 +102,7 @@ export default function ShippingMethodsInfo() {
           <div className="flex flex-col items-center">
             <div className="w-50 h-40 rounded-[3rem] overflow-hidden mb-3 shadow">
               <img
-                src="/oog-military-aerospace.jpg"
+                src="/oog-5.jpg"
                 alt="Military and aerospace equipment"
                 className="object-cover w-full h-full"
               />
@@ -126,7 +126,7 @@ export default function ShippingMethodsInfo() {
           <div className="flex justify-center">
             <div className="w-full h-40 md:h-56 rounded-[2rem] overflow-hidden shadow-lg flex items-center justify-center relative">
               <img
-                src="/oog-expert-team.jpg"
+                src="/oog-6.jpg"
                 alt="Out-of-gauge cargo experts"
                 className="object-cover w-full h-full"
               />
@@ -207,7 +207,7 @@ export default function ShippingMethodsInfo() {
           <div className="md:col-span-2 flex justify-center">
             <div className="w-full max-w-7xl rounded-2xl overflow-hidden shadow-lg">
               <img
-                src="/outgauge-expert.jpg"
+                src="/oog-7.jpg"
                 alt="Out Gauge Shipping Expert"
                 className="object-cover w-full h-56 md:h-64"
               />
@@ -287,7 +287,7 @@ export default function ShippingMethodsInfo() {
           <div className="relative w-full max-w-7xl rounded-2xl overflow-hidden shadow-lg">
             <div className="absolute inset-x-0 top-6 h-4 bg-primary rounded-lg z-0"></div>
             <img
-              src="/oog-cargo-crane.jpg"
+              src="/oog-8.jpg"
               alt="OOG cargo being loaded by crane"
               className="relative z-10 object-cover w-full h-56 md:h-64 rounded-2xl"
             />

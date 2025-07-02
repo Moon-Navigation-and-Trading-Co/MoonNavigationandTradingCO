@@ -10,11 +10,11 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 export default function ShippingMethodsInfo() {
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0">
+    <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0 w-full max-w-7xl mx-auto">
       {/* Top Banner - Wide Image with Large Rounded Corners */}
       <div className="w-full max-w-[1600px] rounded-[3rem] overflow-hidden mb-12" style={{ marginTop: 0 }}>
         <img
-          src="/oversized-container-banner.jpg"
+          src="/ov-1.jpg"
           alt="Oversized containers at port"
           className="object-cover w-full h-[320px] md:h-[380px] lg:h-[420px]"
           style={{ borderRadius: '3rem', objectFit: 'cover' }}
@@ -72,7 +72,7 @@ export default function ShippingMethodsInfo() {
             </p>
             <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
               <img
-                src="/oversized-cargo-crane.jpg"
+                src="/ov-2.jpg"
                 alt="Crane loading oversized cargo"
                 className="object-cover w-full h-full"
               />
@@ -82,7 +82,7 @@ export default function ShippingMethodsInfo() {
           <div className="flex flex-col">
             <div className="w-full rounded-xl overflow-hidden shadow mb-4 h-64 md:h-72">
               <img
-                src="/oversized-cargo-side-loader.jpg"
+                src="/ov-3.jpg"
                 alt="Side loader handling container"
                 className="object-cover w-full h-full"
               />
@@ -118,7 +118,7 @@ export default function ShippingMethodsInfo() {
           </p>
           <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
             <img
-              src="/oversized-cargo-tarp.jpg"
+              src="/ov-4.jpg"
               alt="Workers securing tarp over oversized cargo"
               className="object-cover w-full h-full"
             />
@@ -128,7 +128,7 @@ export default function ShippingMethodsInfo() {
         <div className="flex flex-col">
           <div className="w-full rounded-xl overflow-hidden shadow mb-4 h-64 md:h-72">
             <img
-              src="/oversized-cargo-workers.jpg"
+              src="/ov-5.jpg"
               alt="Workers planning oversized cargo loading"
               className="object-cover w-full h-full"
             />
@@ -169,7 +169,7 @@ export default function ShippingMethodsInfo() {
           </ul>
           <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
             <img
-              src="/oversized-multimodal.jpg"
+              src="/ov-6.jpg"
               alt="Workers loading oversized cargo onto a truck with a container crane"
               className="object-cover w-full h-full"
             />
@@ -179,7 +179,7 @@ export default function ShippingMethodsInfo() {
         <div className="flex flex-col">
           <div className="w-full rounded-xl overflow-hidden shadow mb-4 h-64 md:h-72">
             <img
-              src="/oversized-handling.jpg"
+              src="/ov-7.jpg"
               alt="Warehouse workers moving oversized cargo with pallet jack"
               className="object-cover w-full h-full"
             />
@@ -310,7 +310,7 @@ export default function ShippingMethodsInfo() {
         {/* Left: Image */}
         <div className="flex-shrink-0 w-full md:w-1/2 flex justify-center">
           <img
-            src="/oversized-container-services-workers.jpg"
+            src="/ov-8.jpg"
             alt="Workers discussing oversized container logistics"
             className="rounded-3xl object-cover w-[320px] h-[180px] md:w-[380px] md:h-[210px] shadow"
             style={{ objectFit: "cover" }}

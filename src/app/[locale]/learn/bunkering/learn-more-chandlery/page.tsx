@@ -25,7 +25,7 @@ export default function LearnMoreChandleryPage() {
           <div className="flex-1 flex items-center justify-center">
             <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/images/chandlery-deck-engine.jpg"
+                src="/lm-chandlery-1.jpg"
                 alt="Deck & Engine Stores"
                 fill
                 style={{ objectFit: "cover" }}
@@ -39,7 +39,7 @@ export default function LearnMoreChandleryPage() {
           <div className="flex-1 flex items-center justify-center mb-6 md:mb-0">
             <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/images/chandlery-provisions.jpg"
+                src="/lm-chandlery-2.jpg"
                 alt="Provisions & Catering Supplies"
                 fill
                 style={{ objectFit: "cover" }}
@@ -79,7 +79,7 @@ export default function LearnMoreChandleryPage() {
           <div className="flex-1 flex items-center justify-center">
             <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/images/chandlery-bonded-store.jpg"
+                src="/lm-chandlery-3.jpg"
                 alt="Bonded Stores & Duty-Free Items"
                 fill
                 style={{ objectFit: "cover" }}
