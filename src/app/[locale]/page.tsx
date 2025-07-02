@@ -173,40 +173,25 @@ export default function Index() {
                 </section>
 
                 {/* Contact Section */}
-                <section id="contact" className="scroll-mt-[100px]">
-                    <div className="grid grid-cols-1 relative md:grid-cols-2 gap-10 px-4 py-10 pb-36">
-                        <div className="flex flex-col justify-between">
+                <section id="contact" className="scroll-mt-[100px] font-sans">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-4 py-10 pb-36">
+                        {/* Left Column: Heading, Description, Address, Meeting Info */}
+                        <div className="flex flex-col justify-between h-full">
                             <div>
-                                <h2 className="text-3xl text-foreground font-semibold">{tttt("contactTitle")}</h2>
-                                <p className="text-muted-foreground pb-5 font-medium mt-10">{tttt("contactDescription")}</p>
+                                <h2 className="text-4xl font-extrabold text-[#232B50] mb-2">Contact Us</h2>
+                                <p className="text-base text-[#232B50] mb-6 max-w-md">We are here to provide expert assistance for all your logistics and trading needs. Get in touch with our team for any inquiries.</p>
+                                <div className="flex items-center gap-2 mb-8">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#232B50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span className="text-[#232B50] text-sm">Port Tawfiq 16a | El-Sawahel St, Suez<br/>Governorate, Egypt</span>
+                                </div>
                             </div>
-
-                            <ul className="flex flex-col gap-2 text-primary/70">
-                                <li className="flex gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-mails">
-                                        <rect width="16" height="13" x="6" y="4" rx="2" />
-                                        <path d="m22 7-7.1 3.78c-.57.3-1.23.3-1.8 0L6 7" />
-                                        <path d="M2 8v11c0 1.1.9 2 2 2h24" />
-                                    </svg>
-                                    {tttt("contactEmail")}
-                                </li>
-                                <li className="flex gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                                    </svg>
-                                    {tttt("contactPhone")}
-                                </li>
-                                <li className="flex gap-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-map-pin">
-                                        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-                                        <circle cx="12" cy="10" r="3" />
-                                    </svg>
-                                    {tttt("contactAddress")}
-                                </li>
-                            </ul>
+                            <div className="mt-12">
+                                <p className="text-[#232B50] text-base mb-6 max-w-md">Alternatively, you can use our online meeting scheduling tool to easily book your preferred time for either a virtual meeting or an in-person meeting with a member of our team. Whether you are looking to discuss partnership opportunities or explore how we can best serve your logistics needs, we are here to help.</p>
+                                <RequestQuoteButton className="w-[220px]" type="button">Schedule a meeting</RequestQuoteButton>
+                            </div>
                         </div>
-
-                        <div className="">
+                        {/* Right Column: Contact Form */}
+                        <div className="w-full">
                             <ContactForm />
                         </div>
                     </div>

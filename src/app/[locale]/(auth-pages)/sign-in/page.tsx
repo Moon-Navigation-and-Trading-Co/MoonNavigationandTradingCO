@@ -1,11 +1,15 @@
+"use client";
 import { signInAction } from "@/src/app/actions";
 import { FormMessage, Message } from "@/components/form-message";
 import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { useState } from "react";
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function Login({ searchParams }: { searchParams: Message }) {
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <div className="min-h-screen w-full flex items-center justify-center font-sans px-4">
       <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center gap-0 md:gap-0">
@@ -28,7 +32,25 @@ export default function Login({ searchParams }: { searchParams: Message }) {
                   FORGOT PASSWORD?
                 </Link>
               </div>
-              <Input type="password" name="password" id="password" placeholder="" required className="rounded-lg h-12 text-base pr-10" />
+              <div className="relative w-full">
+                <Input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  id="password"
+                  placeholder=""
+                  required
+                  className="rounded-lg h-12 text-base pr-10"
+                />
+                <button
+                  type="button"
+                  tabIndex={-1}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#23233C] hover:text-primary focus:outline-none"
+                  onClick={() => setShowPassword((v) => !v)}
+                >
+                  {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                  <span className="sr-only">{showPassword ? "Hide password" : "Show password"}</span>
+                </button>
+              </div>
             </div>
             <SubmitButton pendingText="Signing In..." className="bg-[#232B50] text-white font-bold rounded-lg h-12 text-base w-full mt-2 mb-1">
               Sign In
