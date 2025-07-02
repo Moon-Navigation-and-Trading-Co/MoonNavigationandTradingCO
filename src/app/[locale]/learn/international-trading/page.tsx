@@ -9,11 +9,11 @@ export default function InternationalTrading() {
     const t = useTranslations("learn-international-trading");
 
     return (
-        <main className="flex flex-col items-center w-full">
+        <main className="flex flex-col items-center w-full max-w-7xl mx-auto" style={{fontFamily: "Raleway"}}>
             {/* Hero Section */}
             <div className="w-full">
                 <div className="relative h-[400px] rounded-3xl overflow-hidden mb-12">
-                    <Image src="/images/international-trading-hero.jpg" alt="International Trading Network" fill className="object-cover" priority />
+                    <Image src="/international-1.jpg" alt="International Trading Network" fill className="object-cover" priority />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -45,7 +45,7 @@ export default function InternationalTrading() {
                         <div className="relative">
                             <div className="relative w-full aspect-square rounded-3xl overflow-hidden bg-primary">
                                 <div className="absolute inset-4">
-                                    <Image src="/images/globe-hand.jpg" alt="Global Trade Services" fill className="object-cover rounded-2xl" />
+                                    <Image src="/international-2.jpg" alt="Global Trade Services" fill className="object-cover rounded-2xl" />
                                 </div>
                             </div>
                             <br />
@@ -100,7 +100,7 @@ export default function InternationalTrading() {
                             </div>
                             <div className="order-1 md:order-2">
                                 <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                    <Image src="/images/freight-services.jpg" alt="Freight Services" fill className="object-cover" />
+                                    <Image src="/international-3.jpg" alt="Freight Services" fill className="object-cover" />
                                 </div>
                             </div>
                         </div>
@@ -108,7 +108,7 @@ export default function InternationalTrading() {
                         {/* Expert Customs Clearance */}
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                <Image src="/images/customs-clearance.jpg" alt="Customs Clearance" fill className="object-cover" />
+                                <Image src="/international-4.jpg" alt="Customs Clearance" fill className="object-cover" />
                             </div>
                             <div>
                                 <h3 className="text-xl  mb-4 text-foreground">{t("solutions.customs.title")}</h3>
@@ -124,7 +124,7 @@ export default function InternationalTrading() {
                             </div>
                             <div className="order-1 md:order-2">
                                 <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                    <Image src="/images/global-network.jpg" alt="Global Network" fill className="object-cover" />
+                                    <Image src="/international-5.jpg" alt="Global Network" fill className="object-cover" />
                                 </div>
                             </div>
                         </div>
@@ -132,7 +132,7 @@ export default function InternationalTrading() {
                         {/* Strategic Storage and Warehousing */}
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                <Image src="/images/warehousing.jpg" alt="Strategic Storage and Warehousing" fill className="object-cover" />
+                                <Image src="/international-6.jpg" alt="Strategic Storage and Warehousing" fill className="object-cover" />
                             </div>
                             <div>
                                 <h3 className="text-xl  mb-4 text-foreground">{t("solutions.warehousing.title")}</h3>
@@ -148,7 +148,7 @@ export default function InternationalTrading() {
                             </div>
                             <div className="order-1 md:order-2">
                                 <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                    <Image src="/images/consultancy.jpg" alt="Consultancy Services" fill className="object-cover" />
+                                    <Image src="/international-7.jpg" alt="Consultancy Services" fill className="object-cover" />
                                 </div>
                             </div>
                         </div>
@@ -156,7 +156,7 @@ export default function InternationalTrading() {
                         {/* Safe Handling of Dangerous Cargo */}
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                <Image src="/images/dangerous-cargo.jpg" alt="Safe Handling of Dangerous Cargo" fill className="object-cover" />
+                                <Image src="/international-8.jpg" alt="Safe Handling of Dangerous Cargo" fill className="object-cover" />
                             </div>
                             <div>
                                 <h3 className="text-xl  mb-4 text-foreground">{t("solutions.dangerousCargo.title")}</h3>

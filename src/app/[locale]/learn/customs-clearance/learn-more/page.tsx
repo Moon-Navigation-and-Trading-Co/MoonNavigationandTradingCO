@@ -30,7 +30,7 @@ export default function CustomsClearanceLearnMore() {
           <div className="flex-1 flex justify-center md:justify-end">
             <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
               <Image
-                src="/images/customs-clearance-worker.jpg"
+                src="/lc-1.jpg"
                 alt="Customs clearance worker with shipping containers"
                 width={350}
                 height={200}
@@ -47,7 +47,7 @@ export default function CustomsClearanceLearnMore() {
         <div className="flex-1 flex justify-center md:justify-start">
           <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
             <Image
-              src="/images/duty-tax-optimization.jpg"
+              src="/lc-2.jpg"
               alt="Business person analyzing duty and tax documents"
               width={350}
               height={200}
@@ -94,7 +94,7 @@ export default function CustomsClearanceLearnMore() {
         <div className="flex-1 flex justify-center md:justify-end">
           <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
             <Image
-              src="/images/special-cargo-compliance.jpg"
+              src="/lc-3.jpg"
               alt="Customs officer inspecting special cargo at port"
               width={350}
               height={200}
@@ -111,7 +111,7 @@ export default function CustomsClearanceLearnMore() {
         <div className="flex-1 flex justify-center md:justify-start">
           <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
             <Image
-              src="/images/trade-documentation-brokerage.jpg"
+              src="/lc-4.jpg"
               alt="Customs broker preparing shipping documents at a desk with a port view"
               width={350}
               height={200}
@@ -158,7 +158,7 @@ export default function CustomsClearanceLearnMore() {
         <div className="flex-1 flex justify-center md:justify-end">
           <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
             <Image
-              src="/images/bonded-warehousing-containers.jpg"
+              src="/lc-5.jpg"
               alt="Bonded warehousing with customs officer and shipping containers"
               width={350}
               height={200}
