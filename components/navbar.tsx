@@ -331,8 +331,17 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         </Button>
                     </div>
                     {!user && (
-                        <Button className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-2 font-medium text-sm transition-colors">
-                            <Link href={"/sign-in"}>SIGN IN</Link>
+                        <Button
+                            className="bg-[#F3F5F9] text-[#23294d] border border-[#E0E3EB] hover:bg-[#e0e3eb] hover:border-[#c5c9d6] rounded-full px-4 py-1.5 font-bold text-sm shadow-none transition-colors"
+                            style={{ boxShadow: "none", minWidth: 0, height: "34px" }}
+                        >
+                            <Link
+                                href={"/sign-in"}
+                                className="w-full h-full flex items-center justify-center"
+                                style={{ fontWeight: 700, letterSpacing: 0.5 }}
+                            >
+                                SIGN IN
+                            </Link>
                         </Button>
                     )}
                     {user && <SignOutButton />}
