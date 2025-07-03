@@ -83,7 +83,7 @@ export default async function RootLayout({
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="bg-background text-foreground">
+      <body className="bg-background text-foreground" style={{ fontFamily: "Raleway" }}>
         <ThemeProvider attribute="class" defaultTheme="light">
           <main className="min-h-screen flex flex-col items-center">
             <NextIntlClientProvider messages={messages}>
