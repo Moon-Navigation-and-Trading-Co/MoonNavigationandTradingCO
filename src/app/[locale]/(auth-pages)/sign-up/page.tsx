@@ -25,7 +25,7 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
   }
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-white dark:bg-background">
+    <div className="w-full min-h-screen flex items-center justify-center dark:bg-background" style={{ fontFamily: "Raleway" }}>
       <div className="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center gap-0 md:gap-8 px-2 md:px-8 py-12">
         {/* Left Side: Title and Description */}
         <div className="w-full md:w-1/2 flex flex-col items-start justify-center mb-10 md:mb-0 md:pr-12">
@@ -35,7 +35,7 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
           </p>
         </div>
         {/* Right Side: Form */}
-        <form className="w-full md:w-1/2 max-w-xl bg-white dark:bg-background rounded-none flex flex-col gap-0" action={signUpAction}>
+        <form className="w-full md:w-1/2 max-w-xl dark:bg-background rounded-none flex flex-col gap-0" action={signUpAction}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4">
             <div className="flex flex-col">
               <Label htmlFor="firstname" className="uppercase text-xs font-bold mb-1 tracking-wide">First Name</Label>
@@ -123,7 +123,7 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
           </div>
           <div className="mt-8">
             <SubmitButton
-              className="w-full bg-[#181C32] hover:bg-[#23273e] text-white font-semibold rounded-[5px] h-10 text-sm tracking-wide"
+              className="bg-[#232B50] text-white font-bold rounded-lg h-12 text-base w-full mt-2 mb-1"
               formAction={signUpAction}
               pendingText="Creating account..."
             >
