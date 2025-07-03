@@ -1864,7 +1864,7 @@ export default function FAQSearch({ category }: { category: string }) {
     }, [faqs, category]);
   
     return (
-      <div id="faq" className="w-full bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6">
+      <div id="faq" className="w-full max-w-7xl mx-auto  dark:bg-gray-900 rounded-lg shadow-lg p-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
         <div className="text-center mb-6">
           <h2 className="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
           <Input

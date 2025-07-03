@@ -135,7 +135,7 @@ export default function ShippingMethodsInfo() {
     </div>
   </div>
   <GetQuoteComponent topic="Special Services" link="/ship-agency-forms" />
-  <FAQSearch category="special-services " />
+  <FAQSearch category="special-services" />
   </div>
   );
 }
