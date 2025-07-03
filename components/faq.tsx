@@ -1842,6 +1842,7 @@ const defaultFAQs: FAQItem[] = [
     }
 
 ];
+//Categories done
 
 export default function FAQSearch({ category }: { category: string }) {
     const [search, setSearch] = useState("");
