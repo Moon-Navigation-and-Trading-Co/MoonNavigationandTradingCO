@@ -6,17 +6,12 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
-import { format } from "date-fns";
 import { useState } from "react";
-import Calendar from "react-calendar";
 
 export default function ScheduleMeeting() {
-    const [date1, setDate1] = useState<Date>();
-    const [date2, setDate2] = useState<Date>();
+    const [date1, setDate1] = useState<string>("");
+    const [date2, setDate2] = useState<string>("");
     const [formData, setFormData] = useState({
         company: "",
         contact: "",
@@ -89,8 +84,8 @@ export default function ScheduleMeeting() {
                 message: "",
                 consent: false
             });
-            setDate1(undefined);
-            setDate2(undefined);
+            setDate1("");
+            setDate2("");
             
         } catch (error) {
             console.error("Error submitting form:", error);
@@ -202,40 +197,25 @@ export default function ScheduleMeeting() {
                         <h3 className="text-lg font-semibold border-b pb-2 mb-4">2. Appointment Details</h3>
                         <div className="space-y-4">
                             <div>
-                                <Label>Preferred Dates:</Label>
-                                <div className="space-y-2">
-                                    <Popover>
-                                        <PopoverTrigger asChild>
-                                            <Button 
-                                                type="button"
-                                                variant={"outline"} 
-                                                className={cn("w-full justify-start text-left font-normal", !date1 && "text-muted-foreground")}
-                                            >
-                                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                                {date1 ? format(date1, "PPP") : <span>Pick a date</span>}
-                                            </Button>
-                                        </PopoverTrigger>
-                                        <PopoverContent className="w-auto p-0">
-                                            <Calendar value={date1} onChange={(value) => setDate1(value as Date)} />
-                                        </PopoverContent>
-                                    </Popover>
+                                <Label htmlFor="date1">Preferred Date 1:</Label>
+                                <Input 
+                                    id="date1" 
+                                    type="date" 
+                                    className="mt-1" 
+                                    value={date1}
+                                    onChange={(e) => setDate1(e.target.value)}
+                                />
+                            </div>
 
-                                    <Popover>
-                                        <PopoverTrigger asChild>
-                                            <Button 
-                                                type="button"
-                                                variant={"outline"} 
-                                                className={cn("w-full justify-start text-left font-normal", !date2 && "text-muted-foreground")}
-                                            >
-                                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                                {date2 ? format(date2, "PPP") : <span>Pick a date</span>}
-                                            </Button>
-                                        </PopoverTrigger>
-                                        <PopoverContent className="w-auto p-0">
-                                            <Calendar value={date2} onChange={(value) => setDate2(value as Date)} />
-                                        </PopoverContent>
-                                    </Popover>
-                                </div>
+                            <div>
+                                <Label htmlFor="date2">Preferred Date 2:</Label>
+                                <Input 
+                                    id="date2" 
+                                    type="date" 
+                                    className="mt-1" 
+                                    value={date2}
+                                    onChange={(e) => setDate2(e.target.value)}
+                                />
                             </div>
 
                             <div>

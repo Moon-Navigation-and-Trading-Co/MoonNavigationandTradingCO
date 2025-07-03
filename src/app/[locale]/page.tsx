@@ -262,7 +262,11 @@ export default function Index() {
                             </div>
                             <div className="mt-12">
                                 <p className="text-[#232B50] text-base mb-6 max-w-md">Alternatively, you can use our online meeting scheduling tool to easily book your preferred time for either a virtual meeting or an in-person meeting with a member of our team. Whether you are looking to discuss partnership opportunities or explore how we can best serve your logistics needs, we are here to help.</p>
-                                <RequestQuoteButton className="w-[220px]" type="button">Schedule a meeting</RequestQuoteButton>
+                                <RequestQuoteButton className="w-[220px]" type="button">
+                                  <Link href="/schedule-meeting">
+                                    Schedule a meeting
+                                  </Link>
+                                  </RequestQuoteButton>
                             </div>
                         </div>
                         {/* Right Column: Contact Form */}
