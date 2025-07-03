@@ -170,7 +170,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             title: "Investment",
             description:"",
             items:[
-                {name:"Investor Form", href:"/investor-form"}
+                {name:"Investor Form", href:"/investor-form"},
             ]
         }
     };
@@ -195,7 +195,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             dropdownItems: [
                 { name: "About Us", href: "/about-us" },
                 { name: "Our Partners", href: "/#partners" },
-                { name: "FAQ", href: "#faq" },
+                { name: "FAQ", href: "/faq" },
                 { name: "Forms", href: "/learn/forms" }
             ],
         },

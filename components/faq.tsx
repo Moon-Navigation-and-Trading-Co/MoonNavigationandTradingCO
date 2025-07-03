@@ -4,6 +4,7 @@ import React, { useState, useMemo } from "react";
 import { Input } from "./ui/input";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 interface FAQItem {
     question: string;
@@ -1844,7 +1845,7 @@ const defaultFAQs: FAQItem[] = [
 ];
 //Categories done
 
-export default function FAQSearch({ category }: { category: string }) {
+export default function FAQSearch({ category }: { category?: string }) {
     const [search, setSearch] = useState("");
     const faqs = defaultFAQs;
   
@@ -1866,7 +1867,10 @@ export default function FAQSearch({ category }: { category: string }) {
     return (
       <div id="faq" className="w-full max-w-7xl mx-auto  dark:bg-gray-900 rounded-lg shadow-lg p-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
         <div className="text-center mb-6">
-          <h2 className="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
+          <Link href="/faq">
+            <h2 className="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
+          </Link> 
+
           <Input
             type="text"
             placeholder="Search for answers..."
@@ -1874,6 +1878,11 @@ export default function FAQSearch({ category }: { category: string }) {
             onChange={(e) => setSearch(e.target.value)}
             className="mb-6"
           />
+        {category && (
+          <p className="text-muted-foreground text-sm mb-4">
+            Related Questions:
+          </p>
+        )}
         </div>
   
         {search.trim() ? (
