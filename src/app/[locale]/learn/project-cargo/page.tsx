@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTranslations } from "next-intl";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 //seo
 export const metadata = {
@@ -297,6 +298,7 @@ export default function ProjectCargoPage() {
         </div>
       </section>
       <GetQuoteComponent topic="Project Cargo" link="/ocean-freight-forms" />
+      <FAQSearch category="project-cargo" />
     </div>
   );
 }

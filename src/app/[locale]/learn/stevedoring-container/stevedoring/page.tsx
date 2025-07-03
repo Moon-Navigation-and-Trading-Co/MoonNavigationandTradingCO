@@ -1,4 +1,5 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function StevedoringPage() {
     return (
@@ -100,6 +101,7 @@ export default function StevedoringPage() {
                 </div>
             </div>
             <GetQuoteComponent topic="Stevedoring" link="/container-services-forms" />
+            <FAQSearch category="container-handling-stevedoring-storage" /> 
         </div>
     )
 }

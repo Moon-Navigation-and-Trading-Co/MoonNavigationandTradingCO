@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl"
 import Link from "next/link"
 import RequestQuoteButton from "@/components/RequestQuoteButton" 
 import GetQuoteComponent from "@/components/getQuoteComponent"
+import FAQSearch from "@/components/faq"
 
 export default function HeavyLiftCargoInfo() {
     const t = useTranslations("learn-heavy-lift-cargo")
@@ -444,6 +445,7 @@ export default function HeavyLiftCargoInfo() {
       </div>
     </section>
     <GetQuoteComponent topic="Heavy Lift Cargo" link="/ocean-freight-forms" />
+    <FAQSearch category="heavy-lift-cargo" />
     </div>
     )
 }

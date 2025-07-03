@@ -1,3 +1,4 @@
+import FAQSearch from "@/components/faq";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import { Button } from "@/components/ui/button";
@@ -175,6 +176,7 @@ compliance with maritime regulations and local port requirements.
     </div>
   </div>
   <GetQuoteComponent topic = "Crew Management" link = "/ship-agency-forms"/> 
+  <FAQSearch category="crew-management" />
   </div>
   );
 }

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function BunkeringPage() {
   return (
@@ -161,6 +162,7 @@ export default function BunkeringPage() {
       </div>
     </div>
     <GetQuoteComponent topic="Bunkering, Oil Supply, Ship Chandlery"  link="/ship-agency-forms"/>
+    <FAQSearch category="bunkering" />
     </div>
   );
 }

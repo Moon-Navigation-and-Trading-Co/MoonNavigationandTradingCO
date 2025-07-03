@@ -6,6 +6,7 @@ import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 
 import GetQuoteComponent from "@/components/getQuoteComponent"
+import FAQSearch from "@/components/faq";
 
 const ReeferPage = () => {
   const router = useRouter();
@@ -370,6 +371,7 @@ const ReeferPage = () => {
         </div>
       </div>
       <GetQuoteComponent topic="Reefer Container" link="/container-services-forms" />
+      <FAQSearch category="reefer-container" /> 
       <style jsx global>{`
         .hide-scrollbar {
           scrollbar-width: none; /* Firefox */

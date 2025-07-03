@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import RequestQuoteButton from "@/components/RequestQuoteButton" 
 import Link from "next/link";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export const metadata: Metadata = {
     title: "Tankers | Moon Navigation and Trading Co. - Ocean Freight & Transportation",
@@ -494,6 +495,7 @@ export default function TankersPage() {
                 </div>
             </section>
             <GetQuoteComponent topic="Tankers" link="/ocean-freight-forms" />
+            <FAQSearch category="tankers-in-ocean-freight" />
         </main>
     );
 }

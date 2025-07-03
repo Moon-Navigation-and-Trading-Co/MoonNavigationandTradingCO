@@ -2,6 +2,7 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Image from "next/image";
 import Link from "next/link";
+import FAQSearch from "@/components/faq";
 
 export default function SuezPage() {
   return (
@@ -228,6 +229,7 @@ while we ensure a hassle-free canal passage.
       </div>
     </div>
     <GetQuoteComponent topic = "Suez Canal Transit" link = "/suez-canal-form"/> 
+    <FAQSearch category="suez-canal" />
     </div>
   );
 }

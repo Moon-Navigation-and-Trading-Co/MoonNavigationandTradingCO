@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import { Metadata } from 'next'
 import RequestQuoteButton from "@/components/RequestQuoteButton" 
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from '@/components/faq'
 
 export const metadata: Metadata = {
   title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
@@ -284,6 +285,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </section>
       <GetQuoteComponent topic="Livestock" link="/ocean-freight-forms" />
+      <FAQSearch category="livestock-transportation" />
     </div>
   )
 }

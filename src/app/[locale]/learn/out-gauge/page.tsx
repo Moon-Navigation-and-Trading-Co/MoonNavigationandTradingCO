@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-out-gauge");
@@ -350,6 +351,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       <GetQuoteComponent topic="Out Gauge" link="/container-services-forms" />
+      <FAQSearch category="oog" />
     </div>
   );
 }

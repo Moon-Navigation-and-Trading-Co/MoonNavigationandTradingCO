@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function CustomsClearanceLearnMore() {
   return (
@@ -170,6 +171,7 @@ export default function CustomsClearanceLearnMore() {
       </div>
     </div>
     <GetQuoteComponent topic="Customs Clearance" link="/ship-agency-forms"/>
+    <FAQSearch category="customs-clearance" />
     </main>
   );
 }

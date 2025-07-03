@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function ContainerHandlingPage() {
     return (
@@ -102,6 +103,7 @@ export default function ContainerHandlingPage() {
            </div>
        </div>
        <GetQuoteComponent topic="Container Handling" link="/container-services-forms" />
+       <FAQSearch category="container-handling-stevedoring-storage" /> 
        </div>
     )
 }

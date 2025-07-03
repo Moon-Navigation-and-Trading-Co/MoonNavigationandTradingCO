@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function LearnMoreOilPage() {
   return (
@@ -49,6 +50,7 @@ export default function LearnMoreOilPage() {
         </div>
         
         <GetQuoteComponent topic="Oil & Lubricants Supply" link="/ship-agency-forms" />
+        <FAQSearch category="bunkering" />
       </div>
     </div>
   );

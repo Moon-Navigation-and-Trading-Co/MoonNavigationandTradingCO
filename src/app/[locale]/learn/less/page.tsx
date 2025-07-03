@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
  
 export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-less");
@@ -242,6 +243,7 @@ trusted partner in navigating the complexities of international logistics. </p>
       </div>
       </div>
       <GetQuoteComponent topic="LCL" link="/container-services-forms"/>
+      <FAQSearch category="lcl" /> 
     </div>
   );
 }

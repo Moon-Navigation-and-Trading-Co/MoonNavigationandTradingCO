@@ -3,6 +3,7 @@
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function StevedoringContainerPage() {
     return (
@@ -234,6 +235,7 @@ export default function StevedoringContainerPage() {
                 </div>
             </div>
         <GetQuoteComponent topic="Container Handling, Stevedoring and Storage" link="/container-services-forms" />
+        <FAQSearch category="container-handling-stevedoring-storage" /> 
         </div>
     );
 }

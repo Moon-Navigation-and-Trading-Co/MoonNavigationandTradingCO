@@ -1,4 +1,5 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function ContainerStoragePage() {
     return (
@@ -96,6 +97,7 @@ export default function ContainerStoragePage() {
                 </div>
             </div>
             <GetQuoteComponent topic="Container Storage" link="/container-services-forms" />
+            <FAQSearch category="container-handling-stevedoring-storage" /> 
         </div>
     )
 }

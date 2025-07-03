@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function CrewLearnMorePage() {
   return (
@@ -145,6 +146,7 @@ export default function CrewLearnMorePage() {
       </div>
     </div>
     <GetQuoteComponent topic = "Crew Management" link = "/ship-agency-forms"/> 
+    <FAQSearch category="crew-management" />
     </div>
   );
 }

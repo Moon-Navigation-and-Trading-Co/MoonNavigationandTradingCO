@@ -1,4 +1,5 @@
 "use client";
+import FAQSearch from "@/components/faq";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -167,6 +168,7 @@ export default function InvestPage() {
           </div>
         </div>
       </section>
+      <FAQSearch category="investment-opportunities" />
     </main>
   );
 }

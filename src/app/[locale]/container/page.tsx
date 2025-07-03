@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import ServicesComponent from "@/components/service-types-component"
+import FAQSearch from "@/components/faq"
 
 export default function FreightServices() {
     const services = [
@@ -47,6 +48,8 @@ export default function FreightServices() {
     ]
 
     return (
-        <ServicesComponent services={services} />
+        <div>
+            <ServicesComponent services={services} />
+        </div>
     )
 }

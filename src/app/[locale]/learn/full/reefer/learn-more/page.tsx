@@ -1,4 +1,5 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function LearnMore() {
   return (
@@ -186,6 +187,7 @@ export default function LearnMore() {
         </div>
       </div>
       <GetQuoteComponent topic="Reefer Container" link="/container-services-forms" />
+      <FAQSearch category="reefer-container" />
     </div>
   );
 }

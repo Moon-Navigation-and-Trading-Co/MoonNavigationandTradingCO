@@ -6,6 +6,7 @@ import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import OversizedCargoCarousel from "@/components/oversized-cargo-carousel";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function ShippingMethodsInfo() {
 
@@ -333,6 +334,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       <GetQuoteComponent topic="oversized-cargo" link="/container-services-forms"/>
+      <FAQSearch category="oversized-container-shipping" /> 
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import FAQSearch from "@/components/faq";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
@@ -170,6 +171,7 @@ export default function SparePartsPage() {
       </div>
     </div>
     <GetQuoteComponent topic = "Transit Spare Parts" link = "/ship-agency-forms"/> 
+    <FAQSearch category="spare-parts" />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import FAQSearch from "@/components/faq"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
@@ -56,6 +57,7 @@ export default function FreightServices() {
                     ))}
                 </div>
             </div>
+            <FAQSearch category="ship-agency-services" />
         </div>
     )
 }

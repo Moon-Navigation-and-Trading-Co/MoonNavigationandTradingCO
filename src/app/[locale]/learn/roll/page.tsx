@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { Metadata } from "next";
+import FAQSearch from "@/components/faq";
 
 // SEO Metadata for Next.js 13+ App Router
 export const metadata: Metadata = {
@@ -254,6 +255,7 @@ export default function RollOnOffHero() {
         </div>
       </section>
       <GetQuoteComponent topic="RORO" link="/ocean-freight-forms" />
+      <FAQSearch category="ro-ro-shipping" />
     </div>
   );
 }

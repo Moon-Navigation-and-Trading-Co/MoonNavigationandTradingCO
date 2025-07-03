@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function LearnMoreBunkeringPage() {
   return (
@@ -84,6 +85,7 @@ export default function LearnMoreBunkeringPage() {
         </div>
       </div>
       <GetQuoteComponent topic="Bunkering"  link="/ship-agency-forms"/>
+      <FAQSearch category="bunkering" />
     </div>
   );
 }

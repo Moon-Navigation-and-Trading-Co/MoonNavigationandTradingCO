@@ -99,7 +99,6 @@ export default async function RootLayout({
 
                 {/* faq */}
                 <div className="w-full max-w-[1300px] px-0 md:px-5 mt-8 mb-8">
-                  <FAQSearch category="about-us" />
                 </div>
 
                 {/*  footer */}

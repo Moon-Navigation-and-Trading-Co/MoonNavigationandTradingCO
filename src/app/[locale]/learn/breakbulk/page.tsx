@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Metadata } from "next"
 import Head from "next/head"
 import RequestQuoteButton from "@/components/RequestQuoteButton"
+import FAQSearch from "@/components/faq"
 
 export const metadata: Metadata = {
     title: "BreakBulk Cargo Services | Moon Navigation and Trading Co.",
@@ -367,6 +368,7 @@ export default function BreakBulkInfo() {
                     </div>
                 </section>
                 <GetQuoteComponent topic="Breakbulk Cargo" link="/ocean-freight-forms" /> 
+                <FAQSearch category="breakbulk-cargo" />        
             </div>
         </>
     )

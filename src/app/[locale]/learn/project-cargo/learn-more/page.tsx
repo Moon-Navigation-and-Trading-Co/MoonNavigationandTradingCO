@@ -2,6 +2,7 @@ import Image from "next/image";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function ProjectCargoLearnMore() {
   return (
@@ -207,6 +208,7 @@ export default function ProjectCargoLearnMore() {
       </div>
     </div>
     <GetQuoteComponent topic="Project Cargo" link="/ocean-freight-forms" />
+    <FAQSearch category="project-cargo" />
     </div>
   );
 }

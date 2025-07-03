@@ -10,6 +10,7 @@ import AirFreightForm from '@/components/air-freight-services';
 import Spinner from '@/components/spinner';
 import { Description } from '@radix-ui/react-toast';
 import { sendFormEmail } from '@/utils/email-helper';
+import FAQSearch from '@/components/faq';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -131,6 +132,7 @@ const Page: React.FC = () => {
             </div>
 
             <FormTabs tabData={tabData} />
+            <FAQSearch category="air-freight" />
         </div>
     );
 };

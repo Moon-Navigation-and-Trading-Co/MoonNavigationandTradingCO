@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
  
 export default function DryContainerPage() {
   return (
@@ -393,6 +394,7 @@ export default function DryContainerPage() {
         </div>
       </div>
       <GetQuoteComponent topic="Dry Container" link="/container-services-forms" />
+      <FAQSearch category="standard-dry-container" />  
 
     </div>
   );

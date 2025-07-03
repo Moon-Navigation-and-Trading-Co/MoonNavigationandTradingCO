@@ -1,6 +1,7 @@
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
-
+import FAQSearch from "@/components/faq";
+  
 export default function LearnMoreChandleryPage() {
   return (
     <div className="w-full min-h-screen bg-white flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -90,6 +91,7 @@ export default function LearnMoreChandleryPage() {
           </div>
         </div>
         <GetQuoteComponent topic="Ship Chandlery Services" link="/ship-agency-forms" />
+        <FAQSearch category="bunkering" />
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
+import FAQSearch from "@/components/faq";
 
 export default function InlandFreightInfo() {
     const t = useTranslations("learn-inland-freight");
@@ -414,7 +415,7 @@ export default function InlandFreightInfo() {
                 </div>
             </div>
             <GetQuoteComponent topic="inland-freight" link="/inland-services-forms"/>
-
+            <FAQSearch category="inland-freight" />
             {/* Reasons to Choose Section */}
             <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">

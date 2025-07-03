@@ -1,6 +1,7 @@
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function LearnMore() {
     return (
@@ -225,6 +226,7 @@ export default function LearnMore() {
         </div>
       </section>
       <GetQuoteComponent topic="RORO" link="/ocean-freight-forms" /> 
+      <FAQSearch category="ro-ro-shipping" />
          </>
     )
 }

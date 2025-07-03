@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"
+import GetQuoteComponent from "@/components/getQuoteComponent"
+import FAQSearch from "@/components/faq"
 
 export default function FullContainerLoadPage() {
     return (
@@ -438,37 +440,8 @@ regulatory compliance throughout the journey.</p>
                     </div>
                 </div>
             </div>
-            <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-                {/* Left: Text Content */}
-                <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Get your Quote with Us
-                    </h2>
-                    <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Our streamlined LCL freight quotation process is designed for speed and convenience. At
-                        Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
-                        Quotation by Request system. Simply fill out our short form to initiate your request. Once
-                        submitted, our team will assess your shipment’s volume, weight, and consolidation options to
-                        find the most efficient and cost-effective transport solution. You will receive a customized
-                        quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
-                        cargo movement.
-                    </p>
-                    <Link href="/container-services-forms">
-                        <RequestQuoteButton>
-                            Request a Quote
-                        </RequestQuoteButton>
-                    </Link>
-                </div>
-                {/* Right: Image */}
-                <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                    <img
-                        src="/quote-illustration.png"
-                        alt="Quotation illustration"
-                        className="w-[320px] h-auto object-contain"
-                        style={{ maxWidth: 380 }}
-                    />
-                </div>
-            </section>
+            <GetQuoteComponent topic="FCL" link="/container-services-forms" />
+            <FAQSearch category="fcl" />
         </div>
     );
 }

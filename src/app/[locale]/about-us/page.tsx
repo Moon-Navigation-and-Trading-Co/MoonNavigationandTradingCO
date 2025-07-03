@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import PartnerLogoCarousel from "@/components/partners-carousel";
 import GetQuoteComponent from '@/components/getQuoteComponent';
+import FAQSearch from '@/components/faq';
 
 export default function AboutUs() {
   return (
@@ -742,6 +743,7 @@ export default function AboutUs() {
    </div>
 <PartnerLogoCarousel />   
 <GetQuoteComponent topic=" " />
+<FAQSearch category="about-us" />
    </main>
         );
 }

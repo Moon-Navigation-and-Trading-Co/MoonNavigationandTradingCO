@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";  
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function MaintenancePage() {
     return (
@@ -212,6 +213,7 @@ export default function MaintenancePage() {
                 </div>
             </section>
             <GetQuoteComponent topic = "Docking and Maintenance" link = "/ship-maintenance-forms"/> 
+            <FAQSearch category="docking-maintenance" />    
         </main>
     );
 }
