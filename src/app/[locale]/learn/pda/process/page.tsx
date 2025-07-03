@@ -1,5 +1,6 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import Image from "next/image";
+import FAQSearch from "@/components/faq";
 
 export default function PDAProcessPage() {
   return (
@@ -85,6 +86,7 @@ export default function PDAProcessPage() {
       </div>
     </div>
     <GetQuoteComponent topic = "PDA" link = "/ship-agency-forms"/> 
+    <FAQSearch category="ship-agency-services" />
     </div>
   );
 }

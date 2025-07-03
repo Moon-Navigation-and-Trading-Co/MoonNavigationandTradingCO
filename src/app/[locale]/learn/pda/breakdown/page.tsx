@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function PDABreakdownPage() {
   return (
@@ -261,6 +262,7 @@ export default function PDABreakdownPage() {
       </div>
     </div>
     <GetQuoteComponent topic = "PDA" link = "/ship-agency-forms"/> 
+    <FAQSearch category="ship-agency-services" />
     </div>
   );
 }
