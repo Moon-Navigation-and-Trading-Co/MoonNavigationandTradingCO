@@ -6,8 +6,8 @@ import FAQSearch from "@/components/faq";
 
 export default function ProjectCargoLearnMore() {
   return (
-    <div className="w-full px-4 md:px-16 py-10 max-w-7xl mx-auto">
-      <h1 className="text-xl md:text-2xl font-semibold mb-8 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+    <div className="w-full px-4 md:px-16 py-10 max-w-7xl mx-auto mt-10">
+      <h1 className="text-2xl md:text-3xl  mb-8 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
         Our Project Cargo Solutions - At Moon Navigation and Trading Co.
       </h1>
       <div className="flex flex-col md:flex-row items-start gap-8">
@@ -15,10 +15,10 @@ export default function ProjectCargoLearnMore() {
         <div className="flex-1">
           <ol className="list-decimal pl-4">
             <li>
-              <span className="font-semibold text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+              <span className=" text-foreground text-lg md:text-xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
                 Heavy Lift &amp; Oversized Cargo Solutions
               </span>
-              <div className="mt-2 text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
+              <div className="mt-2 text-muted-foreground text-base md:text-lg" style={{ fontFamily: 'Raleway, sans-serif' }}>
                 We specialize in transporting cargo that exceeds standard shipping dimensions and weight limits, ensuring safe and efficient handling through tailored solutions.
                 <ul className="list-disc pl-6 mt-2 space-y-1">
                   <li>
@@ -68,10 +68,10 @@ export default function ProjectCargoLearnMore() {
         <div className="flex-1">
           <ol start={2} className="list-decimal pl-4">
             <li>
-              <span className="font-semibold text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+              <span className=" text-foreground text-lg md:text-xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
                 Multimodal Transport &amp; Route Planning
               </span>
-              <div className="mt-2 text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
+              <div className="mt-2 text-muted-foreground text-base md:text-lg" style={{ fontFamily: 'Raleway, sans-serif' }}>
                 Project cargo often demands a strategic blend of transport modes to ensure safe and efficient delivery.
                 <ul className="list-disc pl-6 mt-2 space-y-1">
                   <li>
@@ -97,10 +97,10 @@ export default function ProjectCargoLearnMore() {
       <div className="flex-1">
         <ol start={3} className="list-decimal pl-4">
           <li>
-            <span className="font-semibold text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <span className=" text-foreground text-lg md:text-xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Industry-Specific Solutions
             </span>
-            <div className="mt-2 text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <div className="mt-2 text-muted-foreground text-base md:text-lg" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Our project cargo services cater to diverse industries, ensuring the safe and efficient transport of specialized equipment:
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>
@@ -148,13 +148,13 @@ export default function ProjectCargoLearnMore() {
       </div>
       {/* Right: Text Content */}
       <div className="flex-1">
-          <h3 className="text-base md:text-lg font-semibold mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
           4. Customs Clearance &amp; Compliance
         </h3>
-        <p className="text-xs md:text-sm text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
           We handle all regulatory requirements to ensure smooth cross-border transport.
         </p>
-        <ul className="list-disc pl-5 space-y-1 text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <ul className="list-disc pl-5 space-y-1 text-muted-foreground text-base md:text-lg" style={{ fontFamily: 'Raleway, sans-serif' }}>
           <li>
             <b>Customs Documentation:</b> Managing permits, duties, and tax clearances.
           </li>
@@ -170,16 +170,16 @@ export default function ProjectCargoLearnMore() {
     <div className="flex flex-col md:flex-row items-start gap-8 mt-12">
       {/* Left: Text Content */}
       <div className="flex-1">
-        <h3 className="text-base md:text-lg font-semibold mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <h3 className="text-lg md:text-xl  mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
           5. Turnkey Project Logistics
         </h3>
-        <p className="text-xs md:text-sm text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
           <span className="text-primary">
             From initial planning to final delivery,
           </span>{" "}
           we manage every aspect of complex cargo movements.
         </p>
-        <ul className="list-disc pl-5 space-y-1 text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <ul className="list-disc pl-5 space-y-1 text-muted-foreground text-base md:text-lg" style={{ fontFamily: 'Raleway, sans-serif' }}>
           <li>
             <b>End-to-end coordination:</b> Single point of contact for all logistics operations.
           </li>
