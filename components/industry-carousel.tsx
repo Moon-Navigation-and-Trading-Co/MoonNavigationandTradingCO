@@ -45,8 +45,8 @@ export default function IndustryCarousel() {
 
   return (
     <section className="w-full flex flex-col items-center justify-center py-16 px-4 font-raleway">
-      <h2 className="text-4xl font-normal text-[#232B50] text-center mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Industry sectors</h2>
-      <p className="text-lg text-[#6B6B6B] text-center mb-12 max-w-2xl" style={{fontFamily: 'Raleway, sans-serif'}}>
+      <h2 className="text-4xl font-normal text-primary text-center mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Industry sectors</h2>
+      <p className="text-lg text-foreground text-center mb-12 max-w-2xl" style={{fontFamily: 'Raleway, sans-serif'}}>
         Across industries, cargo types, and destinations, Moon Navigation and Trading Co. provides tailored global and local shipping and logistics solutions that propel business growth.
       </p>
       <div className="w-full max-w-7xl flex flex-col items-center justify-center">
@@ -69,7 +69,7 @@ export default function IndustryCarousel() {
                     className="w-[240px] h-[180px] object-cover rounded-[48px] mb-4"
                     style={{background: '#f3f3f3'}}
                   />
-                  <span className="text-lg text-[#232B50] text-center tracking-widest font-raleway" style={{fontFamily: 'Raleway, sans-serif'}}>{item.title}</span>
+                  <span className="text-lg text-primary text-center tracking-widest font-raleway" style={{fontFamily: 'Raleway, sans-serif'}}>{item.title}</span>
                 </div>
               ))}
             </motion.div>

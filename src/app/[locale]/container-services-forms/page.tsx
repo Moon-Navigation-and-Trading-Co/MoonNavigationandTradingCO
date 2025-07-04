@@ -13,6 +13,7 @@ import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 import Spinner from "@/components/spinner";
 import { sendFormEmail } from '@/utils/email-helper';
+import FAQSearch from "@/components/faq";
 
 const Page: React.FC = () => {
   const t = useTranslations("forms");
@@ -283,7 +284,7 @@ const Page: React.FC = () => {
   return (
     <div className="flex flex-col w-full">
       <FormTabs tabData={tabData} />
-      <FAQSearch category="container" />
+      <FAQSearch category="container" /> 
     </div>
   );
 };
