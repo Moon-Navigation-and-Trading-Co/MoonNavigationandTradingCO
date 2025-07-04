@@ -54,7 +54,7 @@ export default function DryContainerPage() {
 
       {/* Key Industries Section */}
       <div className="w-full max-w-7xl mb-20">
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#3B4B8C] dark:text-[#bfc8f8] mb-2 px-2">
+        <h2 className="text-2xl md:text-3xl  text-[#3B4B8C] dark:text-[#bfc8f8] mb-2 px-2">
           Key Industries We Serve:
         </h2>
         <p className="text-gray-500 dark:text-gray-300 mb-10 px-2">
@@ -175,19 +175,19 @@ export default function DryContainerPage() {
 
       {/* Comparison Table Section */}
       <div className="w-full max-w-7xl mb-20">
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#3B4B8C] dark:text-[#bfc8f8] mb-8 px-2">
+        <h2 className="text-2xl md:text-3xl  text-[#3B4B8C] dark:text-[#bfc8f8] mb-8 px-2">
           Standard Dry Containers vs. Specialized Container Types
         </h2>
         <div className="overflow-x-auto">
           <table className="min-w-full border dark:border-[#23294d] rounded-2xl bg-white dark:bg-[#181c2a]">
             <thead>
               <tr>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Feature / Specification</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Standard Dry Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Reefer Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Open Top Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Flat Rack Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b dark:border-[#23294d]">Tank Container</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Feature / Specification</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Standard Dry Container</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Reefer Container</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Open Top Container</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Flat Rack Container</th>
+                <th className="px-4 py-3 text-left  border-b dark:border-[#23294d]">Tank Container</th>
               </tr>
             </thead>
             <tbody className="text-sm">
@@ -262,7 +262,7 @@ export default function DryContainerPage() {
         </div>
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
             End-to-End Cargo Handling
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
@@ -279,7 +279,7 @@ export default function DryContainerPage() {
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
             Container Stuffing &amp; Cargo Securing
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
@@ -323,7 +323,7 @@ export default function DryContainerPage() {
         </div>
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
             Customs Documentation &amp; Clearance
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
@@ -341,7 +341,7 @@ export default function DryContainerPage() {
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
             Port &amp; Inland Transport Coordination
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
@@ -385,7 +385,7 @@ export default function DryContainerPage() {
         </div>
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
             Cargo Inspection &amp; Container Condition Checks
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
@@ -403,7 +403,7 @@ export default function DryContainerPage() {
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
             Additional Value-Added Solutions
           </h2>
           <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1 mb-6">
@@ -415,7 +415,7 @@ export default function DryContainerPage() {
           </ul>
           <Link href="/learn/full/dry/learn-more">
             <RequestQuoteButton>
-              Learn more about our standard Standard Dry Container shipment solutions
+              Learn more about our Standard Dry Container shipment solutions
             </RequestQuoteButton> 
           </Link>
         </div>
@@ -435,7 +435,7 @@ export default function DryContainerPage() {
       </div>
       {/* Reasons Section */}
 <div className="mt-16 mb-12 max-w-5xl mx-auto px-4">
-  <h2 className="text-2xl md:text-3xl font-semibold text-left mb-16 text-[#3B4B8C] dark:text-[#bfc8f8]">
+  <h2 className="text-2xl md:text-3xl  text-left mb-16 text-[#3B4B8C] dark:text-[#bfc8f8]">
     Reasons to Choose Moon Navigation and Trading Co. for Your Dry Standard Container Shipments
   </h2>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-8 md:gap-x-16 lg:gap-x-32 justify-items-center">

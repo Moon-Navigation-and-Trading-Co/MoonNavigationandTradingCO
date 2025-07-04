@@ -184,13 +184,13 @@ export default function RollOnOffHero() {
         <div className="flex-1 flex justify-center items-center relative min-h-[350px] md:min-h-[420px]">
           {/* Geometric Accent */}
           {/* Main Image */}
-          <div className="relative z-10 w-full max-w-[420px]">
+          <div className="relative z-10 w-full max-w-[500px]">
             <Image
               src="/roroCargoImage.jpg"
               alt="Moon Navigation employee checking RoRo cargo"
               width={420}
               height={320}
-              className="object-cover w-full h-[520px] shadow-lg object-[30%_70%]"
+              className="object-cover w-full h-[520px] shadow-lg object-[30%_70%] rounded-[60px]"
               loading="lazy"
             />
             {/* Bottom Accent */}
