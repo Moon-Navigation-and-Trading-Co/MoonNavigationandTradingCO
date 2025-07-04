@@ -126,6 +126,9 @@ export default function InvestPage() {
             <Link href="/?scroll=contact">
               <button className="bg-[#3B4B8C] text-white rounded-full px-6 py-2 font-medium text-base shadow hover:bg-[#2d3a6d]">Contact Us</button>
             </Link>
+            <Link href="/schedule-meeting">
+              <button className="bg-[#3B4B8C] text-white rounded-full px-6 py-2 font-medium text-base shadow hover:bg-[#2d3a6d]">Schedule a Meeting</button>
+            </Link>
           </div>
           <p className="text-xs text-blue-700 mt-4">All information shared will be kept confidential and used only for investment discussions.</p>
         </div>
