@@ -205,7 +205,7 @@ const CarouselPrevious = React.forwardRef<
       variant={variant}
       size={size}
       className={cn(
-        "absolute  h-8 w-8 rounded-full",
+        "absolute h-8 w-8 rounded-full",
         orientation === "horizontal"
           ? "-left-12 top-1/2 -translate-y-1/2"
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
@@ -251,6 +251,43 @@ const CarouselNext = React.forwardRef<
 })
 CarouselNext.displayName = "CarouselNext"
 
+const CarouselNavigation = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const { scrollPrev, scrollNext, canScrollPrev, canScrollNext } = useCarousel()
+
+  return (
+    <div
+      ref={ref}
+      className={cn("flex gap-2 justify-end mt-4", className)}
+      {...props}
+    >
+      <Button
+        variant="outline"
+        size="icon"
+        className="h-8 w-8 rounded-full"
+        disabled={!canScrollPrev}
+        onClick={scrollPrev}
+      >
+        <ArrowLeftIcon className="h-4 w-4" />
+        <span className="sr-only">Previous slide</span>
+      </Button>
+      <Button
+        variant="outline"
+        size="icon"
+        className="h-8 w-8 rounded-full"
+        disabled={!canScrollNext}
+        onClick={scrollNext}
+      >
+        <ArrowRightIcon className="h-4 w-4" />
+        <span className="sr-only">Next slide</span>
+      </Button>
+    </div>
+  )
+})
+CarouselNavigation.displayName = "CarouselNavigation"
+
 export {
   type CarouselApi,
   Carousel,
@@ -258,4 +295,5 @@ export {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
+  CarouselNavigation,
 }
