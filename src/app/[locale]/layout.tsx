@@ -103,7 +103,7 @@ export default async function RootLayout({
                 
 
                 {/* faq */}
-                <div className="w-full max-w-[1300px] px-4 md:px-6 lg:px-8 mt-8 mb-8">
+                <div className="w-full max-w-[1600px] px-4 md:px-6 lg:px-8 mt-8 mb-8">
                 </div>
 
                 {/*  footer */}

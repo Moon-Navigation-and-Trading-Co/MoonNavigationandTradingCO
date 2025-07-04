@@ -89,7 +89,7 @@ export default function Index() {
                     <div className="relative flex items-center rounded-3xl bg-home-image bg-center bg-cover w-full h-full aspect-auto md:aspect-video shadow-black shadow-xl">
                         <div className="w-full h-full z-[10] top-[1px] bg-black-overlay rounded-3xl absolute"></div>
                         <div className="flex md:px-12 px-6 flex-col justify-center z-[50] gap-4">
-                            <h1 className="text-[#e4e4e4] w-full text-left font-semibold text-0.5xl sm:text-1xl md:text-2xl max-w-[650px]">{t("slogan")}</h1>
+                            <h1 className="text-[#e4e4e4] w-full text-left font-semibold text-0.5xl sm:text-1xl md:text-2xl max-w-[800px]">{t("slogan")}</h1>
                             <h1 className="font-light text-white text-start w-[200px] md:w-full text-sm">{t("tagline")}</h1>
                         </div>
                     </div>
@@ -143,7 +143,7 @@ export default function Index() {
 
                 {/* Get Your Customized Quote Section */}
                 <section id="GetQuote" className="w-full flex flex-col items-center justify-center py-24 px-4 font-raleway">
-                  <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-12 mx-auto">
+                  <div className="w-full max-w-9xl flex flex-col md:flex-row items-center justify-between gap-12 mx-auto">
                     {/* Left: Text */}
                     <div className="flex-1 flex flex-col items-start justify-center max-w-xl">
                       <h2 className="text-[2.5rem] leading-tight font-extrabold text-primary mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Get Your Customized Quote Today</h2>
@@ -186,7 +186,7 @@ export default function Index() {
                 <section className="w-full flex flex-col items-center justify-center py-16 px-4 font-raleway relative">
                   <h2 className="text-4xl font-normal text-primary text-center mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Your Benefits with Moon Navigation and Trading Co.</h2>
                   <h3 className="text-2xl font-light text-primary text-center mb-12" style={{fontFamily: 'Raleway, sans-serif'}}>Simplified Solutions and Seamless Support</h3>
-                  <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div className="w-full max-w-9xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {/* Card 1: Integrated Maritime Expertise */}
                     <div className="bg-card rounded-[32px] border border-border shadow-sm p-6 flex flex-col justify-between min-h-[400px]">
                       <h4 className="text-lg font-semibold text-primary mb-3">Integrated Maritime Expertise</h4>
