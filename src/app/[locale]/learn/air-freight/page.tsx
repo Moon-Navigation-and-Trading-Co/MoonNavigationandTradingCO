@@ -16,8 +16,8 @@ export default function AirFreightInfo() {
         <main className="flex flex-col items-center w-full max-w-7xl mx-auto" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Hero Section */}
             <div className="w-full">
-                <div className="relative h-[400px] rounded-3xl overflow-hidden mb-12 mt-10">
-                    <Image src="/air-1.jpg" alt="Air Freight Services" fill className="object-cover" priority />
+                <div className="relative h-[350px] rounded-[60px] overflow-hidden mb-8 mt-10">
+                    <Image src="/air-1.jpg" alt="Air Freight Services" fill className="object-cover object-[90%_10%]" priority />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -74,9 +74,9 @@ export default function AirFreightInfo() {
             {/* Specialized Services Section */}
             <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="relative rounded-3xl overflow-hidden mb-12">
+                    <div className="relative rounded-[60px] overflow-hidden mb-12">
                         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-800/70 z-10"></div>
-                        <Image src="/air-2.jpg" alt="Air Freight Services" width={1200} height={400} className="w-full h-[400px] object-cover" />
+                        <Image src="/air-2.jpg" alt="Air Freight Services" width={1200} height={400} className="w-full h-[400px] object-cover object-[90%_10%]" />
                         <div className="absolute inset-0 z-20 flex flex-col justify-center px-8 md:px-16">
                             <h3 className="text-white text-2xl md:text-3xl font-light mb-4">{t("services.title")}</h3>
 
@@ -125,7 +125,7 @@ export default function AirFreightInfo() {
                             <p className="text-muted-foreground leading-relaxed">{t("costManagement.firstParagraph2")}</p>
                         </div>
                         <div className="md:w-1/2">
-                            <Image src="/air-3.jpg" alt="Supply Chain Management" width={500} height={300} className="rounded-lg shadow-lg" />
+                            <Image src="/air-3.jpg" alt="Supply Chain Management" width={500} height={300} className="rounded-[60px] shadow-lg" />
                         </div>
                     </div>
 
@@ -196,7 +196,7 @@ export default function AirFreightInfo() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div>
-                            <div className="relative rounded-3xl overflow-hidden h-[400px]">
+                            <div className="relative rounded-[60px] overflow-hidden h-[400px]">
                                 <div className="absolute inset-0 bg-primary/20"></div>
                                 <Image src="/air-5.jpg" alt="Sea-Air Solutions" fill className="object-cover" />
                             </div>
@@ -216,8 +216,8 @@ export default function AirFreightInfo() {
             <div className="w-full py-16 bg-card">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="space-y-8">
-                        <div className="relative w-full h-[300px] rounded-lg overflow-hidden mb-8">
-                            <Image src="/air-6.jpg" alt="Sea and Air Freight Combined Service" fill className="object-cover" />
+                        <div className="relative w-full h-[300px] rounded-[60px] overflow-hidden mb-8">
+                            <Image src="/air-6.jpg" alt="Sea and Air Freight Combined Service" fill className="object-cover object-top" />
                             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
                         </div>
 
@@ -242,7 +242,7 @@ export default function AirFreightInfo() {
             <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                        <div className="relative rounded-3xl overflow-hidden h-[400px]">
+                        <div className="relative rounded-[60px] overflow-hidden h-[400px]">
                             <Image src="/air-7.jpg" alt="Specialized Air Freight Services" fill className="object-cover" />
                         </div>
 
