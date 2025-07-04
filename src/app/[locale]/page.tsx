@@ -172,12 +172,10 @@ export default function Index() {
 
                 {/* Services Section */}
                 <section id="services">
-                    <div className="flex flex-col gap-8 bg-muted/50 px-2 py-5 rounded-2xl">
+                    <div className="flex flex-col gap-8 px-2 py-5 rounded-2xl">
                         {/* Transportation Services */}
                         <CarouselAnimation title={t("TransportationServices")} freightTypes={freightTypes} />
                         <TransportationServices />
-
-                        <OtherServices />
                     </div>
                 </section>
 
