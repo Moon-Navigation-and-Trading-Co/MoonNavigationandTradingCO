@@ -51,7 +51,8 @@ const defaultFAQs: FAQItem[] = [
     },
     {
         question: "Do you operate internationally or only within Egypt?",
-        answer: "While our base is in Egypt, we operate globally through strategic partnerships and a vast logistics network, enabling us to support imports, exports, and transit cargo worldwide."
+        answer: "While our base is in Egypt, we operate globally through strategic partnerships and a vast logistics network, enabling us to support imports, exports, and transit cargo worldwide.",
+        category: "popular"
     },
     {
         question: "What types of cargo can you handle?",
@@ -206,7 +207,8 @@ const defaultFAQs: FAQItem[] = [
     },
     {
         question: "Do you offer both FCL and LCL freight services?",
-        answer: "Yes, our Ocean Freight services include: Full Container Load (FCL) for bulk or high-volume goods, Less-than-Container Load (LCL) for smaller shipments. We also offer air freight for time-sensitive cargo and inland/intermodal freight for efficient delivery to final destinations."
+        answer: "Yes, our Ocean Freight services include: Full Container Load (FCL) for bulk or high-volume goods, Less-than-Container Load (LCL) for smaller shipments. We also offer air freight for time-sensitive cargo and inland/intermodal freight for efficient delivery to final destinations.",
+        category: "popular"
     },
     {
         question: "What trade compliance support do you offer?",
@@ -805,7 +807,7 @@ const defaultFAQs: FAQItem[] = [
     // Dangerous Cargo Transport Services
     {
         question: "What is considered dangerous cargo?",
-        answer: "Dangerous cargo refers to materials that pose risks to health, safety, property, or the environment during transportation. These include: Explosives, Flammable substances, Toxic chemicals, Radioactive materials, Corrosives. These are strictly regulated under the IMDG Code (maritime), IATA DGR (air), and ADR (road).",
+        answer: "Dangerous cargo refers to materials that pose risks to health, safety, property, or the environment during transportation. These include explosives, flammable substances, toxic chemicals, radioactive materials, and more, and are regulated under frameworks such as the IMDG Code, ADR, and IATA.",
         category: "dangerous-cargo-transport"
     },
     {
@@ -1815,7 +1817,8 @@ const defaultFAQs: FAQItem[] = [
     },
     {
         question: "Do you provide customized packaging options?",
-        answer: "Absolutely. We offer tailored packaging solutions designed to ensure product safety and integrity throughout transit, including shock-resistant, temperature-controlled, and IMO-compliant packaging."
+        answer: "Absolutely. We offer tailored packaging solutions designed to ensure product safety and integrity throughout transit, including shock-resistant, temperature-controlled, and IMO-compliant packaging.",
+        category: "popular"
     },
     {
         question: "Can Special Services be used for urgent or expedited shipments?",
@@ -1861,12 +1864,14 @@ export default function FAQSearch({ category }: { category?: string }) {
   
     // Filter by category for default display
     const categoryFAQs = useMemo(() => {
-      return faqs.filter(faq => faq.category === category).slice(0, 3);
+      // If no category is provided, show popular questions
+      const targetCategory = category || "popular";
+      return faqs.filter(faq => faq.category === targetCategory).slice(0, 3);
     }, [faqs, category]);
   
     return (
       <div id="faq" className="w-full max-w-7xl mx-auto  dark:bg-gray-900 rounded-lg shadow-lg p-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-        <div className="text-center mb-6">
+        <div className="text-start mb-6">
           <Link href="/faq">
             <h2 className="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
           </Link> 
@@ -1878,12 +1883,16 @@ export default function FAQSearch({ category }: { category?: string }) {
             onChange={(e) => setSearch(e.target.value)}
             className="mb-6"
           />
-        {category && (
+        {category ? (
           <p className="text-muted-foreground text-sm mb-4">
             Related Questions:
           </p>
+        ) : (
+          <p className="text-muted-foreground text-sm mb-4">
+            Popular Questions: 
+          </p>
         )}
-        </div>
+            </div>
   
         {search.trim() ? (
           <div className="max-h-[300px] overflow-y-auto">

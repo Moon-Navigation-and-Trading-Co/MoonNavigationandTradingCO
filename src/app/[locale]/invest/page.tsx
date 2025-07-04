@@ -123,10 +123,7 @@ export default function InvestPage() {
           </ul>
           <p className="text-gray-700 text-base mb-4">From the first conversation to structured planning and onboarding, we will guide you through every step — with full transparency, professionalism, and mutual commitment.</p>
           <div className="flex gap-4 mt-2">
-            <Link href="#">
-              <button className="bg-[#3B4B8C] text-white rounded-full px-6 py-2 font-medium text-base shadow hover:bg-[#2d3a6d]">Submit your interest</button>
-            </Link>
-            <Link href="/contact">
+            <Link href="/?scroll=contact">
               <button className="bg-[#3B4B8C] text-white rounded-full px-6 py-2 font-medium text-base shadow hover:bg-[#2d3a6d]">Contact Us</button>
             </Link>
           </div>
