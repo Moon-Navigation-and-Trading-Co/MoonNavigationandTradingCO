@@ -59,7 +59,7 @@ export default function RollOnOffHero() {
   const locale = useLocale();
 
   return (
-    <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center"
+    <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center mt-10"
     style={{ fontFamily: "Raleway, sans-serif" }}>
       {/* --- HERO IMAGE --- */}
       <img
@@ -73,10 +73,10 @@ export default function RollOnOffHero() {
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
           {/* Left: Title, Subtitle, Button */}
           <div className="flex-1 flex flex-col items-start">
-            <h1 className="text-5xl font-normal text-[#222] dark:text-white font-sans mb-2 leading-tight">
+            <h1 className="text-4xl font-normal text-[#222] dark:text-white font-sans mb-2 leading-tight">
               Roll on/roll off
             </h1>
-            <div className="text-[#3846a5] dark:text-blue-400 text-xl mb-8 font-normal font-sans">
+            <div className="text-[#3846a5] dark:text-blue-400 text-lg mb-8 font-normal font-sans">
               (RORO)
             </div>
             <RequestQuoteButton>
@@ -85,13 +85,13 @@ export default function RollOnOffHero() {
           </div>
           {/* Right: Heading and Description */}
           <div className="flex-1">
-            <h2 className="text-2xl font-normal mb-4 text-[#3846a5] dark:text-blue-400 font-sans">
+            <h2 className="text-xl font-normal mb-4 text-[#3846a5] dark:text-blue-400 font-sans">
               What is Roll on and Roll off (RORO)?
             </h2>
-            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 font-sans mb-4">
+            <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans mb-4">
               Roll-on Roll-off (RoRo) ships are specialized vessels designed for the efficient transportation of wheeled cargo, allowing vehicles to be driven directly on and off the ship without the need for cranes or heavy lifting equipment. This innovative method of cargo handling is ideal for transporting a variety of vehicles, including cars, trucks, buses, construction machinery, and trailers.
             </p>
-            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 font-sans">
+            <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans">
               At Moon Navigation And Trading Co., we pride ourselves on providing reliable and professional shipping solutions tailored to meet your logistics needs. Our expertise in RoRo transportation ensures that your cargo is handled with the utmost care and delivered safely and efficiently to its destination.
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function RollOnOffHero() {
 
       {/* --- STREAMLINED RORO SOLUTIONS SECTION --- */}
       <section className="max-w-7xl mx-auto mb-16 px-4 md:px-0">
-        <h2 className="text-4xl font-normal mb-12 text-left text-[#222] dark:text-white font-sans">
+        <h2 className="text-3xl font-normal mb-12 text-left text-[#222] dark:text-white font-sans">
           Our Streamlined RoRo Solutions: Efficient Transportation for Wheeled Cargo
         </h2>
         <div className="flex flex-col md:flex-row gap-12 items-start">
@@ -130,32 +130,32 @@ export default function RollOnOffHero() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Our Cargo Handling */}
               <div>
-                <h3 className="text-lg font-bold mb-2 text-[#222] dark:text-white font-sans">
+                <h3 className="text-base font-bold mb-2 text-[#222] dark:text-white font-sans">
                   Our Cargo Handling
                 </h3>
-                <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 font-sans">
+                <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans">
                   Our RoRo ships are expertly engineered for the seamless loading and unloading of wheeled cargo, allowing vehicles to roll on and off with ease. Using specialized ramps at the port, cargo is efficiently driven or towed onto the vessel and smoothly discharged upon arrival, ensuring a fast and efficient transport process.
                 </p>
               </div>
               {/* The Design */}
               <div>
-                <h3 className="text-lg font-bold mb-2 text-[#222] dark:text-white font-sans">
+                <h3 className="text-base font-bold mb-2 text-[#222] dark:text-white font-sans">
                   The Design
                 </h3>
-                <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 font-sans">
+                <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans">
                   Our RoRo ships, featuring expansive flat decks or multiple levels, are specifically designed to transport a wide range of wheeled vehicles. With strategically placed ramps at both the bow and stern, they enable seamless, efficient loading and unloading, ensuring swift and secure cargo movement.
                 </p>
               </div>
             </div>
             {/* Cargo Types - spans both columns */}
             <div className="mt-2">
-              <h3 className="text-lg font-bold mb-2 text-[#222] dark:text-white font-sans">
+              <h3 className="text-base font-bold mb-2 text-[#222] dark:text-white font-sans">
                 Cargo Types
               </h3>
-              <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 font-sans mb-2">
+              <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans mb-2">
                 Our RoRo vessels are engineered for the seamless transportation of a wide range of vehicles, including cars, trucks, and heavy machinery. Designed for efficiency and safety, they ensure smooth loading, secure transit, and timely delivery.
               </p>
-              <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 font-sans">
+              <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans">
                 Beyond standard automobiles, our fleet accommodates oversized equipment, construction vehicles, and specialized rolling stock such as trains, railway cars, trailers, and buses. With select vessels tailored for diverse wheeled cargo, we provide a reliable and comprehensive RoRo shipping solution to meet your unique logistics needs.
               </p>
             </div>
@@ -166,7 +166,7 @@ export default function RollOnOffHero() {
       <section className="max-w-[1600px] mx-auto mb-16 px-4 md:px-0 flex flex-col md:flex-row items-center gap-8 md:gap-0 relative min-h-[700px]">
         {/* Left: Text Content */}
         <div className="flex-1 flex flex-col justify-center md:pr-12 z-10">
-          <h2 className="text-4xl font-normal mb-2 text-[#222] dark:text-white text-left font-sans">
+          <h2 className="text-3xl font-normal mb-2 text-[#222] dark:text-white text-left font-sans">
             Maximizing Efficiency in Our RoRo Shipping
           </h2>
           <h3 className="text-lg font-bold mb-8 text-[#3846a5] dark:text-blue-400 text-left font-sans">
@@ -190,7 +190,7 @@ export default function RollOnOffHero() {
               alt="Moon Navigation employee checking RoRo cargo"
               width={420}
               height={320}
-              className="object-cover w-full h-[520px] shadow-lg"
+              className="object-cover w-full h-[520px] shadow-lg object-[30%_70%]"
               loading="lazy"
             />
             {/* Bottom Accent */}
