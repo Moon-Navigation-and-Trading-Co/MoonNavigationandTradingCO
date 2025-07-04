@@ -8,10 +8,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useState } from "react";
+import { Mail, Phone } from 'lucide-react';
 
 export default function ScheduleMeeting() {
     const [date1, setDate1] = useState<string>("");
     const [date2, setDate2] = useState<string>("");
+    const [showAdditionalEmail, setShowAdditionalEmail] = useState(false);
+    const [showAdditionalPhone, setShowAdditionalPhone] = useState(false);
     const [formData, setFormData] = useState({
         company: "",
         contact: "",
@@ -86,6 +89,8 @@ export default function ScheduleMeeting() {
             });
             setDate1("");
             setDate2("");
+            setShowAdditionalEmail(false);
+            setShowAdditionalPhone(false);
             
         } catch (error) {
             console.error("Error submitting form:", error);
@@ -158,17 +163,6 @@ export default function ScheduleMeeting() {
                             </div>
 
                             <div>
-                                <Label htmlFor="additionalEmail">Add Additional Email Address:</Label>
-                                <Input 
-                                    id="additionalEmail" 
-                                    type="email" 
-                                    className="mt-1" 
-                                    value={formData.additionalEmail}
-                                    onChange={(e) => handleInputChange("additionalEmail", e.target.value)}
-                                />
-                            </div>
-
-                            <div>
                                 <Label htmlFor="phone">Phone Number:</Label>
                                 <Input 
                                     id="phone" 
@@ -180,15 +174,87 @@ export default function ScheduleMeeting() {
                                 />
                             </div>
 
-                            <div>
-                                <Label htmlFor="additionalPhone">Add Additional Phone Number:</Label>
-                                <Input 
-                                    id="additionalPhone" 
-                                    type="tel" 
-                                    className="mt-1" 
-                                    value={formData.additionalPhone}
-                                    onChange={(e) => handleInputChange("additionalPhone", e.target.value)}
-                                />
+                            {/* Additional Contact Fields */}
+                            <div className="space-y-4">
+                                {/* Additional Email Section */}
+                                <div className="space-y-3">
+                                    {!showAdditionalEmail && (
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            onClick={() => setShowAdditionalEmail(true)}
+                                            className="bg-[#283593] text-white hover:bg-[#1a237e] w-fit font-bold font-raleway rounded-[5px] px-6 py-2 text-base flex items-center justify-center transition-colors duration-200"
+                                        >
+                                            <Mail className="h-4 w-4 mr-2" />
+                                            Add Additional Email
+                                        </Button>
+                                    )}
+                                    
+                                    {showAdditionalEmail && (
+                                        <div className="space-y-3 p-4 border border-gray-200 rounded-lg">
+                                            <div>
+                                                <Label htmlFor="additionalEmail">Additional Email Address:</Label>
+                                                <Input 
+                                                    id="additionalEmail" 
+                                                    type="email" 
+                                                    className="mt-1 max-w-[300px] border-2 rounded-xl" 
+                                                    value={formData.additionalEmail}
+                                                    onChange={(e) => handleInputChange("additionalEmail", e.target.value)}
+                                                    placeholder="Email"
+                                                />
+                                            </div>
+                                            
+                                            <Button
+                                                type="button"
+                                                variant="secondary"
+                                                onClick={() => setShowAdditionalEmail(false)}
+                                                className="bg-[#283593] text-white hover:bg-[#1a237e] w-fit font-bold font-raleway rounded-[5px] px-6 py-2 text-base flex items-center justify-center transition-colors duration-200"
+                                            >
+                                                Remove Additional Email
+                                            </Button>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Additional Phone Section */}
+                                <div className="space-y-3">
+                                    {!showAdditionalPhone && (
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            onClick={() => setShowAdditionalPhone(true)}
+                                            className="bg-[#283593] text-white hover:bg-[#1a237e] w-fit font-bold font-raleway rounded-[5px] px-6 py-2 text-base flex items-center justify-center transition-colors duration-200"
+                                        >
+                                            <Phone className="h-4 w-4 mr-2" />
+                                            Add Additional Phone
+                                        </Button>
+                                    )}
+                                    
+                                    {showAdditionalPhone && (
+                                        <div className="space-y-3 p-4 border border-gray-200 rounded-lg ">
+                                            <div>
+                                                <Label htmlFor="additionalPhone">Additional Phone Number:</Label>
+                                                <Input 
+                                                    id="additionalPhone" 
+                                                    type="tel" 
+                                                    className="mt-1 max-w-[300px] border-2 rounded-xl" 
+                                                    value={formData.additionalPhone}
+                                                    onChange={(e) => handleInputChange("additionalPhone", e.target.value)}
+                                                    placeholder="+123456789"
+                                                />
+                                            </div>
+                                            
+                                            <Button
+                                                type="button"
+                                                variant="secondary"
+                                                onClick={() => setShowAdditionalPhone(false)}
+                                                className="bg-[#283593] text-white hover:bg-[#1a237e] w-fit font-bold font-raleway rounded-[5px] px-6 py-2 text-base flex items-center justify-center transition-colors duration-200"
+                                            >
+                                                Remove Additional Phone
+                                            </Button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                         </div>
                     </div>
