@@ -87,7 +87,7 @@ export default async function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
       </head>
-      <body className="bg-background text-foreground no-horizontal-scroll" style={{ fontFamily: "Raleway" }}>
+      <body className="bg-background text-foreground no-horizontal-scroll font-raleway">
         <ThemeProvider attribute="class" defaultTheme="light">
           <main className="min-h-screen-mobile md:min-h-screen-desktop flex flex-col items-center">
             <NextIntlClientProvider messages={messages}>

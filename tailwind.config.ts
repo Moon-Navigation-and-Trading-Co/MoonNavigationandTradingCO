@@ -146,6 +146,13 @@ const config = {
 				raleway: ['Raleway', 'sans-serif'],
 				montserrat: ['Montserrat', 'sans-serif'],
 			},
+			fontWeight: {
+				'light': '300',
+				'normal': '400',
+				'medium': '500',
+				'semibold': '600',
+				'bold': '700',
+			},
 			fontSize: {
 				'responsive-xs': 'clamp(0.75rem, 2vw, 0.875rem)',
 				'responsive-sm': 'clamp(0.875rem, 2.5vw, 1rem)',
