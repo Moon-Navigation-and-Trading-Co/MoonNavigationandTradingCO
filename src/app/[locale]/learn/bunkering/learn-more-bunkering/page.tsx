@@ -4,7 +4,7 @@ import FAQSearch from "@/components/faq";
 
 export default function LearnMoreBunkeringPage() {
   return (
-    <div className="w-full min-h-screen bg-white flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
+    <div className="w-full min-h-screen flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
       <div className="w-full flex justify-center items-center mb-12">
         <div className="relative w-full max-w-5xl aspect-[2/1] rounded-[2rem] overflow-hidden shadow-lg">
           <Image
@@ -16,8 +16,8 @@ export default function LearnMoreBunkeringPage() {
             priority
           />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="bg-white/90 rounded-3xl p-6 m-4 shadow-md max-w-4xl text-center">
-              <p className="text-[#222] text-sm md:text-base">
+            <div className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-6 m-4 shadow-md max-w-4xl text-center">
+              <p className="text-[#222] dark:text-white text-sm md:text-base">
                 With Moon Navigation and Trading Co., you can count on reliable, timely and cost-effective bunkering solutions and support, and fully customizable solutions to your vessel's needs, ensuring uninterrupted service and operational efficiency.<br /><br />
                 -Wherever and whenever you need to trust.
               </p>
@@ -26,16 +26,16 @@ export default function LearnMoreBunkeringPage() {
         </div>
       </div>
       <div className="w-full max-w-6xl">
-        <h1 className="text-2xl md:text-3xl  mb-2">
+        <h1 className="text-2xl md:text-3xl mb-2 text-gray-900 dark:text-white">
           Bunkering Services (Marine Fuel Supply) – At Moon Navigation and Trading Co.
         </h1>
-        <p className="text-[#444] text-sm md:text-base mb-8">
+        <p className="text-[#444] dark:text-gray-300 text-sm md:text-base mb-8">
           We offer reliable, high-quality marine fuel supply at key ports worldwide, ensuring top vessels receive the right fuel at the right time.
         </p>
         <div className="flex flex-col md:flex-row gap-8 mb-12">
           <div className="flex-1">
-            <h2 className="text-lg  mb-2">1. Types of Marine Fuels We Provide:</h2>
-            <ul className="list-disc pl-6 text-[#222] text-sm md:text-base mb-4">
+            <h2 className="text-lg mb-2 text-gray-900 dark:text-white">1. Types of Marine Fuels We Provide:</h2>
+            <ul className="list-disc pl-6 text-[#222] dark:text-white text-sm md:text-base mb-4">
               <li>Very Low Sulfur Fuel Oil (VLSFO) – IMO 2020 compliant fuel</li>
               <li>Marine Gas Oil (MGO) &amp; Marine Diesel Oil (MDO) – Cleaner-burning alternatives</li>
               <li>Heavy Fuel Oil (HFO) – For specific vessel requirements</li>
@@ -69,8 +69,8 @@ export default function LearnMoreBunkeringPage() {
             </div>
           </div>
           <div className="flex-1">
-            <h2 className="text-lg  mb-2">2. Bunkering Methods:</h2>
-            <ul className="list-disc pl-6 text-[#222] text-sm md:text-base">
+            <h2 className="text-lg mb-2 text-gray-900 dark:text-white">2. Bunkering Methods:</h2>
+            <ul className="list-disc pl-6 text-[#222] dark:text-white text-sm md:text-base">
               <li>
                 <span className="font-medium">Ship-to-Ship (STS) Transfer</span> – Direct fueling via anchorage or offshore.
               </li>

@@ -6,7 +6,7 @@ import FAQSearch from "@/components/faq";
 
 export default function CustomsClearanceLearnMore() {
   return (
-    <main className="flex flex-col items-center w-full bg-white" style={{ fontFamily: 'Raleway, sans-serif' }}>
+    <main className="flex flex-col items-center w-full " style={{ fontFamily: 'Raleway, sans-serif' }}>
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mt-10 mb-20">
         <h1 className="text-xl md:text-2xl font-medium text-[#253A5C] mb-10">
           Our Customs &amp; Clearance Services-At Moon Navigation and Trading Co.

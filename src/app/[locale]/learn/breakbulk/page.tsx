@@ -169,48 +169,47 @@ export default function BreakBulkInfo() {
                             boxShadow: "0 2px 12px 0 rgba(0,0,0,0.03)",
                             borderRadius: "22px",
                             border: "1px solid #e5e7eb",
-                            background: "#fff"
+                            background: "foreground"
                         }}
                     >
                         <h2
-                            className="text-[13px] md:text-[15px] font-bold mb-4"
+                            className="text-primary md:text-[15px] font-bold mb-4"
                             style={{
-                                color: "#222",
                                 fontFamily: 'Raleway, sans-serif',
                                 letterSpacing: "0.01em"
                             }}
                         >
                             Key Characteristics of Breakbulk Cargo At Moon Navigation and Trading Co.
                         </h2>
-                        <ul className="space-y-2 text-[11px] md:text-[13px] text-[#222] pl-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <ul className="space-y-2 text-[11px] md:text-[13px] text-primary pl-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             <li className="flex items-start">
                                 <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
-                                    <span className="font-semibold" style={{ color: "#222" }}>Large but Manageable Weight &amp; Size:</span> Our breakbulk cargo typically eclipses basic pallet and truck limits in both size and weight, allowing us to handle substantial sections with precision and care.
+                                    <span className="font-semibold text-primary">Large but Manageable Weight &amp; Size:</span> Our breakbulk cargo typically eclipses basic pallet and truck limits in both size and weight, allowing us to handle substantial sections with precision and care.
                                 </span>
                             </li>
                             <li className="flex items-start">
                                 <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
-                                    <span className="font-semibold" style={{ color: "#222" }}>Loaded &amp; Unloaded Piece by Piece:</span> Each item is loaded and unloaded piece by piece using external cranes, forklifts, or vessel lifting equipment, ensuring the utmost support from ground arrival to on-board stowage.
+                                    <span className="font-semibold text-primary">Loaded &amp; Unloaded Piece by Piece:</span> Each item is loaded and unloaded piece by piece using external cranes, forklifts, or vessel lifting equipment, ensuring the utmost support from ground arrival to on-board stowage.
                                 </span>
                             </li>
                             <li className="flex items-start">
                                 <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
-                                    <span className="font-semibold" style={{ color: "#222" }}>Transported on Breakbulk &amp; Multi-Purpose Vessels (MPVs):</span> Our solutions utilize ships designed for specific cargo handling and flexible stowage configurations, accommodating various module and piece sizes.
+                                    <span className="font-semibold text-primary">Transported on Breakbulk &amp; Multi-Purpose Vessels (MPVs):</span> Our solutions utilize ships designed for specific cargo handling and flexible stowage configurations, accommodating various module and piece sizes.
                                 </span>
                             </li>
                             <li className="flex items-start">
                                 <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
-                                    <span className="font-semibold" style={{ color: "#222" }}>Ideal for Cargo That Can't Fit into Containers:</span> Our breakbulk shipments are secured individually for reliable, efficient loading and lashing, making them the best choice for items that defy unitization.
+                                    <span className="font-semibold text-primary">Ideal for Cargo That Can't Fit into Containers:</span> Our breakbulk shipments are secured individually for reliable, efficient loading and lashing, making them the best choice for items that defy unitization.
                                 </span>
                             </li>
                             <li className="flex items-start">
                                 <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
-                                    <span className="font-semibold" style={{ color: "#222" }}>Essential for Construction, Manufacturing, &amp; Infrastructure Projects:</span> Our breakbulk cargo plays a vital role in supporting industries that require large-scale imports and transshipment of machinery, steel structures, pre-fabricated units, and more.
+                                    <span className="font-semibold text-primary">Essential for Construction, Manufacturing, &amp; Infrastructure Projects:</span> Our breakbulk cargo plays a vital role in supporting industries that require large-scale imports and transshipment of machinery, steel structures, pre-fabricated units, and more.
                                 </span>
                             </li>
                         </ul>

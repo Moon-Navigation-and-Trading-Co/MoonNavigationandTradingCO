@@ -9,7 +9,7 @@ export default function DockingAndMaintenance() {
     return (
         <main className="flex flex-col items-center w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Hero Section */}
-            <div className="w-full py-10 bg-background rounded-b-3xl overflow-hidden">
+            <div className="w-full py-10 rounded-b-3xl overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     {/* Hero Image */}
                     <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mb-10">
@@ -22,7 +22,7 @@ export default function DockingAndMaintenance() {
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
                         <div>
-                            <h1 className="text-3xl md:text-4xl  mb-6 text-foreground">
+                            <h1 className="text-3xl md:text-4xl mb-6 text-foreground">
                                 Docking and Maintenance
                             </h1>
                             <Link href="/ship-maintenance-forms">
@@ -32,7 +32,7 @@ export default function DockingAndMaintenance() {
                             </Link>
                         </div>
                         <div>
-                            <h2 className="text-xl  text-primary mb-2">
+                            <h2 className="text-xl text-primary mb-2">
                                 What is Docking and Maintenance?
                             </h2>
                             <p className="text-muted-foreground mb-4">
@@ -49,9 +49,9 @@ export default function DockingAndMaintenance() {
                 </div>
             </div>
             {/* Vessel Types Section */}
-            <div className="w-full py-10 bg-background">
+            <div className="w-full py-10">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <h2 className="text-lg md:text-xl  text-primary mb-4">
+                    <h2 className="text-lg md:text-xl text-primary mb-4">
                         We serve a wide range of vessels, including:
                     </h2>
                     <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
@@ -65,11 +65,11 @@ export default function DockingAndMaintenance() {
                 </div>
             </div>
             {/* Docking Services Section */}
-            <div className="w-full py-16 bg-secondary">
+            <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}
                     <div>
-                        <h2 className="text-2xl  mb-4 text-foreground">
+                        <h2 className="text-2xl mb-4 text-foreground">
                             Our Docking Services
                         </h2>
                         <p className="text-muted-foreground mb-6">
@@ -85,8 +85,8 @@ export default function DockingAndMaintenance() {
                     </div>
                     {/* Image */}
                     <div className="flex justify-center md:justify-end">
-                        <div className="relative rounded-2xl overflow-hidden shadow-lg" style={{ background: "#2D3A7B", padding: "24px" }}>
-                            <div className="relative w-[340px] h-[200px] md:w-[400px] md:h-[240px] rounded-xl overflow-hidden bg-background">
+                        <div className="relative rounded-2xl overflow-hidden shadow-lg bg-blue-900 dark:bg-blue-800" style={{ padding: "24px" }}>
+                            <div className="relative w-[340px] h-[200px] md:w-[400px] md:h-[240px] rounded-xl overflow-hidden ">
                                 <img
                                     src="/docking-2.jpg" 
                                     alt="Docked ship with cranes and workers"
@@ -99,12 +99,12 @@ export default function DockingAndMaintenance() {
                 </div>
             </div>
             {/* Our Docking Solutions Section */}
-            <div className="w-full py-16 bg-background">
+            <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* Image */}
                     <div className="flex justify-center md:justify-start">
-                        <div className="relative rounded-2xl overflow-hidden shadow-lg" style={{ background: "#3B4B8A", padding: "18px" }}>
-                            <div className="relative w-[320px] h-[180px] md:w-[400px] md:h-[220px] rounded-xl overflow-hidden bg-background">
+                        <div className="relative rounded-2xl overflow-hidden shadow-lg bg-blue-800 dark:bg-blue-700" style={{ padding: "18px" }}>
+                            <div className="relative w-[320px] h-[180px] md:w-[400px] md:h-[220px] rounded-xl overflow-hidden">
                                 <img
                                     src="/docking-3.jpg"
                                     alt="Docked ship with cranes and workers"
@@ -116,7 +116,7 @@ export default function DockingAndMaintenance() {
                     </div>
                     {/* Text Content */}
                     <div>
-                        <h2 className="text-2xl md:text-3xl  mb-4 text-primary">
+                        <h2 className="text-2xl md:text-3xl mb-4 text-primary">
                             Our Docking Solutions
                         </h2>
                         <p className="text-muted-foreground mb-4">
@@ -124,28 +124,28 @@ export default function DockingAndMaintenance() {
                         </p>
                         <ul className="list-disc pl-6 space-y-2 text-muted-foreground text-sm md:text-base">
                             <li>
-                                <span className=" text-foreground">Dry Docking Planning:</span> Technical inspection, budgeting, and detailed pre-docking documentation for every vessel.
+                                <span className="text-foreground">Dry Docking Planning:</span> Technical inspection, budgeting, and detailed pre-docking documentation for every vessel.
                             </li>
                             <li>
-                                <span className=" text-foreground">Dockyard Coordination:</span> Liaison with trusted worldwide shipyards to ensure smooth &amp; efficient dockyard operations.
+                                <span className="text-foreground">Dockyard Coordination:</span> Liaison with trusted worldwide shipyards to ensure smooth &amp; efficient dockyard operations.
                             </li>
                             <li>
-                                <span className=" text-foreground">Repair &amp; Maintenance Oversight:</span> Supervision of hull cleaning, painting, steel renewal, and equipment upgrades.
+                                <span className="text-foreground">Repair &amp; Maintenance Oversight:</span> Supervision of hull cleaning, painting, steel renewal, and equipment upgrades.
                             </li>
                             <li>
-                                <span className=" text-foreground">Regulatory Compliance:</span> Coordination for safety status, statutory inspections, and compliance with class &amp; flag state regulations.
+                                <span className="text-foreground">Regulatory Compliance:</span> Coordination for safety status, statutory inspections, and compliance with class &amp; flag state regulations.
                             </li>
                             <li>
-                                <span className=" text-foreground">Project Management:</span> End-to-end planning to ensure deadlines, quality, costs, and safety standards are met.
+                                <span className="text-foreground">Project Management:</span> End-to-end planning to ensure deadlines, quality, costs, and safety standards are met.
                             </li>
                             <li>
-                                <span className=" text-foreground">Wet Docking (Afloat Repairs):</span> Onsite maintenance of essential work, inspections, and testing during port berths/anchorage.
+                                <span className="text-foreground">Wet Docking (Afloat Repairs):</span> Onsite maintenance of essential work, inspections, and testing during port berths/anchorage.
                             </li>
                             <li>
-                                <span className=" text-foreground">Floating Docking Services:</span> Docking solutions for specific vessel needs or operational needs at select international ports.
+                                <span className="text-foreground">Floating Docking Services:</span> Docking solutions for specific vessel needs or operational needs at select international ports.
                             </li>
                             <li>
-                                <span className=" text-foreground">Emergency Docking Support:</span> Rapid mobilization and support for unscheduled dockings to limit downtime such as grounding, collision, or system failure.
+                                <span className="text-foreground">Emergency Docking Support:</span> Rapid mobilization and support for unscheduled dockings to limit downtime such as grounding, collision, or system failure.
                             </li>
                         </ul>
                         <div className="mt-6">
@@ -158,11 +158,11 @@ export default function DockingAndMaintenance() {
                     </div>
                 </div>
             </div>
-            <div className="w-full py-16 bg-background">
+            <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}
                     <div>
-                        <h2 className="text-2xl md:text-3xl  mb-4 text-primary">
+                        <h2 className="text-2xl md:text-3xl mb-4 text-primary">
                             Our Maintenance Services
                         </h2>
                         <p className="text-muted-foreground mb-4">
@@ -170,29 +170,29 @@ export default function DockingAndMaintenance() {
                         </p>
                         <ol className="list-decimal pl-6 space-y-2 text-muted-foreground text-sm md:text-base">
                             <li>
-                                <span className=" text-foreground">Hull &amp; Structure Maintenance</span>
+                                <span className="text-foreground">Hull &amp; Structure Maintenance</span>
                             </li>
                             <li>
-                                <span className=" text-foreground">Engine and Mechanical Repairs</span>
+                                <span className="text-foreground">Engine and Mechanical Repairs</span>
                             </li>
                             <li>
-                                <span className=" text-foreground">Structural &amp; Automation Services</span>
+                                <span className="text-foreground">Structural &amp; Automation Services</span>
                             </li>
                             <li>
-                                <span className=" text-foreground">Plumbing &amp; Fuel System Maintenance</span>
+                                <span className="text-foreground">Plumbing &amp; Fuel System Maintenance</span>
                             </li>
                             <li>
-                                <span className=" text-foreground">Waste Management &amp; Environmental Compliance</span>
+                                <span className="text-foreground">Waste Management &amp; Environmental Compliance</span>
                             </li>
                             <li>
-                                <span className=" text-foreground">Safety Equipment Servicing</span>
+                                <span className="text-foreground">Safety Equipment Servicing</span>
                             </li>
                         </ol>
                     </div>
                     {/* Image Content */}
                     <div className="flex justify-center items-center">
                         <div className="relative w-full max-w-7xl">
-                            <div className="absolute top-4 left-0 w-full h-full bg-primary rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
+                            <div className="absolute top-4 left-0 w-full h-full rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
                             <img
                                 src="/docking-4.jpg"
                                 alt="Maintenance crew working on vessel"
@@ -203,11 +203,11 @@ export default function DockingAndMaintenance() {
                     </div>
                 </div>
             </div>
-            <div className="w-full py-16 bg-secondary">
+            <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                     {/* Text Content */}
                     <div>
-                        <h2 className="text-2xl md:text-3xl  mb-4 text-primary">
+                        <h2 className="text-2xl md:text-3xl mb-4 text-primary">
                             Our Maintenance Solutions
                         </h2>
                         <p className="text-muted-foreground mb-6">
@@ -215,28 +215,28 @@ export default function DockingAndMaintenance() {
                         </p>
                         <ul className="list-disc pl-6 space-y-2 text-muted-foreground text-sm md:text-base">
                             <li>
-                                <span className=" text-foreground">Preventive Maintenance:</span> Scheduled upkeep of machinery, systems, and onboard equipment to avoid breakdowns and optimize reliability.
+                                <span className="text-foreground">Preventive Maintenance:</span> Scheduled upkeep of machinery, systems, and onboard equipment to avoid breakdowns and optimize reliability.
                             </li>
                             <li>
-                                <span className=" text-foreground">Corrective Maintenance:</span> Rapid response to technical faults or malfunctions, minimizing operational disruption.
+                                <span className="text-foreground">Corrective Maintenance:</span> Rapid response to technical faults or malfunctions, minimizing operational disruption.
                             </li>
                             <li>
-                                <span className=" text-foreground">Condition-Based Monitoring:</span> Use of diagnostic tools and performance trackers to identify early signs of wear or system deterioration.
+                                <span className="text-foreground">Condition-Based Monitoring:</span> Use of diagnostic tools and performance trackers to identify early signs of wear or system deterioration.
                             </li>
                             <li>
-                                <span className=" text-foreground">Machinery Overhauls:</span> Full servicing and overhaul of engines, pumps, generators, and other critical systems.
+                                <span className="text-foreground">Machinery Overhauls:</span> Full servicing and overhaul of engines, pumps, generators, and other critical systems.
                             </li>
                             <li>
-                                <span className=" text-foreground">Hull &amp; Structural Maintenance:</span> Regular inspections; coating renewal; and corrosion control for structural reliability.
+                                <span className="text-foreground">Hull &amp; Structural Maintenance:</span> Regular inspections; coating renewal; and corrosion control for structural reliability.
                             </li>
                             <li>
-                                <span className=" text-foreground">Electrical &amp; Automation Solutions:</span> Maintenance and calibration of power systems, navigation aids, and onboard electronics.
+                                <span className="text-foreground">Electrical &amp; Automation Solutions:</span> Maintenance and calibration of power systems, navigation aids, and onboard electronics.
                             </li>
                             <li>
-                                <span className=" text-foreground">Maintenance Records &amp; Reporting:</span> Detailed logs and documentation of maintenance activities to support audits, compliance, and long-term planning.
+                                <span className="text-foreground">Maintenance Records &amp; Reporting:</span> Detailed logs and documentation of maintenance activities to support audits, compliance, and long-term planning.
                             </li>
                             <li>
-                                <span className=" text-foreground">Spare Parts Inventory Support:</span> Coordination for timely sourcing and supply of spare parts and consumables.
+                                <span className="text-foreground">Spare Parts Inventory Support:</span> Coordination for timely sourcing and supply of spare parts and consumables.
                             </li>
                         </ul>
                         <div className="mt-8">
@@ -250,7 +250,7 @@ export default function DockingAndMaintenance() {
                     {/* Image Content */}
                     <div className="flex justify-center items-center">
                         <div className="relative w-full max-w-7xl">
-                            <div className="absolute top-4 left-0 w-full h-full bg-primary rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
+                            <div className="absolute top-4 left-0 w-full h-full bg-primary dark:bg-blue-600 rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
                             <img
                                     src="/docking-5.jpg"
                                 alt="Two maintenance workers discussing with a tablet"

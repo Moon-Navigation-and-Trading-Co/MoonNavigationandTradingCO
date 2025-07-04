@@ -67,7 +67,7 @@ export default function TankersPage() {
             <article className="w-full max-w-7xl flex flex-col md:flex-row gap-10 px-4 md:px-0">
                 {/* Left: Title and CTA */}
                 <header className="flex-1 flex flex-col items-start">
-                    <h1 className="text-5xl font-normal font-sans mb-12 text-[#222]" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <h1 className="text-5xl font-normal font-sans mb-12 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Tankers
                     </h1>
                     <Link href="/ocean-freight-forms">

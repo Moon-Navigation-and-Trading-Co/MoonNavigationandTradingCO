@@ -12,7 +12,7 @@ export default function CustomsClearance() {
     return (
         <main className="flex flex-col items-center w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Hero Section */}
-            <div className="w-full py-16 bg-background">
+            <div className="w-full py-16 ">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     {/* Hero Image */}
                     <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mb-16">
@@ -81,7 +81,7 @@ export default function CustomsClearance() {
             </div>
 
             {/* Key Customs Clearance Activities Section */}
-            <div className="w-full py-16 bg-background">
+            <div className="w-full py-16 ">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <h2 className="text-3xl  mb-16 text-foreground">{t("key-activities.title")}</h2>
 

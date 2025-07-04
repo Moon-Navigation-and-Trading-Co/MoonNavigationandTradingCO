@@ -24,7 +24,7 @@ export default function HeavyLiftCargoInfo() {
       <div className="flex flex-col md:flex-row gap-8 px-4 md:px-12">
         {/* Left: Title & Button */}
         <div className="flex-1 flex flex-col justify-start">
-          <h1 className="text-5xl font-normal font-sans mb-12 text-[#222]" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <h1 className="text-5xl font-normal font-sans mb-12 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
             Heavy Lift Cargo
           </h1>
           <Link href="/ocean-freight-forms">

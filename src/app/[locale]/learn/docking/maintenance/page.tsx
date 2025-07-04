@@ -8,7 +8,7 @@ import FAQSearch from "@/components/faq";
 
 export default function MaintenancePage() {
     return (
-        <main className="flex flex-col items-center w-full px-4 py-12 bg-background max-w-7xl mx-auto">
+        <main className="flex flex-col items-center w-full px-4 py-12 max-w-7xl mx-auto">
             {/* Our Maintenance Services Header */}
             <section className="w-full max-w-7xl mb-12">
                 <h1 className="text-2xl md:text-3xl  text-[#3b5c8c] mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>

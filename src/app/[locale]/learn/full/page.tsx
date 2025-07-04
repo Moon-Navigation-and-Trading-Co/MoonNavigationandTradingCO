@@ -32,7 +32,7 @@ export default function FullContainerLoadPage() {
             <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Left: Title and CTA */}
                 <div className="flex flex-col items-start justify-start">
-                    <h1 className="text-5xl font-normal font-sans mb-12 text-[#222] mt-12">
+                    <h1 className="text-5xl font-normal font-sans mb-12 text-primary mt-12">
                         Full Container Load
                     </h1>
                     <p className="text-muted-foreground text-lg mb-4">
@@ -201,7 +201,7 @@ export default function FullContainerLoadPage() {
                         Reefer Containers (Refrigerated)
                     </button>
                 </Link>
-                <Link href="/learn/full/dangerous" className="flex-1 flex justify-center">
+                <Link href="/learn/dangerous" className="flex-1 flex justify-center">
                     <button
                         className="bg-[#25348b] hover:bg-[#1a255e] text-white text-xs md:text-sm font-medium rounded-full px-6 py-2 transition-colors duration-200 shadow-none"
                         style={{ minWidth: "200px" }}

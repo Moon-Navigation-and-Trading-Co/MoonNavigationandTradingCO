@@ -4,18 +4,18 @@ import FAQSearch from "@/components/faq";
   
 export default function LearnMoreChandleryPage() {
   return (
-    <div className="w-full min-h-screen bg-white flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
+    <div className="w-full min-h-screen flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
       <div className="w-full max-w-6xl">
-        <h1 className="text-2xl md:text-3xl  mb-8">
+        <h1 className="text-2xl md:text-3xl mb-8 text-gray-900 dark:text-white">
           Ship Chandlery Services – At Moon Navigation and Trading Co.
         </h1>
-        <p className="text-[#444] text-sm md:text-base mb-10">
+        <p className="text-[#444] dark:text-gray-300 text-sm md:text-base mb-10">
           A well-supplied vessel is crucial for smooth maritime operations. Our ship chandlery services ensure vessels are fully supplied with everything they need, from provisions to engine parts.
         </p>
         <div className="flex flex-col md:flex-row gap-8 mb-12">
           <div className="flex-1">
-            <h2 className="text-lg  mb-2">1. Deck &amp; Engine Stores</h2>
-            <ul className="list-disc pl-6 text-[#222] text-sm md:text-base mb-4 space-y-1">
+            <h2 className="text-lg mb-2 text-gray-900 dark:text-white">1. Deck &amp; Engine Stores</h2>
+            <ul className="list-disc pl-6 text-[#222] dark:text-white text-sm md:text-base mb-4 space-y-1">
               <li>Pipes, Mooring Lines &amp; Rigging Equipment – For ship berthing and anchorage</li>
               <li>Paints, Coatings &amp; Corrosion Protection – Ensuring hull durability &amp; rust prevention</li>
               <li>Tools, Cleaning Equipment &amp; Safety Items – For all maintenance and operations needs</li>
@@ -50,8 +50,8 @@ export default function LearnMoreChandleryPage() {
             </div>
           </div>
           <div className="flex-1">
-            <h2 className="text-lg  mb-2">2. Provisions &amp; Catering Supplies</h2>
-            <ul className="list-disc pl-6 text-[#222] text-sm md:text-base space-y-1">
+            <h2 className="text-lg mb-2 text-gray-900 dark:text-white">2. Provisions &amp; Catering Supplies</h2>
+            <ul className="list-disc pl-6 text-[#222] dark:text-white text-sm md:text-base space-y-1">
               <li>Fresh &amp; Frozen Food – Fruits, vegetables, meat, seafood, dairy, and bakery products</li>
               <li>Dry Goods &amp; Beverages – Coffee, tea, canned goods, and snacks</li>
               <li>Bonded &amp; Hygiene Supplies – Fine wines &amp; spirits, toiletries, and personal care products</li>
@@ -61,8 +61,8 @@ export default function LearnMoreChandleryPage() {
         </div>
         <div className="flex flex-col md:flex-row gap-8 mb-12">
           <div className="flex-1">
-            <h2 className="text-lg  mb-2">3. Bonded Stores &amp; Duty-Free Items</h2>
-            <ul className="list-disc pl-6 text-[#222] text-sm md:text-base space-y-1">
+            <h2 className="text-lg mb-2 text-gray-900 dark:text-white">3. Bonded Stores &amp; Duty-Free Items</h2>
+            <ul className="list-disc pl-6 text-[#222] dark:text-white text-sm md:text-base space-y-1">
               <li>
                 Tobacco &amp; Alcohol – Cigarettes, cans, beer, wine, and spirits
               </li>

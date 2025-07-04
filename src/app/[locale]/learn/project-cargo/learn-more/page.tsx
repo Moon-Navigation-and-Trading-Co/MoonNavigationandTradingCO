@@ -6,7 +6,7 @@ import FAQSearch from "@/components/faq";
 
 export default function ProjectCargoLearnMore() {
   return (
-    <div className="w-full px-4 md:px-16 py-10">
+    <div className="w-full px-4 md:px-16 py-10 max-w-7xl mx-auto">
       <h1 className="text-xl md:text-2xl font-semibold mb-8 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
         Our Project Cargo Solutions - At Moon Navigation and Trading Co.
       </h1>

@@ -33,7 +33,7 @@ const ReeferPage = () => {
       <div className="w-full max-w-5xl flex flex-col md:flex-row gap-8">
         {/* Left: Title and button */}
         <div className="flex-1 flex flex-col gap-6">
-          <h1 className="text-3xl font-normal font-sans mb-12 text-[#222]">
+          <h1 className="text-3xl font-normal font-sans mb-12 text-[#222] dark:text-white">
             Reefer Containers (Refrigerated Shipping Solutions) 
           </h1>
           <Link href="/container-services-forms">
@@ -43,7 +43,7 @@ const ReeferPage = () => {
           </Link>
         </div>
         {/* Right: Description */}
-        <div className="flex-[2] text-gray-700 text-sm md:text-base flex flex-col gap-4">
+        <div className="flex-[2] text-gray-700 dark:text-gray-300 text-sm md:text-base flex flex-col gap-4">
           <p>
             When it comes to transporting temperature-sensitive cargo, precision and reliability are critical. Our Reefer
             Containers (refrigerated containers) provide the ideal solution for maintaining product integrity throughout the
@@ -56,7 +56,7 @@ const ReeferPage = () => {
         </div>
       </div>
       <div className="w-full max-w-5xl mt-16 mb-8">
-        <h2 className="text-xl md:text-2xl  mb-2 text-[#3B4B8C]">
+        <h2 className="text-xl md:text-2xl  mb-2 text-[#3B4B8C] dark:text-blue-400">
           Cargo Types We Handle
         </h2>
         <p className="text-muted-foreground mb-8 text-sm md:text-base">
@@ -75,10 +75,10 @@ const ReeferPage = () => {
               <img
                 src="/reefer-fresh-produce.jpg"
                 alt="Fresh Produce & Perishable Foods"
-                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1">Fresh Produce &amp; Perishable Foods</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Fresh Produce &amp; Perishable Foods</h3>
               <p className="text-xs text-muted-foreground">
                 Salads, vegetables, fruit, seafood, dairy
               </p>
@@ -88,10 +88,10 @@ const ReeferPage = () => {
               <img
                 src="/reefer-pharma.jpg"
                 alt="Pharmaceuticals & Medical Supplies"
-                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1">Pharmaceuticals &amp; Medical Supplies</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Pharmaceuticals &amp; Medical Supplies</h3>
               <p className="text-xs text-muted-foreground">
                 Vaccines, biologics &amp; temperature-sensitive drugs
               </p>
@@ -101,10 +101,10 @@ const ReeferPage = () => {
               <img
                 src="/reefer-chemicals.jpg"
                 alt="Chemical Products"
-                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1">Chemical Products</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Chemical Products</h3>
               <p className="text-xs text-muted-foreground">
                 Industrial chemicals, specialty liquids
               </p>
@@ -114,10 +114,10 @@ const ReeferPage = () => {
               <img
                 src="/reefer-flowers.jpg"
                 alt="Floral Products"
-                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1">Floral Products</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Floral Products</h3>
               <p className="text-xs text-muted-foreground">
                 Flowers, plants, horticultural cargo
               </p>
@@ -127,10 +127,10 @@ const ReeferPage = () => {
               <img
                 src="/reefer-frozen.jpg"
                 alt="Frozen Goods & Ice Cream"
-                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1">Frozen Goods &amp; Ice Cream</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Frozen Goods &amp; Ice Cream</h3>
               <p className="text-xs text-muted-foreground">
                 Frozen foods, desserts, ready meals
               </p>
@@ -140,10 +140,10 @@ const ReeferPage = () => {
               <img
                 src="/reefer-beverages.jpg"
                 alt="Beverages & Dairy Products"
-                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200"
+                className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1">Beverages &amp; Dairy Products</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Beverages &amp; Dairy Products</h3>
               <p className="text-xs text-muted-foreground">
                 Milk, juices, soft drinks, yogurt
               </p>
@@ -154,7 +154,7 @@ const ReeferPage = () => {
             <button
               type="button"
               aria-label="Scroll left"
-              className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full transition hover:bg-gray-100 active:scale-95 disabled:opacity-30"
+              className="w-10 h-10 flex items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-full transition hover:bg-gray-100 dark:hover:bg-gray-700 active:scale-95 disabled:opacity-30"
               onClick={() => {
                 const el = document.getElementById('reefer-cargo-scroll');
                 if (el) el.scrollBy({ left: -260, behavior: 'smooth' });
@@ -167,7 +167,7 @@ const ReeferPage = () => {
             <button
               type="button"
               aria-label="Scroll right"
-              className="w-10 h-10 flex items-center justify-center bg-white border border-gray-200 rounded-full transition hover:bg-gray-100 active:scale-95 disabled:opacity-30"
+              className="w-10 h-10 flex items-center justify-center bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-full transition hover:bg-gray-100 dark:hover:bg-gray-700 active:scale-95 disabled:opacity-30"
               onClick={() => {
                 const el = document.getElementById('reefer-cargo-scroll');
                 if (el) el.scrollBy({ left: 260, behavior: 'smooth' });
@@ -192,7 +192,7 @@ const ReeferPage = () => {
         </div>
         {/* Right: Text */}
         <div className="flex-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          <h2 className="text-2xl mb-2 text-[#23294d]">Advanced Temperature Control</h2>
+          <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">Advanced Temperature Control</h2>
           <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
             Our refrigerated containers are equipped with precise climate control systems to maintain internal temperatures ranging from -30°C to +30°C, with adjustable humidity levels where required. This ensures product stability and quality during transit.
           </p>
@@ -206,7 +206,7 @@ const ReeferPage = () => {
       <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-8 mt-20">
         {/* Left: Text */}
         <div className="flex-1 order-2 md:order-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          <h2 className="text-2xl mb-2 text-[#23294d]">24/7 Monitoring &amp; Technical Support</h2>
+          <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">24/7 Monitoring &amp; Technical Support</h2>
           <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
             We offer around-the-clock monitoring to ensure your cargo remains within the required temperature thresholds. Our technical support team is available 24/7 to address any operational issues promptly, minimizing any risk to your cargo.
           </p>
@@ -233,7 +233,7 @@ const ReeferPage = () => {
         </div>
         {/* Right: Text */}
         <div className="flex-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          <h2 className="text-2xl mb-2 text-[#23294d]">Cold Chain Compliance &amp; Documentation</h2>
+          <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">Cold Chain Compliance &amp; Documentation</h2>
           <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
             Maintaining a consistent cold chain is critical in reefer logistics. Our team ensures:
           </p>
@@ -248,7 +248,7 @@ const ReeferPage = () => {
       <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-8 mt-20">
         {/* Left: Text */}
         <div className="flex-1 order-2 md:order-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          <h2 className="text-2xl mb-2 text-[#23294d]">Global Reach.<br />Reliable Transit</h2>
+          <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">Global Reach.<br />Reliable Transit</h2>
           <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
             Whether it is a short-haul or long-haul shipment, our global network allows us to offer fast, secure, and reliable reefer transport solutions. With strong partnerships across key ports and shipping lines, we ensure timely deliveries and end-to-end coordination.
           </p>
@@ -264,65 +264,65 @@ const ReeferPage = () => {
         </div>
       </div>
       <div className="overflow-x-auto mt-12 w-full max-w-7xl">
-        <h2 className="text-2xl  mb-6">Comparison: Reefer Containers vs. Standard Containers</h2>
-        <table className="min-w-full border border-gray-300 dark:border-[#23294d] rounded-2xl bg-white dark:bg-[#181c2a]">
+        <h2 className="text-2xl mb-6 text-gray-900 dark:text-white">Comparison: Reefer Containers vs. Standard Containers</h2>
+        <table className="min-w-full border border-gray-300 dark:border-gray-600 rounded-2xl bg-white dark:bg-gray-800">
           <thead>
             <tr className="">
-              <th className="px-4 py-3 text-left  border-b border-gray-300 dark:border-[#23294d] border-r">Feature</th>
-              <th className="px-4 py-3 text-left  border-b border-gray-300 dark:border-[#23294d] border-r">Reefer Containers (Refrigerated)</th>
-              <th className="px-4 py-3 text-left  border-b border-gray-300 dark:border-[#23294d] border-r">Standard Containers</th>
+              <th className="px-4 py-3 text-left border-b border-gray-300 dark:border-gray-600 border-r text-gray-900 dark:text-white">Feature</th>
+              <th className="px-4 py-3 text-left border-b border-gray-300 dark:border-gray-600 border-r text-gray-900 dark:text-white">Reefer Containers (Refrigerated)</th>
+              <th className="px-4 py-3 text-left border-b border-gray-300 dark:border-gray-600 border-r text-gray-900 dark:text-white">Standard Containers</th>
             </tr>
           </thead>
           <tbody className="text-sm">
             <tr>
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Purpose</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Temperature-sensitive cargo transport</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">General cargo transport</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Purpose</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Temperature-sensitive cargo transport</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">General cargo transport</td>
             </tr>
             <tr className="">
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200 ">Temperature Control</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Adjustable temperature control (typically -30°C to +30°C)</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">No temperature control</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Temperature Control</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Adjustable temperature control (typically -30°C to +30°C)</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">No temperature control</td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d border-r border-gray-200]">Cargo Types</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Perishable food, pharmaceuticals, chemicals, etc.</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Dry goods, machinery, textiles, packaged goods</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Cargo Types</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Perishable food, pharmaceuticals, chemicals, etc.</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Dry goods, machinery, textiles, packaged goods</td>
             </tr>
             <tr className="">
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d border-r border-gray-200]">Ventilation &amp; Humidity Control</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Equipped with air circulation and humidity regulation</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Not available</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Ventilation &amp; Humidity Control</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Equipped with air circulation and humidity regulation</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Not available</td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d border-r border-gray-200]">Insulation</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Insulated walls, floor, and ceiling</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Not insulated</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Insulation</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Insulated walls, floor, and ceiling</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Not insulated</td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Container Cost</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Higher cost due to refrigeration equipment</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Lower cost</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Container Cost</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Higher cost due to refrigeration equipment</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Lower cost</td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Power Supply</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Requires power source during transit and storage</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Not required</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Power Supply</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Requires power source during transit and storage</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Not required</td>
             </tr>
             <tr className="">
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Monitoring Options</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Cargo condition monitored throughout transportation</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Basic handling only</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Monitoring Options</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Cargo condition monitored throughout transportation</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Basic handling only</td>
             </tr>
             <tr>
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Common Sizes</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">20ft / 40ft reefer and high cube</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">20ft / 40ft standard and high cube</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Common Sizes</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">20ft / 40ft reefer and high cube</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">20ft / 40ft standard and high cube</td>
             </tr>
             <tr className="">
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Applications</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Cold chain logistics, food supply, medical shipments</td>
-              <td className="px-4 py-2 border-b border-gray-200 dark:border-[#23294d] border-r border-gray-200">Industrial, commercial, and general cargo</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Applications</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Cold chain logistics, food supply, medical shipments</td>
+              <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Industrial, commercial, and general cargo</td>
             </tr>
           </tbody>
         </table>
@@ -335,22 +335,22 @@ const ReeferPage = () => {
         </RequestQuoteButton>
       </div>
       <div className="mt-16 mb-12 max-w-5xl mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl  text-left md:text-left mb-16 text-[#3B4B8C] dark:text-[#bfc8f8]">
+        <h2 className="text-2xl md:text-3xl text-left md:text-left mb-16 text-[#3B4B8C] dark:text-blue-400">
           Reasons to Choose Moon Navigation and Trading Co. for Your Reefer Container Shipments
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-8 md:gap-x-16 lg:gap-x-32 justify-items-center">
           <div className="flex flex-col items-center text-center">
-            <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+            <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-blue-300 mb-1">
               Expertise in cold chain logistics
             </span>
           </div>
           <div className="flex flex-col items-center text-center">
-            <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+            <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-blue-300 mb-1">
               Custom solutions tailored to your cargo's needs
             </span>
           </div>
           <div className="flex flex-col items-center text-center">
-            <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+            <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-blue-300 mb-1">
               Modern reefer container fleet with advanced technology
             </span>
           </div>
@@ -358,12 +358,12 @@ const ReeferPage = () => {
         <div className="flex justify-center mt-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 lg:gap-x-32">
             <div className="flex flex-col items-center text-center">
-              <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+              <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-blue-300 mb-1">
                 Transparent communication and timely shipment updates
               </span>
             </div>
             <div className="flex flex-col items-center text-center">
-              <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+              <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-blue-300 mb-1">
                 Competitive rates and efficient routing
               </span>
             </div>

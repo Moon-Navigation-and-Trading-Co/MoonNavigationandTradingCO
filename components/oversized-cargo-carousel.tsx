@@ -56,11 +56,11 @@ export default function OversizedCargoCarousel() {
                   />
                 </div>
                 <div className="mt-4 text-center">
-                  <span className="block font-semibold text-lg md:text-xl text-[#23294d] mb-1">
+                  <span className="block font-semibold text-lg md:text-xl text-primary mb-1">
                     {item.title}
                   </span>
                   {item.subtitle && (
-                    <span className="block text-xs md:text-sm text-[#888] font-normal">
+                    <span className="block text-xs md:text-sm text-foreground font-normal">
                       {item.subtitle}
                     </span>
                   )}
@@ -71,8 +71,8 @@ export default function OversizedCargoCarousel() {
 
           {/* Navigation arrows */}
           <div className="flex justify-end items-center gap-2 mt-6 pr-8 w-full">
-            <CarouselPrevious className="!static !border-0 !bg-white !shadow-md !text-[#3B4B8C] !w-12 !h-12 !rounded-full !flex !items-center !justify-center hover:!bg-[#f0f4ff]" />
-            <CarouselNext className="!static !border-0 !bg-white !shadow-md !text-[#3B4B8C] !w-12 !h-12 !rounded-full !flex !items-center !justify-center hover:!bg-[#f0f4ff]" />
+            <CarouselPrevious className="!static !border-0 !bg-white !shadow-md !text-primary !w-12 !h-12 !rounded-full !flex !items-center !justify-center hover:!bg-[#f0f4ff]" />
+            <CarouselNext className="!static !border-0 !bg-white !shadow-md !text-primary !w-12 !h-12 !rounded-full !flex !items-center !justify-center hover:!bg-[#f0f4ff]" />
           </div>
         </Carousel>
 
@@ -81,7 +81,7 @@ export default function OversizedCargoCarousel() {
           {cargoItems.map((_, idx) => (
             <span
               key={idx}
-              className="inline-block w-4 h-2 rounded-full bg-[#e0e4f0]"
+              className="inline-block w-4 h-2 rounded-full bg-primary"
             />
           ))}
         </div>

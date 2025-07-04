@@ -71,7 +71,7 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Left Side: Title and Button */}
         <div className="flex flex-col justify-center items-start">
-          <h1 className="text-5xl font-normal font-sans mb-12 text-[#222]" style={{ fontFamily: 'Raleway, sans-serif' }}>Live Stock<br />Transportation</h1>
+          <h1 className="text-5xl font-normal font-sans mb-12 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>Live Stock<br />Transportation</h1>
           <Link href="/ocean-freight-forms">
             <RequestQuoteButton>
               Request a Quote

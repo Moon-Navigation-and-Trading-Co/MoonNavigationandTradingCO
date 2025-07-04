@@ -22,7 +22,7 @@ export default function SparePartsPage() {
       <div className="max-w-6xl w-full mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         {/* Left: Title and Button */}
         <div className="flex flex-col items-start">
-          <h1 className="text-[1.5rem] md:text-[2rem] font-medium text-[#222] mb-4 leading-tight">
+          <h1 className="text-[1.5rem] md:text-[2rem] font-medium text-[#222] dark:text-white mb-4 leading-tight">
             Transit Spare Parts
           </h1>
           <RequestQuoteButton>
@@ -33,24 +33,24 @@ export default function SparePartsPage() {
         </div>
         {/* Right: Description */}
         <div>
-          <h2 className="text-base md:text-lg  text-[#2a3a8c] mb-2">
+          <h2 className="text-base md:text-lg text-[#2a3a8c] dark:text-blue-400 mb-2">
             What is Transit spare parts ?
           </h2>
-          <p className="text-[#444] text-sm mb-4 leading-relaxed">
+          <p className="text-[#444] dark:text-gray-300 text-sm mb-4 leading-relaxed">
             Transit spare parts involve the translocation of critical replacement components for vessels or machinery, dispatched while transiting to ports or enroute to unanticipated maintenance locations.
           </p>
-          <p className="text-[#444] text-sm leading-relaxed">
+          <p className="text-[#444] dark:text-gray-300 text-sm leading-relaxed">
             These parts are essential for repairs, upgrades, or replacement of malfunctioning components. Whether during a planned visit or while afloat, at Moon Navigation Trading Company, we understand the critical importance of fast service in the maritime industry, and help ensure that spare parts can be minimizing downtime and preventing operational delays. We coordinate the clearance, logistics, and documentation structures that transit parts are in absolute compliance with local governmental mandates and overall port requirements. We provide regulatory management and traceability to streamline the process, ensuring that the necessary parts are available when needed.
           </p>
         </div>
       </div>
-    <div className="w-full bg-[#3b478b] rounded-[32px] px-4 md:px-12 py-10 mt-16 flex flex-col md:flex-row items-center gap-8">
+    <div className="w-full bg-[#3b478b] dark:bg-blue-900 rounded-[32px] px-4 md:px-12 py-10 mt-16 flex flex-col md:flex-row items-center gap-8">
       {/* Left: Text Content */}
       <div className="flex-1 text-white">
-        <h2 className="text-lg md:text-xl  mb-6">
+        <h2 className="text-lg md:text-xl mb-6">
           Our Transit Spare Parts Process – At Moon Navigation and Trading Co.
         </h2>
-        <h3 className="text-base md:text-lg  mb-2">
+        <h3 className="text-base md:text-lg mb-2">
           1. Spare Parts Reception
         </h3>
         <p className="text-sm md:text-base mb-4">
@@ -76,7 +76,7 @@ export default function SparePartsPage() {
       </div>
     </div>
     {/* Customs Clearance & Direct Delivery Section */}
-    <div className="w-full bg-[#3b478b] rounded-[32px] px-4 md:px-12 py-10 mt-10 flex flex-col md:flex-row items-center gap-8">
+    <div className="w-full bg-[#3b478b] dark:bg-blue-900 rounded-[32px] px-4 md:px-12 py-10 mt-10 flex flex-col md:flex-row items-center gap-8">
       {/* Left: Image */}
       <div className="flex-1 flex justify-center mb-6 md:mb-0">
         <img
@@ -88,7 +88,7 @@ export default function SparePartsPage() {
       </div>
       {/* Right: Customs Clearance Content */}
       <div className="flex-1 text-white">
-        <h3 className="text-base md:text-lg  mb-2">
+        <h3 className="text-base md:text-lg mb-2">
           2. Customs Clearance
         </h3>
         <p className="text-sm md:text-base mb-2">
@@ -110,10 +110,10 @@ export default function SparePartsPage() {
         </p>
       </div>
     </div>
-    <div className="w-full bg-[#3b478b] rounded-[32px] px-4 md:px-12 py-10 mt-10 flex flex-col md:flex-row items-center gap-8">
+    <div className="w-full bg-[#3b478b] dark:bg-blue-900 rounded-[32px] px-4 md:px-12 py-10 mt-10 flex flex-col md:flex-row items-center gap-8">
       {/* Left: Direct Delivery Content */}
       <div className="flex-1 text-white order-2 md:order-1">
-        <h3 className="text-base md:text-lg  mb-2">
+        <h3 className="text-base md:text-lg mb-2">
           3. Direct Delivery to Ship
         </h3>
         <p className="text-sm md:text-base mb-2">
@@ -139,32 +139,32 @@ export default function SparePartsPage() {
       </div>
     </div>
     <div className="w-full max-w-6xl mx-auto mt-20 mb-10 px-4">
-      <h2 className="text-xl md:text-2xl  text-[#2a4365] mb-8 text-center">
+      <h2 className="text-xl md:text-2xl text-[#2a4365] dark:text-blue-400 mb-8 text-center">
         Reasons to Choose Moon Navigation and Trading Co.<br />
         For Your Transit Spare Parts
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
         <div className="flex flex-col items-center text-center">
-          <h3 className=" mb-2">Fast &amp; Reliable Service</h3>
-          <p className="text-[#444] text-sm">
+          <h3 className="mb-2 text-gray-900 dark:text-white">Fast &amp; Reliable Service</h3>
+          <p className="text-[#444] dark:text-gray-300 text-sm">
             No delays in spare parts delivery.
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className=" mb-2">Customs Clearance Expertise</h3>
-          <p className="text-[#444] text-sm">
+          <h3 className="mb-2 text-gray-900 dark:text-white">Customs Clearance Expertise</h3>
+          <p className="text-[#444] dark:text-gray-300 text-sm">
             Smooth handling of all regulatory procedures.
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className=" mb-2">24/7 Support</h3>
-          <p className="text-[#444] text-sm">
+          <h3 className="mb-2 text-gray-900 dark:text-white">24/7 Support</h3>
+          <p className="text-[#444] dark:text-gray-300 text-sm">
             Available for urgent and emergency deliveries.
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className=" mb-2">End-to-End Coordination</h3>
-          <p className="text-[#444] text-sm">
+          <h3 className="mb-2 text-gray-900 dark:text-white">End-to-End Coordination</h3>
+          <p className="text-[#444] dark:text-gray-300 text-sm">
             From reception to final ship delivery.
           </p>
         </div>
