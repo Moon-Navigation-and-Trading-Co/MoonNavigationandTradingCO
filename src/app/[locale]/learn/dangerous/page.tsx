@@ -85,14 +85,14 @@ export default function DangerousCargoInfo() {
             </Head>
             <div>
                 {/* Image banner at the top */}
-                <div className="w-full flex justify-center mb-8 mt-8">
+                <div className="w-full flex justify-center mb-8 mt-10">
                     <div className="w-full max-w-7xl">
                         <Image
                             src="/dangerous-cargo-banner.jpg"
                             alt="Dangerous Cargo Banner"
                             width={1200}
                             height={350}
-                            className="rounded-3xl object-cover w-full h-[220px] sm:h-[350px]"
+                            className="rounded-[60px] object-cover w-full h-[220px] sm:h-[350px]"
                             priority
                         />
                     </div>
