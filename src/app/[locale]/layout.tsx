@@ -100,7 +100,7 @@ export default async function RootLayout({
                 <div className="flex flex-col pt-16 w-full px-4 md:px-6 lg:px-8 container-responsive">
                   {children}
                 </div>
-                <div className="absolute inset-0 z-[-1] h-full w-full bg-white dark:bg-gray-800 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] dark:bg-[radial-gradient(#374151_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_70%_50%_at_50%_30%,#000_40%,transparent_100%)] md:[mask-image:radial-gradient(ellipse_50%_50%_at_50%_35%,#000_40%,transparent_100%)]"></div>
+                
 
                 {/* faq */}
                 <div className="w-full max-w-[1300px] px-4 md:px-6 lg:px-8 mt-8 mb-8">

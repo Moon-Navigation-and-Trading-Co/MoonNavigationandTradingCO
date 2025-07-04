@@ -164,7 +164,7 @@ export default function Index() {
                     {/* Right: Image Placeholder */}
                     <div className="flex-1 flex items-center justify-center">
                       <div className="w-[450px] h-[450px] rounded-[48px] bg-muted flex items-center justify-center overflow-hidden">
-                        {/* Place your image here. Example: <img src="/your-image.jpg" alt="Quote" className="w-full h-full object-cover rounded-[48px]" /> */}
+                        <img src="/quote-illustration.png" alt="Quote" className="w-full h-full object-cover rounded-[48px]" /> 
                       </div>
                     </div>
                   </div>
