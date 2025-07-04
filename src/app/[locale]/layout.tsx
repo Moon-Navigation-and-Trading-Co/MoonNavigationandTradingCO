@@ -95,6 +95,7 @@ export default async function RootLayout({
               <div className="relative flex-1 w-full flex flex-col items-center">
                 {/* navbar */}
                 <Navbar user={isUserLoggedIn} />
+                <div className="mb-10"/>
                 {/* content */}
                 <div className="flex flex-col pt-16 w-full px-4 md:px-6 lg:px-8 container-responsive">
                   {children}

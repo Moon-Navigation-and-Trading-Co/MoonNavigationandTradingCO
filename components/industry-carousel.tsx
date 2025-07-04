@@ -6,22 +6,22 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const industrySlides = [
   [
-    { img: "/industry-chemicals.jpg", title: "Chemicals" },
-    { img: "/industry-pharma.jpg", title: "Pharma and Healthcare" },
-    { img: "/industry-fmcg.jpg", title: "FMCG" },
-    { img: "/industry-automotive.jpg", title: "Automotive and machinery" },
+    { img: "/i1.jpg", title: "Chemicals" },
+    { img: "/i2.jpg", title: "Pharma and Healthcare" },
+    { img: "/i3.jpg", title: "FMCG" },
+    { img: "/i4.jpg", title: "Automotive and machinery" },
   ],
   [
-    { img: "/industry-dangerous.jpg", title: "Dangerous materials" },
-    { img: "/industry-aerospace.jpg", title: "Aerospace and Aviation" },
-    { img: "/industry-construction.jpg", title: "Construction and Building Materials" },
-    { img: "/industry-energy.jpg", title: "Energy and Utilities" },
+    { img: "/i5.jpg", title: "Dangerous materials" },
+    { img: "/i6.jpg", title: "Aerospace and Aviation" },
+    { img: "/i7.jpg", title: "Construction and Building Materials" },
+    { img: "/i8.jpg", title: "Energy and Utilities" },
   ],
   [
-    { img: "/industry-retail.jpg", title: "Retail" },
-    { img: "/industry-fashion.jpg", title: "Fashion and Lifestyle" },
-    { img: "/industry-perishables.jpg", title: "Perishables and Fresh products" },
-    { img: "/industry-technology.jpg", title: "Technology and Electronics" },
+    { img: "/i9.jpg", title: "Retail" },
+    { img: "/i10.jpg", title: "Fashion and Lifestyle" },
+    { img: "/i11.jpg", title: "Perishables and Fresh products" },
+    { img: "/i12.jpg", title: "Technology and Electronics" },
   ],
 ];
 

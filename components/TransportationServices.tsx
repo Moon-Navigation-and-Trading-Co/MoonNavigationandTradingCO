@@ -105,7 +105,7 @@ const TransportationServices: React.FC = () => {
               </div>
               <div className="flex flex-col items-end justify-end gap-2">
                 <Link
-                  className="py-2 px-3 font-semibold bg-white rounded-md hover:bg-primary hover:text-white transition-colors z-10"
+                  className="py-2 px-3 font-semibold bg-secondary rounded-md hover:bg-primary hover:text-white transition-colors z-10"
                   href={card.quote}
                 >
                   Get Quote
