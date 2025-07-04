@@ -170,7 +170,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             title: "Investment",
             description:"",
             items:[
-                {name:"Investor Form", href:"/investor-form"},
+                {name:"Invest with us", href:"/invest"},
             ]
         }
     };

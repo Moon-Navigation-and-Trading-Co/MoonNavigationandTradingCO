@@ -163,7 +163,7 @@ export default function RollOnOffHero() {
         </div>
       </section>
       {/* Maximizing Efficiency in Our RoRo Shipping Section */}
-      <section className="max-w-[1400px] mx-auto mb-16 px-4 md:px-0 flex flex-col md:flex-row items-center gap-8 md:gap-0 relative min-h-[500px]">
+      <section className="max-w-[1600px] mx-auto mb-16 px-4 md:px-0 flex flex-col md:flex-row items-center gap-8 md:gap-0 relative min-h-[700px]">
         {/* Left: Text Content */}
         <div className="flex-1 flex flex-col justify-center md:pr-12 z-10">
           <h2 className="text-4xl font-normal mb-2 text-[#222] dark:text-white text-left font-sans">
