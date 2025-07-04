@@ -10,13 +10,13 @@ export default function HeavyLiftCargoInfo() {
     const t = useTranslations("learn-heavy-lift-cargo")
 
     return (
-    <div className="w-full max-w-7xl mx-auto flex flex-col items-center pt-8 pb-16 min-h-screen">
+    <div className="w-full max-w-7xl mx-auto flex flex-col items-center min-h-screen">
       {/* Top Banner Image */}
-      <div className="w-full rounded-3xl overflow-hidden mt-12 mb-8">
+      <div className="w-full  mb-8 mt-10">
         <img
           src="/heavy-lift-cargo-banner.jpg"
           alt="Heavy Lift Cargo"
-          className="w-full object-cover h-[400px] "
+          className="w-[1280px] object-cover h-[350px] rounded-[60px]"
           style={{}}
           loading="lazy"
         />
@@ -183,23 +183,23 @@ export default function HeavyLiftCargoInfo() {
       <div className="border border-border rounded-2xl p-6 md:p-8 max-w-7xl mx-auto shadow-sm">
         <ul className="space-y-5 text-sm md:text-base text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
           <li>
-            <span className="text-green-600 font-bold mr-2" aria-hidden="true">✔</span>
+            <span className="text-blue-600 font-bold mr-2" aria-hidden="true">✔</span>
             <span className="text-foreground font-semibold">Ultra-Heavy &amp; Oversized:</span> Our heavy lift cargo consists of units that are either too heavy or too large for conventional shipping methods, requiring specialized solutions.
           </li>
           <li>
-            <span className="text-green-600 font-bold mr-2" aria-hidden="true">✔</span>
+            <span className="text-blue-600 font-bold mr-2" aria-hidden="true">✔</span>
             <span className="text-foreground font-semibold">Specialized Lifting Equipment Required:</span> We utilize cranes with extreme load capacities, hydraulic lifting systems, and cranes to efficiently handle these challenging loads.
           </li>
           <li>
-            <span className="text-green-600 font-bold mr-2" aria-hidden="true">✔</span>
+            <span className="text-blue-600 font-bold mr-2" aria-hidden="true">✔</span>
             <span className="text-foreground font-semibold">Transported on Heavy Lift Vessels (HLVs):</span> Our heavy lift vessels are equipped with integrated cranes capable of lifting hundreds to thousands of tons, ensuring safe and fast transport.
           </li>
           <li>
-            <span className="text-green-600 font-bold mr-2" aria-hidden="true">✔</span>
+            <span className="text-blue-600 font-bold mr-2" aria-hidden="true">✔</span>
             <span className="text-foreground font-semibold">Complex Loading &amp; Unloading Operations:</span> We employ precise lifting techniques for loading and unloading, often using floating, rolling, or modular transporters to ensure seamless operations.
           </li>
           <li>
-            <span className="text-green-600 font-bold mr-2" aria-hidden="true">✔</span>
+            <span className="text-blue-600 font-bold mr-2" aria-hidden="true">✔</span>
             <span className="text-foreground font-semibold">Used in Large-Scale Industrial Projects:</span> Heavy lift cargo is commonly used with large-scale industrial projects in sectors such as oil and gas, energy, mining, and infrastructure, where our expertise ensures optimal logistics solutions.
           </li>
         </ul>
@@ -243,9 +243,8 @@ export default function HeavyLiftCargoInfo() {
             <img
               src="/heavy-lift-vessel-chartering.jpg"
               alt="Heavy lift vessel chartering"
-              className="rounded-2xl w-full h-[250px] object-cover object-center"
+              className="rounded-2xl w-full h-[300px] object-cover object-center"
               loading="lazy"
-              style={{ maxHeight: 250 }}
             />
           </div>
         </div>
@@ -256,9 +255,8 @@ export default function HeavyLiftCargoInfo() {
             <img
               src="/heavy-lift-engineer.jpg"
               alt="Heavy lift cargo engineer"
-              className="rounded-2xl w-full h-[250px] object-cover object-center"
+              className="rounded-2xl w-full h-[300px] object-cover object-center"
               loading="lazy"
-              style={{ maxHeight: 250 }}
             />
           </div>
           {/* 2. Engineering & Load Planning */}
@@ -320,9 +318,8 @@ export default function HeavyLiftCargoInfo() {
             <img
               src="/heavy-lift-cranes.jpg"
               alt="High-capacity cranes lifting heavy cargo"
-              className="rounded-2xl w-full h-[250px] object-cover object-center"
+              className="rounded-2xl w-full h-[300px] object-cover object-center"
               loading="lazy"
-              style={{ maxHeight: 250 }}
             />
           </div>
         </div>
@@ -333,9 +330,8 @@ export default function HeavyLiftCargoInfo() {
             <img
               src="/heavy-lift-compliance.jpg"
               alt="Heavy lift cargo compliance and safety inspector"
-              className="rounded-2xl w-full h-[250px] object-cover object-center"
+              className="rounded-2xl w-full h-[300px] object-cover object-center"
               loading="lazy"
-              style={{ maxHeight: 250 }}
             />
           </div>
           {/* 4. Regulatory Compliance & Safety */}
@@ -392,8 +388,7 @@ export default function HeavyLiftCargoInfo() {
           <img
             src="/heavy-lift-route-survey.jpg"
             alt="Engineer conducting route survey for heavy lift cargo at port"
-            className="w-[320px] h-auto object-contain rounded-2xl"
-            style={{ maxWidth: 380 }}
+            className="w-full h-[300px] object-cover object-center rounded-2xl"
             loading="lazy"
           />
         </div>
