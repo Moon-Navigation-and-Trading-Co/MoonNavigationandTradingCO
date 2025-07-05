@@ -212,7 +212,7 @@ export default function FullContainerLoadPage() {
             </div>
             <div className="max-w-7xl mx-auto mt-10 mb-12 px-4">
                 <h3 className="text-2xl md:text-2xl  text-foreground mb-4 text-blue-600">
-                    Our Comprehensive Container Solutions includes Reefer<br className="hidden md:inline" /> &amp; Dangerous Cargo Expertise
+                    Our Comprehensive Container Solutions includes Reefer<br className="hidden md:inline" /> and Dangerous Cargo Expertise
                 </h3>
                 <p className="text-muted-foreground text-sm md:text-base mb-2">
                     At Moon Navigation and Trading Co., we specialize in providing comprehensive container transportation solutions, ensuring the safe and efficient handling of a wide range of cargo, including refrigerated reefer and dangerous goods.
@@ -234,9 +234,9 @@ export default function FullContainerLoadPage() {
 not require temperature control. These containers offer a secure and cost-effective solution for
 your everyday shipping needs, such as:</p>
                         <ul className="list-disc list-inside text-muted-foreground text-sm mb-3 space-y-1">
-                            <li>Industrial Equipment &amp; Heavy machinery, spare parts, and mechanical tools.</li>
+                            <li>Industrial Equipment and Heavy machinery, spare parts, and mechanical tools.</li>
                             <li>Consumer Goods –  Electronics, appliances, textiles, and packaged products.</li>
-                            <li>Raw Materials &amp; Construction Supplies – Palletized goods, paper products, packaging
+                            <li>Raw Materials and Construction Supplies – Palletized goods, paper products, packaging
                             materials, and more.</li>
                         </ul>
                         <p className="text-muted-foreground text-sm">
@@ -276,8 +276,8 @@ your everyday shipping needs, such as:</p>
                         control during transit, such as:</p>
                         <ul className="list-disc list-inside text-muted-foreground text-sm mb-3 space-y-1">
                             <li>Perishable Food Items – Fresh produce, dairy, and frozen foods.</li>
-                            <li>Pharma &amp; Chemicals – medicines and vaccines that need strict temperature control.</li>
-                            <li>Floral &amp; Horticultural Products – Goods that require constant climate monitoring.
+                            <li>Pharma and Chemicals – medicines and vaccines that need strict temperature control.</li>
+                            <li>Floral and Horticultural Products – Goods that require constant climate monitoring.
 
 </li>
                         </ul>
@@ -308,13 +308,13 @@ Maritime Organization) and ADR (European Agreement on Dangerous Goods).
 Our services for dangerous goods include</p>
                         <ul className="list-disc list-inside text-muted-foreground text-sm mb-3 space-y-1">
                             <li>
-                                <span className="font-medium">Proper Classification &amp; Labeling</span> – Correct packaging, labeling, and documentation for
+                                <span className="font-medium">Proper Classification and Labeling</span> – Correct packaging, labeling, and documentation for
                                 hazardous materials.</li>
                             <li>
                                 <span className="font-medium">Specialized Equipment</span> – Containers and equipment designed for safe transport of dangerous
                                 goods.</li>
                             <li>
-                                <span className="font-medium">Risk Management &amp; Emergency Response</span> –  Adhering to protocols to manage risks and
+                                <span className="font-medium">Risk Management and Emergency Response</span> –  Adhering to protocols to manage risks and
                                 ensure quick action in case of emergencies.</li>
                             <li>
                                 <span className="font-medium">Regulatory Compliance</span> –  Ensuring full compliance with international shipping regulations to

@@ -4,6 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  @apply text-left !important;
+}
 /* Responsive Design Utilities */
 @layer utilities {
   /* Viewport-based sizing */
@@ -182,6 +185,7 @@
   }
 }
 
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -258,6 +262,7 @@ body {
   /* Use dynamic viewport height for mobile */
   min-height: 100vh;
   min-height: 100dvh;
+  text-align: left !important;
 }
 
 /* Responsive base styles */

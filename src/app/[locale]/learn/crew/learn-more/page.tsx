@@ -54,11 +54,11 @@ export default function CrewLearnMorePage() {
           <div className="mb-2">
             <span className="font-semibold text-[#222] dark:text-white">Service Includes:</span>
             <ul className="list-disc ml-6 text-[#444] dark:text-gray-300 text-sm md:text-base space-y-1 mt-2">
-              <li>Visa processing &amp; immigration formalities</li>
-              <li>Medical fitness certification &amp; COVID-19 compliance</li>
-              <li>Flight &amp; transportation arrangements</li>
-              <li>Port clearance &amp; vessel access coordination</li>
-              <li>Contact validation &amp; compliance checks</li>
+              <li>Visa processing and immigration formalities</li>
+              <li>Medical fitness certification and COVID-19 compliance</li>
+              <li>Flight and transportation arrangements</li>
+              <li>Port clearance and vessel access coordination</li>
+              <li>Contact validation and compliance checks</li>
             </ul>
           </div>
           <p className="text-xs text-[#444] dark:text-gray-300 mt-3">
@@ -93,7 +93,7 @@ export default function CrewLearnMorePage() {
       {/* Right: Text Content */}
       <div className="flex-1 order-2 md:order-2">
         <h2 className="text-lg md:text-xl font-semibold text-[#2a6db0] dark:text-blue-400 mb-2">
-          2. Crew Sign-Off (Disembarkation &amp; Repatriation)
+          2. Crew Sign-Off (Disembarkation and Repatriation)
         </h2>
         <p className="text-[#222] dark:text-white text-sm md:text-base mb-4">
           For crew members concluding their contracts, we facilitate safe disembarkation and return travel to home countries.
@@ -101,11 +101,11 @@ export default function CrewLearnMorePage() {
         <div className="mb-2">
           <span className="font-semibold text-[#222] dark:text-white">Service Includes:</span>
           <ul className="list-disc ml-6 text-[#444] dark:text-gray-300 text-sm md:text-base space-y-1 mt-2">
-            <li>Exit visa &amp; customs clearance</li>
+            <li>Exit visa and customs clearance</li>
             <li>Medical check-out fitness assessment</li>
-            <li>Travel &amp; accommodation arrangements</li>
-            <li>Final payroll settlement &amp; documentation</li>
-            <li>Emergency repatriation &amp; medical assistance</li>
+            <li>Travel and accommodation arrangements</li>
+            <li>Final payroll settlement and documentation</li>
+            <li>Emergency repatriation and medical assistance</li>
           </ul>
         </div>
         <p className="text-xs text-[#444] dark:text-gray-300 mt-3">
@@ -118,7 +118,7 @@ export default function CrewLearnMorePage() {
       {/* Left: Text Content */}
       <div className="flex-1 order-1 md:order-1">
         <h2 className="text-lg md:text-xl font-semibold text-[#2a6db0] dark:text-blue-400 mb-2">
-          3. Emergency Crew Change &amp; Replacement
+          3. Emergency Crew Change and Replacement
         </h2>
         <p className="text-[#222] dark:text-white text-sm md:text-base mb-4">
           We offer rapid crew change solutions for urgent situations such as:

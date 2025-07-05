@@ -66,7 +66,7 @@ export default function LearnMore() {
         {/* Left: Solution Details */}
         <div className="flex-1 order-2 md:order-1">
           <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            3. Integrated Warehousing &amp; Cold Storage Services
+            3. Integrated Warehousing and Cold Storage Services
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
             In addition to transport, we offer cold storage solutions at key logistics hubs, allowing safe interim storage of temperature-sensitive goods. Our facilities are equipped with modern cooling systems to maintain ideal temperature and humidity levels.
@@ -115,7 +115,7 @@ export default function LearnMore() {
         {/* Left: Solution Details */}
         <div className="flex-1 order-2 md:order-1">
           <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            5. Risk Management &amp; Cargo Insurance Solutions
+            5. Risk Management and Cargo Insurance Solutions
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
             Protecting your high-value and perishable cargo is our priority. We offer tailored risk mitigation strategies and insurance coverage to safeguard your goods from unforeseen events such as equipment failure, delays, or spoilage.</p>
@@ -148,7 +148,7 @@ export default function LearnMore() {
         {/* Right: Solution Details */}
         <div className="flex-1">
           <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            6. Cargo Tracking &amp; Temperature Monitoring Systems
+            6. Cargo Tracking and Temperature Monitoring Systems
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
             We ensure effective cargo oversight through advanced monitoring protocols and temperature control measures throughout the transportation process. Our operations team routinely supervises shipments and keeps clients informed at every stage of the journey.

@@ -184,7 +184,7 @@ export default function HeavyLiftCargoInfo() {
         <ul className="space-y-5 text-sm md:text-base text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
           <li>
             <span className="text-blue-600 font-bold mr-2" aria-hidden="true">✔</span>
-            <span className="text-foreground font-semibold">Ultra-Heavy &amp; Oversized:</span> Our heavy lift cargo consists of units that are either too heavy or too large for conventional shipping methods, requiring specialized solutions.
+            <span className="text-foreground font-semibold">Ultra-Heavy and Oversized:</span> Our heavy lift cargo consists of units that are either too heavy or too large for conventional shipping methods, requiring specialized solutions.
           </li>
           <li>
             <span className="text-blue-600 font-bold mr-2" aria-hidden="true">✔</span>
@@ -196,7 +196,7 @@ export default function HeavyLiftCargoInfo() {
           </li>
           <li>
             <span className="text-blue-600 font-bold mr-2" aria-hidden="true">✔</span>
-            <span className="text-foreground font-semibold">Complex Loading &amp; Unloading Operations:</span> We employ precise lifting techniques for loading and unloading, often using floating, rolling, or modular transporters to ensure seamless operations.
+            <span className="text-foreground font-semibold">Complex Loading and Unloading Operations:</span> We employ precise lifting techniques for loading and unloading, often using floating, rolling, or modular transporters to ensure seamless operations.
           </li>
           <li>
             <span className="text-blue-600 font-bold mr-2" aria-hidden="true">✔</span>
@@ -262,17 +262,17 @@ export default function HeavyLiftCargoInfo() {
           {/* 2. Engineering & Load Planning */}
           <div className="flex-1">
             <h3 className="text-lg mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              2. Engineering &amp; Load Planning
+              2. Engineering and Load Planning
             </h3>
             <p className="text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Transporting heavy lift cargo requires precise engineering to prevent structural damage and ensure the safety of all involved:
             </p>
             <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
               <li>
-                <span className="font-semibold">Load &amp; Stability Analysis</span> – Ensuring stability is expertly determined across the transport vehicle or vessel for each cargo.
+                <span className="font-semibold">Load and Stability Analysis</span> – Ensuring stability is expertly determined across the transport vehicle or vessel for each cargo.
               </li>
               <li>
-                <span className="font-semibold">Custom Lifting &amp; Rigging Plans</span> – Developing detailed lifting protocols to safely relocate critical equipment.
+                <span className="font-semibold">Custom Lifting and Rigging Plans</span> – Developing detailed lifting protocols to safely relocate critical equipment.
               </li>
               <li>
                 <span className="font-semibold">Route Optimization</span> – Every shipment is carefully planned and executed to avoid sensitive routes and obstacles.
@@ -293,14 +293,14 @@ export default function HeavyLiftCargoInfo() {
           {/* 3. High-Capacity Cranes & Lifting Equipment */}
           <div>
             <h3 className="text-lg mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              3. High-Capacity Cranes &amp; Lifting Equipment
+              3. High-Capacity Cranes and Lifting Equipment
             </h3>
             <p className="text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Heavy lift projects require specialized lifting solutions at both port and project sites. We offer:
             </p>
             <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
               <li>
-                <span className="font-semibold">Gantry Cranes &amp; Tower Cranes</span> – Lifting hundreds of tons at critical locations worldwide.
+                <span className="font-semibold">Gantry Cranes and Tower Cranes</span> – Lifting hundreds of tons at critical locations worldwide.
               </li>
               <li>
                 <span className="font-semibold">Hydraulic Jacking Systems</span> – Enabling controlled cargo positioning.
@@ -337,20 +337,20 @@ export default function HeavyLiftCargoInfo() {
           {/* 4. Regulatory Compliance & Safety */}
           <div>
             <h3 className="text-lg mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              4. Regulatory Compliance &amp; Safety
+              4. Regulatory Compliance and Safety
             </h3>
             <p className="text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Transporting heavy lift cargo requires compliance with strict international transport laws and regulations. Our services include:
             </p>
             <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
               <li>
-                <span className="font-semibold">Oversized Cargo Permits &amp; Authorizations</span> – Managing all legal requirements.
+                <span className="font-semibold">Oversized Cargo Permits and Authorizations</span> – Managing all legal requirements.
               </li>
               <li>
-                <span className="font-semibold">Certified Inspections &amp; Documentation</span> – Ensuring cargo and equipment safety before, during, and after transit.
+                <span className="font-semibold">Certified Inspections and Documentation</span> – Ensuring cargo and equipment safety before, during, and after transit.
               </li>
               <li>
-                <span className="font-semibold">HSSE (Health, Safety, Security &amp; Environment)</span> – Prioritizing job-site compliance and risk mitigation.
+                <span className="font-semibold">HSSE (Health, Safety, Security and Environment)</span> – Prioritizing job-site compliance and risk mitigation.
               </li>
             </ul>
             <p className="text-xs text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -366,7 +366,7 @@ export default function HeavyLiftCargoInfo() {
         {/* Left: Text Content */}
         <div className="flex-1 min-w-[260px]">
           <h3 className="text-lg mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            5. Route Surveys &amp; Feasibility Studies
+            5. Route Surveys and Feasibility Studies
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
             From initial inspection of the cargo route to safe planning for transit, our services include:
@@ -376,7 +376,7 @@ export default function HeavyLiftCargoInfo() {
               <span className="font-semibold">Pre-Shipment Infrastructure Assessment</span> – Checking bridge capacities, clearances, road and port access.
             </li>
             <li>
-              <span className="font-semibold">Full Feasibility &amp; Risk/Permit Analysis</span> – Ensuring safe cargo transfer &amp; distribution with professional transport solutions, including multi-modal and complex logistics support.
+              <span className="font-semibold">Full Feasibility and Risk/Permit Analysis</span> – Ensuring safe cargo transfer and distribution with professional transport solutions, including multi-modal and complex logistics support.
             </li>
           </ul>
           <p className="text-xs text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -425,7 +425,7 @@ export default function HeavyLiftCargoInfo() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 text-center">
         {/* Regulatory Compliance & 24/7 Support */}
         <div className="flex flex-col items-center px-4">
-          <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Regulatory Compliance &amp; 24/7 Support</h3>
+          <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Regulatory Compliance and 24/7 Support</h3>
           <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
             Ensuring strict adherence to international safety regulations and expert assistance at every stage.
           </p>

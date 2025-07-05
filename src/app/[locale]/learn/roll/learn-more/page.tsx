@@ -66,7 +66,7 @@ export default function LearnMore() {
           {/* Right: Text */}
           <div className="flex-1 min-w-[260px]">
             <h3 className="text-lg md:text-xl font-medium mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              2. Heavy &amp; Oversized Cargo
+              2. Heavy and Oversized Cargo
             </h3>
             <a
               className="text-primary text-sm md:text-base mb-4 block "
@@ -76,7 +76,7 @@ export default function LearnMore() {
             </a>
             <ul className="text-foreground text-sm md:text-base space-y-1" style={{ fontFamily: 'Montserrat, sans-serif' }}>
               <li>
-                <span className="font-semibold">Machinery &amp; Equipment—</span>
+                <span className="font-semibold">Machinery and Equipment—</span>
                 Transporting construction machinery, mining equipment, and large vehicles.
               </li>
               <li>
@@ -116,11 +116,11 @@ export default function LearnMore() {
                 Efficient transport of new and used vehicles worldwide.
               </li>
               <li>
-                <span className="font-semibold">Vehicle Storage &amp; Delivery—</span>
+                <span className="font-semibold">Vehicle Storage and Delivery—</span>
                 Temporary storage solutions and timely delivery to the destination.
               </li>
               <li>
-                <span className="font-semibold">Vehicle Inspection &amp; Condition Reporting—</span>
+                <span className="font-semibold">Vehicle Inspection and Condition Reporting—</span>
                 Ensuring vehicles are in optimal condition before transport.
               </li>
               <li>
@@ -156,7 +156,7 @@ export default function LearnMore() {
           {/* Right: Text */}
           <div className="flex-1 min-w-[260px]">
             <h3 className="text-lg md:text-xl font-medium mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
-              4. Fast &amp; Flexible Turnaround
+              4. Fast and Flexible Turnaround
             </h3>
             <a
               href="#"

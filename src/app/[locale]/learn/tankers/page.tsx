@@ -289,7 +289,7 @@ export default function TankersPage() {
                 {/* Right: Advanced Safety & Compliance */}
                 <div className="flex-[1.3] md:pl-10">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Advanced Safety &amp; Compliance
+                        Advanced Safety and Compliance
                     </h2>
                     <p className="text-sm md:text-base text-muted-foreground mb-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., our tankers are engineered to meet the highest safety standards in the maritime industry.
@@ -361,7 +361,7 @@ export default function TankersPage() {
                 {/* Right: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Advanced Cargo Handling &amp; Storage
+                        Advanced Cargo Handling and Storage
                     </h2>
                     <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., our tankers are equipped with cutting-edge technology to ensure safe and efficient cargo transfers:
@@ -383,14 +383,14 @@ export default function TankersPage() {
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Risk Management &amp; Environmental Protection
+                        Risk Management and Environmental Protection
                     </h2>
                     <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., we prioritize safety, sustainability, and environmental responsibility in every aspect of our operations.
                     </p>
                     <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         <li>
-                            <span className="font-semibold">Assurance &amp; Mitigation:</span> We use audit programs, crew training, and robust vessel maintenance to identify hazards and mitigate all shipping risks, ensuring safe and secure tanker transportation through industry-leading protocols and emergency response drills.
+                            <span className="font-semibold">Assurance and Mitigation:</span> We use audit programs, crew training, and robust vessel maintenance to identify hazards and mitigate all shipping risks, ensuring safe and secure tanker transportation through industry-leading protocols and emergency response drills.
                         </li>
                         <li>
                             <span className="font-semibold">Ballast Water Management:</span> Our tankers are equipped with advanced ballast water treatment systems that comply with international standards, helping to protect marine biodiversity while preventing invasive species transfer.
@@ -430,14 +430,14 @@ export default function TankersPage() {
                 {/* Right: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Flexibility &amp; Customized Solutions
+                        Flexibility and Customized Solutions
                     </h2>
                     <p className="text-sm md:text-base text-muted-foreground mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         At Moon Navigation and Trading Co., we recognize that each cargo type has unique transportation needs, which is why we offer flexible and tailored tanker transportation solutions.
                     </p>
                     <ul className="list-disc pl-6 text-sm md:text-base text-muted-foreground space-y-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         <li>
-                            <span className="font-semibold">Spot &amp; Long-Term Contracts:</span> We provide both spot shipments for one-off transport and long-term contract options for recurring needs. This flexible approach helps maximize flexibility to meet your requirements.
+                            <span className="font-semibold">Spot and Long-Term Contracts:</span> We provide both spot shipments for one-off transport and long-term contract options for recurring needs. This flexible approach helps maximize flexibility to meet your requirements.
                         </li>
                         <li>
                             <span className="font-semibold">Specialized Services:</span> Our team can cater to specific requirements, including temperature-controlled cargo, chemical segregation, or sensitive on-time deliveries, ensuring you stay competitive in global markets.

@@ -37,9 +37,9 @@ export default function LearnMoreBunkeringPage() {
             <h2 className="text-lg mb-2 text-gray-900 dark:text-white">1. Types of Marine Fuels We Provide:</h2>
             <ul className="list-disc pl-6 text-[#222] dark:text-white text-sm md:text-base mb-4">
               <li>Very Low Sulfur Fuel Oil (VLSFO) – IMO 2020 compliant fuel</li>
-              <li>Marine Gas Oil (MGO) &amp; Marine Diesel Oil (MDO) – Cleaner-burning alternatives</li>
+              <li>Marine Gas Oil (MGO) and Marine Diesel Oil (MDO) – Cleaner-burning alternatives</li>
               <li>Heavy Fuel Oil (HFO) – For specific vessel requirements</li>
-              <li>HFO &amp; Alternate Fuels – Sustainable, eco-friendly options</li>
+              <li>HFO and Alternate Fuels – Sustainable, eco-friendly options</li>
             </ul>
           </div>
           <div className="flex-1 flex items-center justify-center">

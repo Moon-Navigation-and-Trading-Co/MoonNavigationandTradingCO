@@ -67,22 +67,22 @@ export default function InlandContainerPage() {
             </p>
             <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
               <li>
-                <span className="">FCL (Full Container Load) &amp; LCL (Less than Container Load) Trucking:</span> Dedicated or consolidated container haulage, including white-glove handling and cargo security.
+                <span className="">FCL (Full Container Load) and LCL (Less than Container Load) Trucking:</span> Dedicated or consolidated container haulage, including white-glove handling and cargo security.
               </li>
               <li>
                 <span className="">Special Container Transport:</span> Movement of reefer, hazardous, and high-value/sensitive materials with strict temperature and safety controls.
               </li>
               <li>
-                <span className="">Heavy &amp; Out-of-Gauge Haulage:</span> Specialized equipment and routing for large and weight-restricted cargo, including flat racks, open-top containers, and project cargo.
+                <span className="">Heavy and Out-of-Gauge Haulage:</span> Specialized equipment and routing for large and weight-restricted cargo, including flat racks, open-top containers, and project cargo.
               </li>
               <li>
                 <span className="">Customs-Cleared Delivery:</span> Transport to/from free-trade zones, bonded areas, and sites requiring compliance with customs and regulatory requirements.
               </li>
               <li>
-                <span className="">Intercity &amp; Cross-Border Trucking:</span> Reliable connections for domestic and international routes.
+                <span className="">Intercity and Cross-Border Trucking:</span> Reliable connections for domestic and international routes.
               </li>
               <li>
-                <span className="">Container Storage &amp; Last-Mile Delivery:</span> Short-distance container transfers between ports, rail yards, and warehouses; efficient distribution solutions for door-to-door cargo delivery.
+                <span className="">Container Storage and Last-Mile Delivery:</span> Short-distance container transfers between ports, rail yards, and warehouses; efficient distribution solutions for door-to-door cargo delivery.
               </li>
             </ul>
           </div>
@@ -136,14 +136,14 @@ export default function InlandContainerPage() {
           {/* Left: Multimodal & Transshipment Services */}
           <div>
             <h3 className="text-lg md:text-xl  mb-4">
-              3. Multimodal &amp; Transshipment Services
+              3. Multimodal and Transshipment Services
             </h3>
             <p className="text-base text-foreground mb-4">
               For complex cargo routes, we offer multimodal solutions that combine road, rail, and sea transport to ensure efficient and cost-effective logistics.
             </p>
             <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
               <li>
-                <span className="">Seamless Port-to-Door &amp; Door-to-Port Transport:</span>
+                <span className="">Seamless Port-to-Door and Door-to-Port Transport:</span>
                 End-to-end logistics coordination from shipping sites to inland delivery points. Eliminating delays with optimized scheduling and cargo handling.
               </li>
               <li>
@@ -183,7 +183,7 @@ export default function InlandContainerPage() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className=" text-center text-sm md:text-base">Standard &amp; High Cube Containers</span>
+            <span className=" text-center text-sm md:text-base">Standard and High Cube Containers</span>
             <span className="text-xs text-muted-foreground text-center">
               20ft, 40ft, and self-container transport.
             </span>
@@ -197,7 +197,7 @@ export default function InlandContainerPage() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className=" text-center text-sm md:text-base">Reefer &amp; Temperature-Sensitive Cargo</span>
+            <span className=" text-center text-sm md:text-base">Reefer and Temperature-Sensitive Cargo</span>
             <span className="text-xs text-muted-foreground text-center">
               Ensuring protected temperature for foods throughout the journey.
             </span>
@@ -225,7 +225,7 @@ export default function InlandContainerPage() {
                 className="object-cover w-full h-full"
               />
             </div>
-            <span className=" text-center text-sm md:text-base">Flat Rack &amp; Open-Top Containers</span>
+            <span className=" text-center text-sm md:text-base">Flat Rack and Open-Top Containers</span>
             <span className="text-xs text-muted-foreground text-center">
               For out-of-gauge, heavy, OOG, and industrial project cargo.
             </span>
@@ -258,7 +258,7 @@ export default function InlandContainerPage() {
           {/* Timely & Reliable Service */}
           <div className="flex flex-col items-center text-center">
             <h3 className=" text-foreground mb-2 text-base md:text-lg">
-              Timely &amp; Reliable Service
+              Timely and Reliable Service
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
               We prioritize on-time deliveries with optimized routing and continuous coordination.
@@ -269,7 +269,7 @@ export default function InlandContainerPage() {
           {/* Compliance & Security */}
           <div className="flex flex-col items-center text-center">
             <h3 className=" text-foreground mb-2 text-base md:text-lg">
-              Compliance &amp; Security
+              Compliance and Security
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
               Strict adherence to local and international regulations, ensuring cargo safety and smooth customs clearance.

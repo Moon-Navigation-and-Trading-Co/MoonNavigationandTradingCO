@@ -209,7 +209,7 @@ export default function ShippingMethodsInfo() {
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left: Text Content */}
           <div className="flex-1">
-            <h3 className="text-2xl font-medium mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>Regulatory Compliance &amp; Safety Standards</h3>
+            <h3 className="text-2xl font-medium mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>Regulatory Compliance and Safety Standards</h3>
             <p className="mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
               We strictly adhere to global livestock transportation regulations to ensure the highest standards of welfare and compliance. This includes the following:
             </p>
@@ -256,7 +256,7 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8">
           {/* Card 1 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Global Network &amp; Port Access</h3>
+            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Global Network and Port Access</h3>
             <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.
             </p>
@@ -277,7 +277,7 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Card 4 */}
           <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Seamless Logistics &amp; Documentation Handling</h3>
+            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Seamless Logistics and Documentation Handling</h3>
             <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
               From permits and health certificates to customs clearance, we manage all necessary documentation.
             </p>

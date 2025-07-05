@@ -99,10 +99,10 @@ export default function SparePartsPage() {
             <span className="">Custom documentation verification</span>
           </li>
           <li>
-            <span className="">Duty waivers &amp; formalities</span> as required for ship spares-in-transit
+            <span className="">Duty waivers and formalities</span> as required for ship spares-in-transit
           </li>
           <li>
-            <span className="">Liaison with port &amp; airport authorities</span> for smooth release
+            <span className="">Liaison with port and airport authorities</span> for smooth release
           </li>
         </ul>
         <p className="text-xs mt-3">
@@ -122,7 +122,7 @@ export default function SparePartsPage() {
         <ul className="list-disc ml-6 text-sm md:text-base space-y-1 mb-2">
           <li>On-time portside delivery</li>
           <li>Ship-to-ship or offshore transfer if required</li>
-          <li>Secure handling &amp; damage prevention measures</li>
+          <li>Secure handling and damage prevention measures</li>
         </ul>
         <p className="text-xs mt-3">
           <span className="">Benefit:</span> Ensures spare parts reach the ship without detour or delay.
@@ -145,7 +145,7 @@ export default function SparePartsPage() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
         <div className="flex flex-col items-center text-center">
-          <h3 className="mb-2 text-gray-900 dark:text-white">Fast &amp; Reliable Service</h3>
+          <h3 className="mb-2 text-gray-900 dark:text-white">Fast and Reliable Service</h3>
           <p className="text-[#444] dark:text-gray-300 text-sm">
             No delays in spare parts delivery.
           </p>

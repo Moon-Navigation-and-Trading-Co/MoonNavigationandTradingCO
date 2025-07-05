@@ -55,12 +55,12 @@ export default function DockingAndMaintenance() {
                         We serve a wide range of vessels, including:
                     </h2>
                     <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                        <li>Cargo Ships &amp; Container Vessels</li>
-                        <li>Bulk Carriers &amp; Tankers</li>
+                        <li>Cargo Ships and Container Vessels</li>
+                        <li>Bulk Carriers and Tankers</li>
                         <li>Offshore Support Vessels (OSVs)</li>
-                        <li>Fishing Vessels &amp; Research Ships</li>
-                        <li>Passenger &amp; Cruise Ships</li>
-                        <li>Tugboats &amp; Barges</li>
+                        <li>Fishing Vessels and Research Ships</li>
+                        <li>Passenger and Cruise Ships</li>
+                        <li>Tugboats and Barges</li>
                     </ul>
                 </div>
             </div>
@@ -76,11 +76,11 @@ export default function DockingAndMaintenance() {
                             At Moon Navigation and Trading Co., we specialize in delivering secure, efficient, and well-coordinated docking services at major ports. Our docking solutions include:
                         </p>
                         <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
-                            <li>Berth Reservation &amp; Port Entry</li>
-                            <li>Dry Docking (Technical Repairs &amp; Overhauls)</li>
-                            <li>Wet Docking (Afloat Repairs &amp; Onboard Servicing)</li>
-                            <li>Anchorage Services (Offshore Support &amp; Bunkers)</li>
-                            <li>Emergency Docking &amp; Salvage Operations</li>
+                            <li>Berth Reservation and Port Entry</li>
+                            <li>Dry Docking (Technical Repairs and Overhauls)</li>
+                            <li>Wet Docking (Afloat Repairs and Onboard Servicing)</li>
+                            <li>Anchorage Services (Offshore Support and Bunkers)</li>
+                            <li>Emergency Docking and Salvage Operations</li>
                         </ol>
                     </div>
                     {/* Image */}
@@ -127,13 +127,13 @@ export default function DockingAndMaintenance() {
                                 <span className="text-foreground">Dry Docking Planning:</span> Technical inspection, budgeting, and detailed pre-docking documentation for every vessel.
                             </li>
                             <li>
-                                <span className="text-foreground">Dockyard Coordination:</span> Liaison with trusted worldwide shipyards to ensure smooth &amp; efficient dockyard operations.
+                                <span className="text-foreground">Dockyard Coordination:</span> Liaison with trusted worldwide shipyards to ensure smooth and efficient dockyard operations.
                             </li>
                             <li>
-                                <span className="text-foreground">Repair &amp; Maintenance Oversight:</span> Supervision of hull cleaning, painting, steel renewal, and equipment upgrades.
+                                <span className="text-foreground">Repair and Maintenance Oversight:</span> Supervision of hull cleaning, painting, steel renewal, and equipment upgrades.
                             </li>
                             <li>
-                                <span className="text-foreground">Regulatory Compliance:</span> Coordination for safety status, statutory inspections, and compliance with class &amp; flag state regulations.
+                                <span className="text-foreground">Regulatory Compliance:</span> Coordination for safety status, statutory inspections, and compliance with class and flag state regulations.
                             </li>
                             <li>
                                 <span className="text-foreground">Project Management:</span> End-to-end planning to ensure deadlines, quality, costs, and safety standards are met.
@@ -170,19 +170,19 @@ export default function DockingAndMaintenance() {
                         </p>
                         <ol className="list-decimal pl-6 space-y-2 text-muted-foreground text-sm md:text-base">
                             <li>
-                                <span className="text-foreground">Hull &amp; Structure Maintenance</span>
+                                <span className="text-foreground">Hull and Structure Maintenance</span>
                             </li>
                             <li>
                                 <span className="text-foreground">Engine and Mechanical Repairs</span>
                             </li>
                             <li>
-                                <span className="text-foreground">Structural &amp; Automation Services</span>
+                                <span className="text-foreground">Structural and Automation Services</span>
                             </li>
                             <li>
-                                <span className="text-foreground">Plumbing &amp; Fuel System Maintenance</span>
+                                <span className="text-foreground">Plumbing and Fuel System Maintenance</span>
                             </li>
                             <li>
-                                <span className="text-foreground">Waste Management &amp; Environmental Compliance</span>
+                                <span className="text-foreground">Waste Management and Environmental Compliance</span>
                             </li>
                             <li>
                                 <span className="text-foreground">Safety Equipment Servicing</span>
@@ -227,13 +227,13 @@ export default function DockingAndMaintenance() {
                                 <span className="text-foreground">Machinery Overhauls:</span> Full servicing and overhaul of engines, pumps, generators, and other critical systems.
                             </li>
                             <li>
-                                <span className="text-foreground">Hull &amp; Structural Maintenance:</span> Regular inspections; coating renewal; and corrosion control for structural reliability.
+                                <span className="text-foreground">Hull and Structural Maintenance:</span> Regular inspections; coating renewal; and corrosion control for structural reliability.
                             </li>
                             <li>
-                                <span className="text-foreground">Electrical &amp; Automation Solutions:</span> Maintenance and calibration of power systems, navigation aids, and onboard electronics.
+                                <span className="text-foreground">Electrical and Automation Solutions:</span> Maintenance and calibration of power systems, navigation aids, and onboard electronics.
                             </li>
                             <li>
-                                <span className="text-foreground">Maintenance Records &amp; Reporting:</span> Detailed logs and documentation of maintenance activities to support audits, compliance, and long-term planning.
+                                <span className="text-foreground">Maintenance Records and Reporting:</span> Detailed logs and documentation of maintenance activities to support audits, compliance, and long-term planning.
                             </li>
                             <li>
                                 <span className="text-foreground">Spare Parts Inventory Support:</span> Coordination for timely sourcing and supply of spare parts and consumables.

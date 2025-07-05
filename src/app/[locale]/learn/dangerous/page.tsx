@@ -67,7 +67,7 @@ export default function DangerousCargoInfo() {
     return (
         <>
             <Head>
-                <title>Dangerous Cargo Shipping &amp; Handling | Moon Navigation and Trading Co.</title>
+                <title>Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co.</title>
                 <meta
                     name="description"
                     content="Learn about dangerous cargo shipping, IMDG Code, IATA DGR, ADR, and how Moon Navigation and Trading Co. ensures safe, compliant transport of hazardous materials worldwide."
@@ -76,7 +76,7 @@ export default function DangerousCargoInfo() {
                     name="keywords"
                     content="dangerous cargo, hazardous materials, IMDG Code, IATA DGR, ADR, shipping, transport, Moon Navigation and Trading Co., packaging, labeling, risk assessment, special equipment, safety protocols"
                 />
-                <meta property="og:title" content="Dangerous Cargo Shipping &amp; Handling | Moon Navigation and Trading Co." />
+                <meta property="og:title" content="Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co." />
                 <meta property="og:description" content="Expert handling and transport of dangerous cargo and hazardous materials. Learn about our process, compliance, and safety standards." />
                 <meta property="og:image" content="/dangerous-cargo-banner.jpg" />
                 <meta property="og:type" content="website" />

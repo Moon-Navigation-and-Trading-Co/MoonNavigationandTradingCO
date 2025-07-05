@@ -169,7 +169,7 @@ export default function ProjectCargoPage() {
             </thead>
             <tbody>
               <tr>
-                <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 border-r align-top text-gray-900 dark:text-white">Size &amp; Weight</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 border-r align-top text-gray-900 dark:text-white">Size and Weight</td>
                 <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 border-r align-top text-gray-900 dark:text-white">Oversized, heavy, and irregular-shaped items</td>
                 <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 align-top text-gray-900 dark:text-white">Standard-sized goods that fit in containers or pallets</td>
               </tr>
@@ -195,11 +195,11 @@ export default function ProjectCargoPage() {
               </tr>
               <tr>
                 <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 border-r align-top text-gray-900 dark:text-white">Industries Served</td>
-                <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 border-r align-top text-gray-900 dark:text-white">Energy, construction, oil &amp; gas, mining, infrastructure</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 border-r align-top text-gray-900 dark:text-white">Energy, construction, oil and gas, mining, infrastructure</td>
                 <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 align-top text-gray-900 dark:text-white">Retail, electronics, textiles, consumer goods</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 border-r align-top text-gray-900 dark:text-white">Risk &amp; Insurance</td>
+                <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 border-r align-top text-gray-900 dark:text-white">Risk and Insurance</td>
                 <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 border-r align-top text-gray-900 dark:text-white">Higher risk due to size and complexity, requires specialized insurance</td>
                 <td className="px-4 py-3 border-t border-[#3846a5] dark:border-blue-400 align-top text-gray-900 dark:text-white">Lower risk, covered by standard cargo insurance</td>
               </tr>

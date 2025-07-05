@@ -156,13 +156,13 @@ compliance with maritime regulations and local port requirements.
         </p>
       </div>
       <div className="flex flex-col items-center text-center">
-        <h3 className="mb-2 text-gray-900 dark:text-white">Strict Compliance &amp; Safety Standards</h3>
+        <h3 className="mb-2 text-gray-900 dark:text-white">Strict Compliance and Safety Standards</h3>
         <p className="text-[#444] dark:text-gray-300 text-sm">
           We adhere to IMO, MLC, ISPS, and all flag state regulations.
         </p>
       </div>
       <div className="flex flex-col items-center text-center">
-        <h3 className="mb-2 text-gray-900 dark:text-white">Cost-Effective &amp; Efficient Solutions</h3>
+        <h3 className="mb-2 text-gray-900 dark:text-white">Cost-Effective and Efficient Solutions</h3>
         <p className="text-[#444] dark:text-gray-300 text-sm">
           Our strategies are designed to minimize vessel downtime and optimize crew.
         </p>

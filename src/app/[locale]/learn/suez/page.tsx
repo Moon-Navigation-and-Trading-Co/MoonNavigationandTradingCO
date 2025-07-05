@@ -26,7 +26,7 @@ export default function SuezPage() {
         {/* Left: Title and Button */}
         <div className="flex flex-col items-start mt-2">
           <h1 className="text-[1.5rem] md:text-[2rem] font-medium text-primary mb-4 leading-tight">
-            Suez Canal Transit &amp;<br />
+            Suez Canal Transit and<br />
             Passage Services
           </h1>
           <RequestQuoteButton>
@@ -64,7 +64,7 @@ while we ensure a hassle-free canal passage.
           <h3 className="text-lg  text-primary mb-3">Pre-Transit Coordination</h3>
           <ul className="list-disc ml-6 text-foreground text-sm space-y-3">
             <li>
-              <span className="">Booking &amp; Scheduling:</span> We coordinate directly with the Suez Canal Authority to secure the soonest, most cost-effective transit passage.
+              <span className="">Booking and Scheduling:</span> We coordinate directly with the Suez Canal Authority to secure the soonest, most cost-effective transit passage.
             </li>
             <li>
               <span className="">Documentation Completion:</span> Handling all necessary paperwork including permits, transit documentation, and customs clearance, ensuring compliance with local laws and international regulations.
@@ -104,10 +104,10 @@ while we ensure a hassle-free canal passage.
         <h3 className="text-lg  text-primary mb-3">On-Transit Services</h3>
         <ul className="list-disc ml-6 text-foreground text-sm space-y-3">
           <li>
-            <span className="">Pilotage &amp; Navigation Support:</span> Boarding and coordinating with certified Suez Canal pilots to ensure safe and efficient navigation through the canal.
+            <span className="">Pilotage and Navigation Support:</span> Boarding and coordinating with certified Suez Canal pilots to ensure safe and efficient navigation through the canal.
           </li>
           <li>
-            <span className="">Monitoring &amp; Assistance:</span> We monitor your vessel’s passage continuously, offering assistance with any operational or technical needs that arise.
+            <span className="">Monitoring and Assistance:</span> We monitor your vessel’s passage continuously, offering assistance with any operational or technical needs that arise.
           </li>
           <li>
             <span className="">Emergency Support On-Route:</span> Always ready to respond to any urgent needs during the passage, from mechanical issues to navigation concerns.
@@ -121,7 +121,7 @@ while we ensure a hassle-free canal passage.
         <h3 className="text-lg  text-primary mb-3">Post-Passage Clearance</h3>
         <ul className="list-disc ml-6 text-foreground text-sm space-y-3">
           <li>
-            <span className="">Disbursement &amp; Account Facilitation:</span> We ensure smooth settlement of disbursement accounts and follow up with port authorities for the clearance of any pending charges.
+            <span className="">Disbursement and Account Facilitation:</span> We ensure smooth settlement of disbursement accounts and follow up with port authorities for the clearance of any pending charges.
           </li>
           <li>
             <span className="">Next Port Coordination:</span> Our team ensures your vessel is properly cleared for the next stage of its journey, coordinating with port authorities and ensuring all logistics are in place for onward transit.

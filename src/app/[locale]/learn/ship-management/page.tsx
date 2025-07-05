@@ -60,10 +60,10 @@ export default function ShipManagement() {
           </p>
           <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
             <li>
-              <span className="text-foreground">Planned Maintenance:</span> Regular monitoring and planned maintenance for vessel machinery &amp; systems.
+              <span className="text-foreground">Planned Maintenance:</span> Regular monitoring and planned maintenance for vessel machinery and systems.
             </li>
             <li>
-              <span className="text-foreground">Repairs &amp; Troubleshooting:</span> Fast response for technical problems onboard.
+              <span className="text-foreground">Repairs and Troubleshooting:</span> Fast response for technical problems onboard.
             </li>
             <li>
               <span className="text-foreground">Dry Docking Supervision:</span> Planning and execution of dry dock repairs and upgrades.
@@ -92,22 +92,22 @@ export default function ShipManagement() {
           </p>
           <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
             <li>
-              <span className="text-foreground">Recruitment &amp; Selection:</span> Careful screening and hiring of competent officers and ratings.
+              <span className="text-foreground">Recruitment and Selection:</span> Careful screening and hiring of competent officers and ratings.
             </li>
             <li>
-              <span className="text-foreground">Training &amp; Certification:</span> Ensuring all crew members are certified and trained to international standards (STCW, MLC 2006).
+              <span className="text-foreground">Training and Certification:</span> Ensuring all crew members are certified and trained to international standards (STCW, MLC 2006).
             </li>
             <li>
-              <span className="text-foreground">Crew Scheduling &amp; Rotation:</span> Managing schedules, rotations, and relief planning for smooth operations.
+              <span className="text-foreground">Crew Scheduling and Rotation:</span> Managing schedules, rotations, and relief planning for smooth operations.
             </li>
             <li>
-              <span className="text-foreground">Medical &amp; Welfare Support:</span> Health checks, insurances, and ongoing crew welfare services.
+              <span className="text-foreground">Medical and Welfare Support:</span> Health checks, insurances, and ongoing crew welfare services.
             </li>
             <li>
-              <span className="text-foreground">Travel &amp; Documentation:</span> Handling visas, tickets, and all necessary seafarer paperwork.
+              <span className="text-foreground">Travel and Documentation:</span> Handling visas, tickets, and all necessary seafarer paperwork.
             </li>
             <li>
-              <span className="text-foreground">Payroll &amp; Administration:</span> Salary management and crew documentation support.
+              <span className="text-foreground">Payroll and Administration:</span> Salary management and crew documentation support.
             </li>
           </ul>
         </div>
@@ -156,7 +156,7 @@ export default function ShipManagement() {
               <span className="text-foreground">Charter Party Compliance Monitoring:</span> Adherence to contractual obligations.
             </li>
             <li>
-              <span className="text-foreground">Reporting &amp; Communication:</span> Real-time updates and operational reporting to owners.
+              <span className="text-foreground">Reporting and Communication:</span> Real-time updates and operational reporting to owners.
             </li>
           </ul>
         </div>
@@ -165,14 +165,14 @@ export default function ShipManagement() {
         {/* Procurement & Supply Chain Support Content */}
         <div className="flex-1 flex flex-col gap-4">
           <h2 className="text-xl text-[#377393] mb-2">
-            4. Procurement &amp; Supply Chain Support
+            4. Procurement and Supply Chain Support
           </h2>
           <p className="text-sm text-muted-foreground mb-2">
             We manage timely and cost-effective procurement to keep your vessel fully stocked:
           </p>
           <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
             <li>
-              <span className="text-foreground">Provisions &amp; Stores:</span> Sourcing food, safety gear, tools, and consumables.
+              <span className="text-foreground">Provisions and Stores:</span> Sourcing food, safety gear, tools, and consumables.
             </li>
             <li>
               <span className="text-foreground">Spare Parts Sourcing:</span> Coordinating with trusted suppliers and OEMs.
@@ -213,7 +213,7 @@ export default function ShipManagement() {
         {/* Maintenance Planning & Condition Monitoring Content */}
         <div className="flex-1 flex flex-col gap-4">
           <h2 className="text-xl text-[#377393] mb-2">
-            5. Maintenance Planning &amp; Condition Monitoring
+            5. Maintenance Planning and Condition Monitoring
           </h2>
           <p className="text-sm text-muted-foreground mb-2">
             We ensure vessel reliability through structured maintenance programs and continual equipment monitoring:
@@ -254,7 +254,7 @@ export default function ShipManagement() {
         {/* Safety & Quality Management Content */}
         <div className="flex-1 flex flex-col gap-4">
           <h2 className="text-xl text-[#377393] mb-2">
-            6. Safety &amp; Quality Management
+            6. Safety and Quality Management
           </h2>
           <p className="text-sm text-muted-foreground mb-2">
             We promote a strong safety culture onboard and ashore:
@@ -264,13 +264,13 @@ export default function ShipManagement() {
               <span className="text-foreground">Safety Management System (SMS):</span> Full implementation of ISM Codes and safety protocols.
             </li>
             <li>
-              <span className="text-foreground">Incident Reporting &amp; Investigation:</span> Proper analysis and follow-up to prevent recurrence, with risk assessments, reporting procedures, and continuous improvement.
+              <span className="text-foreground">Incident Reporting and Investigation:</span> Proper analysis and follow-up to prevent recurrence, with risk assessments, reporting procedures, and continuous improvement.
             </li>
             <li>
               <span className="text-foreground">Emergency Preparedness:</span> Conducting drills and training for all onboard scenarios.
             </li>
             <li>
-              <span className="text-foreground">Audits &amp; Inspections:</span> Internal audits and port state inspection readiness.
+              <span className="text-foreground">Audits and Inspections:</span> Internal audits and port state inspection readiness.
             </li>
             <li>
               <span className="text-foreground">Environmental Compliance:</span> Monitoring pollution control measures and MARPOL adherence.
@@ -282,7 +282,7 @@ export default function ShipManagement() {
         {/* Fuel & Provision Management Content */}
         <div className="flex-1 flex flex-col gap-4">
           <h2 className="text-xl text-[#377393] mb-2">
-            7. Fuel &amp; Provision Management
+            7. Fuel and Provision Management
           </h2>
           <p className="text-sm text-muted-foreground mb-2">
             We manage your vessel’s fuel and supply needs with precision and reliability:
@@ -295,7 +295,7 @@ export default function ShipManagement() {
               <span className="text-foreground">Fuel Monitoring:</span> Tracking consumption to optimize efficiency and reduce costs.
             </li>
             <li>
-              <span className="text-foreground">Provisions &amp; Stores Supply:</span> Timely delivery of food, consumables, and technical stores.
+              <span className="text-foreground">Provisions and Stores Supply:</span> Timely delivery of food, consumables, and technical stores.
             </li>
             <li>
               <span className="text-foreground">Inventory Management:</span> Monitoring onboard stock levels and usage trends.
@@ -330,7 +330,7 @@ export default function ShipManagement() {
         {/* Regulatory Compliance & Certification Content */}
         <div className="flex-1 flex flex-col gap-4">
           <h2 className="text-xl text-[#377393] mb-2">
-            8. Regulatory Compliance &amp; Certification
+            8. Regulatory Compliance and Certification
           </h2>
           <p className="text-sm text-muted-foreground mb-2">
             We ensure your vessel complies with all international and local regulations:
@@ -340,10 +340,10 @@ export default function ShipManagement() {
               <span className="text-foreground">Flag State Certification:</span> Managing due renewals and approvals.
             </li>
             <li>
-              <span className="text-foreground">Class Surveys &amp; Insurance:</span> Scheduling inspections with class societies.
+              <span className="text-foreground">Class Surveys and Insurance:</span> Scheduling inspections with class societies.
             </li>
             <li>
-              <span className="text-foreground">ISM &amp; ISPS/MLC Management:</span> Certification control of all required certificates and audits.
+              <span className="text-foreground">ISM and ISPS/MLC Management:</span> Certification control of all required certificates and audits.
             </li>
             <li>
               <span className="text-foreground">Maritime Law Advisory:</span> Supporting owners in regulatory and legal matters.
@@ -358,7 +358,7 @@ export default function ShipManagement() {
         {/* Financial Management & Budget Control Content */}
         <div className="flex-1 flex flex-col gap-4">
           <h2 className="text-xl text-[#377393] mb-2">
-            9. Financial Management &amp; Budget Control
+            9. Financial Management and Budget Control
           </h2>
           <p className="text-sm text-muted-foreground mb-2">
             We help owners maintain financial transparency and control:
@@ -409,14 +409,14 @@ export default function ShipManagement() {
         {/* Insurance & Claims Handling Content */}
         <div className="flex-1 flex flex-col gap-4">
           <h2 className="text-xl text-[#377393] mb-2">
-            10. Insurance &amp; Claims Handling
+            10. Insurance and Claims Handling
           </h2>
           <p className="text-sm text-muted-foreground mb-2">
             We assist in arranging the right insurance cover and managing claims on your behalf:
           </p>
           <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
             <li>
-              <span className="text-foreground">Insurance Arrangement:</span> Hull &amp; Machinery, P&amp;I, War Risk, and more.
+              <span className="text-foreground">Insurance Arrangement:</span> Hull and Machinery, PandI, War Risk, and more.
             </li>
             <li>
               <span className="text-foreground">Claims Handling:</span> Full support in claim documentation and follow-up.
@@ -437,7 +437,7 @@ export default function ShipManagement() {
         {/* Dry Docking & Project Management Content */}
         <div className="flex-1 flex flex-col gap-4">
           <h2 className="text-xl text-[#377393] mb-2">
-            11. Dry Docking &amp; Project Management
+            11. Dry Docking and Project Management
           </h2>
           <p className="text-sm text-muted-foreground mb-2">
             We manage your vessel’s repairs and upgrades from start to finish:
@@ -456,7 +456,7 @@ export default function ShipManagement() {
               <span className="text-foreground">Project Execution:</span> Support for major retrofits or new system installations.
             </li>
             <li>
-              <span className="text-foreground">Budget &amp; Timeline Control:</span> Managing projects with known time and cost.
+              <span className="text-foreground">Budget and Timeline Control:</span> Managing projects with known time and cost.
             </li>
             <li>
               <span className="text-foreground">Quality Assurance:</span> Final testing and inspection before vessel delivery.
@@ -495,7 +495,7 @@ export default function ShipManagement() {
           </p>
           <ul className="list-disc pl-5 text-sm text-muted-foreground space-y-2">
             <li>
-              <span className="text-foreground">Fuel &amp; Energy Efficiency Monitoring:</span> Consumption and bunkering assessments.
+              <span className="text-foreground">Fuel and Energy Efficiency Monitoring:</span> Consumption and bunkering assessments.
             </li>
             <li>
               <span className="text-foreground">Voyage Reports:</span> Operational data and benchmarking.
@@ -526,7 +526,7 @@ export default function ShipManagement() {
               <span className="text-foreground">Customized Service Packages:</span> Select service modules or go full-scope.
             </li>
             <li>
-              <span className="text-foreground">Owner Support &amp; Consulting:</span> Operations, technical, and compliance guidance.
+              <span className="text-foreground">Owner Support and Consulting:</span> Operations, technical, and compliance guidance.
             </li>
           </ul>
         </div>
@@ -556,7 +556,7 @@ export default function ShipManagement() {
         {/* Crisis & Emergency Response Management Content */}
         <div className="flex-1 flex flex-col gap-4">
           <h2 className="text-xl  text-[#377393] mb-2">
-            Crisis &amp; Emergency Response Management
+            Crisis and Emergency Response Management
           </h2>
           <p className="text-sm text-muted-foreground mb-2">
             We implement comprehensive emergency preparedness solutions to ensure quick, effective action during critical situations:
@@ -566,10 +566,10 @@ export default function ShipManagement() {
               <span className=" text-foreground">Emergency Response Planning:</span> Detailed procedures for fires, collision, grounding, flooding, or pollution incidents.
             </li>
             <li>
-              <span className=" text-foreground">24/7 Support &amp; External Coordination:</span> Rapid communication with owners, authorities, and all critical stakeholders.
+              <span className=" text-foreground">24/7 Support and External Coordination:</span> Rapid communication with owners, authorities, and all critical stakeholders.
             </li>
             <li>
-              <span className=" text-foreground">On-site &amp; Remote Mitigation:</span> Virtual or on-site intervention to assist in emergency resolution.
+              <span className=" text-foreground">On-site and Remote Mitigation:</span> Virtual or on-site intervention to assist in emergency resolution.
             </li>
             <li>
               <span className=" text-foreground">Contingency Management:</span> Action plans for operational disruptions and high-risk incidents.

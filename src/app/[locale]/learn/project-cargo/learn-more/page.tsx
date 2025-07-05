@@ -16,7 +16,7 @@ export default function ProjectCargoLearnMore() {
           <ol className="list-decimal pl-4">
             <li>
               <span className=" text-foreground text-lg md:text-xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                Heavy Lift &amp; Oversized Cargo Solutions
+                Heavy Lift and Oversized Cargo Solutions
               </span>
               <div className="mt-2 text-muted-foreground text-base md:text-lg" style={{ fontFamily: 'Raleway, sans-serif' }}>
                 We specialize in transporting cargo that exceeds standard shipping dimensions and weight limits, ensuring safe and efficient handling through tailored solutions.
@@ -28,10 +28,10 @@ export default function ProjectCargoLearnMore() {
                     <b>Custom Lifting Strategies:</b> High-capacity cranes for safe and innovative loading/unloading.
                   </li>
                   <li>
-                    <b>Engineering &amp; Load Planning:</b> Custom lifting and securing strategies for optimal safety.
+                    <b>Engineering and Load Planning:</b> Custom lifting and securing strategies for optimal safety.
                   </li>
                   <li>
-                    <b>Permit &amp; Regulatory Compliance:</b> Expert management of transport permissions and clearances.
+                    <b>Permit and Regulatory Compliance:</b> Expert management of transport permissions and clearances.
                   </li>
                 </ul>
               </div>
@@ -69,7 +69,7 @@ export default function ProjectCargoLearnMore() {
           <ol start={2} className="list-decimal pl-4">
             <li>
               <span className=" text-foreground text-lg md:text-xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                Multimodal Transport &amp; Route Planning
+                Multimodal Transport and Route Planning
               </span>
               <div className="mt-2 text-muted-foreground text-base md:text-lg" style={{ fontFamily: 'Raleway, sans-serif' }}>
                 Project cargo often demands a strategic blend of transport modes to ensure safe and efficient delivery.
@@ -84,7 +84,7 @@ export default function ProjectCargoLearnMore() {
                     <b>Specialized Equipment:</b> Integrated modular trailers, low-bed trailers, and SPMTs for heavy and oversized cargo.
                   </li>
                   <li>
-                    <b>Route Planning &amp; Feasibility:</b> In-depth surveys to identify the safest and most efficient routes.
+                    <b>Route Planning and Feasibility:</b> In-depth surveys to identify the safest and most efficient routes.
                   </li>
                 </ul>
               </div>
@@ -104,16 +104,16 @@ export default function ProjectCargoLearnMore() {
               Our project cargo services cater to diverse industries, ensuring the safe and efficient transport of specialized equipment:
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>
-                  <b>Oil &amp; Gas:</b> Pipelines, drilling rigs, and refinery components.
+                  <b>Oil and Gas:</b> Pipelines, drilling rigs, and refinery components.
                 </li>
                 <li>
-                  <b>Construction &amp; Infrastructure:</b> Steel structures, bridge sections, and segmental concrete.
+                  <b>Construction and Infrastructure:</b> Steel structures, bridge sections, and segmental concrete.
                 </li>
                 <li>
                   <b>Renewable Energy:</b> Wind turbines, solar panels, and hydropower components.
                 </li>
                 <li>
-                  <b>Mining &amp; Heavy Machinery:</b> Excavators, crushers, and industrial plant equipment.
+                  <b>Mining and Heavy Machinery:</b> Excavators, crushers, and industrial plant equipment.
                 </li>
               </ul>
             </div>
@@ -149,7 +149,7 @@ export default function ProjectCargoLearnMore() {
       {/* Right: Text Content */}
       <div className="flex-1">
           <h3 className="text-lg md:text-xl  mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          4. Customs Clearance &amp; Compliance
+          4. Customs Clearance and Compliance
         </h3>
         <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
           We handle all regulatory requirements to ensure smooth cross-border transport.
@@ -162,7 +162,7 @@ export default function ProjectCargoLearnMore() {
             <b>Import/Export Compliance:</b> Ensuring adherence to international shipping regulations.
           </li>
           <li>
-            <b>Cargo Insurance &amp; Risk Management:</b> Protecting high-value shipments.
+            <b>Cargo Insurance and Risk Management:</b> Protecting high-value shipments.
           </li>
         </ul>
       </div>
@@ -184,7 +184,7 @@ export default function ProjectCargoLearnMore() {
             <b>End-to-end coordination:</b> Single point of contact for all logistics operations.
           </li>
           <li>
-            <b>Site Surveys &amp; Risk Assessments:</b> Identifying and mitigating potential challenges.
+            <b>Site Surveys and Risk Assessments:</b> Identifying and mitigating potential challenges.
           </li>
           <li>
             <b>On-Site Supervision:</b> Assuring safe and efficient handling at every stage.

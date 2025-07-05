@@ -78,7 +78,7 @@ const ReeferPage = () => {
                 className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Fresh Produce &amp; Perishable Foods</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Fresh Produce and Perishable Foods</h3>
               <p className="text-xs text-muted-foreground">
                 Salads, vegetables, fruit, seafood, dairy
               </p>
@@ -91,9 +91,9 @@ const ReeferPage = () => {
                 className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Pharmaceuticals &amp; Medical Supplies</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Pharmaceuticals and Medical Supplies</h3>
               <p className="text-xs text-muted-foreground">
-                Vaccines, biologics &amp; temperature-sensitive drugs
+                Vaccines, biologics and temperature-sensitive drugs
               </p>
             </div>
             {/* Card 3 */}
@@ -130,7 +130,7 @@ const ReeferPage = () => {
                 className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Frozen Goods &amp; Ice Cream</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Frozen Goods and Ice Cream</h3>
               <p className="text-xs text-muted-foreground">
                 Frozen foods, desserts, ready meals
               </p>
@@ -143,7 +143,7 @@ const ReeferPage = () => {
                 className="rounded-2xl w-40 h-28 object-cover mb-4 border border-gray-200 dark:border-gray-600"
                 loading="lazy"
               />
-              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Beverages &amp; Dairy Products</h3>
+              <h3 className="font-medium text-sm mb-1 text-gray-900 dark:text-white">Beverages and Dairy Products</h3>
               <p className="text-xs text-muted-foreground">
                 Milk, juices, soft drinks, yogurt
               </p>
@@ -206,7 +206,7 @@ const ReeferPage = () => {
       <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-8 mt-20">
         {/* Left: Text */}
         <div className="flex-1 order-2 md:order-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">24/7 Monitoring &amp; Technical Support</h2>
+          <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">24/7 Monitoring and Technical Support</h2>
           <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
             We offer around-the-clock monitoring to ensure your cargo remains within the required temperature thresholds. Our technical support team is available 24/7 to address any operational issues promptly, minimizing any risk to your cargo.
           </p>
@@ -233,7 +233,7 @@ const ReeferPage = () => {
         </div>
         {/* Right: Text */}
         <div className="flex-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">Cold Chain Compliance &amp; Documentation</h2>
+          <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">Cold Chain Compliance and Documentation</h2>
           <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
             Maintaining a consistent cold chain is critical in reefer logistics. Our team ensures:
           </p>
@@ -290,7 +290,7 @@ const ReeferPage = () => {
               <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Dry goods, machinery, textiles, packaged goods</td>
             </tr>
             <tr className="">
-              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Ventilation &amp; Humidity Control</td>
+              <td className="px-4 py-2 font-medium border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Ventilation and Humidity Control</td>
               <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Equipped with air circulation and humidity regulation</td>
               <td className="px-4 py-2 border-b border-gray-200 dark:border-gray-600 border-r text-gray-900 dark:text-white">Not available</td>
             </tr>

@@ -88,7 +88,7 @@ export default function BunkeringPage() {
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start px-0 md:px-8 mt-8 md:mt-0 z-10">
         <div className="rounded-xl p-6 max-w-lg">
           <h2 className="text-xl md:text-2xl mb-2 text-gray-900 dark:text-white" style={{ fontFamily: "Raleway, sans-serif" }}>
-            Oil &amp; Lubricants Supply
+            Oil and Lubricants Supply
           </h2>
           <p className="text-[#222] dark:text-white text-sm md:text-base mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
             We are dedicated to providing critical oil supply services that enhance the performance and longevity of vessels. Specializing in premium-grade marine oils and lubricants, we ensure reliable operation of your fleet with our comprehensive offerings, which include engine oil, lubricants, and related products tailored to meet the unique needs of each vessel.
@@ -98,7 +98,7 @@ export default function BunkeringPage() {
           </p>
           <Link href="/learn/bunkering/learn-more-oil">
             <RequestQuoteButton>
-              Learn more or get Oil &amp; Lubricants supply information
+              Learn more or get Oil and Lubricants supply information
             </RequestQuoteButton>
           </Link>
         </div>
@@ -148,7 +148,7 @@ export default function BunkeringPage() {
           </p>
         </div>
         <div className="flex flex-col items-center text-center">
-          <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">Cost-Effective &amp; Transparent Pricing</h3>
+          <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">Cost-Effective and Transparent Pricing</h3>
           <p className="text-[#444] dark:text-gray-300 text-sm max-w-xs">
             No hidden fees.
           </p>

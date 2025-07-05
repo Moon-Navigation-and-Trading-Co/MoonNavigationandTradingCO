@@ -205,7 +205,7 @@ export default function ShippingMethodsInfo() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <div className="flex flex-col items-center text-center">
-          <h3 className="text-base  text-primary dark:text-blue-400 mb-2">Accurate &amp; Transparent Cost Estimates</h3>
+          <h3 className="text-base  text-primary dark:text-blue-400 mb-2">Accurate and Transparent Cost Estimates</h3>
           <p className="text-foreground text-sm max-w-xs">
             We ensure realistic pricing with no hidden fees; our PDAs are based on official port tariffs and real-time market conditions.
           </p>

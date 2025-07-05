@@ -7,7 +7,7 @@ export default function LearnMoreOilPage() {
     <div className="w-full min-h-screen flex flex-col items-center py-12 px-4" style={{ fontFamily: "Raleway, sans-serif" }}>
       <div className="w-full max-w-6xl">
         <h1 className="text-2xl md:text-3xl mb-8 text-gray-900 dark:text-white">
-          Oil &amp; Lubricants Supply - At Moon Navigation and Trading Co.
+          Oil and Lubricants Supply - At Moon Navigation and Trading Co.
         </h1>
         <div className="flex flex-col md:flex-row gap-8 items-center mb-12">
           <div className="flex-1">
@@ -15,15 +15,15 @@ export default function LearnMoreOilPage() {
             <ul className="list-none pl-0 text-[#222] dark:text-white text-sm md:text-base space-y-2">
               <li>
                 <span className="mr-2" aria-hidden="true">✔️</span>
-                <span className="font-medium">Main Engine &amp; Auxiliary Engine Oils</span> – Reduce friction and enhance engine performance
+                <span className="font-medium">Main Engine and Auxiliary Engine Oils</span> – Reduce friction and enhance engine performance
               </li>
               <li>
                 <span className="mr-2" aria-hidden="true">✔️</span>
-                <span className="font-medium">Hydraulic &amp; Gear Oils</span> – Essential for winches, steering gears, and hydraulic systems
+                <span className="font-medium">Hydraulic and Gear Oils</span> – Essential for winches, steering gears, and hydraulic systems
               </li>
               <li>
                 <span className="mr-2" aria-hidden="true">✔️</span>
-                <span className="font-medium">Turbine &amp; Compressor Lubricants</span> – Prevent overheating and maintain efficiency
+                <span className="font-medium">Turbine and Compressor Lubricants</span> – Prevent overheating and maintain efficiency
               </li>
               <li>
                 <span className="mr-2" aria-hidden="true">✔️</span>
@@ -31,7 +31,7 @@ export default function LearnMoreOilPage() {
               </li>
               <li>
                 <span className="mr-2" aria-hidden="true">✔️</span>
-                <span className="font-medium">Greases &amp; Specialty Fluids</span> – For deck machinery, bearings, and delicate components
+                <span className="font-medium">Greases and Specialty Fluids</span> – For deck machinery, bearings, and delicate components
               </li>
             </ul>
           </div>

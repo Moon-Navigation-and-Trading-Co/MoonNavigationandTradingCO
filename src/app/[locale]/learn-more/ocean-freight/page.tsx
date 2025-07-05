@@ -145,7 +145,7 @@ export default function OceanFreightPage() {
                 {/* Optimized Routes & Cost-Effective Shipping */}
                 <div className="flex flex-col items-start px-4">
                     <h3 className="font-semibold mb-2 text-foreground text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Optimized Routes &amp; Cost-Effective Shipping
+                        Optimized Routes and Cost-Effective Shipping
                     </h3>
                     <p className="text-muted-foreground text-sm text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Through advanced route selection and carrier partnerships, we reduce transit times while providing competitive rates for your global ocean freight.
@@ -165,7 +165,7 @@ export default function OceanFreightPage() {
                 {/* Custom Expertise & Secure Handling */}
                 <div className="flex flex-col items-start px-4">
                     <h3 className="font-semibold mb-2 text-foreground text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Custom Expertise &amp; Secure Handling
+                        Custom Expertise and Secure Handling
                     </h3>
                     <p className="text-muted-foreground text-sm text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Our team combines local knowledge, dynamic project documentation, and compliance with international regulations, guaranteeing safe and reliable flow of cargo movement.

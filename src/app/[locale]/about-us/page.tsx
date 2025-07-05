@@ -293,7 +293,7 @@ export default function AboutUs() {
      {/* Right: Text */}
      <div className="flex-1">
        <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-         Ship Agency &amp; Marine Services
+         Ship Agency and Marine Services
        </h3>
        <p className="text-foreground text-base md:text-lg mb-4" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
          At Moon Navigation and Trading Co., we take pride in being a foremost ship agent dedicated to ensuring seamless vessel operations across all Egyptian sea ports and the Suez Canal Transit. We deliver top-tier efficiency, compliance, and reliability, with minimized delays and optimized port turnaround times, providing essential support to shipowners, operators, and charterers.
@@ -305,7 +305,7 @@ export default function AboutUs() {
          Additionally, our experienced team ensures smooth and efficient Suez Canal passage, handling all aspects from documentation to coordination with authorities, minimizing delays and ensuring regulatory compliance.
        </p>
        <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
-         Explore Ship Agency &amp; Marine Services
+         Explore Ship Agency and Marine Services
        </button>
      </div>
    </div>
@@ -351,7 +351,7 @@ export default function AboutUs() {
      {/* Right: Text */}
      <div className="flex-1">
        <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-         Integrated Vessel Support &amp; Maintenance
+         Integrated Vessel Support and Maintenance
        </h3>
        <p className="text-foreground text-base md:text-lg mb-4" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
          At Moon Navigation and Trading Co., our vessel support and maintenance services provide shipowners and operators with complete peace of mind.
@@ -363,7 +363,7 @@ export default function AboutUs() {
          In parallel, our docking and maintenance services cover every aspect of vessel upkeep, from dry docking and afloat repairs to hull cleaning, mechanical, coating, electrical systems maintenance and safety equipment checks. Whether your vessel requires scheduled maintenance or urgent repairs, our experienced teams work around the clock to keep your operations uninterrupted and your ships in top seaworthy condition.
        </p>
        <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
-         Explore Integrated Vessel Support &amp; Maintenance
+         Explore Integrated Vessel Support and Maintenance
        </button>
      </div>
    </div>
@@ -413,7 +413,7 @@ export default function AboutUs() {
            style={{ borderRadius: '1.5rem' }}
          />
          <div className="relative z-10 p-6 text-white" style={{ fontFamily: 'Raleway, sans-serif' }}>
-           <h3 className="text-xl font-bold mb-2">Integrity &amp; Transparency</h3>
+           <h3 className="text-xl font-bold mb-2">Integrity and Transparency</h3>
            <p className="text-base opacity-90">
              We build trust through honest, transparent dealings and ethical business practices—always putting our clients' interests first.
            </p>
@@ -443,7 +443,7 @@ export default function AboutUs() {
            style={{ borderRadius: '1.5rem' }}
          />
          <div className="relative z-10 p-6 text-white" style={{ fontFamily: 'Raleway, sans-serif' }}>
-           <h3 className="text-xl font-bold mb-2">Forward-Thinking &amp; Innovation</h3>
+           <h3 className="text-xl font-bold mb-2">Forward-Thinking and Innovation</h3>
            <p className="text-base opacity-90">
              We embrace new technologies and creative solutions, driving progress and efficiency for our clients and the industry.
            </p>
@@ -458,7 +458,7 @@ export default function AboutUs() {
            style={{ borderRadius: '1.5rem' }}
          />
          <div className="relative z-10 p-6 text-white" style={{ fontFamily: 'Raleway, sans-serif' }}>
-           <h3 className="text-xl font-bold mb-2">Safety &amp; Responsibility</h3>
+           <h3 className="text-xl font-bold mb-2">Safety and Responsibility</h3>
            <p className="text-base opacity-90">
              We prioritize the safety of our people, partners, and cargo, and are committed to sustainable, responsible operations in every aspect of our business.
            </p>
@@ -555,7 +555,7 @@ export default function AboutUs() {
    <div className="w-full flex flex-col items-center mt-16">
      <div className="w-full max-w-5xl">
        <p className="text-xs text-muted-foreground mb-2">
-         Certifications &amp; Memberships
+         Certifications and Memberships
        </p>
        <p className="text-xs text-muted-foreground mb-4">
          BIMCO | ISO 9001:2008 | ISO 14001 | IAF | JAS-ANZ | Vesseltracker | Maritime Transport Sector | AFCS

@@ -112,7 +112,7 @@ export default function ShippingMethodsInfo() {
         {/* Left: Weather Protection & Secure Lashing */}
         <div className="flex flex-col">
           <h3 className="text-lg md:text-xl  mb-2 text-foreground">
-            Weather Protection &amp; Secure Lashing
+            Weather Protection and Secure Lashing
           </h3>
           <p className="text-muted-foreground mb-40 text-sm md:text-base">
             At Moon Navigation and Trading Co., we secure open-top containers with durable, weatherproof tarpaulin covers, safeguarding cargo from rain, wind, and environmental elements. Our flat racks and platforms are designed with custom tie-down points, steel lashing rails, and locking mechanisms, ensuring maximum stability and security throughout transportation.
@@ -165,7 +165,7 @@ export default function ShippingMethodsInfo() {
               <span className="">Rail Transport</span>: Flat-rack and flatbed solutions for high-clearance rail-based transportation.
             </li>
             <li>
-              <span className="">Trucking &amp; Special Flatbeds</span>: Compatible with highway trailers, extendable flatbeds, and modular transporters for oversized road transport.
+              <span className="">Trucking and Special Flatbeds</span>: Compatible with highway trailers, extendable flatbeds, and modular transporters for oversized road transport.
             </li>
           </ul>
           <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
@@ -186,7 +186,7 @@ export default function ShippingMethodsInfo() {
             />
           </div>
           <h3 className="text-lg md:text-xl  mb-2 text-foreground">
-            Reduced Handling Risks &amp; Compliance Ready
+            Reduced Handling Risks and Compliance Ready
           </h3>
           <p className="text-muted-foreground text-sm md:text-base">
             With our built-in safety features, standardized lifting points, and reinforced structures, oversized containers minimize handling risks while ensuring compliance with IMO, SOLAS, and international shipping regulations.

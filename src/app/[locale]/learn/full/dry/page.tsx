@@ -280,7 +280,7 @@ export default function DryContainerPage() {
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
-            Container Stuffing &amp; Cargo Securing
+            Container Stuffing and Cargo Securing
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
             Proper container loading is critical for safe transit. We provide:
@@ -324,7 +324,7 @@ export default function DryContainerPage() {
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
-            Customs Documentation &amp; Clearance
+            Customs Documentation and Clearance
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
             Our experienced team simplifies the complex world of import/export formalities. We offer:
@@ -332,7 +332,7 @@ export default function DryContainerPage() {
           <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1">
             <li>Complete preparation and verification of commercial documents: invoice, packing list, bill of lading, certificate of origin, etc.</li>
             <li>Assistance with customs clearance procedures at both origin and destination</li>
-            <li>In-house staff (with close stakeholder &amp; account duty assignment)</li>
+            <li>In-house staff (with close stakeholder and account duty assignment)</li>
             <li>Compliance with all relevant government regulations and trade agreements</li>
             <li>Close coordination with customs authorities to prevent shipment delays</li>
           </ul>
@@ -342,7 +342,7 @@ export default function DryContainerPage() {
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
-            Port &amp; Inland Transport Coordination
+            Port and Inland Transport Coordination
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
             We ensure smooth cargo flow by coordinating:
@@ -386,7 +386,7 @@ export default function DryContainerPage() {
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
           <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
-            Cargo Inspection &amp; Container Condition Checks
+            Cargo Inspection and Container Condition Checks
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
             To safeguard cargo and comply with quality standards, we implement:

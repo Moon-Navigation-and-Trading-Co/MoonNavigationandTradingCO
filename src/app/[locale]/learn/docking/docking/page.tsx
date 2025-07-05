@@ -42,7 +42,7 @@ export default function DockingPage() {
                         {/* Service Details */}
                         <div>
                             <h2 className="text-2xl mb-4 text-foreground">
-                                1. Port Docking &amp; Berthing
+                                1. Port Docking and Berthing
                             </h2>
                             <p className="text-muted-foreground mb-4">
                                 We manage all aspects of vessel berthing at port terminals, ensuring precise coordination with port authorities and terminal operators. Our services include:
@@ -62,7 +62,7 @@ export default function DockingPage() {
                         {/* Dry Docking */}
                         <div>
                             <h2 className="text-[1.5rem] md:text-[1.5rem] font-normal text-[#222] dark:text-white mb-2">
-                                2. Dry Docking (Scheduled<br className="hidden md:block" /> Repairs &amp; Overhauls)
+                                2. Dry Docking (Scheduled<br className="hidden md:block" /> Repairs and Overhauls)
                             </h2>
                             <p className="text-[.95rem] text-[#444] dark:text-gray-300 mb-2 leading-snug">
                                 We coordinate full scale dry docking operations for vessels requiring scheduled inspection, structural maintenance, or major repairs.<br />
@@ -97,7 +97,7 @@ export default function DockingPage() {
                                 />
                             </div>
                             <h2 className="text-[1.5rem] md:text-[1.5rem] font-normal text-[#222] dark:text-white mb-2">
-                                3. Wet Docking (Afloat<br className="hidden md:block" /> Repairs &amp; Onboard Servicing)
+                                3. Wet Docking (Afloat<br className="hidden md:block" /> Repairs and Onboard Servicing)
                             </h2>
                             <p className="text-[.95rem] text-[#444] dark:text-gray-300 mb-2 leading-snug">
                                 For vessels that don&#39;t require full dry docking, we offer wet docking (afloat repairs) to reduce operational disruption and cost.<br />
@@ -117,7 +117,7 @@ export default function DockingPage() {
             <div className="flex flex-col md:flex-row gap-12 items-center">
                 <div className="flex-1 flex flex-col gap-4">
                     <h2 className="text-2xl text-foreground">
-                        4. Anchorage Services <span className="font-normal text-lg">(Offshore Support &amp; Repairs)</span>
+                        4. Anchorage Services <span className="font-normal text-lg">(Offshore Support and Repairs)</span>
                     </h2>
                     <p className="text-muted-foreground">
                         We provide anchorage support for vessels requiring offshore services or awaiting port entry. Our services include:
@@ -146,7 +146,7 @@ export default function DockingPage() {
             <div className="flex flex-col md:flex-row-reverse gap-12 items-center my-16">
                 <div className="flex-1 flex flex-col gap-4">
                     <h2 className="text-2xl text-foreground">
-                        5. Emergency Docking &amp; Salvage Operations
+                        5. Emergency Docking and Salvage Operations
                     </h2>
                     <p className="text-muted-foreground">
                         Our team is equipped to respond swiftly to emergency situations requiring immediate docking or vessel recovery. Our services include:
