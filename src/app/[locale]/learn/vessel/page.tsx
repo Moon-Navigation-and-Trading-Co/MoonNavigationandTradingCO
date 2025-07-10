@@ -28,64 +28,64 @@ const industries=[
 export default function VesselPage() {
   return (
     <div className="max-w-7xl w-full mx-auto" style={{fontFamily: 'Raleway'}}>
-      <div className="mt-10 mb-8">
-        <Image src="/images/vessel-hero.jpg" alt="Vessel Hero" width={1280} height={350} className="rounded-[60px]" />
-      </div>
-      <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16">
-        <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
-          <h2 className="text-3xl md:text-4xl font-light text-[#256094] mb-6">
-            Vessel Purchases<br />and Rentals
-          </h2>
+        <div className="mt-10 mb-8">
+            <Image src="/images/vessel-hero.jpg" alt="Vessel Hero" width={1280} height={350} className="rounded-[60px]" />
+        </div>
+    <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16">
+      <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
+        <h2 className="text-3xl md:text-4xl font-light text-[#256094] mb-6">
+          Vessel Purchases<br />and Rentals
+        </h2>
             <RequestQuoteButton>
                 <Link href="/buy-rent-vessels-forms">
-                    Get Quote
+          Get Quote
                 </Link>
             </RequestQuoteButton>
-        </div>
-        <div className="md:w-1/2 w-full flex flex-col items-start">
-          <p className="text-gray-700 text-sm md:text-base mb-2 font-medium">
-            Looking to buy or rent a vessel?
-          </p>
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-            We recognize the diverse needs of businesses and individuals in shipping and transport solutions. That is why we offer a comprehensive selection of high-quality vessels for sale and rental, tailored to meet your specific requirements. Our services ensure a seamless experience, whether you are seeking to acquire a vessel or finalize perfect charters. Trust us to provide exceptional options and expert guidance to fulfill your maritime needs efficiently at Moon Marine and Sea Trading Company.
-          </p>
-        </div>
       </div>
+      <div className="md:w-1/2 w-full flex flex-col items-start">
+        <p className="text-gray-700 text-sm md:text-base mb-2 font-medium">
+          Looking to buy or rent a vessel?
+        </p>
+        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+          We recognize the diverse needs of businesses and individuals in shipping and transport solutions. That is why we offer a comprehensive selection of high-quality vessels for sale and rental, tailored to meet your specific requirements. Our services ensure a seamless experience, whether you are seeking to acquire a vessel or finalize perfect charters. Trust us to provide exceptional options and expert guidance to fulfill your maritime needs efficiently at Moon Marine and Sea Trading Company.
+        </p>
+      </div>
+    </div>
       <h2 className="text-4xl font-normal text-[#232B50] text-center mt-16 mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>Types of Vessels Available for Sale:</h2>
       <div className="relative w-full max-w-7xl mx-auto">
       </div>
-      <div className="relative w-full aspect-[16/9] mt-12 mb-8 rounded-[60px]">
-        <Image
+    <div className="relative w-full aspect-[16/9] mt-12 mb-8 rounded-[60px]">
+      <Image
           src="/images/vessel-solutions.jpg"
-          alt="Vessel Solutions"
-          fill
-          className="object-cover rounded-[60px]"
-          style={{ zIndex: 0 }}
-          priority
-        />
+        alt="Vessel Solutions"
+        fill
+        className="object-cover rounded-[60px]"
+        style={{ zIndex: 0 }}
+        priority
+      />
+      <div
+        className="absolute top-0 left-0 w-full h-full flex items-center justify-end"
+        style={{ zIndex: 1 }}
+      >
         <div
-          className="absolute top-0 left-0 w-full h-full flex items-center justify-end"
-          style={{ zIndex: 1 }}
+          className="bg-white rounded-2xl p-8 md:p-12 shadow-lg max-w-xl w-full mr-0 md:mr-12"
+          style={{ opacity: 0.8 }}
         >
-          <div
-            className="bg-white rounded-2xl p-8 md:p-12 shadow-lg max-w-xl w-full mr-0 md:mr-12"
-            style={{ opacity: 0.8 }}
-          >
-            <h3 className="text-2xl md:text-3xl font-light text-[#256094] mb-4">
-              Vessel Solutions for Every<br />Need
-            </h3>
-            <p className="text-gray-700 text-sm md:text-base mb-2 font-medium">
-              At Moon Marine and Sea Trading Company, we are providing vessels that embody durability and reliability, engineered to withstand harsh weather conditions and ensure the smooth safe delivery of your cargo.
-            </p>
-            <p className="text-gray-600 text-sm md:text-base mb-2">
-              Our offerings include customizable options, catering to a wide array of requirements—from specialized vessels designed for specific cargo types to versatile multipurpose vessels.
-            </p>
-            <p className="text-gray-600 text-sm md:text-base">
-              With an extensive selection of vessels and leases, we enable you to select the ideal solution to meet your project’s demands. Furthermore, our cost-effective and scalable services ensure the optimum fit for both economic and rental options, and our expert solutions are accessible to all without compromising on quality.
-            </p>
-          </div>
+          <h3 className="text-2xl md:text-3xl font-light text-[#256094] mb-4">
+            Vessel Solutions for Every<br />Need
+          </h3>
+          <p className="text-gray-700 text-sm md:text-base mb-2 font-medium">
+            At Moon Marine and Sea Trading Company, we are providing vessels that embody durability and reliability, engineered to withstand harsh weather conditions and ensure the smooth safe delivery of your cargo.
+          </p>
+          <p className="text-gray-600 text-sm md:text-base mb-2">
+            Our offerings include customizable options, catering to a wide array of requirements—from specialized vessels designed for specific cargo types to versatile multipurpose vessels.
+          </p>
+          <p className="text-gray-600 text-sm md:text-base">
+            With an extensive selection of vessels and leases, we enable you to select the ideal solution to meet your project’s demands. Furthermore, our cost-effective and scalable services ensure the optimum fit for both economic and rental options, and our expert solutions are accessible to all without compromising on quality.
+          </p>
         </div>
       </div>
+    </div>
       <VesselCarousel vessels={vessels} />
       <div className="relative w-full aspect-[16/9] mt-12 mb-8 rounded-[60px]">
         <Image
