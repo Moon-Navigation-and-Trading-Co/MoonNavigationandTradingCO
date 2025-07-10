@@ -149,7 +149,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 //
                 {
                     name: "Vessel Rentals and Purchases",
-                    href: "/buy-rent-vessels-forms",
+                    href: "/learn/vessel",
                 },
                 //
                 {
