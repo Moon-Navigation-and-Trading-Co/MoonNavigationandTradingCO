@@ -11,7 +11,7 @@ export default function FullContainerLoadPage() {
         <div className="w-full max-w-7xl min-h-screen flex flex-col items-center mt-10 md:px-0 place-self-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Top Banner */}
             <div className="w-full rounded-[60px] overflow-hidden mb-8 shadow-lg ">
-                <div className="relative w-full h-[180px] md:h-[260px]">
+                <div className="relative w-full h-[350px] ">
                     <Image
                         src="/container-banner.jpg"
                         alt="Moon Navigation and Trading Co. Full Container"
