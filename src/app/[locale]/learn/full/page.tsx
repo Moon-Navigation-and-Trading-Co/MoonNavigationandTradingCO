@@ -226,7 +226,7 @@ export default function FullContainerLoadPage() {
             </div>
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 px-4">
                 {/* Standard Cargo (Dry Containers) */}
-                <div className="flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6">
+                <div className="flex flex-col justify-between rounded-2xl p-6">
                     <div>
                         <h4 className="text-lg  text-foreground mb-2">Standard Cargo (Dry Containers)</h4>
                         <p className="text-muted-foreground text-sm mb-3">
@@ -268,7 +268,7 @@ your everyday shipping needs, such as:</p>
                         style={{ height: '400px' }}
                     />
                 </div>
-                <div className="flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6 order-4 md:order-3">
+                <div className="flex flex-col justify-between rounded-2xl p-6 order-4 md:order-3">
                     <div>
                         <h4 className="text-lg  text-foreground mb-2">Reefer Cargo (Temperature-Sensitive Shipments)</h4>
                         <p className="text-muted-foreground text-sm mb-3">
@@ -297,7 +297,7 @@ your everyday shipping needs, such as:</p>
             {/* Dangerous Goods (Hazardous Cargo) */}
             <div className="flex flex-col md:flex-row gap-8">
                 {/* Left: Text Content */}
-                <div className="flex-1 flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6">
+                <div className="flex-1 flex flex-col justify-between rounded-2xl p-6">
                     <div>
                         <h4 className="text-lg  text-foreground mb-2">Dangerous Goods in FCL</h4>
                         <p className="text-muted-foreground text-sm mb-3">
@@ -322,7 +322,7 @@ Our services for dangerous goods include</p>
                         </ul>
                     </div>
                     <div className="mt-4 text-end">
-                        <Link href="/learn/dangerous" className="inline-block">
+                        <Link href="/learn/dangerous-goods" className="inline-block">
                             <RequestQuoteButton>
                                 Learn more
                             </RequestQuoteButton>
