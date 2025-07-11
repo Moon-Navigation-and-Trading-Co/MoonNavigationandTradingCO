@@ -234,10 +234,10 @@ trusted partner in navigating the complexities of international logistics. </p>
           </p>
         </div>
       <div className="w-full mt-16 mb-4">
-        <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+        <h2 className="text-2xl md:text-3xl font-normal mb-4 text-foreground" >
           How does our LCL shipping Cost is calculated?
         </h2>
-        <p className="text-muted-foreground text-sm md:text-base max-w-7xl" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+        <p className="text-muted-foreground text-sm md:text-base max-w-7xl" >
           The cost of LCL shipping at Moon Navigation and Trading Co. is determined by several key factors, primarily the volume of space your cargo occupies within the container, its weight, and the chosen shipping route. Volume is measured in cubic meters (CBM), while weight is calculated in kilograms. For our services, the maximum weight for a single package is 3,000 kg, with a volume limit of 29 CBM. Additionally, the overall maximum limit per booking is 20,000 kg and 60 CBM. By accurately assessing these parameters, we ensure competitive pricing tailored to your specific shipping needs, providing transparency and value in the process.
         </p>
       </div>

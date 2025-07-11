@@ -85,7 +85,7 @@ export default function AboutUs() {
       <div
         className="w-full flex justify-center items-center my-20"
         style={{
-          minHeight: 500,
+          minHeight: 650,
           background: "linear-gradient(90deg, #1a2a3a 0%, #2d4666 100%)",
           position: "relative",
           borderRadius: "1.5rem",
@@ -122,8 +122,8 @@ export default function AboutUs() {
             borderRadius: "1rem",
             boxShadow: "0 4px 24px 0 rgba(31, 38, 135, 0.10)",
             padding: "2.5rem 2.5rem 2.5rem 2.5rem",
-            minWidth: 340,
-            maxWidth: 420,
+            minWidth: 440,
+            maxWidth: 520,
             margin: "2rem",
             textAlign: "center",
           }}
@@ -156,7 +156,7 @@ export default function AboutUs() {
       <div
         className="w-full flex justify-center items-center my-20"
         style={{
-          minHeight: 500,
+          minHeight: 650,
           background: "linear-gradient(90deg, #1a2a3a 0%, #2d4666 100%)",
           position: "relative",
           borderRadius: "1.5rem",
@@ -193,8 +193,8 @@ export default function AboutUs() {
             borderRadius: "1rem",
             boxShadow: "0 4px 24px 0 rgba(31, 38, 135, 0.10)",
             padding: "2.5rem 2.5rem 2.5rem 2.5rem",
-            minWidth: 340,
-            maxWidth: 420,
+            minWidth: 440,
+            maxWidth: 520,
             margin: "2rem",
             textAlign: "center",
           }}

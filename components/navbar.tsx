@@ -194,7 +194,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             href: "#about",
             dropdownItems: [
                 { name: "About Us", href: "/about-us" },
-                { name: "Our Partners", href: "/#partners" },
+                { name: "Our Partners", href: "/partners" },
                 { name: "FAQ", href: "/faq" },
                 { name: "Forms", href: "/learn/forms" }
             ],

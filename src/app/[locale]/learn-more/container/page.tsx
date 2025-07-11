@@ -64,10 +64,10 @@ export default function OceanFreightPage() {
 
   return (
     <>
-      <div className="w-full max-w-7xl min-h-[320px] flex flex-col items-center py-8 px-2 md:px-0 place-self-center">
+      <div className="w-full max-w-7xl min-h-[320px] flex flex-col items-center mt-10 mb-8 md:px-0 place-self-center" style={{fontFamily: "Raleway"}}>
         {/* Top Banner */}
-        <div className="w-full rounded-[2rem] overflow-hidden mb-8 shadow-lg">
-          <div className="relative w-full h-[180px] md:h-[260px]">
+        <div className="w-full rounded-[60px] overflow-hidden mb-8 shadow-lg">
+          <div className="relative w-full h-[350px]">
             <img
               src="/container-banner-out.jpg"
               alt="Moon Navigation and Trading Co. Full Container"
@@ -81,7 +81,7 @@ export default function OceanFreightPage() {
         <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left: Title and CTA */}
           <div className="flex flex-col items-start justify-start">
-            <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h1 className="text-12xl  text-foreground mb-4 mt-10"  >
               Containers
             </h1>
             <a href="/container-services-forms">
@@ -92,10 +92,10 @@ export default function OceanFreightPage() {
           </div>
           {/* Right: Description */}
           <div>
-            <h2 className="text-lg font-semibold text-primary mb-2" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <h2 className="text-lg  text-primary mb-2" >
               What is Container Services&nbsp;?
             </h2>
-            <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <p className="text-muted-foreground text-sm md:text-base" >
               Container services encompass the efficient and secure transportation of goods using standardized shipping containers. At Moon Navigation and Trading Co., we provide end-to-end containerized shipping solutions, ensuring seamless logistics for businesses across various industries. Our expertise covers a wide range of container types, handling requirements, and different route regulations.<br /><br />
               Trust us to provide tailored solutions that prioritize efficiency, security, and compliance for your shipping needs.
             </p>
