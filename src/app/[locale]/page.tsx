@@ -89,7 +89,7 @@ export default function Index() {
                     <div className="relative flex items-center rounded-3xl bg-home-image bg-center bg-cover w-full h-full aspect-auto md:aspect-video shadow-black shadow-xl">
                         <div className="w-full h-full z-[10] top-[1px] bg-black-overlay rounded-3xl absolute"></div>
                         <div className="flex md:px-12 px-6 flex-col justify-center z-[50] gap-4">
-                            <h1 className="text-[#e4e4e4] w-full text-left font-semibold text-0.5xl sm:text-1xl md:text-2xl max-w-[800px]">{t("slogan")}</h1>
+                            <h1 className="text-[#e4e4e4] w-full text-left font-raleway font-regular text-2xl max-w-[800px]">{t("slogan")}</h1>
                             <h1 className="font-light text-white text-start w-[200px] md:w-full text-sm">{t("tagline")}</h1>
                         </div>
                     </div>
@@ -128,7 +128,7 @@ export default function Index() {
                         {/* Second Column */}
                         <div ref={modalRef} className="col-span-2 w-full h-full flex flex-col justify-between">
                             <div>
-                                <h2 className="text-3xl font-semibold pb-16 pt-2 text-foreground">{t("aboutTitle")}</h2>
+                                <h2 className="text-3xl font-raleway font-regular pb-16 pt-2 text-foreground">{t("aboutTitle")}</h2>
                                 <p className="text-muted-foreground text-base pb-10">{t("aboutDescription")}</p>
                             </div>
                             <div className="w-full flex justify-end">
@@ -142,19 +142,19 @@ export default function Index() {
                 </section>
 
                 {/* Get Your Customized Quote Section */}
-                <section id="GetQuote" className="w-full flex flex-col items-center justify-center py-24 px-4 font-raleway">
-                  <div className="w-full max-w-9xl flex flex-col md:flex-row items-center justify-between gap-12 mx-auto">
+                <section id="GetQuote" className="w-full flex flex-col items-start justify-center py-24 px-4 font-raleway">
+                  <div className="w-full max-w-9xl flex flex-col md:flex-row items-start justify-between gap-12 mx-auto">
                     {/* Left: Text */}
                     <div className="flex-1 flex flex-col items-start justify-center max-w-xl">
-                      <h2 className="text-[2.5rem] leading-tight font-extrabold text-primary mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Get Your Customized Quote Today</h2>
-                      <h3 className="text-xl font-normal text-muted-foreground mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>Effortless Quotation Process—Now Simpler Than Ever!</h3>
-                      <p className="text-base text-muted-foreground mb-4" style={{fontFamily: 'Raleway, sans-serif'}}>
+                      <h2 className="text-[2.5rem] leading-tight font-raleway font-regular text-primary mb-2 text-left">Get Your Customized Quote Today</h2>
+                      <h3 className="text-xl font-raleway font-regular text-muted-foreground mb-8 text-left">Effortless Quotation Process—Now Simpler Than Ever!</h3>
+                      <p className="text-base text-muted-foreground mb-4 text-left font-raleway font-light">
                         Our streamlined quotation process is designed with your convenience in mind. At Moon Navigation and Trading Co., obtaining service quotes has never been easier or faster than with our Quotation by Request system.
                       </p>
-                      <p className="text-base text-muted-foreground mb-4" style={{fontFamily: 'Raleway, sans-serif'}}>
+                      <p className="text-base text-muted-foreground mb-4 text-left font-raleway font-light">
                         By simply filling out a short form that captures your specific service requirements, you can easily initiate your request. Once you have submitted your information, our system ensures it is sent directly to us for prompt attention.
                       </p>
-                      <p className="text-base text-muted-foreground mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>
+                      <p className="text-base text-muted-foreground mb-8 text-left font-raleway font-light">
                         You will receive a customized quotation delivered straight to your email in a timely manner. This effortlessness ensures you can focus on what truly matters while receiving accurate pricing without unnecessary delays.
                       </p>
                       <RequestQuoteButton className="rounded-full px-8 py-3 text-base font-raleway font-medium mt-2" type="button">
@@ -183,14 +183,14 @@ export default function Index() {
                 <IndustryCarousel />
 
                 {/* Benefits Section - Overlapping Cards Reference Layout */}
-                <section className="w-full flex flex-col items-center justify-center py-16 px-4 font-raleway relative">
-                  <h2 className="text-4xl font-normal text-primary text-center mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Your Benefits with Moon Navigation and Trading Co.</h2>
-                  <h3 className="text-2xl font-light text-primary text-center mb-12" style={{fontFamily: 'Raleway, sans-serif'}}>Simplified Solutions and Seamless Support</h3>
+                <section className="w-full flex flex-col items-start justify-center py-16 px-4 font-raleway relative">
+                  <h2 className="text-4xl font-raleway font-regular text-primary text-left mb-2">Your Benefits with Moon Navigation and Trading Co.</h2>
+                  <h3 className="text-2xl font-raleway font-regular text-primary text-left mb-12">Simplified Solutions and Seamless Support</h3>
                   <div className="w-full max-w-9xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {/* Card 1: Integrated Maritime Expertise */}
                     <div className="bg-card rounded-[32px] border border-border shadow-sm p-6 flex flex-col justify-between min-h-[400px]">
-                      <h4 className="text-lg font-semibold text-primary mb-3">Integrated Maritime Expertise</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">At Moon Navigation and Trading Co., we do not just provide services—we offer complete maritime solutions tailored to your needs. From vessel chartering and container logistics to inland and air freight, our expertise ensures every aspect of your operation is covered. Trust us to deliver reliable, end-to-end support for all your shipping and trading challenges.</p>
+                      <h4 className="text-lg font-raleway font-regular text-primary mb-3 text-left">Integrated Maritime Expertise</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed text-left">At Moon Navigation and Trading Co., we do not just provide services—we offer complete maritime solutions tailored to your needs. From vessel chartering and container logistics to inland and air freight, our expertise ensures every aspect of your operation is covered. Trust us to deliver reliable, end-to-end support for all your shipping and trading challenges.</p>
                     </div>
                     
                     {/* Card 2: Customized Solutions for Long-Term Partners (with image) */}
@@ -251,15 +251,15 @@ export default function Index() {
                         {/* Left Column: Heading, Description, Address, Meeting Info */}
                         <div className="flex flex-col justify-between h-full">
                             <div>
-                                <h2 className="text-4xl font-extrabold text-primary mb-2">Contact Us</h2>
-                                <p className="text-base text-foreground mb-6 max-w-md">We are here to provide expert assistance for all your logistics and trading needs. Get in touch with our team for any inquiries.</p>
+                                <h2 className="text-4xl font-raleway font-regular text-primary mb-2">Contact Us</h2>
+                                <p className="text-base font-raleway font-light text-foreground mb-6 max-w-md">We are here to provide expert assistance for all your logistics and trading needs. Get in touch with our team for any inquiries.</p>
                                 <div className="flex items-center gap-2 mb-8">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
                                     <span className="text-foreground text-sm">Port Tawfiq 16a | El-Sawahel St, Suez<br/>Governorate, Egypt</span>
                                 </div>
                             </div>
                             <div className="mt-12">
-                                <p className="text-foreground text-base mb-6 max-w-md text-weight-[200px]">Alternatively, you can use our online meeting scheduling tool to easily book your preferred time for either a virtual meeting or an in-person meeting with a member of our team. Whether you are looking to discuss partnership opportunities or explore how we can best serve your logistics needs, we are here to help.</p>
+                                <p className="text-foreground text-base font-raleway font-light mb-6 max-w-md">Alternatively, you can use our online meeting scheduling tool to easily book your preferred time for either a virtual meeting or an in-person meeting with a member of our team. Whether you are looking to discuss partnership opportunities or explore how we can best serve your logistics needs, we are here to help.</p>
                                 <RequestQuoteButton className="w-[220px]" type="button">
                                   <Link href="/schedule-meeting">
                                     Schedule a meeting

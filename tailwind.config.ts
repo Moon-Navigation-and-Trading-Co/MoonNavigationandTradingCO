@@ -150,11 +150,11 @@ const config = {
 				montserrat: ['Montserrat', 'sans-serif'],
 			},
 			fontWeight: {
-				'light': '300',
-				'normal': '400',
-				'medium': '500',
-				'semibold': '600',
-				'bold': '700',
+				light: '300',
+				regular: '400',
+				medium: '500',
+				semibold: '600',
+				bold: '700',
 			},
 			fontSize: {
 				'responsive-xs': 'clamp(0.75rem, 2vw, 0.875rem)',

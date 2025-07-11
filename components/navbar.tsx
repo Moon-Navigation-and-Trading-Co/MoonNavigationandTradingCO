@@ -179,9 +179,9 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     const navItems = [
         {
             name: "Contact",
-            href: "/#contact",
+            href: "/contact",
             dropdownItems: [
-                { name: "Contact Us", href: "/#contact" },
+                { name: "Contact Us", href: "/contact" },
                 { name: "Schedule a meeting", href: "/schedule-meeting" },
             ],
         },

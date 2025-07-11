@@ -38,7 +38,7 @@ const cargoItems = [
 
 export default function OversizedCargoCarousel() {
   return (
-    <div className="w-full flex flex-col items-center" style={{ fontFamily: "Raleway, sans-serif" }}>
+    <div className="w-full flex flex-col items-center font-raleway">
       <div className="relative w-full max-w-6xl mx-auto">
         <Carousel opts={{ align: "start", loop: true }} className="w-full">
           <CarouselContent>
@@ -56,11 +56,11 @@ export default function OversizedCargoCarousel() {
                   />
                 </div>
                 <div className="mt-4 text-center">
-                  <span className="block font-semibold text-lg md:text-xl text-primary mb-1">
+                  <span className="block font-raleway font-regular text-lg md:text-xl text-primary mb-1">
                     {item.title}
                   </span>
                   {item.subtitle && (
-                    <span className="block text-xs md:text-sm text-foreground font-normal">
+                    <span className="block font-raleway font-light text-xs md:text-sm text-foreground">
                       {item.subtitle}
                     </span>
                   )}
