@@ -10,10 +10,10 @@ export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-out-gauge");
 
   return (
-    <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
+    <div className="min-h-screen flex flex-col items-center mt-10 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
       {/* Top Banner */}
-      <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
-        <div className="relative w-full h-[180px] md:h-[260px]">
+      <div className="w-full max-w-7xl rounded-[60px] overflow-hidden mb-12 ">
+        <div className="relative w-full h-[350px] md:h-[350px]">
           <img
             src="/oog-1.jpg"
             alt="Out gauge cargo secured on flat rack"
@@ -118,22 +118,19 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl mx-auto mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           {/* Left: Description */}
-          <div className="bg-card rounded-3xl shadow p-6 md:p-8 border">
-            <p className="text-muted-foreground text-sm md:text-base leading-relaxed">
+          <div className="bg-card rounded-3xl  p-6 md:p-8 ">
+            <p className="text-muted-foreground text-2xl md:text-base leading-relaxed">
               Handling Out-of-gauge cargo is a complex task that requires specialized equipment, custom handling techniques, and precise logistics management. Our team is highly experienced in coordinating the transportation of heavy, oversized, and project cargo, from industrial machinery to large-scale infrastructure components.
             </p>
           </div>
           {/* Right: Image */}
           <div className="flex justify-center">
-            <div className="w-full h-40 md:h-56 rounded-[2rem] overflow-hidden shadow-lg flex items-center justify-center relative">
+            <div className="w-full h-[300px] rounded-[2rem] overflow-hidden  flex items-center justify-center relative">
               <img
                 src="/oog-6.jpg"
                 alt="Out-of-gauge cargo experts"
                 className="object-cover w-full h-full"
               />
-              <span className="absolute top-3 left-1/2 -translate-x-1/2 text-white text-base md:text-lg  drop-shadow-lg">
-                OOG Experts
-              </span>
             </div>
           </div>
         </div>
@@ -206,11 +203,11 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
           {/* Left: Image */}
           <div className="md:col-span-2 flex justify-center">
-            <div className="w-full max-w-7xl rounded-2xl overflow-hidden shadow-lg">
+            <div className="w-full max-w-7xl rounded-2xl overflow-hidden ">
               <img
                 src="/oog-7.jpg"
                 alt="Out Gauge Shipping Expert"
-                className="object-cover w-full h-56 md:h-64"
+                className="object-cover w-full h-[500px] "
               />
             </div>
           </div>
@@ -285,7 +282,7 @@ export default function ShippingMethodsInfo() {
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-center">
-          <div className="relative w-full max-w-7xl rounded-2xl overflow-hidden shadow-lg">
+          <div className="relative w-full max-w-7xl rounded-2xl overflow-hidden ">
             <div className="absolute inset-x-0 top-6 h-4 bg-primary rounded-lg z-0"></div>
             <img
               src="/oog-8.jpg"
