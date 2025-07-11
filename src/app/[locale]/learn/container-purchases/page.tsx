@@ -2,6 +2,8 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import VesselCarousel from "@/components/vessel-carousel";
 import Link from "next/link";
+import FAQPage from "../../faq/page";
+import FAQSearch from "@/components/faq";
 
 const serve=[
     {img:"/cc-1.jpg",title:"Shipping and Freight Forwarders"},
@@ -347,6 +349,7 @@ export default function ContainerPurchases() {
             </div>
           </div>
           <GetQuoteComponent topic="Container Rentals/Purchases" link="/buy-rent-container-forms"/>
+          <FAQSearch category="container-purchases-rentals"/>
         </div>
     )
 }

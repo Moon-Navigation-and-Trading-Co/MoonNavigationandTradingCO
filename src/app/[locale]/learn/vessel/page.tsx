@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
+import FAQSearch from "@/components/faq";
 
 const VesselCarousel = dynamic(() => import("@/components/vessel-carousel"), { ssr: false });
 
@@ -376,6 +377,7 @@ export default function VesselPage() {
         </div>
       </div>
       <GetQuoteComponent topic="Vessel Rental/Purchase" link="/buy-rent-vessels-forms" />
+      <FAQSearch category="vessel-purchases-rentals"/>
     </div>
   );
 }
