@@ -1,66 +1,20 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { Metadata } from "next";
 import FAQSearch from "@/components/faq";
-
-// SEO Metadata for Next.js 13+ App Router
-export const metadata: Metadata = {
-  title: "Roll-on/Roll-off (RORO) Shipping | Moon Navigation and Trading Co.",
-  description:
-    "Discover efficient, secure, and cost-effective Roll-on/Roll-off (RORO) shipping solutions for vehicles, heavy machinery, and wheeled cargo. Learn about our global RoRo services, streamlined cargo handling, and get a fast quote today.",
-  keywords: [
-    "RoRo shipping",
-    "roll-on roll-off",
-    "RORO cargo",
-    "vehicle shipping",
-    "heavy machinery transport",
-    "wheeled cargo",
-    "ocean freight",
-    "Moon Navigation and Trading Co.",
-    "global shipping",
-    "freight quote",
-    "oversized cargo",
-    "project cargo",
-    "international shipping",
-    "secure transport",
-    "cost-effective shipping"
-  ],
-  openGraph: {
-    title: "Roll-on/Roll-off (RORO) Shipping | Moon Navigation and Trading Co.",
-    description:
-      "Efficient, secure, and cost-effective RoRo shipping for vehicles, machinery, and wheeled cargo. Get a quote for global RoRo transport solutions.",
-    url: "https://www.moonnavigation.com/learn/roll",
-    type: "website",
-    images: [
-      {
-        url: "/roroheroimage.jpg",
-        width: 1200,
-        height: 630,
-        alt: "RoRo Cargo Handling"
-      }
-    ]
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Roll-on/Roll-off (RORO) Shipping | Moon Navigation and Trading Co.",
-    description:
-      "Efficient, secure, and cost-effective RoRo shipping for vehicles, machinery, and wheeled cargo. Get a quote for global RoRo transport solutions.",
-    images: ["/roroheroimage.jpg"]
-  },
-  alternates: {
-    canonical: "/learn/roll"
-  }
-};
-
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
-export default function RollOnOffHero() {
-  const locale = useLocale();
+import OverviewServicesTabs from "@/components/overview-services";
 
+// SEO Metadata for Next.js 13+ App Router
+
+
+function overview() {
+  const locale = useLocale();
   return (
-    <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center mt-10"
-    style={{ fontFamily: "Raleway, sans-serif" }}>
+    <>
       {/* --- HERO IMAGE --- */}
       <img
         src="/rorotitleimage.jpg"
@@ -97,7 +51,13 @@ export default function RollOnOffHero() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
 
+function services() {
+  return (
+    <>
       {/* --- SPACE BETWEEN SECTIONS --- */}
       <div className="h-12" />
 
@@ -256,6 +216,12 @@ export default function RollOnOffHero() {
       </section>
       <GetQuoteComponent topic="RORO" link="/ocean-freight-forms" />
       <FAQSearch category="ro-ro-shipping" />
-    </div>
+    </>
+  );
+}
+
+export default function RollOnOffHero() {
+  return (
+    <OverviewServicesTabs renderOverview={overview} renderServices={services} />
   );
 }

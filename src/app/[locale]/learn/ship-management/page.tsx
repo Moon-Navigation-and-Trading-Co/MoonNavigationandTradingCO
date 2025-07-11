@@ -1,14 +1,15 @@
+"use client";
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import OverviewServicesTabs from "@/components/overview-services";
 
-export default function ShipManagement() {
-
-    return (
-    <div className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5" style={{ fontFamily: 'Raleway, sans-serif' }}>
+function overview() {
+  return (
+    <>
       <div className="w-full rounded-3xl overflow-hidden">
         <img
           src="/sm-1.jpg"
@@ -26,7 +27,7 @@ export default function ShipManagement() {
               <RequestQuoteButton>
                 Request a Quote
               </RequestQuoteButton>
-            </Link> 
+            </Link>
           </div>
           {/* Right: What is Ship Management */}
           <div className="flex-1">
@@ -39,6 +40,13 @@ export default function ShipManagement() {
           </div>
         </div>
       </div>
+    </>
+  );
+}
+
+function services() {
+  return (
+    <>
       <div className="flex flex-col md:flex-row gap-10 mt-12 items-center">
         {/* Technical Management Image */}
         <div className="flex-1 flex justify-center">
@@ -610,7 +618,12 @@ export default function ShipManagement() {
       </div>
       <GetQuoteComponent topic="Ship Management" link="/ship-management-forms" />
       <FAQSearch category="ship-management" />    
-    </div>
-        
-    )
+    </>
+  );
+}
+
+export default function ShipManagement() {
+  return (
+    <OverviewServicesTabs renderOverview={overview} renderServices={services} />
+  );
 }

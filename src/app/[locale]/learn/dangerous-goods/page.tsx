@@ -10,6 +10,7 @@ import { useState } from "react"
 import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import OverviewServicesTabs from "@/components/overview-services";
 
 export default function DangerousCargoInfo() {
     const t = useTranslations("learn-dangerous-cargo")
@@ -64,26 +65,9 @@ export default function DangerousCargoInfo() {
         }
     ]
 
-    return (
-        <>
-            <Head>
-                <title>Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co.</title>
-                <meta
-                    name="description"
-                    content="Learn about dangerous cargo shipping, IMDG Code, IATA DGR, ADR, and how Moon Navigation and Trading Co. ensures safe, compliant transport of hazardous materials worldwide."
-                />
-                <meta
-                    name="keywords"
-                    content="dangerous cargo, hazardous materials, IMDG Code, IATA DGR, ADR, shipping, transport, Moon Navigation and Trading Co., packaging, labeling, risk assessment, special equipment, safety protocols"
-                />
-                <meta property="og:title" content="Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co." />
-                <meta property="og:description" content="Expert handling and transport of dangerous cargo and hazardous materials. Learn about our process, compliance, and safety standards." />
-                <meta property="og:image" content="/dangerous-cargo-banner.jpg" />
-                <meta property="og:type" content="website" />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href="https://www.moonnavigation.com/learn/dangerous" />
-            </Head>
-            <div>
+    function renderOverview() {
+        return (
+            <>
                 {/* Image banner at the top */}
                 <div className="w-full flex justify-center mb-8 mt-10">
                     <div className="w-full max-w-7xl">
@@ -103,9 +87,7 @@ export default function DangerousCargoInfo() {
                     <div className="flex-1 flex flex-col items-center md:items-start w-full">
                         <h1 className="mb-10 text-4xl font-light text-left md:text-left w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>Dangerous Goods<br />Container Shipments</h1>
                         <Link href="/ocean-freight-forms">
-                            <Link href="/ocean-freight-forms">
-                                <RequestQuoteButton>Request a Quote</RequestQuoteButton>
-                            </Link>
+                            <RequestQuoteButton>Request a Quote</RequestQuoteButton>
                         </Link>
                     </div>
                     {/* Right column: heading and description */}
@@ -125,6 +107,14 @@ export default function DangerousCargoInfo() {
                             container shipments, ensuring your cargo is transported securely, compliantly, and efficiently across global routes.</p>
                     </div>
                 </div>
+            </>
+        );
+    }
+
+    function renderServices() {
+        return (
+            <>
+                {/* Everything after the overview section */}
                 {/* Accordion/classes section below */}
                 <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
                     <CardHeader>
@@ -354,7 +344,33 @@ export default function DangerousCargoInfo() {
                 </section>
                 <GetQuoteComponent topic="Dangerous Goods Transport" link="/container-services-forms" />
                 <FAQSearch category="dangerous-goods" />
-            </div>
+            </>
+        );
+    }
+
+    return (
+        <>
+            <Head>
+                <title>Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co.</title>
+                <meta
+                    name="description"
+                    content="Learn about dangerous cargo shipping, IMDG Code, IATA DGR, ADR, and how Moon Navigation and Trading Co. ensures safe, compliant transport of hazardous materials worldwide."
+                />
+                <meta
+                    name="keywords"
+                    content="dangerous cargo, hazardous materials, IMDG Code, IATA DGR, ADR, shipping, transport, Moon Navigation and Trading Co., packaging, labeling, risk assessment, special equipment, safety protocols"
+                />
+                <meta property="og:title" content="Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co." />
+                <meta property="og:description" content="Expert handling and transport of dangerous cargo and hazardous materials. Learn about our process, compliance, and safety standards." />
+                <meta property="og:image" content="/dangerous-cargo-banner.jpg" />
+                <meta property="og:type" content="website" />
+                <meta name="robots" content="index, follow" />
+                <link rel="canonical" href="https://www.moonnavigation.com/learn/dangerous" />
+            </Head>
+            <OverviewServicesTabs
+                renderOverview={renderOverview}
+                renderServices={renderServices}
+            />
         </>
-    )
+    );
 }

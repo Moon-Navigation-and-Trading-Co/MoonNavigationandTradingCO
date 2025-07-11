@@ -1,21 +1,19 @@
+"use client"
 import FAQSearch from "@/components/faq";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import OverviewServicesTabs from "@/components/overview-services";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 
-export default function ShippingMethodsInfo() {
-  const t = useTranslations("learn-crew");
 
+function overview(){
   return (
-  <div
-    className="w-full max-w-7xl place-self-center"
-    style={{ fontFamily: "Raleway, sans-serif" }}
-  >
-    {/* Top full-width image */}
-    <div className="w-full">
+    <>
+        {/* Top full-width image */}
+        <div className="w-full">
       <img
         src="/crew-1.jpg"
         alt="Ship agent assisting crew member with paperwork"
@@ -57,7 +55,14 @@ compliance with maritime regulations and local port requirements.
         </p>
       </div>
     </div>
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
+    </>
+  )
+}
+
+function services(){
+  return(
+    <>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
     {/* Left: Text Content */}
     <div>
       <h2 className="text-xl md:text-2xl text-[#2a6db0] dark:text-blue-400 mb-4">
@@ -177,6 +182,19 @@ compliance with maritime regulations and local port requirements.
   </div>
   <GetQuoteComponent topic = "Crew Management" link = "/ship-agency-forms"/> 
   <FAQSearch category="crew-management" />
+    </>
+  )
+}
+export default function ShippingMethodsInfo() {
+  const t = useTranslations("learn-crew");
+
+  return (
+  <div
+    className="w-full max-w-7xl place-self-center"
+    style={{ fontFamily: "Raleway, sans-serif" }}
+  >
+<OverviewServicesTabs renderOverview={overview} renderServices={services} />
+  
   </div>
   );
 }

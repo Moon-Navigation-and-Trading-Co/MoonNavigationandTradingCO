@@ -1,56 +1,17 @@
+"use client";
 import Image from "next/image";
 import { Metadata } from "next";
-import RequestQuoteButton from "@/components/RequestQuoteButton" 
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
-
-export const metadata: Metadata = {
-    title: "Tankers | Moon Navigation and Trading Co. - Ocean Freight & Transportation",
-    description:
-        "Learn about tanker ocean freight and transportation services by Moon Navigation and Trading Co. Discover our specialized tanker types, safety features, global logistics, and reasons to choose us for your liquid cargo needs.",
-    keywords: [
-        "tankers",
-        "ocean freight",
-        "tanker transportation",
-        "crude oil tankers",
-        "chemical tankers",
-        "liquefied gas tankers",
-        "product tankers",
-        "Moon Navigation and Trading Co.",
-        "liquid cargo shipping",
-        "maritime logistics",
-        "global shipping",
-        "tanker fleet",
-        "tanker safety",
-        "environmental protection",
-        "customized tanker solutions",
-        "tanker quote"
-    ],
-    openGraph: {
-        title: "Tankers | Moon Navigation and Trading Co. - Ocean Freight & Transportation",
-        description:
-            "Moon Navigation and Trading Co. offers comprehensive tanker ocean freight services, including crude oil, chemical, product, and liquefied gas tankers. Explore our advanced fleet, safety standards, and global logistics network.",
-        images: [
-            {
-                url: "/tankers-header.jpg",
-                width: 1024,
-                height: 350,
-                alt: "Tankers at sea"
-            }
-        ],
-        type: "website"
-    },
-    alternates: {
-        canonical: "/learn/tankers"
-    }
-};
+import OverviewServicesTabs from "@/components/overview-services";
 
 
 
-export default function TankersPage() {
+function overview() {
     return (
-        <main className="w-full max-w-7xl mx-auto flex flex-col items-center pt-8 pb-16 min-h-screen">
+        <>
             {/* Top Image */}
             <div className="w-full h-[400px]  overflow-hidden mb-">
                 <Image
@@ -62,7 +23,6 @@ export default function TankersPage() {
                     priority
                 />
             </div>
-
             {/* Main Content */}
             <article className="w-full max-w-7xl flex flex-col md:flex-row gap-10 px-4 md:px-0">
                 {/* Left: Title and CTA */}
@@ -89,6 +49,13 @@ export default function TankersPage() {
                     </p>
                 </section>
             </article>
+        </>
+    );
+}
+
+function services() {
+    return (
+        <>
             <section className="w-full max-w-7xl mt-16">
                 <h2 className="text-2xl md:text-3xl font-normal mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Our Specialized Tanker Types
@@ -239,7 +206,6 @@ export default function TankersPage() {
                 </div>
             </section>
             <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
-                {/* Left: Key Features Text */}
                 <div className="flex-[1.3] md:pr-10">
                     <h2 className="text-2xl md:text-3xl font-normal mb-20" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Key Features of Our Tankers Transportation
@@ -496,6 +462,12 @@ export default function TankersPage() {
             </section>
             <GetQuoteComponent topic="Tankers" link="/ocean-freight-forms" />
             <FAQSearch category="tankers-in-ocean-freight" />
-        </main>
+        </>
+    );
+}
+
+export default function TankersPage() {
+    return (
+        <OverviewServicesTabs renderOverview={overview} renderServices={services} />
     );
 }

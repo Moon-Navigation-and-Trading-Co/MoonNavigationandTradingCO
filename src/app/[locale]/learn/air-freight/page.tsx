@@ -8,14 +8,14 @@ import Image from "next/image";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import OverviewServicesTabs from "@/components/overview-services";
 
-export default function AirFreightInfo() {
+
+function overview(){
     const t = useTranslations("learn-air-freight");
-
-    return (
-        <main className="flex flex-col items-center w-full max-w-7xl mx-auto" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            {/* Hero Section */}
-            <div className="w-full">
+    return(
+        <>
+                    <div className="w-full">
                 <div className="relative h-[350px] rounded-[60px] overflow-hidden mb-8 mt-10">
                     <Image src="/air-1.jpg" alt="Air Freight Services" fill className="object-cover object-[90%_10%]" priority />
                 </div>
@@ -35,9 +35,14 @@ export default function AirFreightInfo() {
                     </div>
                 </div>
             </div>
-
-            {/* Core Principles Section */}
-            <div className="w-full bg-background py-16">
+        </>
+    )
+}
+function services(){
+    const t = useTranslations("learn-air-freight");
+    return(
+        <>
+         <div className="w-full bg-background py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <h2 className="text-3xl mb-12">{t("principles.title")}</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -315,6 +320,16 @@ export default function AirFreightInfo() {
             </div>
             <GetQuoteComponent topic="air-freight" link="/air-freight-forms"/> 
             <FAQSearch category="air-freight" />
+        </>
+    )
+}
+
+export default function AirFreightInfo() {
+    
+
+    return (
+        <main className="flex flex-col items-center w-full max-w-7xl mx-auto" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <OverviewServicesTabs renderOverview={overview} renderServices={services}/>
         </main>
     );
 }

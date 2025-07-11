@@ -1,16 +1,15 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import OverviewServicesTabs from "@/components/overview-services";
 
-export default function BunkeringPage() {
-  return (
-    <div
-      className="w-full max-w-7xl min-h-screen flex flex-col items-center place-self-center"
-      style={{ fontFamily: "Raleway, sans-serif" }}
-    >
-      <div className="w-full mt-8 mb-0 px-4">
+function overview(){
+  return(
+    <>
+    <div className="w-full mt-8 mb-0 px-4">
         <div className="w-full flex flex-row gap-0 rounded-[2rem] overflow-hidden mb-8">
           <div className="w-full h-[180px] md:h-[220px] relative">
             <Image
@@ -42,7 +41,15 @@ export default function BunkeringPage() {
           </div>
         </div>
       </div>
-    <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mt-8 mb-12">
+    </>
+  )
+}
+
+function services(){
+  return(
+    <>
+          
+          <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mt-8 mb-12">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start z-10">
         <h2 className="text-xl md:text-2xl mb-2 text-gray-900 dark:text-white" style={{ fontFamily: "Raleway, sans-serif" }}>
           Bunkering Services (Marine Fuel Supply)
@@ -163,6 +170,17 @@ export default function BunkeringPage() {
     </div>
     <GetQuoteComponent topic="Bunkering, Oil Supply, Ship Chandlery"  link="/ship-agency-forms"/>
     <FAQSearch category="bunkering" />
+    </>
+  )
+}
+
+export default function BunkeringPage() {
+  return (
+    <div
+      className="w-full max-w-7xl min-h-screen flex flex-col items-center place-self-center"
+      style={{ fontFamily: "Raleway, sans-serif" }}
+    >
+<OverviewServicesTabs renderOverview={overview} renderServices={services}/>
     </div>
   );
 }
