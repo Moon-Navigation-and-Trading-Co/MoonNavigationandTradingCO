@@ -81,15 +81,14 @@ export default function OceanFreightPage() {
         <>
             {/* Ocean Freight Hero Section */}
             <div className="w-full max-w-7xl mx-auto flex flex-col gap-0 items-center mt-12">
-                <div className="w-full rounded-[3rem] overflow-hidden mb-12 shadow-lg">
-                    <div className="relative w-full h-[340px]">
+                <div className="w-full rounded-[60px] overflow-hidden mb-12 shadow-lg">
+                    <div className="relative w-full h-[350px]">
                         <Image
                             src="/ocean-freight-hero.jpg"
                             alt="Moon Navigation and Trading Co. Ocean Freight"
                             fill
-                            className="object-cover"
-                            priority
-                            sizes="(max-width: 768px) 100vw, 1200px"
+                            className="object-cover w-[1280px] object-[40%_60%]"
+                            
                         />
                     </div>
                 </div>

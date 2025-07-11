@@ -80,8 +80,8 @@ export default function ProjectCargoPage() {
   return (
     <div className="space-y-32">
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto w-full mt-8">
-        <div className="rounded-[56px] overflow-hidden w-full h-[400px] mb-12">
+      <section className="max-w-7xl mx-auto w-full mt-10">
+        <div className="rounded-[60px] overflow-hidden w-full h-[400px] mb-12">
           <Image
             src="/project-cargo-hero.jpg"
             alt="Project Cargo - Oversized and Heavy Lift Logistics by Moon Navigation and Trading Co."
