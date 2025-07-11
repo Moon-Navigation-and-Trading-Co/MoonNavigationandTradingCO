@@ -3,13 +3,15 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"
+import GetQuoteComponent from "@/components/getQuoteComponent"
+import FAQSearch from "@/components/faq"
 
 export default function FullContainerLoadPage() {
     return (
-        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0 place-self-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <div className="w-full max-w-7xl min-h-screen flex flex-col items-center mt-10 md:px-0 place-self-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Top Banner */}
-            <div className="w-full rounded-[2rem] overflow-hidden mb-8 shadow-lg">
-                <div className="relative w-full h-[180px] md:h-[260px]">
+            <div className="w-full rounded-[60px] overflow-hidden mb-8 shadow-lg ">
+                <div className="relative w-full h-[350px] ">
                     <Image
                         src="/container-banner.jpg"
                         alt="Moon Navigation and Trading Co. Full Container"
@@ -30,7 +32,7 @@ export default function FullContainerLoadPage() {
             <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Left: Title and CTA */}
                 <div className="flex flex-col items-start justify-start">
-                    <h1 className="text-5xl font-normal font-sans mb-12 text-[#222] mt-12">
+                    <h1 className="text-5xl font-normal font-sans mb-12 text-primary mt-12">
                         Full Container Load
                     </h1>
                     <p className="text-muted-foreground text-lg mb-4">
@@ -199,7 +201,7 @@ export default function FullContainerLoadPage() {
                         Reefer Containers (Refrigerated)
                     </button>
                 </Link>
-                <Link href="/learn/full/dangerous" className="flex-1 flex justify-center">
+                <Link href="/learn/dangerous-goods" className="flex-1 flex justify-center">
                     <button
                         className="bg-[#25348b] hover:bg-[#1a255e] text-white text-xs md:text-sm font-medium rounded-full px-6 py-2 transition-colors duration-200 shadow-none"
                         style={{ minWidth: "200px" }}
@@ -210,7 +212,7 @@ export default function FullContainerLoadPage() {
             </div>
             <div className="max-w-7xl mx-auto mt-10 mb-12 px-4">
                 <h3 className="text-2xl md:text-2xl  text-foreground mb-4 text-blue-600">
-                    Our Comprehensive Container Solutions includes Reefer<br className="hidden md:inline" /> &amp; Dangerous Cargo Expertise
+                    Our Comprehensive Container Solutions includes Reefer<br className="hidden md:inline" /> and Dangerous Cargo Expertise
                 </h3>
                 <p className="text-muted-foreground text-sm md:text-base mb-2">
                     At Moon Navigation and Trading Co., we specialize in providing comprehensive container transportation solutions, ensuring the safe and efficient handling of a wide range of cargo, including refrigerated reefer and dangerous goods.
@@ -224,7 +226,7 @@ export default function FullContainerLoadPage() {
             </div>
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 mb-20 px-4">
                 {/* Standard Cargo (Dry Containers) */}
-                <div className="flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6">
+                <div className="flex flex-col justify-between rounded-2xl p-6">
                     <div>
                         <h4 className="text-lg  text-foreground mb-2">Standard Cargo (Dry Containers)</h4>
                         <p className="text-muted-foreground text-sm mb-3">
@@ -232,9 +234,9 @@ export default function FullContainerLoadPage() {
 not require temperature control. These containers offer a secure and cost-effective solution for
 your everyday shipping needs, such as:</p>
                         <ul className="list-disc list-inside text-muted-foreground text-sm mb-3 space-y-1">
-                            <li>Industrial Equipment &amp; Heavy machinery, spare parts, and mechanical tools.</li>
+                            <li>Industrial Equipment and Heavy machinery, spare parts, and mechanical tools.</li>
                             <li>Consumer Goods –  Electronics, appliances, textiles, and packaged products.</li>
-                            <li>Raw Materials &amp; Construction Supplies – Palletized goods, paper products, packaging
+                            <li>Raw Materials and Construction Supplies – Palletized goods, paper products, packaging
                             materials, and more.</li>
                         </ul>
                         <p className="text-muted-foreground text-sm">
@@ -266,7 +268,7 @@ your everyday shipping needs, such as:</p>
                         style={{ height: '400px' }}
                     />
                 </div>
-                <div className="flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6 order-4 md:order-3">
+                <div className="flex flex-col justify-between rounded-2xl p-6 order-4 md:order-3">
                     <div>
                         <h4 className="text-lg  text-foreground mb-2">Reefer Cargo (Temperature-Sensitive Shipments)</h4>
                         <p className="text-muted-foreground text-sm mb-3">
@@ -274,8 +276,8 @@ your everyday shipping needs, such as:</p>
                         control during transit, such as:</p>
                         <ul className="list-disc list-inside text-muted-foreground text-sm mb-3 space-y-1">
                             <li>Perishable Food Items – Fresh produce, dairy, and frozen foods.</li>
-                            <li>Pharma &amp; Chemicals – medicines and vaccines that need strict temperature control.</li>
-                            <li>Floral &amp; Horticultural Products – Goods that require constant climate monitoring.
+                            <li>Pharma and Chemicals – medicines and vaccines that need strict temperature control.</li>
+                            <li>Floral and Horticultural Products – Goods that require constant climate monitoring.
 
 </li>
                         </ul>
@@ -295,7 +297,7 @@ your everyday shipping needs, such as:</p>
             {/* Dangerous Goods (Hazardous Cargo) */}
             <div className="flex flex-col md:flex-row gap-8">
                 {/* Left: Text Content */}
-                <div className="flex-1 flex flex-col justify-between bg-white dark:bg-gray-900 rounded-2xl shadow-md p-6">
+                <div className="flex-1 flex flex-col justify-between rounded-2xl p-6">
                     <div>
                         <h4 className="text-lg  text-foreground mb-2">Dangerous Goods in FCL</h4>
                         <p className="text-muted-foreground text-sm mb-3">
@@ -306,13 +308,13 @@ Maritime Organization) and ADR (European Agreement on Dangerous Goods).
 Our services for dangerous goods include</p>
                         <ul className="list-disc list-inside text-muted-foreground text-sm mb-3 space-y-1">
                             <li>
-                                <span className="font-medium">Proper Classification &amp; Labeling</span> – Correct packaging, labeling, and documentation for
+                                <span className="font-medium">Proper Classification and Labeling</span> – Correct packaging, labeling, and documentation for
                                 hazardous materials.</li>
                             <li>
                                 <span className="font-medium">Specialized Equipment</span> – Containers and equipment designed for safe transport of dangerous
                                 goods.</li>
                             <li>
-                                <span className="font-medium">Risk Management &amp; Emergency Response</span> –  Adhering to protocols to manage risks and
+                                <span className="font-medium">Risk Management and Emergency Response</span> –  Adhering to protocols to manage risks and
                                 ensure quick action in case of emergencies.</li>
                             <li>
                                 <span className="font-medium">Regulatory Compliance</span> –  Ensuring full compliance with international shipping regulations to
@@ -320,7 +322,7 @@ Our services for dangerous goods include</p>
                         </ul>
                     </div>
                     <div className="mt-4 text-end">
-                        <Link href="/learn/dangerous" className="inline-block">
+                        <Link href="/learn/dangerous-goods" className="inline-block">
                             <RequestQuoteButton>
                                 Learn more
                             </RequestQuoteButton>
@@ -438,37 +440,8 @@ regulatory compliance throughout the journey.</p>
                     </div>
                 </div>
             </div>
-            <section className="w-full bg-[#d3e3f4] rounded-3xl flex flex-col md:flex-row items-center justify-between px-6 md:px-16 py-10 mt-20 mb-2 relative">
-                {/* Left: Text Content */}
-                <div className="flex-1 min-w-[260px]">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Get your Quote with Us
-                    </h2>
-                    <p className="text-sm md:text-base text-[#23294d] mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Our streamlined LCL freight quotation process is designed for speed and convenience. At
-                        Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
-                        Quotation by Request system. Simply fill out our short form to initiate your request. Once
-                        submitted, our team will assess your shipment’s volume, weight, and consolidation options to
-                        find the most efficient and cost-effective transport solution. You will receive a customized
-                        quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
-                        cargo movement.
-                    </p>
-                    <Link href="/container-services-forms">
-                        <RequestQuoteButton>
-                            Request a Quote
-                        </RequestQuoteButton>
-                    </Link>
-                </div>
-                {/* Right: Image */}
-                <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                    <img
-                        src="/quote-illustration.png"
-                        alt="Quotation illustration"
-                        className="w-[320px] h-auto object-contain"
-                        style={{ maxWidth: 380 }}
-                    />
-                </div>
-            </section>
+            <GetQuoteComponent topic="FCL" link="/container-services-forms" />
+            <FAQSearch category="fcl" />
         </div>
     );
 }

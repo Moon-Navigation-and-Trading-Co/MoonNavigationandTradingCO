@@ -4,20 +4,21 @@ import React from "react";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
+import { Carousel, CarouselContent, CarouselItem, CarouselNavigation } from "@/components/ui/carousel"
  
 export default function DryContainerPage() {
   return (
-    <div className="w-full max-w-7xl min-h-screen flex flex-col items-center py-8 px-2 md:px-0 mx-auto">
+    <div className="w-full max-w-7xl min-h-screen flex flex-col items-center mt-10 md:px-0 mx-auto">
       {/* Hero Section */}
-      <div className="w-full rounded-2xl overflow-hidden mb-12">
-        <div className="relative w-full h-[340px] md:h-[400px]">
+      <div className="w-full rounded-[60px] overflow-hidden mb-8">
+        <div className="relative w-full h-[350px]">
           <Image
             src="/container-standard-s.jpg"
             alt="Standard Dry Container"
             fill
-            className="object-cover rounded-2xl"
+            className="object-cover rounded-[60px]"
             priority
-            sizes="(max-width: 768px) 100vw, 1200px"
           />
           <div className="absolute inset-0 flex items-center justify-center">
           </div>
@@ -53,64 +54,140 @@ export default function DryContainerPage() {
 
       {/* Key Industries Section */}
       <div className="w-full max-w-7xl mb-20">
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#3B4B8C] dark:text-[#bfc8f8] mb-2 px-2">
+        <h2 className="text-2xl md:text-3xl  text-[#3B4B8C] dark:text-[#bfc8f8] mb-2 px-2">
           Key Industries We Serve:
         </h2>
         <p className="text-gray-500 dark:text-gray-300 mb-10 px-2">
           Our Standard Dry Shipment solutions are tailored for a wide range of industries, including:
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-12 px-2">
-          {/* Industry Cards */}
-          <div className="flex flex-col items-center">
-            <img src="/industry-retail.jpg" alt="Retail & Consumer Goods" className="rounded-2xl w-48 h-32 object-cover mb-3" />
-            <span className="font-medium text-sm md:text-base text-center">Retail & Consumer Goods</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <img src="/industry-industrial.jpg" alt="Industrial & Manufacturing" className="rounded-2xl w-48 h-32 object-cover mb-3" />
-            <span className="font-medium text-sm md:text-base text-center">Industrial & Manufacturing</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <img src="/industry-furniture.jpg" alt="Furniture & Home Appliances" className="rounded-2xl w-48 h-32 object-cover mb-3" />
-            <span className="font-medium text-sm md:text-base text-center">Furniture & Home Appliances</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <img src="/industry-textiles.jpg" alt="Textiles & Garments" className="rounded-2xl w-48 h-32 object-cover mb-3" />
-            <span className="font-medium text-sm md:text-base text-center">Textiles & Garments</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <img src="/industry-automotive.jpg" alt="Automotive & Spare Parts" className="rounded-2xl w-48 h-32 object-cover mb-3" />
-            <span className="font-medium text-sm md:text-base text-center">Automotive & Spare Parts</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <img src="/industry-construction.jpg" alt="Construction & Building Materials" className="rounded-2xl w-48 h-32 object-cover mb-3" />
-            <span className="font-medium text-sm md:text-base text-center">Construction & Building Materials</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <img src="/industry-food.jpg" alt="Food & Beverage (Non-Perishable)" className="rounded-2xl w-48 h-32 object-cover mb-3" />
-            <span className="font-medium text-sm md:text-base text-center">Food & Beverage (Non-Perishable)</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <img src="/industry-office.jpg" alt="Office Supplies & Stationery" className="rounded-2xl w-48 h-32 object-cover mb-3" />
-            <span className="font-medium text-sm md:text-base text-center">Office Supplies & Stationery</span>
-          </div>
+        
+        <div className="relative px-2">
+          <Carousel
+            opts={{
+              align: "start",
+              slidesToScroll: 4,
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {/* Industry Card 1 */}
+              <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <div className="flex flex-col items-center">
+                  <img 
+                    src="/industry-retail.jpg" 
+                    alt="Retail & Consumer Goods" 
+                    className="rounded-2xl w-full h-48 md:h-56 object-cover mb-3 shadow-lg" 
+                  />
+                  <span className="font-medium text-sm md:text-base text-center">Retail & Consumer Goods</span>
+                </div>
+              </CarouselItem>
+              
+              {/* Industry Card 2 */}
+              <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <div className="flex flex-col items-center">
+                  <img 
+                    src="/industry-industrial.jpg" 
+                    alt="Industrial & Manufacturing" 
+                    className="rounded-2xl w-full h-48 md:h-56 object-cover mb-3 shadow-lg" 
+                  />
+                  <span className="font-medium text-sm md:text-base text-center">Industrial & Manufacturing</span>
+                </div>
+              </CarouselItem>
+              
+              {/* Industry Card 3 */}
+              <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <div className="flex flex-col items-center">
+                  <img 
+                    src="/industry-furniture.jpg" 
+                    alt="Furniture & Home Appliances" 
+                    className="rounded-2xl w-full h-48 md:h-56 object-cover mb-3 shadow-lg" 
+                  />
+                  <span className="font-medium text-sm md:text-base text-center">Furniture & Home Appliances</span>
+                </div>
+              </CarouselItem>
+              
+              {/* Industry Card 4 */}
+              <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <div className="flex flex-col items-center">
+                  <img 
+                    src="/industry-textiles.jpg" 
+                    alt="Textiles & Garments" 
+                    className="rounded-2xl w-full h-48 md:h-56 object-cover mb-3 shadow-lg" 
+                  />
+                  <span className="font-medium text-sm md:text-base text-center">Textiles & Garments</span>
+                </div>
+              </CarouselItem>
+              
+              {/* Industry Card 5 */}
+              <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <div className="flex flex-col items-center">
+                  <img 
+                    src="/industry-automotive.jpg" 
+                    alt="Automotive & Spare Parts" 
+                    className="rounded-2xl w-full h-48 md:h-56 object-cover mb-3 shadow-lg" 
+                  />
+                  <span className="font-medium text-sm md:text-base text-center">Automotive & Spare Parts</span>
+                </div>
+              </CarouselItem>
+              
+              {/* Industry Card 6 */}
+              <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <div className="flex flex-col items-center">
+                  <img 
+                    src="/industry-construction.jpg" 
+                    alt="Construction & Building Materials" 
+                    className="rounded-2xl w-full h-48 md:h-56 object-cover mb-3 shadow-lg" 
+                  />
+                  <span className="font-medium text-sm md:text-base text-center">Construction & Building Materials</span>
+                </div>
+              </CarouselItem>
+              
+              {/* Industry Card 7 */}
+              <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <div className="flex flex-col items-center">
+                  <img 
+                    src="/industry-food.jpg" 
+                    alt="Food & Beverage (Non-Perishable)" 
+                    className="rounded-2xl w-full h-48 md:h-56 object-cover mb-3 shadow-lg" 
+                  />
+                  <span className="font-medium text-sm md:text-base text-center">Food & Beverage (Non-Perishable)</span>
+                </div>
+              </CarouselItem>
+              
+              {/* Industry Card 8 */}
+              <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
+                <div className="flex flex-col items-center">
+                  <img 
+                    src="/industry-office.jpg" 
+                    alt="Office Supplies & Stationery" 
+                    className="rounded-2xl w-full h-48 md:h-56 object-cover mb-3 shadow-lg" 
+                  />
+                  <span className="font-medium text-sm md:text-base text-center">Office Supplies & Stationery</span>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+            
+            <CarouselNavigation />
+          </Carousel>
         </div>
       </div>
 
       {/* Comparison Table Section */}
       <div className="w-full max-w-7xl mb-20">
-        <h2 className="text-2xl md:text-3xl font-semibold text-[#3B4B8C] dark:text-[#bfc8f8] mb-8 px-2">
+        <h2 className="text-2xl md:text-3xl  text-[#3B4B8C] dark:text-[#bfc8f8] mb-8 px-2">
           Standard Dry Containers vs. Specialized Container Types
         </h2>
         <div className="overflow-x-auto">
           <table className="min-w-full border dark:border-[#23294d] rounded-2xl bg-white dark:bg-[#181c2a]">
             <thead>
               <tr>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Feature / Specification</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Standard Dry Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Reefer Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Open Top Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b border-r dark:border-[#23294d]">Flat Rack Container</th>
-                <th className="px-4 py-3 text-left font-semibold border-b dark:border-[#23294d]">Tank Container</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Feature / Specification</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Standard Dry Container</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Reefer Container</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Open Top Container</th>
+                <th className="px-4 py-3 text-left  border-b border-r dark:border-[#23294d]">Flat Rack Container</th>
+                <th className="px-4 py-3 text-left  border-b dark:border-[#23294d]">Tank Container</th>
               </tr>
             </thead>
             <tbody className="text-sm">
@@ -167,43 +244,7 @@ export default function DryContainerPage() {
         </div>
       </div>
 
-{/* Reasons Section */}
-<div className="mt-16 mb-12 max-w-5xl mx-auto px-4">
-  <h2 className="text-2xl md:text-3xl font-semibold text-left mb-16 text-[#3B4B8C] dark:text-[#bfc8f8]">
-    Reasons to Choose Moon Navigation and Trading Co. for Your Dry Standard Container Shipments
-  </h2>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-8 md:gap-x-16 lg:gap-x-32 justify-items-center">
-    <div className="flex flex-col items-center text-center">
-      <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
-        Decades of freight forwarding expertise
-      </span>
-    </div>
-    <div className="flex flex-col items-center text-center">
-      <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
-        Personalized logistics planning and container management
-      </span>
-    </div>
-    <div className="flex flex-col items-center text-center">
-      <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
-        Competitive pricing and flexible schedules
-      </span>
-    </div>
 
-    {/* Center bottom two items in the last row */}
-    <div className="md:col-span-3 flex justify-center gap-x-16 px-4">
-      <div className="flex flex-col items-center text-center px-4">
-        <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
-          Global partner network and port coverage
-        </span>
-      </div>
-      <div className="flex flex-col items-center text-center px-4">
-        <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
-          Reliable service, responsive support, and professional handling
-        </span>
-      </div>
-    </div>
-  </div>
-</div>
       {/* End-to-End Cargo Handling Section */}
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
         {/* Image */}
@@ -221,7 +262,7 @@ export default function DryContainerPage() {
         </div>
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
             End-to-End Cargo Handling
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
@@ -238,8 +279,8 @@ export default function DryContainerPage() {
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
-            Container Stuffing &amp; Cargo Securing
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            Container Stuffing and Cargo Securing
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
             Proper container loading is critical for safe transit. We provide:
@@ -282,8 +323,8 @@ export default function DryContainerPage() {
         </div>
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
-            Customs Documentation &amp; Clearance
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            Customs Documentation and Clearance
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
             Our experienced team simplifies the complex world of import/export formalities. We offer:
@@ -291,7 +332,7 @@ export default function DryContainerPage() {
           <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1">
             <li>Complete preparation and verification of commercial documents: invoice, packing list, bill of lading, certificate of origin, etc.</li>
             <li>Assistance with customs clearance procedures at both origin and destination</li>
-            <li>In-house staff (with close stakeholder &amp; account duty assignment)</li>
+            <li>In-house staff (with close stakeholder and account duty assignment)</li>
             <li>Compliance with all relevant government regulations and trade agreements</li>
             <li>Close coordination with customs authorities to prevent shipment delays</li>
           </ul>
@@ -300,8 +341,8 @@ export default function DryContainerPage() {
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
-            Port &amp; Inland Transport Coordination
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            Port and Inland Transport Coordination
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
             We ensure smooth cargo flow by coordinating:
@@ -344,8 +385,8 @@ export default function DryContainerPage() {
         </div>
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
-            Cargo Inspection &amp; Container Condition Checks
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+            Cargo Inspection and Container Condition Checks
           </h2>
           <p className="text-base text-gray-600 dark:text-gray-300 mb-4 max-w-2xl">
             To safeguard cargo and comply with quality standards, we implement:
@@ -362,7 +403,7 @@ export default function DryContainerPage() {
       <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
         {/* Text Content */}
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-2xl md:text-3xl font-semibold mb-3 text-[#23294d] dark:text-[#bfc8f8]">
+          <h2 className="text-2xl md:text-3xl  mb-3 text-[#23294d] dark:text-[#bfc8f8]">
             Additional Value-Added Solutions
           </h2>
           <ul className="list-disc pl-5 text-base text-gray-700 dark:text-gray-200 space-y-1 mb-6">
@@ -374,7 +415,7 @@ export default function DryContainerPage() {
           </ul>
           <Link href="/learn/full/dry/learn-more">
             <RequestQuoteButton>
-              Learn more about our standard Standard Dry Container shipment solutions
+              Learn more about our Standard Dry Container shipment solutions
             </RequestQuoteButton> 
           </Link>
         </div>
@@ -392,7 +433,45 @@ export default function DryContainerPage() {
           </div>
         </div>
       </div>
+      {/* Reasons Section */}
+<div className="mt-16 mb-12 max-w-5xl mx-auto px-4">
+  <h2 className="text-2xl md:text-3xl  text-left mb-16 text-[#3B4B8C] dark:text-[#bfc8f8]">
+    Reasons to Choose Moon Navigation and Trading Co. for Your Dry Standard Container Shipments
+  </h2>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-8 md:gap-x-16 lg:gap-x-32 justify-items-center">
+    <div className="flex flex-col items-center text-center">
+      <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+        Decades of freight forwarding expertise
+      </span>
+    </div>
+    <div className="flex flex-col items-center text-center">
+      <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+        Personalized logistics planning and container management
+      </span>
+    </div>
+    <div className="flex flex-col items-center text-center">
+      <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+        Competitive pricing and flexible schedules
+      </span>
+    </div>
+
+    {/* Center bottom two items in the last row */}
+    <div className="md:col-span-3 flex justify-center gap-x-16 px-4">
+      <div className="flex flex-col items-center text-center px-4">
+        <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+          Global partner network and port coverage
+        </span>
+      </div>
+      <div className="flex flex-col items-center text-center px-4">
+        <span className="font-medium text-base md:text-lg text-[#23294d] dark:text-[#e0e7ff] mb-1">
+          Reliable service, responsive support, and professional handling
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
       <GetQuoteComponent topic="Dry Container" link="/container-services-forms" />
+      <FAQSearch category="standard-dry-container" />  
 
     </div>
   );

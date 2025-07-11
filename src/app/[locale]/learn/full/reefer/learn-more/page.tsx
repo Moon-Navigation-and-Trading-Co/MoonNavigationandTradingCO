@@ -1,10 +1,11 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function LearnMore() {
   return (
     <div className="w-full max-w-7xl mx-auto">
       <section className="w-full max-w-7xl mx-auto mt-20 mb-12 px-4 md:px-0">
-        <h2 className="text-2xl md:text-3xl  mb-4 text-[#23294d]" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <h2 className="text-2xl md:text-3xl  mb-4 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
           Our Solutions
         </h2>
         <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-3xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -22,7 +23,7 @@ export default function LearnMore() {
           </div>
           {/* Right: Solution Details */}
           <div className="flex-1">
-            <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
               1. Door-to-Door Reefer Transport Solutions
             </h3>
             <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -48,7 +49,7 @@ export default function LearnMore() {
         </div>
         {/* Right: Solution Details */}
         <div className="flex-1">
-          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
             2. Custom Routing for Perishable Cargo
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -64,8 +65,8 @@ export default function LearnMore() {
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Solution Details */}
         <div className="flex-1 order-2 md:order-1">
-          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            3. Integrated Warehousing &amp; Cold Storage Services
+          <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            3. Integrated Warehousing and Cold Storage Services
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
             In addition to transport, we offer cold storage solutions at key logistics hubs, allowing safe interim storage of temperature-sensitive goods. Our facilities are equipped with modern cooling systems to maintain ideal temperature and humidity levels.
@@ -98,7 +99,7 @@ export default function LearnMore() {
         </div>
         {/* Right: Solution Details */}
         <div className="flex-1">
-          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
             4. Multimodal Transport Options (Sea, Air, Inland)
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -113,8 +114,8 @@ export default function LearnMore() {
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Solution Details */}
         <div className="flex-1 order-2 md:order-1">
-          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            5. Risk Management &amp; Cargo Insurance Solutions
+          <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            5. Risk Management and Cargo Insurance Solutions
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
             Protecting your high-value and perishable cargo is our priority. We offer tailored risk mitigation strategies and insurance coverage to safeguard your goods from unforeseen events such as equipment failure, delays, or spoilage.</p>
@@ -146,8 +147,8 @@ export default function LearnMore() {
         </div>
         {/* Right: Solution Details */}
         <div className="flex-1">
-          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            6. Cargo Tracking &amp; Temperature Monitoring Systems
+          <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            6. Cargo Tracking and Temperature Monitoring Systems
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
             We ensure effective cargo oversight through advanced monitoring protocols and temperature control measures throughout the transportation process. Our operations team routinely supervises shipments and keeps clients informed at every stage of the journey.
@@ -163,7 +164,7 @@ export default function LearnMore() {
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Solution Details */}
         <div className="flex-1 order-2 md:order-1">
-          <h3 className="text-lg md:text-xl  mb-2 text-[#23294d]" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <h3 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
             7. Special Handling for Hazardous Temperature-Sensitive Cargo
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -186,6 +187,7 @@ export default function LearnMore() {
         </div>
       </div>
       <GetQuoteComponent topic="Reefer Container" link="/container-services-forms" />
+      <FAQSearch category="reefer-container" />
     </div>
   );
 }

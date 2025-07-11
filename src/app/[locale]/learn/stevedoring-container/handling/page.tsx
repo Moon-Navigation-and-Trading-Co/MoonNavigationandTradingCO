@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function ContainerHandlingPage() {
     return (
@@ -20,14 +21,14 @@ export default function ContainerHandlingPage() {
                {/* Left: Text Content */}
                <div>
                    <h3 className="text-lg md:text-xl  mb-2">
-                       1. Loading &amp; Unloading Operations
+                       1. Loading and Unloading Operations
                    </h3>
                    <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                        <li>
-                           <span className="">Ship-to-Shore &amp; Shore-to-Ship Handling</span>—Fast, secure loading and unloading of containers.
+                           <span className="">Ship-to-Shore and Shore-to-Ship Handling</span>—Fast, secure loading and unloading of containers.
                        </li>
                        <li>
-                           <span className="">Rail &amp; Truck Transfers</span>—Seamless movement between vessel, port, rail, and inland transport.
+                           <span className="">Rail and Truck Transfers</span>—Seamless movement between vessel, port, rail, and inland transport.
                        </li>
                        <li>
                            <span className="">Rapid Transshipment</span>—Quick transfer of containers between vessels at critical storage depots.
@@ -64,7 +65,7 @@ export default function ContainerHandlingPage() {
                            <span className="">Reefer Containers (Refrigerated Cargo)</span>—Temperature-controlled handling with 24/7 monitoring.
                        </li>
                        <li>
-                           <span className="">Oversized &amp; Out-of-Gauge Cargo</span>—Expert lifting solutions for heavy machinery, project cargo, and special shipments.
+                           <span className="">Oversized and Out-of-Gauge Cargo</span>—Expert lifting solutions for heavy machinery, project cargo, and special shipments.
                        </li>
                        <li>
                            <span className="">Dangerous Goods Containers (IMO Cargo)</span>—Safe and regulation-compliant handling for hazardous materials.
@@ -78,17 +79,17 @@ export default function ContainerHandlingPage() {
            {/* Left: Text Content */}
            <div className="flex-1">
                <h3 className="text-lg md:text-xl  mb-2">
-                   3. Secure Lashing &amp; Cargo Protection
+                   3. Secure Lashing and Cargo Protection
                </h3>
                <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                    <li>
-                       <span className="">Lashing &amp; Securing</span> – Proper execution of restraints to prevent movement during transit.
+                       <span className="">Lashing and Securing</span> – Proper execution of restraints to prevent movement during transit.
                    </li>
                    <li>
-                       <span className="">Container Inspection &amp; Damage Assessment</span> – Routine checks to ensure cargo integrity.
+                       <span className="">Container Inspection and Damage Assessment</span> – Routine checks to ensure cargo integrity.
                    </li>
                    <li>
-                       <span className="">Weighing &amp; Compliance Checks</span> – VGM (Verified Gross Mass) certification for SOLAS compliance.
+                       <span className="">Weighing and Compliance Checks</span> – VGM (Verified Gross Mass) certification for SOLAS compliance.
                    </li>
                </ul>
            </div>
@@ -102,6 +103,7 @@ export default function ContainerHandlingPage() {
            </div>
        </div>
        <GetQuoteComponent topic="Container Handling" link="/container-services-forms" />
+       <FAQSearch category="container-handling-stevedoring-storage" /> 
        </div>
     )
 }

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function DockingPage() {
     const t = useTranslations("docking");
@@ -12,9 +13,9 @@ export default function DockingPage() {
     return (
         <main className="flex flex-col items-center w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Our Docking Services Section */}
-            <div className="w-full py-16 bg-background">
+            <div className="w-full py-16 ">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <h1 className="text-3xl md:text-4xl  text-primary mb-6">
+                    <h1 className="text-3xl md:text-4xl text-primary mb-6">
                         Our Docking Services
                     </h1>
                     <p className="text-muted-foreground max-w-7xl mb-12">
@@ -40,8 +41,8 @@ export default function DockingPage() {
                         </div>
                         {/* Service Details */}
                         <div>
-                            <h2 className="text-2xl  mb-4 text-foreground">
-                                1. Port Docking &amp; Berthing
+                            <h2 className="text-2xl mb-4 text-foreground">
+                                1. Port Docking and Berthing
                             </h2>
                             <p className="text-muted-foreground mb-4">
                                 We manage all aspects of vessel berthing at port terminals, ensuring precise coordination with port authorities and terminal operators. Our services include:
@@ -60,14 +61,14 @@ export default function DockingPage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                         {/* Dry Docking */}
                         <div>
-                            <h2 className="text-[1.5rem] md:text-[1.5rem] font-normal text-[#222] mb-2">
-                                2. Dry Docking (Scheduled<br className="hidden md:block" /> Repairs &amp; Overhauls)
+                            <h2 className="text-[1.5rem] md:text-[1.5rem] font-normal text-[#222] dark:text-white mb-2">
+                                2. Dry Docking (Scheduled<br className="hidden md:block" /> Repairs and Overhauls)
                             </h2>
-                            <p className="text-[.95rem] text-[#444] mb-2 leading-snug">
+                            <p className="text-[.95rem] text-[#444] dark:text-gray-300 mb-2 leading-snug">
                                 We coordinate full scale dry docking operations for vessels requiring scheduled inspection, structural maintenance, or major repairs.<br />
                                 <span className="font-semibold">Our Services Include:</span>
                             </p>
-                            <ul className="list-disc pl-5 text-[.95rem] text-[#444] mb-6 space-y-1">
+                            <ul className="list-disc pl-5 text-[.95rem] text-[#444] dark:text-gray-300 mb-6 space-y-1">
                                 <li>Hull inspections, steel renewal, and surface treatment</li>
                                 <li>Propeller and rudder repairs</li>
                                 <li>Ballast tank maintenance and refitting supervision</li>
@@ -95,14 +96,14 @@ export default function DockingPage() {
                                     className="object-cover rounded-xl w-full h-[250px]"
                                 />
                             </div>
-                            <h2 className="text-[1.5rem] md:text-[1.5rem] font-normal text-[#222] mb-2">
-                                3. Wet Docking (Afloat<br className="hidden md:block" /> Repairs &amp; Onboard Servicing)
+                            <h2 className="text-[1.5rem] md:text-[1.5rem] font-normal text-[#222] dark:text-white mb-2">
+                                3. Wet Docking (Afloat<br className="hidden md:block" /> Repairs and Onboard Servicing)
                             </h2>
-                            <p className="text-[.95rem] text-[#444] mb-2 leading-snug">
+                            <p className="text-[.95rem] text-[#444] dark:text-gray-300 mb-2 leading-snug">
                                 For vessels that don&#39;t require full dry docking, we offer wet docking (afloat repairs) to reduce operational disruption and cost.<br />
                                 <span className="font-semibold">Our Services Include:</span>
                             </p>
-                            <ul className="list-disc pl-5 text-[.95rem] text-[#444] space-y-1">
+                            <ul className="list-disc pl-5 text-[.95rem] text-[#444] dark:text-gray-300 space-y-1">
                                 <li>Onboard mechanical and electrical system repairs</li>
                                 <li>Hull cleaning, painting, and coating without dry docking</li>
                                 <li>Tank cleaning, painting, and coating without dry docking</li>
@@ -115,8 +116,8 @@ export default function DockingPage() {
             {/* Anchorage Services (Offshore Support & Repairs) */}
             <div className="flex flex-col md:flex-row gap-12 items-center">
                 <div className="flex-1 flex flex-col gap-4">
-                    <h2 className="text-2xl  text-foreground">
-                        4. Anchorage Services <span className="font-normal text-lg">(Offshore Support &amp; Repairs)</span>
+                    <h2 className="text-2xl text-foreground">
+                        4. Anchorage Services <span className="font-normal text-lg">(Offshore Support and Repairs)</span>
                     </h2>
                     <p className="text-muted-foreground">
                         We provide anchorage support for vessels requiring offshore services or awaiting port entry. Our services include:
@@ -144,8 +145,8 @@ export default function DockingPage() {
             {/* Emergency Docking & Salvage Operations */}
             <div className="flex flex-col md:flex-row-reverse gap-12 items-center my-16">
                 <div className="flex-1 flex flex-col gap-4">
-                    <h2 className="text-2xl  text-foreground">
-                        5. Emergency Docking &amp; Salvage Operations
+                    <h2 className="text-2xl text-foreground">
+                        5. Emergency Docking and Salvage Operations
                     </h2>
                     <p className="text-muted-foreground">
                         Our team is equipped to respond swiftly to emergency situations requiring immediate docking or vessel recovery. Our services include:
@@ -170,6 +171,7 @@ export default function DockingPage() {
                 </div>
             </div>
             <GetQuoteComponent topic = "Docking and Maintenance" link = "/ship-maintenance-forms"/> 
+            <FAQSearch category="docking-maintenance" />    
         </main>
     );
 }

@@ -10,6 +10,7 @@ import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import Spinner from '@/components/spinner';
 import { sendFormEmail } from '@/utils/email-helper';
+import FAQSearch from '@/components/faq';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -159,6 +160,7 @@ const Page: React.FC = () => {
                 <p className=''>{t('inland-p')}</p>
             </div>
             <FormTabs tabData={tabData} />
+            <FAQSearch category="container-purchases-rentals" />
         </div>
     );
 };

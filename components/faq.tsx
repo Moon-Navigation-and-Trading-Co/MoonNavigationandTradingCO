@@ -4,29 +4,34 @@ import React, { useState, useMemo } from "react";
 import { Input } from "./ui/input";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
 
 interface FAQItem {
     question: string;
     answer: string;
+    category?: string;
 }
 
 const defaultFAQs: FAQItem[] = [
     // About Us section
     {
         question: "What services does Moon Navigation and Trading Co. Offer?",
-        answer: "At Moon Navigation and Trading Co., we provide freight, maritime, and logistics solutions across all Egyptian ports and the Suez transit canal. We handle ocean, air, and inland freight, including FCL, LCL, breakbulk, RoRo, oversized, and dangerous goods. As a licensed ship agent, we offer port call management, customs clearance, crew change, bunkering, and ship chandlery. Our logistics services cover ship management, docking, stevedoring, and transit spare parts delivery. We also support international trade, customs compliance, and risk management, ensuring seamless operations and global market access."
+        answer: "At Moon Navigation and Trading Co., we provide freight, maritime, and logistics solutions across all Egyptian ports and the Suez transit canal. We handle ocean, air, and inland freight, including FCL, LCL, breakbulk, RoRo, oversized, and dangerous goods. As a licensed ship agent, we offer port call management, customs clearance, crew change, bunkering, and ship chandlery. Our logistics services cover ship management, docking, stevedoring, and transit spare parts delivery. We also support international trade, customs compliance, and risk management, ensuring seamless operations and global market access.",
+        category: "about-us"
     },
     {
         question: "Where are your headquarters located?",
-        answer: "We are headquartered in Egypt and operate regionally and internationally through a wide logistics and port network."
+        answer: "We are headquartered in Egypt and operate regionally and internationally through a wide logistics and port network.",
+        category: "about-us"
     },
     {
         question: "Can you customize services to my business needs?",
-        answer: "Yes, all our logistics and shipping solutions are fully tailored to meet your operational and commercial objectives."
+        answer: "Yes, all our logistics and shipping solutions are fully tailored to meet your operational and commercial objectives.",
+        category: "about-us"
     },
     {
         question: "How can I request a quotation?",
-        answer: "You can request a quote by filling out the online form on our website, providing details about your required services. A tailored quotation will be sent to your email promptly."
+        answer: "You can request a quote by filling out the online form on our website, providing details about your required services. A tailored quotation will be sent to your email promptly.",
     },
     {
         question: "How long does it take to receive a quotation?",
@@ -46,7 +51,8 @@ const defaultFAQs: FAQItem[] = [
     },
     {
         question: "Do you operate internationally or only within Egypt?",
-        answer: "While our base is in Egypt, we operate globally through strategic partnerships and a vast logistics network, enabling us to support imports, exports, and transit cargo worldwide."
+        answer: "While our base is in Egypt, we operate globally through strategic partnerships and a vast logistics network, enabling us to support imports, exports, and transit cargo worldwide.",
+        category: "popular"
     },
     {
         question: "What types of cargo can you handle?",
@@ -64,15 +70,18 @@ const defaultFAQs: FAQItem[] = [
     // Ship Management Services
     {
         question: "What is ship management and why is it important?",
-        answer: "Ship management is the end-to-end supervision of vessel operations including crewing, maintenance, safety, compliance, and finances. It ensures vessels operate efficiently, remain seaworthy, and adhere to international regulations such as ISM, MARPOL, SOLAS, and STCW."
+        answer: "Ship management is the end-to-end supervision of vessel operations including crewing, maintenance, safety, compliance, and finances. It ensures vessels operate efficiently, remain seaworthy, and adhere to international regulations such as ISM, MARPOL, SOLAS, and STCW.",
+        category: "ship-management"
     },
     {
         question: "What types of ship management services do you provide?",
-        answer: "We offer a full spectrum of services: Technical Management, Crew Management, Operational Management, Safety & Quality Management, Procurement & Supply Chain, Dry Docking & Project Management, Insurance & Claims Handling, Financial Management & Budget Control, Fuel & Provision Management, Regulatory Compliance & Certification, Customized Ship Management Solutions"
+        answer: "We offer a full spectrum of services: Technical Management, Crew Management, Operational Management, Safety & Quality Management, Procurement & Supply Chain, Dry Docking & Project Management, Insurance & Claims Handling, Financial Management & Budget Control, Fuel & Provision Management, Regulatory Compliance & Certification, Customized Ship Management Solutions",
+        category: "ship-management"
     },
     {
         question: "Do you offer full or partial ship management options?",
-        answer: "Yes. We offer both full management packages and customized solutions. Owners can choose only the services they need, such as technical, crewing, or compliance support."
+        answer: "Yes. We offer both full management packages and customized solutions. Owners can choose only the services they need, such as technical, crewing, or compliance support.",
+        category: "ship-management"
     },
     {
         question: "How does your crew management process work?",
@@ -118,15 +127,18 @@ const defaultFAQs: FAQItem[] = [
     // Docking & Maintenance Services
     {
         question: "What is docking in ship management?",
-        answer: "Docking is the process of bringing a vessel into a dock or berth for inspection, repair, maintenance, or overhaul. It includes dry docking, where the vessel is lifted out of the water, and wet docking, where repairs are done afloat."
+        answer: "Docking is the process of bringing a vessel into a dock or berth for inspection, repair, maintenance, or overhaul. It includes dry docking, where the vessel is lifted out of the water, and wet docking, where repairs are done afloat.",
+        category: "docking-maintenance"
     },
     {
         question: "What is the difference between dry docking and wet docking?",
-        answer: "Dry Docking: The vessel is taken out of the water for major repairs, hull cleaning, painting, structural maintenance, and regulatory inspections. Wet Docking: Repairs and servicing are performed while the vessel remains afloat, ideal for minor fixes and maintenance without interrupting operations."
+        answer: "Dry Docking: The vessel is taken out of the water for major repairs, hull cleaning, painting, structural maintenance, and regulatory inspections. Wet Docking: Repairs and servicing are performed while the vessel remains afloat, ideal for minor fixes and maintenance without interrupting operations.",
+        category: "docking-maintenance"
     },
     {
         question: "What types of vessels do you serve?",
-        answer: "We handle docking and maintenance for a wide range of vessels, including: Cargo Ships & Container Vessels, Bulk Carriers & Tankers, Offshore Support Vessels (OSVs), Fishing & Research Vessels, Passenger & Cruise Ships, Tugboats & Barges"
+        answer: "We handle docking and maintenance for a wide range of vessels, including: Cargo Ships & Container Vessels, Bulk Carriers & Tankers, Offshore Support Vessels (OSVs), Fishing & Research Vessels, Passenger & Cruise Ships, Tugboats & Barges",
+        category: "docking-maintenance"
     },
     {
         question: "What services are included in your dry docking solutions?",
@@ -176,15 +188,18 @@ const defaultFAQs: FAQItem[] = [
     // International Trading Services
     {
         question: "What is international trading?",
-        answer: "International trading is the exchange of goods and services across national borders, enabling businesses to access global markets, diversify supply chains, and expand revenue opportunities. It plays a vital role in global economic growth."
+        answer: "International trading is the exchange of goods and services across national borders, enabling businesses to access global markets, diversify supply chains, and expand revenue opportunities. It plays a vital role in global economic growth.",
+        category: "international-trading"
     },
     {
         question: "What international trade services do you provide?",
-        answer: "We offer comprehensive services including: Import & export management, Customs clearance & compliance, Freight services (ocean, air, inland), Trade finance & risk management, Warehousing & logistics, Consulting on market entry & trade strategies, Handling of hazardous/dangerous cargo"
+        answer: "We offer comprehensive services including: Import & export management, Customs clearance & compliance, Freight services (ocean, air, inland), Trade finance & risk management, Warehousing & logistics, Consulting on market entry & trade strategies, Handling of hazardous/dangerous cargo",
+        category: "international-trading"
     },
     {
         question: "Can you help with customs clearance?",
-        answer: "Yes, our Customs Brokerage Services handle all aspects of customs processing. We ensure your shipments meet regulatory requirements, are properly documented, and clear customs efficiently---minimizing delays and penalties."
+        answer: "Yes, our Customs Brokerage Services handle all aspects of customs processing. We ensure your shipments meet regulatory requirements, are properly documented, and clear customs efficiently---minimizing delays and penalties.",
+        category: "international-trading"
     },
     {
         question: "How do you manage international payment risks?",
@@ -192,7 +207,8 @@ const defaultFAQs: FAQItem[] = [
     },
     {
         question: "Do you offer both FCL and LCL freight services?",
-        answer: "Yes, our Ocean Freight services include: Full Container Load (FCL) for bulk or high-volume goods, Less-than-Container Load (LCL) for smaller shipments. We also offer air freight for time-sensitive cargo and inland/intermodal freight for efficient delivery to final destinations."
+        answer: "Yes, our Ocean Freight services include: Full Container Load (FCL) for bulk or high-volume goods, Less-than-Container Load (LCL) for smaller shipments. We also offer air freight for time-sensitive cargo and inland/intermodal freight for efficient delivery to final destinations.",
+        category: "popular"
     },
     {
         question: "What trade compliance support do you offer?",
@@ -218,15 +234,18 @@ const defaultFAQs: FAQItem[] = [
     // Inland Freight Services
     {
         question: "What is inland freight?",
-        answer: "Inland freight is the transportation of goods from seaports to inland destinations or between landlocked regions using land and water-based transportation methods such as trucks, trains, and barges."
+        answer: "Inland freight is the transportation of goods from seaports to inland destinations or between landlocked regions using land and water-based transportation methods such as trucks, trains, and barges.",
+        category: "inland-freight"
     },
     {
         question: "What types of inland freight transportation do you offer?",
-        answer: "We provide a full range of inland freight options: Truck Freight (Road), Rail Freight (Train), Inland Waterway Transport (Barge), Intermodal Freight (Combining two or more methods)"
+        answer: "We provide a full range of inland freight options: Truck Freight (Road), Rail Freight (Train), Inland Waterway Transport (Barge), Intermodal Freight (Combining two or more methods)",
+        category: "inland-freight"
     },
     {
         question: "What cargo types can you handle?",
-        answer: "We are fully equipped to transport: Containers (FCL & LCL), General Cargo, Dangerous Goods (Hazardous Materials), Breakbulk & Oversized Cargo, Bulk Commodities (e.g., coal, grain, cement)"
+        answer: "We are fully equipped to transport: Containers (FCL & LCL), General Cargo, Dangerous Goods (Hazardous Materials), Breakbulk & Oversized Cargo, Bulk Commodities (e.g., coal, grain, cement)",
+        category: "inland-freight"
     },
     {
         question: "What is the advantage of intermodal freight transport?",
@@ -296,15 +315,18 @@ const defaultFAQs: FAQItem[] = [
     // Air Freight
     {
         question: "What is air freight and why should I use it?",
-        answer: "Air freight is the transportation of goods via aircraft, offering the fastest option for moving cargo globally. It is ideal for urgent, time-sensitive, high-value, or perishable shipments that require speed, security, and reliability."
+        answer: "Air freight is the transportation of goods via aircraft, offering the fastest option for moving cargo globally. It is ideal for urgent, time-sensitive, high-value, or perishable shipments that require speed, security, and reliability.",
+        category: "air-freight"
     },
     {
         question: "What types of air freight services do you offer?",
-        answer: "We offer several flexible options to meet diverse shipping needs: Express (NFO): Same-day or next flight out for urgent, high-value cargo, Standard Air Freight: 1-3 day delivery for general goods and perishables, Economy Air Freight: 4-7 days for cost-sensitive, non-urgent shipments, Charter Services: Custom scheduling for oversized or special cargo"
+        answer: "We offer several flexible options to meet diverse shipping needs: Express (NFO): Same-day or next flight out for urgent, high-value cargo, Standard Air Freight: 1-3 day delivery for general goods and perishables, Economy Air Freight: 4-7 days for cost-sensitive, non-urgent shipments, Charter Services: Custom scheduling for oversized or special cargo",
+        category: "air-freight"
     },
     {
         question: "What kind of cargo can you handle via air freight?",
-        answer: "We handle a broad range of air cargo including: General Cargo (electronics, machinery, retail goods), Perishables (fresh food, flowers, pharmaceuticals), Dangerous Goods (in compliance with IATA & ICAO), Oversized & Project Cargo, Time-Sensitive Shipments (critical documents, spare parts)"
+        answer: "We handle a broad range of air cargo including: General Cargo (electronics, machinery, retail goods), Perishables (fresh food, flowers, pharmaceuticals), Dangerous Goods (in compliance with IATA & ICAO), Oversized & Project Cargo, Time-Sensitive Shipments (critical documents, spare parts)",
+        category: "air-freight"
     },
     {
         question: "How do you handle temperature-sensitive cargo?",
@@ -354,15 +376,18 @@ const defaultFAQs: FAQItem[] = [
     // Investment Opportunities
     {
         question: "What types of investment opportunities do you offer?",
-        answer: "We offer six structured models: Joint Venture Partnerships, Asset-Based Investment, Project-Based Financing, Revenue-Sharing Agreements, Convertible Notes / Debt Investment, Equity Investment. Each is designed to match your preferred level of involvement, risk appetite, and return expectations."
+        answer: "We offer six structured models: Joint Venture Partnerships, Asset-Based Investment, Project-Based Financing, Revenue-Sharing Agreements, Convertible Notes / Debt Investment, Equity Investment. Each is designed to match your preferred level of involvement, risk appetite, and return expectations.",
+        category: "investment-opportunities"
     },
     {
         question: "What is the minimum investment amount required?",
-        answer: "Minimum capital requirements vary depending on the investment type and project scale. Specific figures will be shared during our investment consultation, based on your selected model."
+        answer: "Minimum capital requirements vary depending on the investment type and project scale. Specific figures will be shared during our investment consultation, based on your selected model.",
+        category: "investment-opportunities"
     },
     {
         question: "Are these investments secure?",
-        answer: "Yes. Most investment opportunities are asset-backed (e.g., vessels, containers, infrastructure), offering tangible security. We also provide structured agreements, clear ROI terms, and regular reporting for full transparency."
+        answer: "Yes. Most investment opportunities are asset-backed (e.g., vessels, containers, infrastructure), offering tangible security. We also provide structured agreements, clear ROI terms, and regular reporting for full transparency.",
+        category: "investment-opportunities"
     },
     {
         question: "Can I invest passively, without being involved in operations?",
@@ -412,15 +437,18 @@ const defaultFAQs: FAQItem[] = [
     // Container Purchases & Rentals
     {
         question: "What types of containers do you offer?",
-        answer: "We offer a wide range of containers, including: Standard Dry Containers (20ft & 40ft), High Cube Containers, Open Top Containers, Flat Rack Containers, Tank Containers, Refrigerated Containers (Reefers), Special Purpose & Modified Containers. All units are CSC/ISO certified for safety and compliance."
+        answer: "We offer a wide range of containers, including: Standard Dry Containers (20ft & 40ft), High Cube Containers, Open Top Containers, Flat Rack Containers, Tank Containers, Refrigerated Containers (Reefers), Special Purpose & Modified Containers. All units are CSC/ISO certified for safety and compliance.",
+        category: "container-purchases-rentals"
     },
     {
         question: "Can I rent containers on a short-term basis?",
-        answer: "Yes. We offer daily, weekly, and monthly rental agreements to meet your short-term or temporary storage needs."
+        answer: "Yes. We offer daily, weekly, and monthly rental agreements to meet your short-term or temporary storage needs.",
+        category: "container-purchases-rentals"
     },
     {
         question: "What are the conditions of the containers you provide?",
-        answer: "You can choose from various container conditions based on your budget and use: New (One-Trip) -- Like new and ideal for long-term use, Cargo-Worthy (CW) -- Certified for shipping, Wind & Watertight (WWT) -- Great for secure storage, As-Is -- Budget-friendly units for non-critical purposes"
+        answer: "You can choose from various container conditions based on your budget and use: New (One-Trip) -- Like new and ideal for long-term use, Cargo-Worthy (CW) -- Certified for shipping, Wind & Watertight (WWT) -- Great for secure storage, As-Is -- Budget-friendly units for non-critical purposes",
+        category: "container-purchases-rentals"
     },
     {
         question: "Do you offer customized container solutions?",
@@ -470,15 +498,18 @@ const defaultFAQs: FAQItem[] = [
     // Vessel Purchases & Rentals
     {
         question: "What types of vessels do you offer?",
-        answer: "We provide a wide range of vessels for sale and rent, including: Tankers, General Cargo Vessels, Bulk Carriers, Container Ships, Offshore Support Vessels (OSVs), Tugboats and Barges, Landing Craft & Ro-Ro Vessels, Crew Boats & Utility Boats"
+        answer: "We provide a wide range of vessels for sale and rent, including: Tankers, General Cargo Vessels, Bulk Carriers, Container Ships, Offshore Support Vessels (OSVs), Tugboats and Barges, Landing Craft & Ro-Ro Vessels, Crew Boats & Utility Boats",
+        category: "vessel-purchases-rentals"
     },
     {
         question: "Can I rent a vessel for a short period?",
-        answer: "Yes, our rental options are highly flexible. We offer daily, monthly, and long-term charters, including: Time Charter, Voyage Charter, Bareboat Charter, Project Charter"
+        answer: "Yes, our rental options are highly flexible. We offer daily, monthly, and long-term charters, including: Time Charter, Voyage Charter, Bareboat Charter, Project Charter",
+        category: "vessel-purchases-rentals"
     },
     {
         question: "Is maintenance included with vessel rentals?",
-        answer: "Yes, routine maintenance and repairs are included in most charter agreements to ensure smooth operations throughout the rental period."
+        answer: "Yes, routine maintenance and repairs are included in most charter agreements to ensure smooth operations throughout the rental period.",
+        category: "vessel-purchases-rentals"
     },
     {
         question: "What is the difference between buying and renting a vessel?",
@@ -528,15 +559,18 @@ const defaultFAQs: FAQItem[] = [
     // Handling, Stevedoring & Storage
     {
         question: "What is the difference between handling, stevedoring, and storage?",
-        answer: "Handling involves the movement of cargo during loading, unloading, and internal port transfer. Stevedoring refers specifically to the loading and discharging of cargo from vessels, requiring skilled manpower and equipment. Storage is the safekeeping of cargo in warehouses or open yards until it is ready for further movement."
+        answer: "Handling involves the movement of cargo during loading, unloading, and internal port transfer. Stevedoring refers specifically to the loading and discharging of cargo from vessels, requiring skilled manpower and equipment. Storage is the safekeeping of cargo in warehouses or open yards until it is ready for further movement.",
+        category: "handling-stevedoring-storage"
     },
     {
         question: "What types of cargo do you handle?",
-        answer: "We handle all cargo types --- including containerised, breakbulk, heavy lift, bulk, project cargo, Ro-Ro units, and OOG (Out of Gauge) cargo --- using both manual expertise and mechanized equipment."
+        answer: "We handle all cargo types --- including containerised, breakbulk, heavy lift, bulk, project cargo, Ro-Ro units, and OOG (Out of Gauge) cargo --- using both manual expertise and mechanized equipment.",
+        category: "handling-stevedoring-storage"
     },
     {
         question: "Are your stevedoring services available for all vessel types?",
-        answer: "Yes. We offer professional stevedoring for general cargo vessels, bulk carriers, Ro-Ro ships, container vessels, and project cargo ships, ensuring safe and efficient operations."
+        answer: "Yes. We offer professional stevedoring for general cargo vessels, bulk carriers, Ro-Ro ships, container vessels, and project cargo ships, ensuring safe and efficient operations.",
+        category: "handling-stevedoring-storage"
     },
     {
         question: "How do you ensure cargo safety during handling and stevedoring?",
@@ -582,15 +616,18 @@ const defaultFAQs: FAQItem[] = [
     // Customs Clearance Services
     {
         question: "What is customs clearance and why is it important?",
-        answer: "Customs clearance is the process of ensuring that goods comply with all regulations before entering or leaving a country. It involves documentation, inspection, classification, and payment of duties or taxes. Efficient customs clearance prevents delays, fines, and legal complications."
+        answer: "Customs clearance is the process of ensuring that goods comply with all regulations before entering or leaving a country. It involves documentation, inspection, classification, and payment of duties or taxes. Efficient customs clearance prevents delays, fines, and legal complications.",
+        category: "customs-clearance"
     },
     {
         question: "What documents are required for customs clearance?",
-        answer: "Common documents include the Bill of Lading (B/L), Commercial Invoice, Packing List, Certificate of Origin, and import/export licences. Our team prepares and verifies all necessary documents on your behalf."
+        answer: "Common documents include the Bill of Lading (B/L), Commercial Invoice, Packing List, Certificate of Origin, and import/export licences. Our team prepares and verifies all necessary documents on your behalf.",
+        category: "customs-clearance"
     },
     {
         question: "How long does the customs clearance process take?",
-        answer: "Clearance time depends on the cargo type, origin/destination country, and regulatory requirements. In general, our process ensures quick clearance, often within 1-3 working days, barring any inspections or additional approvals."
+        answer: "Clearance time depends on the cargo type, origin/destination country, and regulatory requirements. In general, our process ensures quick clearance, often within 1-3 working days, barring any inspections or additional approvals.",
+        category: "customs-clearance"
     },
     {
         question: "Do you handle customs clearance for hazardous or regulated cargo?",
@@ -640,15 +677,18 @@ const defaultFAQs: FAQItem[] = [
     // Project Cargo Services
     {
         question: "What is Project Cargo?",
-        answer: "Project cargo is the transportation of oversized, heavy, high-value, or complex pieces of equipment often tied to large-scale industrial or infrastructure projects. These shipments require specialized handling, equipment, planning, and coordination due to their size, weight, or unique logistical requirements."
+        answer: "Project cargo is the transportation of oversized, heavy, high-value, or complex pieces of equipment often tied to large-scale industrial or infrastructure projects. These shipments require specialized handling, equipment, planning, and coordination due to their size, weight, or unique logistical requirements.",
+        category: "project-cargo"
     },
     {
         question: "What makes project cargo different from standard cargo?",
-        answer: "Key differences include: Size & Weight: Exceeds standard container dimensions and weight limits. Handling Requirements: Requires cranes, flat racks, heavy-lift vessels, etc. Logistics Complexity: Involves permits, route surveys, and coordination with authorities. Shipping Costs: Higher due to custom logistics and special equipment."
+        answer: "Key differences include: Size & Weight: Exceeds standard container dimensions and weight limits. Handling Requirements: Requires cranes, flat racks, heavy-lift vessels, etc. Logistics Complexity: Involves permits, route surveys, and coordination with authorities. Shipping Costs: Higher due to custom logistics and special equipment.",
+        category: "project-cargo"
     },
     {
         question: "What types of industries benefit from your project cargo services?",
-        answer: "We serve a wide range of industries, including: Energy (Oil, Gas, Renewable), Construction & Infrastructure, Mining & Heavy Machinery, Aerospace, Marine & Shipbuilding"
+        answer: "We serve a wide range of industries, including: Energy (Oil, Gas, Renewable), Construction & Infrastructure, Mining & Heavy Machinery, Aerospace, Marine & Shipbuilding",
+        category: "project-cargo"
     },
     {
         question: "What equipment is used to transport project cargo?",
@@ -710,15 +750,18 @@ const defaultFAQs: FAQItem[] = [
     // RoRo Shipping Services
     {
         question: "What is Roll-on/Roll-off (RoRo) shipping?",
-        answer: "RoRo shipping is a method of transporting wheeled cargo---such as cars, trucks, buses, and machinery---by driving or towing it onto and off a vessel using built-in ramps. This eliminates the need for cranes and reduces handling time."
+        answer: "RoRo shipping is a method of transporting wheeled cargo---such as cars, trucks, buses, and machinery---by driving or towing it onto and off a vessel using built-in ramps. This eliminates the need for cranes and reduces handling time.",
+        category: "ro-ro-shipping"
     },
     {
         question: "What types of cargo can be transported via RoRo?",
-        answer: "We handle a broad range of rolling and wheeled cargo, including: Passenger vehicles (cars, motorcycles), Commercial vehicles (trucks, trailers, buses), Agricultural machinery, Construction equipment (excavators, cranes, bulldozers), Military vehicles, Trains and railcars, Oversized and non-standard rolling units"
+        answer: "We handle a broad range of rolling and wheeled cargo, including: Passenger vehicles (cars, motorcycles), Commercial vehicles (trucks, trailers, buses), Agricultural machinery, Construction equipment (excavators, cranes, bulldozers), Military vehicles, Trains and railcars, Oversized and non-standard rolling units",
+        category: "ro-ro-shipping"
     },
     {
         question: "How is cargo secured during RoRo shipping?",
-        answer: "Cargo is secured using lashing straps, wheel chocks, and tie-downs. All vessels are equipped with dedicated decks and anchoring systems to ensure the safe, stable transport of vehicles throughout the voyage."
+        answer: "Cargo is secured using lashing straps, wheel chocks, and tie-downs. All vessels are equipped with dedicated decks and anchoring systems to ensure the safe, stable transport of vehicles throughout the voyage.",
+        category: "ro-ro-shipping"
     },
     {
         question: "Why choose RoRo over container shipping?",
@@ -764,15 +807,18 @@ const defaultFAQs: FAQItem[] = [
     // Dangerous Cargo Transport Services
     {
         question: "What is considered dangerous cargo?",
-        answer: "Dangerous cargo refers to materials that pose risks to health, safety, property, or the environment during transportation. These include: Explosives, Flammable substances, Toxic chemicals, Radioactive materials, Corrosives. These are strictly regulated under the IMDG Code (maritime), IATA DGR (air), and ADR (road)."
+        answer: "Dangerous cargo refers to materials that pose risks to health, safety, property, or the environment during transportation. These include explosives, flammable substances, toxic chemicals, radioactive materials, and more, and are regulated under frameworks such as the IMDG Code, ADR, and IATA.",
+        category: "dangerous-cargo-transport"
     },
     {
         question: "What are the classifications of dangerous goods?",
-        answer: "Dangerous goods are categorized into 9 hazard classes: 1. Explosives, 2. Gases, 3. Flammable Liquids, 4. Flammable Solids and Reactive Substances, 5. Oxidizing Substances and Organic Peroxides, 6. Toxic and Infectious Substances, 7. Radioactive Materials, 8. Corrosive Substances, 9. Miscellaneous Dangerous Goods"
+        answer: "Dangerous goods are categorized into 9 hazard classes: 1. Explosives, 2. Gases, 3. Flammable Liquids, 4. Flammable Solids and Reactive Substances, 5. Oxidizing Substances and Organic Peroxides, 6. Toxic and Infectious Substances, 7. Radioactive Materials, 8. Corrosive Substances, 9. Miscellaneous Dangerous Goods",
+        category: "dangerous-cargo-transport"
     },
     {
         question: "What documentation is required for transporting dangerous cargo?",
-        answer: "Required documents include: Material Safety Data Sheet (MSDS), Dangerous Goods Declaration (DGD), UN identification numbers, Hazard class labels and placards, Certified packaging documentation. Moon Navigation and Trading Co. manages all paperwork to ensure full international compliance."
+        answer: "Required documents include: Material Safety Data Sheet (MSDS), Dangerous Goods Declaration (DGD), UN identification numbers, Hazard class labels and placards, Certified packaging documentation. Moon Navigation and Trading Co. manages all paperwork to ensure full international compliance.",
+        category: "dangerous-cargo-transport"
     },
     {
         question: "How is dangerous cargo packaged and labelled?",
@@ -814,15 +860,18 @@ const defaultFAQs: FAQItem[] = [
     // Livestock Transportation Services
     {
         question: "What is livestock transportation?",
-        answer: "Livestock transportation involves the safe and regulated movement of live animals---such as cattle, sheep, goats, pigs, and horses---from one location to another for breeding, farming, racing, conservation, or trade. It requires specialized equipment, trained personnel, and strict compliance with animal welfare standards."
+        answer: "Livestock transportation involves the safe and regulated movement of live animals---such as cattle, sheep, goats, pigs, and horses---from one location to another for breeding, farming, racing, conservation, or trade. It requires specialized equipment, trained personnel, and strict compliance with animal welfare standards.",
+        category: "livestock-transportation"
     },
     {
         question: "What types of animals do you transport?",
-        answer: "We offer transportation services for a wide variety of live animals, including: Farm animals: Cattle, sheep, goats, and pigs, Horses: For breeding, racing, and equestrian events, Exotic and endangered species: For zoos, wildlife reserves, and conservation programs"
+        answer: "We offer transportation services for a wide variety of live animals, including: Farm animals: Cattle, sheep, goats, and pigs, Horses: For breeding, racing, and equestrian events, Exotic and endangered species: For zoos, wildlife reserves, and conservation programs",
+        category: "livestock-transportation"
     },
     {
         question: "What measures do you take to ensure animal welfare during transport?",
-        answer: "At Moon Navigation and Trading Co., animal welfare is our top priority. We provide: Spacious, non-slip, and ventilated pens, Temperature-controlled environments, Low stress loading and unloading systems, Onboard veterinarians and trained animal handlers, Routine health monitoring throughout the voyage"
+        answer: "At Moon Navigation and Trading Co., animal welfare is our top priority. We provide: Spacious, non-slip, and ventilated pens, Temperature-controlled environments, Low stress loading and unloading systems, Onboard veterinarians and trained animal handlers, Routine health monitoring throughout the voyage",
+        category: "livestock-transportation"
     },
     {
         question: "How are animals fed and hydrated during transport?",
@@ -864,15 +913,18 @@ const defaultFAQs: FAQItem[] = [
     // Tankers in Ocean Freight
     {
         question: "What is a tanker in ocean freight?",
-        answer: "A tanker is a specially designed ship used for transporting bulk liquids such as crude oil, refined petroleum, chemicals, and liquefied gases (LNG/LPG). These vessels are engineered with safety features like double hulls, segregated tanks, and advanced monitoring systems."
+        answer: "A tanker is a specially designed ship used for transporting bulk liquids such as crude oil, refined petroleum, chemicals, and liquefied gases (LNG/LPG). These vessels are engineered with safety features like double hulls, segregated tanks, and advanced monitoring systems.",
+        category: "tankers-in-ocean-freight"
     },
     {
         question: "What types of tankers do you operate?",
-        answer: "We operate a full range of specialized tankers to meet diverse cargo needs, including: Crude Oil Tankers -- For unrefined petroleum, Product Tankers -- For refined fuels like gasoline and diesel, Chemical Tankers -- For hazardous industrial chemicals, Liquefied Gas Carriers -- For LNG and LPG with cryogenic handling"
+        answer: "We operate a full range of specialized tankers to meet diverse cargo needs, including: Crude Oil Tankers -- For unrefined petroleum, Product Tankers -- For refined fuels like gasoline and diesel, Chemical Tankers -- For hazardous industrial chemicals, Liquefied Gas Carriers -- For LNG and LPG with cryogenic handling",
+        category: "tankers-in-ocean-freight"
     },
     {
         question: "Which industries do you serve?",
-        answer: "Our tanker services support various industries, including: Oil & Gas, Chemical Manufacturing, Agriculture & Food (e.g., edible oils, biofuels), Industrial and Energy sectors"
+        answer: "Our tanker services support various industries, including: Oil & Gas, Chemical Manufacturing, Agriculture & Food (e.g., edible oils, biofuels), Industrial and Energy sectors",
+        category: "tankers-in-ocean-freight"
     },
     {
         question: "How do you ensure safety when transporting hazardous liquids?",
@@ -922,15 +974,18 @@ const defaultFAQs: FAQItem[] = [
     // Heavy lift cargo
     {
         question: "What is considered heavy lift cargo?",
-        answer: "Heavy lift cargo includes extremely heavy or oversized units---typically over 100 metric tons or exceeding standard container dimensions. Examples include turbines, oil rig modules, transformers, and industrial equipment."
+        answer: "Heavy lift cargo includes extremely heavy or oversized units---typically over 100 metric tons or exceeding standard container dimensions. Examples include turbines, oil rig modules, transformers, and industrial equipment.",
+        category: "heavy-lift-cargo"
     },
     {
         question: "What equipment is used to handle heavy lift cargo?",
-        answer: "We deploy advanced, high-capacity handling equipment tailored for each operation, including: Hydraulic & floating cranes, Lifting frames and spreader bars, Hydraulic jacking systems, Self-Propelled Modular Transporters (SPMTs), Custom rigging and lifting gear"
+        answer: "We deploy advanced, high-capacity handling equipment tailored for each operation, including: Hydraulic & floating cranes, Lifting frames and spreader bars, Hydraulic jacking systems, Self-Propelled Modular Transporters (SPMTs), Custom rigging and lifting gear",
+        category: "heavy-lift-cargo"
     },
     {
         question: "What vessels do you use for transport?",
-        answer: "We operate a specialized fleet that includes: Heavy Lift Vessels (HLVs) with high-capacity cranes, Semi-Submersible Vessels for floating and offshore structures, Deck Barges and Ro-Ro Ships for industrial machinery and wheeled cargo"
+        answer: "We operate a specialized fleet that includes: Heavy Lift Vessels (HLVs) with high-capacity cranes, Semi-Submersible Vessels for floating and offshore structures, Deck Barges and Ro-Ro Ships for industrial machinery and wheeled cargo",
+        category: "heavy-lift-cargo"
     },
     {
         question: "How do you ensure safety during heavy lift operations?",
@@ -984,15 +1039,18 @@ const defaultFAQs: FAQItem[] = [
     // Breakbulk Cargo
     {
         question: "What is breakbulk cargo?",
-        answer: "Breakbulk cargo includes large, heavy, or oversized items that are transported individually rather than in standard shipping containers. These may include machinery, steel beams, vehicles, and industrial equipment that are too large or irregularly shaped to be containerized."
+        answer: "Breakbulk cargo includes large, heavy, or oversized items that are transported individually rather than in standard shipping containers. These may include machinery, steel beams, vehicles, and industrial equipment that are too large or irregularly shaped to be containerized.",
+        category: "breakbulk-cargo"
     },
     {
         question: "How is breakbulk cargo different from containerized or heavy-lift cargo?",
-        answer: "Breakbulk cargo is shipped piece by piece and is generally lighter than heavy-lift cargo. It is not containerized but does not always require the extremely high-capacity lifting gear used for ultra-heavy cargo. It's commonly transported on multi-purpose or breakbulk vessels."
+        answer: "Breakbulk cargo is shipped piece by piece and is generally lighter than heavy-lift cargo. It is not containerized but does not always require the extremely high-capacity lifting gear used for ultra-heavy cargo. It's commonly transported on multi-purpose or breakbulk vessels.",
+        category: "breakbulk-cargo"
     },
     {
         question: "What types of cargo are commonly transported as breakbulk?",
-        answer: "Typical examples of breakbulk shipments include: Construction machinery and vehicles, Steel coils, beams, and pipes, Industrial manufacturing equipment, Prefabricated building units, Railway vehicles and oversized pallets"
+        answer: "Typical examples of breakbulk shipments include: Construction machinery and vehicles, Steel coils, beams, and pipes, Industrial manufacturing equipment, Prefabricated building units, Railway vehicles and oversized pallets",
+        category: "breakbulk-cargo"
     },
     {
         question: "What types of vessels are used for breakbulk shipping?",
@@ -1042,15 +1100,18 @@ const defaultFAQs: FAQItem[] = [
     // Less than Container Load (LCL)
     {
         question: "LCL vs. FCL: Which is Cheaper?",
-        answer: "The cost of shipping via Less than Container Load (LCL) or Full Container Load (FCL) depends largely on the size and volume of your cargo. If you are shipping small boxes or palletized goods that occupy only a portion of a container, LCL is typically the more economical choice. Conversely, if your shipment fills most or all of a container, FCL becomes the more cost-effective option. Understanding your shipment requirements is crucial in making an informed decision that aligns with your budget and logistical needs."
+        answer: "The cost of shipping via Less than Container Load (LCL) or Full Container Load (FCL) depends largely on the size and volume of your cargo. If you are shipping small boxes or palletized goods that occupy only a portion of a container, LCL is typically the more economical choice. Conversely, if your shipment fills most or all of a container, FCL becomes the more cost-effective option. Understanding your shipment requirements is crucial in making an informed decision that aligns with your budget and logistical needs.",
+        category: "lcl"
     },
     {
         question: "Which is better: LCL or FCL shipping?",
-        answer: "Both LCL and FCL are excellent shipping options, but the better choice depends on your specific cargo and requirements of your shipment. LCL is ideal for smaller shipments, efficiently cargo that doesn't fill an entire container, allowing you to share container space and reduce costs. However, as your shipment size increases, opting for FCL is worth considering, even if your cargo doesn't completely fill the container. While the upfront cost may be slightly higher, the benefits of FCL include faster expedited transit times and enhanced security for your goods, making it a worthwhile investment for larger shipments."
+        answer: "Both LCL and FCL are excellent shipping options, but the better choice depends on your specific cargo and requirements of your shipment. LCL is ideal for smaller shipments, efficiently cargo that doesn't fill an entire container, allowing you to share container space and reduce costs. However, as your shipment size increases, opting for FCL is worth considering, even if your cargo doesn't completely fill the container. While the upfront cost may be slightly higher, the benefits of FCL include faster expedited transit times and enhanced security for your goods, making it a worthwhile investment for larger shipments.",
+        category: "lcl"
     },
     {
         question: "What is the maximum CBM allowed for LCL shipping?",
-        answer: "Single Package: The maximum weight is 3,000 kg and the maximum volume is 29 CBM. Booking Limits: The maximum weight per booking is 20,000 kg and the maximum volume per booking is 60 CBM. Pallet Entry Specifications: The maximum weight is 3,000 kg. Dimensions: The maximum dimensions for a single package in LCL shipping are 249 cm (Width), 340 cm (Height), and 610 cm (Length). Additional Charges: Any cargo receipt exceeding the maximum dimension limits will incur a CFS handling fee of up to MYR 1,000 to be borne by the shipper per handling instance. Please ensure compliance with these guidelines to facilitate smooth shipping operations."
+        answer: "Single Package: The maximum weight is 3,000 kg and the maximum volume is 29 CBM. Booking Limits: The maximum weight per booking is 20,000 kg and the maximum volume per booking is 60 CBM. Pallet Entry Specifications: The maximum weight is 3,000 kg. Dimensions: The maximum dimensions for a single package in LCL shipping are 249 cm (Width), 340 cm (Height), and 610 cm (Length). Additional Charges: Any cargo receipt exceeding the maximum dimension limits will incur a CFS handling fee of up to MYR 1,000 to be borne by the shipper per handling instance. Please ensure compliance with these guidelines to facilitate smooth shipping operations.",
+        category: "lcl"
     },
     {
         question: "What should I do if my LCL cargo exceeds the maximum limits?",
@@ -1088,15 +1149,18 @@ const defaultFAQs: FAQItem[] = [
     // Full Container Load (FCL) Services
     {
         question: "What is FCL (Full Container Load) shipping?",
-        answer: "FCL shipping means your cargo exclusively occupies an entire container. This method provides enhanced security, faster transit times, and reduced handling, making it ideal for large-volume or high-value shipments."
+        answer: "FCL shipping means your cargo exclusively occupies an entire container. This method provides enhanced security, faster transit times, and reduced handling, making it ideal for large-volume or high-value shipments.",
+        category: "fcl"
     },
     {
         question: "How is FCL different from LCL (Less than Container Load)?",
-        answer: "FCL (Full Container Load): Higher (you pay for the full container), Suitable for large shipments, Faster (Direct shipping), Best when you can fill the container, Higher (Dedicated Container). LCL (Less than Container Load): Lower (pay for space used), Ideal for small to medium shipments, Slightly longer (Requires Consolidation), More flexible for frequent smaller loads, Shared space and increased handling"
+        answer: "FCL (Full Container Load): Higher (you pay for the full container), Suitable for large shipments, Faster (Direct shipping), Best when you can fill the container, Higher (Dedicated Container). LCL (Less than Container Load): Lower (pay for space used), Ideal for small to medium shipments, Slightly longer (Requires Consolidation), More flexible for frequent smaller loads, Shared space and increased handling",
+        category: "fcl"
     },
     {
         question: "When should I use FCL shipping?",
-        answer: "Choose FCL if: You have enough cargo to fill a 20-ft or 40-ft container, Your shipment includes high-value or sensitive goods or urgent cargo, Your priority is speed and cargo integrity, You require temperature control or specialized handling."
+        answer: "Choose FCL if: You have enough cargo to fill a 20-ft or 40-ft container, Your shipment includes high-value or sensitive goods or urgent cargo, Your priority is speed and cargo integrity, You require temperature control or specialized handling.",
+        category: "fcl"
     },
     {
         question: "What types of containers do you offer for FCL shipments?",
@@ -1150,15 +1214,18 @@ const defaultFAQs: FAQItem[] = [
     // Reefer Container (Refrigerated) Shipping Services
     {
         question: "What is a reefer container?",
-        answer: "A reefer container is a refrigerated shipping container designed to transport temperature-sensitive cargo. It maintains specific temperature and humidity conditions throughout the journey using built-in climate control systems."
+        answer: "A reefer container is a refrigerated shipping container designed to transport temperature-sensitive cargo. It maintains specific temperature and humidity conditions throughout the journey using built-in climate control systems.",
+        category: "reefer-container"
     },
     {
         question: "What types of cargo require reefer containers?",
-        answer: "We handle a wide range of temperature-sensitive goods, including: Perishable Foods -- Fruits, vegetables, seafood, meat, dairy, ice cream, Pharmaceuticals -- Vaccines, biologics, temperature-controlled drugs, Chemical Products -- Temperature-sensitive industrial materials, Floral Products -- Flowers, plants, and horticultural items, Beverages -- Wine, dairy drinks, and juices"
+        answer: "We handle a wide range of temperature-sensitive goods, including: Perishable Foods -- Fruits, vegetables, seafood, meat, dairy, ice cream, Pharmaceuticals -- Vaccines, biologics, temperature-controlled drugs, Chemical Products -- Temperature-sensitive industrial materials, Floral Products -- Flowers, plants, and horticultural items, Beverages -- Wine, dairy drinks, and juices",
+        category: "reefer-container"
     },
     {
         question: "What temperature ranges do your reefer containers support?",
-        answer: "Our units can maintain temperatures from -30°C to +30°C, with options for: Humidity control systems, Air ventilation for fresh produce, Multi-zone temperature settings for different cargo types"
+        answer: "Our units can maintain temperatures from -30°C to +30°C, with options for: Humidity control systems, Air ventilation for fresh produce, Multi-zone temperature settings for different cargo types",
+        category: "reefer-container"
     },
     {
         question: "How is temperature monitored during shipment?",
@@ -1220,15 +1287,18 @@ const defaultFAQs: FAQItem[] = [
     // Dangerous Goods (DG) Container Shipments
     {
         question: "What are Dangerous Goods (DG)?",
-        answer: "Dangerous Goods are substances or items that pose a risk to health, safety, property, or the environment during transport. These include explosives, flammable substances, toxic chemicals, radioactive materials, and more, and are regulated under frameworks such as the IMDG Code, ADR, and IATA."
+        answer: "Dangerous Goods are substances or items that pose a risk to health, safety, property, or the environment during transport. These include explosives, flammable substances, toxic chemicals, radioactive materials, and more, and are regulated under frameworks such as the IMDG Code, ADR, and IATA.",
+        category: "dangerous-goods"
     },
     {
         question: "What are the classifications of dangerous goods?",
-        answer: "Dangerous goods are categorized into 9 hazard classes: 1. Explosives, 2. Gases, 3. Flammable Liquids, 4. Flammable Solids and Reactive Substances, 5. Oxidizing Substances and Organic Peroxides, 6. Toxic and Infectious Substances, 7. Radioactive Materials, 8. Corrosive Substances, 9. Miscellaneous Dangerous Goods"
+        answer: "Dangerous goods are categorized into 9 hazard classes: 1. Explosives, 2. Gases, 3. Flammable Liquids, 4. Flammable Solids and Reactive Substances, 5. Oxidizing Substances and Organic Peroxides, 6. Toxic and Infectious Substances, 7. Radioactive Materials, 8. Corrosive Substances, 9. Miscellaneous Dangerous Goods",
+        category: "dangerous-goods"
     },
     {
         question: "What documentation is required for transporting dangerous cargo?",
-        answer: "Required documents include: Material Safety Data Sheet (MSDS), Dangerous Goods Declaration (DGD), UN identification numbers, Hazard class labels and placards, Certified packaging documentation. Moon Navigation and Trading Co. manages all paperwork to ensure full international compliance."
+        answer: "Required documents include: Material Safety Data Sheet (MSDS), Dangerous Goods Declaration (DGD), UN identification numbers, Hazard class labels and placards, Certified packaging documentation. Moon Navigation and Trading Co. manages all paperwork to ensure full international compliance.",
+        category: "dangerous-goods"
     },
     {
         question: "How is dangerous cargo packaged and labelled?",
@@ -1265,968 +1335,23 @@ const defaultFAQs: FAQItem[] = [
     {
         question: "Can you assist with Dangerous Goods training or certification?",
         answer: "Yes. We offer guidance and partner training programs for companies that frequently handle or ship DG cargo, including packaging teams and logistics staff."
-    },
-
-    // Livestock Transportation Services
-    {
-        question: "What is livestock transportation?",
-        answer: "Livestock transportation involves the safe and regulated movement of live animals---such as cattle, sheep, goats, pigs, and horses---from one location to another for breeding, farming, racing, conservation, or trade. It requires specialized equipment, trained personnel, and strict compliance with animal welfare standards."
-    },
-    {
-        question: "What types of animals do you transport?",
-        answer: "We offer transportation services for a wide variety of live animals, including: Farm animals: Cattle, sheep, goats, and pigs, Horses: For breeding, racing, and equestrian events, Exotic and endangered species: For zoos, wildlife reserves, and conservation programs"
-    },
-    {
-        question: "What measures do you take to ensure animal welfare during transport?",
-        answer: "At Moon Navigation and Trading Co., animal welfare is our top priority. We provide: Spacious, non-slip, and ventilated pens, Temperature-controlled environments, Low stress loading and unloading systems, Onboard veterinarians and trained animal handlers, Routine health monitoring throughout the voyage"
-    },
-    {
-        question: "How are animals fed and hydrated during transport?",
-        answer: "Our vessels are fitted with automated feeding and watering systems, ensuring animals have constant access to clean water and are fed at regular intervals---even on long international journeys."
-    },
-    {
-        question: "Do you comply with international animal transport regulations?",
-        answer: "Yes. We strictly follow: IMO Animal Transport Standards, WOAH (World Organization for Animal Health) Guidelines, Country-specific veterinary import/export laws. This guarantees animal welfare and smooth customs clearance."
-    },
-    {
-        question: "What happens in the case of a medical emergency during shipment?",
-        answer: "We have veterinary staff onboard trained to handle medical emergencies. Animals are monitored continuously, and our team can administer immediate emergency care or implement quarantine protocols when necessary."
-    },
-    {
-        question: "What biosecurity measures do you follow?",
-        answer: "We implement strict hygiene, disinfection, and disease prevention protocols before, during, and after transport. This includes: Thorough pre-cleaning of vessels, Quarantine procedures, Monitoring for infectious diseases"
-    },
-    {
-        question: "Can you handle documentation and customs for live animal shipments?",
-        answer: "Yes, we provide full logistical support, including: Health and vaccination certificates, Veterinary and pedigree records, Import/export permits, Customs clearance and documentation"
-    },
-    {
-        question: "Do you offer long-distance international livestock transport?",
-        answer: "Absolutely. We offer: Short-haul regional transport (domestic and neighboring countries), Long-haul global shipping through a network of trusted ports, airlines, and logistics partners"
-    },
-    {
-        question: "How do you reduce animal stress during transport?",
-        answer: "We use low-noise loading techniques, minimize human-animal contact, and limit transit times wherever possible. Stress reduction is built into our transport design."
-    },
-    {
-        question: "Are your livestock services insured?",
-        answer: "Yes. We offer specialized livestock cargo insurance covering injury, illness, and mortality risks during transport."
-    },
-    {
-        question: "Why choose Moon Navigation and Trading Co. for livestock transportation?",
-        answer: "Specialized vessels and infrastructure for livestock, Veterinary care and welfare-focused handling, Global compliance and documentation management, Advanced biosecurity protocols, Tailored transport plans to suit your operation"
-    },
-
-    // Tankers in Ocean Freight
-    {
-        question: "What is a tanker in ocean freight?",
-        answer: "A tanker is a specially designed ship used for transporting bulk liquids such as crude oil, refined petroleum, chemicals, and liquefied gases (LNG/LPG). These vessels are engineered with safety features like double hulls, segregated tanks, and advanced monitoring systems."
-    },
-    {
-        question: "What types of tankers do you operate?",
-        answer: "We operate a full range of specialized tankers to meet diverse cargo needs, including: Crude Oil Tankers -- For unrefined petroleum, Product Tankers -- For refined fuels like gasoline and diesel, Chemical Tankers -- For hazardous industrial chemicals, Liquefied Gas Carriers -- For LNG and LPG with cryogenic handling"
-    },
-    {
-        question: "Which industries do you serve?",
-        answer: "Our tanker services support various industries, including: Oil & Gas, Chemical Manufacturing, Agriculture & Food (e.g., edible oils, biofuels), Industrial and Energy sectors"
-    },
-    {
-        question: "How do you ensure safety when transporting hazardous liquids?",
-        answer: "Safety is our top priority. We ensure: Double-hull vessel construction for leak protection, Cargo condition monitoring, Compliance with IMO, SOLAS, MARPOL, and ISGOTT regulations, Fire suppression, gas detection, and emergency response systems, Crews trained in hazardous material (HAZMAT) handling and onboard emergency protocols"
-    },
-    {
-        question: "Do you offer temperature-controlled and segregated tanks?",
-        answer: "Yes. Our vessels include: Temperature-Controlled Holds for sensitive liquids, Fully Segregated Tanks for multi-product cargo, preventing cross-contamination"
-    },
-    {
-        question: "Can I ship hazardous chemicals or cryogenic gases with you?",
-        answer: "Absolutely. Our tankers are certified and equipped for: Hazardous chemicals (toxic, corrosive, or flammable), Cryogenic gases like LNG and LPG, maintained using advanced containment and insulation technologies"
-    },
-    {
-        question: "Do you provide door-to-door tanker logistics?",
-        answer: "Yes, we provide comprehensive end-to-end logistics, including: Inland trucking or rail transport, Port and terminal coordination, Regulatory documentation and customs clearance, Secure ocean freight and final-mile delivery"
-    },
-    {
-        question: "What environmental practices do your tankers follow?",
-        answer: "We are committed to green shipping practices, including: Use of IMO 2020-compliant low-sulfur fuels, Ballast water treatment systems to protect marine ecosystems, Emissions monitoring and pollution prevention planning, Ongoing investment in eco-efficient technologies"
-    },
-    {
-        question: "Do you offer flexible contract options?",
-        answer: "Yes. Depending on your needs, we offer: Spot shipments for one-time or urgent cargo, Long-term contracts with stable pricing and availability, Customized solutions including routing, storage, and temperature control"
-    },
-    {
-        question: "What is the difference between product and crude oil tankers?",
-        answer: "Crude oil tankers transport unrefined petroleum directly from oil extraction points, while product tankers carry refined products like diesel, gasoline, jet fuel, and lubricants. Product tankers often have multiple segregated tanks for transporting various products simultaneously."
-    },
-    {
-        question: "How are chemical tankers cleaned between shipments?",
-        answer: "Chemical tankers undergo a multi-stage tank cleaning process using hot water, steam, and chemical agents to eliminate residue and prevent cross-contamination. All procedures follow ISGOTT and MARPOL Annex II cleaning protocols."
-    },
-    {
-        question: "What certifications do your tankers and crews hold?",
-        answer: "Our vessels and crews are certified under: SOLAS (Safety of Life at Sea), ISM Code (International Safety Management), ISGOTT (International Safety Guide for Oil Tankers and Terminals), STCW (Standards of Training, Certification, and Watchkeeping) for maritime professionals"
-    },
-    {
-        question: "Are your vessels compliant with SOLAS and ISM Code requirements?",
-        answer: "Yes. All our operations meet SOLAS safety standards and ISM Code requirements for shipboard safety management, operational efficiency, and environmental compliance."
-    },
-    {
-        question: "How do I get a quote for tanker transportation?",
-        answer: "Use our Quotation by Request form on the website. Submit details such as cargo type, volume, destination, and special requirements. We'll send you a customized quote promptly via email."
-    },
-
-    // Heavy lift cargo
-    {
-        question: "What is considered heavy lift cargo?",
-        answer: "Heavy lift cargo includes extremely heavy or oversized units---typically over 100 metric tons or exceeding standard container dimensions. Examples include turbines, oil rig modules, transformers, and industrial equipment."
-    },
-    {
-        question: "What equipment is used to handle heavy lift cargo?",
-        answer: "We deploy advanced, high-capacity handling equipment tailored for each operation, including: Hydraulic & floating cranes, Lifting frames and spreader bars, Hydraulic jacking systems, Self-Propelled Modular Transporters (SPMTs), Custom rigging and lifting gear"
-    },
-    {
-        question: "What vessels do you use for transport?",
-        answer: "We operate a specialized fleet that includes: Heavy Lift Vessels (HLVs) with high-capacity cranes, Semi-Submersible Vessels for floating and offshore structures, Deck Barges and Ro-Ro Ships for industrial machinery and wheeled cargo"
-    },
-    {
-        question: "How do you ensure safety during heavy lift operations?",
-        answer: "Safety is at the core of every project. We ensure it through: Engineering load plans & lifting studies, Load distribution and structural analysis, Certified lifting systems and operators, Use of certified equipment and licensed operators, Route and terminal feasibility studies, Compliance with international lifting and marine safety standards"
-    },
-    {
-        question: "Can you manage inland transport for heavy cargo?",
-        answer: "Yes. We provide full inland logistics solutions using: Modular and multi-axle trailers, Escorts and special transport permits, Route and bridge analysis, On-site coordination from port to project site"
-    },
-    {
-        question: "What modes of transport are used for heavy lift cargo?",
-        answer: "Heavy lift shipments often use a combination of road, sea, rail, or even air freight (for urgent loads). Sea transport is most common, using HLVs, barges, or semi-submersibles depending on cargo type and location."
-    },
-    {
-        question: "Which industries use heavy lift services?",
-        answer: "We serve diverse heavy industries, including: Oil & Gas, Renewable Energy (e.g., Wind Turbines), Power Generation, Mining & Infrastructure, Marine and Shipbuilding"
-    },
-    {
-        question: "Do you provide route surveys and feasibility studies?",
-        answer: "Absolutely. Our experts conduct: Bridge load and tunnel height clearance evaluations, Road strength and turning radius analysis, Port and crane capacity checks, Risk assessments with contingency planning"
-    },
-    {
-        question: "What compliance support do you offer?",
-        answer: "We handle all aspects of regulatory compliance, including: Oversized cargo transport permits, Customs clearance & documentation, Equipment safety certifications, Full cargo insurance and risk mitigation"
-    },
-    {
-        question: "How can I request a quote for heavy lift cargo?",
-        answer: "Use our Quotation by Request form on the website. Provide cargo dimensions, weight, destination, and any special requirements. Our team will respond with a tailored solution and pricing."
-    },
-    {
-        question: "What is the difference between heavy lift and project cargo?",
-        answer: "Heavy lift cargo refers to single oversized or heavy units, while project cargo covers complex shipments involving multiple pieces, often for industrial installations."
-    },
-    {
-        question: "Can heavy lift cargo be shipped by air?",
-        answer: "Yes, but it's rare and expensive. Only ultra-urgent or compact heavy loads are flown using aircraft like the Antonov An-124 or Boeing 747 freighters."
-    },
-    {
-        question: "How much does it cost to ship heavy equipment internationally?",
-        answer: "Costs vary based on cargo size, route, required equipment, and destination. Contact us for an accurate, all-inclusive quote."
-    },
-    {
-        question: "What are Self-Propelled Modular Transporters (SPMTs)?",
-        answer: "SPMTs are specialized vehicles with multiple axles used to move extremely heavy cargo across land, especially over short distances like from port to plant."
-    },
-    {
-        question: "How long does it take to arrange a heavy lift shipment?",
-        answer: "Depending on the complexity, planning can take from a few days to several weeks. We handle all engineering, permits, and coordination to meet your deadlines."
-    },
-
-    // Breakbulk Cargo
-    {
-        question: "What is breakbulk cargo?",
-        answer: "Breakbulk cargo includes large, heavy, or oversized items that are transported individually rather than in standard shipping containers. These may include machinery, steel beams, vehicles, and industrial equipment that are too large or irregularly shaped to be containerized."
-    },
-    {
-        question: "How is breakbulk cargo different from containerized or heavy-lift cargo?",
-        answer: "Breakbulk cargo is shipped piece by piece and is generally lighter than heavy-lift cargo. It is not containerized but does not always require the extremely high-capacity lifting gear used for ultra-heavy cargo. It's commonly transported on multi-purpose or breakbulk vessels."
-    },
-    {
-        question: "What types of cargo are commonly transported as breakbulk?",
-        answer: "Typical examples of breakbulk shipments include: Construction machinery and vehicles, Steel coils, beams, and pipes, Industrial manufacturing equipment, Prefabricated building units, Railway vehicles and oversized pallets"
-    },
-    {
-        question: "What types of vessels are used for breakbulk shipping?",
-        answer: "We utilize: Breakbulk Vessels: Specially designed for non-containerized cargo, Multi-Purpose Vessels (MPVs): Flexible vessels that carry both containerized and breakbulk cargo, Heavy Lift Vessels: Equipped with onboard cranes for particularly large or heavy items"
-    },
-    {
-        question: "How is breakbulk cargo loaded and unloaded?",
-        answer: "Breakbulk items are individually handled using heavy-duty equipment such as gantry cranes, floating cranes, forklifts, and reach stackers. We match the right gear to the cargo to ensure efficient, safe operations."
-    },
-    {
-        question: "What kind of securing methods are used?",
-        answer: "We use custom lashing and securing techniques, including: Steel chains and straps, Wooden bracing, Shock-absorbing materials. This ensures the cargo remains stable during transit and protected from weather or impact."
-    },
-    {
-        question: "Do you handle inland delivery for breakbulk shipments?",
-        answer: "Yes. We offer full port-to-site delivery, using specialized trucks, trailers (such as low-beds or extendables), and support vehicles. We also manage all required permits and escort arrangements for oversized loads."
-    },
-    {
-        question: "How do you handle customs and regulatory compliance?",
-        answer: "Our customs specialists manage all documentation, including bills of lading, packing lists, cargo manifests, and permits. We ensure compliance with international maritime regulations and handle tax, duty classifications, and exemptions as needed."
-    },
-    {
-        question: "How can I request a breakbulk shipping quote?",
-        answer: "Simply use our Quotation by Request system. Fill in your cargo details---dimensions, weight, origin, and destination---and our team will quickly assess your shipment to provide a tailored quote with optimal route and pricing options."
-    },
-    {
-        question: "Is breakbulk shipping expensive?",
-        answer: "It is often more costly than container shipping due to special handling, equipment, and longer port stays---but it's the only option for certain oversized cargo."
-    },
-    {
-        question: "Is breakbulk suitable for time-sensitive shipments?",
-        answer: "While breakbulk is not as fast as air freight or containers, proper planning and vessel scheduling allow for efficient, timely delivery."
-    },
-    {
-        question: "Is insurance required for breakbulk cargo?",
-        answer: "Yes. We highly recommend full marine insurance to protect against transit risks. Our team can arrange it as part of the service."
-    },
-    {
-        question: "Can breakbulk cargo be shipped by air?",
-        answer: "Typically, no---due to size and weight. However, smaller breakbulk items may be air-shipped if urgently required."
-    },
-    {
-        question: "Why should I choose Moon Navigation and Trading Co. for breakbulk cargo?",
-        answer: "Expertise in handling oversized and non-containerized cargo, End-to-end logistics covering stowage, vessel selection, and delivery, Advanced equipment and lifting capabilities, Global network of carriers and ports, Regulatory compliance and dedicated support team"
-    },
-
-    // Less than Container Load (LCL)
-    {
-        question: "LCL vs. FCL: Which is Cheaper?",
-        answer: "The cost of shipping via Less than Container Load (LCL) or Full Container Load (FCL) depends largely on the size and volume of your cargo. If you are shipping small boxes or palletized goods that occupy only a portion of a container, LCL is typically the more economical choice. Conversely, if your shipment fills most or all of a container, FCL becomes the more cost-effective option. Understanding your shipment requirements is crucial in making an informed decision that aligns with your budget and logistical needs."
-    },
-    {
-        question: "Which is better: LCL or FCL shipping?",
-        answer: "Both LCL and FCL are excellent shipping options, but the better choice depends on your specific cargo and requirements of your shipment. LCL is ideal for smaller shipments, efficiently cargo that doesn't fill an entire container, allowing you to share container space and reduce costs. However, as your shipment size increases, opting for FCL is worth considering, even if your cargo doesn't completely fill the container. While the upfront cost may be slightly higher, the benefits of FCL include faster expedited transit times and enhanced security for your goods, making it a worthwhile investment for larger shipments."
-    },
-    {
-        question: "What is the maximum CBM allowed for LCL shipping?",
-        answer: "Single Package: The maximum weight is 3,000 kg and the maximum volume is 29 CBM. Booking Limits: The maximum weight per booking is 20,000 kg and the maximum volume per booking is 60 CBM. Pallet Entry Specifications: The maximum weight is 3,000 kg. Dimensions: The maximum dimensions for a single package in LCL shipping are 249 cm (Width), 340 cm (Height), and 610 cm (Length). Additional Charges: Any cargo receipt exceeding the maximum dimension limits will incur a CFS handling fee of up to MYR 1,000 to be borne by the shipper per handling instance. Please ensure compliance with these guidelines to facilitate smooth shipping operations."
-    },
-    {
-        question: "What should I do if my LCL cargo exceeds the maximum limits?",
-        answer: "Please reach out to our LCL specialists for further assistance. In case your LCL cargo exceeds the limits of 3,000 kg and 29 CBM per package, or the total of 20,000 kg and 60 CBM. Our LCL specialists can help assess the best logistics solution---whether reconfiguration, split shipment, or switching to FCL."
-    },
-    {
-        question: "Can I Include Customs Clearance Services with My LCL Shipment?",
-        answer: "Yes. You can request customs clearance directly within the \"Value-Added Services\" section of our LCL quotation form. Our team will handle documentation, tax classification, and compliance on your behalf."
-    },
-    {
-        question: "What does LCL stand for in shipping?",
-        answer: "LCL stands for Less than Container Load, a shipping method where multiple shippers share space in one container."
-    },
-    {
-        question: "Is LCL shipping safe?",
-        answer: "Yes, LCL is safe when handled by professionals. However, since cargo is shared with others, there may be more handling, so proper packaging is crucial."
-    },
-    {
-        question: "How long does LCL shipping take?",
-        answer: "LCL may take slightly longer than FCL due to consolidation and deconsolidation at ports."
-    },
-    {
-        question: "What are the disadvantages of LCL?",
-        answer: "Potential disadvantages include: Longer transit time, Higher handling risks, Possible delays if other shipments in the container are held"
-    },
-    {
-        question: "Can I track my LCL shipment?",
-        answer: "Yes. We provide regular updates for all LCL shipments"
-    },
-    {
-        question: "How Can I Get a Quote for LCL Shipping?",
-        answer: "Getting a quote is easy: Simply fill out our Quotation by Request form with your shipment details. Our team will review your submission and reply with a customized LCL shipping quote via email."
-    },
-
-    // Full Container Load (FCL) Services
-    {
-        question: "What is FCL (Full Container Load) shipping?",
-        answer: "FCL shipping means your cargo exclusively occupies an entire container. This method provides enhanced security, faster transit times, and reduced handling, making it ideal for large-volume or high-value shipments."
-    },
-    {
-        question: "How is FCL different from LCL (Less than Container Load)?",
-        answer: "FCL (Full Container Load): Higher (you pay for the full container), Suitable for large shipments, Faster (Direct shipping), Best when you can fill the container, Higher (Dedicated Container). LCL (Less than Container Load): Lower (pay for space used), Ideal for small to medium shipments, Slightly longer (Requires Consolidation), More flexible for frequent smaller loads, Shared space and increased handling"
-    },
-    {
-        question: "When should I use FCL shipping?",
-        answer: "Choose FCL if: You have enough cargo to fill a 20-ft or 40-ft container, Your shipment includes high-value or sensitive goods or urgent cargo, Your priority is speed and cargo integrity, You require temperature control or specialized handling."
-    },
-    {
-        question: "What types of containers do you offer for FCL shipments?",
-        answer: "We provide a range of container types to suit different cargo needs: Standard Containers: For general dry goods and machinery, Reefer Containers: For temperature-sensitive cargo, Dangerous Goods Containers: For hazardous materials, Open Top Containers: For oversized/tall cargo"
-    },
-    {
-        question: "Can you handle dangerous or regulated cargo in FCL?",
-        answer: "Yes. We specialize in transporting dangerous goods (DG) in compliance with IMO and ADR standards. Services include: Classification & labeling, Proper packaging and documentation, Use of DG-certified containers, Emergency response planning and risk management"
-    },
-    {
-        question: "What are reefer containers and what can they carry?",
-        answer: "Reefer (refrigerated) containers are used for transporting temperature-sensitive cargo, such as: Fresh or frozen food items, Pharmaceuticals and vaccines, Flowers, plants, and climate-sensitive goods. We monitor and update temperature data at key intervals throughout the journey to ensure cargo integrity and cold chain compliance."
-    },
-    {
-        question: "How do you ensure the safety and security of my FCL shipment?",
-        answer: "We use sealed containers, minimize cargo handling, and ensure proper loading and cargo securing procedures. Our end-to-end tracking and support team monitors your shipment to ensure safe, on-time delivery."
-    },
-    {
-        question: "Do you provide documentation and customs support for FCL shipments?",
-        answer: "Yes. Our team handles: Bill of Lading preparation (B/L), Commercial invoice and packing list, Import/export licenses and permits, Regulatory compliance for hazardous or perishable goods"
-    },
-    {
-        question: "Can you provide international FCL shipping services?",
-        answer: "Absolutely. We offer: Global routes across Europe, Asia, MENA, and the Americas, Priority space on top carrier lines, Flexible, cost-effective shipping schedules, Port-to-door solutions worldwide"
-    },
-    {
-        question: "Is FCL cheaper than LCL for large shipments?",
-        answer: "Yes, for large volumes, FCL often becomes more cost-effective due to flat container pricing."
-    },
-    {
-        question: "How long does FCL shipping take?",
-        answer: "Transit time depends on the route but is generally faster than LCL due to direct shipping and no consolidation."
-    },
-    {
-        question: "Can I track my FCL shipment?",
-        answer: "Yes, we offer regular shipment updates."
-    },
-    {
-        question: "What size containers are available in FCL shipping?",
-        answer: "Standard 20-ft and 40-ft containers, plus special types like High Cube, Open Top, and Reefers"
-    },
-    {
-        question: "How can I get a quote for your services and FCL?",
-        answer: "Simply fill out the \"Quotation by Request\" form on our website. Our team will promptly review your request and send you a tailored quotation via email."
-    },
-    {
-        question: "What makes Moon Navigation and Trading Co. a trusted partner for FCL shipping?",
-        answer: "Comprehensive Service: From booking to delivery, Industry Expertise: Specialized handling of reefer and DG cargo, Global Network: Strong partnerships with leading ocean carriers, 24/7 Support: Real-time updates and proactive issue resolution, Cost Efficiency: Competitive rates and optimized logistics"
-    },
-
-    // Reefer Container (Refrigerated) Shipping Services
-    {
-        question: "What is a reefer container?",
-        answer: "A reefer container is a refrigerated shipping container designed to transport temperature-sensitive cargo. It maintains specific temperature and humidity conditions throughout the journey using built-in climate control systems."
-    },
-    {
-        question: "What types of cargo require reefer containers?",
-        answer: "We handle a wide range of temperature-sensitive goods, including: Perishable Foods -- Fruits, vegetables, seafood, meat, dairy, ice cream, Pharmaceuticals -- Vaccines, biologics, temperature-controlled drugs, Chemical Products -- Temperature-sensitive industrial materials, Floral Products -- Flowers, plants, and horticultural items, Beverages -- Wine, dairy drinks, and juices"
-    },
-    {
-        question: "What temperature ranges do your reefer containers support?",
-        answer: "Our units can maintain temperatures from -30°C to +30°C, with options for: Humidity control systems, Air ventilation for fresh produce, Multi-zone temperature settings for different cargo types"
-    },
-    {
-        question: "How is temperature monitored during shipment?",
-        answer: "We ensure cold chain integrity through: Continuous digital temperature tracking, 24/7 monitoring with alerts, Pre-Trip Inspections (PTIs) before loading, On-call technical support throughout transit"
-    },
-    {
-        question: "What makes Moon Navigation and Trading Co. different for reefer shipping?",
-        answer: "Modern reefer fleet with precision climate control, Cold chain compliance across all global standards, Full-service logistics: pickup, warehousing, shipping, delivery, Cold storage and consolidation hubs in key locations, 24/7 cargo supervision and proactive coordination"
-    },
-    {
-        question: "Can you handle door-to-door reefer transport?",
-        answer: "Yes. We offer fully managed door-to-door refrigerated logistics, minimizing handovers and maintaining an unbroken cold chain from your facility to the end customer."
-    },
-    {
-        question: "Do you provide cold storage and refrigerated warehousing?",
-        answer: "Absolutely. We offer: Short- and long-term temperature-controlled storage, Strategic cold storage locations near major ports, Consolidation and distribution services"
-    },
-    {
-        question: "Can you handle multimodal reefer transport?",
-        answer: "Absolutely. We coordinate sea, air, and inland transport with: Seamless temperature control across all modes, Efficient transitions without thermal disruptions, Custom options based on urgency, cost, and destination"
-    },
-    {
-        question: "Is my temperature-sensitive cargo insured?",
-        answer: "Yes, we provide specialized reefer cargo insurance that covers: Temperature deviation losses, Equipment malfunctions, Spoilage due to unforeseen delays, Claims assistance and loss prevention planning"
-    },
-    {
-        question: "Can you ship hazardous or regulated goods in reefer containers?",
-        answer: "Yes. We are certified to handle IMO/IMDG-class dangerous goods that require temperature control. Our services include: Proper documentation & labeling, Safety-compliant packaging, Full regulatory compliance throughout the cold chain"
-    },
-    {
-        question: "Do I receive reefer shipment updates?",
-        answer: "Yes. We provide: Regular shipment updates on cargo location and temperature status, Compliance-ready temperature and transit logs, Timely communication from our operations team at each critical stage of the journey."
-    },
-    {
-        question: "Can reefer containers freeze cargo?",
-        answer: "Yes, they can reach temperatures as low as -30°C, ideal for frozen goods."
-    },
-    {
-        question: "How long can reefer containers keep cargo cold?",
-        answer: "As long as needed---reefer units are powered during transit and at terminals to maintain set conditions."
-    },
-    {
-        question: "Do reefer containers need special documentation?",
-        answer: "Yes, especially for perishable goods or DG cargo---our team handles all necessary permits and customs compliance."
-    },
-    {
-        question: "What are the sizes available for reefer containers?",
-        answer: "Common sizes include 20ft and 40ft, with high-cube options for extra capacity."
-    },
-    {
-        question: "How can I get a shipping quote?",
-        answer: "To request a quote, simply fill out the Quotation Request Form on our website. Our team will review your request and respond promptly with a tailored solution and pricing via email."
-    },
-    {
-        question: "Why choose Moon Navigation and Trading Co. for reefer container shipments?",
-        answer: "We deliver more than just refrigerated shipping---we ensure the integrity of your cargo with: Modern reefer fleet featuring advanced temperature & humidity controls, Cold chain expertise from pickup to delivery, Customized routing to preserve shelf life and reduce transit time, Regulatory compliance for perishable, pharmaceutical, and DG goods, Reliable support & updates throughout every step of the shipment. Your sensitive cargo deserves specialized care---and that is our standard."
-    },
-
-    // Dangerous Goods (DG) Container Shipments
-    {
-        question: "What are Dangerous Goods (DG)?",
-        answer: "Dangerous Goods are substances or items that pose a risk to health, safety, property, or the environment during transport. These include explosives, flammable substances, toxic chemicals, radioactive materials, and more, and are regulated under frameworks such as the IMDG Code, ADR, and IATA."
-    },
-    {
-        question: "What are the classifications of dangerous goods?",
-        answer: "Dangerous goods are categorized into 9 hazard classes: 1. Explosives, 2. Gases, 3. Flammable Liquids, 4. Flammable Solids and Reactive Substances, 5. Oxidizing Substances and Organic Peroxides, 6. Toxic and Infectious Substances, 7. Radioactive Materials, 8. Corrosive Substances, 9. Miscellaneous Dangerous Goods"
-    },
-    {
-        question: "What documentation is required for transporting dangerous cargo?",
-        answer: "Required documents include: Material Safety Data Sheet (MSDS), Dangerous Goods Declaration (DGD), UN identification numbers, Hazard class labels and placards, Certified packaging documentation. Moon Navigation and Trading Co. manages all paperwork to ensure full international compliance."
-    },
-    {
-        question: "How is dangerous cargo packaged and labelled?",
-        answer: "Cargo must be: Packaged in certified containers specific to the hazard class (e.g., explosion-proof drums, cryo tanks). Labels must clearly display: UN number, Hazard class label, Handling instructions. We strictly adhere to IMDG, IATA, and ADR packaging and labeling standards."
-    },
-    {
-        question: "What safety measures do you take during transport?",
-        answer: "We implement multiple layers of safety: Hazmat-trained personnel, Specialized vehicles and containers, Emergency kits and protocols, Safety route planning and risk assessments, Compliance audits and monitoring systems"
-    },
-    {
-        question: "Can you transport radioactive or biohazard materials?",
-        answer: "Yes. We are licensed to transport: Class 7 -- Radioactive materials, Class 6.2 -- Infectious substances. We use shielded containers and follow strict health, radiation, and biohazard safety regulations."
-    },
-    {
-        question: "What happens in the event of an emergency or spill?",
-        answer: "Our team is trained in full emergency response procedures, including: On-site containment with spill kits, Fire safety and medical readiness, Immediate notification to authorities, Coordinated environmental cleanup if required"
-    },
-    {
-        question: "What international regulations do you follow?",
-        answer: "We comply with: IMDG Code (International Maritime Dangerous Goods), IATA DGR (Dangerous Goods Regulations by Air), ADR (European Agreement concerning the International Carriage of Dangerous Goods by Road), Local and international port and customs requirements in each country of operation."
-    },
-    {
-        question: "Can you provide end-to-end transport solutions for hazardous cargo?",
-        answer: "Yes. We offer full project handling, including: Route surveys and risk assessment, Certified packaging and labeling, Customs clearance and documentation, Multimodal transport (sea, road, air), Delivery to destination."
-    },
-    {
-        question: "Why choose Moon Navigation and Trading Co. for dangerous cargo transport?",
-        answer: "Certified compliance with global safety standards, Expertise in all nine classes of dangerous goods, Tailored transport strategies for high-risk cargo, Dedicated support for customs and regulatory hurdles, Reliable global network of carriers and agents, Focus on safety, compliance, and risk mitigation"
-    },
-    {
-        question: "How do I know if my cargo is classified as hazardous?",
-        answer: "Check the product's MSDS or consult our team with product specifications. We'll verify its classification under relevant regulations (IMDG, IATA, ADR)."
-    },
-    {
-        question: "Can you assist with Dangerous Goods training or certification?",
-        answer: "Yes. We offer guidance and partner training programs for companies that frequently handle or ship DG cargo, including packaging teams and logistics staff."
-    },
-
-    // Livestock Transportation Services
-    {
-        question: "What is livestock transportation?",
-        answer: "Livestock transportation involves the safe and regulated movement of live animals---such as cattle, sheep, goats, pigs, and horses---from one location to another for breeding, farming, racing, conservation, or trade. It requires specialized equipment, trained personnel, and strict compliance with animal welfare standards."
-    },
-    {
-        question: "What types of animals do you transport?",
-        answer: "We offer transportation services for a wide variety of live animals, including: Farm animals: Cattle, sheep, goats, and pigs, Horses: For breeding, racing, and equestrian events, Exotic and endangered species: For zoos, wildlife reserves, and conservation programs"
-    },
-    {
-        question: "What measures do you take to ensure animal welfare during transport?",
-        answer: "At Moon Navigation and Trading Co., animal welfare is our top priority. We provide: Spacious, non-slip, and ventilated pens, Temperature-controlled environments, Low stress loading and unloading systems, Onboard veterinarians and trained animal handlers, Routine health monitoring throughout the voyage"
-    },
-    {
-        question: "How are animals fed and hydrated during transport?",
-        answer: "Our vessels are fitted with automated feeding and watering systems, ensuring animals have constant access to clean water and are fed at regular intervals---even on long international journeys."
-    },
-    {
-        question: "Do you comply with international animal transport regulations?",
-        answer: "Yes. We strictly follow: IMO Animal Transport Standards, WOAH (World Organization for Animal Health) Guidelines, Country-specific veterinary import/export laws. This guarantees animal welfare and smooth customs clearance."
-    },
-    {
-        question: "What happens in the case of a medical emergency during shipment?",
-        answer: "We have veterinary staff onboard trained to handle medical emergencies. Animals are monitored continuously, and our team can administer immediate emergency care or implement quarantine protocols when necessary."
-    },
-    {
-        question: "What biosecurity measures do you follow?",
-        answer: "We implement strict hygiene, disinfection, and disease prevention protocols before, during, and after transport. This includes: Thorough pre-cleaning of vessels, Quarantine procedures, Monitoring for infectious diseases"
-    },
-    {
-        question: "Can you handle documentation and customs for live animal shipments?",
-        answer: "Yes, we provide full logistical support, including: Health and vaccination certificates, Veterinary and pedigree records, Import/export permits, Customs clearance and documentation"
-    },
-    {
-        question: "Do you offer long-distance international livestock transport?",
-        answer: "Absolutely. We offer: Short-haul regional transport (domestic and neighboring countries), Long-haul global shipping through a network of trusted ports, airlines, and logistics partners"
-    },
-    {
-        question: "How do you reduce animal stress during transport?",
-        answer: "We use low-noise loading techniques, minimize human-animal contact, and limit transit times wherever possible. Stress reduction is built into our transport design."
-    },
-    {
-        question: "Are your livestock services insured?",
-        answer: "Yes. We offer specialized livestock cargo insurance covering injury, illness, and mortality risks during transport."
-    },
-    {
-        question: "Why choose Moon Navigation and Trading Co. for livestock transportation?",
-        answer: "Specialized vessels and infrastructure for livestock, Veterinary care and welfare-focused handling, Global compliance and documentation management, Advanced biosecurity protocols, Tailored transport plans to suit your operation"
-    },
-
-    // Tankers in Ocean Freight
-    {
-        question: "What is a tanker in ocean freight?",
-        answer: "A tanker is a specially designed ship used for transporting bulk liquids such as crude oil, refined petroleum, chemicals, and liquefied gases (LNG/LPG). These vessels are engineered with safety features like double hulls, segregated tanks, and advanced monitoring systems."
-    },
-    {
-        question: "What types of tankers do you operate?",
-        answer: "We operate a full range of specialized tankers to meet diverse cargo needs, including: Crude Oil Tankers -- For unrefined petroleum, Product Tankers -- For refined fuels like gasoline and diesel, Chemical Tankers -- For hazardous industrial chemicals, Liquefied Gas Carriers -- For LNG and LPG with cryogenic handling"
-    },
-    {
-        question: "Which industries do you serve?",
-        answer: "Our tanker services support various industries, including: Oil & Gas, Chemical Manufacturing, Agriculture & Food (e.g., edible oils, biofuels), Industrial and Energy sectors"
-    },
-    {
-        question: "How do you ensure safety when transporting hazardous liquids?",
-        answer: "Safety is our top priority. We ensure: Double-hull vessel construction for leak protection, Cargo condition monitoring, Compliance with IMO, SOLAS, MARPOL, and ISGOTT regulations, Fire suppression, gas detection, and emergency response systems, Crews trained in hazardous material (HAZMAT) handling and onboard emergency protocols"
-    },
-    {
-        question: "Do you offer temperature-controlled and segregated tanks?",
-        answer: "Yes. Our vessels include: Temperature-Controlled Holds for sensitive liquids, Fully Segregated Tanks for multi-product cargo, preventing cross-contamination"
-    },
-    {
-        question: "Can I ship hazardous chemicals or cryogenic gases with you?",
-        answer: "Absolutely. Our tankers are certified and equipped for: Hazardous chemicals (toxic, corrosive, or flammable), Cryogenic gases like LNG and LPG, maintained using advanced containment and insulation technologies"
-    },
-    {
-        question: "Do you provide door-to-door tanker logistics?",
-        answer: "Yes, we provide comprehensive end-to-end logistics, including: Inland trucking or rail transport, Port and terminal coordination, Regulatory documentation and customs clearance, Secure ocean freight and final-mile delivery"
-    },
-    {
-        question: "What environmental practices do your tankers follow?",
-        answer: "We are committed to green shipping practices, including: Use of IMO 2020-compliant low-sulfur fuels, Ballast water treatment systems to protect marine ecosystems, Emissions monitoring and pollution prevention planning, Ongoing investment in eco-efficient technologies"
-    },
-    {
-        question: "Do you offer flexible contract options?",
-        answer: "Yes. Depending on your needs, we offer: Spot shipments for one-time or urgent cargo, Long-term contracts with stable pricing and availability, Customized solutions including routing, storage, and temperature control"
-    },
-    {
-        question: "What is the difference between product and crude oil tankers?",
-        answer: "Crude oil tankers transport unrefined petroleum directly from oil extraction points, while product tankers carry refined products like diesel, gasoline, jet fuel, and lubricants. Product tankers often have multiple segregated tanks for transporting various products simultaneously."
-    },
-    {
-        question: "How are chemical tankers cleaned between shipments?",
-        answer: "Chemical tankers undergo a multi-stage tank cleaning process using hot water, steam, and chemical agents to eliminate residue and prevent cross-contamination. All procedures follow ISGOTT and MARPOL Annex II cleaning protocols."
-    },
-    {
-        question: "What certifications do your tankers and crews hold?",
-        answer: "Our vessels and crews are certified under: SOLAS (Safety of Life at Sea), ISM Code (International Safety Management), ISGOTT (International Safety Guide for Oil Tankers and Terminals), STCW (Standards of Training, Certification, and Watchkeeping) for maritime professionals"
-    },
-    {
-        question: "Are your vessels compliant with SOLAS and ISM Code requirements?",
-        answer: "Yes. All our operations meet SOLAS safety standards and ISM Code requirements for shipboard safety management, operational efficiency, and environmental compliance."
-    },
-    {
-        question: "How do I get a quote for tanker transportation?",
-        answer: "Use our Quotation by Request form on the website. Submit details such as cargo type, volume, destination, and special requirements. We'll send you a customized quote promptly via email."
-    },
-
-    // Heavy lift cargo
-    {
-        question: "What is considered heavy lift cargo?",
-        answer: "Heavy lift cargo includes extremely heavy or oversized units---typically over 100 metric tons or exceeding standard container dimensions. Examples include turbines, oil rig modules, transformers, and industrial equipment."
-    },
-    {
-        question: "What equipment is used to handle heavy lift cargo?",
-        answer: "We deploy advanced, high-capacity handling equipment tailored for each operation, including: Hydraulic & floating cranes, Lifting frames and spreader bars, Hydraulic jacking systems, Self-Propelled Modular Transporters (SPMTs), Custom rigging and lifting gear"
-    },
-    {
-        question: "What vessels do you use for transport?",
-        answer: "We operate a specialized fleet that includes: Heavy Lift Vessels (HLVs) with high-capacity cranes, Semi-Submersible Vessels for floating and offshore structures, Deck Barges and Ro-Ro Ships for industrial machinery and wheeled cargo"
-    },
-    {
-        question: "How do you ensure safety during heavy lift operations?",
-        answer: "Safety is at the core of every project. We ensure it through: Engineering load plans & lifting studies, Load distribution and structural analysis, Certified lifting systems and operators, Use of certified equipment and licensed operators, Route and terminal feasibility studies, Compliance with international lifting and marine safety standards"
-    },
-    {
-        question: "Can you manage inland transport for heavy cargo?",
-        answer: "Yes. We provide full inland logistics solutions using: Modular and multi-axle trailers, Escorts and special transport permits, Route and bridge analysis, On-site coordination from port to project site"
-    },
-    {
-        question: "What modes of transport are used for heavy lift cargo?",
-        answer: "Heavy lift shipments often use a combination of road, sea, rail, or even air freight (for urgent loads). Sea transport is most common, using HLVs, barges, or semi-submersibles depending on cargo type and location."
-    },
-    {
-        question: "Which industries use heavy lift services?",
-        answer: "We serve diverse heavy industries, including: Oil & Gas, Renewable Energy (e.g., Wind Turbines), Power Generation, Mining & Infrastructure, Marine and Shipbuilding"
-    },
-    {
-        question: "Do you provide route surveys and feasibility studies?",
-        answer: "Absolutely. Our experts conduct: Bridge load and tunnel height clearance evaluations, Road strength and turning radius analysis, Port and crane capacity checks, Risk assessments with contingency planning"
-    },
-    {
-        question: "What compliance support do you offer?",
-        answer: "We handle all aspects of regulatory compliance, including: Oversized cargo transport permits, Customs clearance & documentation, Equipment safety certifications, Full cargo insurance and risk mitigation"
-    },
-    {
-        question: "How can I request a quote for heavy lift cargo?",
-        answer: "Use our Quotation by Request form on the website. Provide cargo dimensions, weight, destination, and any special requirements. Our team will respond with a tailored solution and pricing."
-    },
-    {
-        question: "What is the difference between heavy lift and project cargo?",
-        answer: "Heavy lift cargo refers to single oversized or heavy units, while project cargo covers complex shipments involving multiple pieces, often for industrial installations."
-    },
-    {
-        question: "Can heavy lift cargo be shipped by air?",
-        answer: "Yes, but it's rare and expensive. Only ultra-urgent or compact heavy loads are flown using aircraft like the Antonov An-124 or Boeing 747 freighters."
-    },
-    {
-        question: "How much does it cost to ship heavy equipment internationally?",
-        answer: "Costs vary based on cargo size, route, required equipment, and destination. Contact us for an accurate, all-inclusive quote."
-    },
-    {
-        question: "What are Self-Propelled Modular Transporters (SPMTs)?",
-        answer: "SPMTs are specialized vehicles with multiple axles used to move extremely heavy cargo across land, especially over short distances like from port to plant."
-    },
-    {
-        question: "How long does it take to arrange a heavy lift shipment?",
-        answer: "Depending on the complexity, planning can take from a few days to several weeks. We handle all engineering, permits, and coordination to meet your deadlines."
-    },
-
-    // Breakbulk Cargo
-    {
-        question: "What is breakbulk cargo?",
-        answer: "Breakbulk cargo includes large, heavy, or oversized items that are transported individually rather than in standard shipping containers. These may include machinery, steel beams, vehicles, and industrial equipment that are too large or irregularly shaped to be containerized."
-    },
-    {
-        question: "How is breakbulk cargo different from containerized or heavy-lift cargo?",
-        answer: "Breakbulk cargo is shipped piece by piece and is generally lighter than heavy-lift cargo. It is not containerized but does not always require the extremely high-capacity lifting gear used for ultra-heavy cargo. It's commonly transported on multi-purpose or breakbulk vessels."
-    },
-    {
-        question: "What types of cargo are commonly transported as breakbulk?",
-        answer: "Typical examples of breakbulk shipments include: Construction machinery and vehicles, Steel coils, beams, and pipes, Industrial manufacturing equipment, Prefabricated building units, Railway vehicles and oversized pallets"
-    },
-    {
-        question: "What types of vessels are used for breakbulk shipping?",
-        answer: "We utilize: Breakbulk Vessels: Specially designed for non-containerized cargo, Multi-Purpose Vessels (MPVs): Flexible vessels that carry both containerized and breakbulk cargo, Heavy Lift Vessels: Equipped with onboard cranes for particularly large or heavy items"
-    },
-    {
-        question: "How is breakbulk cargo loaded and unloaded?",
-        answer: "Breakbulk items are individually handled using heavy-duty equipment such as gantry cranes, floating cranes, forklifts, and reach stackers. We match the right gear to the cargo to ensure efficient, safe operations."
-    },
-    {
-        question: "What kind of securing methods are used?",
-        answer: "We use custom lashing and securing techniques, including: Steel chains and straps, Wooden bracing, Shock-absorbing materials. This ensures the cargo remains stable during transit and protected from weather or impact."
-    },
-    {
-        question: "Do you handle inland delivery for breakbulk shipments?",
-        answer: "Yes. We offer full port-to-site delivery, using specialized trucks, trailers (such as low-beds or extendables), and support vehicles. We also manage all required permits and escort arrangements for oversized loads."
-    },
-    {
-        question: "How do you handle customs and regulatory compliance?",
-        answer: "Our customs specialists manage all documentation, including bills of lading, packing lists, cargo manifests, and permits. We ensure compliance with international maritime regulations and handle tax, duty classifications, and exemptions as needed."
-    },
-    {
-        question: "How can I request a breakbulk shipping quote?",
-        answer: "Simply use our Quotation by Request system. Fill in your cargo details---dimensions, weight, origin, and destination---and our team will quickly assess your shipment to provide a tailored quote with optimal route and pricing options."
-    },
-    {
-        question: "Is breakbulk shipping expensive?",
-        answer: "It is often more costly than container shipping due to special handling, equipment, and longer port stays---but it's the only option for certain oversized cargo."
-    },
-    {
-        question: "Is breakbulk suitable for time-sensitive shipments?",
-        answer: "While breakbulk is not as fast as air freight or containers, proper planning and vessel scheduling allow for efficient, timely delivery."
-    },
-    {
-        question: "Is insurance required for breakbulk cargo?",
-        answer: "Yes. We highly recommend full marine insurance to protect against transit risks. Our team can arrange it as part of the service."
-    },
-    {
-        question: "Can breakbulk cargo be shipped by air?",
-        answer: "Typically, no---due to size and weight. However, smaller breakbulk items may be air-shipped if urgently required."
-    },
-    {
-        question: "Why should I choose Moon Navigation and Trading Co. for breakbulk cargo?",
-        answer: "Expertise in handling oversized and non-containerized cargo, End-to-end logistics covering stowage, vessel selection, and delivery, Advanced equipment and lifting capabilities, Global network of carriers and ports, Regulatory compliance and dedicated support team"
-    },
-
-    // Less than Container Load (LCL)
-    {
-        question: "LCL vs. FCL: Which is Cheaper?",
-        answer: "The cost of shipping via Less than Container Load (LCL) or Full Container Load (FCL) depends largely on the size and volume of your cargo. If you are shipping small boxes or palletized goods that occupy only a portion of a container, LCL is typically the more economical choice. Conversely, if your shipment fills most or all of a container, FCL becomes the more cost-effective option. Understanding your shipment requirements is crucial in making an informed decision that aligns with your budget and logistical needs."
-    },
-    {
-        question: "Which is better: LCL or FCL shipping?",
-        answer: "Both LCL and FCL are excellent shipping options, but the better choice depends on your specific cargo and requirements of your shipment. LCL is ideal for smaller shipments, efficiently cargo that doesn't fill an entire container, allowing you to share container space and reduce costs. However, as your shipment size increases, opting for FCL is worth considering, even if your cargo doesn't completely fill the container. While the upfront cost may be slightly higher, the benefits of FCL include faster expedited transit times and enhanced security for your goods, making it a worthwhile investment for larger shipments."
-    },
-    {
-        question: "What is the maximum CBM allowed for LCL shipping?",
-        answer: "Single Package: The maximum weight is 3,000 kg and the maximum volume is 29 CBM. Booking Limits: The maximum weight per booking is 20,000 kg and the maximum volume per booking is 60 CBM. Pallet Entry Specifications: The maximum weight is 3,000 kg. Dimensions: The maximum dimensions for a single package in LCL shipping are 249 cm (Width), 340 cm (Height), and 610 cm (Length). Additional Charges: Any cargo receipt exceeding the maximum dimension limits will incur a CFS handling fee of up to MYR 1,000 to be borne by the shipper per handling instance. Please ensure compliance with these guidelines to facilitate smooth shipping operations."
-    },
-    {
-        question: "What should I do if my LCL cargo exceeds the maximum limits?",
-        answer: "Please reach out to our LCL specialists for further assistance. In case your LCL cargo exceeds the limits of 3,000 kg and 29 CBM per package, or the total of 20,000 kg and 60 CBM. Our LCL specialists can help assess the best logistics solution---whether reconfiguration, split shipment, or switching to FCL."
-    },
-    {
-        question: "Can I Include Customs Clearance Services with My LCL Shipment?",
-        answer: "Yes. You can request customs clearance directly within the \"Value-Added Services\" section of our LCL quotation form. Our team will handle documentation, tax classification, and compliance on your behalf."
-    },
-    {
-        question: "What does LCL stand for in shipping?",
-        answer: "LCL stands for Less than Container Load, a shipping method where multiple shippers share space in one container."
-    },
-    {
-        question: "Is LCL shipping safe?",
-        answer: "Yes, LCL is safe when handled by professionals. However, since cargo is shared with others, there may be more handling, so proper packaging is crucial."
-    },
-    {
-        question: "How long does LCL shipping take?",
-        answer: "LCL may take slightly longer than FCL due to consolidation and deconsolidation at ports."
-    },
-    {
-        question: "What are the disadvantages of LCL?",
-        answer: "Potential disadvantages include: Longer transit time, Higher handling risks, Possible delays if other shipments in the container are held"
-    },
-    {
-        question: "Can I track my LCL shipment?",
-        answer: "Yes. We provide regular updates for all LCL shipments"
-    },
-    {
-        question: "How Can I Get a Quote for LCL Shipping?",
-        answer: "Getting a quote is easy: Simply fill out our Quotation by Request form with your shipment details. Our team will review your submission and reply with a customized LCL shipping quote via email."
-    },
-
-    // Full Container Load (FCL) Services
-    {
-        question: "What is FCL (Full Container Load) shipping?",
-        answer: "FCL shipping means your cargo exclusively occupies an entire container. This method provides enhanced security, faster transit times, and reduced handling, making it ideal for large-volume or high-value shipments."
-    },
-    {
-        question: "How is FCL different from LCL (Less than Container Load)?",
-        answer: "FCL (Full Container Load): Higher (you pay for the full container), Suitable for large shipments, Faster (Direct shipping), Best when you can fill the container, Higher (Dedicated Container). LCL (Less than Container Load): Lower (pay for space used), Ideal for small to medium shipments, Slightly longer (Requires Consolidation), More flexible for frequent smaller loads, Shared space and increased handling"
-    },
-    {
-        question: "When should I use FCL shipping?",
-        answer: "Choose FCL if: You have enough cargo to fill a 20-ft or 40-ft container, Your shipment includes high-value or sensitive goods or urgent cargo, Your priority is speed and cargo integrity, You require temperature control or specialized handling."
-    },
-    {
-        question: "What types of containers do you offer for FCL shipments?",
-        answer: "We provide a range of container types to suit different cargo needs: Standard Containers: For general dry goods and machinery, Reefer Containers: For temperature-sensitive cargo, Dangerous Goods Containers: For hazardous materials, Open Top Containers: For oversized/tall cargo"
-    },
-    {
-        question: "Can you handle dangerous or regulated cargo in FCL?",
-        answer: "Yes. We specialize in transporting dangerous goods (DG) in compliance with IMO and ADR standards. Services include: Classification & labeling, Proper packaging and documentation, Use of DG-certified containers, Emergency response planning and risk management"
-    },
-    {
-        question: "What are reefer containers and what can they carry?",
-        answer: "Reefer (refrigerated) containers are used for transporting temperature-sensitive cargo, such as: Fresh or frozen food items, Pharmaceuticals and vaccines, Flowers, plants, and climate-sensitive goods. We monitor and update temperature data at key intervals throughout the journey to ensure cargo integrity and cold chain compliance."
-    },
-    {
-        question: "How do you ensure the safety and security of my FCL shipment?",
-        answer: "We use sealed containers, minimize cargo handling, and ensure proper loading and cargo securing procedures. Our end-to-end tracking and support team monitors your shipment to ensure safe, on-time delivery."
-    },
-    {
-        question: "Do you provide documentation and customs support for FCL shipments?",
-        answer: "Yes. Our team handles: Bill of Lading preparation (B/L), Commercial invoice and packing list, Import/export licenses and permits, Regulatory compliance for hazardous or perishable goods"
-    },
-    {
-        question: "Can you provide international FCL shipping services?",
-        answer: "Absolutely. We offer: Global routes across Europe, Asia, MENA, and the Americas, Priority space on top carrier lines, Flexible, cost-effective shipping schedules, Port-to-door solutions worldwide"
-    },
-    {
-        question: "Is FCL cheaper than LCL for large shipments?",
-        answer: "Yes, for large volumes, FCL often becomes more cost-effective due to flat container pricing."
-    },
-    {
-        question: "How long does FCL shipping take?",
-        answer: "Transit time depends on the route but is generally faster than LCL due to direct shipping and no consolidation."
-    },
-    {
-        question: "Can I track my FCL shipment?",
-        answer: "Yes, we offer regular shipment updates."
-    },
-    {
-        question: "What size containers are available in FCL shipping?",
-        answer: "Standard 20-ft and 40-ft containers, plus special types like High Cube, Open Top, and Reefers"
-    },
-    {
-        question: "How can I get a quote for your services and FCL?",
-        answer: "Simply fill out the \"Quotation by Request\" form on our website. Our team will promptly review your request and send you a tailored quotation via email."
-    },
-    {
-        question: "What makes Moon Navigation and Trading Co. a trusted partner for FCL shipping?",
-        answer: "Comprehensive Service: From booking to delivery, Industry Expertise: Specialized handling of reefer and DG cargo, Global Network: Strong partnerships with leading ocean carriers, 24/7 Support: Real-time updates and proactive issue resolution, Cost Efficiency: Competitive rates and optimized logistics"
-    },
-
-    // Reefer Container (Refrigerated) Shipping Services
-    {
-        question: "What is a reefer container?",
-        answer: "A reefer container is a refrigerated shipping container designed to transport temperature-sensitive cargo. It maintains specific temperature and humidity conditions throughout the journey using built-in climate control systems."
-    },
-    {
-        question: "What types of cargo require reefer containers?",
-        answer: "We handle a wide range of temperature-sensitive goods, including: Perishable Foods -- Fruits, vegetables, seafood, meat, dairy, ice cream, Pharmaceuticals -- Vaccines, biologics, temperature-controlled drugs, Chemical Products -- Temperature-sensitive industrial materials, Floral Products -- Flowers, plants, and horticultural items, Beverages -- Wine, dairy drinks, and juices"
-    },
-    {
-        question: "What temperature ranges do your reefer containers support?",
-        answer: "Our units can maintain temperatures from -30°C to +30°C, with options for: Humidity control systems, Air ventilation for fresh produce, Multi-zone temperature settings for different cargo types"
-    },
-    {
-        question: "How is temperature monitored during shipment?",
-        answer: "We ensure cold chain integrity through: Continuous digital temperature tracking, 24/7 monitoring with alerts, Pre-Trip Inspections (PTIs) before loading, On-call technical support throughout transit"
-    },
-    {
-        question: "What makes Moon Navigation and Trading Co. different for reefer shipping?",
-        answer: "Modern reefer fleet with precision climate control, Cold chain compliance across all global standards, Full-service logistics: pickup, warehousing, shipping, delivery, Cold storage and consolidation hubs in key locations, 24/7 cargo supervision and proactive coordination"
-    },
-    {
-        question: "Can you handle door-to-door reefer transport?",
-        answer: "Yes. We offer fully managed door-to-door refrigerated logistics, minimizing handovers and maintaining an unbroken cold chain from your facility to the end customer."
-    },
-    {
-        question: "Do you provide cold storage and refrigerated warehousing?",
-        answer: "Absolutely. We offer: Short- and long-term temperature-controlled storage, Strategic cold storage locations near major ports, Consolidation and distribution services"
-    },
-    {
-        question: "Can you handle multimodal reefer transport?",
-        answer: "Absolutely. We coordinate sea, air, and inland transport with: Seamless temperature control across all modes, Efficient transitions without thermal disruptions, Custom options based on urgency, cost, and destination"
-    },
-    {
-        question: "Is my temperature-sensitive cargo insured?",
-        answer: "Yes, we provide specialized reefer cargo insurance that covers: Temperature deviation losses, Equipment malfunctions, Spoilage due to unforeseen delays, Claims assistance and loss prevention planning"
-    },
-    {
-        question: "Can you ship hazardous or regulated goods in reefer containers?",
-        answer: "Yes. We are certified to handle IMO/IMDG-class dangerous goods that require temperature control. Our services include: Proper documentation & labeling, Safety-compliant packaging, Full regulatory compliance throughout the cold chain"
-    },
-    {
-        question: "Do I receive reefer shipment updates?",
-        answer: "Yes. We provide: Regular shipment updates on cargo location and temperature status, Compliance-ready temperature and transit logs, Timely communication from our operations team at each critical stage of the journey."
-    },
-    {
-        question: "Can reefer containers freeze cargo?",
-        answer: "Yes, they can reach temperatures as low as -30°C, ideal for frozen goods."
-    },
-    {
-        question: "How long can reefer containers keep cargo cold?",
-        answer: "As long as needed---reefer units are powered during transit and at terminals to maintain set conditions."
-    },
-    {
-        question: "Do reefer containers need special documentation?",
-        answer: "Yes, especially for perishable goods or DG cargo---our team handles all necessary permits and customs compliance."
-    },
-    {
-        question: "What are the sizes available for reefer containers?",
-        answer: "Common sizes include 20ft and 40ft, with high-cube options for extra capacity."
-    },
-    {
-        question: "How can I get a shipping quote?",
-        answer: "To request a quote, simply fill out the Quotation Request Form on our website. Our team will review your request and respond promptly with a tailored solution and pricing via email."
-    },
-    {
-        question: "Why choose Moon Navigation and Trading Co. for reefer container shipments?",
-        answer: "We deliver more than just refrigerated shipping---we ensure the integrity of your cargo with: Modern reefer fleet featuring advanced temperature & humidity controls, Cold chain expertise from pickup to delivery, Customized routing to preserve shelf life and reduce transit time, Regulatory compliance for perishable, pharmaceutical, and DG goods, Reliable support & updates throughout every step of the shipment. Your sensitive cargo deserves specialized care---and that is our standard."
-    },
-
-    // Dangerous Goods (DG) Container Shipments
-    {
-        question: "What are Dangerous Goods (DG)?",
-        answer: "Dangerous Goods are substances or items that pose a risk to health, safety, property, or the environment during transport. These include explosives, flammable substances, toxic chemicals, radioactive materials, and more, and are regulated under frameworks such as the IMDG Code, ADR, and IATA."
-    },
-    {
-        question: "What are the classifications of dangerous goods?",
-        answer: "Dangerous goods are categorized into 9 hazard classes: 1. Explosives, 2. Gases, 3. Flammable Liquids, 4. Flammable Solids and Reactive Substances, 5. Oxidizing Substances and Organic Peroxides, 6. Toxic and Infectious Substances, 7. Radioactive Materials, 8. Corrosive Substances, 9. Miscellaneous Dangerous Goods"
-    },
-    {
-        question: "What documentation is required for transporting dangerous cargo?",
-        answer: "Required documents include: Material Safety Data Sheet (MSDS), Dangerous Goods Declaration (DGD), UN identification numbers, Hazard class labels and placards, Certified packaging documentation. Moon Navigation and Trading Co. manages all paperwork to ensure full international compliance."
-    },
-    {
-        question: "How is dangerous cargo packaged and labelled?",
-        answer: "Cargo must be: Packaged in certified containers specific to the hazard class (e.g., explosion-proof drums, cryo tanks). Labels must clearly display: UN number, Hazard class label, Handling instructions. We strictly adhere to IMDG, IATA, and ADR packaging and labeling standards."
-    },
-    {
-        question: "What safety measures do you take during transport?",
-        answer: "We implement multiple layers of safety: Hazmat-trained personnel, Specialized vehicles and containers, Emergency kits and protocols, Safety route planning and risk assessments, Compliance audits and monitoring systems"
-    },
-    {
-        question: "Can you transport radioactive or biohazard materials?",
-        answer: "Yes. We are licensed to transport: Class 7 -- Radioactive materials, Class 6.2 -- Infectious substances. We use shielded containers and follow strict health, radiation, and biohazard safety regulations."
-    },
-    {
-        question: "What happens in the event of an emergency or spill?",
-        answer: "Our team is trained in full emergency response procedures, including: On-site containment with spill kits, Fire safety and medical readiness, Immediate notification to authorities, Coordinated environmental cleanup if required"
-    },
-    {
-        question: "What international regulations do you follow?",
-        answer: "We comply with: IMDG Code (International Maritime Dangerous Goods), IATA DGR (Dangerous Goods Regulations by Air), ADR (European Agreement concerning the International Carriage of Dangerous Goods by Road), Local and international port and customs requirements in each country of operation."
-    },
-    {
-        question: "Can you provide end-to-end transport solutions for hazardous cargo?",
-        answer: "Yes. We offer full project handling, including: Route surveys and risk assessment, Certified packaging and labeling, Customs clearance and documentation, Multimodal transport (sea, road, air), Delivery to destination."
-    },
-    {
-        question: "Why choose Moon Navigation and Trading Co. for dangerous cargo transport?",
-        answer: "Certified compliance with global safety standards, Expertise in all nine classes of dangerous goods, Tailored transport strategies for high-risk cargo, Dedicated support for customs and regulatory hurdles, Reliable global network of carriers and agents, Focus on safety, compliance, and risk mitigation"
-    },
-    {
-        question: "How do I know if my cargo is classified as hazardous?",
-        answer: "Check the product's MSDS or consult our team with product specifications. We'll verify its classification under relevant regulations (IMDG, IATA, ADR)."
-    },
-    {
-        question: "Can you assist with Dangerous Goods training or certification?",
-        answer: "Yes. We offer guidance and partner training programs for companies that frequently handle or ship DG cargo, including packaging teams and logistics staff."
-    },
-    {
-        question: "What qualifies as dangerous goods in shipping?",
-        answer: "Dangerous goods include items or substances that can pose a risk during transport, such as flammable liquids, gases, corrosives, explosives, toxic materials, and radioactive substances. They are classified and regulated under international frameworks like the IMDG Code, ADR, and IATA."
-    },
-    {
-        question: "What is the IMDG Code and why is it important?",
-        answer: "The IMDG (International Maritime Dangerous Goods) Code is a global standard developed by the IMO to ensure the safe transport of hazardous goods by sea. It outlines packaging, labeling, handling, and stowage requirements for DG cargo."
-    },
-    {
-        question: "How are dangerous goods packed for container shipping?",
-        answer: "DG cargo must be packed in certified, UN-approved packaging that prevents leaks, damage, or contamination. Each package must be labeled with the correct hazard class, UN number, and handling symbols, and secured inside the container according to stowage rules."
-    },
-    {
-        question: "What documents are required to ship dangerous goods internationally?",
-        answer: "Common documentation includes: Dangerous Goods Declaration (DGD), Material Safety Data Sheet (MSDS), Container Packing Certificate (CPC), CTU (Cargo Transport Units) Checklist, Permits from relevant port/customs authorities"
-    },
-    {
-        question: "Can you ship dangerous goods by air or road?",
-        answer: "Yes, dangerous goods can be transported by air (IATA DGR) or road (ADR) with proper documentation, compliant packaging, trained staff, and carrier authorization. Each mode has its own handling rules and safety regulations."
-    },
-    {
-        question: "What happens if DG cargo is not properly declared?",
-        answer: "Undeclared or improperly labeled dangerous goods can lead to: Shipment delays or rejections, Heavy fines and legal penalties, Safety hazards to crews and vessels, Port or customs authority blacklisting"
-    },
-    {
-        question: "Who is responsible for ensuring DG compliance?",
-        answer: "The shipper is primarily responsible for accurate classification, packaging, labeling, and documentation. However, freight forwarders, carriers, and customs agents also share responsibility for checking compliance throughout the logistics chain."
-    },
-    {
-        question: "How can I request a Dangerous Goods (DG) container quote?",
-        answer: "To request a DG container quote, fill in our quotation form, and our team will respond shortly with a tailored offer Via email."
-    },
-    {
-        question: "Why choose Moon Navigation and Trading Co. for DG container shipments?",
-        answer: "Full compliance with international safety regulations, Experienced team trained in hazardous cargo handling, Wide range of certified container and equipment options, Transparent documentation and routing support, Proven reliability in managing sensitive and complex DG cargo"
     },
 
     // Standard Dry Container (FCL) Shipments
     {
         question: "What is a standard dry container?",
-        answer: "A standard dry container is a fully enclosed, weatherproof steel container used for transporting general, non-temperature-sensitive cargo. It is the most used container in global shipping due to its versatility, security, and cost-effectiveness."
+        answer: "A standard dry container is a fully enclosed, weatherproof steel container used for transporting general, non-temperature-sensitive cargo. It is the most used container in global shipping due to its versatility, security, and cost-effectiveness.",
+        category: "standard-dry-container"
     },
     {
         question: "What type of cargo is suitable for standard dry containers?",
-        answer: "Standard dry containers are ideal for: Palletized goods, Consumer products, Furniture and home appliances, Textiles and garments, Electronics, Non-perishable food and beverages, Construction materials, Office supplies and industrial parts"
+        answer: "Standard dry containers are ideal for: Palletized goods, Consumer products, Furniture and home appliances, Textiles and garments, Electronics, Non-perishable food and beverages, Construction materials, Office supplies and industrial parts",
+        category: "standard-dry-container"
     },
     {
         question: "What container sizes are available?",
-        answer: "We offer both: 20-foot (20ft) containers --- typically for smaller shipments or heavier cargo, 40-foot (40ft) containers --- ideal for bulkier or high-volume shipments"
+        answer: "We offer both: 20-foot (20ft) containers --- typically for smaller shipments or heavier cargo, 40-foot (40ft) containers --- ideal for bulkier or high-volume shipments",
+        category: "standard-dry-container"
     },
     {
         question: "What industries commonly use your dry container service?",
@@ -2260,15 +1385,18 @@ const defaultFAQs: FAQItem[] = [
     // Oversized Container Shipping
     {
         question: "What is considered oversized cargo?",
-        answer: "Oversized cargo refers to any shipment that exceeds the standard dimensions or weight limits of a conventional 20ft or 40ft shipping container. This includes cargo that is too wide, tall, long, or heavy to fit in an enclosed container."
+        answer: "Oversized cargo refers to any shipment that exceeds the standard dimensions or weight limits of a conventional 20ft or 40ft shipping container. This includes cargo that is too wide, tall, long, or heavy to fit in an enclosed container.",
+        category: "oversized-container-shipping"
     },
     {
         question: "What types of containers are used for oversized cargo?",
-        answer: "We use flat racks, open-top containers, and platform containers, depending on the size and nature of your cargo. Each is designed to handle specific oversized dimensions or loading needs."
+        answer: "We use flat racks, open-top containers, and platform containers, depending on the size and nature of your cargo. Each is designed to handle specific oversized dimensions or loading needs.",
+        category: "oversized-container-shipping"
     },
     {
         question: "How do I know if my cargo qualifies as oversized?",
-        answer: "You can contact us with your cargo's dimensions, weight, and specifications. Our logistics experts will assess the best transport method and whether it qualifies as oversized or requires breakbulk shipping."
+        answer: "You can contact us with your cargo's dimensions, weight, and specifications. Our logistics experts will assess the best transport method and whether it qualifies as oversized or requires breakbulk shipping.",
+        category: "oversized-container-shipping"
     },
     {
         question: "What industries typically ship oversized cargo?",
@@ -2302,15 +1430,18 @@ const defaultFAQs: FAQItem[] = [
     // Out-of-Gauge (OOG) Cargo Transportation
     {
         question: "What is Out-of-Gauge (OOG) cargo?",
-        answer: "OOG cargo refers to shipments that exceed the standard dimensions of a shipping container in height, width, or length. These goods require special containers and transport methods, as they cannot fit inside standard enclosed containers."
+        answer: "OOG cargo refers to shipments that exceed the standard dimensions of a shipping container in height, width, or length. These goods require special containers and transport methods, as they cannot fit inside standard enclosed containers.",
+        category: "oog"
     },
     {
         question: "What types of OOG cargo do you handle?",
-        answer: "We transport a wide range of oversized cargo, including project cargo, industrial machinery, construction equipment, turbines, transformers, military equipment, and aerospace components."
+        answer: "We transport a wide range of oversized cargo, including project cargo, industrial machinery, construction equipment, turbines, transformers, military equipment, and aerospace components.",
+        category: "oog"
     },
     {
         question: "What specialized equipment do you use for OOG cargo?",
-        answer: "Our fleet includes flat rack and open-top containers, modular and hydraulic trailers, heavy-lift cranes, lifting gear, and RORO (Roll-On/Roll-Off) solutions for self-propelled machinery."
+        answer: "Our fleet includes flat rack and open-top containers, modular and hydraulic trailers, heavy-lift cranes, lifting gear, and RORO (Roll-On/Roll-Off) solutions for self-propelled machinery.",
+        category: "oog"
     },
     {
         question: "How do you ensure the cargo is safe during transport?",
@@ -2344,15 +1475,18 @@ const defaultFAQs: FAQItem[] = [
     // Inland Container Transportation
     {
         question: "What types of containers do you transport?",
-        answer: "We handle all standard and specialized containers, including 20ft, 40ft, and 45ft containers, high-cube, reefer, flat rack, open-top, and dangerous goods (DG) containers."
+        answer: "We handle all standard and specialized containers, including 20ft, 40ft, and 45ft containers, high-cube, reefer, flat rack, open-top, and dangerous goods (DG) containers.",
+        category: "inland-container-transportation"
     },
     {
         question: "Do you offer full container (FCL) and less-than-container (LCL) transport?",
-        answer: "Yes. We offer both FCL and LCL options, with dedicated and consolidated trucking solutions designed to reduce costs and maintain cargo security."
+        answer: "Yes. We offer both FCL and LCL options, with dedicated and consolidated trucking solutions designed to reduce costs and maintain cargo security.",
+        category: "inland-container-transportation"
     },
     {
         question: "Can you handle oversized or heavy cargo inland?",
-        answer: "Absolutely. We use low-bed trailers, multi-axle trucks, and hydraulic modular trailers to safely transport heavy lift, out-of-gauge, and project cargo."
+        answer: "Absolutely. We use low-bed trailers, multi-axle trucks, and hydraulic modular trailers to safely transport heavy lift, out-of-gauge, and project cargo.",
+        category: "inland-container-transportation"
     },
     {
         question: "Do you transport reefer containers?",
@@ -2386,15 +1520,18 @@ const defaultFAQs: FAQItem[] = [
     // Container Handling, Stevedoring & Storage
     {
         question: "What is container handling?",
-        answer: "Container handling involves the transfer of shipping containers between ships, trucks, trains, or port storage facilities using cranes, forklifts, and other specialized equipment to ensure efficient and safe movement."
+        answer: "Container handling involves the transfer of shipping containers between ships, trucks, trains, or port storage facilities using cranes, forklifts, and other specialized equipment to ensure efficient and safe movement.",
+        category: "container-handling-stevedoring-storage"
     },
     {
         question: "What is stevedoring?",
-        answer: "Stevedoring is the process of loading and unloading cargo from ships at ports. It requires trained crews and specialized equipment to handle various types of cargo, including containers, bulk goods, breakbulk, and project cargo."
+        answer: "Stevedoring is the process of loading and unloading cargo from ships at ports. It requires trained crews and specialized equipment to handle various types of cargo, including containers, bulk goods, breakbulk, and project cargo.",
+        category: "container-handling-stevedoring-storage"
     },
     {
         question: "What storage options do you offer for containers and cargo?",
-        answer: "We provide both short-term and long-term storage solutions, including: Container yard storage for FCL, LCL, and reefer containers, Bonded warehousing for duty-free storage, Temperature-controlled and hazardous goods storage, Breakbulk and heavy lift cargo storage"
+        answer: "We provide both short-term and long-term storage solutions, including: Container yard storage for FCL, LCL, and reefer containers, Bonded warehousing for duty-free storage, Temperature-controlled and hazardous goods storage, Breakbulk and heavy lift cargo storage",
+        category: "container-handling-stevedoring-storage"
     },
     {
         question: "Do you handle specialized containers like refrigerated or hazardous cargo?",
@@ -2428,15 +1565,18 @@ const defaultFAQs: FAQItem[] = [
     // Ship Agency Services
     {
         question: "What is a Proforma Disbursement Account (PDA)?",
-        answer: "A PDA is a detailed estimate of all anticipated costs associated with a vessel's port call or transit. It includes charges such as port dues, pilotage, towage, stevedoring, customs, and agency fees, allowing shipowners and operators to budget and plan effectively."
+        answer: "A PDA is a detailed estimate of all anticipated costs associated with a vessel's port call or transit. It includes charges such as port dues, pilotage, towage, stevedoring, customs, and agency fees, allowing shipowners and operators to budget and plan effectively.",
+        category: "ship-agency-services"
     },
     {
         question: "Why is a PDA important?",
-        answer: "A PDA helps you: Accurately forecast port-related expenses, Control costs and approve expenditures in advance, Avoid surprises with clear and transparent pricing, Make informed decisions for operational efficiency"
+        answer: "A PDA helps you: Accurately forecast port-related expenses, Control costs and approve expenditures in advance, Avoid surprises with clear and transparent pricing, Make informed decisions for operational efficiency",
+        category: "ship-agency-services"
     },
     {
         question: "How accurate are your PDAs?",
-        answer: "Our PDAs are based on official port tariffs and real-time market data. We work closely with port authorities, service providers, and customs officials to ensure the estimates reflect current conditions. Updates are made in real-time if circumstances change."
+        answer: "Our PDAs are based on official port tariffs and real-time market data. We work closely with port authorities, service providers, and customs officials to ensure the estimates reflect current conditions. Updates are made in real-time if circumstances change.",
+        category: "ship-agency-services"
     },
     {
         question: "What's the difference between a PDA and a Final Disbursement Account (FDA)?",
@@ -2482,15 +1622,18 @@ const defaultFAQs: FAQItem[] = [
     // Suez Canal Transit & Marine Agency Services
     {
         question: "What services do you provide for Suez Canal transits?",
-        answer: "We offer end-to-end transit solutions, including: Pre-transit coordination with the Suez Canal Authority (SCA), Documentation and toll estimation, On-transit pilotage and real-time vessel monitoring, Emergency response support, Post-passage disbursement finalization and next-port coordination"
+        answer: "We offer end-to-end transit solutions, including: Pre-transit coordination with the Suez Canal Authority (SCA), Documentation and toll estimation, On-transit pilotage and real-time vessel monitoring, Emergency response support, Post-passage disbursement finalization and next-port coordination",
+        category: "suez-canal"
     },
     {
         question: "How do you coordinate with the Suez Canal Authority (SCA)?",
-        answer: "We manage direct communication with the SCA to: Reserve transit slots, Ensure timely scheduling, Submit required documentation and payments. This helps avoid delays and ensures a smooth passage for your vessel."
+        answer: "We manage direct communication with the SCA to: Reserve transit slots, Ensure timely scheduling, Submit required documentation and payments. This helps avoid delays and ensures a smooth passage for your vessel.",
+        category: "suez-canal"
     },
     {
         question: "What kind of documentation is required for Suez Canal transit?",
-        answer: "We handle all necessary documents, including: Transit permits, Vessel particulars, Customs clearance, Crew documentation. We ensure full compliance with local and international maritime regulations."
+        answer: "We handle all necessary documents, including: Transit permits, Vessel particulars, Customs clearance, Crew documentation. We ensure full compliance with local and international maritime regulations.",
+        category: "suez-canal"
     },
     {
         question: "How do you estimate and manage Suez Canal toll fees?",
@@ -2524,17 +1667,21 @@ const defaultFAQs: FAQItem[] = [
         question: "Why should I choose Moon Navigation and Trading Co. for Suez Canal transit?",
         answer: "• All-inclusive, end-to-end service\n• Local expertise and direct coordination with SCA\n• 24/7 operational and emergency support\n• Transparent pricing and toll estimation\n• Custom solutions for complex transit requirements\nWe simplify the complex Suez Canal process and deliver efficient, compliant, and cost-effective passage solutions."
     },
+    // Crew Management
     {
         question: "What is crew management in the maritime industry?",
-        answer: "Crew management involves the recruitment, deployment, administration, and support of seafarers. It includes crew sign-on/sign-off procedures, training, travel arrangements, immigration clearance, and compliance with international maritime regulations."
+        answer: "Crew management involves the recruitment, deployment, administration, and support of seafarers. It includes crew sign-on/sign-off procedures, training, travel arrangements, immigration clearance, and compliance with international maritime regulations.",
+        category: "crew-management"
     },
     {
         question: "What crew management services do you offer?",
-        answer: "We provide comprehensive services, including:\n• Crew sign-on (onboarding) and sign-off (disembarkation)\n• Visa and immigration assistance\n• Travel and accommodation coordination\n• Port clearance and access\n• Emergency crew change solutions\n• Medical assistance (if required)"
+        answer: "We provide comprehensive services, including:\n• Crew sign-on (onboarding) and sign-off (disembarkation)\n• Visa and immigration assistance\n• Travel and accommodation coordination\n• Port clearance and access\n• Emergency crew change solutions\n• Medical assistance (if required)",
+        category: "crew-management"
     },
     {
         question: "How do you ensure regulatory compliance during crew changes?",
-        answer: "All our procedures align with:\n• IMO (International Maritime Organization) guidelines\n• MLC 2006 (Maritime Labour Convention) standards\n• Flag state and local port authority regulations\nWe verify documents, medical fitness, and contract compliance to ensure lawful and safe crew handling."
+        answer: "All our procedures align with:\n• IMO (International Maritime Organization) guidelines\n• MLC 2006 (Maritime Labour Convention) standards\n• Flag state and local port authority regulations\nWe verify documents, medical fitness, and contract compliance to ensure lawful and safe crew handling.",
+        category: "crew-management"
     },
     {
         question: "What documentation is required for crew sign-on?",
@@ -2564,17 +1711,21 @@ const defaultFAQs: FAQItem[] = [
         question: "What makes Moon Navigation and Trading Co. different?",
         answer: "• Full-service coverage: From documentation to repatriation\n• Strict compliance focus: IMO, MLC 2006, port state regulations\n• Emergency readiness: Fast response for unforeseen crew issues\n• Proven expertise: Years of experience across multiple vessel types\n• 24/7 support: Reliable, round-the-clock assistance"
     },
+    // Transit Spare Parts
     {
         question: "What are transit spare parts?",
-        answer: "Transit spare parts are critical replacement components transported to vessels or maintenance sites to ensure continued operations. They are essential for timely repairs, upgrades, or replacements while the vessel is docked or operating."
+        answer: "Transit spare parts are critical replacement components transported to vessels or maintenance sites to ensure continued operations. They are essential for timely repairs, upgrades, or replacements while the vessel is docked or operating.",
+        category: "spare-parts"
     },
     {
         question: "Do you handle spare parts arriving by air or sea?",
-        answer: "Yes, we coordinate the reception of spare parts arriving by both air and sea. We work closely with airports, ports, courier services, freight forwarders, and shipping lines to ensure smooth handling and delivery."
+        answer: "Yes, we coordinate the reception of spare parts arriving by both air and sea. We work closely with airports, ports, courier services, freight forwarders, and shipping lines to ensure smooth handling and delivery.",
+        category: "spare-parts"
     },
     {
         question: "Can you deliver spare parts offshore?",
-        answer: "Absolutely. We provide both portside and offshore delivery, including ship-to-ship transfers if required, ensuring the spare parts reach your vessel wherever it is located."
+        answer: "Absolutely. We provide both portside and offshore delivery, including ship-to-ship transfers if required, ensuring the spare parts reach your vessel wherever it is located.",
+        category: "spare-parts"
     },
     {
         question: "Do you offer customs clearance services for imported spare parts?",
@@ -2604,17 +1755,21 @@ const defaultFAQs: FAQItem[] = [
         question: "Why should I choose Moon Navigation and Trading Co. for transit spare parts?",
         answer: "Because we offer:\n• Fast and reliable delivery\n• Full customs clearance handling\n• Offshore and port delivery capability\n• 24/7 operational support\n• Real-time tracking and transparent communication"
     },
+    // Bunkering and Oil Supply
     {
         question: "What ports do you provide bunkering and oil supply services at?",
-        answer: "We offer bunkering and oil supply services at all Egyptian ports and offshore locations. Services at international ports can also be arranged upon request."
+        answer: "We offer bunkering and oil supply services at all Egyptian ports and offshore locations. Services at international ports can also be arranged upon request.",
+        category: "bunkering"
     },
     {
         question: "What types of marine fuel do you supply?",
-        answer: "We supply a wide range of marine fuels including:\n• Very Low Sulfur Fuel Oil (VLSFO) - IMO 2020 compliant\n• Marine Gas Oil (MGO) and Marine Diesel Oil (MDO)\n• Heavy Fuel Oil (HFO)\n• Liquefied Natural Gas (LNG) and other alternative fuels"
+        answer: "We supply a wide range of marine fuels including:\n• Very Low Sulfur Fuel Oil (VLSFO) - IMO 2020 compliant\n• Marine Gas Oil (MGO) and Marine Diesel Oil (MDO)\n• Heavy Fuel Oil (HFO)\n• Liquefied Natural Gas (LNG) and other alternative fuels",
+        category: "bunkering"
     },
     {
         question: "What bunkering methods are available?",
-        answer: "We offer several bunkering methods to suit your vessel's situation:\n• Ship-to-Ship (STS) Transfer\n• Truck-to-Ship (TTS) Delivery\n• Pipeline Bunkering at port terminals"
+        answer: "We offer several bunkering methods to suit your vessel's situation:\n• Ship-to-Ship (STS) Transfer\n• Truck-to-Ship (TTS) Delivery\n• Pipeline Bunkering at port terminals",
+        category: "bunkering"
     },
     {
         question: "Are your fuel and oil supplies compliant with IMO and environmental regulations?",
@@ -2644,21 +1799,26 @@ const defaultFAQs: FAQItem[] = [
         question: "How do I request a quote for bunkering, oil supply, or chandlery services?",
         answer: "Simply fill out our Quotation by Request form online. Once submitted, our team reviews your request and sends a customized quote directly to your email with accurate pricing and delivery options."
     },
+    // Special Services
     {
         question: "What types of shipments qualify for Special Services?",
-        answer: "Special Services are ideal for shipments requiring non-standard handling, including fragile cargo, oversized items, high-value goods, time-sensitive deliveries, temperature-controlled transport, and hazardous materials."
+        answer: "Special Services are ideal for shipments requiring non-standard handling, including fragile cargo, oversized items, high-value goods, time-sensitive deliveries, temperature-controlled transport, and hazardous materials.",
+        category: "special-services"
     },
     {
         question: "How do I request a quote for Special Services?",
-        answer: "You can request a quote by filling out our simple Quotation by Request form. Our team will assess your specific needs and send you a customized quotation directly to your email."
+        answer: "You can request a quote by filling out our simple Quotation by Request form. Our team will assess your specific needs and send you a customized quotation directly to your email.",
+        category: "special-services"
     },
     {
         question: "Are your Special Services available internationally?",
-        answer: "Yes. Moon Navigation and Trading Co. offers Special Services for both domestic and international shipments, ensuring compliance with global regulations."
+        answer: "Yes. Moon Navigation and Trading Co. offers Special Services for both domestic and international shipments, ensuring compliance with global regulations.",
+        category: "special-services"
     },
     {
         question: "Do you provide customized packaging options?",
-        answer: "Absolutely. We offer tailored packaging solutions designed to ensure product safety and integrity throughout transit, including shock-resistant, temperature-controlled, and IMO-compliant packaging."
+        answer: "Absolutely. We offer tailored packaging solutions designed to ensure product safety and integrity throughout transit, including shock-resistant, temperature-controlled, and IMO-compliant packaging.",
+        category: "popular"
     },
     {
         question: "Can Special Services be used for urgent or expedited shipments?",
@@ -2686,69 +1846,83 @@ const defaultFAQs: FAQItem[] = [
     }
 
 ];
+//Categories done
 
-export default function FAQSearch() {
+export default function FAQSearch({ category }: { category?: string }) {
     const [search, setSearch] = useState("");
     const faqs = defaultFAQs;
-
+  
     const filteredFAQs = useMemo(() => {
-        if (!search.trim()) return [];
-        const lower = search.toLowerCase();
-        const filtered = faqs.filter(
-            (faq) =>
-                faq.question.toLowerCase().includes(lower) ||
-                faq.answer.toLowerCase().includes(lower)
-        );
-        console.log('Search term:', search);
-        console.log('Filtered results:', filtered.length);
-        return filtered;
+      if (!search.trim()) return [];
+      const lower = search.toLowerCase();
+      return faqs.filter(
+        (faq) =>
+          faq.question.toLowerCase().includes(lower) ||
+          faq.answer.toLowerCase().includes(lower)
+      );
     }, [search, faqs]);
-
+  
+    // Filter by category for default display
+    const categoryFAQs = useMemo(() => {
+      // If no category is provided, show popular questions
+      const targetCategory = category || "popular";
+      return faqs.filter(faq => faq.category === targetCategory).slice(0, 3);
+    }, [faqs, category]);
+  
     return (
-        <div id="faq" className="w-full bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6">
-            <div className="text-center mb-6">
-                <h2 className="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
-                <Input
-                    type="text"
-                    placeholder="Search for answers..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                    className="mb-6"
-                />
-            </div>
+      <div id="faq" className="w-full max-w-7xl mx-auto  dark:bg-gray-900 rounded-lg shadow-lg p-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <div className="text-start mb-6">
+          <Link href="/faq">
+            <h2 className="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
+          </Link> 
 
-            {search.trim() ? (
-                <div className="max-h-[300px] overflow-y-auto">
-                    {filteredFAQs.length > 0 ? (
-                        <Accordion type="single" collapsible className="w-full">
-                            {filteredFAQs.map((faq, idx) => (
-                                <AccordionItem value={`faq-${idx}`} key={idx}>
-                                    <AccordionTrigger>{faq.question}</AccordionTrigger>
-                                    <AccordionContent>{faq.answer}</AccordionContent>
-                                </AccordionItem>
-                            ))}
-                        </Accordion>
-                    ) : (
-                        <div className="text-muted-foreground py-8 text-center">
-                            No answers found for "{search}"
-                        </div>
-                    )}
-                </div>
+          <Input
+            type="text"
+            placeholder="Search for answers..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="mb-6"
+          />
+        {category ? (
+          <p className="text-muted-foreground text-sm mb-4">
+            Related Questions:
+          </p>
+        ) : (
+          <p className="text-muted-foreground text-sm mb-4">
+            Popular Questions: 
+          </p>
+        )}
+            </div>
+  
+        {search.trim() ? (
+          <div className="max-h-[300px] overflow-y-auto">
+            {filteredFAQs.length > 0 ? (
+              <Accordion type="single" collapsible className="w-full">
+                {filteredFAQs.map((faq, idx) => (
+                  <AccordionItem value={`faq-${idx}`} key={idx}>
+                    <AccordionTrigger>{faq.question}</AccordionTrigger>
+                    <AccordionContent>{faq.answer}</AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             ) : (
-                <div className="max-h-[300px] overflow-y-auto">
-                    <Accordion type="single" collapsible className="w-full">
-                        {faqs
-                            .sort(() => Math.random() - 0.5)
-                            .slice(0, 3)
-                            .map((faq, idx) => (
-                                <AccordionItem value={`faq-${idx}`} key={idx}>
-                                    <AccordionTrigger>{faq.question}</AccordionTrigger>
-                                    <AccordionContent>{faq.answer}</AccordionContent>
-                                </AccordionItem>
-                            ))}
-                    </Accordion>
-                </div>
+              <div className="text-muted-foreground py-8 text-center">
+                No answers found for "{search}"
+              </div>
             )}
-        </div>
+          </div>
+        ) : (
+          <div className="max-h-[300px] overflow-y-auto">
+            <Accordion type="single" collapsible className="w-full">
+              {categoryFAQs.map((faq, idx) => (
+                <AccordionItem value={`faq-${idx}`} key={idx}>
+                  <AccordionTrigger>{faq.question}</AccordionTrigger>
+                  <AccordionContent>{faq.answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        )}
+      </div>
     );
-}
+  }

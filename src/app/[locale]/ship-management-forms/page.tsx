@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import ShipManagementForm from '@/components/ship-management-form';
 import Spinner from '@/components/spinner';
 import { sendFormEmail } from '@/utils/email-helper';
+import FAQSearch from '@/components/faq';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -115,6 +116,7 @@ const Page: React.FC = () => {
                 <p className=''>{t('ship-management-p')}</p>
             </div>
             <FormTabs tabData={tabData} />
+            <FAQSearch category="ship-management" />
         </div>
     );
 };

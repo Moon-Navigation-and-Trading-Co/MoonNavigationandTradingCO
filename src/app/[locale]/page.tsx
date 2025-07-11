@@ -89,7 +89,7 @@ export default function Index() {
                     <div className="relative flex items-center rounded-3xl bg-home-image bg-center bg-cover w-full h-full aspect-auto md:aspect-video shadow-black shadow-xl">
                         <div className="w-full h-full z-[10] top-[1px] bg-black-overlay rounded-3xl absolute"></div>
                         <div className="flex md:px-12 px-6 flex-col justify-center z-[50] gap-4">
-                            <h1 className="text-[#e4e4e4] w-full text-left font-semibold text-0.5xl sm:text-1xl md:text-2xl max-w-[650px]">{t("slogan")}</h1>
+                            <h1 className="text-[#e4e4e4] w-full text-left font-raleway font-regular text-2xl max-w-[800px]">{t("slogan")}</h1>
                             <h1 className="font-light text-white text-start w-[200px] md:w-full text-sm">{t("tagline")}</h1>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ export default function Index() {
                     <div className="w-full grid md:grid-cols-4 my-10 lg:grid-cols-4 gap-10 lg:gap-24 px-4">
                         {/* First Set of Boxes || First Column */}
                         <div className="grid grid-cols-3 md:grid-cols-2  col-span-2 gap-4">
-                            <div className="rounded-3xl shadow-md shadow-black bg-[#0b3530] aspect-square flex items-center justify-center relative overflow-hidden">
+                            <div className="rounded-3xl shadow-md shadow-black bg-primary dark:bg-green-900 aspect-square flex items-center justify-center relative overflow-hidden">
                                 <div className="absolute w-full h-full flex items-center justify-center bg-custom-radial">
                                     <Image alt="about us icon" src={"/letter-i.png"} width={70} height={70} />
                                 </div>
@@ -128,7 +128,7 @@ export default function Index() {
                         {/* Second Column */}
                         <div ref={modalRef} className="col-span-2 w-full h-full flex flex-col justify-between">
                             <div>
-                                <h2 className="text-3xl font-semibold pb-16 pt-2 text-foreground">{t("aboutTitle")}</h2>
+                                <h2 className="text-3xl font-raleway font-regular pb-16 pt-2 text-foreground">{t("aboutTitle")}</h2>
                                 <p className="text-muted-foreground text-base pb-10">{t("aboutDescription")}</p>
                             </div>
                             <div className="w-full flex justify-end">
@@ -142,19 +142,19 @@ export default function Index() {
                 </section>
 
                 {/* Get Your Customized Quote Section */}
-                <section id="GetQuote" className="w-full flex flex-col items-center justify-center py-24 px-4 font-raleway">
-                  <div className="w-full max-w-7xl flex flex-col md:flex-row items-center justify-between gap-12 mx-auto">
+                <section id="GetQuote" className="w-full flex flex-col items-start justify-center py-24 px-4 font-raleway">
+                  <div className="w-full max-w-9xl flex flex-col md:flex-row items-start justify-between gap-12 mx-auto">
                     {/* Left: Text */}
                     <div className="flex-1 flex flex-col items-start justify-center max-w-xl">
-                      <h2 className="text-[2.5rem] leading-tight font-extrabold text-[#232B50] mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Get Your Customized Quote Today</h2>
-                      <h3 className="text-xl font-normal text-[#6B6B6B] mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>Effortless Quotation Process—Now Simpler Than Ever!</h3>
-                      <p className="text-base text-[#6B6B6B] mb-4" style={{fontFamily: 'Raleway, sans-serif'}}>
+                      <h2 className="text-[2.5rem] leading-tight font-raleway font-regular text-primary mb-2 text-left">Get Your Customized Quote Today</h2>
+                      <h3 className="text-xl font-raleway font-regular text-muted-foreground mb-8 text-left">Effortless Quotation Process—Now Simpler Than Ever!</h3>
+                      <p className="text-base text-muted-foreground mb-4 text-left font-raleway font-light">
                         Our streamlined quotation process is designed with your convenience in mind. At Moon Navigation and Trading Co., obtaining service quotes has never been easier or faster than with our Quotation by Request system.
                       </p>
-                      <p className="text-base text-[#6B6B6B] mb-4" style={{fontFamily: 'Raleway, sans-serif'}}>
+                      <p className="text-base text-muted-foreground mb-4 text-left font-raleway font-light">
                         By simply filling out a short form that captures your specific service requirements, you can easily initiate your request. Once you have submitted your information, our system ensures it is sent directly to us for prompt attention.
                       </p>
-                      <p className="text-base text-[#6B6B6B] mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>
+                      <p className="text-base text-muted-foreground mb-8 text-left font-raleway font-light">
                         You will receive a customized quotation delivered straight to your email in a timely manner. This effortlessness ensures you can focus on what truly matters while receiving accurate pricing without unnecessary delays.
                       </p>
                       <RequestQuoteButton className="rounded-full px-8 py-3 text-base font-raleway font-medium mt-2" type="button">
@@ -163,8 +163,8 @@ export default function Index() {
                     </div>
                     {/* Right: Image Placeholder */}
                     <div className="flex-1 flex items-center justify-center">
-                      <div className="w-[450px] h-[450px] rounded-[48px] bg-[#e5e7eb] flex items-center justify-center overflow-hidden">
-                        {/* Place your image here. Example: <img src="/your-image.jpg" alt="Quote" className="w-full h-full object-cover rounded-[48px]" /> */}
+                      <div className="w-[450px] h-[450px] rounded-[48px] bg-muted flex items-center justify-center overflow-hidden">
+                        <img src="/quote-illustration.png" alt="Quote" className="w-full h-full object-cover rounded-[48px]" /> 
                       </div>
                     </div>
                   </div>
@@ -172,12 +172,10 @@ export default function Index() {
 
                 {/* Services Section */}
                 <section id="services">
-                    <div className="flex flex-col gap-8 bg-[#E2F1E7 px-2 py-5 rounded-2xl ">
+                    <div className="flex flex-col gap-8 px-2 py-5 rounded-2xl">
                         {/* Transportation Services */}
                         <CarouselAnimation title={t("TransportationServices")} freightTypes={freightTypes} />
                         <TransportationServices />
-
-                        <OtherServices />
                     </div>
                 </section>
 
@@ -185,58 +183,58 @@ export default function Index() {
                 <IndustryCarousel />
 
                 {/* Benefits Section - Overlapping Cards Reference Layout */}
-                <section className="w-full flex flex-col items-center justify-center py-16 px-4 font-raleway relative">
-                  <h2 className="text-4xl font-normal text-[#232B50] text-center mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>Your Benefits with Moon Navigation and Trading Co.</h2>
-                  <h3 className="text-2xl font-light text-[#232B50] text-center mb-12" style={{fontFamily: 'Raleway, sans-serif'}}>Simplified Solutions and Seamless Support</h3>
-                  <div className="w-full max-w-7xl mx-auto min-h-[700px] relative" style={{height: '700px'}}>
-                    {/* Top Row */}
+                <section className="w-full flex flex-col items-start justify-center py-16 px-4 font-raleway relative">
+                  <h2 className="text-4xl font-raleway font-regular text-primary text-left mb-2">Your Benefits with Moon Navigation and Trading Co.</h2>
+                  <h3 className="text-2xl font-raleway font-regular text-primary text-left mb-12">Simplified Solutions and Seamless Support</h3>
+                  <div className="w-full max-w-9xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {/* Card 1: Integrated Maritime Expertise */}
-                    <div className="absolute left-0 top-0 w-[28%] h-[46%] bg-white rounded-[32px] border border-gray-200 shadow-sm p-8 flex flex-col justify-between z-10">
-                      <h4 className="text-lg font-semibold text-[#232B50] mb-3">Integrated Maritime Expertise</h4>
-                      <p className="text-gray-500 text-base">At Moon Navigation and Trading Co., we do not just provide services—we offer complete maritime solutions tailored to your needs. From vessel chartering and container logistics to inland and air freight, our expertise ensures every aspect of your operation is covered. Trust us to deliver reliable, end-to-end support for all your shipping and trading challenges.</p>
+                    <div className="bg-card rounded-[32px] border border-border shadow-sm p-6 flex flex-col justify-between min-h-[400px]">
+                      <h4 className="text-lg font-raleway font-regular text-primary mb-3 text-left">Integrated Maritime Expertise</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed text-left">At Moon Navigation and Trading Co., we do not just provide services—we offer complete maritime solutions tailored to your needs. From vessel chartering and container logistics to inland and air freight, our expertise ensures every aspect of your operation is covered. Trust us to deliver reliable, end-to-end support for all your shipping and trading challenges.</p>
                     </div>
+                    
                     {/* Card 2: Customized Solutions for Long-Term Partners (with image) */}
-                    <div className="absolute left-[25%] top-[-3%] w-[28%] h-[46%] bg-white rounded-[32px] border border-gray-200 shadow-sm flex flex-col justify-start z-20 overflow-hidden">
-                      <div className="w-full h-[44%] bg-gray-200 flex items-center justify-center">
-                        {/* Replace src with your image link */}
-                        <img src="/placeholder1.jpg" alt="Custom Solutions" className="w-full h-full object-cover rounded-t-[32px]" />
+                    <div className="bg-card rounded-[32px] border border-border shadow-sm flex flex-col justify-start overflow-hidden min-h-[400px]">
+                      <div className="w-full h-48 bg-muted flex items-center justify-center">
+                        <img src="/p1.jpg" alt="Custom Solutions" className="w-full h-full object-cover" />
                       </div>
-                      <div className="p-8 pt-4">
-                        <h4 className="text-lg font-semibold text-[#232B50] mb-3">Customized Solutions for Long-Term Partners</h4>
-                        <p className="text-gray-500 text-base">We value partnerships over transactions. That is why we work closely with our clients to understand their unique requirements. With loyalty incentives, bespoke service packages, and strategic planning, we ensure that your business benefits from cost savings and operational efficiency at every step.</p>
+                      <div className="p-6 flex-1 flex flex-col">
+                        <h4 className="text-lg font-semibold text-primary mb-3">Customized Solutions for Long-Term Partners</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed flex-1">We value partnerships over transactions. That is why we work closely with our clients to understand their unique requirements. With loyalty incentives, bespoke service packages, and strategic planning, we ensure that your business benefits from cost savings and operational efficiency at every step.</p>
                       </div>
                     </div>
+                    
                     {/* Card 3: Fast, Reliable, and Accurate Quotations */}
-                    <div className="absolute left-[50%] top-0 w-[25%] h-[46%] bg-white rounded-[32px] border border-gray-200 shadow-sm p-8 flex flex-col justify-between z-10">
-                      <h4 className="text-lg font-semibold text-[#232B50] mb-3">Fast, Reliable, and Accurate Quotations</h4>
-                      <p className="text-gray-500 text-base">Moon Navigation and Trading Co. is committed to delivering clarity and precision in every transaction. With a straightforward quotation process, we provide detailed, accurate, and competitive pricing tailored to your specific needs. Whether you are planning long-term investments or seeking immediate shipping solutions, we have got you covered—anytime, day or night, with our 24/7 availability to assist you.</p>
+                    <div className="bg-card rounded-[32px] border border-border shadow-sm p-6 flex flex-col justify-between min-h-[400px]">
+                      <h4 className="text-lg font-semibold text-primary mb-3">Fast, Reliable, and Accurate Quotations</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">Moon Navigation and Trading Co. is committed to delivering clarity and precision in every transaction. With a straightforward quotation process, we provide detailed, accurate, and competitive pricing tailored to your specific needs. Whether you are planning long-term investments or seeking immediate shipping solutions, we have got you covered—anytime, day or night, with our 24/7 availability to assist you.</p>
                     </div>
+                    
                     {/* Card 4: Operational Excellence for Your Fleet (with image) */}
-                    <div className="absolute left-[73%] top-[-3%] w-[27%] h-[46%] bg-white rounded-[32px] border border-gray-200 shadow-sm flex flex-col justify-start z-20 overflow-hidden">
-                      <div className="w-full h-[44%] bg-gray-200 flex items-center justify-center">
-                        {/* Replace src with your image link */}
-                        <img src="/placeholder2.jpg" alt="Fleet Excellence" className="w-full h-full object-cover rounded-t-[32px]" />
+                    <div className="bg-card rounded-[32px] border border-border shadow-sm flex flex-col justify-start overflow-hidden min-h-[400px]">
+                      <div className="w-full h-48 bg-muted flex items-center justify-center">
+                        <img src="/p2.jpg" alt="Fleet Excellence" className="w-full h-full object-cover" />
                       </div>
-                      <div className="p-8 pt-4">
-                        <h4 className="text-lg font-semibold text-[#232B50] mb-3">Operational Excellence for Your Fleet</h4>
-                        <p className="text-gray-500 text-base">Our team specializes in seamless ship agency and operational management. From crew onboarding/offboarding and transit spare parts to bunkering and ship chandlery, we provide efficient services to keep your fleet running smoothly. With expertise across Egyptian ports and beyond, we guarantee reliability and on-time delivery.</p>
+                      <div className="p-6 flex-1 flex flex-col">
+                        <h4 className="text-lg font-semibold text-primary mb-3">Operational Excellence for Your Fleet</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed flex-1">Our team specializes in seamless ship agency and operational management. From crew onboarding/offboarding and transit spare parts to bunkering and ship chandlery, we provide efficient services to keep your fleet running smoothly. With expertise across Egyptian ports and beyond, we guarantee reliability and on-time delivery.</p>
                       </div>
                     </div>
-                    {/* Bottom Row */}
+                    
                     {/* Card 5: Global Logistics Made Simple */}
-                    <div className="absolute left-0 top-[50%] w-[38%] h-[38%] bg-white rounded-[32px] border border-gray-200 shadow-sm p-8 flex flex-col justify-between z-10">
-                      <h4 className="text-lg font-semibold text-[#232B50] mb-3">Global Logistics Made Simple</h4>
-                      <p className="text-gray-500 text-base">Handling global trade requires a partner you can trust. We offer comprehensive support for international trading, ship management, customs clearance, and cargo handling. With Moon Navigation and Trading Co., you will experience streamlined logistics, reduced downtime, and personalized attention to every shipment.</p>
+                    <div className="bg-card rounded-[32px] border border-border shadow-sm p-6 flex flex-col justify-between min-h-[400px]">
+                      <h4 className="text-lg font-semibold text-primary mb-3">Global Logistics Made Simple</h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed">Handling global trade requires a partner you can trust. We offer comprehensive support for international trading, ship management, customs clearance, and cargo handling. With Moon Navigation and Trading Co., you will experience streamlined logistics, reduced downtime, and personalized attention to every shipment.</p>
                     </div>
+                    
                     {/* Card 6: Partner with Us Today (with image) */}
-                    <div className="absolute left-[38%] top-[60%] w-[38%] h-[38%] bg-white rounded-[32px] border border-gray-200 shadow-sm flex flex-col justify-start z-20 overflow-hidden">
-                      <div className="w-full h-[44%] bg-gray-200 flex items-center justify-center">
-                        {/* Replace src with your image link */}
-                        <img src="/placeholder3.jpg" alt="Team" className="w-full h-full object-cover rounded-t-[32px]" />
+                    <div className="bg-card rounded-[32px] border border-border shadow-sm flex flex-col justify-start overflow-hidden min-h-[400px]">
+                      <div className="w-full h-48 bg-muted flex items-center justify-center">
+                        <img src="/p3.jpg" alt="Team" className="w-full h-full object-cover" />
                       </div>
-                      <div className="p-8 pt-4">
-                        <h4 className="text-lg font-semibold text-[#232B50] mb-3">Partner with Us Today</h4>
-                        <p className="text-gray-500 text-base">At Moon Navigation and Trading Co., we believe in building relationships that last. Let's work together to create solutions that meet your needs and exceed your expectations. <a href="#" className="text-blue-600 underline">Schedule a meeting</a> with us today to see how we can help you navigate your maritime operations more efficiently.</p>
+                      <div className="p-6 flex-1 flex flex-col">
+                        <h4 className="text-lg font-semibold text-primary mb-3">Partner with Us Today</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed flex-1">At Moon Navigation and Trading Co., we believe in building relationships that last. Let's work together to create solutions that meet your needs and exceed your expectations. <a href="#" className="text-primary underline">Schedule a meeting</a> with us today to see how we can help you navigate your maritime operations more efficiently.</p>
                       </div>
                     </div>
                   </div>
@@ -253,16 +251,20 @@ export default function Index() {
                         {/* Left Column: Heading, Description, Address, Meeting Info */}
                         <div className="flex flex-col justify-between h-full">
                             <div>
-                                <h2 className="text-4xl font-extrabold text-[#232B50] mb-2">Contact Us</h2>
-                                <p className="text-base text-[#232B50] mb-6 max-w-md">We are here to provide expert assistance for all your logistics and trading needs. Get in touch with our team for any inquiries.</p>
+                                <h2 className="text-4xl font-raleway font-regular text-primary mb-2">Contact Us</h2>
+                                <p className="text-base font-raleway font-light text-foreground mb-6 max-w-md">We are here to provide expert assistance for all your logistics and trading needs. Get in touch with our team for any inquiries.</p>
                                 <div className="flex items-center gap-2 mb-8">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#232B50" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-                                    <span className="text-[#232B50] text-sm">Port Tawfiq 16a | El-Sawahel St, Suez<br/>Governorate, Egypt</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                                    <span className="text-foreground text-sm">Port Tawfiq 16a | El-Sawahel St, Suez<br/>Governorate, Egypt</span>
                                 </div>
                             </div>
                             <div className="mt-12">
-                                <p className="text-[#232B50] text-base mb-6 max-w-md">Alternatively, you can use our online meeting scheduling tool to easily book your preferred time for either a virtual meeting or an in-person meeting with a member of our team. Whether you are looking to discuss partnership opportunities or explore how we can best serve your logistics needs, we are here to help.</p>
-                                <RequestQuoteButton className="w-[220px]" type="button">Schedule a meeting</RequestQuoteButton>
+                                <p className="text-foreground text-base font-raleway font-light mb-6 max-w-md">Alternatively, you can use our online meeting scheduling tool to easily book your preferred time for either a virtual meeting or an in-person meeting with a member of our team. Whether you are looking to discuss partnership opportunities or explore how we can best serve your logistics needs, we are here to help.</p>
+                                <RequestQuoteButton className="w-[220px]" type="button">
+                                  <Link href="/schedule-meeting">
+                                    Schedule a meeting
+                                  </Link>
+                                  </RequestQuoteButton>
                             </div>
                         </div>
                         {/* Right Column: Contact Form */}

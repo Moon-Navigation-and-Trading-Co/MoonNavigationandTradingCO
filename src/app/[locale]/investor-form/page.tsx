@@ -10,6 +10,7 @@ import AirFreightForm from '@/components/air-freight-services';
 import InvestorForm from '@/components/investor-form';
 import Spinner from '@/components/spinner';
 import { sendFormEmail } from '@/utils/email-helper';
+import FAQSearch from '@/components/faq';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -117,6 +118,7 @@ const Page: React.FC = () => {
             </div>
 
             <FormTabs tabData={tabData} />
+            <FAQSearch category="investment-opportunities" />
         </div>
     );
 };

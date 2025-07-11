@@ -1,8 +1,190 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+  @apply text-left !important;
+}
+/* Responsive Design Utilities */
+@layer utilities {
+  /* Viewport-based sizing */
+  .h-screen-mobile {
+    height: 100vh; /* Fallback */
+    height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+  
+  .h-screen-desktop {
+    height: 100vh;
+  }
+  
+  /* Aspect ratio utilities */
+  .aspect-square-mobile {
+    aspect-ratio: 1 / 1;
+  }
+  
+  .aspect-video-mobile {
+    aspect-ratio: 16 / 9;
+  }
+  
+  .aspect-portrait-mobile {
+    aspect-ratio: 3 / 4;
+  }
+  
+  /* Responsive text sizing */
+  .text-responsive-xs {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+  }
+  
+  .text-responsive-sm {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+  
+  .text-responsive-base {
+    font-size: clamp(1rem, 3vw, 1.125rem);
+  }
+  
+  .text-responsive-lg {
+    font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+  }
+  
+  .text-responsive-xl {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+  
+  .text-responsive-2xl {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+  
+  .text-responsive-3xl {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+  
+  .text-responsive-4xl {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+  
+  /* Responsive spacing */
+  .space-responsive-xs {
+    gap: clamp(0.25rem, 1vw, 0.5rem);
+  }
+  
+  .space-responsive-sm {
+    gap: clamp(0.5rem, 2vw, 1rem);
+  }
+  
+  .space-responsive-md {
+    gap: clamp(1rem, 3vw, 1.5rem);
+  }
+  
+  .space-responsive-lg {
+    gap: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .space-responsive-xl {
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+  
+  /* Responsive padding */
+  .p-responsive-sm {
+    padding: clamp(0.5rem, 2vw, 1rem);
+  }
+  
+  .p-responsive-md {
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+  
+  .p-responsive-lg {
+    padding: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .p-responsive-xl {
+    padding: clamp(2rem, 5vw, 3rem);
+  }
+  
+  /* Responsive margins */
+  .m-responsive-sm {
+    margin: clamp(0.5rem, 2vw, 1rem);
+  }
+  
+  .m-responsive-md {
+    margin: clamp(1rem, 3vw, 1.5rem);
+  }
+  
+  .m-responsive-lg {
+    margin: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .m-responsive-xl {
+    margin: clamp(2rem, 5vw, 3rem);
+  }
+  
+  /* Container utilities */
+  .container-responsive {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+  }
+  
+  /* Safe area utilities for mobile */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .safe-area-left {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .safe-area-right {
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  /* Prevent horizontal scroll */
+  .no-horizontal-scroll {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* Flexible grid */
+  .grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: clamp(1rem, 3vw, 2rem);
+  }
+  
+  /* Responsive images */
+  .img-responsive {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  /* Mobile-first responsive breakpoints */
+  .mobile-only {
+    display: block;
+  }
+  
+  .desktop-only {
+    display: none;
+  }
+  
+  @media (min-width: 768px) {
+    .mobile-only {
+      display: none;
+    }
+    
+    .desktop-only {
+      display: block;
+    }
+  }
+}
+
 
 @layer base {
   :root {
@@ -75,6 +257,39 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  /* Use dynamic viewport height for mobile */
+  min-height: 100vh;
+  min-height: 100dvh;
+  text-align: left !important;
+}
+
+/* Responsive base styles */
+html {
+  /* Prevent zoom on input focus on iOS */
+  -webkit-text-size-adjust: 100%;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+}
+
+/* Responsive images by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive tables */
+table {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  table {
+    display: table;
+  }
 }
 
 .inverted-radius {
@@ -120,4 +335,68 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Raleway Font Utility Classes */
+.raleway-light {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.raleway-normal {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.raleway-medium {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.raleway-light-italic {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.raleway-normal-italic {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.raleway-medium-italic {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Global font for all text */
+body, html {
+  @apply font-raleway font-light text-base;
+}
+
+/* Headings use Raleway regular (400) and consistent sizes */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-raleway font-regular;
+}
+h1 { @apply text-4xl; }
+h2 { @apply text-3xl; }
+h3 { @apply text-2xl; }
+h4 { @apply text-xl; }
+h5 { @apply text-lg; }
+h6 { @apply text-base; }
+
+/* Remove browser default bold for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
 }

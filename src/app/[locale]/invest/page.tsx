@@ -1,10 +1,11 @@
 "use client";
+import FAQSearch from "@/components/faq";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function InvestPage() {
   return (
-    <main className="flex flex-col items-center w-full bg-white">
+    <main className="flex flex-col items-center w-full mt-10">
       {/* Hero Section */}
       <section className="w-full rounded-t-3xl overflow-hidden mb-0">
         <div className="relative h-[400px] rounded-t-3xl overflow-hidden">
@@ -36,7 +37,7 @@ export default function InvestPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Card 1 */}
-            <div className="bg-white/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
+            <div className="/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
               <h4 className="text-lg font-semibold mb-2 text-white">Joint Venture Partnerships</h4>
               <p className="mb-2 text-base font-light text-white/90">Co-own or co-develop a service line, region, or project with us.</p>
               <ul className="list-disc ml-5 text-white/80 text-sm space-y-1">
@@ -46,7 +47,7 @@ export default function InvestPage() {
               </ul>
             </div>
             {/* Card 2 */}
-            <div className="bg-white/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
+            <div className="/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
               <h4 className="text-lg font-semibold mb-2 text-white">Asset-Based Investment</h4>
               <p className="mb-2 text-base font-light text-white/90">Invest directly in vessels, containers, transport vehicles, or equipment—managed by us.</p>
               <ul className="list-disc ml-5 text-white/80 text-sm space-y-1">
@@ -57,7 +58,7 @@ export default function InvestPage() {
               </ul>
             </div>
             {/* Card 3 */}
-            <div className="bg-white/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
+            <div className="/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
               <h4 className="text-lg font-semibold mb-2 text-white">Project-Based Financing</h4>
               <p className="mb-2 text-base font-light text-white/90">Fund specific infrastructure or service development initiatives.</p>
               <ul className="list-disc ml-5 text-white/80 text-sm space-y-1">
@@ -69,7 +70,7 @@ export default function InvestPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
             {/* Card 4 */}
-            <div className="bg-white/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
+            <div className="/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
               <h4 className="text-lg font-semibold mb-2 text-white">Revenue-Sharing Agreements</h4>
               <p className="mb-2 text-base font-light text-white/90">Invest in a particular revenue stream (e.g., vessel rentals, container leasing).</p>
               <ul className="list-disc ml-5 text-white/80 text-sm space-y-1">
@@ -79,7 +80,7 @@ export default function InvestPage() {
               </ul>
             </div>
             {/* Card 5 */}
-            <div className="bg-white/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
+            <div className="/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
               <h4 className="text-lg font-semibold mb-2 text-white">Convertible Notes / Debt Investment</h4>
               <p className="mb-2 text-base font-light text-white/90">Provide structured capital with fixed interest returns and the option to convert to equity later.</p>
               <ul className="list-disc ml-5 text-white/80 text-sm space-y-1">
@@ -89,7 +90,7 @@ export default function InvestPage() {
               </ul>
             </div>
             {/* Card 6 */}
-            <div className="bg-white/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
+            <div className="/10 rounded-2xl p-8 flex flex-col h-full shadow-lg border border-white/20">
               <h4 className="text-lg font-semibold mb-2 text-white">Equity Investment</h4>
               <p className="mb-2 text-base font-light text-white/90">Gain long-term ownership and participate in the company's overall growth and profitability.</p>
               <ul className="list-disc ml-5 text-white/80 text-sm space-y-1">
@@ -122,11 +123,11 @@ export default function InvestPage() {
           </ul>
           <p className="text-gray-700 text-base mb-4">From the first conversation to structured planning and onboarding, we will guide you through every step — with full transparency, professionalism, and mutual commitment.</p>
           <div className="flex gap-4 mt-2">
-            <Link href="#">
-              <button className="bg-[#3B4B8C] text-white rounded-full px-6 py-2 font-medium text-base shadow hover:bg-[#2d3a6d]">Submit your interest</button>
-            </Link>
-            <Link href="/contact">
+            <Link href="/?scroll=contact">
               <button className="bg-[#3B4B8C] text-white rounded-full px-6 py-2 font-medium text-base shadow hover:bg-[#2d3a6d]">Contact Us</button>
+            </Link>
+            <Link href="/schedule-meeting">
+              <button className="bg-[#3B4B8C] text-white rounded-full px-6 py-2 font-medium text-base shadow hover:bg-[#2d3a6d]">Schedule a Meeting</button>
             </Link>
           </div>
           <p className="text-xs text-blue-700 mt-4">All information shared will be kept confidential and used only for investment discussions.</p>
@@ -134,7 +135,7 @@ export default function InvestPage() {
       </section>
 
       {/* What You Gain as an Investor - Evenly spaced, horizontally aligned */}
-      <section className="w-full py-20 bg-white">
+      <section className="w-full py-20 ">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <h2 className="text-2xl md:text-3xl font-semibold text-[#3B4B8C] mb-6">What You Gain as an Investor</h2>
           <p className="text-gray-700 text-base mb-12">Partnering with Moon Navigation and Trading Co. means more than just financial returns — it means becoming part of a bold vision shaping the future of maritime logistics.</p>
@@ -167,6 +168,7 @@ export default function InvestPage() {
           </div>
         </div>
       </section>
+      <FAQSearch category="investment-opportunities" />
     </main>
   );
 }

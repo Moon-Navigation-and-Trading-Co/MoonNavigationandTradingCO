@@ -81,22 +81,21 @@ export default function OceanFreightPage() {
         <>
             {/* Ocean Freight Hero Section */}
             <div className="w-full max-w-7xl mx-auto flex flex-col gap-0 items-center mt-12">
-                <div className="w-full rounded-[3rem] overflow-hidden mb-12 shadow-lg">
-                    <div className="relative w-full h-[340px]">
+                <div className="w-full rounded-[60px] overflow-hidden mb-12 shadow-lg">
+                    <div className="relative w-full h-[350px]">
                         <Image
                             src="/ocean-freight-hero.jpg"
                             alt="Moon Navigation and Trading Co. Ocean Freight"
                             fill
-                            className="object-cover"
-                            priority
-                            sizes="(max-width: 768px) 100vw, 1200px"
+                            className="object-cover w-[1280px] object-[40%_60%]"
+                            
                         />
                     </div>
                 </div>
                 <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 px-2 md:px-0">
                     {/* Left: Title and CTA */}
                     <div className="flex flex-col items-start justify-start pt-2 md:pt-12">
-                        <h1 className="text-4xl font-light text-foreground mb-12" style={{ fontFamily: 'Montserrat, sans-serif', letterSpacing: 0 }}>
+                        <h1 className="text-4xl font-light text-foreground mb-12" style={{ fontFamily: 'Raleway, sans-serif', letterSpacing: 0 }}>
                             Ocean Freight
                         </h1>
                         <Button asChild className="bg-[#3846a5] text-white px-6 py-2 rounded-full font-semibold text-base shadow hover:bg-[#2c357d] mt-8 md:mt-0" style={{ minWidth: 170 }}>
@@ -105,7 +104,7 @@ export default function OceanFreightPage() {
                     </div>
                     {/* Right: Description */}
                     <div className="flex flex-col gap-2 pt-2 md:pt-8">
-                        <h2 className="text-2xl font-normal mb-2" style={{ color: '#3846a5', fontFamily: 'Montserrat, sans-serif', letterSpacing: 0 }}>
+                        <h2 className="text-2xl font-normal mb-2" style={{ color: '#3846a5', fontFamily: 'Raleway, sans-serif', letterSpacing: 0 }}>
                             What is Ocean Freight ?
                         </h2>
                         <p className="text-base text-foreground leading-relaxed mb-4" style={{ maxWidth: 600 }}>
@@ -120,63 +119,63 @@ export default function OceanFreightPage() {
             {/* Carousel Section */}
             <CarouselAnimation title={t('ocean')} freightTypes={Data} />
         <section className="w-full max-w-7xl mx-auto mt-20 mb-12 px-2 md:px-0">
-            <h2 className="text-xl md:text-2xl mb-8 text-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <h2 className="text-xl md:text-2xl mb-8 text-foreground text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                 Reasons to Choose Moon Navigation and Trading Co. for Your Ocean Freight
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Comprehensive Freight Solutions */}
-                <div className="flex flex-col items-center px-4">
-                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                <div className="flex flex-col items-start px-4">
+                    <h3 className="font-semibold mb-2 text-foreground text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Comprehensive Freight Solutions
                     </h3>
-                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         We handle a wide range of cargo, including FCL, LCL, breakbulk, heavy lift, project, and charter services, providing tailored solutions for every shipment.
                     </p>
                 </div>
                 {/* Expertise in Complex Shipments */}
-                <div className="flex flex-col items-center px-4">
-                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                <div className="flex flex-col items-start px-4">
+                    <h3 className="font-semibold mb-2 text-foreground text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Expertise in Complex Shipments
                     </h3>
-                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Our specialized team leverages their out-of-gauge and hazardous cargo experience to efficiently plan all international shipping regulations and the highest safety standards.
                     </p>
                 </div>
                 {/* Optimized Routes & Cost-Effective Shipping */}
-                <div className="flex flex-col items-center px-4">
-                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Optimized Routes &amp; Cost-Effective Shipping
+                <div className="flex flex-col items-start px-4">
+                    <h3 className="font-semibold mb-2 text-foreground text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Optimized Routes and Cost-Effective Shipping
                     </h3>
-                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Through advanced route selection and carrier partnerships, we reduce transit times while providing competitive rates for your global ocean freight.
                     </p>
                 </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8 text-center">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                 {/* Extensive Global Network */}
-                <div className="flex flex-col items-center px-4">
-                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                <div className="flex flex-col items-start px-4">
+                    <h3 className="font-semibold mb-2 text-foreground text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Extensive Global Network
                     </h3>
-                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        With our strong partnerships, we’ll manage shipping lines, customs clearance, and last-mile solutions worldwide—ensuring international border and cargo movement worldwide.
+                    <p className="text-muted-foreground text-sm text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        With our strong partnerships, we'll manage shipping lines, customs clearance, and last-mile solutions worldwide—ensuring international border and cargo movement worldwide.
                     </p>
                 </div>
                 {/* Custom Expertise & Secure Handling */}
-                <div className="flex flex-col items-center px-4">
-                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Custom Expertise &amp; Secure Handling
+                <div className="flex flex-col items-start px-4">
+                    <h3 className="font-semibold mb-2 text-foreground text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Custom Expertise and Secure Handling
                     </h3>
-                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Our team combines local knowledge, dynamic project documentation, and compliance with international regulations, guaranteeing safe and reliable flow of cargo movement.
                     </p>
                 </div>
                 {/* Customer-Focused Service */}
-                <div className="flex flex-col items-center px-4">
-                    <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                <div className="flex flex-col items-start px-4">
+                    <h3 className="font-semibold mb-2 text-foreground text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Customer-Focused Service
                     </h3>
-                    <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                    <p className="text-muted-foreground text-sm text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         We offer transparent support and flexible tracking, and provide personalized communication, keeping you informed every step of the way.
                     </p>
                 </div>

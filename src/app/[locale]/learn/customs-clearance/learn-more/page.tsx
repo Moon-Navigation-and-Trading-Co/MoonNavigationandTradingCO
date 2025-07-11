@@ -2,19 +2,20 @@
 
 import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function CustomsClearanceLearnMore() {
   return (
-    <main className="flex flex-col items-center w-full bg-white" style={{ fontFamily: 'Raleway, sans-serif' }}>
+    <main className="flex flex-col items-center w-full " style={{ fontFamily: 'Raleway, sans-serif' }}>
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mt-10 mb-20">
         <h1 className="text-xl md:text-2xl font-medium text-[#253A5C] mb-10">
-          Our Customs &amp; Clearance Services-At Moon Navigation and Trading Co.
+          Our Customs and Clearance Services-At Moon Navigation and Trading Co.
         </h1>
         <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Left: Text Content */}
           <div className="flex-1">
             <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
-              Import &amp; Export Customs Clearance
+              Import and Export Customs Clearance
             </h2>
             <p className="text-sm text-muted-foreground mb-4">
               We excel in processing customs clearances while ensuring compliance with laws to facilitate seamless import and export operations.
@@ -59,7 +60,7 @@ export default function CustomsClearanceLearnMore() {
         {/* Right: Text Content */}
         <div className="flex-1">
           <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
-            Duty &amp; Tax Optimization
+            Duty and Tax Optimization
           </h2>
           <p className="text-sm text-muted-foreground mb-4">
             We specialize in identifying duty exemptions and preferential tariff programs to help clients maximize their savings.
@@ -78,7 +79,7 @@ export default function CustomsClearanceLearnMore() {
         {/* Left: Text Content */}
         <div className="flex-1">
           <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
-            Special Cargo &amp; Regulatory Compliance
+            Special Cargo and Regulatory Compliance
           </h2>
           <p className="text-sm text-muted-foreground mb-4">
             We provide customs clearance services tailored for temperature, perishable, and high-value cargo.
@@ -123,7 +124,7 @@ export default function CustomsClearanceLearnMore() {
         {/* Right: Text Content */}
         <div className="flex-1">
           <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
-            Trade Documentation &amp; Customs Brokerage
+            Trade Documentation and Customs Brokerage
           </h2>
           <p className="text-sm text-muted-foreground mb-4">
             We specialize in the meticulous preparation of key shipping documents essential for seamless trade operations.
@@ -142,7 +143,7 @@ export default function CustomsClearanceLearnMore() {
         {/* Left: Text Content */}
         <div className="flex-1">
           <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
-            Bonded Warehousing &amp; Free Zones
+            Bonded Warehousing and Free Zones
           </h2>
           <p className="text-sm text-muted-foreground mb-4">
             We offer secure storage solutions for cargo awaiting customs clearance, ensuring peace of mind during the import process.
@@ -170,6 +171,7 @@ export default function CustomsClearanceLearnMore() {
       </div>
     </div>
     <GetQuoteComponent topic="Customs Clearance" link="/ship-agency-forms"/>
+    <FAQSearch category="customs-clearance" />
     </main>
   );
 }

@@ -1,13 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 // In a real-world scenario, replace these with actual partner logo URLs
 const partnerLogos = Array(20)
@@ -17,69 +13,110 @@ const partnerLogos = Array(20)
       `/placeholder.svg?height=100&width=200&text=Partner${index + 1}`
   );
 const partnerLogos1 = [
-  "/logos/petrojet.png",
-  "/logos/satorp.png",
-  "/logos/potash.png",
-  "/logos/bavaria.png",
-  "/logos/elsewedy.png",
-  "/logos/arish.png",
-  "/logos/westerngeco.png",
-  "/logos/jordansteel.png",
-  "/logos/ncmp.png",
-  "/logos/safa.png",
-  "/logos/dolphin.png",
-  "/logos/sinaiwhite.png",
-  "/logos/alamia.png",
-  "/logos/suezcement.png",
-  "/logos/bavariatrade.png",
-  "/logos/royalcement.png",
-  "/logos/mohsenbros.png",
-  "/logos/basateen.png",
-  "/logos/egyfrench.png",
-  "/logos/fert.png",
-  "/logos/wataniafoods.png",
-  "/logos/manhary.png",
-  "/logos/azaan.png",
-  "/aramex.png",
+  "/logos/1.png",
+  "/logos/2.png",
+  "/logos/3.png",
+  "/logos/4.png",
+  "/logos/5.png",
+  "/logos/6.png",
+  "/logos/7.png",
+  "/logos/8.png",
+  "/logos/9.png",
+  "/logos/10.png",
+  "/logos/11.png",
+  "/logos/12.png",
+  "/logos/13.png",
+  "/logos/14.png",
+  "/logos/15.png",
+  "/logos/16.png",
+  "/logos/17.png",
+  "/logos/18.png",
+  "/logos/19.png",
+  "/logos/20.png",
+  "/logos/21.png",
+  "/logos/22.png",
+  "/logos/23.png",
+  "/logos/24.png",
 ];
 
-export default function PartnerLogoCarousel() {
+function ArrowGroup(props: { onPrev: () => void; onNext: () => void }) {
   return (
-    <div className="flex flex-col gap-10 pb-10">
-      <div className="w-full ">
-        <h1 className="w-full text-start px-3 text-3xl font-semibold">
-          Our Partners
-        </h1>
-      </div>
-      <Carousel
-        opts={{
-          align: "center",
-          loop: true,
-          slidesToScroll: 3,
-          dragFree: true,
-        }}
-        className="w-full relative h-full  py-10 px-1 gap-0"
+    <div className="absolute flex flex-row gap-2 right-0 -bottom-10 pr-4 z-20">
+      <button
+        className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-2xl text-gray-400 hover:bg-gray-100 transition"
+        onClick={props.onPrev}
+        aria-label="Previous"
+        type="button"
       >
-        <CarouselContent className="basis-[150px] snap-none">
+        &#8592;
+      </button>
+      <button
+        className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-2xl text-gray-400 hover:bg-gray-100 transition"
+        onClick={props.onNext}
+        aria-label="Next"
+        type="button"
+      >
+        &#8594;
+      </button>
+    </div>
+  );
+}
+
+export default function PartnerLogoCarousel() {
+  let sliderRef: Slider | null = null;
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 6,
+    slidesToScroll: 6,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div className="flex flex-col gap-10 pb-10 items-center w-full">
+      <div className="w-full ">
+        <h1 className="w-full text-start px-3 text-3xl font-raleway font-regular">Our Partners</h1>
+      </div>
+      <div className="relative w-full flex flex-row justify-center items-center min-h-[180px] mb-8">
+        <Slider ref={(ref) => (sliderRef = ref)} {...settings} className="w-full">
           {partnerLogos1.map((logo, index) => (
-            <CarouselItem key={index} className="basis-[180px] snap-none">
-              <div className="rounded-xl pointer-events-none w-full h-full">
-                <Image
-                  src={logo}
-                  alt={`Partner logo ${index + 1}`}
-                  width={1200}
-                  height={1100}
-                  className="object-contain rounded-xl pointer-events-none size-[180px] "
-                />
+            <div key={index}>
+              <div className="flex flex-col items-center justify-center px-2">
+                <div className="w-[180px] h-[180px] flex items-center justify-center mx-auto mb-4">
+                  <Image
+                    src={logo}
+                    alt={`Partner logo ${index + 1}`}
+                    width={180}
+                    height={180}
+                    className="object-contain w-full h-full"
+                  />
+                </div>
               </div>
-            </CarouselItem>
+            </div>
           ))}
-        </CarouselContent>
-        <div className="w-full flex justify-end px-4 gap-1 absolute  left-0 top-[100%]">
-          <CarouselPrevious className="static border-0" />
-          <CarouselNext className="static border-0" />
-        </div>
-      </Carousel>
+        </Slider>
+        <ArrowGroup
+          onPrev={() => sliderRef?.slickPrev()}
+          onNext={() => sliderRef?.slickNext()}
+        />
+      </div>
     </div>
   );
 }

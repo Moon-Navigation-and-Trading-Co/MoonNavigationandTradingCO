@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-out-gauge");
@@ -172,7 +173,7 @@ export default function ShippingMethodsInfo() {
               </tr>
               <tr className="border-b border-border">
                 <td className="px-4 py-3 font-medium text-foreground align-top border-r">
-                  Heavy-Lift Cranes &amp; Lifting Gear
+                  Heavy-Lift Cranes and Lifting Gear
                 </td>
                 <td className="px-4 py-3 text-muted-foreground align-top border-r">
                   Used for safe loading and unloading of massive structures, ensuring stability and security.
@@ -180,7 +181,7 @@ export default function ShippingMethodsInfo() {
               </tr>
               <tr className="border-b border-border">
                 <td className="px-4 py-3 font-medium text-foreground align-top border-r">
-                  Modular &amp; Hydraulic Trailers
+                  Modular and Hydraulic Trailers
                 </td>
                 <td className="px-4 py-3 text-muted-foreground align-top border-r">
                   Designed for transporting extremely heavy and oversized loads over land, offering flexibility in weight distribution.
@@ -269,16 +270,16 @@ export default function ShippingMethodsInfo() {
           </p>
           <ul className="list-disc list-inside space-y-3 text-base text-foreground pl-2">
             <li>
-              <span className="">Port Handling &amp; Stevedoring</span> – Safe loading, unloading, and storage at ports.
+              <span className="">Port Handling and Stevedoring</span> – Safe loading, unloading, and storage at ports.
             </li>
             <li>
-              <span className="">Customs Clearance &amp; Documentation</span> – We handle all approvals, ensuring smooth cross-border transport.
+              <span className="">Customs Clearance and Documentation</span> – We handle all approvals, ensuring smooth cross-border transport.
             </li>
             <li>
               <span className="">Inland Transportation</span> – Seamless delivery using heavy-duty trucks, modular trailers, and rail transport.
             </li>
             <li>
-              <span className="">Final Delivery &amp; Project Logistics</span> – We manage delivery to construction sites, industrial zones, and remote project locations.
+              <span className="">Final Delivery and Project Logistics</span> – We manage delivery to construction sites, industrial zones, and remote project locations.
             </li>
           </ul>
         </div>
@@ -312,7 +313,7 @@ export default function ShippingMethodsInfo() {
           {/* Specialized Handling & Equipment */}
           <div className="flex flex-col items-center text-center">
             <h3 className=" text-foreground mb-2 text-base md:text-lg">
-              Specialized Handling &amp; Equipment
+              Specialized Handling and Equipment
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
               We utilize flat racks and open-top containers, heavy-lift cranes, and modular trailers for accommodation. Available 24/7 for project accuracy.
@@ -321,7 +322,7 @@ export default function ShippingMethodsInfo() {
           {/* Customs & Regulatory Compliance */}
           <div className="flex flex-col items-center text-center">
             <h3 className=" text-foreground mb-2 text-base md:text-lg">
-              Customs &amp; Regulatory Compliance
+              Customs and Regulatory Compliance
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
               We handle all necessary permits, authorizations, and documentation to ensure a smooth shipping process.
@@ -332,7 +333,7 @@ export default function ShippingMethodsInfo() {
           {/* Global Network & Reliable Partnerships */}
           <div className="flex flex-col items-center text-center">
             <h3 className=" text-foreground mb-2 text-base md:text-lg">
-              Global Network &amp; Reliable Partnerships
+              Global Network and Reliable Partnerships
             </h3>
             <p className="text-muted-foreground text-sm md:text-base">
               Strong connections with ports, carriers, and logistics providers enable seamless international and inland transportation.
@@ -350,6 +351,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       <GetQuoteComponent topic="Out Gauge" link="/container-services-forms" />
+      <FAQSearch category="oog" />
     </div>
   );
 }

@@ -73,7 +73,7 @@ export async function POST(req: Request) {
     // Send the email
     const mailOptions = {
       from: process.env.GMAIL_USER,
-      to: recipientEmails || ['ahmedassem04@gmail.com'],
+      to: recipientEmails || ['Mariiamhamdyy1@gmail.com', 'Farida.ashraf@hotmail.co.uk'],
       subject: `New Form Submission - ${formType.replace(/_/g, ' ').replace(/\b\w/g, (l: string) => l.toUpperCase())}`,
       html: createFormEmailTemplate(formData, formType),
     };

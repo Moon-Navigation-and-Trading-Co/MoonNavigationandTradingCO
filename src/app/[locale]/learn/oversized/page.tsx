@@ -6,6 +6,7 @@ import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import OversizedCargoCarousel from "@/components/oversized-cargo-carousel";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function ShippingMethodsInfo() {
 
@@ -25,7 +26,7 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-16 px-2 md:px-0">
         {/* Left: Title and CTA */}
         <div className="flex flex-col items-start justify-start">
-          <h1 className="text-[2.5rem] md:text-[2.8rem] font-normal mb-8" style={{ color: '#3B4B8C', fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.1 }}>
+          <h1 className="text-[2.5rem] md:text-[2.8rem] font-normal mb-8 text-primary" style={{fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.1 }}>
             Oversized Container
           </h1>
           <Link href="/container-services-forms">
@@ -36,13 +37,13 @@ export default function ShippingMethodsInfo() {
         </div>
         {/* Right: Description */}
         <div className="flex flex-col items-start justify-start">
-          <h2 className="text-xl md:text-2xl font-normal mb-4" style={{ color: '#3B4B8C', fontFamily: 'Raleway, Montserrat, sans-serif' }}>
+          <h2 className="text-xl md:text-2xl font-normal mb-4 text-primary" style={{ fontFamily: 'Raleway, Montserrat, sans-serif' }}>
             What is Oversized Container?
           </h2>
-          <p className="text-base md:text-lg text-[#444] mb-2" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
+          <p className="text-base md:text-lg text-foreground mb-2" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
             An oversized container is cargo that exceeds the standard dimensions of a conventional shipping container, requiring specialized transport solutions. These shipments are often too tall, wide, or heavy to fit within standard 20-foot or 40-foot containers and must be transported using flat racks, open-top containers, or platform containers.
           </p>
-          <p className="text-base md:text-lg text-[#444]" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
+          <p className="text-base md:text-lg text-foreground" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
             At Moon Navigation and Trading Co., we specialize in handling oversized container shipments, offering expert cargo securing, route planning, and compliance management to ensure safe and efficient transport. With access to global shipping routes and specialized equipment, we provide tailored solutions for industries requiring the movement of large, heavy, or irregularly shaped cargo.
           </p>
         </div>
@@ -52,7 +53,7 @@ export default function ShippingMethodsInfo() {
         <h2 className="text-[2.2rem] md:text-[2.5rem] font-normal mb-2 text-center" style={{ color: '#3B4B8C', fontFamily: 'Raleway, sans-serif', letterSpacing: 0 }}>
           Our Common Cargo for Oversized Containers
         </h2>
-        <p className="text-[#888] text-center mb-10 text-base md:text-lg max-w-3xl mx-auto" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <p className="text-[#888] mb-10 text-base md:text-lg max-w-3xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
           Our oversized container services are designed to handle a wide range of large and irregularly shaped shipments, including but not limited to:
         </p>
         <OversizedCargoCarousel />
@@ -61,39 +62,35 @@ export default function ShippingMethodsInfo() {
         <h2 className="text-2xl md:text-3xl  text-center text-primary mb-8">
           Our Oversized Containers Solutions—At Moon Navigation and Trading Co.
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Engineered for Heavy & Large Cargo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          {/* Engineered for Heavy & Large Cargo - Image Left */}
+          <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
+            <img
+              src="/ov-2.jpg"
+              alt="Crane loading oversized cargo"
+              className="object-cover w-full h-full"
+            />
+          </div>
           <div className="flex flex-col">
             <h3 className="text-lg md:text-xl  mb-2 text-foreground">
               Engineered for Heavy & Large Cargo
             </h3>
-            <p className="text-muted-foreground mb-40 text-sm md:text-base">
+            <p className="text-muted-foreground mb-4 text-sm md:text-base">
               At Moon Navigation and Trading Co., our oversized containers are designed to transport goods that exceed standard container dimensions or weight limits. These containers feature reinforced structures and enhanced loading capabilities, making them suitable for industrial, mining, and energy-sector cargo.
             </p>
-            <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
-              <img
-                src="/ov-2.jpg"
-                alt="Crane loading oversized cargo"
-                className="object-cover w-full h-full"
-              />
-            </div>
           </div>
-          {/* Versatile Loading Options */}
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-20 items-center">
+          {/* Versatile Loading Options - Image Right */}
           <div className="flex flex-col">
-            <div className="w-full rounded-xl overflow-hidden shadow mb-4 h-64 md:h-72">
-              <img
-                src="/ov-3.jpg"
-                alt="Side loader handling container"
-                className="object-cover w-full h-full"
-              />
-            </div>
             <h3 className="text-lg md:text-xl  mb-2 text-foreground">
               Versatile Loading Options
             </h3>
             <p className="text-muted-foreground mb-3 text-sm md:text-base">
               Unlike standard containers, oversized containers allow for multiple loading configurations, including:
             </p>
-            <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
+            <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-4">
               <li>
                 <span className="">Top Loading</span>: Ideal for gantry cranes to lift or vertically deposit heavy cargo.
               </li>
@@ -105,50 +102,67 @@ export default function ShippingMethodsInfo() {
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        {/* Left: Weather Protection & Secure Lashing */}
-        <div className="flex flex-col">
-          <h3 className="text-lg md:text-xl  mb-2 text-foreground">
-            Weather Protection &amp; Secure Lashing
-          </h3>
-          <p className="text-muted-foreground mb-40 text-sm md:text-base">
-            At Moon Navigation and Trading Co., we secure open-top containers with durable, weatherproof tarpaulin covers, safeguarding cargo from rain, wind, and environmental elements. Our flat racks and platforms are designed with custom tie-down points, steel lashing rails, and locking mechanisms, ensuring maximum stability and security throughout transportation.
-          </p>
           <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
             <img
-              src="/ov-4.jpg"
-              alt="Workers securing tarp over oversized cargo"
+              src="/ov-3.jpg"
+              alt="Side loader handling container"
               className="object-cover w-full h-full"
             />
           </div>
         </div>
-        {/* Right: Fully Customizable for Unique Cargo */}
+      </div>
+      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Weather Protection & Secure Lashing - Image Left */}
+        <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
+          <img
+            src="/ov-4.jpg"
+            alt="Workers securing tarp over oversized cargo"
+            className="object-cover w-full h-full"
+          />
+        </div>
         <div className="flex flex-col">
-          <div className="w-full rounded-xl overflow-hidden shadow mb-4 h-64 md:h-72">
-            <img
-              src="/ov-5.jpg"
-              alt="Workers planning oversized cargo loading"
-              className="object-cover w-full h-full"
-            />
-          </div>
+          <h3 className="text-lg md:text-xl  mb-2 text-foreground">
+            Weather Protection and Secure Lashing
+          </h3>
+          <p className="text-muted-foreground mb-4 text-sm md:text-base">
+            At Moon Navigation and Trading Co., we secure open-top containers with durable, weatherproof tarpaulin covers, safeguarding cargo from rain, wind, and environmental elements. Our flat racks and platforms are designed with custom tie-down points, steel lashing rails, and locking mechanisms, ensuring maximum stability and security throughout transportation.
+          </p>
+        </div>
+      </div>
+      
+      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Fully Customizable for Unique Cargo - Image Right */}
+        <div className="flex flex-col">
           <h3 className="text-lg md:text-xl  mb-2 text-foreground">
             Fully Customizable for Unique Cargo
           </h3>
           <p className="text-muted-foreground mb-2 text-sm md:text-base">
             Our Oversized containers can be modified with specialized reinforcements, including:
           </p>
-          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 ">
+          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-4">
             <li>Heavy-duty lashing slots for outsize cargo</li>
             <li>Additional support beams for enhanced structural stability</li>
             <li>Custom fittings for sensitive or irregular equipment</li>
             <li>Shock-absorbing materials to minimize vibration during transport</li>
           </ul>
         </div>
+        <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
+          <img
+            src="/ov-5.jpg"
+            alt="Workers planning oversized cargo loading"
+            className="object-cover w-full h-full"
+          />
+        </div>
       </div>
-      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-        {/* Left: Seamless Multimodal Transport Compatibility */}
+      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Seamless Multimodal Transport Compatibility - Image Left */}
+        <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
+          <img
+            src="/ov-6.jpg"
+            alt="Workers loading oversized cargo onto a truck with a container crane"
+            className="object-cover w-full h-full"
+          />
+        </div>
         <div className="flex flex-col">
           <h3 className="text-lg md:text-xl  mb-2 text-foreground">
             Seamless Multimodal Transport Compatibility
@@ -156,7 +170,7 @@ export default function ShippingMethodsInfo() {
           <p className="text-muted-foreground mb-4 text-sm md:text-base">
             We design our oversized containers to integrate with multiple transport modes, including:
           </p>
-          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-10">
+          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-4">
             <li>
               <span className="">Ocean Freight</span>: Secure and custom-adapted stowage onto specialized flatbeds and breakbulk vessels.
             </li>
@@ -164,32 +178,28 @@ export default function ShippingMethodsInfo() {
               <span className="">Rail Transport</span>: Flat-rack and flatbed solutions for high-clearance rail-based transportation.
             </li>
             <li>
-              <span className="">Trucking &amp; Special Flatbeds</span>: Compatible with highway trailers, extendable flatbeds, and modular transporters for oversized road transport.
+              <span className="">Trucking and Special Flatbeds</span>: Compatible with highway trailers, extendable flatbeds, and modular transporters for oversized road transport.
             </li>
           </ul>
-          <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
-            <img
-              src="/ov-6.jpg"
-              alt="Workers loading oversized cargo onto a truck with a container crane"
-              className="object-cover w-full h-full"
-            />
-          </div>
         </div>
-        {/* Right: Reduced Handling Risks & Compliance Ready */}
+      </div>
+      
+      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Reduced Handling Risks & Compliance Ready - Image Right */}
         <div className="flex flex-col">
-          <div className="w-full rounded-xl overflow-hidden shadow mb-4 h-64 md:h-72">
-            <img
-              src="/ov-7.jpg"
-              alt="Warehouse workers moving oversized cargo with pallet jack"
-              className="object-cover w-full h-full"
-            />
-          </div>
           <h3 className="text-lg md:text-xl  mb-2 text-foreground">
-            Reduced Handling Risks &amp; Compliance Ready
+            Reduced Handling Risks and Compliance Ready
           </h3>
-          <p className="text-muted-foreground text-sm md:text-base">
+          <p className="text-muted-foreground mb-4 text-sm md:text-base">
             With our built-in safety features, standardized lifting points, and reinforced structures, oversized containers minimize handling risks while ensuring compliance with IMO, SOLAS, and international shipping regulations.
           </p>
+        </div>
+        <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
+          <img
+            src="/ov-7.jpg"
+            alt="Warehouse workers moving oversized cargo with pallet jack"
+            className="object-cover w-full h-full"
+          />
         </div>
       </div>
       <div className="w-full max-w-7xl mx-auto mt-20" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -333,6 +343,7 @@ export default function ShippingMethodsInfo() {
         </div>
       </div>
       <GetQuoteComponent topic="oversized-cargo" link="/container-services-forms"/>
+      <FAQSearch category="oversized-container-shipping" /> 
     </div>
   );
 }

@@ -11,12 +11,12 @@ const RequestQuoteButton: React.FC<RequestQuoteButtonProps> = ({
   className = "",
   ...props 
 }) => {
-  const baseClasses = "font-bold font-montserrat rounded-full px-6 py-2 text-base flex items-center justify-center transition-colors duration-200";
+  const baseClasses = "font-raleway font-regular rounded-md h-10 px-4 py-2 text-base flex items-center justify-center transition-colors duration-200";
   
   const variantClasses = {
-    primary: "bg-[#283593] text-white hover:bg-[#1a237e]",
+    primary: "bg-[#011f4b] text-white hover:bg-[#022c6a]",
     secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
-    outline: "border-2 border-[#283593] text-[#283593] hover:bg-[#283593] hover:text-white"
+    outline: "border-2 border-[#011f4b] text-[#011f4b] hover:bg-[#011f4b] hover:text-white"
   };
 
   return (

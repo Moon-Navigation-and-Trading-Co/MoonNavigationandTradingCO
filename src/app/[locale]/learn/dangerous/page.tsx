@@ -9,6 +9,7 @@ import Head from "next/head"
 import { useState } from "react"
 import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function DangerousCargoInfo() {
     const t = useTranslations("learn-dangerous-cargo")
@@ -66,7 +67,7 @@ export default function DangerousCargoInfo() {
     return (
         <>
             <Head>
-                <title>Dangerous Cargo Shipping &amp; Handling | Moon Navigation and Trading Co.</title>
+                <title>Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co.</title>
                 <meta
                     name="description"
                     content="Learn about dangerous cargo shipping, IMDG Code, IATA DGR, ADR, and how Moon Navigation and Trading Co. ensures safe, compliant transport of hazardous materials worldwide."
@@ -75,7 +76,7 @@ export default function DangerousCargoInfo() {
                     name="keywords"
                     content="dangerous cargo, hazardous materials, IMDG Code, IATA DGR, ADR, shipping, transport, Moon Navigation and Trading Co., packaging, labeling, risk assessment, special equipment, safety protocols"
                 />
-                <meta property="og:title" content="Dangerous Cargo Shipping &amp; Handling | Moon Navigation and Trading Co." />
+                <meta property="og:title" content="Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co." />
                 <meta property="og:description" content="Expert handling and transport of dangerous cargo and hazardous materials. Learn about our process, compliance, and safety standards." />
                 <meta property="og:image" content="/dangerous-cargo-banner.jpg" />
                 <meta property="og:type" content="website" />
@@ -84,14 +85,14 @@ export default function DangerousCargoInfo() {
             </Head>
             <div>
                 {/* Image banner at the top */}
-                <div className="w-full flex justify-center mb-8 mt-8">
+                <div className="w-full flex justify-center mb-8 mt-10">
                     <div className="w-full max-w-7xl">
                         <Image
                             src="/dangerous-cargo-banner.jpg"
                             alt="Dangerous Cargo Banner"
                             width={1200}
                             height={350}
-                            className="rounded-3xl object-cover w-full h-[220px] sm:h-[350px]"
+                            className="rounded-[60px] object-cover w-full h-[220px] sm:h-[350px]"
                             priority
                         />
                     </div>
@@ -427,6 +428,7 @@ export default function DangerousCargoInfo() {
                 </div>
             </section>
                 <GetQuoteComponent topic="Dangerous Cargo" link="/ocean-freight-forms" />
+                <FAQSearch category="dangerous-cargo-transport" />
             </div>
         </>
     )

@@ -1,4 +1,5 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import FAQSearch from "@/components/faq";
 
 export default function StevedoringPage() {
     return (
@@ -18,17 +19,17 @@ export default function StevedoringPage() {
                     {/* Left: Text Content */}
                     <div>
                         <h3 className="text-lg md:text-xl  mb-2">
-                            1. Cargo Handling &amp; Vessel Operations
+                            1. Cargo Handling and Vessel Operations
                         </h3>
                         <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                             <li>
                                 <span className="">Containerized Cargo Handling</span> – Efficient lifting, stacking, and stowage of containers.
                             </li>
                             <li>
-                                <span className="">Heavy Lift &amp; Project Cargo Handling</span> – Custom solutions for oversized shipments, using high-capacity cranes and specialized lifting equipment.
+                                <span className="">Heavy Lift and Project Cargo Handling</span> – Custom solutions for oversized shipments, using high-capacity cranes and specialized lifting equipment.
                             </li>
                             <li>
-                                <span className="">Bulk &amp; General Cargo Operations</span> – Handling of raw materials, grain, cement, and breakbulk goods.
+                                <span className="">Bulk and General Cargo Operations</span> – Handling of raw materials, grain, cement, and breakbulk goods.
                             </li>
                         </ul>
                     </div>
@@ -55,17 +56,17 @@ export default function StevedoringPage() {
                     {/* Right: Text Content */}
                     <div>
                         <h3 className="text-lg md:text-xl  mb-2">
-                            2. Equipment &amp; Technology
+                            2. Equipment and Technology
                         </h3>
                         <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2">
                             <li>
-                                <span className="">Advanced Port Cranes &amp; Spreaders</span> – High-speed operations with minimal turnaround time.
+                                <span className="">Advanced Port Cranes and Spreaders</span> – High-speed operations with minimal turnaround time.
                             </li>
                             <li>
-                                <span className="">Forklifts, Reach Stackers &amp; Terminal Tractors</span> – Efficient movement of containers and cargo within terminals.
+                                <span className="">Forklifts, Reach Stackers and Terminal Tractors</span> – Efficient movement of containers and cargo within terminals.
                             </li>
                             <li>
-                                <span className="">Cargo Identification &amp; Monitoring</span> – Effective tracking and documentation for operational efficiency.
+                                <span className="">Cargo Identification and Monitoring</span> – Effective tracking and documentation for operational efficiency.
                             </li>
                         </ul>
                     </div>
@@ -76,17 +77,17 @@ export default function StevedoringPage() {
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h3 className="text-lg md:text-xl  mb-2">
-                        3. Safety &amp; Compliance
+                        3. Safety and Compliance
                     </h3>
                     <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0">
                         <li>
                             <span className="">Trained Stevedoring Crews</span>: Experienced professionals for safe cargo handling.
                         </li>
                         <li>
-                            <span className="">IMO &amp; Port Authority Regulation Compliance</span>: Full adherence to international and local safety standards.
+                            <span className="">IMO and Port Authority Regulation Compliance</span>: Full adherence to international and local safety standards.
                         </li>
                         <li>
-                            <span className="">Risk Assessment &amp; Emergency Response</span>: Proactive measures to prevent operations hazards.
+                            <span className="">Risk Assessment and Emergency Response</span>: Proactive measures to prevent operations hazards.
                         </li>
                     </ul>
                 </div>
@@ -100,6 +101,7 @@ export default function StevedoringPage() {
                 </div>
             </div>
             <GetQuoteComponent topic="Stevedoring" link="/container-services-forms" />
+            <FAQSearch category="container-handling-stevedoring-storage" /> 
         </div>
     )
 }

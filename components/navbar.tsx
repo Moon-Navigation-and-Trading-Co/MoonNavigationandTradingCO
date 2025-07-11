@@ -149,12 +149,12 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                 //
                 {
                     name: "Vessel Rentals and Purchases",
-                    href: "/buy-rent-vessels-forms",
+                    href: "/learn/vessel",
                 },
                 //
                 {
                     name: "Container Rentals and Purchases",
-                    href: "/buy-rent-container-forms",
+                    href: "/learn/container-purchases",
                 },
             ],
         },
@@ -170,7 +170,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             title: "Investment",
             description:"",
             items:[
-                {name:"Investor Form", href:"/investor-form"}
+                {name:"Invest with us", href:"/invest"},
             ]
         }
     };
@@ -179,9 +179,9 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     const navItems = [
         {
             name: "Contact",
-            href: "/#contact",
+            href: "/contact",
             dropdownItems: [
-                { name: "Contact Us", href: "/#contact" },
+                { name: "Contact Us", href: "/contact" },
                 { name: "Schedule a meeting", href: "/schedule-meeting" },
             ],
         },
@@ -194,8 +194,8 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             href: "#about",
             dropdownItems: [
                 { name: "About Us", href: "/about-us" },
-                { name: "Our Partners", href: "/#partners" },
-                { name: "FAQ", href: "#faq" },
+                { name: "Our Partners", href: "/partners" },
+                { name: "FAQ", href: "/faq" },
                 { name: "Forms", href: "/learn/forms" }
             ],
         },
