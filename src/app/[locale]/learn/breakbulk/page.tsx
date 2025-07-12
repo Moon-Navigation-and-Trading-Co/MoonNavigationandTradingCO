@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useTranslations } from "next-intl"
@@ -6,67 +7,14 @@ import { Metadata } from "next"
 import Head from "next/head"
 import RequestQuoteButton from "@/components/RequestQuoteButton"
 import FAQSearch from "@/components/faq"
-
-export const metadata: Metadata = {
-    title: "BreakBulk Cargo Services | Moon Navigation and Trading Co.",
-    description: "Learn about BreakBulk cargo, its characteristics, and why Moon Navigation and Trading Co. is your trusted partner for breakbulk shipping, handling, and logistics solutions.",
-    keywords: [
-        "BreakBulk Cargo",
-        "BreakBulk Shipping",
-        "BreakBulk Logistics",
-        "Non-containerized Cargo",
-        "Project Cargo",
-        "Heavy Lift",
-        "Specialized Vessel Chartering",
-        "Custom Handling",
-        "Port Handling",
-        "Customs Clearance",
-        "Inland Transport",
-        "Moon Navigation and Trading Co.",
-        "Freight Quote",
-        "Oversized Cargo",
-        "Industrial Shipping",
-        "Construction Materials Shipping"
-    ],
-    openGraph: {
-        title: "BreakBulk Cargo Services | Moon Navigation and Trading Co.",
-        description: "Discover expert BreakBulk cargo solutions, including vessel chartering, custom handling, port operations, and end-to-end logistics with Moon Navigation and Trading Co.",
-        url: "https://www.moonnavigation.com/learn/breakbulk",
-        type: "website",
-        images: [
-            {
-                url: "/breakbulk-banner.jpg",
-                width: 1200,
-                height: 630,
-                alt: "BreakBulk Cargo at port"
-            }
-        ]
-    },
-    alternates: {
-        canonical: "https://www.moonnavigation.com/learn/breakbulk"
-    }
-}
-
 import GetQuoteComponent from "@/components/getQuoteComponent"
 import { Carousel, CarouselContent, CarouselItem, CarouselNavigation } from "@/components/ui/carousel"
+import OverviewServicesTabs from "@/components/overview-services"
 
-export default function BreakBulkInfo() {
-    const t = useTranslations("learn-breakbulk")
-
-    return (
+function overview(){
+    return(
         <>
-            <Head>
-                <title>BreakBulk Cargo Services | Moon Navigation and Trading Co.</title>
-                <meta name="description" content="Learn about BreakBulk cargo, its characteristics, and why Moon Navigation and Trading Co. is your trusted partner for breakbulk shipping, handling, and logistics solutions." />
-                <meta name="keywords" content="BreakBulk Cargo, BreakBulk Shipping, BreakBulk Logistics, Non-containerized Cargo, Project Cargo, Heavy Lift, Specialized Vessel Chartering, Custom Handling, Port Handling, Customs Clearance, Inland Transport, Moon Navigation and Trading Co., Freight Quote, Oversized Cargo, Industrial Shipping, Construction Materials Shipping" />
-                <meta property="og:title" content="BreakBulk Cargo Services | Moon Navigation and Trading Co." />
-                <meta property="og:description" content="Discover expert BreakBulk cargo solutions, including vessel chartering, custom handling, port operations, and end-to-end logistics with Moon Navigation and Trading Co." />
-                <meta property="og:image" content="/breakbulk-banner.jpg" />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content="https://www.moonnavigation.com/learn/breakbulk" />
-                <link rel="canonical" href="https://www.moonnavigation.com/learn/breakbulk" />
-            </Head>
-            <div className="w-full max-w-7xl mx-auto">
+        <div className="w-full max-w-7xl mx-auto">
                 {/* Top Banner Image */}
                 <div className="object-cover object-center mt-10 rounded-[60px] overflow-hidden">
                     <img
@@ -102,8 +50,14 @@ export default function BreakBulkInfo() {
                         </p>
                     </div>
                 </div>
-                {/* Examples of BreakBulk Cargo Section */}
-                <section className="w-full max-w-7xl mx-auto mt-16 mb-8 px-4">
+                </div>
+        </>
+    )
+}
+function services(){
+    return(
+        <>
+         <section className="w-full max-w-7xl mx-auto mt-16 mb-8 px-4">
                     <h2 className="text-xl md:text-2xl mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Examples of BreakBulk Cargo
                     </h2>
@@ -406,8 +360,30 @@ export default function BreakBulkInfo() {
                     </div>
                 </section>
                 <GetQuoteComponent topic="Breakbulk Cargo" link="/ocean-freight-forms" /> 
-                <FAQSearch category="breakbulk-cargo" />        
-            </div>
+                <FAQSearch category="breakbulk-cargo" />
+        </>
+    )
+}
+
+export default function BreakBulkInfo() {
+
+    return (
+        <>
+            <Head>
+                <title>BreakBulk Cargo Services | Moon Navigation and Trading Co.</title>
+                <meta name="description" content="Learn about BreakBulk cargo, its characteristics, and why Moon Navigation and Trading Co. is your trusted partner for breakbulk shipping, handling, and logistics solutions." />
+                <meta name="keywords" content="BreakBulk Cargo, BreakBulk Shipping, BreakBulk Logistics, Non-containerized Cargo, Project Cargo, Heavy Lift, Specialized Vessel Chartering, Custom Handling, Port Handling, Customs Clearance, Inland Transport, Moon Navigation and Trading Co., Freight Quote, Oversized Cargo, Industrial Shipping, Construction Materials Shipping" />
+                <meta property="og:title" content="BreakBulk Cargo Services | Moon Navigation and Trading Co." />
+                <meta property="og:description" content="Discover expert BreakBulk cargo solutions, including vessel chartering, custom handling, port operations, and end-to-end logistics with Moon Navigation and Trading Co." />
+                <meta property="og:image" content="/breakbulk-banner.jpg" />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content="https://www.moonnavigation.com/learn/breakbulk" />
+                <link rel="canonical" href="https://www.moonnavigation.com/learn/breakbulk" />
+            </Head>
+            
+                <OverviewServicesTabs renderOverview={overview} renderServices={services}/>
+                       
+            
         </>
     )
 }

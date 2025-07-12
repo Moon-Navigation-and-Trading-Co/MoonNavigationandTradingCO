@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
@@ -6,60 +7,15 @@ import { Metadata } from 'next'
 import RequestQuoteButton from "@/components/RequestQuoteButton" 
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from '@/components/faq'
+import OverviewServicesTabs from '@/components/overview-services'
 
-export const metadata: Metadata = {
-  title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
-  description:
-    "Moon Navigation and Trading Co. specializes in safe, humane, and efficient livestock transportation worldwide. Learn about our animal welfare standards, regulatory compliance, and custom shipping solutions for cattle, horses, and more.",
-  keywords: [
-    "livestock transportation",
-    "animal shipping",
-    "cattle transport",
-    "horse shipping",
-    "animal welfare",
-    "veterinary care",
-    "biosecurity",
-    "IMO regulations",
-    "WOAH guidelines",
-    "custom livestock shipping",
-    "Moon Navigation and Trading Co.",
-    "international livestock transport",
-    "livestock carriers",
-    "animal export",
-    "animal import",
-    "compliance",
-    "safe animal transport"
-  ],
-  openGraph: {
-    title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
-    description:
-      "Discover specialized livestock shipping solutions with Moon Navigation and Trading Co. We ensure animal welfare, regulatory compliance, and seamless logistics for global livestock transport.",
-    url: "https://www.moonnavigation.com/learn/livestock",
-    type: "website",
-    images: [
-      {
-        url: "/livestock-banner.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Livestock Transportation Banner"
-      }
-    ]
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
-    description:
-      "Safe, humane, and efficient livestock shipping worldwide. Learn about our animal welfare standards and custom solutions.",
-    images: ["/livestock-banner.jpg"]
-  }
-}
 
-export default function ShippingMethodsInfo() {
-  const t = useTranslations("livestock:");
-  return (
-    <div className="min-h-screen flex flex-col justify-center items-center mt-10">
-      {/* Banner Image */}
-      <div className="w-full max-w-7xl rounded-[60px] overflow-hidden mb-8">
+
+function overview(){
+  return(
+    <>
+          {/* Banner Image */}
+          <div className="w-full max-w-7xl rounded-[60px] overflow-hidden mb-8">
         <img
           src="/livestock-banner.jpg"
           alt="Livestock Transportation Banner"
@@ -89,7 +45,14 @@ export default function ShippingMethodsInfo() {
           </p>
         </div>
       </div>
-      <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
+    </>
+  )
+}
+
+function services(){
+  return(
+    <>
+    <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
         <h2 className="text-3xl sm:text-4xl  mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>Industries We Serve</h2>
         <p className="mb-10 text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
           We provide specialized livestock shipping solutions across multiple industries, ensuring each type of animal is transported safely and in compliance with international standards.
@@ -286,6 +249,16 @@ export default function ShippingMethodsInfo() {
       </section>
       <GetQuoteComponent topic="Livestock" link="/ocean-freight-forms" />
       <FAQSearch category="livestock-transportation" />
-    </div>
+    
+    </>
+  )
+}
+
+export default function ShippingMethodsInfo() {
+  const t = useTranslations("livestock:");
+  return (
+    <div className="min-h-screen flex flex-col justify-center items-center mt-10">
+      <OverviewServicesTabs renderOverview={overview} renderServices={services}/>
+      </div>
   )
 }

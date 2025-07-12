@@ -1,9 +1,11 @@
+"use client"
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import VesselCarousel from "@/components/vessel-carousel";
 import Link from "next/link";
 import FAQPage from "../../faq/page";
 import FAQSearch from "@/components/faq";
+import OverviewServicesTabs from "@/components/overview-services";
 
 const serve=[
     {img:"/cc-1.jpg",title:"Shipping and Freight Forwarders"},
@@ -22,10 +24,10 @@ const containers = [
     {img:"/ccs-7.jpg",title:"Special Purpose and Modified Containers"}
 ]
 
-export default function ContainerPurchases() {
-    return (
-        <div className="w-full max-w-7xl mx-auto" style={{fontFamily: 'Raleway'}}>
-            <div className="mt-10 mb-8">
+function overview(){
+    return(
+        <>
+                    <div className="mt-10 mb-8">
             <img src="/images/container-purchases.jpg" alt="Container Purchases" width={1280} height={350} className="rounded-[60px]" />
             </div>
         <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16 mb-12">
@@ -50,7 +52,15 @@ export default function ContainerPurchases() {
                 </p>
             </div>
         </div>
-        <div className="flex flex-col md:flex-row items-center justify-between rounded-[40px] p-8 md:p-16 mb-12">
+        </>
+    )
+}
+
+function services(){
+    return (
+        <>
+
+<div className="flex flex-col md:flex-row items-center justify-between rounded-[40px] p-8 md:p-16 mb-12">
             <div className="w-full md:w-[500px] flex-shrink-0 flex items-center justify-center mb-8 md:mb-0">
                 <img
                     src="/images/container-man.jpg"
@@ -350,6 +360,11 @@ export default function ContainerPurchases() {
           </div>
           <GetQuoteComponent topic="Container Rentals/Purchases" link="/buy-rent-container-forms"/>
           <FAQSearch category="container-purchases-rentals"/>
-        </div>
+        </>
     )
+}
+export default function ContainerPurchases() {
+    return (
+        <OverviewServicesTabs renderOverview={overview} renderServices={services} />
+    );
 }

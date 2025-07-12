@@ -1,15 +1,14 @@
+"use client";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Image from "next/image";
 import Link from "next/link";
 import FAQSearch from "@/components/faq";
+import OverviewServicesTabs from "@/components/overview-services";
 
-export default function SuezPage() {
+function overview() {
   return (
-    <div
-      className="w-full max-w-7xl place-self-center"
-      style={{ fontFamily: "Raleway, sans-serif" }}
-    >
+    <>
       {/* Top full-width image */}
       <div className="w-full">
         <Image
@@ -54,6 +53,13 @@ while we ensure a hassle-free canal passage.
           </p>
         </div>
       </div>
+    </>
+  );
+}
+
+function services() {
+  return (
+    <>
     <div className="max-w-6xl mx-auto mt-16 px-4">
       <h2 className="text-xl md:text-2xl  text-primary mb-8">
         Our comprehensive Suez Canal transit and passage services include:
@@ -230,6 +236,12 @@ while we ensure a hassle-free canal passage.
     </div>
     <GetQuoteComponent topic = "Suez Canal Transit" link = "/suez-canal-form"/> 
     <FAQSearch category="suez-canal" />
-    </div>
+    </>
+  );
+}
+
+export default function SuezPage() {
+  return (
+    <OverviewServicesTabs renderOverview={overview} renderServices={services} />
   );
 }
