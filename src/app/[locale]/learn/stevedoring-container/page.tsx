@@ -5,6 +5,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 function overview() {
     return (
@@ -24,7 +25,7 @@ function overview() {
             <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                 {/* Left: Title and CTA */}
                 <div className="flex flex-col items-start justify-start">
-                    <h1 className="text-2xl md:text-3xl  text-foreground mb-2">
+                    <h1 className="text-2xl md:text-3xl  text-foreground mb-2 font-regular">
                         Container Handling, Stevedoring and Storage
                     </h1>
                     <Link href="/container-services-forms">
@@ -35,13 +36,13 @@ function overview() {
                 </div>
                 {/* Right: Description */}
                 <div>
-                    <h2 className="text-lg  text-primary mb-2">
+                    <h2 className="text-lg  text-primary mb-2 font-regular">
                         What is Container handling, stevedoring and storage?
                     </h2>
-                    <p className="text-base text-foreground leading-relaxed mb-4">
+                    <p className="text-base text-foreground leading-relaxed mb-4 font-light">
                         Container handling, stevedoring, and storage are essential logistics services that ensure the efficient movement, loading, and safe storage of containers at ports and terminals. Container handling refers to the transfer of containers between different transport modes, such as ships, trucks, and trains, using specialized equipment like marine cranes and straddle carriers. Stevedoring is the loading and unloading of containers from vessels, carried out by skilled professionals who ensure optimal space utilization and cargo integrity. Container storage involves placing containers in secure yards or warehouses, allowing for inventory management, flexible supply chain planning, monitoring, and protection against loss or damage.
                     </p>
-                    <p className="text-base text-foreground leading-relaxed">
+                    <p className="text-base text-foreground leading-relaxed font-light">
                         At Moon Navigation and Trading Co., we specialize in delivering seamless container logistics, supporting supply chains with reliable handling, expert stevedoring, and secure storage solutions.
                     </p>
                 </div>
@@ -175,70 +176,40 @@ function services() {
                 </div>
             </div>
             
-            {/* {Reasonsssss} */}
-                <div className="w-full max-w-7xl mx-auto mt-20">
-                    <h2 className="text-2xl md:text-3xl  text-center text-primary mb-8">
-                        Reasons to Choose Moon Navigation and Trading Co.
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-32 mb-20">
-                        {/* Comprehensive Freight Solutions */}
-                        <div className="flex flex-col items-center text-center">
-                            <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                                Comprehensive Freight Solutions
-                            </h3>
-                            <p className="text-muted-foreground text-sm md:text-base">
-                                We handle a wide range of freight including FCL, LCL, breakbulk, heavy machinery, and over-dimension goods, ensuring tailored solutions for every shipment.
-                            </p>
-                        </div>
-                        {/* Expertise in Complex Shipments */}
-                        <div className="flex flex-col items-center text-center">
-                            <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                                Expertise in Complex Shipments
-                            </h3>
-                            <p className="text-muted-foreground text-sm md:text-base">
-                                Our experienced team manages heavy lift and out-of-gauge shipments, offering end-to-end solutions with meticulous cargo regulation and the highest safety standards.
-                            </p>
-                        </div>
-                        {/* Optimized Routes & Cost-Efficient Shipping */}
-                        <div className="flex flex-col items-center text-center">
-                            <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                                Optimized Routes and Cost-Efficient Shipping
-                            </h3>
-                            <p className="text-muted-foreground text-sm md:text-base">
-                                Through our strategic vessel selection and route optimization, we reduce transit times while providing competitive pricing for global ocean freight.
-                            </p>
-                        </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-32">
-                        {/* Extensive Global Network */}
-                        <div className="flex flex-col items-center text-center">
-                            <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                                Extensive Global Network
-                            </h3>
-                            <p className="text-muted-foreground text-sm md:text-base">
-                                With an active partnership with major shipping lines and agents across key regions, we offer secure connections, international trade aid, and cargo movement worldwide.
-                            </p>
-                        </div>
-                        {/* Customs Expertise & Secure Handling */}
-                        <div className="flex flex-col items-center text-center">
-                            <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                                Customs Expertise and Secure Handling
-                            </h3>
-                            <p className="text-muted-foreground text-sm md:text-base">
-                                Our team ensures smooth customs clearance, project documentation, and safe cargo handling, guaranteeing safe and hassle-free cargo movement.
-                            </p>
-                        </div>
-                        {/* Customer-Focused Service */}
-                        <div className="flex flex-col items-center text-center">
-                            <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                                Customer-Focused Service
-                            </h3>
-                            <p className="text-muted-foreground text-sm md:text-base">
-                                We offer personalized support, real-time tracking, and clear communication, keeping you informed every step of the way.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            {/* Reasons Section */}
+            <div className="w-full max-w-7xl mx-auto mt-20">
+                <ReasonsGridUniversal
+                    title="Reasons to Choose Moon Navigation and Trading Co."
+                    layout="3-2"
+                    reasons={[
+                        {
+                            icon: <img src="/icons/container/129.png" className="mb-8 h-20 w-20 object-contain"/>,
+                            title: "Expertise & Efficiency",
+                            description: "With years of experience, we ensure seamless container handling, precise stevedoring, and secure storage solutions.",
+                        },
+                        {
+                            icon: <img src="/icons/container/130.png" className="mb-8 h-20 w-20 object-contain"/>,
+                            title: "Advanced Equipment",
+                            description: "We utilize state-of-the-art cranes, forklifts, and stacking systems for safe and efficient cargo operations.",
+                        },
+                        {
+                            icon: <img src="/icons/container/131.png" className="mb-8 h-20 w-20 object-contain"/>,
+                            title: "Seamless Port Operations",
+                            description: "Our services are integrated with major ports and terminals, ensuring smooth logistics and fast container turnaround.",
+                        },
+                        {
+                            icon: <img src="/icons/container/132.png" className="mb-8 h-20 w-20 object-contain"/>,
+                            title: "Secure & Reliable Storage",
+                            description: "Short-term and long-term container storage with 24/7 monitoring and protection from environmental factors.",
+                        },
+                        {
+                            icon: <img src="/icons/container/133.png" className="mb-8 h-20 w-20 object-contain"/>,
+                            title: "Comprehensive Service",
+                            description: "From vessel unloading to final transport, we provide end-to-end solutions tailored to your logistics needs.",
+                        }
+                    ]}
+                />
+            </div>
             <GetQuoteComponent topic="Container Handling, Stevedoring and Storage" link="/container-services-forms" />
             <FAQSearch category="container-handling-stevedoring-storage" /> 
         </>

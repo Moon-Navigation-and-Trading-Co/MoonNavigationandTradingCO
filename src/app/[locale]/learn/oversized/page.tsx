@@ -8,6 +8,7 @@ import OversizedCargoCarousel from "@/components/oversized-cargo-carousel";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function ShippingMethodsInfo() {
 
@@ -29,7 +30,7 @@ export default function ShippingMethodsInfo() {
           <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-16 px-2 md:px-0">
             {/* Left: Title and CTA */}
             <div className="flex flex-col items-start justify-start">
-              <h1 className="text-[2.5rem] md:text-[2.8rem] font-normal mb-8 text-primary" style={{fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.1 }}>
+              <h1 className="text-[2.5rem] md:text-[2.8rem] font-regular mb-8 text-primary" style={{fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.1 }}>
                 Oversized Container
               </h1>
               <Link href="/container-services-forms">
@@ -40,13 +41,13 @@ export default function ShippingMethodsInfo() {
             </div>
             {/* Right: Description */}
             <div className="flex flex-col items-start justify-start">
-              <h2 className="text-xl md:text-2xl font-normal mb-4 text-primary" style={{ fontFamily: 'Raleway, Montserrat, sans-serif' }}>
+              <h2 className="text-xl md:text-2xl font-regular mb-4 text-primary" style={{ fontFamily: 'Raleway, Montserrat, sans-serif' }}>
                 What is Oversized Container?
               </h2>
-              <p className="text-base md:text-lg text-foreground mb-2" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
+              <p className="text-base md:text-lg text-foreground mb-2 font-light" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
                 An oversized container is cargo that exceeds the standard dimensions of a conventional shipping container, requiring specialized transport solutions. These shipments are often too tall, wide, or heavy to fit within standard 20-foot or 40-foot containers and must be transported using flat racks, open-top containers, or platform containers.
               </p>
-              <p className="text-base md:text-lg text-foreground" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
+              <p className="text-base md:text-lg text-foreground font-light" style={{ fontFamily: 'Raleway, Montserrat, sans-serif', lineHeight: 1.6 }}>
                 At Moon Navigation and Trading Co., we specialize in handling oversized container shipments, offering expert cargo securing, route planning, and compliance management to ensure safe and efficient transport. With access to global shipping routes and specialized equipment, we provide tailored solutions for industries requiring the movement of large, heavy, or irregularly shaped cargo.
               </p>
             </div>
@@ -348,6 +349,39 @@ export default function ShippingMethodsInfo() {
                 For all your oversized loading and portside shipping solutions, enjoy real-time transit tracking, risk-free maneuverability, and efficiency. Our team elevates service by providing continuous monitoring, direct routing, and end-to-end logistics support to keep your oversized cargo moving without delays.
               </p>
             </div>
+          </div>
+          <div className="w-full max-w-7xl mx-auto mt-20">
+            <ReasonsGridUniversal
+              title="Reasons to Choose Moon Navigation and Trading Co. for Your Oversized Container Shipments"
+              layout="3-2"
+              reasons={[
+                {
+                  icon: <img src="/icons/container/94.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Expertise in Oversized Cargo Handling",
+                  description: "",
+                },
+                {
+                  icon: <img src="/icons/container/95.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Specialized Equipment & Containers",
+                  description: " We offer flat racks, open-top containers, and advanced lifting gear to accommodate cargo that exceeds standard dimensions.",
+                },
+                {
+                  icon: <img src="/icons/container/96.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Tailored Logistics & Route Planning",
+                  description: "Our team ensures the most efficient and secure transport routes, including permits and regulatory compliance for smooth operations.",
+                },
+                {
+                  icon: <img src="/icons/container/97.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Global Network & Reliable Partnerships",
+                  description: "Strong connections with leading carriers, ports, and service providers allow us to offer flexible and cost-effective shipping solutions.",
+                },
+                {
+                  icon: <img src="/icons/container/98.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Commitment to Safety & Compliance",
+                  description: "We prioritize secure loading, lashing, and risk management to ensure your oversized cargo reaches its destination safely and on time.",
+                }
+              ]}
+            />
           </div>
           <GetQuoteComponent topic="oversized-cargo" link="/container-services-forms"/>
           <FAQSearch category="oversized-container-shipping" /> 

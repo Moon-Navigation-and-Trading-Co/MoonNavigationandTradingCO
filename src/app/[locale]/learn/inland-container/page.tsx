@@ -7,6 +7,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function InlandContainerPage() {
 
@@ -30,7 +31,7 @@ export default function InlandContainerPage() {
           <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Left: Title and CTA */}
             <div className="flex flex-col items-start justify-start">
-              <h1 className="text-2xl md:text-3xl  text-foreground mb-2">
+              <h1 className="text-2xl md:text-3xl  text-foreground mb-2 font-regular">
                 Inland Container Transportation
               </h1>
               <Link href="/container-services-forms">
@@ -42,10 +43,10 @@ export default function InlandContainerPage() {
 
             {/* Right: Description */}
             <div>
-              <h2 className="text-lg  text-primary mb-2">
+              <h2 className="text-lg  text-primary mb-2 font-regular">
                 What is inland container transportation?
               </h2>
-              <p className="text-base text-foreground leading-relaxed">
+              <p className="text-base text-foreground leading-relaxed font-light">
                 Inland container transportation is the movement of shipping containers from ports to inland destinations using trucks, trains, or barges. This service is crucial for ensuring smooth cargo flow between seaports, connecting businesses to warehouses, distribution centers, and final delivery points. It adds value to supply chains by reducing delays, optimizing costs, and improving cargo integrity.
                 <br /><br />
                 At Moon Navigation and Trading Co., we specialize in efficient and secure inland container solutions, leveraging a fleet of specialized vehicles, rail connections, and logistics hubs. Our tailored solutions ensure timely delivery, cargo visibility, and compliance with the strictest standards from the first destination, providing businesses with a reliable and cost-effective transportation service.
@@ -240,58 +241,37 @@ export default function InlandContainerPage() {
             </div>
           </div>
           <div className="w-full max-w-7xl mx-auto mt-20">
-            <h2 className="text-2xl md:text-3xl  text-center text-primary mb-8">
-              Reasons to Choose Moon Navigation and Trading Co. For Your Inland Transportation
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              {/* Seamless Port-to-Door Delivery */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Seamless Port-to-Door Delivery
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  We ensure smooth and efficient transport from ports to warehouses, factories, and final destinations.
-                </p>
-              </div>
-              {/* Diverse Transport Options */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Diverse Transport Options
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  Our fleet includes specialized trucks, rail solutions, and inland waterways, offering flexibility for every cargo type.
-                </p>
-              </div>
-              {/* Timely & Reliable Service */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Timely and Reliable Service
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  We prioritize on-time deliveries with optimized routing and continuous coordination.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Compliance & Security */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Compliance and Security
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  Strict adherence to local and international regulations, ensuring cargo safety and smooth customs clearance.
-                </p>
-              </div>
-              {/* Customized Logistics Solutions */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Customized Logistics Solutions
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  Tailored transport plans to meet the specific needs of your cargo, including wide-gauge and specialized shipments.
-                </p>
-              </div>
-            </div>
+            <ReasonsGridUniversal
+              title="Reasons to Choose Moon Navigation and Trading Co. For Your Inland Transportation"
+              layout="3-2"
+              reasons={[
+                {
+                  icon: <img src="/icons/container/119.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Seamless Port-to-Door Delivery",
+                  description: "We ensure smooth and efficient transport from ports to warehouses, factories, and final destinations.",
+                },
+                {
+                  icon: <img src="/icons/container/120.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Diverse Transport Options",
+                  description: "Our fleet includes specialized trucks, rail solutions, and inland waterways, offering flexibility for every cargo type.",
+                },
+                {
+                  icon: <img src="/icons/container/121.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Timely and Reliable Service",
+                  description: "We prioritize on-time deliveries with optimized routing and continuous coordination.",
+                },
+                {
+                  icon: <img src="/icons/container/122.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Compliance and Security",
+                  description: "Strict adherence to local and international regulations, ensuring cargo safety and smooth customs clearance.",
+                },
+                {
+                  icon: <img src="/icons/container/123.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Customized Logistics Solutions",
+                  description: "Tailored transport plans to meet the specific needs of your cargo, including wide-gauge and specialized shipments.",
+                },
+              ]}
+            />
           </div>
           <GetQuoteComponent topic="Inland Container" link="/container-services-forms" />
           <FAQSearch category="inland-container-transportation" />

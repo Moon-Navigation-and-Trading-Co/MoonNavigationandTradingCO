@@ -7,6 +7,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
  
 export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-less");
@@ -28,7 +29,7 @@ export default function ShippingMethodsInfo() {
           <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
             {/* Left Side: Title and Button */}
             <div className="flex flex-col justify-center items-start">
-              <h1 className="text-3xl md:text-4xl font-medium mb-2 leading-tight text-foreground">
+              <h1 className="text-3xl md:text-4xl font-regular mb-2 leading-tight text-foreground">
                 Less Than Container Load
               </h1>
               <span className="text-lg text-primary mb-6">(LCL)</span>
@@ -40,10 +41,10 @@ export default function ShippingMethodsInfo() {
             </div>
             {/* Right Side: Info Card */}
             <div>
-              <h2 className="text-xl text-primary mb-4">
+              <h2 className="text-xl text-primary mb-4 font-regular">
                 What is Less than container load?
               </h2>
-              <p className="text-muted-foreground mb-4 text-sm md:text-base">
+              <p className="text-muted-foreground mb-4 text-sm md:text-base font-light">
               Less than Container Load (LCL) is a shipping method specifically designed for businesses with shipments that
   do not fill an entire shipping container. This service enables multiple shipments from different clients to be
   consolidated within a single container, enabling businesses to share transportation costs effectively. Our LCL is
@@ -53,7 +54,7 @@ export default function ShippingMethodsInfo() {
 
 
               </p>
-              <p className="text-muted-foreground text-sm md:text-base">
+              <p className="text-muted-foreground text-sm md:text-base font-light">
               At Moon Navigation and Trading Co., we are committed to providing exceptional LCL shipping solutions that
   cater to the unique needs of our clients. With years of industry experience, our team of professionals ensures
   that your cargo is managed with the highest of care and efficiency. We understand the complexities of
@@ -174,48 +175,42 @@ export default function ShippingMethodsInfo() {
             </div>
           </div>
           <div className="w-full max-w-7xl mx-auto mt-20">
-            <h2 className="text-center text-2xl md:text-3xl text-primary mb-12 text-blue-600">
-              Reasons to Choose Moon Navigation and Trading Co. for Your LCL Shipment
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-              {/* Global Network */}
-              <div className="flex flex-col items-center text-center px-4">
-                <h3 className="text-base md:text-lg mb-2 text-primary">Global Network</h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  Our extensive network provides reliable consolidation services that ensure seamless connections for your cargo worldwide, ensuring timely delivery.
-                </p>
-              </div>
-              {/* Cost-Optimized Transportation */}
-              <div className="flex flex-col items-center text-center px-4">
-                <h3 className="text-base md:text-lg mb-2 text-primary">Cost-Optimized Transportation</h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  We focus on delivering efficient and budget-friendly transportation options for smaller shipments without compromising on quality.
-                </p>
-              </div>
-              {/* Secure Handling */}
-              <div className="flex flex-col items-center text-center px-4">
-                <h3 className="text-base md:text-lg mb-2 text-primary">Secure Handling</h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  Our team employs meticulous packaging, precise labeling, and advanced tracking to ensure your shipment is always protected, even in shared shipping spaces, ensuring that it arrives in perfect condition.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-              {/* End-to-End Logistics */}
-              <div className="flex flex-col items-center text-center px-4">
-                <h3 className="text-base md:text-lg mb-2 text-primary">End-to-End Logistics</h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  We provide comprehensive logistics solutions that guarantee timely and reliable delivery outcomes, from pickup to final destination, allowing you to focus on your business.
-                </p>
-              </div>
-              {/* Expert Documentation Management */}
-              <div className="flex flex-col items-center text-center px-4">
-                <h3 className="text-base md:text-lg mb-2 text-primary">Expert Documentation Management</h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  With our deep understanding of customs regulations and compliance requirements, we expertly manage all necessary documentation, minimizing delays and ensuring a hassle-free shipping experience.
-                </p>
-              </div>
-            </div>
+            <ReasonsGridUniversal
+              title="Reasons to Choose Moon Navigation and Trading Co. for Your LCL Shipment"
+              layout="3-2"
+              reasons={[
+                {
+                  icon: <img src="/icons/11.png" className="mb-8 h-20 w-20 object-contain"/> ,
+                  title: "Global Network",
+                  description:
+                    "Our extensive network provides reliable consolidation services that ensure seamless connections for your cargo worldwide, ensuring timely delivery.",
+                },
+                {
+                  icon: <img src="/icons/24.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Cost-Optimized Transportation",
+                  description:
+                    "We focus on delivering efficient and budget-friendly transportation options for smaller shipments without compromising on quality.",
+                },
+                {
+                  icon: <img src="/icons/57.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Secure Handling",
+                  description:
+                    "Our team employs meticulous packaging, precise labeling, and advanced tracking to ensure your shipment is always protected, even in shared shipping spaces, ensuring that it arrives in perfect condition.",
+                },
+                {
+                  icon: <img src="/icons/container/7.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "End-to-End Logistics",
+                  description:
+                    "We provide comprehensive logistics solutions that guarantee timely and reliable delivery outcomes, from pickup to final destination, allowing you to focus on your business.",
+                },
+                {
+                  icon: <img src="/icons/container/10.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Expert Documentation Management",
+                  description:
+                    "With our deep understanding of customs regulations and compliance requirements, we expertly manage all necessary documentation, minimizing delays and ensuring a hassle-free shipping experience.",
+                },
+              ]}
+            />
           </div>
           <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             {/* Image Section */}
