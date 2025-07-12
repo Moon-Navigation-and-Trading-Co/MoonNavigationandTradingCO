@@ -176,9 +176,9 @@ export default function ProjectCargoPage() {
               {
                 icon: (
                   <img
-                    src="/icons/team.png"
+                    src="/icons/9.png"
                     alt="Dedicated Project Cargo Team"
-                    className="mb-6 h-16 w-16 object-contain"
+                    className="mb-8 h-24 w-24 object-contain"
                   />
                 ),
                 title: "Dedicated Project Cargo Team",
@@ -187,9 +187,9 @@ export default function ProjectCargoPage() {
               {
                 icon: (
                   <img
-                    src="/icons/box.png"
+                    src="/icons/10.png"
                     alt="Specialized Equipment & Vessels"
-                    className="mb-6 h-16 w-16 object-contain"
+                    className= "mb-8 h-24 w-24 object-contain"
                   />
                 ),
                 title: "Specialized Equipment & Vessels",
@@ -198,9 +198,9 @@ export default function ProjectCargoPage() {
               {
                 icon: (
                   <img
-                    src="/icons/global.png"
+                    src="/icons/11.png"
                     alt="Global Reach & Local Expertise"
-                    className="mb-6 h-16 w-16 object-contain"
+                    className= "mb-8 h-24 w-24 object-contain"
                   />
                 ),
                 title: "Global Reach & Local Expertise",
@@ -209,9 +209,9 @@ export default function ProjectCargoPage() {
               {
                 icon: (
                   <img
-                    src="/icons/shield.png"
+                    src="/icons/8.png"
                     alt="Risk Management & Compliance"
-                    className="mb-6 h-16 w-16 object-contain"
+                    className="mb-8 h-24 w-24 object-contain"
                   />
                 ),
                 title: "Risk Management & Compliance",

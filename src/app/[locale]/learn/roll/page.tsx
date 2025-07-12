@@ -7,6 +7,7 @@ import FAQSearch from "@/components/faq";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 // SEO Metadata for Next.js 13+ App Router
 
@@ -73,7 +74,7 @@ function services() {
               src="/roroheroimage.jpg"
               alt="RoRo Cargo Handling"
               width={420}
-              height={320}
+              height={350}
               className="rounded-[48px] object-cover w-full h-[440px] mb-6"
               loading="lazy"
             />
@@ -149,7 +150,7 @@ function services() {
               src="/roroCargoImage.jpg"
               alt="Moon Navigation employee checking RoRo cargo"
               width={420}
-              height={320}
+              height={350}
               className="object-cover w-full h-[520px] shadow-lg object-[30%_70%] rounded-[60px]"
               loading="lazy"
             />
@@ -188,29 +189,37 @@ function services() {
         <h2 className="text-2xl md:text-4xl font-normal text-center mb-16 text-[#222] dark:text-white font-sans">
           Reasons to Choose Us for Your RORO Cargo
         </h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-8 px-4 md:px-0">
-          {/* Row 1 */}
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Efficiency & Reliability</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Fast, secure, and dependable shipping services for wheeled cargo.</p>
+        <div className="max-w-7xl mx-auto flex flex-col items-center gap-20">
+          <div className="w-full flex flex-col md:flex-row justify-center gap-12">
+            {/* First row: 3 reasons */}
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/23.png" alt="Efficiency & Reliability" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Efficiency & Reliability</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Fast, secure, and dependable shipping services for wheeled cargo.</div>
+            </div>
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/22.png" alt="Expert Handling" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Handling</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</div>
+            </div>
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/24.png" alt="Secure & Cost-Effective Transport" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Secure & Cost-Effective Transport</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</div>
+            </div>
           </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Handling</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Secure & Cost-Effective Transport</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</p>
-          </div>
-        </div>
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-x-8 mt-20 px-4 md:px-0">
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Global Connectivity</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Compliance & Support</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</p>
+          <div className="w-full flex flex-col md:flex-row justify-center gap-12">
+            {/* Second row: 2 reasons */}
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/25.png" alt="Global Connectivity" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Global Connectivity</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</div>
+            </div>
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/26.png" alt="Expert Compliance & Support" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Compliance & Support</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</div>
+            </div>
           </div>
         </div>
       </section>

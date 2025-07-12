@@ -8,7 +8,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from '@/components/faq'
 import OverviewServicesTabs from '@/components/overview-services'
-
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 
 function overview(){
@@ -213,39 +213,39 @@ function services(){
         </div>
       </section>
       <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
-        <h2 className="text-3xl sm:text-4xl mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          Reasons to Choose Moon Navigation and Trading Co. for Your Livestock Transportation Needs
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8">
-          {/* Card 1 */}
-          <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Global Network and Port Access</h3>
-            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.
-            </p>
-          </div>
-          {/* Card 2 */}
-          <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Advanced Biosecurity Measures</h3>
-            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              We implement strict hygiene protocols, quarantine measures, and disease prevention practices.
-            </p>
-          </div>
-          {/* Card 3 */}
-          <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Custom-Tailored Transport Solutions</h3>
-            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              Whether you need short-haul regional shipping or long-haul transcontinental transport, we design solutions tailored to your needs.
-            </p>
-          </div>
-          {/* Card 4 */}
-          <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Seamless Logistics and Documentation Handling</h3>
-            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              From permits and health certificates to customs clearance, we manage all necessary documentation.
-            </p>
-          </div>
-        </div>
+        <ReasonsGridUniversal
+          title="Reasons to Choose Moon Navigation and Trading Co. for Your Livestock Transportation Needs"
+          reasons={[
+            {
+              icon: (
+                <img src="/icons/56.png" alt="Global Network & Port Access" className="mb-8 h-20 w-20 object-contain" />
+              ),
+              title: "Global Network & Port Access",
+              description: "Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.",
+            },
+            {
+              icon: (
+                <img src="/icons/57.png" alt="Advanced Biosecurity Measures" className="mb-8 h-24 w-24 object-contain" />
+              ),
+              title: "Advanced Biosecurity Measures",
+              description: "We implement strict hygiene protocols, quarantine measures, and disease prevention practices.",
+            },
+            {
+              icon: (
+                <img src="/icons/58.png" alt="Custom-Tailored Transport Solutions" className="mb-8 h-20 w-20 object-contain" />
+              ),
+              title: "Custom-Tailored Transport Solutions",
+              description: "Whether you need short-haul regional shipping or long-haul transcontinental transport, we design solutions tailored to your needs.",
+            },
+            {
+              icon: (
+                <img src="/icons/59.png" alt="Seamless Logistics & Documentation Handling" className="mb-8 h-20 w-20 object-contain" />
+              ),
+              title: "Seamless Logistics & Documentation Handling",
+              description: "From permits and health certificates to customs clearance, we manage all necessary documentation.",
+            },
+          ]}
+        />
       </section>
       <GetQuoteComponent topic="Livestock" link="/ocean-freight-forms" />
       <FAQSearch category="livestock-transportation" />
@@ -257,8 +257,8 @@ function services(){
 export default function ShippingMethodsInfo() {
   const t = useTranslations("livestock:");
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center mt-10">
+    <div className="w-full">
       <OverviewServicesTabs renderOverview={overview} renderServices={services}/>
-      </div>
+    </div>
   )
 }

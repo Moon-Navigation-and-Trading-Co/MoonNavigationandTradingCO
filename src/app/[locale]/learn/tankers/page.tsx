@@ -13,15 +13,19 @@ function overview() {
     return (
         <>
             {/* Top Image */}
-            <div className="w-full h-[400px]  overflow-hidden mb-">
-                <Image
-                    src="/tankers-header.jpg"
-                    alt="Tankers at sea"
-                    width={1024}
-                    height={350}
-                    className="object-cover w-full h-[220px] sm:h-[320px] rounded-3xl"
-                    priority
-                />
+            <div className="w-full max-w-7xl mx-auto flex flex-col gap-0 items-center mt-12">
+                <div className="w-full rounded-[3rem] overflow-hidden mb-12 shadow-lg">
+                    <div className="relative w-full h-[340px]">
+                        <Image
+                            src="/tankers-header.jpg"
+                            alt="Tankers at sea"
+                            fill
+                            className="object-cover rounded-[3rem]"
+                            priority
+                            sizes="(max-width: 768px) 100vw, 1200px"
+                        />
+                    </div>
+                </div>
             </div>
             {/* Main Content */}
             <article className="w-full max-w-7xl flex flex-col md:flex-row gap-10 px-4 md:px-0">
