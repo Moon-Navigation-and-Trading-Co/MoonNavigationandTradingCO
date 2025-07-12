@@ -5,6 +5,8 @@ import { useTranslations } from "next-intl";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import ProjectCargoCarousel from "@/components/project-cargo-carousel";
+import ReasonsGrid from "@/components/ReasonsGrid";
 
 //seo
 export const metadata = {
@@ -94,7 +96,7 @@ export default function ProjectCargoPage() {
         <div className="flex flex-col md:flex-row gap-8 w-full ">
           {/* Left: Title and Button */}
           <div className="flex-1 flex flex-col items-start justify-center pl-8">
-            <h1 className="text-5xl font-normal font-sans mb-12 text-[#222] dark:text-white">Project Cargo<br />Services</h1>
+            <h1 className="text-5xl font-raleway font-regular mb-12 text-[#222] dark:text-white">Project Cargo<br />Services</h1>
             <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
               <RequestQuoteButton>
                 Request a Quote
@@ -103,68 +105,31 @@ export default function ProjectCargoPage() {
           </div>
           {/* Right: What is Project Cargo */}
           <div className="flex-1 flex flex-col justify-center pr-8">
-            <h2 className="text-2xl font-normal mb-4 text-[#3846a5] dark:text-blue-400 font-sans">What is Project Cargo?</h2>
-            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 mb-4 font-sans">
+            <h2 className="text-2xl font-raleway font-regular mb-4 text-[#3846a5] dark:text-blue-400">What is Project Cargo?</h2>
+            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 mb-4 font-raleway font-light">
               Project cargo in ocean freight entails the transportation of large, heavy, high-value or complex pieces of equipment and materials. At Moon Navigation and Trading Co., we specialize in managing these specialized shipments, which are intricately linked to specific projects and require meticulous handling, specialized equipment, and precise coordination.
             </p>
-            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 font-sans">
+            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 font-raleway font-light">
               We understand that ensuring the safe and timely delivery of project cargo is vital for the successful execution of industrial and infrastructure projects. Our dedicated team is committed to providing comprehensive solutions that address the unique challenges of project cargo logistics, making this a critical aspect of services in global trade.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto w-full">
-        <hr className="mb-10 border-t border-gray-200 dark:border-gray-700" />
-        <h2 className="text-4xl font-normal text-center mb-12 font-sans text-gray-900 dark:text-white">Key Industries Leveraging Our Project Cargo Solution</h2>
-        <div className="flex flex-row justify-center gap-8 mb-8">
-          {/* Card 1 */}
-          <div className="flex flex-col items-center">
-            <img src="/industry-marine.jpg" alt="Marine and Shipbuilding" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
-            <span className="text-base text-center text-gray-900 dark:text-white">Marine and Shipbuilding</span>
-          </div>
-          {/* Card 2 */}
-          <div className="flex flex-col items-center">
-            <img src="/industry-construction.jpg" alt="Construction and Infrastructure" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
-            <span className="text-base text-center text-gray-900 dark:text-white">Construction and Infrastructure</span>
-          </div>
-          {/* Card 3 */}
-          <div className="flex flex-col items-center">
-            <img src="/industry-mining.jpg" alt="Mining" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
-            <span className="text-base text-center text-gray-900 dark:text-white">Mining</span>
-          </div>
-          {/* Card 4 */}
-          <div className="flex flex-col items-center">
-            <img src="/industry-aerospace.jpg" alt="Aerospace" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
-            <span className="text-base text-center text-gray-900 dark:text-white">Aerospace</span>
-          </div>
-          {/* Card 5 */}
-          <div className="flex flex-col items-center">
-            <img src="/industry-energy.jpg" alt="Energy" className="w-56 h-40 object-cover rounded-[48px] mb-4" />
-            <span className="text-base text-center text-gray-900 dark:text-white">Energy</span>
-          </div>
-        </div>
-        {/* Carousel Dots and Arrows */}
-        <div className="flex flex-row items-center justify-center gap-4 mt-2">
-          <span className="w-6 h-2 bg-[#222] dark:bg-white rounded-full inline-block"></span>
-          <span className="w-2 h-2 bg-gray-300 dark:bg-gray-600 rounded-full inline-block"></span>
-          <span className="w-10"></span>
-          <button className="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-600 flex items-center justify-center text-xl text-gray-400 dark:text-gray-500 mr-2">&#8592;</button>
-          <button className="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-600 flex items-center justify-center text-xl text-gray-400 dark:text-gray-500">&#8594;</button>
-        </div>
-      </section>
+      {/* Project Cargo Carousel */}
+      <ProjectCargoCarousel />
 
       <section className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-10 text-center font-sans text-gray-900 dark:text-white">
+        <h2 className="text-3xl font-raleway font-regular mb-10 text-center text-gray-900 dark:text-white">
           Key Differences between Project Cargo and Standard Cargo
         </h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full border border-[#3846a5] dark:border-blue-400 rounded-xl text-base font-sans bg-white dark:bg-gray-800">
+          <table className="min-w-full border border-[#3846a5] dark:border-blue-400 rounded-xl text-base font-raleway font-light bg-white dark:bg-gray-800">
             <thead>
               <tr className="bg-[#f5f8ff] dark:bg-blue-900/20 border-b border-[#3846a5] dark:border-blue-400">
-                <th className="px-4 py-3 border-r border-[#3846a5] dark:border-blue-400 font-bold text-left text-black dark:text-white">Feature</th>
-                <th className="px-4 py-3 border-r border-[#3846a5] dark:border-blue-400 font-bold text-left text-black dark:text-white">Project Cargo</th>
-                <th className="px-4 py-3 font-bold text-left text-black dark:text-white">Standard Cargo</th>
+                <th className="px-4 py-3 border-r border-[#3846a5] dark:border-blue-400 font-raleway font-regular text-left text-black dark:text-white">Feature</th>
+                <th className="px-4 py-3 border-r border-[#3846a5] dark:border-blue-400 font-raleway font-regular text-left text-black dark:text-white">Project Cargo</th>
+                <th className="px-4 py-3 font-raleway font-regular text-left text-black dark:text-white">Standard Cargo</th>
               </tr>
             </thead>
             <tbody>
@@ -222,9 +187,9 @@ export default function ProjectCargoPage() {
 
       {/* Why is project cargo unique? Section */}
       <section className="max-w-7xl mx-auto px-4 md:px-0 mt-16 mb-16">
-        <h2 className="text-2xl font-normal mb-8 text-[#3846a5] dark:text-blue-400 font-sans">Why is project cargo unique?</h2>
+        <h2 className="text-2xl font-raleway font-regular mb-8 text-[#3846a5] dark:text-blue-400">Why is project cargo unique?</h2>
         <div className="relative">
-          <div className="border border-gray-200 dark:border-gray-700 rounded-[48px] p-8 pt-8 pl-8 pr-8 max-w-3xl font-sans text-[16px] text-[#222] dark:text-white shadow-sm bg-white dark:bg-gray-800" style={{minHeight:'180px'}}>
+          <div className="border border-gray-200 dark:border-gray-700 rounded-[48px] p-8 pt-8 pl-8 pr-8 max-w-3xl font-raleway font-light text-[16px] text-[#222] dark:text-white shadow-sm bg-white dark:bg-gray-800" style={{minHeight:'180px'}}>
             Each shipment is treated as a one-of-a-kind operation, requiring:
             <br /><br />
             <b>Detailed Surveys</b>: Assessing dimensions, weight, and transport feasibility.<br />
@@ -238,14 +203,14 @@ export default function ProjectCargoPage() {
 
       <section className="max-w-7xl mx-auto bg-[#d3e3f1] dark:bg-blue-900/20 rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row gap-8 items-stretch mt-12 mb-12">
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-3xl font-normal mb-6 font-sans text-gray-900 dark:text-white">How are we overcoming challenges in project cargo transportation?</h2>
-          <p className="mb-6 font-sans text-base text-[#222] dark:text-white">
+          <h2 className="text-3xl font-raleway font-regular mb-6 text-gray-900 dark:text-white">How are we overcoming challenges in project cargo transportation?</h2>
+          <p className="mb-6 font-raleway font-light text-base text-[#222] dark:text-white">
             At Moon Navigation and Trading Co., we recognize that project cargo is unique, as each shipment is treated as a one-of-a-kind operation that requires a tailored approach to logistics. The process begins with detailed surveys, where we assess the dimensions, weight, and transport feasibility of your cargo to ensure optimal planning.
           </p>
-          <p className="mb-6 font-sans text-base text-[#222] dark:text-white">
+          <p className="mb-6 font-raleway font-light text-base text-[#222] dark:text-white">
             We prioritize permit management, securing all necessary documentation for oversized loads to ensure compliance with regulations. Additionally, our team excels in coordination with ports, carriers, and local authorities to streamline the transportation process. As a critical segment of ocean freight, project cargo demands specialized expertise in logistics and engineering to ensure the successful delivery of valuable assets.
           </p>
-          <ul className="list-disc pl-6 space-y-4 font-sans text-base text-[#222] dark:text-white">
+          <ul className="list-disc pl-6 space-y-4 font-raleway font-light text-base text-[#222] dark:text-white">
             <li><b>Custom Handling & Packaging:</b> Our team employs specialized handling techniques and tailored packaging solutions to guarantee the safety and stability of project cargo.</li>
             <li><b>Heavy Lifting Equipment:</b> We utilize advanced cranes, gantries, and hydraulic platforms to accurately lift and position exceptionally heavy items, ensuring secure transport.</li>
             <li><b>Intermodal Transport Coordination:</b> We seamlessly integrate sea, road, and rail transport, facilitating smooth coordination across different modes of transportation.</li>
@@ -256,47 +221,62 @@ export default function ProjectCargoPage() {
           <img
             src="/project-cargo-challenge.jpg"
             alt="Project cargo heavy lift operation"
-            className="rounded-[40px] object-cover w-full h-[350px]"
+            className="rounded-[60px] object-cover w-[800px] h-[500px]"
           />
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto pt-8 pb-16">
-        <h2 className="text-3xl font-normal text-center mb-4 font-sans text-gray-900 dark:text-white">
-          Reasons to Choose Moon Navigation and Trading Co. for Your Project Cargo Needs
-        </h2>
-        <p className="mb-12 text-center text-base text-[#444] dark:text-gray-300 max-w-3xl mx-auto font-sans">
-          At Moon Navigation & Trading, we offer comprehensive end-to-end solutions for project cargo transportation, meticulously overseeing every logistical aspect from planning to delivery.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8 justify-items-center">
-          {/* Row 1 */}
-          <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Dedicated Project Cargo Team</div>
-            <div className="text-base text-[#444] dark:text-gray-300 max-w-xs">
-              Our proficient team excels in managing the complexities of project logistics, delivering customized solutions tailored to your specific requirements.
-            </div>
-          </div>
-          <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Specialized Equipment & Vessels</div>
-            <div className="text-base text-[#444] dark:text-gray-300 max-w-xs">
-              From permits and health certificates to customs clearance, we manage all necessary documentation.
-            </div>
-          </div>
-          {/* Row 2 */}
-          <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Global Reach & Local Expertise</div>
-            <div className="text-base text-[#444] dark:text-gray-300 max-w-xs">
-              With a strong global network, we offer seamless project cargo transport to any destination, supported by local expertise at each stage of the journey.
-            </div>
-          </div>
-          <div className="flex flex-col items-center text-center min-h-[180px]">
-            <div className="font-bold text-lg mb-2 text-gray-900 dark:text-white">Risk Management & Compliance</div>
-            <div className="text-base text-[#444] dark:text-gray-300 max-w-xs">
-              We proactively manage any risk factors associated with project cargo, ensuring all international shipping regulations, permits, and insurance requirements are met.
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Reasons Grid Section */}
+      <ReasonsGrid
+        title="Reasons to Choose Moon Navigation and Trading Co. for Your Project Cargo Needs"
+        subheading="At Moon Navigation & Trading, we offer comprehensive end-to-end solutions for project cargo transportation, meticulously overseeing every logistical aspect from planning to delivery."
+        reasons={[
+          {
+            icon: (
+              <img
+                src="/icons/team.png"
+                alt="Dedicated Project Cargo Team"
+                className="mb-6 h-16 w-16 object-contain"
+              />
+            ),
+            title: "Dedicated Project Cargo Team",
+            description: "Our proficient team excels in managing the complexities of project logistics, delivering customized solutions tailored to your specific requirements.",
+          },
+          {
+            icon: (
+              <img
+                src="/icons/box.png"
+                alt="Specialized Equipment & Vessels"
+                className="mb-6 h-16 w-16 object-contain"
+              />
+            ),
+            title: "Specialized Equipment & Vessels",
+            description: "From permits and health certificates to customs clearance, we manage all necessary documentation.",
+          },
+          {
+            icon: (
+              <img
+                src="/icons/global.png"
+                alt="Global Reach & Local Expertise"
+                className="mb-6 h-16 w-16 object-contain"
+              />
+            ),
+            title: "Global Reach & Local Expertise",
+            description: "With a strong global network, we offer seamless project cargo transport to any destination, supported by local expertise at each stage of the journey.",
+          },
+          {
+            icon: (
+              <img
+                src="/icons/shield.png"
+                alt="Risk Management & Compliance"
+                className="mb-6 h-16 w-16 object-contain"
+              />
+            ),
+            title: "Risk Management & Compliance",
+            description: "We proactively manage any risk factors associated with project cargo, ensuring all international shipping regulations, permits, and insurance requirements are met.",
+          },
+        ]}
+      />
       <GetQuoteComponent topic="Project Cargo" link="/ocean-freight-forms" />
       <FAQSearch category="project-cargo" />
     </div>
