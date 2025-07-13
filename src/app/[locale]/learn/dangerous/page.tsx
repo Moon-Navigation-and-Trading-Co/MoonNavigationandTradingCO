@@ -131,48 +131,47 @@ export default function DangerousCargoInfo() {
                 <div>
                     {/* Accordion/classes section below */}
                     <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
-                        <CardHeader>
-                            <CardTitle className="text-3xl font-bold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>{t('title')}</CardTitle>
-                            <CardContent className="p-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                {t('description')}
-                            </CardContent>
-                        </CardHeader>
-                        <CardContent className="flex flex-col md:flex-row gap-8 p-0">
-                            {/* Sidebar: List of classes */}
-                            <aside className="w-full md:w-1/3 mb-8 md:mb-0">
-                                <nav>
-                                    <ul className="space-y-2">
-                                        {dangerousClasses.map((dangerousClass, idx) => (
-                                            <li key={dangerousClass.id}>
-                                                <button
-                                                    type="button"
-                                                    className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${
-                                                        selectedClass === idx
-                                                            ? "bg-primary/10 text-primary font-semibold"
-                                                            : "hover:bg-muted"
-                                                    }`}
-                                                    onClick={() => setSelectedClass(idx)}
-                                                    aria-current={selectedClass === idx ? "page" : undefined}
-                                                    style={{ fontFamily: 'Raleway, sans-serif' }}
-                                                >
-                                                    {dangerousClass.title}
-                                                </button>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </nav>
-                            </aside>
-                            {/* Main content: Class details */}
-                            <section className="flex-1 min-w-0">
-                                <h2 className="text-xl font-semibold mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    {dangerousClasses[selectedClass]?.title}
-                                </h2>
-                                <div className="text-base leading-relaxed whitespace-pre-line" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    {dangerousClasses[selectedClass]?.description}
-                                </div>
-                            </section>
+                    <CardHeader>
+                        <CardTitle className="text-3xl font-bold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
+                        <CardContent className="p-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                            
                         </CardContent>
-                    </Card>
+                    </CardHeader>
+                    <CardContent className="flex flex-col md:flex-row gap-8 p-0">
+                        {/* Sidebar: List of classes */}
+                        <aside className="w-full md:w-1/3 mb-8 md:mb-0">
+                            <nav>
+                                <ul className="space-y-2">
+                                    {dangerousClasses.map((dangerousClass, idx) => (
+                                        <li key={dangerousClass.id}>
+                                            <button
+                                                type="button"
+                                                className={`w-full text-left px-4 py-2 transition-colors ${selectedClass === idx
+                                                    ? "bg-blue-200 text-primary font-semibold"
+                                                    : "hover:bg-muted"
+                                                    }`}
+                                                onClick={() => setSelectedClass(idx)}
+                                                aria-current={selectedClass === idx ? "page" : undefined}
+                                                style={{ fontFamily: 'Raleway, sans-serif' }}
+                                            >
+                                                {dangerousClass.title}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </nav>
+                        </aside>
+                        {/* Main content: Class details */}
+                        <section className="flex-1 min-w-0">
+                            <h2 className="text-xl font-semibold mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                {dangerousClasses[selectedClass]?.title}
+                            </h2>
+                            <div className="text-base leading-relaxed whitespace-pre-line" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                {dangerousClasses[selectedClass]?.description}
+                            </div>
+                        </section>
+                    </CardContent>
+                </Card>
                     <div className="w-full max-w-7xl mx-auto mt-20 mb-20">
                         <h2
                             className="text-3xl sm:text-4xl  mb-16"

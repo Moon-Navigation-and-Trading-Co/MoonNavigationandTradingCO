@@ -17,7 +17,7 @@ export default function InlandContainerPage() {
         <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
           {/* Top Banner */}
           <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
-            <div className="relative w-full h-[180px] md:h-[260px]">
+            <div className="relative w-full h-[350px] md:h-[350px]">
               <img
                 src="/inland-1.jpg"
                 alt="Moon Navigation and Trading Co. Inland Container Transportation"

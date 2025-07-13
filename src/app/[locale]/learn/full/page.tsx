@@ -51,7 +51,7 @@ export default function FullContainerLoadPage() {
             <h2 className="text-lg  text-primary mb-2 font-regular">
               What is Full Container Load?
             </h2>
-            <p className="text-base text-foreground leading-relaxed font-light">
+            <p className="text-light text-foreground leading-relaxed font-light">
               Full Container Load (FCL) is a shipping method designed for businesses that require the
               exclusive use of an entire shipping container. This service ensures maximum security, faster
               transit times, and reduced handling risks, making it the ideal choice for bulk shipments. With

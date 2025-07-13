@@ -46,7 +46,7 @@ export default function ContainerHandlingPage() {
            </div>
 
            {/* 2. Specialized Container Handling - Image Left, Text Right */}
-           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
                {/* Left: Image */}
                <div className="w-full rounded-xl overflow-hidden shadow">
                    <img
@@ -75,7 +75,7 @@ export default function ContainerHandlingPage() {
            </div>
        </div>
        {/* 3. Secure Lashing & Cargo Protection */}
-       <div className="md:col-span-2 flex flex-col md:flex-row items-center gap-8 mt-8">
+       <div className="md:col-span-2 flex flex-col md:flex-row items-center gap-8 mt-20">
            {/* Left: Text Content */}
            <div className="flex-1">
                <h3 className="text-lg md:text-xl  mb-2">

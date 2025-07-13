@@ -124,40 +124,40 @@ const sections = [
 
 export default function DangerousGoodsLearnMore() {
   return (
-    <div className="w-full min-h-screen bg-background text-foreground mt-10 flex flex-col items-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
-      <div className="max-w-6xl w-full">
-        <h1 className="text-4xl md:text-5xl font-regular raleway-normal text-primary mb-6" style={{ lineHeight: 1.15 }}>
-          Our Dangerous Goods Container Shipment Solutions
-        </h1>
-        <p className="text-lg md:text-xl font-light raleway-light text-foreground mb-16 max-w-3xl">
+    <div className="w-full max-w-7xl mx-auto">
+      <section className="w-full max-w-7xl mx-auto mt-20 mb-12 px-4 md:px-0">
+        <h2 className="text-2xl md:text-3xl  mb-4 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          Our Solutions
+        </h2>
+        <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-3xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
           At Moon Navigation and Trading Co., we provide specialized, fully compliant solutions for the safe and efficient transportation of hazardous cargo across international routes. Our goal is to minimize risk and ensure every shipment meets the highest standards of safety, precision, and reliability.
         </p>
         <div className="flex flex-col gap-24">
           {sections.map((section, idx) => (
             <div
               key={section.title}
-              className={`flex flex-col ${section.imgFirst ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-10 md:gap-16`}
+              className={`flex flex-col ${section.imgFirst ? 'md:flex-row-reverse' : 'md:flex-row'} items-center gap-8`}
             >
-              <div className="flex-1 w-full max-w-xl">
-                <h2 className="text-2xl md:text-3xl font-regular raleway-normal text-primary mb-4" style={{ lineHeight: 1.2 }}>
+              <div className="flex-1 flex flex-col justify-center">
+                <h2 className="text-lg md:text-xl  mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
                   {section.title}
                 </h2>
-                <div className="text-base md:text-lg font-light raleway-light text-foreground">
+                <div className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
                   {section.text}
                 </div>
               </div>
-              <div className="flex-1 w-full flex justify-center">
+              <div className="flex-shrink-0 w-full md:w-[400px]">
                 <img
                   src={section.img}
                   alt={section.imgAlt}
-                  className="rounded-3xl object-cover shadow-md"
-                  style={{ width: '420px', height: '260px', minWidth: 260, maxWidth: 420, minHeight: 180, maxHeight: 260 }}
+                  className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
+                  loading="lazy"
                 />
               </div>
             </div>
           ))}
         </div>
-      </div>
+      </section>
       <GetQuoteComponent topic="Dangerous Goods Transport" link="container-services-forms"/>
       <FAQSearch category="dangerous-goods"/> 
     </div>

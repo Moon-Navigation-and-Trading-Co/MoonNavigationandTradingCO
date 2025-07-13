@@ -12,7 +12,7 @@ function overview() {
         <>
             {/* Top Banner */}
             <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
-                <div className="relative w-full h-[180px] md:h-[260px]">
+                <div className="relative w-full h-[350px] md:h-[350px]">
                     <img
                         src="/hss-1.jpg"
                         alt="Moon Navigation and Trading Co. Container Handling, Stevedoring and Storage"
@@ -92,7 +92,7 @@ function services() {
                         <img
                             src="/hss-2.jpg"
                             alt="Container handling operations at port"
-                            className="object-cover w-full max-w-md h-48 md:h-56 rounded-xl shadow"
+                            className="object-cover w-full max-w-lg h-64 md:h-80 rounded-xl shadow"
                             style={{ fontFamily: "Raleway, sans-serif" }}
                         />
                     </div>
@@ -105,7 +105,7 @@ function services() {
                         <img
                             src="/hss-3.jpg"
                             alt="Stevedores operating cranes to load cargo onto a vessel"
-                            className="object-cover w-full max-w-md h-48 md:h-56 rounded-xl shadow"
+                            className="object-cover w-full max-w-lg h-64 md:h-80 rounded-xl shadow"
                         />
                     </div>
                     {/* Right: Text Content */}
@@ -170,7 +170,7 @@ function services() {
                         <img
                             src="/hss-4.jpg"
                             alt="Warehouse interior with racking and containers"
-                            className="object-cover w-full max-w-md h-48 md:h-56 rounded-xl shadow"
+                            className="object-cover w-full max-w-lg h-64 md:h-80 rounded-xl shadow"
                         />
                     </div>
                 </div>

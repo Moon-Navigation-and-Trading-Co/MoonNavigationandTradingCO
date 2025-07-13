@@ -38,19 +38,19 @@ export default function StevedoringPage() {
                         <img
                             src="/s-hss-1.jpg"
                             alt="Stevedores operating cranes to load cargo onto a vessel"
-                            className="object-cover w-full h-40 md:h-44"
+                            className="object-cover w-full h-40 md:h-56"
                         />
                     </div>
                 </div>
 
                 {/* 2. Equipment & Technology - Image Left, Text Right */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
                     {/* Left: Image */}
                     <div className="w-full rounded-xl overflow-hidden shadow">
                         <img
                             src="/s-hss-2.jpg"
                             alt="Modern container handling equipment at port"
-                            className="object-cover w-full h-40 md:h-44"
+                            className="object-cover w-full h-40 md:h-56"
                         />
                     </div>
                     {/* Right: Text Content */}
@@ -73,7 +73,7 @@ export default function StevedoringPage() {
                 </div>
             </div>
             {/* 3. Safety & Compliance */}
-            <div className="flex flex-col md:flex-row gap-8 items-start mt-8">
+            <div className="flex flex-col md:flex-row gap-8 items-start mt-20">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h3 className="text-lg md:text-xl  mb-2">
