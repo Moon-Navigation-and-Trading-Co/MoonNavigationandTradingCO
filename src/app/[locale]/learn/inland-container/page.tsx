@@ -57,8 +57,8 @@ export default function InlandContainerPage() {
         </div>
       )}
       renderServices={() => (
-        <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          <div className="w-full max-w-7xl mx-auto mt-20">
+        <div className="min-h-screen flex flex-col items-center  px-2 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <div className="w-full max-w-7xl mx-auto ">
             <h2 className="text-2xl md:text-3xl  text-primary mb-2 text-center">
               Our Inland Container Transport Services
             </h2>
