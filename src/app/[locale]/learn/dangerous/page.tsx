@@ -130,13 +130,14 @@ export default function DangerousCargoInfo() {
             renderServices={() => (
                 <div>
                     {/* IMO class strip image above the card */}
-                    <div className="w-full flex justify-center items-center h-[60px] mt-10">
+                    <CardTitle className="text-3xl font-bold mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
+                <div className="w-full flex justify-center items-center h-[60px] mt-10">
                         <img src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" className="max-w-2xl w-full " />
                     </div>
                     {/* Accordion/classes section below */}
                     <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
                     <CardHeader>
-                        <CardTitle className="text-3xl font-bold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
+                       
                         <CardContent className="p-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             
                         </CardContent>
