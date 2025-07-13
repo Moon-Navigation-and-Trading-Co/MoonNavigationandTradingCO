@@ -7,6 +7,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-out-gauge");
@@ -31,7 +32,7 @@ export default function ShippingMethodsInfo() {
           <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Left: Title and CTA */}
             <div className="flex flex-col items-start justify-start">
-              <h1 className="text-2xl md:text-3xl  text-foreground mb-2">
+              <h1 className="text-2xl md:text-3xl  text-foreground mb-2 font-regular">
                 Out Gauge
               </h1>
               <Link href="/container-services-forms">
@@ -43,10 +44,10 @@ export default function ShippingMethodsInfo() {
 
             {/* Right: Description */}
             <div>
-              <h2 className="text-lg  text-primary mb-2">
+              <h2 className="text-lg  text-primary mb-2 font-regular">
                 What is Out Gauge?
               </h2>
-              <p className="text-base text-foreground leading-relaxed">
+              <p className="text-base text-foreground leading-relaxed font-light">
                 Out of Gauge (OOG) refers to shipments that exceed the standard dimensions of a shipping container, making them unsuitable for transport in enclosed containers. These shipments are typically large, unusually shaped, or require special securing, equipment, and transport solutions to ensure safe and efficient delivery.
                 <br /><br />
                 At Moon Navigation and Trading Co., we provide tailored OOG container solutions, ensuring that even the largest, most complex cargo is handled efficiently, meeting compliance and safety requirements. Our expertise in securing, moving, and transporting out-of-gauge shipments ensures maximum protection and reliable results while maintaining compliance with international shipping regulations.
@@ -301,59 +302,38 @@ export default function ShippingMethodsInfo() {
               </div>
             </div>
           </div>
-          <div className="w-full max-w-7xl mx-auto mt-24">
-            <h2 className="text-xl md:text-2xl  text-primary mb-10 text-center">
-              Reasons to Choose Moon Navigation and Trading Co. For Your Out-Of-Gauge Transportation
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              {/* Expert Route Planning */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Expert Route Planning
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  Our team conducts detailed route surveys and develops risk assessments to find the most efficient transport path for your out-of-gauge shipments.
-                </p>
-              </div>
-              {/* Specialized Handling & Equipment */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Specialized Handling and Equipment
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  We utilize flat racks and open-top containers, heavy-lift cranes, and modular trailers for accommodation. Available 24/7 for project accuracy.
-                </p>
-              </div>
-              {/* Customs & Regulatory Compliance */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Customs and Regulatory Compliance
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  We handle all necessary permits, authorizations, and documentation to ensure a smooth shipping process.
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Global Network & Reliable Partnerships */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Global Network and Reliable Partnerships
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  Strong connections with ports, carriers, and logistics providers enable seamless international and inland transportation.
-                </p>
-              </div>
-              {/* Tailored Logistics Solutions */}
-              <div className="flex flex-col items-center text-center">
-                <h3 className=" text-foreground mb-2 text-base md:text-lg">
-                  Tailored Logistics Solutions
-                </h3>
-                <p className="text-muted-foreground text-sm md:text-base">
-                  Every shipment is unique, and we provide customized transport plans for the size, weight, and special requirements of your cargo.
-                </p>
-              </div>
-            </div>
+          <div className="w-full max-w-7xl mx-auto mt-24 place-items-center">
+            <ReasonsGridUniversal
+              title="Reasons to Choose Moon Navigation and Trading Co. For Your Out-Of-Gauge Transportation"
+              layout="3-2"
+              reasons={[
+                {
+                  icon: <img src="/icons/container/75.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Expert Route Planning",
+                  description: "Our team conducts detailed route surveys and develops risk assessments to find the most efficient transport path for your out-of-gauge shipments.",
+                },
+                {
+                  icon: <img src="/icons/container/79.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Specialized Handling and Equipment",
+                  description: "We utilize flat racks and open-top containers, heavy-lift cranes, and modular trailers for accommodation. Available 24/7 for project accuracy.",
+                },
+                {
+                  icon: <img src="/icons/container/107.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Customs and Regulatory Compliance",
+                  description: "We handle all necessary permits, authorizations, and documentation to ensure a smooth shipping process.",
+                },
+                {
+                  icon: <img src="/icons/container/108.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Global Network and Reliable Partnerships",
+                  description: "Strong connections with ports, carriers, and logistics providers enable seamless international and inland transportation.",
+                },
+                {
+                  icon: <img src="/icons/container/109.png" className="mb-8 h-20 w-20 object-contain"/>,
+                  title: "Tailored Logistics Solutions",
+                  description: "Every shipment is unique, and we provide customized transport plans for the size, weight, and special requirements of your cargo.",
+                },
+              ]}
+            />
           </div>
           <GetQuoteComponent topic="Out Gauge" link="/container-services-forms" />
           <FAQSearch category="oog" />

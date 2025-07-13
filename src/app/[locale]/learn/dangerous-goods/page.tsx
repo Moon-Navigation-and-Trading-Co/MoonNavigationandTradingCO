@@ -11,6 +11,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function DangerousCargoInfo() {
     const t = useTranslations("learn-dangerous-cargo")
@@ -85,7 +86,7 @@ export default function DangerousCargoInfo() {
                 <div className="w-full flex flex-col md:flex-row items-start justify-center gap-8 mb-12 max-w-7xl mx-auto">
                     {/* Left column: title and button */}
                     <div className="flex-1 flex flex-col items-center md:items-start w-full">
-                        <h1 className="mb-10 text-4xl font-light text-left md:text-left w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>Dangerous Goods<br />Container Shipments</h1>
+                        <h1 className="mb-10 text-4xl font-regular text-left md:text-left w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>Dangerous Goods<br />Container Shipments</h1>
                         <Link href="/ocean-freight-forms">
                             <RequestQuoteButton>Request a Quote</RequestQuoteButton>
                         </Link>
@@ -283,64 +284,42 @@ export default function DangerousCargoInfo() {
                     </div>
                 </div>
                 <section className="w-full max-w-7xl mx-auto my-20">
-                    <h2 className="text-2xl md:text-3xl font-normal mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Reasons to Choose Moon Navigation and Trading Co. For Your International Trade
-                    </h2>
-                    <div className="mb-12" style={{ fontFamily: 'Raleway, sans-serif', fontSize: '1.5rem', fontWeight: 400 }}>
-                        {/* Subtitle if needed */}
-                    </div>
-                    <div className="w-full flex flex-col items-center">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-y-16 gap-x-8 w-full mt-8">
-                            {/* Feature 1 */}
-                            <div className="flex flex-col items-center text-center px-4">
-                                <img src="/icons/certified-team.svg" alt="Certified Team" className="mb-4 w-12 h-12" />
-                                <span className="text-sm font-medium" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Certified team with deep expertise<br />
-                                    in hazardous cargo handling.
-                                </span>
-                            </div>
-                            {/* Feature 2 */}
-                            <div className="flex flex-col items-center text-center px-4">
-                                <img src="/icons/compliance.svg" alt="Compliance" className="mb-4 w-12 h-12" />
-                                <span className="text-sm font-medium" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Full compliance with IMDG, ADR,<br />
-                                    and IATA standards.
-                                </span>
-                            </div>
-                            {/* Feature 3 */}
-                            <div className="flex flex-col items-center text-center px-4">
-                                <img src="/icons/container-options.svg" alt="Container Options" className="mb-4 w-12 h-12" />
-                                <span className="text-sm font-medium" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Wide range of DG container options<br />
-                                    and equipment.
-                                </span>
-                            </div>
-                            {/* Feature 4 */}
-                            <div className="flex flex-col items-center text-center px-4">
-                                <img src="/icons/operational-support.svg" alt="Operational Support" className="mb-4 w-12 h-12" />
-                                <span className="text-sm font-medium" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    End-to-end operational support<br />
-                                    and coordination.
-                                </span>
-                            </div>
-                            {/* Feature 5 */}
-                            <div className="flex flex-col items-center text-center px-4">
-                                <img src="/icons/safety.svg" alt="Safety" className="mb-4 w-12 h-12" />
-                                <span className="text-sm font-medium" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Commitment to safety, reliability,<br />
-                                    and regulatory excellence.
-                                </span>
-                            </div>
-                            {/* Feature 6 */}
-                            <div className="flex flex-col items-center text-center px-4">
-                                <img src="/icons/documentation.svg" alt="Documentation" className="mb-4 w-12 h-12" />
-                                <span className="text-sm font-medium" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Transparent documentation,<br />
-                                    routing, and pricing process
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                  <ReasonsGridUniversal
+                    title="Reasons to Choose Moon Navigation and Trading Co. For Your International Trade"
+                    layout="3-3"
+                    reasons={[
+                      {
+                        icon: <img src="/icons/container/57.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: "Certified team with deep expertise in hazardous cargo handling.",
+                        description: "",
+                      },
+                      {
+                        icon: <img src="/icons/container/58.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: "Full compliance with IMDG, ADR, and IATA standards.",
+                        description: "",
+                      },
+                      {
+                        icon: <img src="/icons/container/59.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: "Wide range of DG container options and equipment.",
+                        description: "",
+                      },
+                      {
+                        icon: <img src="/icons/container/60.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: "End-to-end operational support and coordination.",
+                        description: "",
+                      },
+                      {
+                        icon: <img src="/icons/container/61.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: "Commitment to safety, reliability, and regulatory excellence.",
+                        description: "",
+                      },
+                      {
+                        icon: <img src="/icons/container/62.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: "Transparent documentation, routing, and pricing process",
+                        description: "",
+                      },
+                    ]}
+                  />
                 </section>
                 <GetQuoteComponent topic="Dangerous Goods Transport" link="/container-services-forms" />
                 <FAQSearch category="dangerous-goods" />

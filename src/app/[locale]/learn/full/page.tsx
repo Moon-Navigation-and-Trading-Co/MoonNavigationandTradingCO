@@ -6,6 +6,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function FullContainerLoadPage() {
   function renderOverview() {
@@ -29,14 +30,14 @@ export default function FullContainerLoadPage() {
             </div>
           </div>
         </div>
-        {/* Main Content (Overview) */}
+        {/* Main Content (Overview) - Heading/Description only */}
         <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left: Title and CTA */}
           <div className="flex flex-col items-start justify-start">
-            <h1 className="text-5xl font-normal font-sans mb-12 text-primary mt-12">
+            <h1 className="text-5xl font-regular font-sans mb-12 text-primary mt-12">
               Full Container Load
             </h1>
-            <p className="text-muted-foreground text-lg mb-4">
+            <p className="text-muted-foreground text-lg mb-4 font-light">
               (Standard, Reefer, and Dangerous)
             </p>
             <Link href="/container-services-forms">
@@ -47,10 +48,10 @@ export default function FullContainerLoadPage() {
           </div>
           {/* Right: Description */}
           <div>
-            <h2 className="text-lg  text-primary mb-2">
+            <h2 className="text-lg  text-primary mb-2 font-regular">
               What is Full Container Load?
             </h2>
-            <p className="text-base text-foreground leading-relaxed">
+            <p className="text-base text-foreground leading-relaxed font-light">
               Full Container Load (FCL) is a shipping method designed for businesses that require the
               exclusive use of an entire shipping container. This service ensures maximum security, faster
               transit times, and reduced handling risks, making it the ideal choice for bulk shipments. With
@@ -361,48 +362,42 @@ Our services for dangerous goods include</p>
           </div>
         </div>
         <div className="w-full max-w-7xl mx-auto mt-20">
-          <h2 className="text-2xl  text-[#3B4B8C] mb-10 text-center text-blue-600">
-            Reasons to Choose Moon Navigation and Trading Co. for Your FCL Shipments
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
-            <div>
-              <h3 className="text-lg  mb-2 text-foreground">Complex Shipment Management</h3>
-              <p className="text-muted-foreground text-sm md:text-base">
-                We handle every stage of your FCL shipment—
-from booking and documentation to delivery—
-ensuring a smooth and hassle-free process.</p>
-            </div>
-            <div>
-              <h3 className="text-lg  mb-2 text-foreground">Global Carrier Partnerships</h3>
-              <p className="text-muted-foreground text-sm md:text-base">
-                Our strong relationships with leading carriers
-guarantee competitive rates, priority space, and
-wide geographic coverage.</p>
-            </div>
-            <div>
-              <h3 className="text-lg  mb-2 text-foreground">Secure & Timely Deliveries</h3>
-              <p className="text-muted-foreground text-sm md:text-base">
-                With proper cargo handling, sealed containers,
-and optimized transit times, your goods reach
-their destination safely and on schedule.</p>
-            </div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10 text-center">
-            <div>
-              <h3 className="text-lg  mb-2 text-foreground">Flexible Routing Solutions</h3>
-              <p className="text-muted-foreground text-sm md:text-base">
-                We offer tailored routing and scheduling options to
-meet your cargo requirements and delivery
-timelines.</p>
-            </div>
-            <div>
-              <h3 className="text-lg  mb-2 text-foreground">Expert Support & Compliance Handling</h3>
-              <p className="text-muted-foreground text-sm md:text-base">
-                Our team provides timely updates, manages
-documentation, and ensures full customs and
-regulatory compliance throughout the journey.</p>
-            </div>
-          </div>
+          <ReasonsGridUniversal
+            title="Reasons to Choose Moon Navigation and Trading Co. for Your FCL Shipments"
+            layout="3-2"
+            reasons={[
+              {
+                icon: <img src="/icons/container/24.png" className="mb-8 h-20 w-20 object-contain"/>,
+                title: "Complex Shipment Management",
+                description:
+                  "We handle every stage of your FCL shipment—from booking and documentation to delivery—ensuring a smooth and hassle-free process.",
+              },
+              {
+                icon: <img src="/icons/container/27.png" className="mb-8 h-20 w-20 object-contain"/>,
+                title: "Global Carrier Partnerships",
+                description:
+                  "Our strong relationships with leading carriers guarantee competitive rates, priority space, and wide geographic coverage.",
+              },
+              {
+                icon: <img src="/icons/container/28.png" className="mb-8 h-20 w-20 object-contain"/>,
+                title: "Secure & Timely Deliveries",
+                description:
+                  "With proper cargo handling, sealed containers, and optimized transit times, your goods reach their destination safely and on schedule.",
+              },
+              {
+                icon: <img src="/icons/container/26.png" className="mb-8 h-20 w-20 object-contain"/>,
+                title: "Flexible Routing Solutions",
+                description:
+                  "We offer tailored routing and scheduling options to meet your cargo requirements and delivery timelines.",
+              },
+              {
+                icon: <img src="/icons/container/37.png" className="mb-8 h-20 w-20 object-contain"/>,
+                title: "Expert Support & Compliance Handling",
+                description:
+                  "Our team provides timely updates, manages documentation, and ensures full customs and regulatory compliance throughout the journey.",
+              },
+            ]}
+          />
         </div>
         <GetQuoteComponent topic="FCL" link="/container-services-forms" />
         <FAQSearch category="fcl" />
