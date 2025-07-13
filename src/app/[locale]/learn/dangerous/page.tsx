@@ -147,7 +147,7 @@ export default function DangerousCargoInfo() {
                                             <button
                                                 type="button"
                                                 className={`w-full text-left px-4 py-2 transition-colors ${selectedClass === idx
-                                                    ? "bg-blue-200 text-primary font-semibold"
+                                                    ? "bg-blue-100 text-primary font-semibold"
                                                     : "hover:bg-muted"
                                                     }`}
                                                 onClick={() => setSelectedClass(idx)}
