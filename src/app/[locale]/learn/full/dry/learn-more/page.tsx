@@ -5,7 +5,7 @@ export default function LearnMore() {
   return (
     <div>
       <div className="w-full max-w-7xl mx-auto mt-20 mb-12 px-4 md:px-0">
-        <h2 className="text-2xl md:text-3xl  mb-4 text-[#3B4B8C] dark:text-[#bfc8f8]">
+        <h2 className="text-2xl md:text-3xl  mb-4 text-[#3B4B8C] dark:text-[#bfc8f8] text-left">
           Our Dry Standard Container Shipping Solutions
         </h2>
         <p className="text-base text-gray-500 dark:text-gray-300 mb-8 max-w-3xl">
@@ -15,8 +15,8 @@ export default function LearnMore() {
         <div className="flex flex-col gap-y-20">
           {/* Solution 1 */}
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1 flex flex-col items-center text-center justify-center">
-              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff]">1. Cargo Classification and Planning</h3>
+            <div className="flex-1 flex flex-col items-start text-left justify-center">
+              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff] text-left">1. Cargo Classification and Planning</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
                 Before shipment, our experts assess your cargo's nature, dimensions, and packaging to determine the most efficient container configuration. We help you plan the right load capacity to reduce wasted space and ensure safe transit—whether it's palletized goods, cartons, or oversized units.
               </p>
@@ -27,8 +27,8 @@ export default function LearnMore() {
           </div>
           {/* Solution 2 */}
           <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-            <div className="flex-1 flex flex-col items-center text-center justify-center">
-              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff]">2. Space Optimization and Container Stuffing Guidance</h3>
+            <div className="flex-1 flex flex-col items-start text-left justify-center">
+              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff] text-left">2. Space Optimization and Container Stuffing Guidance</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
                 Proper space utilization is key to cost savings and cargo safety. We provide detailed stuffing plans, cargo securing methods, and weight distribution strategies to prevent shifting or damage during transit. Our team ensures that your goods are packed logically and securely to maximize efficiency and minimize risks.
               </p>
@@ -39,8 +39,8 @@ export default function LearnMore() {
           </div>
           {/* Solution 3 */}
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1 flex flex-col items-center text-center justify-center">
-              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff]">3. Customized Container Booking and Routing</h3>
+            <div className="flex-1 flex flex-col items-start text-left justify-center">
+              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff] text-left">3. Customized Container Booking and Routing</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
                 We offer flexible and reliable container booking options based on your cargo type, destination, transit time, and budget goals. Our global partner network allows us to coordinate the best shipping schedules and routing solutions, ensuring timely departures and arrivals at your desired ports.
               </p>
@@ -51,8 +51,8 @@ export default function LearnMore() {
           </div>
           {/* Solution 4 */}
           <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-            <div className="flex-1 flex flex-col items-center text-center justify-center">
-              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff]">4. Full Documentation and Customs Clearance Support</h3>
+            <div className="flex-1 flex flex-col items-start text-left justify-center">
+              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff] text-left">4. Full Documentation and Customs Clearance Support</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
                 Shipping success depends on accurate paperwork. We handle all required export/import documentation, including:
               </p>
@@ -72,8 +72,8 @@ export default function LearnMore() {
           </div>
           {/* Solution 5 */}
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1 flex flex-col items-center text-center justify-center">
-              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff]">5. Inland Transportation Coordination</h3>
+            <div className="flex-1 flex flex-col items-start text-left justify-center">
+              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff] text-left">5. Inland Transportation Coordination</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
                 Beyond sea freight, we manage the first-mile and last-mile delivery of your containers. Whether it is trucking from your factory to the port or delivery to your consignee's warehouse, we ensure smooth and timely inland movement of your cargo using our network of reliable local transport partners.
               </p>
@@ -84,8 +84,8 @@ export default function LearnMore() {
           </div>
           {/* Solution 6 */}
           <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-            <div className="flex-1 flex flex-col items-center text-center justify-center">
-              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff]">6. Cargo Supervision and Secure Container Sealing</h3>
+            <div className="flex-1 flex flex-col items-start text-left justify-center">
+              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff] text-left">6. Cargo Supervision and Secure Container Sealing</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
                 We oversee the loading process to ensure cargo is handled properly and secured inside the container. Once packed, containers are sealed with tamper-proof seals to ensure cargo integrity throughout the journey. Our team follows standard sealing protocols for both FCL and LCL shipments.
               </p>
@@ -96,8 +96,8 @@ export default function LearnMore() {
           </div>
           {/* Solution 7 */}
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-1 flex flex-col items-center text-center justify-center">
-              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff]">7. Loading/Unloading Assistance at Port or Final Destination</h3>
+            <div className="flex-1 flex flex-col items-start text-left justify-center">
+              <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff] text-left">7. Loading/Unloading Assistance at Port or Final Destination</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
                 To support your operations end-to-end, we also arrange for on-site loading/unloading teams at port terminals or final destinations. Whether its forklifts, cranes, or labor assistance, we ensure safe cargo handling, especially for bulky or heavy goods.
               </p>
