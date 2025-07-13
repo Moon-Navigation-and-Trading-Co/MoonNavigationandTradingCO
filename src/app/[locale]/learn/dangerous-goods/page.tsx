@@ -116,9 +116,9 @@ export default function DangerousCargoInfo() {
         return (
             <>
                 {/* IMO class strip image above the card */}
-                <div className="w-full flex justify-center items-center mb-8 mt-4">
-                    <img src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" className="max-w-2xl w-full h-auto" />
-                </div>
+                <div className="w-full flex justify-center items-center h-[60px] mt-10">
+                        <img src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" className="max-w-2xl w-full " />
+                    </div>
                 {/* Accordion/classes section below */}
                 <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
                     <CardHeader>
