@@ -357,38 +357,38 @@ function services() {
                 </div>
             </section>
             {/* Reasons To Choose Us for Tanker Ocean Freight */}
-            <div className="mt-32 mb-32">
+            <div className="mt-20 mb-32">
                 <ReasonsGridUniversal
                     title="Reasons To Choose Us for Tanker Ocean Freight"
                     subheading=""
                     reasons={[
                         {
-                            icon: <img src="/icons/tanker-expertise.png" alt="Tanker Expertise" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <img src="/icons/71.png" alt="Tanker Expertise" className="mb-6 h-16 w-16 object-contain" />,
                             title: "Tanker Expertise",
                             description: "Extensive experience in liquid cargo transport, ensuring safe and efficient shipping solutions.",
                         },
                         {
-                            icon: <img src="/icons/advanced-fleet.png" alt="Advanced Fleet" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <img src="/icons/72.png" alt="Advanced Fleet" className="mb-6 h-16 w-16 object-contain" />,
                             title: "Advanced Fleet",
                             description: "Modern, high-performance tankers built to meet strict industry and safety standards.",
                         },
                         {
-                            icon: <img src="/icons/global-reach.png" alt="Global Reach" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <img src="/icons/73.png" alt="Global Reach" className="mb-6 h-16 w-16 object-contain" />,
                             title: "Global Reach",
                             description: "Seamless logistics coordination for timely deliveries across international markets.",
                         },
                         {
-                            icon: <img src="/icons/sustainability-focus.png" alt="Sustainability Focus" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <img src="/icons/74.png" alt="Sustainability Focus" className="mb-6 h-16 w-16 object-contain" />,
                             title: "Sustainability Focus",
                             description: "Committed to eco-friendly operations, reducing environmental impact.",
                         },
                         {
-                            icon: <img src="/icons/dedicated-support.png" alt="Dedicated Support" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <img src="/icons/75.png" alt="Dedicated Support" className="mb-6 h-16 w-16 object-contain" />,
                             title: "Dedicated Support",
                             description: "24/7 customer assistance and expert guidance throughout the shipping process.",
                         },
                     ]}
-                    fiveSplitLayout={true}
+                    layout="3-2"
                 />
             </div>
             <GetQuoteComponent topic="Tankers" link="/ocean-freight-forms" />

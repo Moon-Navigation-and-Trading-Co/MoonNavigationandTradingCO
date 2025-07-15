@@ -8,6 +8,11 @@ import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent"
 import FAQSearch from "@/components/faq"
 import OverviewServicesTabs from "@/components/overview-services";
+import Slider from "react-slick";
+import Image from "next/image";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function HeavyLiftCargoInfo() {
     const t = useTranslations("learn-heavy-lift-cargo")
@@ -57,10 +62,10 @@ export default function HeavyLiftCargoInfo() {
                 <div className="w-full max-w-7xl mx-auto flex flex-col items-center min-h-screen">
                     {/* Common Features Section */}
                     <section className="w-full mt-16 mb-8 px-4 md:px-0">
-                        <h2 className="text-2xl md:text-3xl font-normal mb-20" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <h2 className="text-2xl md:text-3xl font-normal mb-16" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
                             Common Features of Heavy Lift Cargo
                         </h2>
-                        <div className="flex flex-col md:flex-row items-center gap-8">
+                        <div className="flex flex-col md:flex-row items-center gap-12">
                             {/* Left: Image */}
                             <div className="flex-shrink-0">
                                 <img
@@ -71,39 +76,39 @@ export default function HeavyLiftCargoInfo() {
                                 />
                             </div>
                             {/* Right: Features Grid */}
-                            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                            <div className="flex-1 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 w-full items-center">
                                 {/* Weight */}
-                                <div className="place-self-center flex flex-col justify-center h-full">
-                                    <h3 className="font-semibold mb-1 text-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Weight</h3>
-                                    <p className="text-muted-foreground text-sm text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                <div className="flex flex-col justify-center h-full text-left">
+                                    <h3 className="font-normal mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Weight</h3>
+                                    <p className="text-muted-foreground text-sm md:text-base font-light" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
                                         We specialize in the movement of heavy lift cargo, handling single pieces weighing several tons, including massive machinery, turbines, boilers, and industrial equipment.
                                     </p>
                                 </div>
                                 {/* Dimensions */}
-                                <div className="place-self-center flex flex-col justify-center h-full">
-                                    <h3 className="font-semibold mb-1 text-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Dimensions</h3>
-                                    <p className="text-muted-foreground text-sm text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                <div className="flex flex-col justify-center h-full text-left">
+                                    <h3 className="font-normal mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Dimensions</h3>
+                                    <p className="text-muted-foreground text-sm md:text-base font-light" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
                                         Our solutions accommodate both long and tall cargo that often exceeds standard container and vessel limitations, requiring custom solutions and specialized vehicles.
                                     </p>
                                 </div>
                                 {/* Special Handling */}
-                                <div className="place-self-center flex flex-col justify-center h-full">
-                                    <h3 className="font-semibold mb-1 text-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Special Handling</h3>
-                                    <p className="text-muted-foreground text-sm text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                <div className="flex flex-col justify-center h-full text-left">
+                                    <h3 className="font-normal mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Special Handling</h3>
+                                    <p className="text-muted-foreground text-sm md:text-base font-light" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
                                         Our operations include the use of cranes, lifters, heavy-duty trailers, and other advanced tools to ensure safe and efficient movement of heavy loads.
                                     </p>
                                 </div>
                                 {/* Custom Routing */}
-                                <div className="place-self-center flex flex-col justify-center h-full">
-                                    <h3 className="font-semibold mb-1 text-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Custom Routing</h3>
-                                    <p className="text-muted-foreground text-sm text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                <div className="flex flex-col justify-center h-full text-left">
+                                    <h3 className="font-normal mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Custom Routing</h3>
+                                    <p className="text-muted-foreground text-sm md:text-base font-light" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
                                         We develop tailored routing solutions that account for the unique logistical challenges of heavy lift cargo, ensuring safe and timely transport.
                                     </p>
                                 </div>
                                 {/* Safety Compliance */}
-                                <div className="place-self-center flex flex-col justify-center h-full">
-                                    <h3 className="font-semibold mb-1 text-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Safety Compliance</h3>
-                                    <p className="text-muted-foreground text-sm text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                <div className="flex flex-col justify-center h-full text-left md:col-span-2">
+                                    <h3 className="font-normal mb-1 text-foreground" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Safety Compliance</h3>
+                                    <p className="text-muted-foreground text-sm md:text-base font-light" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
                                         The transportation of heavy lift cargo requires strict adherence to industry and regulatory guidelines to ensure the security of the cargo and personnel involved.
                                     </p>
                                 </div>
@@ -117,71 +122,81 @@ export default function HeavyLiftCargoInfo() {
                         <p className="text-muted-foreground text-sm mb-8" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Our Heavy Lift services handle various types of equipment, including:
                         </p>
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-8 w-full">
-                            {/* Wind turbines and blades */}
-                            <div className="flex flex-col items-center w-full md:w-1/5">
-                                <img
-                                    src="/heavy-wind-turbine.jpg"
-                                    alt="Wind turbines and blades"
-                                    className="rounded-8x w-70 h-70 object-cover mb-3 border-4 border-background shadow"
-                                    loading="lazy"
-                                    style={{ borderRadius: '60px' }}
-                                />
-                                <span className="text-center text-sm text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Wind turbines and blades
-                                </span>
+                        <div className="relative w-full max-w-7xl mx-auto pt-2">
+                          <Slider
+                            {...{
+                              dots: false,
+                              infinite: true,
+                              speed: 600,
+                              slidesToShow: 4,
+                              slidesToScroll: 1,
+                              arrows: false,
+                              cssEase: 'linear',
+                              swipeToSlide: true,
+                              centerMode: false,
+                              responsive: [
+                                { breakpoint: 1024, settings: { slidesToShow: 2 } },
+                                { breakpoint: 640, settings: { slidesToShow: 1 } },
+                              ],
+                            }}
+                            ref={slider => (window.heavyLiftSlider = slider)}
+                          >
+                            {[
+                              {
+                                img: "/heavy-wind-turbine.jpg",
+                                title: "Wind turbines and blades",
+                              },
+                              {
+                                img: "/heavy-industrial-press.jpg",
+                                title: "Industrial presses",
+                              },
+                              {
+                                img: "/heavy-power-plant.jpg",
+                                title: "Power plant components",
+                              },
+                              {
+                                img: "/heavy-oil-gas.jpg",
+                                title: "Oil and gas equipment",
+                              },
+                              {
+                                img: "/heavy-yacht.jpg",
+                                title: "Large yachts / Vessels",
+                              },
+                            ].map((item, idx) => (
+                              <div key={idx} className="px-2">
+                                <div className="overflow-hidden rounded-[2rem] w-full aspect-[4/3] bg-[#f7f7fa] relative">
+                                  <Image
+                                    src={item.img}
+                                    alt={item.title}
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 100vw, 25vw"
+                                  />
                             </div>
-                            {/* Industrial presses */}
-                            <div className="flex flex-col items-center w-full md:w-1/5">
-                                <img
-                                    src="/heavy-industrial-press.jpg"
-                                    alt="Industrial presses"
-                                    className="rounded-8x w-70 h-70 object-cover mb-3 border-4 border-background shadow"
-                                    loading="lazy"
-                                    style={{ borderRadius: '60px' }}
-                                />
-                                <span className="text-center text-sm text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Industrial presses
-                                </span>
+                                <div className="mt-4 text-center">
+                                  <span className="block text-base font-raleway font-light text-[#011f4b]">{item.title}</span>
                             </div>
-                            {/* Power plant components */}
-                            <div className="flex flex-col items-center w-full md:w-1/5">
-                                <img
-                                    src="/heavy-power-plant.jpg"
-                                    alt="Power plant components"
-                                    className="rounded-8x w-70 h-70 object-cover mb-3 border-4 border-background shadow"
-                                    loading="lazy"
-                                    style={{ borderRadius: '60px' }}
-                                />
-                                <span className="text-center text-sm text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Power plant components
-                                </span>
                             </div>
-                            {/* Oil and gas equipment */}
-                            <div className="flex flex-col items-center w-full md:w-1/5">
-                                <img
-                                    src="/heavy-oil-gas.jpg"
-                                    alt="Oil and gas equipment"
-                                    className="rounded-8x w-70 h-70 object-cover mb-3 border-4 border-background shadow"
-                                    loading="lazy"
-                                    style={{ borderRadius: '60px' }}
-                                />
-                                <span className="text-center text-sm text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Oil and gas equipment
-                                </span>
-                            </div>
-                            {/* Large yachts / Vessels */}
-                            <div className="flex flex-col items-center w-full md:w-1/5">
-                                <img
-                                    src="/heavy-yacht.jpg"
-                                    alt="Large yachts / Vessels"
-                                    className="rounded-8x w-70 h-70 object-cover mb-3 border-4 border-background shadow"
-                                    loading="lazy"
-                                    style={{ borderRadius: '60px' }}
-                                />
-                                <span className="text-center text-sm text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Large yachts / Vessels
-                                </span>
+                            ))}
+                          </Slider>
+                          {/* Navigation arrows */}
+                          <div className="absolute flex flex-row gap-2 right-0 -bottom-10 pr-4 z-20">
+                            <button
+                              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-2xl text-gray-400 hover:bg-gray-100 transition"
+                              onClick={() => window.heavyLiftSlider?.slickPrev()}
+                              aria-label="Previous"
+                              type="button"
+                            >
+                              &#8592;
+                            </button>
+                            <button
+                              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-2xl text-gray-400 hover:bg-gray-100 transition"
+                              onClick={() => window.heavyLiftSlider?.slickNext()}
+                              aria-label="Next"
+                              type="button"
+                            >
+                              &#8594;
+                            </button>
                             </div>
                         </div>
                     </section>
@@ -403,51 +418,41 @@ export default function HeavyLiftCargoInfo() {
                             </div>
                         </div>
                     </section>
-                    {/* Reasons to Choose Our Heavy Lift Services */}
-                    <section className="w-full mt-16 mb-8 px-4 md:px-0">
-                        <h2 className="text-xl md:text-2xl mb-8 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Reasons to Choose Our Heavy Lift Services
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                            {/* Pioneer Expertise */}
-                            <div className="flex flex-col items-center px-4">
-                                <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Pioneer Expertise</h3>
-                                <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Years of experience handling oversized and heavy cargo with assurance and reliability.
-                                </p>
-                            </div>
-                            {/* End-to-End Solutions */}
-                            <div className="flex flex-col items-center px-4">
-                                <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>End-to-End Solutions</h3>
-                                <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    From route planning and permits to on-the-ground support, we deliver robust heavy logistics.
-                                </p>
-                            </div>
-                            {/* Global Reach */}
-                            <div className="flex flex-col items-center px-4">
-                                <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Global Reach</h3>
-                                <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Strong international partnerships for customized service, port, and equipment worldwide.
-                                </p>
-                            </div>
+                    <div className="mt-24">
+                      <ReasonsGridUniversal
+                        title="Reasons to Choose Our Heavy Lift Services"
+                        layout="3-2"
+                        alignLeftHeading={true}
+                        className="mt-24"
+                        reasons={[
+                          {
+                            icon: <img src="/icons/71.png" alt="Proven Expertise" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "Proven Expertise",
+                            description: "Years of experience handling oversized and heavy cargo with precision and reliability.",
+                          },
+                          {
+                            icon: <img src="/icons/72.png" alt="End-to-End Solutions" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "End-to-End Solutions",
+                            description: "From route planning and compliance to emergency support, we ensure seamless logistics.",
+                          },
+                          {
+                            icon: <img src="/icons/73.png" alt="Global Reach" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "Global Reach",
+                            description: "Strong partnerships grant access to specialized vessels, ports, and equipment worldwide.",
+                          },
+                          {
+                            icon: <img src="/icons/74.png" alt="Regulatory Compliance & 24/7 Support" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "Regulatory Compliance & 24/7 Support",
+                            description: "Ensuring strict adherence to international safety regulations and expert assistance at every stage.",
+                          },
+                          {
+                            icon: <img src="/icons/75.png" alt="Advanced Equipment" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "Advanced Equipment",
+                            description: "State-of-the-art cranes, heavy lift vessels, and custom lifting gear for secure transport.",
+                          },
+                        ]}
+                      />
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 text-center">
-                            {/* Regulatory Compliance & 24/7 Support */}
-                            <div className="flex flex-col items-center px-4">
-                                <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Regulatory Compliance and 24/7 Support</h3>
-                                <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Ensuring strict adherence to international safety regulations and expert assistance at every stage.
-                                </p>
-                            </div>
-                            {/* Advanced Equipment */}
-                            <div className="flex flex-col items-center px-4">
-                                <h3 className="font-semibold mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Advanced Equipment</h3>
-                                <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    State-of-the-art cranes, heavy lift vessels, and specialized rigs for massive transport.
-                                </p>
-                            </div>
-                        </div>
-                    </section>
                     <GetQuoteComponent topic="Heavy Lift Cargo" link="/ocean-freight-forms" />
                     <FAQSearch category="heavy-lift-cargo" />
                 </div>

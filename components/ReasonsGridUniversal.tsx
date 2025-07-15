@@ -7,18 +7,22 @@ interface Reason {
 }
 
 interface ReasonsGridUniversalProps {
-  title: string;
+  title: string | React.ReactNode;
   subheading?: string;
   reasons: Reason[];
   fiveSplitLayout?: boolean; // If true, use 3-on-top, 2-on-bottom layout
   layout?: "default" | "3-2" | "3-3" | "custom";
+  alignLeftHeading?: boolean; // If true, left-align the heading and move it upwards
+  className?: string; // Optional extra className for the section
 }
 
 const ReasonsGridUniversal: React.FC<ReasonsGridUniversalProps> = ({ 
   title, 
   subheading, 
   reasons, 
-  layout = "default" 
+  layout = "default",
+  alignLeftHeading = false,
+  className = ""
 }) => {
   const renderGrid = () => {
     if (layout === "3-2") {
@@ -114,10 +118,14 @@ const ReasonsGridUniversal: React.FC<ReasonsGridUniversalProps> = ({
   };
 
   return (
-    <section className="max-w-7xl mx-auto pt-8 pb-16">
-      <h2 className="text-3xl font-normal text-center mb-4 font-sans text-gray-900 dark:text-white">
-        {title}
-      </h2>
+    <section className={`max-w-7xl mx-auto pt-8 pb-16 ${className}`}>
+      {alignLeftHeading ? (
+        <div className="-mt-4 mb-2 ml-4 md:ml-8">
+          <h2 className="text-3xl font-normal text-left font-sans text-gray-900 dark:text-white">{title}</h2>
+        </div>
+      ) : (
+        <h2 className="text-3xl font-normal text-center mb-4 font-sans text-gray-900 dark:text-white">{title}</h2>
+      )}
       {subheading && (
         <p className="mb-12 text-center text-base text-[#444] dark:text-gray-300 max-w-3xl mx-auto font-sans">
           {subheading}
