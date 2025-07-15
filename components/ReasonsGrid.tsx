@@ -21,7 +21,7 @@ const ReasonsGrid: React.FC<ReasonsGridProps> = ({ title, subheading, reasons })
       <p className="mb-16 text-left text-base md:text-lg text-[#444] dark:text-gray-300 max-w-4xl font-raleway font-light">
         {subheading}
       </p>
-      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-x-12 justify-items-center">
+      <div className="w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-12 justify-items-center">
         {reasons.map((reason, idx) => (
           <div key={idx} className="flex flex-col items-center text-center min-h-[180px]">
             {/* You can use an <img src="..." alt="..." className="mb-6 h-16 w-16 object-contain" /> here instead of an icon */}

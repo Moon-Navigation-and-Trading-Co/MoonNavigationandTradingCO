@@ -8,7 +8,7 @@ import Head from "next/head"
 import RequestQuoteButton from "@/components/RequestQuoteButton"
 import FAQSearch from "@/components/faq"
 import GetQuoteComponent from "@/components/getQuoteComponent"
-import { Carousel, CarouselContent, CarouselItem, CarouselNavigation } from "@/components/ui/carousel"
+import { Carousel, CarouselContent, CarouselItem, CarouselNavigation, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
 import OverviewServicesTabs from "@/components/overview-services"
 
 function overview(){
@@ -150,8 +150,10 @@ function services(){
                                     </div>
                                 </CarouselItem>
                             </CarouselContent>
-                            
-                            <CarouselNavigation />
+                            <div className="flex justify-end items-center gap-2 mt-6 pr-8 w-full">
+                                <CarouselPrevious className="!static !border-0 !bg-white !shadow-md !text-primary !w-12 !h-12 !rounded-full !flex !items-center !justify-center hover:!bg-[#f0f4ff]" />
+                                <CarouselNext className="!static !border-0 !bg-white !shadow-md !text-primary !w-12 !h-12 !rounded-full !flex !items-center !justify-center hover:!bg-[#f0f4ff]" />
+                            </div>
                         </Carousel>
                     </div>
                 </section>
