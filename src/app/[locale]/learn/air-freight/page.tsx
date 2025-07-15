@@ -9,6 +9,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 
 function overview(){
@@ -48,6 +49,7 @@ function services(){
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <Card className="border-0 bg-card">
                             <CardHeader className="items-center text-center">
+                                <img src="/icons/invest/6.png" alt="Speed and Efficiency" className="h-16 w-16 mb-6 object-contain mx-auto" />
                                 <CardTitle className="font-normal">{t("principles.speed.title")}</CardTitle>
                             </CardHeader>
                             <CardContent className="text-center">
@@ -57,6 +59,7 @@ function services(){
 
                         <Card className="border-0 bg-card">
                             <CardHeader className="items-center text-center">
+                                <img src="/icons/ocean freight/21.png" alt="Reliability" className="h-16 w-16 mb-6 object-contain mx-auto" />
                                 <CardTitle className="font-normal">{t("principles.reliability.title")}</CardTitle>
                             </CardHeader>
                             <CardContent className="text-center">
@@ -66,6 +69,7 @@ function services(){
 
                         <Card className="border-0 bg-card">
                             <CardHeader className="items-center text-center">
+                                <img src="/icons/ocean freight/23.png" alt="Security" className="h-16 w-16 mb-6 object-contain mx-auto" />
                                 <CardTitle className="font-normal">{t("principles.security.title")}</CardTitle>
                             </CardHeader>
                             <CardContent className="text-center">
@@ -79,9 +83,9 @@ function services(){
             {/* Specialized Services Section */}
             <div className="w-full py-16">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="relative rounded-[60px] overflow-hidden mb-12">
-                        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-800/70 z-10"></div>
-                        <Image src="/air-2.jpg" alt="Air Freight Services" width={1200} height={400} className="w-full h-[400px] object-cover object-[90%_10%]" />
+                    <div className="relative overflow-hidden mb-12 rounded-[60px] ">
+                        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/ to-blue-800/70 z-10"></div>
+                        <Image src="/air-2.jpg" alt="Air Freight Services" width={1200} height={800} className="w-full h-[700px] object-cover object-[90%_10%]" />
                         <div className="absolute inset-0 z-20 flex flex-col justify-center px-8 md:px-16">
                             <h3 className="text-white text-2xl md:text-3xl font-light mb-4">{t("services.title")}</h3>
 
@@ -134,9 +138,16 @@ function services(){
                         </div>
                     </div>
 
-                    {/* Second paragraph with excellence badge */}
+                    {/* Second paragraph with excellence badge and image to the left */}
                     <div className="flex flex-col md:flex-row items-center gap-8">
-                        <div className="md:w-1/4">
+                        <div className="md:w-1/4 flex justify-center md:justify-start mb-6 md:mb-0">
+                            <Image
+                                src="/icons/other services/6.png"
+                                alt="Excellence Badge"
+                                width={200}
+                                height={200}
+                                className=""
+                            />
                         </div>
                         <div className="md:w-3/4">
                             <p className="text-muted-foreground leading-relaxed">{t("costManagement.secondParagraph")}</p>
@@ -277,55 +288,43 @@ function services(){
             {/* Reasons to Choose Section */}
             <div className="w-full py-16 bg-card">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <h2 className="text-3xl mb-12">{t("reasons.title")}</h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 flex-shrink-0">
-                            </div>
-                            <div>
-                                <h3 className="font-medium mb-2">{t("reasons.expertHandling")}</h3>
-                                <p className="text-muted-foreground">{t("reasons.expertHandlingDesc")}</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 flex-shrink-0">
-                            </div>
-                            <div>
-                                <h3 className="font-medium mb-2">{t("reasons.competitiveRates")}</h3>
-                                <p className="text-muted-foreground">{t("reasons.competitiveRatesDesc")}</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 flex-shrink-0">
-                            </div>
-                            <div>
-                                <h3 className="font-medium mb-2">{t("reasons.customizedSolutions")}</h3>
-                                <p className="text-muted-foreground">{t("reasons.customizedSolutionsDesc")}</p>
-                            </div>
-                        </div>
-
-                        <div className="flex items-start gap-4">
-                            <div className="w-12 h-12 flex-shrink-0">
-                            </div>
-                            <div>
-                                <h3 className="font-medium mb-2">{t("reasons.support")}</h3>
-                                <p className="text-muted-foreground">{t("reasons.supportDesc")}</p>
-                            </div>
-                        </div>
-                    </div>
+                    <ReasonsGridUniversal
+                        title={
+                            <>Reasons to Choose Moon Navigation and Trading Co. For Air Freight Shipping</>
+                        }
+                        reasons={[
+                            {
+                                icon: <img src="/icons/air-freight/10.png" alt="Expert Handling" className="h-16 w-16 mb-6 object-contain mx-auto mt-20" />,
+                                title: "Our Expert Handling of Specialized Cargo",
+                                description: "Dangerous goods, perishables, and oversized shipments."
+                            },
+                            {
+                                icon: <img src="/icons/air-freight/11.png" alt="Competitive Rates" className="h-16 w-16 mb-6 object-contain mx-auto mt-20" />,
+                                title: "Our Competitive Rates with Reliable Airline Networks",
+                                description: "We offer a cost-effective pricings for global routes."
+                            },
+                            {
+                                icon: <img src="/icons/air-freight/12.png" alt="Customized Solutions" className="h-16 w-16 mb-6 object-contain mx-auto" />,
+                                title: "Customized Solutions for Every Industry",
+                                description: "We offer tailored logistics for manufacturing, healthcare, technology, and retail."
+                            },
+                            {
+                                icon: <img src="/icons/air-freight/13.png" alt="24/7 Support" className="h-16 w-16 mb-6 object-contain mx-auto" />,
+                                title: "24/7 Support and Dedicated Account Management",
+                                description: "We offer personalized service for urgent and high-value shipments."
+                            }
+                        ]}
+                    />
                 </div>
             </div>
-            <GetQuoteComponent topic="air-freight" link="/air-freight-forms"/> 
+            <GetQuoteComponent topic="air-freight" link="/air-freight-forms"/>
             <FAQSearch category="air-freight" />
         </>
     )
 }
 
 export default function AirFreightInfo() {
-    
+
 
     return (
         <main className="flex flex-col items-center w-full max-w-7xl mx-auto" style={{ fontFamily: 'Raleway, sans-serif' }}>

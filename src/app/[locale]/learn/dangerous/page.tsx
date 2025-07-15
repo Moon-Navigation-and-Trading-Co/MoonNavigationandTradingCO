@@ -11,6 +11,8 @@ import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import { Award, ShieldCheck, Briefcase, TrendingUp, PackageCheck } from "lucide-react";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function DangerousCargoInfo() {
     const t = useTranslations("learn-dangerous-cargo")
@@ -113,7 +115,7 @@ export default function DangerousCargoInfo() {
                             </div>
                             {/* Right column: heading and description */}
                             <div className="flex-1  rounded-2xl  p-6">
-                                <h2 className="text-lg font-semibold mb-3 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                <h2 className="text-lg  mb-3 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                     What is Dangerous Cargo ?
                                 </h2>
                                 <p className="text-muted-foreground mb-2 text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -130,7 +132,7 @@ export default function DangerousCargoInfo() {
             renderServices={() => (
                 <div>
                     {/* IMO class strip image above the card */}
-                    <CardTitle className="text-3xl font-bold mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
+                    <CardTitle className="text-3xl  mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
                 <div className="w-full flex justify-center items-center h-[60px] mt-10">
                         <img src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" className="max-w-2xl w-full " />
                     </div>
@@ -152,7 +154,7 @@ export default function DangerousCargoInfo() {
                                             <button
                                                 type="button"
                                                 className={`w-full text-left px-4 py-2 transition-colors ${selectedClass === idx
-                                                    ? "bg-blue-100 text-primary font-semibold"
+                                                    ? "bg-blue-100 text-primary "
                                                     : "hover:bg-muted"
                                                     }`}
                                                 onClick={() => setSelectedClass(idx)}
@@ -168,7 +170,7 @@ export default function DangerousCargoInfo() {
                         </aside>
                         {/* Main content: Class details */}
                         <section className="flex-1 min-w-0">
-                            <h2 className="text-xl font-semibold mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                            <h2 className="text-xl  mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                 {dangerousClasses[selectedClass]?.title}
                             </h2>
                             <div className="text-base leading-relaxed whitespace-pre-line" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -287,38 +289,63 @@ export default function DangerousCargoInfo() {
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                         <div>
-                            <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                Premium Service, Premium Returns
-                            </h3>
-                            <p className="text-muted-foreground mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                Elevate business results with specialized handling, skill, and care. Our tailored solutions help you secure higher-value shipments while upholding top-level service every mile—maximizing your returns.
-                            </p>
-                            <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                Trust Built on Compliance
-                            </h3>
-                            <p className="text-muted-foreground mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                As certified experts in IMDG Code compliance, we manage all regulatory requirements on your behalf. This reliability ensures smooth operations and upholds your reputation in the industry.
-                            </p>
-                            <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                End-to-End Expertise
-                            </h3>
-                            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                From documentation and vessel selection to emergency response plans, Moon Navigation and Trading Co. provides comprehensive support, ensuring your dangerous cargo is handled with utmost professionalism and care.
-                            </p>
+                            <div className="flex items-start gap-6 mb-10">
+                                <img src="/icons/ocean freight/39.png" alt="Premium Service Icon" className="h-14 w-14" />
+                                <div>
+                                    <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        Premium Service, Premium Returns
+                                    </h3>
+                                    <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        Elevate business results with specialized handling, skill, and care. Our tailored solutions help you secure higher-value shipments while upholding top-level service every mile—maximizing your returns.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-6 mb-10">
+                                <img src="/icons/ocean freight/40.png" alt="Compliance Icon" className="h-14 w-14" />
+                                <div>
+                                    <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        Trust Built on Compliance
+                                    </h3>
+                                    <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        As certified experts in IMDG Code compliance, we manage all regulatory requirements on your behalf. This reliability ensures smooth operations and upholds your reputation in the industry.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-6 mb-10">
+                                <img src="/icons/ocean freight/41.png" alt="Expertise Icon" className="h-14 w-14" />
+                                <div>
+                                    <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        End-to-End Expertise
+                                    </h3>
+                                    <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        From documentation and vessel selection to emergency response plans, Moon Navigation and Trading Co. provides comprehensive support, ensuring your dangerous cargo is handled with the utmost professionalism and care.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                         <div>
-                            <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                Unlock New Opportunities
-                            </h3>
-                            <p className="text-muted-foreground mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                Expand what you ship with this elevated service. Risk thresholds, money, and effort are minimized as Moon Navigation and Trading Co. unlocks new commercial opportunities—allowing dangerous cargo to confidently enter viable, specialized trades.
-                            </p>
-                            <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                Tailored Safety and Handling
-                            </h3>
-                            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                Every shipment and packaging need is unique. Rely on solutions not available off the shelf or designed for broad categories. Our solutions are designed to mitigate risks while maintaining the integrity of your cargo.
-                            </p>
+                            <div className="flex items-start gap-6 mb-10">
+                                <img src="/icons/ocean freight/42.png" alt="Opportunities Icon" className="h-14 w-14" />
+                                <div>
+                                    <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        Unlock New Opportunities
+                                    </h3>
+                                    <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        Expand what you ship with this elevated service. Risk thresholds, money, and effort are minimized as Moon Navigation and Trading Co. unlocks new commercial opportunities—allowing dangerous cargo to confidently enter viable, specialized trades.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-6 mb-10">
+                                <img src="/icons/ocean freight/43.png" alt="Safety Icon" className="h-14 w-14" />
+                                <div>
+                                    <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        Tailored Safety and Handling
+                                    </h3>
+                                    <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                        Every shipment and packaging need is unique. Rely on solutions not available off the shelf or designed for broad categories. Our solutions are designed to mitigate risks while maintaining the integrity of your cargo.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -329,34 +356,28 @@ export default function DangerousCargoInfo() {
                     <p className="mb-12 text-muted-foreground text-sm md:text-base max-w-3xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Transporting dangerous goods presents substantial business opportunities but requires a deep understanding of its complexities. At Moon Navigation and Trading Co., we specialize in offering comprehensive solutions to navigate the intricacies of this critical industry.
                     </p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center mt-32">
                         <div className="flex flex-col items-center">
-                            <div className="mb-4">
-                                {/* Icon: Elevated Costs */}
-                            </div>
-                            <h3 className="text-base font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                            <img src="/icons/ocean freight/45.png" alt="Elevated Costs Icon" className="h-20 w-20 mb-6 object-contain" />
+                            <h3 className="text-base mb-2 font-semibold" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                 Elevated Costs
                             </h3>
                             <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                Specialized training, packaging, and insurance come with a premium. However, these investments are essential to ensure the safety and compliance of your shipments.
+                                Specialized handling, packaging, and insurance come with a premium. However, these investments are essential to ensure the safety and compliance of your shipments.
                             </p>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="mb-4">
-                                {/* Icon: Intricate Regulations */}
-                            </div>
-                            <h3 className="text-base font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                            <img src="/icons/ocean freight/46.png" alt="Intricate Regulations Icon" className="h-20 w-20 mb-6 object-contain" />
+                            <h3 className="text-base mb-2 font-semibold" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                 Intricate Regulations
                             </h3>
                             <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                Dangerous cargo is governed by stringent regulations and route restrictions. Our firm's expertise guarantees that these challenges are navigated efficiently and effectively.
+                                Dangerous cargo is governed by stringent regulations and route restrictions. Our team's expertise guarantees that these challenges are navigated efficiently and effectively.
                             </p>
                         </div>
                         <div className="flex flex-col items-center">
-                            <div className="mb-4">
-                                {/* Icon: Risk Management and Liability */}
-                            </div>
-                            <h3 className="text-base font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                            <img src="/icons/ocean freight/47.png" alt="Risk Management Icon" className="h-20 w-20 mb-6 object-contain" />
+                            <h3 className="text-base mb-2 font-semibold" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                 Risk Management and Liability
                             </h3>
                             <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -401,43 +422,35 @@ export default function DangerousCargoInfo() {
                     </div>
                 </section>
                 <section className="w-full max-w-7xl mx-auto my-20">
-                <h2 className="text-2xl md:text-3xl font-normal mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                    Reasons to Choose Moon Navigation and Trading Co. For Your International Trade
-                </h2>
-                <div className="mb-12" style={{ fontFamily: 'Raleway, sans-serif', fontSize: '1.5rem', fontWeight: 400 }}>
-                    {/* Subtitle if needed */}
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                    {/* Feature 1 */}
-                    <div className="flex flex-col items-center text-center">
-                        {/* Replace with your own SVG or Image */}
-                        <h3 className="font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>Expert Trade Knowledge</h3>
-                        <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Our deep expertise in global commerce, logistics, and customs regulations.
-                        </p>
-                    </div>
-                    {/* Feature 2 */}
-                    <div className="flex flex-col items-center text-center">
-                        <h3 className="font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>Strong Global Network</h3>
-                        <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Our strong partnerships with airlines, shipping lines, and regulatory bodies worldwide.
-                        </p>
-                    </div>
-                    {/* Feature 3 */}
-                    <div className="flex flex-col items-center text-center">
-                        <h3 className="font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>Custom-Tailored Trade Solutions</h3>
-                        <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Our personalized strategies for importers, exporters, and traders.
-                        </p>
-                    </div>
-                    {/* Feature 4 */}
-                    <div className="flex flex-col items-center text-center">
-                        <h3 className="font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>Reliable Compliance & Risk Management</h3>
-                        <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Our full compliance with international trade laws.
-                        </p>
-                    </div>
-                </div>
+                <ReasonsGridUniversal
+                    title={
+                        <>
+                            Reasons to Choose Moon Navigation and Trading Co. For Your International Trade
+                        </>
+                    }
+                    reasons={[
+                        {
+                            icon: <img src="/icons/ocean freight/22.png" alt="Expert Trade Knowledge" className="h-16 w-16 mb-6 object-contain mx-auto" />, 
+                            title: "Expert Trade Knowledge",
+                            description: "Our deep expertise in global commerce, logistics, and customs regulations."
+                        },
+                        {
+                            icon: <img src="/icons/ocean freight/25.png" alt="Strong Global Network" className="h-16 w-16 mb-6 object-contain mx-auto" />, 
+                            title: "Strong Global Network",
+                            description: "Our strong partnerships with airlines, shipping lines, and regulatory bodies worldwide."
+                        },
+                        {
+                            icon: <img src="/icons/container/38.png" alt="Custom-Tailored Trade Solutions" className="h-16 w-16 mb-6 object-contain mx-auto" />, 
+                            title: "Custom-Tailored Trade Solutions",
+                            description: "Our personalized strategies for importers, exporters, and traders."
+                        },
+                        {
+                            icon: <img src="/icons/ocean freight/8.png" alt="Reliable Compliance & Risk Management" className="h-16 w-16 mb-6 object-contain mx-auto" />, 
+                            title: "Reliable Compliance & Risk Management",
+                            description: "Our full compliance with international trade laws."
+                        }
+                    ]}
+                />
             </section>
                 <GetQuoteComponent topic="Dangerous Cargo" link="/ocean-freight-forms" />
                 <FAQSearch category="dangerous-cargo-transport" />

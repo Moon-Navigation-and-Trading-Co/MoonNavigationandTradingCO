@@ -29,7 +29,7 @@ const ThemeSwitcher = () => {
   const ICON_SIZE = 16;
 
   return (
-    <Button variant="ghost" size="sm" onClick={toggleTheme}>
+    <Button variant="ghost"  onClick={toggleTheme}>
       {theme === "light" ? (
         <Sun size={ICON_SIZE} className="text-muted-foreground" />
       ) : theme === "dark" ? (
