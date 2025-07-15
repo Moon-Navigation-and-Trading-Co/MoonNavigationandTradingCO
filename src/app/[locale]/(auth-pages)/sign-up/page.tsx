@@ -86,7 +86,6 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
               <Button
                 type="button"
                 variant="ghost"
-                size="icon"
                 className="absolute right-0 top-0 h-full"
                 tabIndex={-1}
                 onClick={() => setShowPassword(!showPassword)}
@@ -111,7 +110,6 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
               <Button
                 type="button"
                 variant="ghost"
-                size="icon"
                 className="absolute right-0 top-0 h-full"
                 tabIndex={-1}
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}

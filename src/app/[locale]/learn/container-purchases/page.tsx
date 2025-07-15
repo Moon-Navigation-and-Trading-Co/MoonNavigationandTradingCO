@@ -27,31 +27,31 @@ const containers = [
 function overview(){
     return(
         <>
-                    <div className="mt-10 mb-8">
-            <img src="/images/container-purchases.jpg" alt="Container Purchases" width={1280} height={350} className="rounded-[60px]" />
+            <div className="mt-10 mb-8">
+                <img src="/pc-1.jpg" alt="Container Purchases" width={1280} height={350} className="rounded-[60px]" />
             </div>
-        <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16 mb-12">
-            <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
-                <h2 className="text-3xl md:text-4xl font-light text-primary mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                    Container Purchases and<br />Rentals
-                </h2>
-                <a href="/buy-rent-container-forms">
-                    <RequestQuoteButton >
-                        <Link href="/buy-rent-container-forms">
-                            Get Quote
-                        </Link>
-                    </RequestQuoteButton>
-                </a>
+            <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16 mb-12">
+                <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
+                    <h2 className="text-3xl md:text-4xl font-light text-primary mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        Container Purchases and<br />Rentals
+                    </h2>
+                    <a href="/buy-rent-container-forms">
+                        <RequestQuoteButton >
+                            <Link href="/buy-rent-container-forms">
+                                Get Quote
+                            </Link>
+                        </RequestQuoteButton>
+                    </a>
+                </div>
+                <div className="md:w-1/2 w-full flex flex-col items-start">
+                    <p className="text-primary text-base font-semibold mb-2">
+                        Looking to buy or rent a container?
+                    </p>
+                    <p className="text-foreground text-sm md:text-base leading-relaxed">
+                        We have the unique shipping and storage needs of businesses and individuals alike. To meet these diverse requirements, we offer an extensive selection of containers for sale and rental, including solutions to suit your specific needs. Whether you are looking for a temporary storage solution, a long-term investment, or customized new and/or pre-owned container containers tailored to your project, trust us to deliver reliable solutions that match your logistics and storage capabilities, guiding you every step of the way at Moon Navigation and Trading Co.
+                    </p>
+                </div>
             </div>
-            <div className="md:w-1/2 w-full flex flex-col items-start">
-                <p className="text-primary text-base font-semibold mb-2">
-                    Looking to buy or rent a container?
-                </p>
-                <p className="text-foreground text-sm md:text-base leading-relaxed">
-                    We have the unique shipping and storage needs of businesses and individuals alike. To meet these diverse requirements, we offer an extensive selection of containers for sale and rental, including solutions to suit your specific needs. Whether you are looking for a temporary storage solution, a long-term investment, or customized new and/or pre-owned container containers tailored to your project, trust us to deliver reliable solutions that match your logistics and storage capabilities, guiding you every step of the way at Moon Navigation and Trading Co.
-                </p>
-            </div>
-        </div>
         </>
     )
 }
@@ -63,7 +63,7 @@ function services(){
 <div className="flex flex-col md:flex-row items-center justify-between rounded-[40px] p-8 md:p-16 mb-12">
             <div className="w-full md:w-[500px] flex-shrink-0 flex items-center justify-center mb-8 md:mb-0">
                 <img
-                    src="/images/container-man.jpg"
+                    src="/pc-2.jpg"
                     alt="Container Solutions"
                     className="rounded-[60px] object-cover w-[620px] h-[420px]"
                     style={{ background: "#e5e7eb" }}
@@ -89,7 +89,7 @@ function services(){
             {/* Renting Containers Section (matches provided image) */}
             <div className="relative w-full min-h-[700px] mt-16 mb-8">
                 <img
-                    src="/images/container-rental-bg.jpg"
+                    src="/pc-3.jpg"
                     alt="Renting Containers Background"
                     className="object-cover w-full h-full absolute inset-0"
                     style={{ zIndex: 0 }}
@@ -155,9 +155,9 @@ function services(){
                 </div>
             </div>
             {/* Buying Containers Section (matches provided image) */}
-                        <div className="relative w-full min-h-[700px] mb-16">
+            <div className="relative w-full min-h-[700px] mb-16">
                 <img
-                    src="/images/container-buy-bg.jpg"
+                    src="/pc-4.jpg"
                     alt="Buying Containers Background"
                     className="object-cover w-full h-full absolute inset-0"
                     style={{ zIndex: 0 }}
@@ -234,7 +234,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/images/container-purchase-1.jpg" alt="Flexible Purchase & Rental Plans" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <img src="/pc-5.jpg" alt="Flexible Purchase & Rental Plans" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
 
@@ -258,7 +258,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/images/container-purchase-2.jpg" alt="Container Conditions" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <img src="/pc-6.jpg" alt="Container Conditions" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
 
@@ -282,7 +282,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/images/container-purchase-3.jpg" alt="Seamless Delivery & Logistics Support" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <img src="/pc-7.jpg" alt="Seamless Delivery & Logistics Support" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
 
@@ -307,7 +307,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/images/container-purchase-4.jpg" alt="Customization Options Available" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <img src="/pc-8.jpg" alt="Customization Options Available" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
 
@@ -330,11 +330,14 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/images/container-purchase-5.jpg" alt="Trade-In & Buy-Back Programs" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <img src="/pc-9.jpg" alt="Trade-In & Buy-Back Programs" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
         </div>
         <VesselCarousel vessels={containers}/>
+        <p className="text-xs text-muted-foreground mt-2 mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          All containers are thoroughly inspected, certified, and compliant with <a href="#" className="underline hover:text-primary">international safety and quality standards (CSC / ISO Certified)</a>.
+        </p>
         {/* Block 4: Customization Options Available */}
         <div className="flex flex-col md:flex-row-reverse items-center rounded-[60px] p-8 md:p-16">
             <div className="flex-1 flex flex-col items-start md:pl-12">
@@ -355,7 +358,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/container-purchases-image.jpg" alt="Customization Options Available" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <img src="/pc-10.jpg" alt="Customization Options Available" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
           <GetQuoteComponent topic="Container Rentals/Purchases" link="/buy-rent-container-forms"/>
