@@ -29,7 +29,7 @@ export default function InternationalTradeServices() {
                         </div>
 
                         <div className="md:w-1/2 relative">
-                            <img src="/lm-international-1.jpg" alt="Shipping containers with worker" className="rounded-lg w-full h-auto object-cover" />
+                            <img src="/lm-international-1.jpg" alt="Shipping containers with worker" className="rounded-[70px] w-full h-[350px] object-cover" />
                         </div>
                     </div>
 
