@@ -4,6 +4,7 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGrid from "@/components/ReasonsGrid";
 
 function overview() {
   return (
@@ -146,36 +147,32 @@ function services() {
         </div>
       </div>
       <div className="w-full max-w-6xl mx-auto mt-20 mb-10 px-4">
-        <h2 className="text-xl md:text-2xl text-[#2a4365] dark:text-blue-400 mb-8 text-center">
-          Reasons to Choose Moon Navigation and Trading Co.<br />
-          For Your Transit Spare Parts
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
-          <div className="flex flex-col items-center text-center">
-            <h3 className="mb-2 text-gray-900 dark:text-white">Fast and Reliable Service</h3>
-            <p className="text-[#444] dark:text-gray-300 text-sm">
-              No delays in spare parts delivery.
-            </p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="mb-2 text-gray-900 dark:text-white">Customs Clearance Expertise</h3>
-            <p className="text-[#444] dark:text-gray-300 text-sm">
-              Smooth handling of all regulatory procedures.
-            </p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="mb-2 text-gray-900 dark:text-white">24/7 Support</h3>
-            <p className="text-[#444] dark:text-gray-300 text-sm">
-              Available for urgent and emergency deliveries.
-            </p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="mb-2 text-gray-900 dark:text-white">End-to-End Coordination</h3>
-            <p className="text-[#444] dark:text-gray-300 text-sm">
-              From reception to final ship delivery.
-            </p>
-          </div>
-        </div>
+        <ReasonsGrid
+          title="Reasons to Choose Moon Navigation and Trading Co. For Your Transit Spare Parts"
+          subheading=""
+          reasons={[
+            {
+              icon: <img src="/icons/ship agency/49.png" alt="Fast and Reliable Service" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              title: "Fast and Reliable Service",
+              description: "No delays in spare parts delivery.",
+            },
+            {
+              icon: <img src="/icons/ship agency/50.png" alt="Customs Clearance Expertise" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              title: "Customs Clearance Expertise",
+              description: "Smooth handling of all regulatory procedures.",
+            },
+            {
+              icon: <img src="/icons/ship agency/48.png" alt="24/7 Support" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              title: "24/7 Support",
+              description: "Available for urgent and emergency deliveries.",
+            },
+            {
+              icon: <img src="/icons/ship agency/51.png" alt="End-to-End Coordination" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              title: "End-to-End Coordination",
+              description: "From reception to final ship delivery.",
+            },
+          ]}
+        />
       </div>
       <GetQuoteComponent topic = "Transit Spare Parts" link = "/ship-agency-forms"/> 
       <FAQSearch category="spare-parts" />

@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGrid from "@/components/ReasonsGrid";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 function overview() {
   return (
@@ -21,10 +23,10 @@ function overview() {
         />
       </div>
       {/* Content below image */}
-      <div className="max-w-6xl mx-auto px-4 mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      <div className="w-full max-w-6xl mx-auto px-4 mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
         {/* Left: Title and Button */}
         <div className="flex flex-col items-start mt-2">
-          <h1 className="text-[1.5rem] md:text-[2rem] font-medium text-primary mb-4 leading-tight">
+          <h1 className="text-[1.5rem] md:text-[2rem] font-medium text-primary mb-4 leading-tight" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
             Suez Canal Transit and<br />
             Passage Services
           </h1>
@@ -36,16 +38,18 @@ function overview() {
         </div>
         {/* Right: Description */}
         <div>
-          <h2 className="text-base md:text-lg  text-primary mb-2">
+          <h2 className="text-base md:text-lg  text-primary mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
             Efficient, Safe, and Reliable Transit Through the Suez Canal
           </h2>
-          <p className="text-foreground text-sm mb-4 leading-relaxed">At Moon Navigation and Trading Co., we specialize in providing expert Suez Canal passage services
+          <p className="text-foreground text-sm mb-4 leading-relaxed" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+            At Moon Navigation and Trading Co., we specialize in providing expert Suez Canal passage services
 that ensure your vessel moves swiftly, safely, and cost-effectively through one of the most strategic
 maritime corridors in the world. The Suez Canal is one of the busiest and most strategic shipping
 routes in the world, and navigating it efficiently requires expert knowledge, precise coordination, and
 strict adherence to regulations.
           </p>
-          <p className="text-foreground text-sm leading-relaxed">From initial coordination with the Suez Canal Authority (SCA) to post-passage clearance, our
+          <p className="text-foreground text-sm leading-relaxed" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+            From initial coordination with the Suez Canal Authority (SCA) to post-passage clearance, our
 experienced team manages every aspect of the process. We handle all the logistics and paperwork,
 ensuring your vessel’s journey is seamless and free of delays or complications. With our 24/7
 operational support, we guarantee smooth, timely transit, allowing you to focus on your business
@@ -194,46 +198,39 @@ function services() {
         />
       </div>
     </div>
-    <div className="w-full max-w-6xl mx-auto mt-20 mb-10 px-4">
-      <h2 className="text-xl md:text-2xl  text-primary mb-8 text-center">
-        Reasons to Choose Moon Navigation and Trading Co.<br />
-        for Your Suez Canal Passage Needs
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-8">
-        <div className="flex flex-col items-center text-center">
-          <h3 className=" mb-2">Industry Expertise</h3>
-          <p className="text-foreground text-sm">
-            With years of experience and local insight, we are your trusted partner for navigating the Suez Canal efficiently and compliantly.
-          </p>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <h3 className=" mb-2">All-Inclusive Service</h3>
-          <p className="text-foreground text-sm">
-            From Suez Canal passage coordination to full agency services, we manage all aspects of your vessel’s journey to ensure a seamless and efficient experience.
-          </p>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <h3 className=" mb-2">Cost-Effective Solutions</h3>
-          <p className="text-foreground text-sm">
-            We optimize every part of the process, minimizing costs and avoiding unnecessary delays.
-          </p>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        <div className="flex flex-col items-center text-center">
-          <h3 className=" mb-2">24/7 Support</h3>
-          <p className="text-foreground text-sm">
-            Our dedicated team is available round-the-clock, providing real-time solutions and proactive attention to ensure smooth sailing.
-          </p>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <h3 className=" mb-2">Emergency Assistance & Contingency Handling</h3>
-          <p className="text-foreground text-sm">
-            When the unexpected happens, we deliver rapid hands-on emergency solutions to keep your vessel on course.
-          </p>
-        </div>
-      </div>
-    </div>
+    <div className="mt-20" />
+    <ReasonsGridUniversal
+      title={"Reasons to Choose Moon Navigation and Trading Co.\nfor Your Suez Canal Passage Needs"}
+      subheading={""}
+      reasons={[
+          {
+            icon: <img src="/icons/ship agency/24.png" alt="Industry Expertise" className="mb-6 h-16 w-16 object-contain" />,
+            title: "Industry Expertise",
+            description: "With years of experience and local insight, we are your trusted partner for navigating the Suez Canal efficiently and compliantly.",
+          },
+          {
+            icon: <img src="/icons/ship agency/25.png" alt="All-Inclusive Service" className="mb-6 h-16 w-16 object-contain" />,
+            title: "All-Inclusive Service",
+            description: "From Suez Canal passage coordination to full agency services, we manage all aspects of your vessel’s journey to ensure a seamless and efficient experience.",
+          },
+          {
+            icon: <img src="/icons/ship agency/26.png" alt="Cost-Effective Solutions" className="mb-6 h-16 w-16 object-contain" />,
+            title: "Cost-Effective Solutions",
+            description: "We optimize every part of the process, minimizing costs and avoiding unnecessary delays.",
+          },
+          {
+            icon: <img src="/icons/ship agency/27.png" alt="24/7 Support" className="mb-6 h-16 w-16 object-contain" />,
+            title: "24/7 Support",
+            description: "Our dedicated team is available round-the-clock, providing real-time solutions and proactive attention to ensure smooth sailing.",
+          },
+          {
+            icon: <img src="/icons/ship agency/28.png" alt="Emergency Assistance & Contingency Handling" className="mb-6 h-16 w-16 object-contain" />,
+            title: "Emergency Assistance & Contingency Handling",
+            description: "When the unexpected happens, we deliver rapid hands-on emergency solutions to keep your vessel on course.",
+          },
+        ]}
+      layout="3-2"
+    />
     <GetQuoteComponent topic = "Suez Canal Transit" link = "/suez-canal-form"/> 
     <FAQSearch category="suez-canal" />
     </>

@@ -34,16 +34,15 @@ export default function DockingAndMaintenance() {
                                     </Link>
                                 </div>
                                 <div>
-                                    <h2 className="text-xl text-primary mb-2">What is Docking and Maintenance?</h2>
+                                    <h2 className="text-xl text-primary mb-2">What is Docking and Maintenance ?</h2>
                                     <p className="text-muted-foreground mb-4">
-                                        Docking is the process of bringing a ship into a dock for inspection, repairs, or
-                                        maintenance. This includes dry docking...
+                                        Docking is the process of bringing a ship into a dock for inspection, repairs, or maintenance. This includes dry docking, where the vessel is removed from the water for essential tasks such as hull cleaning, painting, and structural repairs to ensure its integrity and performance.
                                     </p>
                                     <p className="text-muted-foreground mb-4">
-                                        While maintenance involves the regular upkeep and repair of vessels...
+                                        While Maintenance involves the regular upkeep and repair of a vessel to guarantee safety, efficiency, and compliance with maritime regulations. This encompasses activities such as engine servicing, hull inspections, electrical system checks, and the replacement of worn-out components, all of which are critical to maintaining optimal operational standards.
                                     </p>
                                     <p className="text-muted-foreground">
-                                        At Moon Navigation and Trading Co., we uphold the highest safety standards...
+                                        At Moon Navigation and Trading Co., we uphold the highest safety standards through our comprehensive docking and maintenance practices. Our unwavering commitment to the reliability of our fleet instills confidence in our clients, ensuring that each vessel is meticulously maintained to meet the rigorous demands of the maritime industry. We prioritize operational excellence, providing peace of mind through our dedication to superior service and reliability.
                                     </p>
                                 </div>
                             </div>
@@ -54,6 +53,13 @@ export default function DockingAndMaintenance() {
             )}
             renderServices={() => (
                 <main className="flex flex-col items-center w-full" style={{ fontFamily: "Raleway, sans-serif" }}>
+                    {/* Docking/Maintenance Toggle Buttons */}
+                    <section className="w-full max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-8">
+                        <div className="flex justify-center gap-16">
+                            <button className="bg-[#273c75] text-white font-raleway font-bold text-lg rounded-full px-14 py-4 shadow hover:bg-[#1d2b4f] transition-colors focus:outline-none">Docking</button>
+                            <button className="bg-[#273c75] text-white font-raleway font-bold text-lg rounded-full px-14 py-4 shadow hover:bg-[#1d2b4f] transition-colors focus:outline-none">Maintenance</button>
+                        </div>
+                    </section>
                     {/* Vessel Types */}
                     <section className="w-full py-16">
                         <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -91,7 +97,9 @@ export default function DockingAndMaintenance() {
                                 <img
                                     src="/docking-2.jpg"
                                     alt="Docked ship with cranes and workers"
-                                    className="object-cover w-full h-[400px] rounded-[70px]"
+                                    width={520}
+                                    height={320}
+                                    className="object-cover rounded-[60px]"
                                 />
                             </div>
                         </div>
@@ -104,7 +112,9 @@ export default function DockingAndMaintenance() {
                                 <img
                                     src="/docking-3.jpg"
                                     alt="Docked ship with cranes and workers"
-                                    className="object-cover w-full h-[400px] rounded-[70px]"
+                                    width={520}
+                                    height={320}
+                                    className="object-cover rounded-[60px]"
                                 />
                             </div>
                             <div>
@@ -168,7 +178,9 @@ export default function DockingAndMaintenance() {
                                 <img
                                     src="/docking-4.jpg"
                                     alt="Maintenance crew working on vessel"
-                                    className="object-cover w-full h-[400px] rounded-[70px]"
+                                    width={520}
+                                    height={320}
+                                    className="object-cover rounded-[60px]"
                                 />
                             </div>
                         </div>
@@ -202,7 +214,9 @@ export default function DockingAndMaintenance() {
                                 <img
                                     src="/docking-5.jpg"
                                     alt="Two maintenance workers discussing with a tablet"
-                                    className="object-cover w-full h-[400px] rounded-[70px]"
+                                    width={520}
+                                    height={320}
+                                    className="object-cover rounded-[60px]"
                                 />
                             </div>
                         </div>

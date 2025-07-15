@@ -25,10 +25,10 @@ export default function PDAProcessPage() {
           <Image
             src="/p-pda-1.jpg"
             alt="Laptop showing shipping analytics with ship in background"
-            width={350}
-            height={200}
-            className="rounded-xl shadow-md object-cover"
-            style={{ maxWidth: "100%", height: "auto" }}
+            width={540}
+            height={340}
+            className="rounded-2xl shadow-md object-cover"
+            style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
           />
         </div>
       </div>
@@ -37,10 +37,10 @@ export default function PDAProcessPage() {
           <Image
             src="/p-pda-2.jpg"
             alt="Tablet with analytics in meeting room"
-            width={350}
-            height={200}
-            className="rounded-xl shadow-md object-cover"
-            style={{ maxWidth: "100%", height: "auto" }}
+            width={540}
+            height={340}
+            className="rounded-2xl shadow-md object-cover"
+            style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
           />
         </div>
         <div className="order-1 md:order-2">
@@ -78,10 +78,10 @@ export default function PDAProcessPage() {
         <Image
           src="/p-pda-3.jpg"
           alt="Businesswoman reviewing financial documents at port"
-          width={350}
-          height={200}
-          className="rounded-xl shadow-md object-cover"
-          style={{ maxWidth: "100%", height: "auto" }}
+          width={540}
+          height={340}
+          className="rounded-2xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
         />
       </div>
     </div>

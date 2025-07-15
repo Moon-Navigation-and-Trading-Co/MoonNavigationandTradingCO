@@ -7,6 +7,7 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGrid from "@/components/ReasonsGrid";
 
 function overview() {
   const t = useTranslations("learn-special");
@@ -76,7 +77,7 @@ function services() {
           </div>
         </div>
       </div>
-      <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mb-12 shadow">
+      <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mb-0 shadow gap-12">
         <div className="w-full md:w-1/2 flex justify-center items-center mb-8 md:mb-0">
           <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
             <img
@@ -94,49 +95,45 @@ function services() {
           <p className="text-[#444] dark:text-gray-300 text-sm md:text-base mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
             Understanding the importance of tailored solutions for long-term partnerships in logistics, our team is dedicated to customizing delivery and logistics to your customer agreements that align with your operational objectives. We offer a range of value-added services, including specialized shipment support solutions, dedicated account managers, and transparent support in the logistics process. Our team excels in fostering strong, collaborative relationships, enabling us to deliver exactly as planned, no matter how evolving needs arise.
           </p>
-          <p className="text-[#444] dark:text-gray-300 text-xs md:text-sm mt-4" style={{ fontFamily: "Raleway, sans-serif" }}>
-            Trust Moon Navigation and Trading Company to be your reliable partner in navigating the complexities of logistics, ensuring a seamless and efficient specification for your business—whenever and wherever you need us most.
-          </p>
         </div>
       </div>
+      <div className="w-full max-w-6xl mx-auto px-4 mb-12">
+        <p className="text-[#444] dark:text-gray-300 text-xs md:text-sm text-center mt-6" style={{ fontFamily: "Raleway, sans-serif" }}>
+          Trust Moon Navigation and Trading Company to be your reliable partner in navigating the complexities of logistics, ensuring a seamless and efficient specification for your business—whenever and wherever you need us most.
+        </p>
+      </div>
       <div className="w-full max-w-6xl mx-auto mb-24">
-        <h2 className="text-xl md:text-2xl text-[#2a4365] dark:text-blue-400 mb-12 text-center" style={{ fontFamily: "Raleway, sans-serif" }}>
-          Reasons to Choose Moon Navigation and Trading Co. For Your Special Services
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">24/7 Support</h3>
-            <p className="text-[#444] dark:text-gray-300 text-sm max-w-xs">
-              Available anytime, anywhere.
-            </p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">Industry Experts</h3>
-            <p className="text-[#444] dark:text-gray-300 text-sm max-w-xs">
-              Highly skilled team with extensive expertise.
-            </p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">End-to-End Solutions</h3>
-            <p className="text-[#444] dark:text-gray-300 text-sm max-w-xs">
-              One-stop service for all vessel & cargo needs.
-            </p>
-          </div>
-          <div className="col-span-full flex flex-col md:flex-row items-center justify-center gap-12 mt-4">
-            <div className="flex flex-col items-center text-center">
-              <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">Regulatory Compliance</h3>
-              <p className="text-[#444] dark:text-gray-300 text-sm max-w-xs">
-                Meeting IMO, SOLAS, MARPOL, and port regulations.
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">Cost-Effective & Transparent Pricing</h3>
-              <p className="text-[#444] dark:text-gray-300 text-sm max-w-xs">
-                No hidden fees, optimized budgeting.
-              </p>
-            </div>
-          </div>
-        </div>
+        <ReasonsGrid
+          title="Reasons to Choose Moon Navigation and Trading Co. For Your Special Services"
+          subheading=""
+          reasons={[
+            {
+              icon: <img src="/icons/ship agency/72.png" alt="24/7 Support" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              title: "24/7 Support",
+              description: "Available anytime, anywhere.",
+            },
+            {
+              icon: <img src="/icons/ship agency/73.png" alt="Industry Experts" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              title: "Industry Experts",
+              description: "Highly skilled team with maritime expertise.",
+            },
+            {
+              icon: <img src="/icons/ship agency/74.png" alt="End-to-End Solutions" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              title: "End-to-End Solutions",
+              description: "One-stop service for all vessel & cargo needs.",
+            },
+            {
+              icon: <img src="/icons/ship agency/75.png" alt="Regulatory Compliance" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              title: "Regulatory Compliance",
+              description: "Meeting IMO, ISM, MARPOL, and port regulations.",
+            },
+            {
+              icon: <img src="/icons/ship agency/76.png" alt="Cost-Effective & Transparent Pricing" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              title: "Cost-Effective & Transparent Pricing",
+              description: "No hidden fees, optimized budgeting.",
+            },
+          ]}
+        />
       </div>
       <GetQuoteComponent topic="Special Services" link="/ship-agency-forms" />
       <FAQSearch category="special-services" />
