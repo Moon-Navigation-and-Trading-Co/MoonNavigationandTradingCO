@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
-import OversizedCargoCarousel from "@/components/oversized-cargo-carousel";
+import VesselCarousel from "@/components/vessel-carousel";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
@@ -64,7 +64,33 @@ export default function ShippingMethodsInfo() {
             <p className="text-[#888] mb-10 text-base md:text-lg max-w-3xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
               Our oversized container services are designed to handle a wide range of large and irregularly shaped shipments, including but not limited to:
             </p>
-            <OversizedCargoCarousel />
+            <VesselCarousel vessels={[
+              {
+                img: "/oversized-cargo-heavy-machinery.jpg",
+                title: "Heavy machinery",
+                subtitle: "(e.g. bulldozers, forklifts)",
+              },
+              {
+                img: "/oversized-cargo-industrial-equipment.jpg",
+                title: "Large industrial equipment",
+                subtitle: "",
+              },
+              {
+                img: "/oversized-cargo-prefab-materials.jpg",
+                title: "Prefabricated construction materials",
+                subtitle: "",
+              },
+              {
+                img: "/oversized-cargo-wind-turbine.jpg",
+                title: "Wind turbine blades",
+                subtitle: "(if within the container's dimensions)",
+              },
+              {
+                img: "/oversized-cargo-pipes.jpg",
+                title: "Large pipes and metal structures",
+                subtitle: "",
+              },
+            ]} />
           </div>
           <div className="w-full max-w-7xl mx-auto mt-20">
             <h2 className="text-2xl md:text-3xl  text-center text-primary mb-8">
@@ -330,7 +356,7 @@ export default function ShippingMethodsInfo() {
               <img
                 src="/ov-8.jpg"
                 alt="Workers discussing oversized container logistics"
-                className="rounded-3xl object-cover w-[320px] h-[180px] md:w-[380px] md:h-[210px] shadow"
+                className="rounded-3xl object-cover w-[520px] h-[410px]  shadow"
                 style={{ objectFit: "cover" }}
               />
             </div>
@@ -358,7 +384,7 @@ export default function ShippingMethodsInfo() {
                 {
                   icon: <img src="/icons/container/94.png" className="mb-8 h-20 w-20 object-contain"/>,
                   title: "Expertise in Oversized Cargo Handling",
-                  description: "",
+                  description: "With years of experience, we specialize in transporting heavy, irregular, and large-scale shipments with precision and care.",
                 },
                 {
                   icon: <img src="/icons/container/95.png" className="mb-8 h-20 w-20 object-contain"/>,

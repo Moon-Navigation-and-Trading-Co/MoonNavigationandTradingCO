@@ -68,11 +68,11 @@ const ReeferPage = () => {
         </div>
 
         {/* Main content (heading/description only) */}
-        <div className="w-full max-w-5xl flex flex-col md:flex-row gap-8">
-          {/* Left: Title and button */}
-          <div className="flex-1 flex flex-col gap-6">
-            <h1 className="text-3xl font-regular font-sans mb-12 text-[#222] dark:text-white">
-              Reefer Containers (Refrigerated Shipping Solutions) 
+        <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Left: Title and CTA */}
+          <div className="flex flex-col items-start justify-start">
+            <h1 className="text-5xl font-regular font-sans mb-12 text-primary mt-12">
+              Reefer Containers (Refrigerated Shipping Solutions)
             </h1>
             <Link href="/container-services-forms">
               <RequestQuoteButton>
@@ -81,16 +81,19 @@ const ReeferPage = () => {
             </Link>
           </div>
           {/* Right: Description */}
-          <div className="flex-[2] text-gray-700 dark:text-gray-300 text-sm md:text-base flex flex-col gap-4 font-light">
-            <p>
+          <div className="w-full max-w-2xl">
+            <h2 className="text-lg text-primary mb-2 font-regular">
+              What are Reefer Containers?
+            </h2>
+            <p className="text-light text-foreground leading-relaxed font-light">
               When it comes to transporting temperature-sensitive cargo, precision and reliability are critical. Our Reefer
               Containers (refrigerated containers) provide the ideal solution for maintaining product integrity throughout the
               shipping process. Whether you are moving perishable food, pharmaceuticals, chemicals, or other temperature-
-              controlled goods, we ensure optimal conditions from origin to destination.</p>
-            <p>
+              controlled goods, we ensure optimal conditions from origin to destination.<br /><br />
               At Moon Navigation and Trading Co., we offer state-of-the-art reefer containers equipped with advanced
               temperature monitoring and control systems. Our team is experienced in handling cold chain logistics, ensuring
-              compliance with international standards, and delivering your cargo in perfect condition.</p>
+              compliance with international standards, and delivering your cargo in perfect condition.
+            </p>
           </div>
         </div>
       </>
@@ -109,18 +112,19 @@ const ReeferPage = () => {
           </p>
           <VesselCarousel vessels={cargoTypes} />
         </div>
-        <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-8 mt-20">
+        <div>
+        <div className="w-full flex flex-col md:flex-row items-center gap-8 mt-20">
           {/* Left: Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px]">
+          <div className="flex-shrink-0 w-full md:w-[400px]">
             <img
               src="/reefer-temp-control.jpg"
               alt="Advanced temperature control in reefer container"
-              className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+              className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
               loading="lazy"
             />
           </div>
           {/* Right: Text */}
-          <div className="flex-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <div className="flex-1 flex flex-col justify-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
             <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">Advanced Temperature Control</h2>
             <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
               Our refrigerated containers are equipped with precise climate control systems to maintain internal temperatures ranging from -30°C to +30°C, with adjustable humidity levels where required. This ensures product stability and quality during transit.
@@ -132,36 +136,36 @@ const ReeferPage = () => {
             </ul>
           </div>
         </div>
-        <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-8 mt-20">
+        <div className="w-full flex flex-col md:flex-row items-center gap-8 mt-20">
           {/* Left: Text */}
-          <div className="flex-1 order-2 md:order-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <div className="flex-1 flex flex-col justify-center order-2 md:order-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
             <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">24/7 Monitoring and Technical Support</h2>
             <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
               We offer around-the-clock monitoring to ensure your cargo remains within the required temperature thresholds. Our technical support team is available 24/7 to address any operational issues promptly, minimizing any risk to your cargo.
             </p>
           </div>
           {/* Right: Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px] order-1 md:order-2">
+          <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2">
             <img
               src="/reefer-worker.jpg"
               alt="24/7 monitoring and technical support for reefer containers"
-              className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+              className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
               loading="lazy"
             />
           </div>
         </div>
-        <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-8 mt-20">
+        <div className="w-full flex flex-col md:flex-row items-center gap-8 mt-20">
           {/* Left: Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px]">
+          <div className="flex-shrink-0 w-full md:w-[400px]">
             <img
               src="/reefer-coldchain-workers.jpg"
               alt="Inspectors reviewing cold chain compliance at container"
-              className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+              className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
               loading="lazy"
             />
           </div>
           {/* Right: Text */}
-          <div className="flex-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <div className="flex-1 flex flex-col justify-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
             <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">Cold Chain Compliance and Documentation</h2>
             <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
               Maintaining a consistent cold chain is critical in reefer logistics. Our team ensures:
@@ -174,9 +178,9 @@ const ReeferPage = () => {
             </ul>
           </div>
         </div>
-        <div className="w-full flex flex-col md:flex-row items-center md:items-start gap-8 mt-20">
+        <div className="w-full flex flex-col md:flex-row items-center gap-8 mt-20">
           {/* Left: Text */}
-          <div className="flex-1 order-2 md:order-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <div className="flex-1 flex flex-col justify-center order-2 md:order-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
             <h2 className="text-2xl mb-2 text-[#23294d] dark:text-blue-400">Global Reach.<br />Reliable Transit</h2>
             <p className="text-sm md:text-base text-muted-foreground mb-3 max-w-xl">
               Whether it is a short-haul or long-haul shipment, our global network allows us to offer fast, secure, and reliable reefer transport solutions. With strong partnerships across key ports and shipping lines, we ensure timely deliveries and end-to-end coordination.
@@ -187,10 +191,11 @@ const ReeferPage = () => {
             <img
               src="/reefer-global-ship.jpg"
               alt="Container ship at port at sunset, representing global reach and reliable transit"
-              className="rounded-2xl w-full h-[220px] object-cover object-center shadow-md"
+              className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
               loading="lazy"
             />
           </div>
+        </div>
         </div>
         <div className="overflow-x-auto mt-12 w-full max-w-7xl">
           <h2 className="text-2xl mb-6 text-gray-900 dark:text-white">Comparison: Reefer Containers vs. Standard Containers</h2>

@@ -65,9 +65,9 @@ export default function ShippingMethodsInfo() {
         </div>
       )}
       renderServices={() => (
-        <div className="min-h-screen flex flex-col justify-center items-center py-8 px-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
+        <div className="min-h-screen flex flex-col justify-center items-center  px-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
           {/* When to use LCL Section */}
-          <div className="w-full max-w-7xl mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             {/* Left: Text */}
             <div>
               <h2 className="text-lg md:text-xl text-primary mb-3">

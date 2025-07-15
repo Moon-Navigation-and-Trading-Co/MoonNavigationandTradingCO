@@ -115,13 +115,16 @@ export default function DangerousCargoInfo() {
     function renderServices() {
         return (
             <>
-                {/* Everything after the overview section */}
+                <CardTitle className="text-3xl font-bold mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
+                <div className="w-full flex justify-center items-center h-[60px] mt-10">
+                        <img src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" className="max-w-2xl w-full " />
+                    </div>
                 {/* Accordion/classes section below */}
                 <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
                     <CardHeader>
-                        <CardTitle className="text-3xl font-bold mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>{t('title')}</CardTitle>
+                        
                         <CardContent className="p-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            {t('description')}
+                            
                         </CardContent>
                     </CardHeader>
                     <CardContent className="flex flex-col md:flex-row gap-8 p-0">
@@ -133,8 +136,8 @@ export default function DangerousCargoInfo() {
                                         <li key={dangerousClass.id}>
                                             <button
                                                 type="button"
-                                                className={`w-full text-left px-4 py-2 rounded-lg transition-colors ${selectedClass === idx
-                                                    ? "bg-primary/10 text-primary font-semibold"
+                                                className={`w-full text-left px-4 py-2 transition-colors ${selectedClass === idx
+                                                    ? "bg-blue-100 text-primary font-semibold"
                                                     : "hover:bg-muted"
                                                     }`}
                                                 onClick={() => setSelectedClass(idx)}

@@ -8,6 +8,7 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
+import VesselCarousel from "@/components/vessel-carousel";
 
 export default function InlandContainerPage() {
 
@@ -17,7 +18,7 @@ export default function InlandContainerPage() {
         <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
           {/* Top Banner */}
           <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
-            <div className="relative w-full h-[180px] md:h-[260px]">
+            <div className="relative w-full h-[350px] md:h-[350px]">
               <img
                 src="/inland-1.jpg"
                 alt="Moon Navigation and Trading Co. Inland Container Transportation"
@@ -56,8 +57,8 @@ export default function InlandContainerPage() {
         </div>
       )}
       renderServices={() => (
-        <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          <div className="w-full max-w-7xl mx-auto mt-20">
+        <div className="min-h-screen flex flex-col items-center  px-2 md:px-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
+          <div className="w-full max-w-7xl mx-auto ">
             <h2 className="text-2xl md:text-3xl  text-primary mb-2 text-center">
               Our Inland Container Transport Services
             </h2>
@@ -181,64 +182,28 @@ export default function InlandContainerPage() {
             <p className="text-muted-foreground text-center mb-10 text-sm md:text-base max-w-7xl mx-auto">
               We handle all types of containers, ensuring proper transportation methods based on cargo requirements.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              {/* Standard & High Cube Containers */}
-              <div className="flex flex-col items-center">
-                <div className="w-32 h-28 rounded-2xl overflow-hidden mb-3 shadow">
-                  <img
-                    src="/inland-5.jpg"
-                    alt="Standard and high cube containers"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <span className=" text-center text-sm md:text-base">Standard and High Cube Containers</span>
-                <span className="text-xs text-muted-foreground text-center">
-                  20ft, 40ft, and self-container transport.
-                </span>
-              </div>
-              {/* Reefer & Temperature-Sensitive Cargo */}
-              <div className="flex flex-col items-center">
-                <div className="w-32 h-28 rounded-2xl overflow-hidden mb-3 shadow">
-                  <img
-                    src="/inland-6.jpg"
-                    alt="Reefer and temperature-sensitive cargo"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <span className=" text-center text-sm md:text-base">Reefer and Temperature-Sensitive Cargo</span>
-                <span className="text-xs text-muted-foreground text-center">
-                  Ensuring protected temperature for foods throughout the journey.
-                </span>
-              </div>
-              {/* Dangerous Goods/DG Containers */}
-              <div className="flex flex-col items-center">
-                <div className="w-32 h-28 rounded-2xl overflow-hidden mb-3 shadow">
-                  <img
-                    src="/inland-7.jpg"
-                    alt="Dangerous goods container"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <span className=" text-center text-sm md:text-base">Dangerous Goods/DG Containers</span>
-                <span className="text-xs text-muted-foreground text-center">
-                  Safe requirements with strict safety protocols.
-                </span>
-              </div>
-              {/* Flat Rack & Open-Top Containers */}
-              <div className="flex flex-col items-center">
-                <div className="w-32 h-28 rounded-2xl overflow-hidden mb-3 shadow">
-                  <img
-                    src="/inland-8.jpg"
-                    alt="Flat rack and open-top containers"
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-                <span className=" text-center text-sm md:text-base">Flat Rack and Open-Top Containers</span>
-                <span className="text-xs text-muted-foreground text-center">
-                  For out-of-gauge, heavy, OOG, and industrial project cargo.
-                </span>
-              </div>
-            </div>
+            <VesselCarousel vessels={[
+              {
+                img: "/inland-5.jpg",
+                title: "Standard and High Cube Containers",
+                subtitle: "20ft, 40ft, and self-container transport.",
+              },
+              {
+                img: "/inland-6.jpg",
+                title: "Reefer and Temperature-Sensitive Cargo",
+                subtitle: "Ensuring protected temperature for foods throughout the journey.",
+              },
+              {
+                img: "/inland-7.jpg",
+                title: "Dangerous Goods/DG Containers",
+                subtitle: "Safe requirements with strict safety protocols.",
+              },
+              {
+                img: "/inland-8.jpg",
+                title: "Flat Rack and Open-Top Containers",
+                subtitle: "For out-of-gauge, heavy, OOG, and industrial project cargo.",
+              },
+            ]} />
           </div>
           <div className="w-full max-w-7xl mx-auto mt-20">
             <ReasonsGridUniversal

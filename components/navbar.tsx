@@ -136,7 +136,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             items: [
                 {
                     name: "Handling, Stevedoring, and Storage Services",
-                    href: "/learn/stevedoring-container",
+                    href: "/learn/hss",
                 },
                 { name: "Customs Clearance Services", href: "/learn/customs-clearance" },
             ],

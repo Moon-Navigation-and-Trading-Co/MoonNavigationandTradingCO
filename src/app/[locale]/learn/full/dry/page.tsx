@@ -193,15 +193,15 @@ export default function DryContainerPage() {
         {/* End-to-End Cargo Handling Section */}
         <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
           {/* Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
-            <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+          <div className="flex-shrink-0 w-full md:w-[400px] flex justify-center">
+            <div className="relative w-[300px] h-[200px] md:w-[380px] md:h-[250px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
               <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
               <Image
                 src="/dry-1.jpg"
                 alt="End-to-End Cargo Handling"
                 fill
                 className="object-cover rounded-2xl z-10"
-                sizes="(max-width: 768px) 100vw, 320px"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
             </div>
           </div>
@@ -239,30 +239,30 @@ export default function DryContainerPage() {
             </ul>
           </div>
           {/* Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
-            <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+          <div className="flex-shrink-0 w-full md:w-[400px] flex justify-center">
+            <div className="relative w-[300px] h-[200px] md:w-[380px] md:h-[250px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
               <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
               <Image
                 src="/dry-2.jpg"
                 alt="Container Stuffing & Cargo Securing"
                 fill
                 className="object-cover rounded-2xl z-10"
-                sizes="(max-width: 768px) 100vw, 320px"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
             </div>
           </div>
         </div>
         <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
           {/* Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center mb-6 md:mb-0">
-            <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#23316d] flex items-center justify-center">
+          <div className="flex-shrink-0 w-full md:w-[400px] flex justify-center mb-6 md:mb-0">
+            <div className="relative w-[300px] h-[200px] md:w-[380px] md:h-[250px] rounded-2xl overflow-hidden shadow-lg bg-[#23316d] flex items-center justify-center">
               <div className="absolute inset-0 z-0 bg-[#23316d]" />
               <Image
                 src="/dry-3.jpg"
                 alt="Customs Documentation & Clearance"
                 fill
                 className="object-cover rounded-2xl z-10"
-                sizes="(max-width: 768px) 100vw, 320px"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
             </div>
           </div>
@@ -301,30 +301,30 @@ export default function DryContainerPage() {
             </ul>
           </div>
           {/* Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
-            <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+          <div className="flex-shrink-0 w-full md:w-[400px] flex justify-center">
+            <div className="relative w-[300px] h-[200px] md:w-[380px] md:h-[250px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
               <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
               <Image
                 src="/dry-4.jpg"
                 alt="Port & Inland Transport Coordination"
                 fill
                 className="object-cover rounded-2xl z-10"
-                sizes="(max-width: 768px) 100vw, 320px"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
             </div>
           </div>
         </div>
         <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 my-24 px-2 md:px-0">
           {/* Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
-            <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+          <div className="flex-shrink-0 w-full md:w-[400px] flex justify-center">
+            <div className="relative w-[300px] h-[200px] md:w-[380px] md:h-[250px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
               <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
               <Image
                 src="/dry-5.jpg"
                 alt="Cargo Inspection & Container Condition Checks"
                 fill
                 className="object-cover rounded-2xl z-10"
-                sizes="(max-width: 768px) 100vw, 320px"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
             </div>
           </div>
@@ -365,21 +365,21 @@ export default function DryContainerPage() {
             </Link>
           </div>
           {/* Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px] flex justify-center">
-            <div className="relative w-[260px] h-[170px] md:w-[320px] md:h-[200px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
+          <div className="flex-shrink-0 w-full md:w-[400px] flex justify-center">
+            <div className="relative w-[300px] h-[200px] md:w-[380px] md:h-[250px] rounded-2xl overflow-hidden shadow-lg bg-[#3B4B8C] flex items-center justify-center">
               <div className="absolute inset-0 z-0 bg-[#3B4B8C]" />
               <Image
                 src="/dry-6.jpg"
                 alt="Value Added Solutions Team"
                 fill
                 className="object-cover rounded-2xl z-10"
-                sizes="(max-width: 768px) 100vw, 320px"
+                sizes="(max-width: 768px) 100vw, 380px"
               />
             </div>
           </div>
         </div>
         {/* Reasons Section */}
-        <div className="mt-16 mb-12 max-w-5xl mx-auto px-4">
+        <div className="">
           <ReasonsGridUniversal
             title="Reasons to Choose Moon Navigation and Trading Co. for Your Dry Standard Container Shipments"
             layout="3-2"

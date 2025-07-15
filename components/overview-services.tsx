@@ -16,7 +16,7 @@ export default function OverviewServicesTabs({
   const [selected, setSelected] = useState<"overview" | "services">("overview");
 
   return (
-    <div className="w-full max-w-7xl mx-auto mt-10">
+    <div className="w-full max-w-7xl mx-auto mt-[50px]">
       <div className="flex border-b border-border mb-8">
         <button
           className={

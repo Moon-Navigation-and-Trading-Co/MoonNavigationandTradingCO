@@ -7,6 +7,7 @@ import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function InternationalTrading() {
     const t = useTranslations("learn-international-trading");
@@ -17,7 +18,7 @@ export default function InternationalTrading() {
                 <main className="flex flex-col items-center w-full max-w-7xl mx-auto" style={{fontFamily: "Raleway"}}>
                     {/* Hero Section */}
                     <div className="w-full">
-                        <div className="relative h-[400px] rounded-3xl overflow-hidden mb-12">
+                        <div className="relative h-[350px] rounded-[60px] overflow-hidden mb-10">
                             <Image src="/international-1.jpg" alt="International Trading Network" fill className="object-cover" priority />
                         </div>
 
@@ -51,9 +52,9 @@ export default function InternationalTrading() {
 
                             <div className="grid lg:grid-cols-[1fr,1.5fr] gap-12">
                                 <div className="relative">
-                                    <div className="relative w-full aspect-square rounded-3xl overflow-hidden bg-primary">
-                                        <div className="absolute inset-4">
-                                            <Image src="/international-2.jpg" alt="Global Trade Services" fill className="object-cover rounded-2xl" />
+                                    <div className="relative w-full max-w-md h-[260px] rounded-3xl overflow-hidden bg-primary">
+                                        <div className="absolute inset-2">
+                                            <Image src="/international-2.jpg" alt="Global Trade Services" fill className="object-cover rounded-xl" />
                                         </div>
                                     </div>
                                     <br />
@@ -107,7 +108,7 @@ export default function InternationalTrading() {
                                         <p className="text-muted-foreground">{t("solutions.freight.description")}</p>
                                     </div>
                                     <div className="order-1 md:order-2">
-                                        <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                        <div className="relative w-full max-w-md h-[260px] rounded-3xl overflow-hidden">
                                             <Image src="/international-3.jpg" alt="Freight Services" fill className="object-cover" />
                                         </div>
                                     </div>
@@ -115,7 +116,7 @@ export default function InternationalTrading() {
 
                                 {/* Expert Customs Clearance */}
                                 <div className="grid md:grid-cols-2 gap-8 items-center">
-                                    <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                    <div className="relative w-full max-w-md h-[260px] rounded-3xl overflow-hidden">
                                         <Image src="/international-4.jpg" alt="Customs Clearance" fill className="object-cover" />
                                     </div>
                                     <div>
@@ -131,7 +132,7 @@ export default function InternationalTrading() {
                                         <p className="text-muted-foreground leading-relaxed">{t("solutions.network.description")}</p>
                                     </div>
                                     <div className="order-1 md:order-2">
-                                        <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                        <div className="relative w-full max-w-md h-[260px] rounded-3xl overflow-hidden">
                                             <Image src="/international-5.jpg" alt="Global Network" fill className="object-cover" />
                                         </div>
                                     </div>
@@ -139,7 +140,7 @@ export default function InternationalTrading() {
 
                                 {/* Strategic Storage and Warehousing */}
                                 <div className="grid md:grid-cols-2 gap-8 items-center">
-                                    <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                    <div className="relative w-full max-w-md h-[260px] rounded-3xl overflow-hidden">
                                         <Image src="/international-6.jpg" alt="Strategic Storage and Warehousing" fill className="object-cover" />
                                     </div>
                                     <div>
@@ -155,7 +156,7 @@ export default function InternationalTrading() {
                                         <p className="text-muted-foreground leading-relaxed">{t("solutions.consultancy.description")}</p>
                                     </div>
                                     <div className="order-1 md:order-2">
-                                        <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                        <div className="relative w-full max-w-md h-[260px] rounded-3xl overflow-hidden">
                                             <Image src="/international-7.jpg" alt="Consultancy Services" fill className="object-cover" />
                                         </div>
                                     </div>
@@ -163,7 +164,7 @@ export default function InternationalTrading() {
 
                                 {/* Safe Handling of Dangerous Cargo */}
                                 <div className="grid md:grid-cols-2 gap-8 items-center">
-                                    <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
+                                    <div className="relative w-full max-w-md h-[260px] rounded-3xl overflow-hidden">
                                         <Image src="/international-8.jpg" alt="Safe Handling of Dangerous Cargo" fill className="object-cover" />
                                     </div>
                                     <div>
@@ -176,45 +177,32 @@ export default function InternationalTrading() {
                     </div>
 
                     {/* Reasons to Choose Section */}
-                    <div className="w-full py-16">
-                        <div className="max-w-7xl mx-auto px-4 md:px-8">
-                            <h2 className="text-3xl mb-12 text-foreground">{t("reasons.reasonsToChoose")}</h2>
-
-                            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                                {/* Expert Trade Knowledge */}
-                                <div className="flex flex-col items-center text-center">
-                                    <div className="w-16 h-16 mb-6">
-                                    </div>
-                                    <h3 className="text-xl  mb-3 text-foreground">{t("reasons.customs.title")}</h3>
-                                    <p className="text-muted-foreground">{t("reasons.customs.description")}</p>
-                                </div>
-
-                                {/* Strong Global Network */}
-                                <div className="flex flex-col items-center text-center">
-                                    <div className="w-16 h-16 mb-6">
-                                    </div>
-                                    <h3 className="text-xl  mb-3 text-foreground">{t("reasons.network.title")}</h3>
-                                    <p className="text-muted-foreground">{t("reasons.network.description")}</p>
-                                </div>
-
-                                {/* Custom-Tailored Trade Solutions */}
-                                <div className="flex flex-col items-center text-center">
-                                    <div className="w-16 h-16 mb-6">
-                                    </div>
-                                    <h3 className="text-xl  mb-3 text-foreground">{t("reasons.freight.title")}</h3>
-                                    <p className="text-muted-foreground">{t("reasons.freight.description")}</p>
-                                </div>
-
-                                {/* Reliable Compliance & Risk Management */}
-                                <div className="flex flex-col items-center text-center">
-                                    <div className="w-16 h-16 mb-6">
-                                    </div>
-                                    <h3 className="text-xl  mb-3 text-foreground">{t("reasons.consultancy.title")}</h3>
-                                    <p className="text-muted-foreground">{t("reasons.consultancy.description")}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ReasonsGridUniversal
+                      title={t("reasons.reasonsToChoose")}
+                      layout="default"
+                      reasons={[
+                        {
+                          icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />,
+                          title: t("reasons.customs.title"),
+                          description: t("reasons.customs.description")
+                        },
+                        {
+                          icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />,
+                          title: t("reasons.network.title"),
+                          description: t("reasons.network.description")
+                        },
+                        {
+                          icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />,
+                          title: t("reasons.freight.title"),
+                          description: t("reasons.freight.description")
+                        },
+                        {
+                          icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />,
+                          title: t("reasons.consultancy.title"),
+                          description: t("reasons.consultancy.description")
+                        },
+                      ]}
+                    />
                     <GetQuoteComponent topic = "International Trading" link = "/international-trading-forms"/> 
                 </main>
             )}

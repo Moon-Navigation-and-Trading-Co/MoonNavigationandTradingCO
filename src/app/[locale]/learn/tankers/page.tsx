@@ -360,6 +360,7 @@ function services() {
             <div className="mt-20 mb-32">
                 <ReasonsGridUniversal
                     title="Reasons To Choose Us for Tanker Ocean Freight"
+                    layout="3-2"
                     subheading=""
                     reasons={[
                         {
