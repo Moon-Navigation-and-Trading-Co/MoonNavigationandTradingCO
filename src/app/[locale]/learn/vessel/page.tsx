@@ -32,7 +32,7 @@ function overview() {
   return (
     <>
       <div className="mt-10 mb-8">
-        <Image src="/images/vessel-hero.jpg" alt="Vessel Hero" width={1280} height={350} className="rounded-[60px]" />
+        <Image src="/ve-1.jpg" alt="Vessel Hero" width={1280} height={350} className="rounded-[60px]" />
       </div>
       <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16">
         <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
@@ -66,7 +66,7 @@ function services() {
       </div>
     <div className="relative w-full aspect-[16/9] mt-12 mb-8 rounded-[60px]">
       <Image
-          src="/images/vessel-solutions.jpg"
+          src="/ve-2.jpg"
         alt="Vessel Solutions"
         fill
         className="object-cover rounded-[60px]"
@@ -99,7 +99,7 @@ function services() {
       <VesselCarousel vessels={vessels} />
       <div className="relative w-full aspect-[16/9] mt-12 mb-8 rounded-[60px]">
         <Image
-          src="/images/vessel-rental-bg.jpg"
+          src="/ve-3.jpg"
           alt="Vessel Rental Background"
           fill
           className="object-cover rounded-[60px]"
@@ -162,7 +162,7 @@ function services() {
       {/* Buying Vessels Section (moved to bottom, smaller box) */}
       <div className="relative w-full aspect-[16/9] mt-12 mb-8 rounded-[60px]">
         <Image
-          src="/images/vessel-buy-bg.jpg"
+          src="/ve-4.jpg"
           alt="Buying Vessels Background"
           fill
           className="object-cover rounded-[60px]"
@@ -293,7 +293,7 @@ function services() {
         </div>
         <div className="flex-1 flex justify-center">
           <div className="w-[540px] h-[320px] rounded-[80px] overflow-hidden bg-gray-200 flex items-center justify-center">
-            <Image src="/images/charter-types.jpg" alt="Charter Types" width={540} height={320} className="object-cover w-full h-full" />
+            <Image src="/ve-5.jpg" alt="Charter Types" width={540} height={320} className="object-cover w-full h-full" />
           </div>
         </div>
       </div>
@@ -314,7 +314,7 @@ function services() {
         </div>
         <div className="flex-1 flex justify-center">
           <div className="w-[540px] h-[320px] rounded-[80px] overflow-hidden bg-gray-200 flex items-center justify-center">
-            <Image src="/images/process-step.jpg" alt="Our Process" width={540} height={320} className="object-cover w-full h-full" />
+            <Image src="/ve-6.jpg" alt="Our Process" width={540} height={320} className="object-cover w-full h-full" />
           </div>
         </div>
       </div>
@@ -334,7 +334,7 @@ function services() {
         </div>
         <div className="flex-1 flex justify-center">
           <div className="w-[540px] h-[320px] rounded-[80px] overflow-hidden bg-gray-200 flex items-center justify-center">
-            <Image src="/images/tech-support.jpg" alt="Technical Support" width={540} height={320} className="object-cover w-full h-full" />
+            <Image src="/ve-7.jpg" alt="Technical Support" width={540} height={320} className="object-cover w-full h-full" />
           </div>
         </div>
       </div>
@@ -353,7 +353,7 @@ function services() {
         </div>
         <div className="flex-1 flex justify-center">
           <div className="w-[540px] h-[320px] rounded-[80px] overflow-hidden bg-gray-200 flex items-center justify-center">
-            <Image src="/images/customization.jpg" alt="Customization Options" width={540} height={320} className="object-cover w-full h-full" />
+            <Image src="/ve-8.jpg" alt="Customization Options" width={540} height={320} className="object-cover w-full h-full" />
           </div>
         </div>
       </div>
@@ -381,7 +381,7 @@ function services() {
         </div>
         <div className="flex-1 flex justify-center">
           <div className="w-[540px] h-[320px] rounded-[80px] overflow-hidden bg-gray-200 flex items-center justify-center">
-            <Image src="/images/global-delivery.jpg" alt="Global Delivery & Deployment" width={540} height={320} className="object-cover w-full h-full" />
+            <Image src="/ve-9.jpg" alt="Global Delivery & Deployment" width={540} height={320} className="object-cover w-full h-full" />
           </div>
         </div>
       </div>
