@@ -103,6 +103,8 @@ export default function OceanFreightPage() {
         </div>
       </div>
       <CarouselAnimation title={t("container")} freightTypes={Data} />
+    
+      
     </>
   );
 }

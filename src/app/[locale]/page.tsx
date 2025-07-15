@@ -21,6 +21,7 @@ import IndustryCarousel from "@/components/industry-carousel";
 import { useSearchParams } from "next/navigation";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
+import TSwiping from "@/components/T-Swiping";
  
 export default function Index() {
     const t = useTranslations("HomePage");
@@ -28,6 +29,51 @@ export default function Index() {
     const tttt = useTranslations("Contact");
     const modalRef = useRef<HTMLDivElement | null>(null);
     const searchParams = useSearchParams();
+
+    const ShipAgency = [
+      {
+        title: "Request for PDA",
+        description: "",
+        image: "/pda-1.jpg",
+        link: "/learn/pda",
+        quote: "/ship-agency-forms",
+      },
+      {
+        title: "Suez Canal Transit & Passage Services",
+        description: "",
+        image: "/suez-1.jpg",
+        link: "/learn/suez",
+        quote: "/ship-agency-forms",
+      },
+      {
+        title: "Sign On/Off Crew Members",
+        description: "",
+        image: "/crew-1.jpg",
+        link: "/learn/crew",
+        quote: "/ship-agency-forms",
+      },
+      {
+        title: "Transit Spare Parts",
+        description: "",
+        image: "/spare-1.jpg",
+        link: "/learn/spare-parts",
+        quote: "/ship-agency-forms",
+      },
+      {
+        title: "Bunkering | Oil Supply | Chandlery",
+        description: "",
+        image: "/bunkering-1.jpg",
+        link: "/learn/bunkering",
+        quote: "/ship-agency-forms",
+      },
+      {
+        title: "Special Services By Case",
+        description: "",
+        image: "/special-1.jpg",
+        link: "/learn/special",
+        quote: "/ship-agency-forms",
+      },
+    ];
 
     const freightTypes = [
         {
@@ -59,6 +105,65 @@ export default function Index() {
             quote: "/air-freight-forms",
         },
     ];
+    
+    const VSM = [
+      {
+        title: "Docking and Maintenance",
+        description: "",
+        image: "/docking-1.jpg",
+        link: "/learn/docking",
+        quote: "/ship-maintenance-forms"
+      },
+      {
+        title: "Ship Management",
+        description: "",
+        image: "/sm-1.jpg",
+        link: "/learn/ship-management",
+        quote: "/ship-management-forms"
+      }
+    ]
+    const TS = [
+      {
+        title: "International Trading",
+        description: "",
+        image: "/international-1.jpg",
+        link: "learn/international-trading",
+        quote: "/international-trading-forms"
+      }
+    ]
+    const OL = [
+      {
+        title: "Handling, Stevedoring and Storage Services",
+        description: "",
+        image: "/hss-1.jpg",
+        link: "/learn/hss",
+        quote: "/container-services-forms"
+
+      },
+      {
+        title: "Customs Clearance Serivices",
+        description: "",
+        image: "/c-1.jpg",
+        link: "/learn/customs",
+        quote: "/learn/container-services-forms"
+      }
+    ]
+    const EF = [
+      {
+        title: "Vessel Rentals and Purchases",
+        description: "",
+        image: "/vrp-1.jpg",
+        link: "/learn/vessel",
+        quote: "/buy-rent-vessels-forms"
+      },
+      {
+        title: "Container Rentals and Purchases",
+        description: "",
+        image: "/crp-1.jpg",
+        link: "/learn/container-purchases",
+        quote: "/buy-rent-container-forms"
+      }
+    ]
 
     const scrollToModal = () => {
         if (modalRef.current) {
@@ -170,16 +275,22 @@ export default function Index() {
                   </div>
                 </section>
 
-                {/* Services Section */}
-                <section id="services">
-                    <div className="flex flex-col gap-8 px-2 py-5 rounded-2xl">
-                        {/* Transportation Services */}
-                        <CarouselAnimation title={t("TransportationServices")} freightTypes={freightTypes} />
-                        <TransportationServices />
-                    </div>
-                </section>
-
                 {/* Industry Carousel */}
+                <div className="place-self-center">
+                  <TSwiping freightTypes={ShipAgency} title="Ship Agency"/>
+                  <TSwiping freightTypes={freightTypes} title="Transportation Services"/>
+                  <TSwiping freightTypes={VSM} title="Vessel Support and Maintenance"/>
+                  <TSwiping freightTypes={TS} title="Trade Solutions"/>
+                  <TSwiping freightTypes={OL} title="Other Logistics Services"/>
+                  <TSwiping freightTypes={EF} title= "Expand Your Fleed"/>
+                  <RequestQuoteButton> 
+                    <Link href="/investor-form">
+                    Invest with Us
+                     </Link>
+                    
+                    </RequestQuoteButton>
+                </div>
+                
                 <IndustryCarousel />
 
                 {/* Benefits Section - Overlapping Cards Reference Layout */}

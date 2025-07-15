@@ -1,68 +1,33 @@
+"use client";
 import Image from "next/image";
 import { Metadata } from "next";
-import RequestQuoteButton from "@/components/RequestQuoteButton" 
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
-
-export const metadata: Metadata = {
-    title: "Tankers | Moon Navigation and Trading Co. - Ocean Freight & Transportation",
-    description:
-        "Learn about tanker ocean freight and transportation services by Moon Navigation and Trading Co. Discover our specialized tanker types, safety features, global logistics, and reasons to choose us for your liquid cargo needs.",
-    keywords: [
-        "tankers",
-        "ocean freight",
-        "tanker transportation",
-        "crude oil tankers",
-        "chemical tankers",
-        "liquefied gas tankers",
-        "product tankers",
-        "Moon Navigation and Trading Co.",
-        "liquid cargo shipping",
-        "maritime logistics",
-        "global shipping",
-        "tanker fleet",
-        "tanker safety",
-        "environmental protection",
-        "customized tanker solutions",
-        "tanker quote"
-    ],
-    openGraph: {
-        title: "Tankers | Moon Navigation and Trading Co. - Ocean Freight & Transportation",
-        description:
-            "Moon Navigation and Trading Co. offers comprehensive tanker ocean freight services, including crude oil, chemical, product, and liquefied gas tankers. Explore our advanced fleet, safety standards, and global logistics network.",
-        images: [
-            {
-                url: "/tankers-header.jpg",
-                width: 1024,
-                height: 350,
-                alt: "Tankers at sea"
-            }
-        ],
-        type: "website"
-    },
-    alternates: {
-        canonical: "/learn/tankers"
-    }
-};
+import OverviewServicesTabs from "@/components/overview-services";
+import TankersIndustryCarousel from "@/components/tankers-industry-carousel";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 
-
-export default function TankersPage() {
+function overview() {
     return (
-        <main className="w-full max-w-7xl mx-auto flex flex-col items-center pt-8 pb-16 min-h-screen">
+        <>
             {/* Top Image */}
-            <div className="w-full h-[400px]  overflow-hidden mb-">
-                <Image
-                    src="/tankers-header.jpg"
-                    alt="Tankers at sea"
-                    width={1024}
-                    height={350}
-                    className="object-cover w-full h-[220px] sm:h-[320px] rounded-3xl"
-                    priority
-                />
+            <div className="w-full max-w-7xl mx-auto flex flex-col gap-0 items-center mt-12">
+                <div className="w-full rounded-[3rem] overflow-hidden mb-12 shadow-lg">
+                    <div className="relative w-full h-[340px]">
+                        <Image
+                            src="/tankers-header.jpg"
+                            alt="Tankers at sea"
+                            fill
+                            className="object-cover rounded-[3rem]"
+                            priority
+                            sizes="(max-width: 768px) 100vw, 1200px"
+                        />
+                    </div>
+                </div>
             </div>
-
             {/* Main Content */}
             <article className="w-full max-w-7xl flex flex-col md:flex-row gap-10 px-4 md:px-0">
                 {/* Left: Title and CTA */}
@@ -89,6 +54,13 @@ export default function TankersPage() {
                     </p>
                 </section>
             </article>
+        </>
+    );
+}
+
+function services() {
+    return (
+        <>
             <section className="w-full max-w-7xl mt-16">
                 <h2 className="text-2xl md:text-3xl font-normal mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Our Specialized Tanker Types
@@ -163,83 +135,19 @@ export default function TankersPage() {
                     </div>
                 </div>
             </section>
-            {/* Industries We Serve */}
-            <section className="mt-20 mb-10">
-                <h2 className="text-2xl md:text-3xl font-semibold text-center mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            {/* Industries We Serve - Carousel */}
+            <section className="mt-20 mb-10 w-full flex flex-col items-center justify-center font-raleway">
+                <h2 className="text-2xl md:text-3xl font-regular mb-2 w-full text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
                     Industries We Serve
                 </h2>
-                <p className="text-center text-sm md:text-base text-muted-foreground mb-10" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                <p className="w-full text-left text-sm md:text-base text-muted-foreground mb-10 font-light" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
                     Our tanker ocean freight services cater to a diverse range of industries, including:
                 </p>
-                <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-6">
-                    {/* Oil & Gas */}
-                    <div className="flex flex-col items-center text-center flex-1">
-                        <Image
-                            src="/industries-oil-gas.jpg"
-                            alt="Oil & Gas"
-                            width={320}
-                            height={200}
-                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
-                        />
-                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Oil & Gas
-                        </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Transportation of crude, refined petroleum, and natural gas with precision and safety.
-                        </p>
-                    </div>
-                    {/* Chemical Manufacturing */}
-                    <div className="flex flex-col items-center text-center flex-1">
-                        <Image
-                            src="/industries-chemical.jpg"
-                            alt="Chemical Manufacturing"
-                            width={320}
-                            height={200}
-                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
-                        />
-                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Chemical Manufacturing
-                        </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Providing safe and reliable transport for bulk chemicals and hazardous chemicals.
-                        </p>
-                    </div>
-                    {/* Agriculture & Food Industry */}
-                    <div className="flex flex-col items-center text-center flex-1">
-                        <Image
-                            src="/industries-agriculture.jpg"
-                            alt="Agriculture & Food Industry"
-                            width={320}
-                            height={200}
-                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
-                        />
-                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Agriculture & Food Industry
-                        </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Bulk liquid transportation solutions for edible and agricultural oils.
-                        </p>
-                    </div>
-                    {/* Industrial & Energy Sectors */}
-                    <div className="flex flex-col items-center text-center flex-1">
-                        <Image
-                            src="/industries-industrial.jpg"
-                            alt="Industrial & Energy Sectors"
-                            width={320}
-                            height={200}
-                            className="rounded-[100px] object-cover mb-4 w-[380px] h-[210px]"
-                        />
-                        <h3 className="text-base font-semibold mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Industrial & Energy Sectors
-                        </h3>
-                        <p className="text-xs md:text-sm text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Supplying essential fuels and raw materials to support operational needs.
-                        </p>
-                    </div>
+                <div className="relative w-full max-w-7xl mx-auto pt-2">
+                    <TankersIndustryCarousel />
                 </div>
             </section>
-            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
-                {/* Left: Key Features Text */}
+            <section className="w-full max-w-7xl mt-32 flex flex-col md:flex-row items-start gap-16 md:gap-32 mb-20">
                 <div className="flex-[1.3] md:pr-10">
                     <h2 className="text-2xl md:text-3xl font-normal mb-20" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Key Features of Our Tankers Transportation
@@ -268,13 +176,13 @@ export default function TankersPage() {
                         src="/tankers-features.jpg"
                         alt="Specialized Tanker Fleet"
                         width={420}
-                        height={420}
+                        height={450}
                         className="rounded-2xl object-cover w-full h-[400px]"
                         priority={false}
                     />
                 </div>
             </section>
-            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-14 md:gap-20">
+            <section className="w-full max-w-7xl mt-32 flex flex-col md:flex-row items-start gap-16 md:gap-32 mb-20">
                 {/* Left: Safety Image */}
                 <div className="flex-1 flex justify-center">
                     <Image
@@ -310,7 +218,7 @@ export default function TankersPage() {
                     </ul>
                 </div>
             </section>
-            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <section className="w-full max-w-7xl mt-32 flex flex-col md:flex-row items-start gap-16 md:gap-32 mb-20">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -346,7 +254,7 @@ export default function TankersPage() {
                     />
                 </div>
             </section>
-            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <section className="w-full max-w-7xl mt-32 flex flex-col md:flex-row items-start gap-16 md:gap-32 mb-20">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center">
                     <Image
@@ -379,7 +287,7 @@ export default function TankersPage() {
                     </ul>
                 </div>
             </section>
-            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <section className="w-full max-w-7xl mt-32 flex flex-col md:flex-row items-start gap-16 md:gap-32 mb-20">
                 {/* Left: Text Content */}
                 <div className="flex-1 min-w-[260px]">
                     <h2 className="text-2xl md:text-3xl font-normal mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -415,7 +323,7 @@ export default function TankersPage() {
                     />
                 </div>
             </section>
-            <section className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-10 md:gap-16">
+            <section className="w-full max-w-7xl mt-32 flex flex-col md:flex-row items-start gap-16 md:gap-32 mb-20">
                 {/* Left: Image */}
                 <div className="flex-1 flex justify-center">
                     <Image
@@ -448,54 +356,50 @@ export default function TankersPage() {
                     </ul>
                 </div>
             </section>
-            <section className="w-full max-w-7xl mt-20">
-                <h2 className="text-2xl md:text-3xl font-normal mb-20 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                    Reasons To Choose Us for Tanker Ocean Freight
-                </h2>
-                {/* First row: 3 items */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-12 gap-x-8">
-                    {/* Tanker Expertise */}
-                    <div className="flex flex-col items-center text-center px-4">
-                        <h3 className="font-semibold mb-2 text-foreground">Tanker Expertise</h3>
-                        <p className="text-muted-foreground text-sm">
-                            Extensive experience in liquid cargo transport, ensuring safe and efficient shipping solutions.
-                        </p>
-                    </div>
-                    {/* Advanced Fleet */}
-                    <div className="flex flex-col items-center text-center px-4">
-                        <h3 className="font-semibold mb-2 text-foreground">Advanced Fleet</h3>
-                        <p className="text-muted-foreground text-sm">
-                            Modern, high-performance tankers built to meet strict industry and safety standards.
-                        </p>
-                    </div>
-                    {/* Global Reach */}
-                    <div className="flex flex-col items-center text-center px-4">
-                        <h3 className="font-semibold mb-2 text-foreground">Global Reach</h3>
-                        <p className="text-muted-foreground text-sm">
-                            Seamless logistics coordination for timely deliveries across international markets.
-                        </p>
-                    </div>
-                </div>
-                {/* Second row: 2 items, centered */}
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-y-12 gap-x-8 mt-12">
-                    {/* Sustainability Focus */}
-                    <div className="flex flex-col items-center text-center px-4">
-                        <h3 className="font-semibold mb-2 text-foreground">Sustainability Focus</h3>
-                        <p className="text-muted-foreground text-sm">
-                            Committed to eco-friendly operations, reducing environmental impact.
-                        </p>
-                    </div>
-                    {/* Dedicated Support */}
-                    <div className="flex flex-col items-center text-center px-4">
-                        <h3 className="font-semibold mb-2 text-foreground">Dedicated Support</h3>
-                        <p className="text-muted-foreground text-sm">
-                            24/7 customer assistance and expert guidance throughout the shipping process.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            {/* Reasons To Choose Us for Tanker Ocean Freight */}
+            <div className="mt-20 mb-32">
+                <ReasonsGridUniversal
+                    title="Reasons To Choose Us for Tanker Ocean Freight"
+                    layout="3-2"
+                    subheading=""
+                    reasons={[
+                        {
+                            icon: <img src="/icons/71.png" alt="Tanker Expertise" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "Tanker Expertise",
+                            description: "Extensive experience in liquid cargo transport, ensuring safe and efficient shipping solutions.",
+                        },
+                        {
+                            icon: <img src="/icons/72.png" alt="Advanced Fleet" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "Advanced Fleet",
+                            description: "Modern, high-performance tankers built to meet strict industry and safety standards.",
+                        },
+                        {
+                            icon: <img src="/icons/73.png" alt="Global Reach" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "Global Reach",
+                            description: "Seamless logistics coordination for timely deliveries across international markets.",
+                        },
+                        {
+                            icon: <img src="/icons/74.png" alt="Sustainability Focus" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "Sustainability Focus",
+                            description: "Committed to eco-friendly operations, reducing environmental impact.",
+                        },
+                        {
+                            icon: <img src="/icons/75.png" alt="Dedicated Support" className="mb-6 h-16 w-16 object-contain" />,
+                            title: "Dedicated Support",
+                            description: "24/7 customer assistance and expert guidance throughout the shipping process.",
+                        },
+                    ]}
+                    layout="3-2"
+                />
+            </div>
             <GetQuoteComponent topic="Tankers" link="/ocean-freight-forms" />
             <FAQSearch category="tankers-in-ocean-freight" />
-        </main>
+        </>
+    );
+}
+
+export default function TankersPage() {
+    return (
+        <OverviewServicesTabs renderOverview={overview} renderServices={services} />
     );
 }

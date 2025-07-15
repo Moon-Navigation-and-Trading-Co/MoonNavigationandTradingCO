@@ -1,16 +1,16 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGrid from "@/components/ReasonsGrid";
 
-export default function BunkeringPage() {
-  return (
-    <div
-      className="w-full max-w-7xl min-h-screen flex flex-col items-center place-self-center"
-      style={{ fontFamily: "Raleway, sans-serif" }}
-    >
-      <div className="w-full mt-8 mb-0 px-4">
+function overview(){
+  return(
+    <>
+    <div className="w-full mt-8 mb-0 px-4">
         <div className="w-full flex flex-row gap-0 rounded-[2rem] overflow-hidden mb-8">
           <div className="w-full h-[180px] md:h-[220px] relative">
             <Image
@@ -42,7 +42,15 @@ export default function BunkeringPage() {
           </div>
         </div>
       </div>
-    <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mt-8 mb-12">
+    </>
+  )
+}
+
+function services(){
+  return(
+    <>
+          
+          <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mt-8 mb-12">
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start z-10">
         <h2 className="text-xl md:text-2xl mb-2 text-gray-900 dark:text-white" style={{ fontFamily: "Raleway, sans-serif" }}>
           Bunkering Services (Marine Fuel Supply)
@@ -59,31 +67,23 @@ export default function BunkeringPage() {
                 </RequestQuoteButton>
               </Link>
       </div>
-      <div className="w-full md:w-1/2 flex justify-center items-center mt-8 md:mt-0">
-        <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
-          <Image
-            src="/bunkering-2.jpg"
-            alt="Bunkering Tank"
-            fill
-            style={{ objectFit: "cover" }}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority
-          />
-        </div>
+      <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm flex justify-center">
+        <img
+          src="/bunkering-2.jpg"
+          alt="Bunkering Tank"
+          className="w-full h-auto object-cover"
+          style={{ aspectRatio: '16/11', minHeight: '260px', maxHeight: '400px' }}
+        />
       </div>
     </div>
-    <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
-      <div className="w-full md:w-1/2 flex justify-center items-center">
-        <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
-          <Image
-            src="/bunkering-3.jpg"
-            alt="Oil & Lubricants Supply"
-            fill
-            style={{ objectFit: "cover" }}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority
-          />
-        </div>
+    <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
+      <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm flex justify-center">
+        <img
+          src="/bunkering-3.jpg"
+          alt="Oil & Lubricants Supply"
+          className="w-full h-auto object-cover"
+          style={{ aspectRatio: '16/11', minHeight: '260px', maxHeight: '400px' }}
+        />
       </div>
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start px-0 md:px-8 mt-8 md:mt-0 z-10">
         <div className="rounded-xl p-6 max-w-lg">
@@ -104,7 +104,15 @@ export default function BunkeringPage() {
         </div>
       </div>
     </div>
-    <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
+    <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
+      <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm flex justify-center order-2 md:order-2">
+        <img
+          src="/bunkering-4.jpg"
+          alt="Ship Chandlery"
+          className="w-full h-auto object-cover"
+          style={{ aspectRatio: '16/11', minHeight: '260px', maxHeight: '400px' }}
+        />
+      </div>
       <div className="w-full md:w-1/2 flex flex-col justify-center items-start px-0 md:px-8 mt-8 md:mt-0 z-10">
         <div className="rounded-xl p-6  max-w-lg">
           <h2 className="text-xl md:text-2xl mb-2 text-gray-900 dark:text-white" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -123,46 +131,43 @@ export default function BunkeringPage() {
           </Link>
         </div>
       </div>
-      <div className="w-full md:w-1/2 flex justify-center items-center mt-8 md:mt-0">
-        <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
-          <Image
-            src="/bunkering-4.jpg"
-            alt="Ship Chandlery"
-            fill
-            style={{ objectFit: "cover" }}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority
-          />
-        </div>
-      </div>
     </div>
     <div className="w-full max-w-6xl mx-auto mb-24">
-      <h2 className="text-xl md:text-2xl text-[#2a4365] dark:text-blue-400 mb-12 text-center" style={{ fontFamily: "Raleway, sans-serif" }}>
-        Reasons to Choose Moon Navigation and Trading Co. For Your Bunkering | Oil Supply | Ship Chandlery
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        <div className="flex flex-col items-center text-center">
-          <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">24/7 Service Availability</h3>
-          <p className="text-[#444] dark:text-gray-300 text-sm max-w-xs">
-            Supporting vessels at all times.
-          </p>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">Cost-Effective and Transparent Pricing</h3>
-          <p className="text-[#444] dark:text-gray-300 text-sm max-w-xs">
-            No hidden fees.
-          </p>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <h3 className="text-base text-[#2a4365] dark:text-blue-400 mb-2">Compliance with International Standards</h3>
-          <p className="text-[#444] dark:text-gray-300 text-sm max-w-xs">
-            Ensuring regulatory adherence.
-          </p>
-        </div>
-      </div>
+      <ReasonsGrid
+        title="Reasons to Choose Moon Navigation and Trading Co. For Your Bunkering | Oil Supply | Ship Chandlery"
+        subheading=""
+        reasons={[
+          {
+            icon: <img src="/icons/ship agency/59.png" alt="24/7 Service Availability" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+            title: "24/7 Service Availability",
+            description: "Supporting vessels at all times.",
+          },
+          {
+            icon: <img src="/icons/ship agency/58.png" alt="Cost-Effective & Transparent Pricing" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+            title: "Cost-Effective & Transparent Pricing",
+            description: "No hidden fees.",
+          },
+          {
+            icon: <img src="/icons/ship agency/60.png" alt="Compliance with International Standards" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+            title: "Compliance with International Standards",
+            description: "Ensuring regulatory adherence.",
+          },
+        ]}
+      />
     </div>
     <GetQuoteComponent topic="Bunkering, Oil Supply, Ship Chandlery"  link="/ship-agency-forms"/>
     <FAQSearch category="bunkering" />
+    </>
+  )
+}
+
+export default function BunkeringPage() {
+  return (
+    <div
+      className="w-full max-w-7xl min-h-screen flex flex-col items-center place-self-center"
+      style={{ fontFamily: "Raleway, sans-serif" }}
+    >
+<OverviewServicesTabs renderOverview={overview} renderServices={services}/>
     </div>
   );
 }

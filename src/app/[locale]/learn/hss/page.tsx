@@ -1,162 +1,249 @@
+"use client"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
+import OverviewServicesTabs from "@/components/overview-services";
+import GetQuoteComponent from "@/components/getQuoteComponent"
+import FAQSearch from "@/components/faq"
+import VesselCarousel from "@/components/vessel-carousel";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function HSS() {
     const t = useTranslations("learn-hss")
 
     return (
-        <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
-            <CardHeader>
-                <CardTitle className="text-3xl font-bold mb-2">{t('title')}</CardTitle>
-            </CardHeader>
-
-            {/* 1. Cargo Handling  */}
-            <CardContent className="space-y-6 marker:font-semibold marker:text-primary ">
-                <ol className="list-decimal ml-6 space-y-6">
-                    <li className="">
-                        <h2 className="mb-4 text-primary text-lg font-semibold">{t('sub-t-1')}:</h2>
-                        <p className="mb-4">{t('sub-t-1-description')}</p>
-                        <ol className=" ml-6 space-y-5">
-                            <li>
-                                <h3 className="text-base font-semibold text-primary mb-4">{t('docking-wet.title')}:</h3>
-                                <ul className="list-disc pl-6 marker:text-foreground">
-                                    <li><span className="font-semibold">{t('docking-wet.activities.item-1')}</span> {t('docking-wet.activities.item-1-p')}</li>
-                                    <li><span className="font-semibold">{t('docking-wet.activities.item-2')}</span> {t('docking-wet.activities.item-2-p')}</li>
-                                    <li><span className="font-semibold">{t('docking-wet.activities.item-3')}</span> {t('docking-wet.activities.item-3-p')}</li>
-                                    <li><span className="font-semibold">{t('docking-wet.activities.item-4')}</span> {t('docking-wet.activities.item-4-p')}</li>
-
-                                </ul>
-                            </li>
-                        </ol>
-
-                    </li>
-
-                    {/* 2. Stevedoring */}
-                    <li className="">
-                        <h2 className="mb-4 text-primary text-lg font-semibold">{t('sub-t-2')}:</h2>
-                        <p className="mb-4">{t('sub-t-2-description')}</p>
-                        <ol className=" space-y-5">
-                            {/* Activities */}
-                            <li>
-                                <h3 className="text-base font-semibold text-primary mb-4">{t('maintenance-routine.title')}:</h3>
-
-                                <ul className="list-disc pl-6 marker:text-foreground">
-                                    <li><span className="font-semibold">{t('maintenance-routine.activities.item-1')}</span> {t('maintenance-routine.activities.item-1-p')}</li>
-                                    <li><span className="font-semibold">{t('maintenance-routine.activities.item-2')}</span> {t('maintenance-routine.activities.item-2-p')}</li>
-                                    <li><span className="font-semibold">{t('maintenance-routine.activities.item-3')}</span> {t('maintenance-routine.activities.item-3-p')}</li>
-                                    <li><span className="font-semibold">{t('maintenance-routine.activities.item-4')}</span> {t('maintenance-routine.activities.item-4-p')}</li>
-
-                                </ul>
-                            </li>
-                        </ol>
-                    </li>
-
-                    {/* 3. Storage */}
-                    <li className="">
-                        <h2 className="mb-4 text-primary text-lg font-semibold">{t('sub-t-3')}:</h2>
-                        <p className="mb-4">{t('description-3')}</p>
-                        <ol className=" space-y-5">
-                            {/* Types */}
-                            <li>
-                                <h3 className="text-base font-semibold text-primary mb-4">{t('storage.title')}:</h3>
-
-                                <ul className="list-disc pl-6 marker:text-foreground">
-                                    <li><span className="font-semibold">{t('storage.activities.item-1')}</span> {t('storage.activities.item-1-p')}</li>
-                                    <li><span className="font-semibold">{t('storage.activities.item-2')}</span> {t('storage.activities.item-2-p')}</li>
-                                    <li><span className="font-semibold">{t('storage.activities.item-3')}</span> {t('storage.activities.item-3-p')}</li>
-                                    <li><span className="font-semibold">{t('storage.activities.item-4')}</span> {t('storage.activities.item-4-p')}</li>
-
-                                </ul>
-                            </li>
-                        </ol>
-                    </li>
-
-                </ol>
-
-                <div>
-                    <h2 className="text-lg font-semibold text-primary mb-4">{t('sub-t-4')}:</h2>
-                    <ol className="list-disc text-foreground ml-6 marker:text-foreground space-y-3">
-                        {/* Benefits */}
-                        <li>
-                            <h3 className="text-base"><span className="font-semibold">{t('solutions.item-1')}</span> {t('solutions.item-1-p')}</h3>
-                        </li>
-                        <li>
-                            <h3 className="text-base"><span className="font-semibold">{t('solutions.item-2')}:</span> {t('solutions.item-2-p')}</h3>
-                        </li>
-                        <li>
-                            <h3 className="text-base"><span className="font-semibold">{t('solutions.item-3')}:</span> {t('solutions.item-3-p')}</h3>
-                        </li>
-                    </ol>
+        <OverviewServicesTabs
+            renderOverview={() => (
+            <main className="flex flex-col items-center w-full" style={{ fontFamily: "Raleway, sans-serif" }}>
+                {/* Hero Section */}
+                <section className="w-full ">
+                    <div className="max-w-7xl mx-auto px-4 md:px-8">
+                        <div className="w-full h-[350px] relative rounded-[60px] overflow-hidden mb-10">
+                            <img
+                                src="/hss-hero.jpg"
+                                alt="Container cranes handling cargo at port during sunset"
+                                className="object-cover w-full h-[350px] rounded-[60px]"
+                            />
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                            <div>
+                                <h1 className="text-3xl md:text-4xl mb-6 text-foreground">
+                                    Handling, Stevedoring and Storage Services
+                                </h1>
+                                <Link href="/ship-maintenance-forms">
+                                    <Button variant="default" className="mt-2">
+                                        Request a Quote
+                                    </Button>
+                                </Link>
+                            </div>
+                            <div>
+                                <h2 className="text-xl text-primary mb-2">
+                                    What is Handling, Stevedoring and Storage Services?
+                                </h2>
+                                <p className="text-muted-foreground mb-4">
+                                    Handling, stevedoring, and storage are critical components in port logistics. Handling involves the movement and coordination of cargo from ship to unloading, and between transport environments. Stevedoring is the specialized labor of loading and offloading cargo from ships using skilled professionals, with strict equipment, teamwork and safety. Storage refers to short- and longer-term warehousing of cargo until it’s ready for further shipment.
+                                </p>
+                                <p className="text-muted-foreground">
+                                    At Moon Navigation and Trading Co., we ensure these essential activities involve seamless planning, skilled teams, and advanced equipment for safe, reliable results. We handle vessel and terminal operations, warehouse management, and all related logistics with maximum safety and efficiency—minimizing downtime and maximizing peace of mind.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            )}
+            renderServices={() => (
+            <main className="flex flex-col items-center w-full" style={{ fontFamily: "Raleway, sans-serif" }}>
+                {/* Section Tabs */}
+                <div className="flex flex-col md:flex-row gap-4 justify-center mb-10 w-full max-w-4xl">
+                    <Button variant="outline" className="flex-1">
+                        Cargo Handling
+                    </Button>
+                    <Button variant="outline" className="flex-1">
+                        Stevedoring Services
+                    </Button>
+                    <Button variant="outline" className="flex-1">
+                        Secure Storage & Warehousing
+                    </Button>
                 </div>
-
-                <div>
-                    <h2 className="text-lg font-semibold text-primary mb-4">{t('sub-t-5')}</h2>
-                    <ol className="list-decimal text-foreground ml-6 marker:text-foreground space-y-3">
-                        {/* Efficiency */}
-                        <li>
-                            <h3 className="text-base  font-semibold">{t('reasons.item-1.title')}</h3>
-                            <ol className="list-alphabet ml-6 marker:font-normal">
-                                <li>{t('reasons.item-1.description')}</li>
-                            </ol>
-                        </li>
-
-                        {/* Safety */}
-                        <li>
-                            <h3 className="text-base  font-semibold">{t('reasons.item-2.title')}</h3>
-                            <ol className="list-alphabet ml-6 marker:font-normal">
-                                <li>{t('reasons.item-2.description')}</li>
-                            </ol>
-                        </li>
-
-                        {/* Tailored */}
-                        <li>
-                            <h3 className="text-base  font-semibold">{t('reasons.item-3.title')}</h3>
-                            <ol className="list-alphabet ml-6 marker:font-normal">
-                                <li>{t('reasons.item-3.description-1')}</li>
-                            </ol>
-                        </li>
-
-                        {/* Flexible */}
-                        <li>
-                            <h3 className="text-base  font-semibold">{t('reasons.item-4.title')}</h3>
-                            <ol className="list-alphabet ml-6 marker:font-normal">
-                                <li>{t('reasons.item-4.description')}</li>
-                            </ol>
-                        </li>
-
-                    </ol>
+                {/* Section Title */}
+                <h2 className="text-2xl md:text-3xl  text-start mb-12 text-[#377393]">
+                    Our Cargo Handling, Stevedoring, and Storage Services
+                </h2>
+                {/* Main Content */}
+                <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                    {/* Left: Image */}
+                    <div className="flex justify-center items-center">
+                        <div className="rounded-[30px] overflow-hidden ">
+                            <img
+                                src="/hss-cargo-handling.jpg"
+                                alt="Cargo cranes and ships at port"
+                                className="object-cover w-full h-[280px] md:h-[340px] mt-20"
+                                style={{ minWidth: 500, minHeight: 200 }}
+                            />
+                        </div>
+                    </div>
+                    {/* Right: Text Content */}
+                    <div>
+                        <h3 className="text-xl md:text-2xl  mb-2 text-foreground">
+                            1. Cargo Handling Services
+                        </h3>
+                        <p className="text-primary font-medium mb-2">
+                            Precision handling for every cargo type
+                        </p>
+                        <p className="text-muted-foreground mb-4">
+                            Our cargo handling division ensures smooth and safe transfer of all types of cargo using industry-leading standards, modern equipment, and expert teams. We coordinate loading, unloading, and storage to minimize downtime and safeguard cargo—handling a combination of mechanization and proven skill and teamwork.
+                        </p>
+                        <div>
+                            <h4 className=" mb-1 text-foreground">Core Handling Capabilities:</h4>
+                            <ul className="list-disc pl-6 space-y-2 text-muted-foreground text-sm">
+                                <li>Vessel loading and discharging (containerized, breakbulk, and heavy cargo)</li>
+                                <li>Efficient cargo sorting and segregation</li>
+                                <li>Manual and mechanized cargo movement</li>
+                                <li>Project, oversized, and heavy-lift cargo transfer</li>
+                                <li>General, reefer, and hazardous materials handled safely</li>
+                                <li>Customs clearance and port coordination</li>
+                                <li>Accurate cargo tallying and electronic records</li>
+                            </ul>
+                        </div>
+                        <p className="text-muted-foreground mt-4">
+                            We maintain continuous coordination with terminal operators, customs officials, and inland transporters to minimize bottlenecks and accelerate cargo throughput.
+                        </p>
+                    </div>
                 </div>
-
+            {/* Stevedoring Services Section */}
+            <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
+                {/* Left: Text Content */}
                 <div>
-                    <h2 className="text-2xl py-6 font-semibold text-primary">{t('sub-t-6')}:</h2>
-                    <p>
-                        {t('description-6')}
+                    <h3 className="text-xl md:text-2xl  mb-2 text-foreground">
+                        2. Professional Stevedoring Services
+                    </h3>
+                    <p className="text-primary font-medium mb-2">
+                        Expert manpower. Advanced techniques. Flawless execution.
                     </p>
-
-                    <h3 className="my-4 text-primary text-lg font-semibold">{t('services-t')}</h3>
-                    <ol className="list-disc ml-8 marker:text-foreground space-y-2">
-                        <li>
-                            <h4><span className="font-semibold">{t('services.item-1')}:</span> {t('services.item-1-p')}</h4>
-                        </li>
-                        <li>
-                            <h4><span className="font-semibold">{t('services.item-2')}:</span> {t('services.item-2-p')}</h4>
-                        </li>
-                        <li>
-                            <h4><span className="font-semibold">{t('services.item-3')}:</span> {t('services.item-3-p')}</h4>
-                        </li>
-                    </ol>
+                    <p className="text-muted-foreground mb-4">
+                        Our experienced stevedoring teams specialize in safely executing loading and unloading operations for all types of vessels, including general cargo ships, bulk carriers, Ro-ro vessels, container ships, and project cargo vessels.
+                        <br />
+                        We ensure optimal vessel turnaround, minimum downtime at sea/berth, and cargo safety throughout each operation.
+                    </p>
+                    <div>
+                        <h4 className=" mb-1 text-foreground">Scope of Stevedoring Services:</h4>
+                        <ul className="list-disc pl-6 space-y-2 text-muted-foreground text-sm">
+                            <li>Cargo discharging and loading (breakbulk, bulk, heavy lift, OOG, roro)</li>
+                            <li>Lashing, securing, and unlashing of cargo</li>
+                            <li>Project cargo lifting plans and execution</li>
+                            <li>Onboard stowage planning & regulatory compliance</li>
+                            <li>Stevedore labor management and safety compliance</li>
+                            <li>Shift-based operations for continuous vessel handling</li>
+                            <li>Documentation support (cargo manifests, transfer points, tally sheets)</li>
+                        </ul>
+                    </div>
+                    <p className="text-muted-foreground mt-4 text-xs">
+                        We operate in full compliance with IMO, ISPS Code, port authority regulations, and international cargo handling standards.
+                    </p>
                 </div>
-
-            </CardContent>
-
-            {/* Button to get more information */}
-            <Button className="p-0">
-                <Link href={'/ship-maintenance-forms'} className="w-full h-full px-4 py-2">
-                    {t('button')}
-                </Link>
-            </Button>
-        </Card>
+                {/* Right: Image */}
+                <div className="flex justify-center items-center">
+                    <div className="rounded-[30px] overflow-hidden mt-10 p-2">
+                        <img
+                            src="/hss-stevedoring.jpg"
+                            alt="Stevedoring operations: cranes loading containers onto a ship"
+                            className="object-cover w-full h-[240px] md:h-[300px] rounded-[20px]"
+                            style={{ minWidth: 350, minHeight: 180 }}
+                        />
+                    </div>
+                </div>
+            </div>
+            {/* Storage & Warehousing Solutions Section */}
+            <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
+                {/* Left: Image */}
+                <div className="flex justify-center items-center">
+                    <div className="rounded-[30px] overflow-hidden mt-10 p-2 ">
+                        <img
+                            src="/hss-warehousing.jpg"
+                            alt="Storage yard with stacked shipping containers under warehouse lighting"
+                            className="object-cover w-full h-[240px] md:h-[300px] rounded-[20px]"
+                            style={{ minWidth: 350, minHeight: 180 }}
+                        />
+                    </div>
+                </div>
+                {/* Right: Text Content */}
+                <div>
+                    <h3 className="text-xl md:text-2xl mb-2 text-foreground">
+                        3. Storage &amp; Warehousing Solutions
+                    </h3>
+                    <p className="text-primary font-medium mb-2">
+                        Secure, flexible, and strategically located storage facilities.
+                    </p>
+                    <p className="text-muted-foreground mb-4 text-sm">
+                        We provide onsite, short-term and long-term storage solutions in proximity to key ports and logistics corridors. Our warehousing network spans air, sea, and land, designed to accommodate a wide range of cargo types—from general merchandise and heavy equipment to delicate items requiring protective handling.
+                    </p>
+                    <div>
+                        <h4 className="mb-1 text-foreground">Our Storage Infrastructure Includes:</h4>
+                        <ul className="list-disc pl-6 space-y-2 text-muted-foreground text-sm">
+                            <li>Covered warehouses for general goods</li>
+                            <li>Open yards for breakbulk, steel products, and oversized units</li>
+                            <li>Bonded warehouse &amp; custom inspection support</li>
+                            <li>Climate-controlled storage and mini-warehouse zones</li>
+                            <li>Heavy lift equipment handling areas</li>
+                            <li>Cargo segregation, sorting, and consolidation zones</li>
+                            <li>Fire safety, security, and cargo traceability systems</li>
+                            <li>On-site inspection &amp; cargo repackaging support</li>
+                        </ul>
+                    </div>
+                    <p className="text-muted-foreground mt-4 text-xs">
+                        Our facilities are operated with 24/7 surveillance, access control, and fire protection systems, ensuring the highest standards of cargo safety and integrity.
+                    </p>
+                </div>
+            </div>
+            
+            <VesselCarousel
+                vessels={[
+                    { img: "/cargo-sectors/maritime-shipping.jpg", title: "Maritime & Shipping Lines" },
+                    { img: "/cargo-sectors/construction-machinery.jpg", title: "Construction & Heavy Machinery" },
+                    { img: "/cargo-sectors/energy-oil-gas.jpg", title: "Energy, Oil & Gas" },
+                    { img: "/cargo-sectors/steel-metal.jpg", title: "Steel & Metal Products" },
+                    { img: "/cargo-sectors/industrial-manufacturing.jpg", title: "Industrial Manufacturing" },
+                    { img: "/cargo-sectors/automotive-roro.jpg", title: "Automotive & Ro-Ro" },
+                    { img: "/cargo-sectors/agricultural-food.jpg", title: "Agricultural & Food Commodities" },
+                ]}
+            />
+            <ReasonsGridUniversal
+                title="Reasons to Choose Moon Navigation and Trading Co. for Your Handling, Stevedoring and Storage Needs"
+                layout="3-2"
+                reasons={[
+                    {
+                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                        title: "Specialized Expertise",
+                        description: "A highly experienced team delivering efficient, safe, and precise cargo handling and stevedoring operations across all vessel types."
+                    },
+                    {
+                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                        title: "Advanced Equipment & Technology",
+                        description: "State-of-the-art cranes, forklifts, and lifting gear ensure smooth operations, reduced turnaround times, and maximum cargo safety."
+                    },
+                    {
+                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                        title: "Customized, Scalable Solutions",
+                        description: "Flexible service packages tailored to cargo type, volume, and operational requirements — from routine shipments to complex project cargo."
+                    },
+                    {
+                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                        title: "Secure & Strategic Storage Facilities",
+                        description: "Well-equipped warehouses and open storage yards near key ports, offering safe and accessible space for all cargo types."
+                    },
+                    {
+                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                        title: "Reliable Coordination & Transparent Service",
+                        description: "Seamless communication, professional supervision, and proactive support from start to finish — ensuring smooth port operations every time."
+                    },
+                ]}
+            />
+            <GetQuoteComponent topic="Container Handling, Stevedoring and Storage" link="/ship-maintenance-forms" />
+            <FAQSearch category="container-handling-stevedoring-storage" />  
+            </main>
+            )}
+        />
     )
 }

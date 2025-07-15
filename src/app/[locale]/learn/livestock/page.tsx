@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
@@ -6,60 +7,15 @@ import { Metadata } from 'next'
 import RequestQuoteButton from "@/components/RequestQuoteButton" 
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from '@/components/faq'
+import OverviewServicesTabs from '@/components/overview-services'
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
-export const metadata: Metadata = {
-  title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
-  description:
-    "Moon Navigation and Trading Co. specializes in safe, humane, and efficient livestock transportation worldwide. Learn about our animal welfare standards, regulatory compliance, and custom shipping solutions for cattle, horses, and more.",
-  keywords: [
-    "livestock transportation",
-    "animal shipping",
-    "cattle transport",
-    "horse shipping",
-    "animal welfare",
-    "veterinary care",
-    "biosecurity",
-    "IMO regulations",
-    "WOAH guidelines",
-    "custom livestock shipping",
-    "Moon Navigation and Trading Co.",
-    "international livestock transport",
-    "livestock carriers",
-    "animal export",
-    "animal import",
-    "compliance",
-    "safe animal transport"
-  ],
-  openGraph: {
-    title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
-    description:
-      "Discover specialized livestock shipping solutions with Moon Navigation and Trading Co. We ensure animal welfare, regulatory compliance, and seamless logistics for global livestock transport.",
-    url: "https://www.moonnavigation.com/learn/livestock",
-    type: "website",
-    images: [
-      {
-        url: "/livestock-banner.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Livestock Transportation Banner"
-      }
-    ]
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Livestock Transportation Services | Moon Navigation and Trading Co.",
-    description:
-      "Safe, humane, and efficient livestock shipping worldwide. Learn about our animal welfare standards and custom solutions.",
-    images: ["/livestock-banner.jpg"]
-  }
-}
 
-export default function ShippingMethodsInfo() {
-  const t = useTranslations("livestock:");
-  return (
-    <div className="min-h-screen flex flex-col justify-center items-center mt-10">
-      {/* Banner Image */}
-      <div className="w-full max-w-7xl rounded-[60px] overflow-hidden mb-8">
+function overview(){
+  return(
+    <>
+          {/* Banner Image */}
+          <div className="w-full max-w-7xl rounded-[60px] overflow-hidden mb-8">
         <img
           src="/livestock-banner.jpg"
           alt="Livestock Transportation Banner"
@@ -89,7 +45,14 @@ export default function ShippingMethodsInfo() {
           </p>
         </div>
       </div>
-      <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
+    </>
+  )
+}
+
+function services(){
+  return(
+    <>
+    <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
         <h2 className="text-3xl sm:text-4xl  mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>Industries We Serve</h2>
         <p className="mb-10 text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
           We provide specialized livestock shipping solutions across multiple industries, ensuring each type of animal is transported safely and in compliance with international standards.
@@ -250,42 +213,52 @@ export default function ShippingMethodsInfo() {
         </div>
       </section>
       <section className="w-full max-w-7xl mx-auto mt-20 mb-20">
-        <h2 className="text-3xl sm:text-4xl mb-12" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          Reasons to Choose Moon Navigation and Trading Co. for Your Livestock Transportation Needs
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-16 gap-x-8">
-          {/* Card 1 */}
-          <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Global Network and Port Access</h3>
-            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.
-            </p>
-          </div>
-          {/* Card 2 */}
-          <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Advanced Biosecurity Measures</h3>
-            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              We implement strict hygiene protocols, quarantine measures, and disease prevention practices.
-            </p>
-          </div>
-          {/* Card 3 */}
-          <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Custom-Tailored Transport Solutions</h3>
-            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              Whether you need short-haul regional shipping or long-haul transcontinental transport, we design solutions tailored to your needs.
-            </p>
-          </div>
-          {/* Card 4 */}
-          <div className="flex flex-col items-center text-center px-4">
-            <h3 className=" mb-2 text-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>Seamless Logistics and Documentation Handling</h3>
-            <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-              From permits and health certificates to customs clearance, we manage all necessary documentation.
-            </p>
-          </div>
-        </div>
+        <ReasonsGridUniversal
+          title="Reasons to Choose Moon Navigation and Trading Co. for Your Livestock Transportation Needs"
+          reasons={[
+            {
+              icon: (
+                <img src="/icons/56.png" alt="Global Network & Port Access" className="mb-8 h-20 w-20 object-contain" />
+              ),
+              title: "Global Network & Port Access",
+              description: "Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.",
+            },
+            {
+              icon: (
+                <img src="/icons/57.png" alt="Advanced Biosecurity Measures" className="mb-8 h-24 w-24 object-contain" />
+              ),
+              title: "Advanced Biosecurity Measures",
+              description: "We implement strict hygiene protocols, quarantine measures, and disease prevention practices.",
+            },
+            {
+              icon: (
+                <img src="/icons/58.png" alt="Custom-Tailored Transport Solutions" className="mb-8 h-20 w-20 object-contain" />
+              ),
+              title: "Custom-Tailored Transport Solutions",
+              description: "Whether you need short-haul regional shipping or long-haul transcontinental transport, we design solutions tailored to your needs.",
+            },
+            {
+              icon: (
+                <img src="/icons/59.png" alt="Seamless Logistics & Documentation Handling" className="mb-8 h-20 w-20 object-contain" />
+              ),
+              title: "Seamless Logistics & Documentation Handling",
+              description: "From permits and health certificates to customs clearance, we manage all necessary documentation.",
+            },
+          ]}
+        />
       </section>
       <GetQuoteComponent topic="Livestock" link="/ocean-freight-forms" />
       <FAQSearch category="livestock-transportation" />
+    
+    </>
+  )
+}
+
+export default function ShippingMethodsInfo() {
+  const t = useTranslations("livestock:");
+  return (
+    <div className="w-full">
+      <OverviewServicesTabs renderOverview={overview} renderServices={services}/>
     </div>
   )
 }

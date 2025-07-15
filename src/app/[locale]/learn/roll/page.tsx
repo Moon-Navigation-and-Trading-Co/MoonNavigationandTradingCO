@@ -1,66 +1,21 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { Metadata } from "next";
 import FAQSearch from "@/components/faq";
-
-// SEO Metadata for Next.js 13+ App Router
-export const metadata: Metadata = {
-  title: "Roll-on/Roll-off (RORO) Shipping | Moon Navigation and Trading Co.",
-  description:
-    "Discover efficient, secure, and cost-effective Roll-on/Roll-off (RORO) shipping solutions for vehicles, heavy machinery, and wheeled cargo. Learn about our global RoRo services, streamlined cargo handling, and get a fast quote today.",
-  keywords: [
-    "RoRo shipping",
-    "roll-on roll-off",
-    "RORO cargo",
-    "vehicle shipping",
-    "heavy machinery transport",
-    "wheeled cargo",
-    "ocean freight",
-    "Moon Navigation and Trading Co.",
-    "global shipping",
-    "freight quote",
-    "oversized cargo",
-    "project cargo",
-    "international shipping",
-    "secure transport",
-    "cost-effective shipping"
-  ],
-  openGraph: {
-    title: "Roll-on/Roll-off (RORO) Shipping | Moon Navigation and Trading Co.",
-    description:
-      "Efficient, secure, and cost-effective RoRo shipping for vehicles, machinery, and wheeled cargo. Get a quote for global RoRo transport solutions.",
-    url: "https://www.moonnavigation.com/learn/roll",
-    type: "website",
-    images: [
-      {
-        url: "/roroheroimage.jpg",
-        width: 1200,
-        height: 630,
-        alt: "RoRo Cargo Handling"
-      }
-    ]
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Roll-on/Roll-off (RORO) Shipping | Moon Navigation and Trading Co.",
-    description:
-      "Efficient, secure, and cost-effective RoRo shipping for vehicles, machinery, and wheeled cargo. Get a quote for global RoRo transport solutions.",
-    images: ["/roroheroimage.jpg"]
-  },
-  alternates: {
-    canonical: "/learn/roll"
-  }
-};
-
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
-export default function RollOnOffHero() {
-  const locale = useLocale();
+import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
+// SEO Metadata for Next.js 13+ App Router
+
+
+function overview() {
+  const locale = useLocale();
   return (
-    <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center mt-10"
-    style={{ fontFamily: "Raleway, sans-serif" }}>
+    <>
       {/* --- HERO IMAGE --- */}
       <img
         src="/rorotitleimage.jpg"
@@ -97,7 +52,13 @@ export default function RollOnOffHero() {
           </div>
         </div>
       </section>
+    </>
+  );
+}
 
+function services() {
+  return (
+    <>
       {/* --- SPACE BETWEEN SECTIONS --- */}
       <div className="h-12" />
 
@@ -113,7 +74,7 @@ export default function RollOnOffHero() {
               src="/roroheroimage.jpg"
               alt="RoRo Cargo Handling"
               width={420}
-              height={320}
+              height={350}
               className="rounded-[48px] object-cover w-full h-[440px] mb-6"
               loading="lazy"
             />
@@ -189,7 +150,7 @@ export default function RollOnOffHero() {
               src="/roroCargoImage.jpg"
               alt="Moon Navigation employee checking RoRo cargo"
               width={420}
-              height={320}
+              height={350}
               className="object-cover w-full h-[520px] shadow-lg object-[30%_70%] rounded-[60px]"
               loading="lazy"
             />
@@ -228,34 +189,48 @@ export default function RollOnOffHero() {
         <h2 className="text-2xl md:text-4xl font-normal text-center mb-16 text-[#222] dark:text-white font-sans">
           Reasons to Choose Us for Your RORO Cargo
         </h2>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-y-20 gap-x-8 px-4 md:px-0">
-          {/* Row 1 */}
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Efficiency & Reliability</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Fast, secure, and dependable shipping services for wheeled cargo.</p>
+        <div className="max-w-7xl mx-auto flex flex-col items-center gap-20">
+          <div className="w-full flex flex-col md:flex-row justify-center gap-12">
+            {/* First row: 3 reasons */}
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/23.png" alt="Efficiency & Reliability" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Efficiency & Reliability</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Fast, secure, and dependable shipping services for wheeled cargo.</div>
+            </div>
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/22.png" alt="Expert Handling" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Handling</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</div>
+            </div>
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/24.png" alt="Secure & Cost-Effective Transport" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Secure & Cost-Effective Transport</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</div>
+            </div>
           </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Handling</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Secure & Cost-Effective Transport</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</p>
-          </div>
-        </div>
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-x-8 mt-20 px-4 md:px-0">
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Global Connectivity</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</p>
-          </div>
-          <div className="flex flex-col items-center text-center">
-            <h3 className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Compliance & Support</h3>
-            <p className="text-base text-[#444] dark:text-gray-300 font-sans">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</p>
+          <div className="w-full flex flex-col md:flex-row justify-center gap-12">
+            {/* Second row: 2 reasons */}
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/25.png" alt="Global Connectivity" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Global Connectivity</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</div>
+            </div>
+            <div className="flex-1 flex flex-col items-center text-center max-w-xs">
+              <img src="/icons/26.png" alt="Expert Compliance & Support" className="mb-8 h-20 w-20 object-contain" />
+              <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Compliance & Support</div>
+              <div className="text-base text-[#444] dark:text-gray-300 font-sans">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</div>
+            </div>
           </div>
         </div>
       </section>
       <GetQuoteComponent topic="RORO" link="/ocean-freight-forms" />
       <FAQSearch category="ro-ro-shipping" />
-    </div>
+    </>
+  );
+}
+
+export default function RollOnOffHero() {
+  return (
+    <OverviewServicesTabs renderOverview={overview} renderServices={services} />
   );
 }

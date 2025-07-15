@@ -1,3 +1,5 @@
+"use client"
+import OverviewServicesTabs from "@/components/overview-services";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import GetQuoteComponent from "@/components/getQuoteComponent";
@@ -26,32 +28,39 @@ const industries=[
     {img:"/iv-6.jpg",title:"Ship Suply and Crew Change Operations"},
 ]
 
-export default function VesselPage() {
+function overview() {
   return (
-    <div className="max-w-7xl w-full mx-auto" style={{fontFamily: 'Raleway'}}>
-        <div className="mt-10 mb-8">
-            <Image src="/images/vessel-hero.jpg" alt="Vessel Hero" width={1280} height={350} className="rounded-[60px]" />
+    <>
+      <div className="mt-10 mb-8">
+        <Image src="/images/vessel-hero.jpg" alt="Vessel Hero" width={1280} height={350} className="rounded-[60px]" />
+      </div>
+      <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16">
+        <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
+          <h2 className="text-3xl md:text-4xl font-light text-[#256094] mb-6">
+            Vessel Purchases<br />and Rentals
+          </h2>
+          <RequestQuoteButton>
+            <Link href="/buy-rent-vessels-forms">
+              Get Quote
+            </Link>
+          </RequestQuoteButton>
         </div>
-    <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16">
-      <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
-        <h2 className="text-3xl md:text-4xl font-light text-[#256094] mb-6">
-          Vessel Purchases<br />and Rentals
-        </h2>
-            <RequestQuoteButton>
-                <Link href="/buy-rent-vessels-forms">
-          Get Quote
-                </Link>
-            </RequestQuoteButton>
+        <div className="md:w-1/2 w-full flex flex-col items-start">
+          <p className="text-gray-700 text-sm md:text-base mb-2 font-medium">
+            Looking to buy or rent a vessel?
+          </p>
+          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+            We recognize the diverse needs of businesses and individuals in shipping and transport solutions. That is why we offer a comprehensive selection of high-quality vessels for sale and rental, tailored to meet your specific requirements. Our services ensure a seamless experience, whether you are seeking to acquire a vessel or finalize perfect charters. Trust us to provide exceptional options and expert guidance to fulfill your maritime needs efficiently at Moon Marine and Sea Trading Company.
+          </p>
+        </div>
       </div>
-      <div className="md:w-1/2 w-full flex flex-col items-start">
-        <p className="text-gray-700 text-sm md:text-base mb-2 font-medium">
-          Looking to buy or rent a vessel?
-        </p>
-        <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-          We recognize the diverse needs of businesses and individuals in shipping and transport solutions. That is why we offer a comprehensive selection of high-quality vessels for sale and rental, tailored to meet your specific requirements. Our services ensure a seamless experience, whether you are seeking to acquire a vessel or finalize perfect charters. Trust us to provide exceptional options and expert guidance to fulfill your maritime needs efficiently at Moon Marine and Sea Trading Company.
-        </p>
-      </div>
-    </div>
+    </>
+  );
+}
+
+function services() {
+  return (
+    <>
       <h2 className="text-4xl font-normal text-[#232B50] text-center mt-16 mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>Types of Vessels Available for Sale:</h2>
       <div className="relative w-full max-w-7xl mx-auto">
       </div>
@@ -195,7 +204,7 @@ export default function VesselPage() {
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
                     {/* Gears icon */}
-                    <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#256094]"><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 8.6 15a1.65 1.65 0 0 0-1.82-.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6c.26-.1.54-.1.8 0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 15 8.6c.1.26.1.54 0 .8a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 15z" stroke="currentColor" strokeWidth="1.5"/></svg>
+                    <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#256094]"><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 8.6 15a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 8.6c.26-.1.54-.1.8 0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 15 8.6c.1.26.1.54 0 .8a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 15z" stroke="currentColor" strokeWidth="1.5"/></svg>
                   </div>
                   <div>
                     <div className=" text-gray-800">Customizable</div>
@@ -378,6 +387,12 @@ export default function VesselPage() {
       </div>
       <GetQuoteComponent topic="Vessel Rental/Purchase" link="/buy-rent-vessels-forms" />
       <FAQSearch category="vessel-purchases-rentals"/>
-    </div>
+    </>
+  );
+}
+
+export default function VesselPage() {
+  return (
+    <OverviewServicesTabs renderOverview={overview} renderServices={services} />
   );
 }

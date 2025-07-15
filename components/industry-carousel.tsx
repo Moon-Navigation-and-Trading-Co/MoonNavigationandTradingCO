@@ -45,12 +45,15 @@ function ArrowGroup(props: { onPrev: () => void; onNext: () => void }) {
 export default function IndustryCarousel() {
   const sliderRef = React.useRef<Slider | null>(null);
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
+    cssEase: 'linear',
+    swipeToSlide: true,
+    centerMode: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -61,14 +64,6 @@ export default function IndustryCarousel() {
         settings: { slidesToShow: 1 },
       },
     ],
-    appendDots: (dots: React.ReactNode) => (
-      <div style={{ marginTop: 24 }}>
-        <ul style={{ display: "flex", justifyContent: "center", gap: 8 }}>{dots}</ul>
-      </div>
-    ),
-    customPaging: () => (
-      <div className="w-3 h-3 rounded-full bg-gray-300" />
-    ),
   };
 
   return (

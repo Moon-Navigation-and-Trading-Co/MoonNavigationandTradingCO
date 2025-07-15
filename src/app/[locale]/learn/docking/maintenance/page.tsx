@@ -28,9 +28,9 @@ export default function MaintenancePage() {
                         <Image
                             src="/m-1.jpg"
                             alt="Hull maintenance on vessel"
-                            width={320}
-                            height={200}
-                            className="object-cover rounded-lg"
+                            width={400}
+                            height={250}
+                            className="object-cover rounded-[60px]"
                         />
                     </div>
                 </div>
@@ -75,9 +75,9 @@ export default function MaintenancePage() {
                         <Image
                             src="/m-2.jpg"
                             alt="Engine and mechanical repairs"
-                            width={320}
-                            height={200}
-                            className="object-cover rounded-lg"
+                            width={400}
+                            height={250}
+                            className="object-cover rounded-[60px]"
                         />
                     </div>
                 </div>
@@ -91,9 +91,9 @@ export default function MaintenancePage() {
                         <Image
                             src="/m-3.jpg"
                             alt="Electrical and automation services"
-                            width={320}
-                            height={200}
-                            className="object-cover rounded-lg"
+                            width={400}
+                            height={250}
+                            className="object-cover rounded-[60px]"
                         />
                     </div>
                 </div>
@@ -139,9 +139,9 @@ export default function MaintenancePage() {
                         <Image
                             src="/m-4.jpg"
                             alt="Bunkering and fuel system maintenance"
-                            width={320}
-                            height={200}
-                            className="object-cover rounded-lg"
+                            width={400}
+                            height={250}
+                            className="object-cover rounded-[60px]"
                         />
                     </div>
                 </div>
@@ -155,9 +155,9 @@ export default function MaintenancePage() {
                         <Image
                             src="/m-5.jpg"
                             alt="Waste management and environmental compliance"
-                            width={320}
-                            height={200}
-                            className="object-cover rounded-lg"
+                            width={400}
+                            height={250}
+                            className="object-cover rounded-[60px]"
                         />
                     </div>
                 </div>
@@ -204,10 +204,10 @@ export default function MaintenancePage() {
                     <div className="rounded-xl overflow-hidden   -  p-2 max-w-7xl">
                         <Image
                             src="/m-6.jpg"
-                            alt="Safety equipment servicing on vessel"
-                            width={320}
-                            height={200}
-                            className="object-cover rounded-lg"
+                            alt="Safety equipment servicing"
+                            width={400}
+                            height={250}
+                            className="object-cover rounded-[60px]"
                         />
                     </div>
                 </div>

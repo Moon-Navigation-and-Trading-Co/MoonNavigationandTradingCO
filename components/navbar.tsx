@@ -75,7 +75,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                         { name: "Project Cargo", href: "/learn/project-cargo" },
                         { name: "Roll On Roll Off (RORO)", href: "/learn/roll" },
                         { name: "Breakbulk Cargo", href: "/learn/breakbulk" },
-                        { name: "Dangerous Goods", href: "/learn/dangerous" },
+                        { name: "Dangerous Cargo", href: "/learn/dangerous" },
                         { name: "Heavy Lift Cargo", href: "/learn/heavy" },
                         { name: "Livestock Transportation", href: "/learn/livestock" },
                         { name: "Tankers", href: "/learn/tankers" },
@@ -136,7 +136,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
             items: [
                 {
                     name: "Handling, Stevedoring, and Storage Services",
-                    href: "/learn/stevedoring-container",
+                    href: "/learn/hss",
                 },
                 { name: "Customs Clearance Services", href: "/learn/customs-clearance" },
             ],

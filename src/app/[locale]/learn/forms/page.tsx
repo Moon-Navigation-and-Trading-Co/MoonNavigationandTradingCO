@@ -164,7 +164,7 @@ export default function FormsPage() {
                         {form.description}
                       </CardDescription>
                       <Link href={form.href}>
-                        <Button className="w-full" size="sm">
+                        <Button className="w-full">
                           <FileText className="h-4 w-4 mr-2" />
                           Open Form
                         </Button>

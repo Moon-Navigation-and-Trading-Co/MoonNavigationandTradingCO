@@ -115,9 +115,9 @@ export default function CarouselAnimation({
                     </div>
 
                     <div className="flex gap-2 justify-start items-end">
-                      <Button className="bg-white text-black p-0 hover:bg-gray-200">
+                      <Button>
                         <Link
-                          className="w-full h-full flex items-center px-3"
+                          className="w-full h-full flex items-center justify-center"
                           href={freight.quote}
                           onClick={(e) => e.stopPropagation()}
                         >

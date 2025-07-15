@@ -11,7 +11,7 @@ export default function PDABreakdownPage() {
       <p className="text-[#444] mb-8 max-w-2xl text-sm">
         Our Proforma Disbursement Account covers all critical cost components related to port operations, ensuring clarity in financial planning. Below is a detailed breakdown of what is included.
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
           <h2 className="text-lg  text-[#2a4365] mb-2">1. Port & Terminal Charges</h2>
           <p className="text-[#444] mb-4">
@@ -36,22 +36,22 @@ export default function PDABreakdownPage() {
           <Image
             src="/b-pda-1.jpg"
             alt="Port terminal with ship and worker"
-            width={350}
-            height={200}
-            className="rounded-xl shadow-md object-cover"
-            style={{ maxWidth: "100%", height: "auto" }}
+            width={540}
+            height={340}
+            className="rounded-2xl shadow-md object-cover"
+            style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
           />
         </div>
       </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div className="flex justify-center order-2 md:order-1">
         <Image
           src="/b-pda-2.jpg"
           alt="Harbor pilot observing ship arrival"
-          width={350}
-          height={200}
-          className="rounded-xl shadow-md object-cover"
-          style={{ maxWidth: "100%", height: "auto" }}
+          width={540}
+          height={340}
+          className="rounded-2xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
         />
       </div>
       <div className="order-1 md:order-2">
@@ -72,7 +72,7 @@ export default function PDABreakdownPage() {
         </p>
       </div>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div>
         <h2 className="text-lg  text-[#2a4365] mb-2">3. Customs and Immigration Clearance Fees</h2>
         <p className="text-[#444] mb-4">
@@ -97,22 +97,22 @@ export default function PDABreakdownPage() {
         <Image
           src="/b-pda-3.jpg"
           alt="Customs officer inspecting shipping documents at port"
-          width={350}
-          height={200}
-          className="rounded-xl shadow-md object-cover"
-          style={{ maxWidth: "100%", height: "auto" }}
+          width={540}
+          height={340}
+          className="rounded-2xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
         />
       </div>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div className="flex justify-center order-1 md:order-1">
         <Image
           src="/b-pda-4.jpg"
           alt="Container being loaded and unloaded at port"
-          width={350}
-          height={200}
-          className="rounded-xl shadow-md object-cover"
-          style={{ maxWidth: "100%", height: "auto" }}
+          width={540}
+          height={340}
+          className="rounded-2xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
         />
       </div>
       <div className="order-2 md:order-2">
@@ -136,7 +136,7 @@ export default function PDABreakdownPage() {
         </p>
       </div>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div className="order-1 md:order-1">
         <h2 className="text-lg  text-[#2a4365] mb-2">5. Bunker, Fresh Water and Provisions Supply</h2>
         <p className="text-[#444] mb-4">
@@ -161,22 +161,22 @@ export default function PDABreakdownPage() {
         <Image
           src="/b-pda-5.jpg"
           alt="Truck delivering fresh water and crane loading provisions onto ship"
-          width={350}
-          height={200}
-          className="rounded-xl shadow-md object-cover"
-          style={{ maxWidth: "100%", height: "auto" }}
+          width={540}
+          height={340}
+          className="rounded-2xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
         />
       </div>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div className="flex justify-center order-1 md:order-1">
         <Image
           src="/b-pda-6.jpg"
           alt="Port worker managing waste disposal on ship"
-          width={350}
-          height={200}
-          className="rounded-xl shadow-md object-cover"
-          style={{ maxWidth: "100%", height: "auto" }}
+          width={540}
+          height={340}
+          className="rounded-2xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
         />
       </div>
       <div className="order-2 md:order-2">
@@ -200,7 +200,7 @@ export default function PDABreakdownPage() {
         </p>
       </div>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div className="order-1 md:order-1">
         <h2 className="text-lg  text-[#2a4365] mb-2">7. Security and Emergency Services</h2>
         <p className="text-[#444] mb-4">
@@ -222,22 +222,22 @@ export default function PDABreakdownPage() {
         <Image
           src="/b-pda-7.jpg"
           alt="Port security officers monitoring ship arrivals"
-          width={350}
-          height={200}
-          className="rounded-xl shadow-md object-cover"
-          style={{ maxWidth: "100%", height: "auto" }}
+          width={540}
+          height={340}
+          className="rounded-2xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
         />
       </div>
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div className="flex justify-center order-2 md:order-1">
         <Image
           src="/b-pda-8.jpg"
           alt="Ship agent at desk with port in background"
-          width={350}
-          height={200}
-          className="rounded-xl shadow-md object-cover"
-          style={{ maxWidth: "100%", height: "auto" }}
+          width={540}
+          height={340}
+          className="rounded-2xl shadow-md object-cover"
+          style={{ maxWidth: "100%", height: "auto", borderRadius: '1.5rem' }}
         />
       </div>
       <div className="order-1 md:order-2">

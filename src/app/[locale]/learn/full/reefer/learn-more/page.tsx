@@ -13,11 +13,11 @@ export default function LearnMore() {
         </p>
         <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Left: Image */}
-          <div className="flex-shrink-0 w-full md:w-[340px]">
+          <div className="flex-shrink-0 w-full md:w-[400px]">
             <img
               src="/reefer-truck-road.jpg"
               alt="Reefer truck on highway"
-              className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+              className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
               loading="lazy"
             />
           </div>
@@ -39,11 +39,11 @@ export default function LearnMore() {
       </section>
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Image */}
-        <div className="flex-shrink-0 w-full md:w-[340px]">
+        <div className="flex-shrink-0 w-full md:w-[400px]">
           <img
             src="/reefer-custom-routing.jpg"
             alt="Custom routing for perishable cargo"
-            className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+            className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
             loading="lazy"
           />
         </div>
@@ -78,22 +78,22 @@ export default function LearnMore() {
           </ul>
         </div>
         {/* Right: Image */}
-        <div className="flex-shrink-0 w-full md:w-[340px] order-1 md:order-2">
+        <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2">
           <img
             src="/reefer-cold-storage.jpg"
             alt="Modern cold storage warehouse exterior"
-            className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+            className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
             loading="lazy"
           />
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Image */}
-        <div className="flex-shrink-0 w-full md:w-[340px]">
+        <div className="flex-shrink-0 w-full md:w-[400px]">
           <img
             src="/reefer-multimodal.jpg"
             alt="Multimodal transport options: sea, air, and inland"
-            className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+            className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
             loading="lazy"
           />
         </div>
@@ -126,22 +126,22 @@ export default function LearnMore() {
           </ul>
         </div>
         {/* Right: Image */}
-        <div className="flex-shrink-0 w-full md:w-[340px] order-1 md:order-2">
+        <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2">
           <img
             src="/reefer-insurance.jpg"
             alt="Cargo insurance and risk management for reefer shipping"
-            className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+            className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
             loading="lazy"
           />
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Image */}
-        <div className="flex-shrink-0 w-full md:w-[340px]">
+        <div className="flex-shrink-0 w-full md:w-[400px]">
           <img
             src="/reefer-tracking-monitoring.jpg"
             alt="Cargo tracking and temperature monitoring systems"
-            className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+            className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
             loading="lazy"
           />
         </div>
@@ -177,11 +177,11 @@ export default function LearnMore() {
           </ul>
         </div>
         {/* Right: Image */}
-        <div className="flex-shrink-0 w-full md:w-[340px] order-1 md:order-2">
+        <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2">
           <img
             src="/reefer-hazardous-handling.jpg"
             alt="Special handling for hazardous temperature-sensitive cargo"
-            className="rounded-2xl w-full h-[200px] object-cover object-center shadow-md"
+            className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
             loading="lazy"
           />
         </div>

@@ -1,268 +1,267 @@
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import Link from "next/link"
-import RequestQuoteButton from "@/components/RequestQuoteButton";   
+"use client";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from "next/link";
+import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function DockingAndMaintenance() {
     return (
-        <main className="flex flex-col items-center w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            {/* Hero Section */}
-            <div className="w-full py-10 rounded-b-3xl overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    {/* Hero Image */}
-                    <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mb-10">
-                        <img
-                            src="/docking-1.jpg"
-                            alt="Docking and Maintenance - Ship at dock with workers"
-                            className="object-cover w-full h-full"
-                            style={{ objectPosition: "center" }}
-                        />
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                        <div>
-                            <h1 className="text-3xl md:text-4xl mb-6 text-foreground">
-                                Docking and Maintenance
-                            </h1>
-                            <Link href="/ship-maintenance-forms">
-                                <RequestQuoteButton>
-                                    Request a Quote
-                                </RequestQuoteButton>
-                            </Link>
-                        </div>
-                        <div>
-                            <h2 className="text-xl text-primary mb-2">
-                                What is Docking and Maintenance?
-                            </h2>
-                            <p className="text-muted-foreground mb-4">
-                                Docking is the process of bringing a ship into a dock for inspection, repairs, or maintenance. This includes dry docking, where the vessel is removed from the water to examine hulls and undertake repairs that would be hard to access in normal shipping and port operations.
-                            </p>
-                            <p className="text-muted-foreground mb-4">
-                                While maintenance involves the regular upkeep and repair of vessels to guarantee safety, efficiency, and compliance with maritime regulations. This encompasses scheduled work such as engine and hull inspections, painting, cleaning, and replacement or repair of worn-out components. All of which are crucial to maintaining safe operations and compliance.
-                            </p>
-                            <p className="text-muted-foreground">
-                                At Moon Navigation and Trading Co., we uphold the highest safety standards throughout our docking and maintenance services. Our experienced team ensures that every vessel receives the best possible attention for effective results. We prevent accidents, extend the operating period of the fleet through our dedication to superior service and reliability.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {/* Vessel Types Section */}
-            <div className="w-full py-10">
-                <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <h2 className="text-lg md:text-xl text-primary mb-4">
-                        We serve a wide range of vessels, including:
-                    </h2>
-                    <ul className="list-disc pl-6 space-y-2 text-muted-foreground">
-                        <li>Cargo Ships and Container Vessels</li>
-                        <li>Bulk Carriers and Tankers</li>
-                        <li>Offshore Support Vessels (OSVs)</li>
-                        <li>Fishing Vessels and Research Ships</li>
-                        <li>Passenger and Cruise Ships</li>
-                        <li>Tugboats and Barges</li>
-                    </ul>
-                </div>
-            </div>
-            {/* Docking Services Section */}
-            <div className="w-full py-16">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    {/* Text Content */}
-                    <div>
-                        <h2 className="text-2xl mb-4 text-foreground">
-                            Our Docking Services
-                        </h2>
-                        <p className="text-muted-foreground mb-6">
-                            At Moon Navigation and Trading Co., we specialize in delivering secure, efficient, and well-coordinated docking services at major ports. Our docking solutions include:
-                        </p>
-                        <ol className="list-decimal pl-6 space-y-2 text-muted-foreground">
-                            <li>Berth Reservation and Port Entry</li>
-                            <li>Dry Docking (Technical Repairs and Overhauls)</li>
-                            <li>Wet Docking (Afloat Repairs and Onboard Servicing)</li>
-                            <li>Anchorage Services (Offshore Support and Bunkers)</li>
-                            <li>Emergency Docking and Salvage Operations</li>
-                        </ol>
-                    </div>
-                    {/* Image */}
-                    <div className="flex justify-center md:justify-end">
-                        <div className="relative rounded-2xl overflow-hidden shadow-lg bg-blue-900 dark:bg-blue-800" style={{ padding: "24px" }}>
-                            <div className="relative w-[340px] h-[200px] md:w-[400px] md:h-[240px] rounded-xl overflow-hidden ">
+        <OverviewServicesTabs
+            renderOverview={() => (
+                <main className="flex flex-col items-center w-full" style={{ fontFamily: "Raleway, sans-serif" }}>
+                    {/* Hero Section */}
+                    <section className="w-full py-16">
+                        <div className="max-w-7xl mx-auto px-4 md:px-8">
+                            <div className="w-full h-[350px] relative rounded-[60px] overflow-hidden mb-10">
                                 <img
-                                    src="/docking-2.jpg" 
+                                    src="/docking-1.jpg"
+                                    alt="Docking and Maintenance - Ship at dock with workers"
+                                    className="object-cover w-full h-[400px] rounded-[70px]"
+                                />
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                <div>
+                                    <h1 className="text-3xl md:text-4xl mb-6 text-foreground">
+                                        Docking and Maintenance
+                                    </h1>
+                                    <Link href="/ship-maintenance-forms">
+                                        <RequestQuoteButton>Request a Quote</RequestQuoteButton>
+                                    </Link>
+                                </div>
+                                <div>
+                                    <h2 className="text-xl text-primary mb-2">What is Docking and Maintenance ?</h2>
+                                    <p className="text-muted-foreground mb-4">
+                                        Docking is the process of bringing a ship into a dock for inspection, repairs, or maintenance. This includes dry docking, where the vessel is removed from the water for essential tasks such as hull cleaning, painting, and structural repairs to ensure its integrity and performance.
+                                    </p>
+                                    <p className="text-muted-foreground mb-4">
+                                        While Maintenance involves the regular upkeep and repair of a vessel to guarantee safety, efficiency, and compliance with maritime regulations. This encompasses activities such as engine servicing, hull inspections, electrical system checks, and the replacement of worn-out components, all of which are critical to maintaining optimal operational standards.
+                                    </p>
+                                    <p className="text-muted-foreground">
+                                        At Moon Navigation and Trading Co., we uphold the highest safety standards through our comprehensive docking and maintenance practices. Our unwavering commitment to the reliability of our fleet instills confidence in our clients, ensuring that each vessel is meticulously maintained to meet the rigorous demands of the maritime industry. We prioritize operational excellence, providing peace of mind through our dedication to superior service and reliability.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                   
+                </main>
+            )}
+            renderServices={() => (
+                <main className="flex flex-col items-center w-full" style={{ fontFamily: "Raleway, sans-serif" }}>
+                    {/* Docking/Maintenance Toggle Buttons */}
+                    <section className="w-full max-w-7xl mx-auto px-4 md:px-8 pt-8 pb-8">
+                        <div className="flex justify-center gap-16">
+                            <button className="bg-[#273c75] text-white font-raleway font-bold text-lg rounded-full px-14 py-4 shadow hover:bg-[#1d2b4f] transition-colors focus:outline-none">Docking</button>
+                            <button className="bg-[#273c75] text-white font-raleway font-bold text-lg rounded-full px-14 py-4 shadow hover:bg-[#1d2b4f] transition-colors focus:outline-none">Maintenance</button>
+                        </div>
+                    </section>
+                    {/* Vessel Types */}
+                    <section className="w-full py-16">
+                        <div className="max-w-7xl mx-auto px-4 md:px-8">
+                            <h2 className="text-lg md:text-xl text-primary mb-4">
+                                We serve a wide range of vessels, including:
+                            </h2>
+                            <ul className="list-disc pl-6 space-y-3 text-muted-foreground">
+                                <li>Cargo Ships and Container Vessels</li>
+                                <li>Bulk Carriers and Tankers</li>
+                                <li>Offshore Support Vessels (OSVs)</li>
+                                <li>Fishing Vessels and Research Ships</li>
+                                <li>Passenger and Cruise Ships</li>
+                                <li>Tugboats and Barges</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    {/* Docking Services */}
+                    <section className="w-full py-16">
+                        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 className="text-2xl mb-4 text-foreground">Our Docking Services</h2>
+                                <p className="text-muted-foreground mb-6">
+                                    At Moon Navigation and Trading Co., we specialize in delivering...
+                                </p>
+                                <ol className="list-decimal pl-6 space-y-3 text-muted-foreground">
+                                    <li>Berth Reservation and Port Entry</li>
+                                    <li>Dry Docking (Technical Repairs and Overhauls)</li>
+                                    <li>Wet Docking (Afloat Repairs and Onboard Servicing)</li>
+                                    <li>Anchorage Services (Offshore Support and Bunkers)</li>
+                                    <li>Emergency Docking and Salvage Operations</li>
+                                </ol>
+                            </div>
+                            <div className="flex justify-center md:justify-end">
+                                <img
+                                    src="/docking-2.jpg"
                                     alt="Docked ship with cranes and workers"
-                                    className="object-cover w-full h-full"
-                                    style={{ borderRadius: "12px" }}
+                                    width={520}
+                                    height={320}
+                                    className="object-cover rounded-[60px]"
                                 />
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            {/* Our Docking Solutions Section */}
-            <div className="w-full py-16">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    {/* Image */}
-                    <div className="flex justify-center md:justify-start">
-                        <div className="relative rounded-2xl overflow-hidden shadow-lg bg-blue-800 dark:bg-blue-700" style={{ padding: "18px" }}>
-                            <div className="relative w-[320px] h-[180px] md:w-[400px] md:h-[220px] rounded-xl overflow-hidden">
+                    </section>
+
+                    {/* Docking Solutions */}
+                    <section className="w-full py-16">
+                        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div className="flex justify-center md:justify-start">
                                 <img
                                     src="/docking-3.jpg"
                                     alt="Docked ship with cranes and workers"
-                                    className="object-cover w-full h-full"
-                                    style={{ borderRadius: "12px" }}
+                                    width={520}
+                                    height={320}
+                                    className="object-cover rounded-[60px]"
+                                />
+                            </div>
+                            <div>
+                                <h2 className="text-2xl md:text-3xl mb-4 text-primary">Our Docking Solutions</h2>
+                                <p className="text-muted-foreground mb-4">
+                                    We provide expert docking services to ensure vessel integrity...
+                                </p>
+                                <ul className="list-disc pl-6 space-y-3 text-muted-foreground text-sm md:text-base">
+                                    <li className="mb-3">
+                                        <span className="text-foreground">Dry Docking Planning:</span> Technical inspection...
+                                    </li>
+                                    <li className="mb-3">
+                                        <span className="text-foreground">Dockyard Coordination:</span> Liaison with shipyards...
+                                    </li>
+                                    <li className="mb-3">
+                                        <span className="text-foreground">Repair and Maintenance Oversight:</span> Hull cleaning...
+                                    </li>
+                                    <li className="mb-3">
+                                        <span className="text-foreground">Regulatory Compliance:</span> Class and flag coordination...
+                                    </li>
+                                    <li className="mb-3">
+                                        <span className="text-foreground">Project Management:</span> Full-cycle planning...
+                                    </li>
+                                    <li className="mb-3">
+                                        <span className="text-foreground">Wet Docking:</span> Afloat inspections and testing...
+                                    </li>
+                                    <li className="mb-3">
+                                        <span className="text-foreground">Floating Docking:</span> Specialized port services...
+                                    </li>
+                                    <li>
+                                        <span className="text-foreground">Emergency Docking Support:</span> Rapid mobilization...
+                                    </li>
+                                </ul>
+                                <div className="mt-6">
+                                    <Link href="/learn/docking/docking">
+                                        <RequestQuoteButton>Learn more</RequestQuoteButton>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Maintenance Services */}
+                    <section className="w-full py-16">
+                        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 className="text-2xl md:text-3xl mb-4 text-primary">Our Maintenance Services</h2>
+                                <p className="text-muted-foreground mb-4">
+                                    Our vessel maintenance services ensure ships remain operational...
+                                </p>
+                                <ol className="list-decimal pl-6 space-y-3 text-muted-foreground text-sm md:text-base">
+                                    <li><span className="text-foreground">Hull and Structure Maintenance</span></li>
+                                    <li><span className="text-foreground">Engine and Mechanical Repairs</span></li>
+                                    <li><span className="text-foreground">Structural and Automation Services</span></li>
+                                    <li><span className="text-foreground">Plumbing and Fuel System Maintenance</span></li>
+                                    <li><span className="text-foreground">Waste Management and Environmental Compliance</span></li>
+                                    <li><span className="text-foreground">Safety Equipment Servicing</span></li>
+                                </ol>
+                            </div>
+                            <div className="flex justify-center items-center">
+                                <img
+                                    src="/docking-4.jpg"
+                                    alt="Maintenance crew working on vessel"
+                                    width={520}
+                                    height={320}
+                                    className="object-cover rounded-[60px]"
                                 />
                             </div>
                         </div>
-                    </div>
-                    {/* Text Content */}
-                    <div>
-                        <h2 className="text-2xl md:text-3xl mb-4 text-primary">
-                            Our Docking Solutions
-                        </h2>
-                        <p className="text-muted-foreground mb-4">
-                            We provide expert docking services to ensure vessel integrity, performance, and regulatory compliance during scheduled and emergency docking operations.
-                        </p>
-                        <ul className="list-disc pl-6 space-y-2 text-muted-foreground text-sm md:text-base">
-                            <li>
-                                <span className="text-foreground">Dry Docking Planning:</span> Technical inspection, budgeting, and detailed pre-docking documentation for every vessel.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Dockyard Coordination:</span> Liaison with trusted worldwide shipyards to ensure smooth and efficient dockyard operations.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Repair and Maintenance Oversight:</span> Supervision of hull cleaning, painting, steel renewal, and equipment upgrades.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Regulatory Compliance:</span> Coordination for safety status, statutory inspections, and compliance with class and flag state regulations.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Project Management:</span> End-to-end planning to ensure deadlines, quality, costs, and safety standards are met.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Wet Docking (Afloat Repairs):</span> Onsite maintenance of essential work, inspections, and testing during port berths/anchorage.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Floating Docking Services:</span> Docking solutions for specific vessel needs or operational needs at select international ports.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Emergency Docking Support:</span> Rapid mobilization and support for unscheduled dockings to limit downtime such as grounding, collision, or system failure.
-                            </li>
-                        </ul>
-                        <div className="mt-6">
-                            <Link href="/learn/docking/docking">
-                                <RequestQuoteButton>
-                                Learn more
-                            </RequestQuoteButton>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="w-full py-16">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    {/* Text Content */}
-                    <div>
-                        <h2 className="text-2xl md:text-3xl mb-4 text-primary">
-                            Our Maintenance Services
-                        </h2>
-                        <p className="text-muted-foreground mb-4">
-                            At Moon Navigation and Trading Co., our vessel maintenance services ensure ships remain operational, compliant, and efficient. Our maintenance solutions include:
-                        </p>
-                        <ol className="list-decimal pl-6 space-y-2 text-muted-foreground text-sm md:text-base">
-                            <li>
-                                <span className="text-foreground">Hull and Structure Maintenance</span>
-                            </li>
-                            <li>
-                                <span className="text-foreground">Engine and Mechanical Repairs</span>
-                            </li>
-                            <li>
-                                <span className="text-foreground">Structural and Automation Services</span>
-                            </li>
-                            <li>
-                                <span className="text-foreground">Plumbing and Fuel System Maintenance</span>
-                            </li>
-                            <li>
-                                <span className="text-foreground">Waste Management and Environmental Compliance</span>
-                            </li>
-                            <li>
-                                <span className="text-foreground">Safety Equipment Servicing</span>
-                            </li>
-                        </ol>
-                    </div>
-                    {/* Image Content */}
-                    <div className="flex justify-center items-center">
-                        <div className="relative w-full max-w-7xl">
-                            <div className="absolute top-4 left-0 w-full h-full rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
-                            <img
-                                src="/docking-4.jpg"
-                                alt="Maintenance crew working on vessel"
-                                className="rounded-lg w-full object-cover"
-                                style={{ minHeight: "250px", maxHeight: "340px" }}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="w-full py-16">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    {/* Text Content */}
-                    <div>
-                        <h2 className="text-2xl md:text-3xl mb-4 text-primary">
-                            Our Maintenance Solutions
-                        </h2>
-                        <p className="text-muted-foreground mb-6">
-                            We deliver comprehensive maintenance solutions to ensure vessels operate at peak performance, reduce downtime, and extend asset life.
-                        </p>
-                        <ul className="list-disc pl-6 space-y-2 text-muted-foreground text-sm md:text-base">
-                            <li>
-                                <span className="text-foreground">Preventive Maintenance:</span> Scheduled upkeep of machinery, systems, and onboard equipment to avoid breakdowns and optimize reliability.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Corrective Maintenance:</span> Rapid response to technical faults or malfunctions, minimizing operational disruption.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Condition-Based Monitoring:</span> Use of diagnostic tools and performance trackers to identify early signs of wear or system deterioration.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Machinery Overhauls:</span> Full servicing and overhaul of engines, pumps, generators, and other critical systems.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Hull and Structural Maintenance:</span> Regular inspections; coating renewal; and corrosion control for structural reliability.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Electrical and Automation Solutions:</span> Maintenance and calibration of power systems, navigation aids, and onboard electronics.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Maintenance Records and Reporting:</span> Detailed logs and documentation of maintenance activities to support audits, compliance, and long-term planning.
-                            </li>
-                            <li>
-                                <span className="text-foreground">Spare Parts Inventory Support:</span> Coordination for timely sourcing and supply of spare parts and consumables.
-                            </li>
-                        </ul>
-                        <div className="mt-8">
-                            <Link href="/learn/docking/maintenance">
-                                <RequestQuoteButton>
-                                Learn more
-                            </RequestQuoteButton>
-                            </Link>
-                        </div>
-                    </div>
-                    {/* Image Content */}
-                    <div className="flex justify-center items-center">
-                        <div className="relative w-full max-w-7xl">
-                            <div className="absolute top-4 left-0 w-full h-full bg-primary dark:bg-blue-600 rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
-                            <img
+                    </section>
+
+                    {/* Maintenance Solutions */}
+                    <section className="w-full py-16">
+                        <div className="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 className="text-2xl md:text-3xl mb-4 text-primary">Our Maintenance Solutions</h2>
+                                <p className="text-muted-foreground mb-6">
+                                    We deliver comprehensive maintenance solutions to ensure vessels...
+                                </p>
+                                <ul className="list-disc pl-6 space-y-3 text-muted-foreground text-sm md:text-base">
+                                    <li><span className="text-foreground">Preventive Maintenance:</span> Scheduled upkeep...</li>
+                                    <li><span className="text-foreground">Corrective Maintenance:</span> Rapid fault response...</li>
+                                    <li><span className="text-foreground">Condition-Based Monitoring:</span> Early detection...</li>
+                                    <li><span className="text-foreground">Machinery Overhauls:</span> Engine and generator servicing...</li>
+                                    <li><span className="text-foreground">Hull and Structural Maintenance:</span> Coating and corrosion...</li>
+                                    <li><span className="text-foreground">Electrical and Automation:</span> Power and control systems...</li>
+                                    <li><span className="text-foreground">Maintenance Records:</span> Full audit logs and tracking...</li>
+                                    <li><span className="text-foreground">Spare Parts Inventory:</span> Timely supply chain coordination...</li>
+                                </ul>
+                                <div className="mt-8">
+                                    <Link href="/learn/docking/maintenance">
+                                        <RequestQuoteButton>Learn more</RequestQuoteButton>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="flex justify-center items-center">
+                                <img
                                     src="/docking-5.jpg"
-                                alt="Two maintenance workers discussing with a tablet"
-                                className="rounded-lg w-full object-cover"
-                                style={{ minHeight: "250px", maxHeight: "340px" }}
-                            />
+                                    alt="Two maintenance workers discussing with a tablet"
+                                    width={520}
+                                    height={320}
+                                    className="object-cover rounded-[60px]"
+                                />
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <GetQuoteComponent topic="Docking and Maintenance" link="/ship-maintenance-forms" />
-            <FAQSearch category="docking-maintenance" />    
-        </main>
-    )
+                    </section>
+                     {/* Reasons to Choose Section */}
+                     <ReasonsGridUniversal
+                        title="Reasons to Choose Moon Navigation and Trading Co. for Your Docking and Maintenance"
+                        layout="3-2"
+                        reasons={[
+                            {
+                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                title: "Expert Technical Team",
+                                description: "Our certified engineers and marine technicians deliver high-quality maintenance and repair services aligned with international standards."
+                            },
+                            {
+                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                title: "Tailored Maintenance Solutions",
+                                description: "Customized service plans based on vessel condition and voyage schedule to ensure optimal performance and cost-efficiency."
+                            },
+                            {
+                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                title: "Integrated Services",
+                                description: "From ship agency support to spare parts logistics, we handle everything needed during your vessel's stay in port."
+                            },
+                            {
+                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                title: "24/7 Availability",
+                                description: "We offer around-the-clock support to minimize delays and keep your vessel on schedule."
+                            },
+                            {
+                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                title: "Reliable & Transparent",
+                                description: "We prioritize clear communication, accurate timelines, and fair pricing for every client."
+                            },
+                        ]}
+                    />
+                    {/* Quote and FAQ */}
+                    <section className="w-full py-16">
+                        <GetQuoteComponent topic="Docking and Maintenance" link="/ship-maintenance-forms" />
+                    </section>
+                    <section className="w-full py-16">
+                        <FAQSearch category="docking-maintenance" />
+                    </section>
+                </main>
+            )}
+        />
+    );
 }

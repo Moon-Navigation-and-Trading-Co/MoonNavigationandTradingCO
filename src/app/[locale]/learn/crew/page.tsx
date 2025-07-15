@@ -1,28 +1,27 @@
+"use client"
 import FAQSearch from "@/components/faq";
 import GetQuoteComponent from "@/components/getQuoteComponent";
+import OverviewServicesTabs from "@/components/overview-services";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import ReasonsGrid from "@/components/ReasonsGrid";
 
-export default function ShippingMethodsInfo() {
-  const t = useTranslations("learn-crew");
 
+function overview(){
   return (
-  <div
-    className="w-full max-w-7xl place-self-center"
-    style={{ fontFamily: "Raleway, sans-serif" }}
-  >
-    {/* Top full-width image */}
-    <div className="w-full">
-      <img
-        src="/crew-1.jpg"
-        alt="Ship agent assisting crew member with paperwork"
-        className="w-full h-[220px] md:h-[320px] object-cover rounded-[40px] md:rounded-[48px] mt-2"
-        style={{ width: "100%", objectFit: "cover" }}
-      />
-    </div>
+    <>
+        {/* Top full-width image */}
+        <div className="w-full rounded-[2rem] overflow-hidden mb-10 mt-6 shadow-lg">
+          <img
+            src="/crew-1.jpg"
+            alt="Ship agent assisting crew member with paperwork"
+            className="w-full h-[220px] md:h-[320px] object-cover"
+            style={{ display: "block" }}
+          />
+        </div>
     {/* Content below image */}
     <div className="max-w-6xl mx-auto px-4 mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
       {/* Left: Title and Button */}
@@ -57,7 +56,14 @@ compliance with maritime regulations and local port requirements.
         </p>
       </div>
     </div>
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
+    </>
+  )
+}
+
+function services(){
+  return(
+    <>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
     {/* Left: Text Content */}
     <div>
       <h2 className="text-xl md:text-2xl text-[#2a6db0] dark:text-blue-400 mb-4">
@@ -88,23 +94,23 @@ compliance with maritime regulations and local port requirements.
       </RequestQuoteButton>
     </div>
     {/* Right: Image */}
-    <div className="flex justify-center">
+    <div className="w-full rounded-[2rem] overflow-hidden shadow-lg flex justify-center">
       <img
         src="/crew-2.jpg"
         alt="Ship agent assisting crew member with onboarding paperwork"
-        className="rounded-2xl shadow-md object-cover w-[350px] h-[220px]"
-        style={{ maxWidth: "100%", height: "auto" }}
+        className="w-full h-[220px] md:h-[320px] object-cover"
+        style={{ display: "block" }}
       />
     </div>
   </div>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
     {/* Left: Image */}
-    <div className="flex justify-center order-1 md:order-1">
+    <div className="w-full rounded-[2rem] overflow-hidden shadow-lg flex justify-center order-1 md:order-1">
       <img
         src="/crew-3.jpg"
         alt="Ship agent reviewing crew member documents for sign-off"
-        className="rounded-2xl shadow-md object-cover w-[350px] h-[220px]"
-        style={{ maxWidth: "100%", height: "auto" }}
+        className="w-full h-[220px] md:h-[320px] object-cover"
+        style={{ display: "block" }}
       />
     </div>
     {/* Right: Text Content */}
@@ -144,39 +150,48 @@ compliance with maritime regulations and local port requirements.
     </div>
   </div>
   <div className="w-full max-w-6xl mx-auto mt-20 mb-10 px-4">
-    <h2 className="text-xl md:text-2xl text-[#2a4365] dark:text-blue-400 mb-8 text-center">
-      Reasons to Choose Moon Navigation and Trading Co.<br />
-      For Your Crew Management
-    </h2>
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-8">
-      <div className="flex flex-col items-center text-center">
-        <h3 className="mb-2 text-gray-900 dark:text-white">24/7 Crew Change Support</h3>
-        <p className="text-[#444] dark:text-gray-300 text-sm">
-          Anytime, anywhere: meet your crew change needs.
-        </p>
-      </div>
-      <div className="flex flex-col items-center text-center">
-        <h3 className="mb-2 text-gray-900 dark:text-white">Strict Compliance and Safety Standards</h3>
-        <p className="text-[#444] dark:text-gray-300 text-sm">
-          We adhere to IMO, MLC, ISPS, and all flag state regulations.
-        </p>
-      </div>
-      <div className="flex flex-col items-center text-center">
-        <h3 className="mb-2 text-gray-900 dark:text-white">Cost-Effective and Efficient Solutions</h3>
-        <p className="text-[#444] dark:text-gray-300 text-sm">
-          Our strategies are designed to minimize vessel downtime and optimize crew.
-        </p>
-      </div>
-      <div className="flex flex-col items-center text-center">
-        <h3 className="mb-2 text-gray-900 dark:text-white">Emergency Crew Change Capability</h3>
-        <p className="text-[#444] dark:text-gray-300 text-sm">
-          Ready for urgent crew replacement needs, ensuring operational continuity.
-        </p>
-      </div>
-    </div>
+    <ReasonsGrid
+      title="Reasons to Choose Moon Navigation and Trading Co. For Your Crew Management"
+      layout="2-2"
+      reasons={[
+        {
+          icon: <img src="/icons/ship agency/36.png" alt="24/7 Crew Change Support" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+          title: "24/7 Crew Change Support",
+          description: "Anytime, anywhere: meet your crew change needs.",
+        },
+        {
+          icon: <img src="/icons/ship agency/34.png" alt="Strict Compliance and Safety Standards" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+          title: "Strict Compliance and Safety Standards",
+          description: "We adhere to IMO, MLC, ISPS, and all flag state regulations.",
+        },
+        {
+          icon: <img src="/icons/ship agency/35.png" alt="Cost-Effective and Efficient Solutions" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+          title: "Cost-Effective and Efficient Solutions",
+          description: "Our strategies are designed to minimize vessel downtime and optimize crew.",
+        },
+        {
+          icon: <img src="/icons/ship agency/37.png" alt="Emergency Crew Change Capability" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+          title: "Emergency Crew Change Capability",
+          description: "Ready for urgent crew replacement needs, ensuring operational continuity.",
+        },
+      ]}
+    />
   </div>
   <GetQuoteComponent topic = "Crew Management" link = "/ship-agency-forms"/> 
   <FAQSearch category="crew-management" />
+    </>
+  )
+}
+export default function ShippingMethodsInfo() {
+  const t = useTranslations("learn-crew");
+
+  return (
+  <div
+    className="w-full max-w-7xl place-self-center"
+    style={{ fontFamily: "Raleway, sans-serif" }}
+  >
+<OverviewServicesTabs renderOverview={overview} renderServices={services} />
+  
   </div>
   );
 }

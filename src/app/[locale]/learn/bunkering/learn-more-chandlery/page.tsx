@@ -12,7 +12,7 @@ export default function LearnMoreChandleryPage() {
         <p className="text-[#444] dark:text-gray-300 text-sm md:text-base mb-10">
           A well-supplied vessel is crucial for smooth maritime operations. Our ship chandlery services ensure vessels are fully supplied with everything they need, from provisions to engine parts.
         </p>
-        <div className="flex flex-col md:flex-row gap-8 mb-12">
+        <div className="flex flex-col md:flex-row gap-12 mb-20">
           <div className="flex-1">
             <h2 className="text-lg mb-2 text-gray-900 dark:text-white">1. Deck and Engine Stores</h2>
             <ul className="list-disc pl-6 text-[#222] dark:text-white text-sm md:text-base mb-4 space-y-1">
@@ -24,28 +24,24 @@ export default function LearnMoreChandleryPage() {
             </ul>
           </div>
           <div className="flex-1 flex items-center justify-center">
-            <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
-              <Image
+            <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-sm md:max-w-md flex justify-center">
+              <img
                 src="/lm-chandlery-1.jpg"
                 alt="Deck & Engine Stores"
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
+                className="w-full h-[260px] md:h-[320px] object-cover"
+                style={{ aspectRatio: '16/11' }}
               />
             </div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-8 mb-12">
+        <div className="flex flex-col md:flex-row gap-12 mb-20">
           <div className="flex-1 flex items-center justify-center mb-6 md:mb-0">
-            <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
-              <Image
+            <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-sm md:max-w-md flex justify-center">
+              <img
                 src="/lm-chandlery-2.jpg"
                 alt="Provisions & Catering Supplies"
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
+                className="w-full h-[260px] md:h-[320px] object-cover"
+                style={{ aspectRatio: '16/11' }}
               />
             </div>
           </div>
@@ -59,7 +55,7 @@ export default function LearnMoreChandleryPage() {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col md:flex-row gap-8 mb-12">
+        <div className="flex flex-col md:flex-row gap-12 mb-20">
           <div className="flex-1">
             <h2 className="text-lg mb-2 text-gray-900 dark:text-white">3. Bonded Stores and Duty-Free Items</h2>
             <ul className="list-disc pl-6 text-[#222] dark:text-white text-sm md:text-base space-y-1">
@@ -78,14 +74,12 @@ export default function LearnMoreChandleryPage() {
             </ul>
           </div>
           <div className="flex-1 flex items-center justify-center">
-            <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
-              <Image
+            <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-sm md:max-w-md flex justify-center">
+              <img
                 src="/lm-chandlery-3.jpg"
                 alt="Bonded Stores & Duty-Free Items"
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
+                className="w-full h-[260px] md:h-[320px] object-cover"
+                style={{ aspectRatio: '16/11' }}
               />
             </div>
           </div>
