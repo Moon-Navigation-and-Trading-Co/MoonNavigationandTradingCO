@@ -65,7 +65,7 @@ export default function InlandFreightInfo() {
                 <main className="flex flex-col items-center w-full max-w-7xl place-self-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     {/* Hero Section */}
                     <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mt-10">
-                        <Image src="/f-inland-5.jpg" alt={t("title")} fill className="object-cover" />
+                        <Image src="/icons/inland/inland.jpg" alt={t("title")} fill className="object-cover" />
                         <div className="absolute inset-0 bg-black/50" />
                     </div>
 
@@ -94,18 +94,18 @@ export default function InlandFreightInfo() {
             renderServices={() => (
                 <main className="flex flex-col items-center w-full max-w-7xl place-self-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     {/* Types of Inland Freight */}
-                    <div className="w-full bg-muted/30 py-16">
+                    <div className="w-full bg-transparent py-16">
                         <div className="max-w-7xl mx-auto px-4 md:px-8">
-                            <h2 className="text-3xl  text-center mb-12">{t("typesTitle")}</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            <h2 className="text-3xl font-raleway font-regular text-foreground text-left mb-12">{t("typesTitle")}</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                                 {freightTypes.map((type, index) => (
-                                    <div key={index} className="bg-card rounded-xl overflow-hidden shadow-md border border-border">
-                                        <div className="h-48 relative">
+                                    <div key={index} className="bg-white rounded-xl shadow-md border border-border flex flex-col overflow-hidden">
+                                        <div className="h-48 w-full relative">
                                             <Image src={type.image} alt={type.title} fill className="object-cover" />
                                         </div>
-                                        <div className="p-4">
-                                            <h3 className=" text-lg mb-2">{type.title}</h3>
-                                            <p className="text-sm text-muted-foreground">{type.description}</p>
+                                        <div className="p-6 flex flex-col flex-1">
+                                            <h3 className="text-lg font-raleway font-regular mb-2 text-foreground">{type.title}</h3>
+                                            <p className="text-sm text-muted-foreground font-raleway font-light">{type.description}</p>
                                         </div>
                                     </div>
                                 ))}

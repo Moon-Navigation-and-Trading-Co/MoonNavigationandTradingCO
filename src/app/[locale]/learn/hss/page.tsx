@@ -56,23 +56,17 @@ export default function HSS() {
             renderServices={() => (
             <main className="flex flex-col items-center w-full" style={{ fontFamily: "Raleway, sans-serif" }}>
                 {/* Section Tabs */}
-                <div className="flex flex-col md:flex-row gap-4 justify-center mb-10 w-full max-w-4xl">
-                    <Button variant="outline" className="flex-1">
-                        Cargo Handling
-                    </Button>
-                    <Button variant="outline" className="flex-1">
-                        Stevedoring Services
-                    </Button>
-                    <Button variant="outline" className="flex-1">
-                        Secure Storage & Warehousing
-                    </Button>
+                <div className="w-full max-w-7xl mx-auto flex flex-row justify-center gap-16 py-12">
+                    <a href="#cargo-handling" className="bg-[#d3e3f1] text-foreground font-raleway font-regular text-lg rounded-lg px-10 py-4 min-w-[240px] shadow-none text-center">Cargo Handling</a>
+                    <a href="#stevedoring-services" className="bg-[#d3e3f1] text-foreground font-raleway font-regular text-lg rounded-lg px-10 py-4 min-w-[240px] shadow-none text-center">Stevedoring Services</a>
+                    <a href="#storage-warehousing" className="bg-[#d3e3f1] text-foreground font-raleway font-regular text-lg rounded-lg px-10 py-4 min-w-[240px] shadow-none text-center">Secure Storage & Warehousing</a>
                 </div>
                 {/* Section Title */}
-                <h2 className="text-2xl md:text-3xl  text-start mb-12 text-[#377393]">
+                <h2 className="text-2xl md:text-3xl font-raleway font-regular text-start mb-12 text-[#377393]">
                     Our Cargo Handling, Stevedoring, and Storage Services
                 </h2>
                 {/* Main Content */}
-                <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+                <div id="cargo-handling" className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start py-24">
                     {/* Left: Image */}
                     <div className="flex justify-center items-center">
                         <div className="rounded-[30px] overflow-hidden ">
@@ -92,7 +86,7 @@ export default function HSS() {
                         <p className="text-primary font-medium mb-2">
                             Precision handling for every cargo type
                         </p>
-                        <p className="text-muted-foreground mb-4">
+                        <p className="text-muted-foreground font-raleway font-light mb-4">
                             Our cargo handling division ensures smooth and safe transfer of all types of cargo using industry-leading standards, modern equipment, and expert teams. We coordinate loading, unloading, and storage to minimize downtime and safeguard cargo—handling a combination of mechanization and proven skill and teamwork.
                         </p>
                         <div>
@@ -107,13 +101,13 @@ export default function HSS() {
                                 <li>Accurate cargo tallying and electronic records</li>
                             </ul>
                         </div>
-                        <p className="text-muted-foreground mt-4">
+                        <p className="text-muted-foreground font-raleway font-light mt-4">
                             We maintain continuous coordination with terminal operators, customs officials, and inland transporters to minimize bottlenecks and accelerate cargo throughput.
                         </p>
                     </div>
                 </div>
             {/* Stevedoring Services Section */}
-            <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
+            <div id="stevedoring-services" className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start py-24">
                 {/* Left: Text Content */}
                 <div>
                     <h3 className="text-xl md:text-2xl  mb-2 text-foreground">
@@ -122,7 +116,7 @@ export default function HSS() {
                     <p className="text-primary font-medium mb-2">
                         Expert manpower. Advanced techniques. Flawless execution.
                     </p>
-                    <p className="text-muted-foreground mb-4">
+                    <p className="text-muted-foreground font-raleway font-light mb-4">
                         Our experienced stevedoring teams specialize in safely executing loading and unloading operations for all types of vessels, including general cargo ships, bulk carriers, Ro-ro vessels, container ships, and project cargo vessels.
                         <br />
                         We ensure optimal vessel turnaround, minimum downtime at sea/berth, and cargo safety throughout each operation.
@@ -139,7 +133,7 @@ export default function HSS() {
                             <li>Documentation support (cargo manifests, transfer points, tally sheets)</li>
                         </ul>
                     </div>
-                    <p className="text-muted-foreground mt-4 text-xs">
+                    <p className="text-muted-foreground font-raleway font-light mt-4 text-xs">
                         We operate in full compliance with IMO, ISPS Code, port authority regulations, and international cargo handling standards.
                     </p>
                 </div>
@@ -156,7 +150,7 @@ export default function HSS() {
                 </div>
             </div>
             {/* Storage & Warehousing Solutions Section */}
-            <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
+            <div id="storage-warehousing" className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start py-24">
                 {/* Left: Image */}
                 <div className="flex justify-center items-center">
                     <div className="rounded-[30px] overflow-hidden mt-10 p-2 ">
@@ -176,7 +170,7 @@ export default function HSS() {
                     <p className="text-primary font-medium mb-2">
                         Secure, flexible, and strategically located storage facilities.
                     </p>
-                    <p className="text-muted-foreground mb-4 text-sm">
+                    <p className="text-muted-foreground font-raleway font-light mb-4 text-sm">
                         We provide onsite, short-term and long-term storage solutions in proximity to key ports and logistics corridors. Our warehousing network spans air, sea, and land, designed to accommodate a wide range of cargo types—from general merchandise and heavy equipment to delicate items requiring protective handling.
                     </p>
                     <div>
@@ -192,7 +186,7 @@ export default function HSS() {
                             <li>On-site inspection &amp; cargo repackaging support</li>
                         </ul>
                     </div>
-                    <p className="text-muted-foreground mt-4 text-xs">
+                    <p className="text-muted-foreground font-raleway font-light mt-4 text-xs">
                         Our facilities are operated with 24/7 surveillance, access control, and fire protection systems, ensuring the highest standards of cargo safety and integrity.
                     </p>
                 </div>
@@ -210,34 +204,34 @@ export default function HSS() {
                 ]}
             />
             <ReasonsGridUniversal
-                title="Reasons to Choose Moon Navigation and Trading Co. for Your Handling, Stevedoring and Storage Needs"
+                title={<span className="font-raleway font-regular">Reasons to Choose Moon Navigation and Trading Co. for Your Handling, Stevedoring and Storage Needs</span>}
                 layout="3-2"
                 reasons={[
                     {
-                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
-                        title: "Specialized Expertise",
-                        description: "A highly experienced team delivering efficient, safe, and precise cargo handling and stevedoring operations across all vessel types."
+                        icon: <img src="/icons/other services/61.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: <span className="font-raleway font-regular">Specialized Expertise</span>,
+                        description: <span className="font-raleway font-light">A highly experienced team delivering efficient, safe, and precise cargo handling and stevedoring operations across all vessel types.</span>,
                     },
                     {
-                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
-                        title: "Advanced Equipment & Technology",
-                        description: "State-of-the-art cranes, forklifts, and lifting gear ensure smooth operations, reduced turnaround times, and maximum cargo safety."
+                        icon: <img src="/icons/other services/62.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: <span className="font-raleway font-regular">Advanced Equipment & Technology</span>,
+                        description: <span className="font-raleway font-light">State-of-the-art cranes, forklifts, and lifting gear ensure smooth operations, reduced turnaround times, and maximum cargo safety.</span>,
                     },
                     {
-                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
-                        title: "Customized, Scalable Solutions",
-                        description: "Flexible service packages tailored to cargo type, volume, and operational requirements — from routine shipments to complex project cargo."
+                        icon: <img src="/icons/other services/63.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: <span className="font-raleway font-regular">Customized, Scalable Solutions</span>,
+                        description: <span className="font-raleway font-light">Flexible service packages tailored to cargo type, volume, and operational requirements — from routine shipments to complex project cargo.</span>,
                     },
                     {
-                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
-                        title: "Secure & Strategic Storage Facilities",
-                        description: "Well-equipped warehouses and open storage yards near key ports, offering safe and accessible space for all cargo types."
+                        icon: <img src="/icons/other services/64.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: <span className="font-raleway font-regular">Secure & Strategic Storage Facilities</span>,
+                        description: <span className="font-raleway font-light">Well-equipped warehouses and open storage yards near key ports, offering safe and accessible space for all cargo types.</span>,
                     },
                     {
-                        icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
-                        title: "Reliable Coordination & Transparent Service",
-                        description: "Seamless communication, professional supervision, and proactive support from start to finish — ensuring smooth port operations every time."
-                    },
+                        icon: <img src="/icons/other services/65.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        title: <span className="font-raleway font-regular">Reliable Coordination & Transparent Service</span>,
+                        description: <span className="font-raleway font-light">Seamless communication, professional supervision, and proactive support from start to finish — ensuring smooth port operations every time.</span>,
+                    }
                 ]}
             />
             <GetQuoteComponent topic="Container Handling, Stevedoring and Storage" link="/ship-maintenance-forms" />

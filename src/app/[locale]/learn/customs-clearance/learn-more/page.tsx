@@ -8,13 +8,13 @@ export default function CustomsClearanceLearnMore() {
   return (
     <main className="flex flex-col items-center w-full " style={{ fontFamily: 'Raleway, sans-serif' }}>
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mt-10 mb-20">
-        <h1 className="text-xl md:text-2xl font-medium text-[#253A5C] mb-10">
+        <h1 className="text-xl md:text-2xl font-raleway font-regular text-[#253A5C] mb-10">
           Our Customs and Clearance Services-At Moon Navigation and Trading Co.
         </h1>
         <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Left: Text Content */}
           <div className="flex-1">
-            <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
+            <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
               Import and Export Customs Clearance
             </h2>
             <p className="text-sm text-muted-foreground mb-4">
@@ -33,9 +33,9 @@ export default function CustomsClearanceLearnMore() {
               <Image
                 src="/lc-1.jpg"
                 alt="Customs clearance worker with shipping containers"
-                width={350}
-                height={200}
-                className="object-cover w-full h-[180px]"
+                width={600}
+                height={340}
+                className="object-cover w-full h-[300px]"
                 priority
               />
             </div>
@@ -50,16 +50,16 @@ export default function CustomsClearanceLearnMore() {
             <Image
               src="/lc-2.jpg"
               alt="Business person analyzing duty and tax documents"
-              width={350}
-              height={200}
-              className="object-cover w-full h-[180px]"
+              width={800}
+              height={400}
+              className="object-cover w-full h-[350px]"
               priority
             />
           </div>
         </div>
         {/* Right: Text Content */}
         <div className="flex-1">
-          <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
+          <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
             Duty and Tax Optimization
           </h2>
           <p className="text-sm text-muted-foreground mb-4">
@@ -78,7 +78,7 @@ export default function CustomsClearanceLearnMore() {
       <div className="flex flex-col md:flex-row gap-8 items-start">
         {/* Left: Text Content */}
         <div className="flex-1">
-          <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
+          <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
             Special Cargo and Regulatory Compliance
           </h2>
           <p className="text-sm text-muted-foreground mb-4">
@@ -97,9 +97,9 @@ export default function CustomsClearanceLearnMore() {
             <Image
               src="/lc-3.jpg"
               alt="Customs officer inspecting special cargo at port"
-              width={350}
-              height={200}
-              className="object-cover w-full h-[180px]"
+              width={800}
+              height={400}
+              className="object-cover w-full h-[350px]"
               priority
             />
           </div>
@@ -114,16 +114,16 @@ export default function CustomsClearanceLearnMore() {
             <Image
               src="/lc-4.jpg"
               alt="Customs broker preparing shipping documents at a desk with a port view"
-              width={350}
-              height={200}
-              className="object-cover w-full h-[180px]"
+              width={800}
+              height={400}
+              className="object-cover w-full h-[350px]"
               priority
             />
           </div>
         </div>
         {/* Right: Text Content */}
         <div className="flex-1">
-          <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
+          <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
             Trade Documentation and Customs Brokerage
           </h2>
           <p className="text-sm text-muted-foreground mb-4">
@@ -142,7 +142,7 @@ export default function CustomsClearanceLearnMore() {
       <div className="flex flex-col md:flex-row gap-8 items-start">
         {/* Left: Text Content */}
         <div className="flex-1">
-          <h2 className="text-lg md:text-xl font-semibold text-foreground mb-4">
+          <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
             Bonded Warehousing and Free Zones
           </h2>
           <p className="text-sm text-muted-foreground mb-4">
@@ -161,9 +161,9 @@ export default function CustomsClearanceLearnMore() {
             <Image
               src="/lc-5.jpg"
               alt="Bonded warehousing with customs officer and shipping containers"
-              width={350}
-              height={200}
-              className="object-cover w-full h-[180px]"
+              width={800}
+              height={400}
+              className="object-cover w-full h-[350px]"
               priority
             />
           </div>

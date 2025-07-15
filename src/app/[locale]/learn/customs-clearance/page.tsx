@@ -50,40 +50,32 @@ export default function CustomsClearance() {
                     {/* Critical Role of Customs Clearance Section */}
                     <div className="w-full py-16">
                         <div className="max-w-7xl mx-auto px-4 md:px-8">
-                            <h2 className="text-3xl  mb-16 text-foreground">{t("critical-role.title")}</h2>
-
+                            <h2 className="text-3xl font-raleway font-regular mb-16 text-foreground">{t("critical-role.title")}</h2>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                                 {/* Regulatory Compliance */}
                                 <div className="flex flex-col items-center text-center">
-                                    <div className="w-16 h-16 mb-6">
-                                    </div>
-                                    <h3 className="text-xl  mb-4 text-foreground">{t("critical-role.regulatory.title")}</h3>
-                                    <p className="text-muted-foreground">{t("critical-role.regulatory.description")}</p>
+                                    <img src="/icons/other services/69.png" alt="Regulatory Compliance" className="mb-6 h-16 w-16 object-contain" />
+                                    <h3 className="text-xl font-raleway font-regular mb-4 text-foreground">{t("critical-role.regulatory.title")}</h3>
+                                    <p className="text-muted-foreground font-raleway font-light">{t("critical-role.regulatory.description")}</p>
                                 </div>
-
                                 {/* Avoiding Delays */}
                                 <div className="flex flex-col items-center text-center">
-                                    <div className="w-16 h-16 mb-6">
-                                    </div>
-                                    <h3 className="text-xl  mb-4 text-foreground">{t("critical-role.delays.title")}</h3>
-                                    <p className="text-muted-foreground">{t("critical-role.delays.description")}</p>
+                                    <img src="/icons/other services/70.png" alt="Avoiding Delays" className="mb-6 h-16 w-16 object-contain" />
+                                    <h3 className="text-xl font-raleway font-regular mb-4 text-foreground">{t("critical-role.delays.title")}</h3>
+                                    <p className="text-muted-foreground font-raleway font-light">{t("critical-role.delays.description")}</p>
                                 </div>
-
                                 {/* Cost Management */}
                                 <div className="flex flex-col items-center text-center">
-                                    <div className="w-16 h-16 mb-6">
-                                    </div>
-                                    <h3 className="text-xl  mb-4 text-foreground">{t("critical-role.cost.title")}</h3>
-                                    <p className="text-muted-foreground">{t("critical-role.cost.description")}</p>
+                                    <img src="/icons/other services/71.png" alt="Cost Management" className="mb-6 h-16 w-16 object-contain" />
+                                    <h3 className="text-xl font-raleway font-regular mb-4 text-foreground">{t("critical-role.cost.title")}</h3>
+                                    <p className="text-muted-foreground font-raleway font-light">{t("critical-role.cost.description")}</p>
                                 </div>
                             </div>
-
-                            {/* Security and Transparency */}
-                            <div className="flex flex-col items-center text-center max-w-7xl mx-auto">
-                                <div className="w-16 h-16 mb-6">
-                                </div>
-                                <h3 className="text-xl  mb-4 text-foreground">{t("critical-role.security.title")}</h3>
-                                <p className="text-muted-foreground">{t("critical-role.security.description")}</p>
+                            {/* Security and Transparency - centered below */}
+                            <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+                                <img src="/icons/other services/72.png" alt="Security and Transparency" className="mb-6 h-16 w-16 object-contain" />
+                                <h3 className="text-xl font-raleway font-regular mb-4 text-foreground">{t("critical-role.security.title")}</h3>
+                                <p className="text-muted-foreground font-raleway font-light">{t("critical-role.security.description")}</p>
                             </div>
                         </div>
                     </div>
@@ -157,25 +149,25 @@ export default function CustomsClearance() {
 
                     {/* Reasons to Choose Moon Navigation Section */}
                     <ReasonsGridUniversal
-                        title={t("reasons.title")}
+                        title={<span className="font-raleway font-regular">{t("reasons.title")}</span>}
                         reasons={[
                             {
-                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                icon: <img src="/icons/other services/75.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
                                 title: t("reasons.licensed.title"),
                                 description: t("reasons.licensed.description")
                             },
                             {
-                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                icon: <img src="/icons/other services/76.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
                                 title: t("reasons.partnerships.title"),
                                 description: t("reasons.partnerships.description")
                             },
                             {
-                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                icon: <img src="/icons/other services/77.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
                                 title: t("reasons.network.title"),
                                 description: t("reasons.network.description")
                             },
                             {
-                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                icon: <img src="/icons/other services/78.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
                                 title: t("reasons.support.title"),
                                 description: t("reasons.support.description")
                             },

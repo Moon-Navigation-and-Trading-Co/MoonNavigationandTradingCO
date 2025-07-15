@@ -227,27 +227,27 @@ export default function DockingAndMaintenance() {
                         layout="3-2"
                         reasons={[
                             {
-                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                icon: <img src="/icons/ship agency/49.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
                                 title: "Expert Technical Team",
                                 description: "Our certified engineers and marine technicians deliver high-quality maintenance and repair services aligned with international standards."
                             },
                             {
-                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                icon: <img src="/icons/ship agency/50.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
                                 title: "Tailored Maintenance Solutions",
                                 description: "Customized service plans based on vessel condition and voyage schedule to ensure optimal performance and cost-efficiency."
                             },
                             {
-                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                icon: <img src="/icons/ship agency/51.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
                                 title: "Integrated Services",
                                 description: "From ship agency support to spare parts logistics, we handle everything needed during your vessel's stay in port."
                             },
                             {
-                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                icon: <img src="/icons/ship agency/52.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
                                 title: "24/7 Availability",
                                 description: "We offer around-the-clock support to minimize delays and keep your vessel on schedule."
                             },
                             {
-                                icon: <img src="/icons/10.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
+                                icon: <img src="/icons/ship agency/53.png" alt="reason icon" className="mb-4 h-12 w-12 object-contain" />, 
                                 title: "Reliable & Transparent",
                                 description: "We prioritize clear communication, accurate timelines, and fair pricing for every client."
                             },
