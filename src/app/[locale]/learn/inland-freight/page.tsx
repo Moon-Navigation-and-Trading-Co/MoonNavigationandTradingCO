@@ -9,6 +9,7 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function InlandFreightInfo() {
     const t = useTranslations("learn-inland-freight");
@@ -96,17 +97,15 @@ export default function InlandFreightInfo() {
                     {/* Types of Inland Freight */}
                     <div className="w-full bg-transparent py-16">
                         <div className="max-w-7xl mx-auto px-4 md:px-8">
-                            <h2 className="text-3xl font-raleway font-regular text-foreground text-left mb-12">{t("typesTitle")}</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            <h2 className="text-3xl font-raleway font-regular text-foreground text-center mb-12">{t("typesTitle")}</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start justify-items-center">
                                 {freightTypes.map((type, index) => (
-                                    <div key={index} className="bg-white rounded-xl shadow-md border border-border flex flex-col overflow-hidden">
-                                        <div className="h-48 w-full relative">
-                                            <Image src={type.image} alt={type.title} fill className="object-cover" />
+                                    <div key={index} className="flex flex-col items-center text-center max-w-xs">
+                                        <div className="w-40 h-40 mb-6 relative">
+                                            <Image src={type.image} alt={type.title} fill className="object-cover rounded-xl" />
                                         </div>
-                                        <div className="p-6 flex flex-col flex-1">
-                                            <h3 className="text-lg font-raleway font-regular mb-2 text-foreground">{type.title}</h3>
-                                            <p className="text-sm text-muted-foreground font-raleway font-light">{type.description}</p>
-                                        </div>
+                                        <h3 className="text-lg font-raleway font-bold mb-2 text-foreground">{type.title}</h3>
+                                        <p className="text-sm text-muted-foreground font-raleway font-light">{type.description}</p>
                                     </div>
                                 ))}
                             </div>
@@ -420,55 +419,46 @@ export default function InlandFreightInfo() {
                             </div>
                         </div>
                     </div>
-                    <GetQuoteComponent topic="inland-freight" link="/inland-services-forms"/>
-                    <FAQSearch category="inland-freight" />
                     {/* Reasons to Choose Section */}
                     <div className="w-full py-16">
-                        <div className="max-w-7xl mx-auto px-4 md:px-8">
-                            <h2 className="text-3xl  mb-12">{t("reasons.title")}</h2>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                                <div className="space-y-4">
-                                    <div className="flex justify-center mb-6">
-                                    </div>
-                                    <h3 className="text-lg  text-center">{t("reasons.network.title")}</h3>
-                                    <p className="text-muted-foreground text-center">{t("reasons.network.description")}</p>
-                                </div>
-
-                                <div className="space-y-4">
-                                    <div className="flex justify-center mb-6">
-                                    </div>
-                                    <h3 className="text-lg  text-center">{t("reasons.handling.title")}</h3>
-                                    <p className="text-muted-foreground text-center">{t("reasons.handling.description")}</p>
-                                </div>
-
-                                <div className="space-y-4">
-                                    <div className="flex justify-center mb-6">
-                                    </div>
-                                    <h3 className="text-lg  text-center">{t("reasons.solutions.title")}</h3>
-                                    <p className="text-muted-foreground text-center">{t("reasons.solutions.description")}</p>
-                                </div>
-
-                                <div className="space-y-4">
-                                    <div className="flex justify-center mb-6">
-                                    </div>
-                                    <h3 className="text-lg  text-center">{t("reasons.safety.title")}</h3>
-                                    <p className="text-muted-foreground text-center">{t("reasons.safety.description")}</p>
-                                </div>
-                            </div>
-
-                            <div className="mt-12 text-center space-y-4">
-                                <p className="text-muted-foreground">
-                                    {t("reasons.contact.prefix")}
-                                    <Link href="/contact" className="text-primary hover:underline">
-                                        {t("reasons.contact.link")}
-                                    </Link>
-                                    {t("reasons.contact.suffix")}
-                                </p>
-                                <p className="text-muted-foreground italic">{t("reasons.trust")}</p>
-                            </div>
-                        </div>
+                        <ReasonsGridUniversal
+                            title={t("reasons.title")}
+                            reasons={[
+                                {
+                                    icon: (
+                                        <img src="/icons/inland/12.png" alt="Network" className="mb-8 h-16 w-16 object-contain" />
+                                    ),
+                                    title: t("reasons.network.title"),
+                                    description: t("reasons.network.description"),
+                                },
+                                {
+                                    icon: (
+                                        <img src="/icons/inland/13.png" alt="Solutions" className="mb-8 h-16 w-16 object-contain" />
+                                    ),
+                                    title: t("reasons.solutions.title"),
+                                    description: t("reasons.solutions.description"),
+                                },
+                                {
+                                    icon: (
+                                        <img src="/icons/inland/14.png" alt="Handling" className="mb-8 h-16 w-16 object-contain" />
+                                    ),
+                                    title: t("reasons.handling.title"),
+                                    description: t("reasons.handling.description"),
+                                },
+                                {
+                                    icon: (
+                                        <img src="/icons/inland/15.png" alt="Safety" className="mb-8 h-16 w-16 object-contain" />
+                                    ),
+                                    title: t("reasons.safety.title"),
+                                    description: t("reasons.safety.description"),
+                                },
+                            ]}
+                            layout="default"
+                            className="[&_.max-w-xs]:max-w-xs"
+                        />
                     </div>
+                    <GetQuoteComponent topic="inland-freight" link="/inland-services-forms"/>
+                    <FAQSearch category="inland-freight" />
                 </main>
             )}
         />

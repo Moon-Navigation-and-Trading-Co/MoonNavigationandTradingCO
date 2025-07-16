@@ -38,16 +38,16 @@ export default function InvestPage() {
       </div>
 
       {/* Types of Investment Opportunities - Numbered Paragraphs, No Cards */}
-      <section className="w-full max-w-7xl mx-auto px-4 md:px-8 py-20">
-        <div className="max-w-7xl w-full rounded-2xl shadow-xl bg-[#4856a2] px-6 md:px-16 py-14 flex flex-col items-center">
+      <section className="w-full max-w-7xl mx-auto px-4 md:px-9 py-20">
+        <div className="max-w-7xl w-full rounded-2xl shadow-xl bg-[#2B3A89] px-6 md:px-16 py-14 flex flex-col items-center">
           <div className="w-full text-white mb-10">
-            <h2 className="text-3xl md:text-4xl mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
+            <h2 className="text-1xl md:text-3xl mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
               Types of Investment Opportunities
             </h2>
-            <h3 className="text-xl mb-4" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
+            <h3 className="text-2xl mb-4" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
               Flexible Models Designed to Match Your Goals
             </h3>
-            <p className="mb-8 text-base font-light text-white" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+            <p className="mb-6 text-base font-light text-white" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
               We offer a variety of structured investment models that allow you to contribute to our growth — while choosing the level of engagement and return that fits your strategy.
             </p>
           </div>
@@ -131,11 +131,13 @@ export default function InvestPage() {
 
       {/* Partnership & Conversation Section */}
       <section className="w-full max-w-7xl mx-auto flex flex-col gap-12 items-center py-20 px-4 md:px-8">
-        <div className="max-w-6xl w-full bg-blue-100 rounded-2xl p-8 mb-2">
-          <h3 className="text-2xl font-semibold mb-2 flex items-center gap-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
+        <div className="max-w-6xl w-full mb-6">
+          <h3 className="text-2xl font-semibold mb-2 flex items-center gap-2 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
             <span role="img" aria-label="handshake">🤝</span> A Partnership Built on Trust
           </h3>
-          <p className="text-gray-700 text-base" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>We value long-term relationships, shared growth, and full transparency. From personalized proposals to detailed business plans and regular reporting—we treat every investor as a true partner in progress.</p>
+          <p className="text-gray-700 text-base text-left max-w-3xl" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+            We value long-term relationships, shared growth, and full transparency. From personalized proposals to detailed business plans and regular reporting—we treat every investor as a true partner in progress.
+          </p>
         </div>
         <div id="start-conversation" className="max-w-6xl w-full bg-blue-100 rounded-2xl p-8">
           <h3 className="text-2xl font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Let's Start the Conversation</h3>

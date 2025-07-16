@@ -289,7 +289,7 @@ export default function AboutUs() {
        <img
          src="/a-7.jpg"
          alt="Ship agency workers at port"
-         className="w-full h-[240px] md:h-[260px] object-cover"
+         className="w-full h-[813x] md:h-[494px] object-cover"
          style={{ borderRadius: '1.5rem' }}
        />
      </div>
@@ -557,49 +557,49 @@ export default function AboutUs() {
        <img
          src="/a-19.jpg"
          alt="BIMCO"
-         className="h-16 w-auto"
+         className="h-16 w-16"
          style={{  }}
        />
        <img
          src="/a-20.jpg"
          alt="ISO 9001:2008"
-         className="h-16 w-auto"
+         className="h-16 w-16"
          style={{ }}
        />
        <img
          src="/a-21.jpg"
          alt="ISO 14001"
-         className="h-16 w-auto"
+         className="h-24 w-24"
          style={{  }}
        />
        <img
          src="/a-22.jpg"
          alt="IAF"
-         className="h-16 w-auto"
+         className="h-24 w-24"
          style={{  }}
        />
        <img
          src="/a-23.jpg"
          alt="JAS-ANZ"
-         className="h-16 w-auto"
+         className="h-24 w-24"
          style={{  }}
        />
        <img
          src="/a-24.jpg"
          alt="JAS-ANZ G"
-         className="h-16 w-auto"
+         className="h-24 w-24"
          style={{  }}
        />
        <img
          src="/a-25.jpg"
          alt="Vesseltracker"
-         className="h-16 w-auto"
+         className="h-24 w-24"
          style={{  }}
        />
        <img
          src="/a-26.jpg"
          alt="Maritime Transport Sector"
-         className="h-16 w-auto"
+         className="h-24 w-24"
          style={{  }}
        />
      </div>
