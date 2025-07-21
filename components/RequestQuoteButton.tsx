@@ -3,16 +3,24 @@ import React, { ButtonHTMLAttributes } from "react";
 interface RequestQuoteButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: React.ReactNode;
   variant?: "primary" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg";
 }
 
 const RequestQuoteButton: React.FC<RequestQuoteButtonProps> = ({ 
   children = "Request a Quote", 
   variant = "primary",
+  size = "md",
   className = "",
   ...props 
 }) => {
-  const baseClasses = "font-raleway font-regular rounded-md h-10 px-4 py-2 text-base flex items-center justify-center transition-colors duration-200";
+  const baseClasses = "font-raleway font-regular rounded-md flex items-center justify-center transition-colors duration-200";
   
+  const sizeClasses = {
+    sm: "h-8 px-3 py-1 text-sm",
+    md: "h-10 px-4 py-2 text-base",
+    lg: "h-12 px-6 py-3 text-lg",
+  };
+
   const variantClasses = {
     primary: "bg-[#011f4b] text-white hover:bg-[#022c6a]",
     secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
@@ -21,7 +29,7 @@ const RequestQuoteButton: React.FC<RequestQuoteButtonProps> = ({
 
   return (
     <button
-      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      className={`${baseClasses} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`}
       {...props}
     >
       {children}
