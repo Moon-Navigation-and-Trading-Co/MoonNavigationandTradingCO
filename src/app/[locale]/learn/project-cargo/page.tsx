@@ -18,7 +18,7 @@ function overview() {
   return (
     <div className="space-y-32">
       {/* Hero Section */}
-      <section className="max-w-7xl mx-auto w-full mt-10">
+      <section className="max-w-7xl mx-auto w-full mt-10 mb-16">
         <div className="rounded-[60px] overflow-hidden w-full h-[400px] mb-12">
           <Image
             src="/project-cargo-hero.jpg"
@@ -32,7 +32,7 @@ function overview() {
         <div className="flex flex-col md:flex-row gap-8 w-full ">
           {/* Left: Title and Button */}
           <div className="flex-1 flex flex-col items-start justify-center pl-8">
-            <h1 className="text-5xl font-normal font-sans mb-12 text-[#222] dark:text-white">Project Cargo<br />Services</h1>
+            <h1 className="text-5xl font-normal mb-12 text-[#222] dark:text-white text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Project Cargo<br />Services</h1>
             <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
               <RequestQuoteButton>
                 Request a Quote
@@ -41,11 +41,11 @@ function overview() {
           </div>
           {/* Right: What is Project Cargo */}
           <div className="flex-1 flex flex-col justify-center pr-8">
-            <h2 className="text-2xl font-normal mb-4 text-[#3846a5] dark:text-blue-400 font-sans">What is Project Cargo?</h2>
-            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 mb-4 font-sans">
+            <h2 className="text-2xl font-normal mb-4 text-[#3846a5] dark:text-blue-400 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>What is Project Cargo?</h2>
+            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 mb-4 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
               Project cargo in ocean freight entails the transportation of large, heavy, high-value or complex pieces of equipment and materials. At Moon Navigation and Trading Co., we specialize in managing these specialized shipments, which are intricately linked to specific projects and require meticulous handling, specialized equipment, and precise coordination.
             </p>
-            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 font-sans">
+            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
               We understand that ensuring the safe and timely delivery of project cargo is vital for the successful execution of industrial and infrastructure projects. Our dedicated team is committed to providing comprehensive solutions that address the unique challenges of project cargo logistics, making this a critical aspect of services in global trade.
             </p>
           </div>
@@ -62,12 +62,12 @@ function services() {
       {/* Project Cargo Carousel */}
       <ProjectCargoCarousel />
 
-      <section className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold mb-10 text-center font-sans text-gray-900 dark:text-white">
+      <section className="max-w-7xl mx-auto w-full mt-10 mb-16">
+        <h2 className="text-3xl font-normal mb-10 text-left font-sans text-gray-900 dark:text-white mb-10" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
           Key Differences between Project Cargo and Standard Cargo
         </h2>
         <div className="overflow-x-auto">
-          <table className="min-w-full border border-[#3846a5] dark:border-blue-400 rounded-xl text-base font-sans bg-white dark:bg-gray-800">
+          <table className="min-w-full border border-[#3846a5] dark:border-blue-400 rounded-xl text-base bg-white dark:bg-gray-800" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
             <thead>
               <tr className="bg-[#f5f8ff] dark:bg-blue-900/20 border-b border-[#3846a5] dark:border-blue-400">
                 <th className="px-4 py-3 border-r border-[#3846a5] dark:border-blue-400 font-bold text-left text-black dark:text-white">Feature</th>
@@ -130,9 +130,9 @@ function services() {
 
       {/* Why is project cargo unique? Section */}
       <section className="max-w-7xl mx-auto px-4 md:px-0 mt-16 mb-16">
-        <h2 className="text-2xl font-normal mb-8 text-[#3846a5] dark:text-blue-400 font-sans">Why is project cargo unique?</h2>
+        <h2 className="text-2xl font-normal mb-8 text-[#3846a5] dark:text-blue-400 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Why is project cargo unique?</h2>
         <div className="relative">
-          <div className="border border-gray-200 dark:border-gray-700 rounded-[48px] p-8 pt-8 pl-8 pr-8 max-w-3xl font-sans text-[16px] text-[#222] dark:text-white shadow-sm bg-white dark:bg-gray-800" style={{minHeight:'180px'}}>
+          <div className="border border-gray-200 dark:border-gray-700 rounded-[48px] p-8 pt-8 pl-8 pr-8 max-w-3xl text-[16px] text-[#222] dark:text-white shadow-sm bg-white dark:bg-gray-800 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300, minHeight: '180px' }}>
             Each shipment is treated as a one-of-a-kind operation, requiring:
             <br /><br />
             <b>Detailed Surveys</b>: Assessing dimensions, weight, and transport feasibility.<br />
@@ -146,14 +146,14 @@ function services() {
 
       <section className="max-w-7xl mx-auto bg-[#d3e3f1] dark:bg-blue-900/20 rounded-[40px] p-8 md:p-12 flex flex-col md:flex-row gap-8 items-stretch mt-12 mb-12">
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="text-3xl font-normal mb-6 font-sans text-gray-900 dark:text-white">How are we overcoming challenges in project cargo transportation?</h2>
-          <p className="mb-6 font-sans text-base text-[#222] dark:text-white">
+          <h2 className="text-3xl font-normal mb-6 text-gray-900 dark:text-white text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>How are we overcoming challenges in project cargo transportation?</h2>
+          <p className="mb-6 text-base text-[#222] dark:text-white text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
             At Moon Navigation and Trading Co., we recognize that project cargo is unique, as each shipment is treated as a one-of-a-kind operation that requires a tailored approach to logistics. The process begins with detailed surveys, where we assess the dimensions, weight, and transport feasibility of your cargo to ensure optimal planning.
           </p>
-          <p className="mb-6 font-sans text-base text-[#222] dark:text-white">
+          <p className="mb-6 text-base text-[#222] dark:text-white text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
             We prioritize permit management, securing all necessary documentation for oversized loads to ensure compliance with regulations. Additionally, our team excels in coordination with ports, carriers, and local authorities to streamline the transportation process. As a critical segment of ocean freight, project cargo demands specialized expertise in logistics and engineering to ensure the successful delivery of valuable assets.
           </p>
-          <ul className="list-disc pl-6 space-y-4 font-sans text-base text-[#222] dark:text-white">
+          <ul className="list-disc pl-6 space-y-4 text-base text-[#222] dark:text-white text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
             <li><b>Custom Handling & Packaging:</b> Our team employs specialized handling techniques and tailored packaging solutions to guarantee the safety and stability of project cargo.</li>
             <li><b>Heavy Lifting Equipment:</b> We utilize advanced cranes, gantries, and hydraulic platforms to accurately lift and position exceptionally heavy items, ensuring secure transport.</li>
             <li><b>Intermodal Transport Coordination:</b> We seamlessly integrate sea, road, and rail transport, facilitating smooth coordination across different modes of transportation.</li>
@@ -165,6 +165,7 @@ function services() {
             src="/project-cargo-challenge.jpg"
             alt="Project cargo heavy lift operation"
             className="rounded-[40px] object-cover w-full h-[350px]"
+            style={{ marginTop: 0, marginBottom: 0, marginLeft: 0, marginRight: 0 }}
           />
         </div>
       </section>
@@ -180,6 +181,7 @@ function services() {
                 src="/icons/9.png"
                 alt="Dedicated Project Cargo Team"
                 className="mb-8 h-24 w-24 object-contain"
+                style={{ marginLeft: 'auto', marginRight: 'auto' }}
               />
             ),
             title: "Dedicated Project Cargo Team",
@@ -191,6 +193,7 @@ function services() {
                 src="/icons/10.png"
                 alt="Specialized Equipment & Vessels"
                 className= "mb-8 h-24 w-24 object-contain"
+                style={{ marginLeft: 'auto', marginRight: 'auto' }}
               />
             ),
             title: "Specialized Equipment & Vessels",
@@ -202,6 +205,7 @@ function services() {
                 src="/icons/11.png"
                 alt="Global Reach & Local Expertise"
                 className= "mb-8 h-24 w-24 object-contain"
+                style={{ marginLeft: 'auto', marginRight: 'auto' }}
               />
             ),
             title: "Global Reach & Local Expertise",
@@ -213,6 +217,7 @@ function services() {
                 src="/icons/8.png"
                 alt="Risk Management & Compliance"
                 className="mb-8 h-24 w-24 object-contain"
+                style={{ marginLeft: 'auto', marginRight: 'auto' }}
               />
             ),
             title: "Risk Management & Compliance",
@@ -222,6 +227,40 @@ function services() {
       />
       <GetQuoteComponent topic="Project Cargo" link="/ocean-freight-forms" />
       <FAQSearch category="project-cargo" />
+
+      {/* Key Industries Section - Improved Layout */}
+      <section className="max-w-7xl mx-auto w-full px-4 md:px-8 mt-16">
+        <h2 className="text-3xl font-normal text-left text-gray-900 dark:text-white mb-16" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
+          Key Industries Leveraging Our Project Cargo Solution
+        </h2>
+        <div className="flex flex-row gap-8">
+          {/* Example carousel/grid images - ensure equal spacing */}
+          <div className="flex flex-col items-center">
+            <img src="/path/to/image1.jpg" alt="Marine and Shipbuilding" className="rounded-2xl mb-2" style={{ width: '220px', height: '180px', objectFit: 'cover' }} />
+            <span className="text-base mt-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+              Marine and Shipbuilding
+            </span>
+          </div>
+          <div className="flex flex-col items-center">
+            <img src="/path/to/image2.jpg" alt="Construction and Infrastructure" className="rounded-2xl mb-2" style={{ width: '220px', height: '180px', objectFit: 'cover' }} />
+            <span className="text-base mt-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+              Construction and Infrastructure
+            </span>
+          </div>
+          <div className="flex flex-col items-center">
+            <img src="/path/to/image3.jpg" alt="Mining" className="rounded-2xl mb-2" style={{ width: '220px', height: '180px', objectFit: 'cover' }} />
+            <span className="text-base mt-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+              Mining
+            </span>
+          </div>
+          <div className="flex flex-col items-center">
+            <img src="/path/to/image4.jpg" alt="Aerospace" className="rounded-2xl mb-2" style={{ width: '220px', height: '180px', objectFit: 'cover' }} />
+            <span className="text-base mt-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+              Aerospace
+            </span>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

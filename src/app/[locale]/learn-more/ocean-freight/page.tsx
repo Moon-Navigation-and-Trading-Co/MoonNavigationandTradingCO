@@ -84,7 +84,7 @@ export default function OceanFreightPage() {
                 <div className="w-full rounded-[3rem] overflow-hidden mb-12 shadow-lg">
                     <div className="relative w-full h-[340px]">
                         <Image
-                            src="/ocean-freight-hero.jpg"
+                            src="/icons/ocean freight/Ocean Freight.jpg"
                             alt="Moon Navigation and Trading Co. Ocean Freight"
                             fill
                             className="object-cover"

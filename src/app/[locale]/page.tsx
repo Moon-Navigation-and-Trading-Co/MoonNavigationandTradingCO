@@ -293,59 +293,51 @@ export default function Index() {
                 
                 <IndustryCarousel />
 
-                {/* Benefits Section - Overlapping Cards Reference Layout */}
-                <section className="w-full flex flex-col items-start justify-center py-16 px-4 font-raleway relative">
+                {/* Benefits Section - Final Corrected Layout */}
+                <section className="w-full flex flex-col items-start justify-center py-16 px-4 font-raleway">
                   <h2 className="text-4xl font-raleway font-regular text-primary text-left mb-2">Your Benefits with Moon Navigation and Trading Co.</h2>
-                  <h3 className="text-2xl font-raleway font-regular text-primary text-left mb-12">Simplified Solutions and Seamless Support</h3>
-                  <div className="w-full max-w-9xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {/* Card 1: Integrated Maritime Expertise */}
-                    <div className="bg-card rounded-[32px] border border-border shadow-sm p-6 flex flex-col justify-between min-h-[400px]">
-                      <h4 className="text-lg font-raleway font-regular text-primary mb-3 text-left">Integrated Maritime Expertise</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed text-left">At Moon Navigation and Trading Co., we do not just provide services—we offer complete maritime solutions tailored to your needs. From vessel chartering and container logistics to inland and air freight, our expertise ensures every aspect of your operation is covered. Trust us to deliver reliable, end-to-end support for all your shipping and trading challenges.</p>
-                    </div>
-                    
-                    {/* Card 2: Customized Solutions for Long-Term Partners (with image) */}
-                    <div className="bg-card rounded-[32px] border border-border shadow-sm flex flex-col justify-start overflow-hidden min-h-[400px]">
-                      <div className="w-full h-48 bg-muted flex items-center justify-center">
-                        <img src="/p1.jpg" alt="Custom Solutions" className="w-full h-full object-cover" />
+                  <h3 className="text-2xl font-raleway font-light text-primary text-left mb-12">Simplified Solutions and Seamless Support</h3>
+                  <div className="w-full max-w-9xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                    {/* Column 1 */}
+                    <div className="flex flex-col gap-8">
+                      <div className="bg-card rounded-[32px] border border-border shadow-sm p-6">
+                        <h4 className="text-lg font-semibold text-primary mb-3">Integrated Maritime Expertise</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed">At Moon Navigation and Trading Co., we do not just provide services—we offer complete maritime solutions tailored to your needs. From vessel chartering and container logistics to inland and air freight, our expertise ensures every aspect of your operation is covered. Trust us to deliver reliable, end-to-end support for all your shipping and trading challenges.</p>
                       </div>
-                      <div className="p-6 flex-1 flex flex-col">
-                        <h4 className="text-lg font-semibold text-primary mb-3">Customized Solutions for Long-Term Partners</h4>
-                        <p className="text-muted-foreground text-sm leading-relaxed flex-1">We value partnerships over transactions. That is why we work closely with our clients to understand their unique requirements. With loyalty incentives, bespoke service packages, and strategic planning, we ensure that your business benefits from cost savings and operational efficiency at every step.</p>
+                      <div className="bg-card rounded-[32px] border border-border shadow-sm p-6">
+                        <h4 className="text-lg font-semibold text-primary mb-3">Global Logistics Made Simple</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed">Handling global trade requires a partner you can trust. We offer comprehensive support for international trading, ship management, customs clearance, and cargo handling. With Moon Navigation and Trading Co., you will experience streamlined logistics, reduced downtime, and personalized attention to every shipment.</p>
                       </div>
-                    </div>
-                    
-                    {/* Card 3: Fast, Reliable, and Accurate Quotations */}
-                    <div className="bg-card rounded-[32px] border border-border shadow-sm p-6 flex flex-col justify-between min-h-[400px]">
-                      <h4 className="text-lg font-semibold text-primary mb-3">Fast, Reliable, and Accurate Quotations</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">Moon Navigation and Trading Co. is committed to delivering clarity and precision in every transaction. With a straightforward quotation process, we provide detailed, accurate, and competitive pricing tailored to your specific needs. Whether you are planning long-term investments or seeking immediate shipping solutions, we have got you covered—anytime, day or night, with our 24/7 availability to assist you.</p>
-                    </div>
-                    
-                    {/* Card 4: Operational Excellence for Your Fleet (with image) */}
-                    <div className="bg-card rounded-[32px] border border-border shadow-sm flex flex-col justify-start overflow-hidden min-h-[400px]">
-                      <div className="w-full h-48 bg-muted flex items-center justify-center">
-                        <img src="/p2.jpg" alt="Fleet Excellence" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="p-6 flex-1 flex flex-col">
-                        <h4 className="text-lg font-semibold text-primary mb-3">Operational Excellence for Your Fleet</h4>
-                        <p className="text-muted-foreground text-sm leading-relaxed flex-1">Our team specializes in seamless ship agency and operational management. From crew onboarding/offboarding and transit spare parts to bunkering and ship chandlery, we provide efficient services to keep your fleet running smoothly. With expertise across Egyptian ports and beyond, we guarantee reliability and on-time delivery.</p>
-                      </div>
-                    </div>
-                    
-                    {/* Card 5: Global Logistics Made Simple */}
-                    <div className="bg-card rounded-[32px] border border-border shadow-sm p-6 flex flex-col justify-between min-h-[400px]">
-                      <h4 className="text-lg font-semibold text-primary mb-3">Global Logistics Made Simple</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">Handling global trade requires a partner you can trust. We offer comprehensive support for international trading, ship management, customs clearance, and cargo handling. With Moon Navigation and Trading Co., you will experience streamlined logistics, reduced downtime, and personalized attention to every shipment.</p>
-                    </div>
-                    
-                    {/* Card 6: Partner with Us Today (with image) */}
-                    <div className="bg-card rounded-[32px] border border-border shadow-sm flex flex-col justify-start overflow-hidden min-h-[400px]">
-                      <div className="w-full h-48 bg-muted flex items-center justify-center">
+                      <div className="rounded-[32px] overflow-hidden shadow-sm">
                         <img src="/p3.jpg" alt="Team" className="w-full h-full object-cover" />
                       </div>
-                      <div className="p-6 flex-1 flex flex-col">
+                    </div>
+                    {/* Column 2 */}
+                    <div className="flex flex-col gap-8">
+                      <div className="bg-card rounded-[32px] border border-border shadow-sm p-6">
+                        <h4 className="text-lg font-semibold text-primary mb-3">Customized Solutions for Long-Term Partners</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed">We value partnerships over transactions. That is why we work closely with our clients to understand their unique requirements. With loyalty incentives, bespoke service packages, and strategic planning, we ensure that your business benefits from cost savings and operational efficiency at every step.</p>
+                      </div>
+                      <div className="rounded-[32px] overflow-hidden shadow-sm">
+                        <img src="/p1.jpg" alt="Custom Solutions" className="w-full h-full object-cover" />
+                      </div>
+                      <div className="bg-card rounded-[32px] border border-border shadow-sm p-6">
                         <h4 className="text-lg font-semibold text-primary mb-3">Partner with Us Today</h4>
-                        <p className="text-muted-foreground text-sm leading-relaxed flex-1">At Moon Navigation and Trading Co., we believe in building relationships that last. Let's work together to create solutions that meet your needs and exceed your expectations. <a href="#" className="text-primary underline">Schedule a meeting</a> with us today to see how we can help you navigate your maritime operations more efficiently.</p>
+                        <p className="text-muted-foreground text-sm leading-relaxed">At Moon Navigation and Trading Co., we believe in building relationships that last. Let's work together to create solutions that meet your needs and exceed your expectations. <Link href="/schedule-meeting" className="text-primary underline">Schedule a meeting</Link> with us today to see how we can help you navigate your maritime operations more efficiently.</p>
+                      </div>
+                    </div>
+                    {/* Column 3 */}
+                    <div className="flex flex-col gap-8">
+                      <div className="bg-card rounded-[32px] border border-border shadow-sm p-6">
+                        <h4 className="text-lg font-semibold text-primary mb-3">Fast, Reliable, and Accurate Quotations</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed">Moon Navigation and Trading Co. is committed to delivering clarity and precision in every transaction. With a straightforward quotation process, we provide detailed, accurate, and competitive pricing tailored to your specific needs. Whether you are planning long-term investments or seeking immediate shipping solutions, we have got you covered—anytime, day or night, with our 24/7 availability to assist you.</p>
+                      </div>
+                       <div className="rounded-[32px] overflow-hidden shadow-sm">
+                        <img src="/p2.jpg" alt="Fleet Excellence" className="w-full h-full object-cover" />
+                      </div>
+                      <div className="bg-card rounded-[32px] border border-border shadow-sm p-6">
+                        <h4 className="text-lg font-semibold text-primary mb-3">Operational Excellence for Your Fleet</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed">Our team specializes in seamless ship agency and operational management. From crew onboarding/offboarding and transit spare parts to bunkering and ship chandlery, we provide efficient services to keep your fleet running smoothly. With expertise across Egyptian ports and beyond, we guarantee reliability and on-time delivery.</p>
                       </div>
                     </div>
                   </div>

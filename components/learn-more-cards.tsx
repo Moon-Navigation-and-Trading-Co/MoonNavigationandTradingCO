@@ -20,23 +20,23 @@ interface LearnMoreFormProps {
     icon?: React.ReactNode
 }
 
-function SubcategoryCard({ subcategory, description, link }: Subcategory & { link: string }) {
+function SubcategoryCard({ subcategory, description, link, image }: Subcategory & { link: string }) {
     return (
-        <Card className="flex flex-col h-full">
+        <Card className="flex flex-col h-full min-w-[260px] max-w-xs flex-shrink-0 mx-2">
             <CardHeader className="relative p-0">
                 <Image
-                    src="/cargotruck.jpg"
+                    src={image}
                     alt=""
                     width={1500}
                     height={1000}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-32 object-cover"
                 />
             </CardHeader>
-            <CardContent className="flex-grow pt-6">
-                <CardTitle className="text-xl font-semibold text-primary mb-2">{subcategory}</CardTitle>
-                <p className="text-sm text-muted-foreground">{description}</p>
+            <CardContent className="flex-grow pt-4 pb-2 px-4">
+                <CardTitle className="text-lg font-semibold text-primary mb-1">{subcategory}</CardTitle>
+                <p className="text-sm text-muted-foreground leading-snug">{description}</p>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="px-4 pb-4 pt-2">
                 <Link href={link} className="w-full">
                     <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                         Get Quote
@@ -54,42 +54,15 @@ export default function LearnMoreForm({ title, description, subcategories, link,
             <div className="container mx-auto mt-16 py-12">
                 <h1 className="text-4xl font-bold text-center mb-4 text-foreground">{title}</h1>
                 <p className='mb-12 text-center'>{description}</p>
-                <div className="space-y-16">
-                    {subcategories.map((subcategory, index) => (
-                        <div key={index} className="bg-background rounded-lg shadow-lg shadow-gray-900 overflow-hidden">
-                            <div className="md:flex">
-                                <div className=" overflow-hidden relative md:flex-shrink-0">
-                                    <Image
-                                        src={subcategory.image}
-                                        alt={subcategory.subcategory}
-                                        width={600}
-                                        height={400}
-                                        className="h-48 w-full object-cover md:h-full md:w-[250px]"
-                                    />
-                                    <div className='w-full h-[200%] bg-black-overlay absolute top-0 left-0' />
-                                </div>
-                                <div className="p-8">
-                                    <h2 className="text-2xl w-fit font-semibold text-primary mb-4">{subcategory.subcategory}</h2>
-                                    <p className="mt-2 text-muted-foreground leading-relaxed">{subcategory.description}</p>
-
-                                    <div className="mt-6 flex flex-col gap-2 w-fit">
-                                        {/* Get quote button */}
-                                        <Link href={link}>
-                                            <Button className="bg-primary hover:bg-[#275e63] text-white font-semibold py-2 px-4 rounded">
-                                                Get Quote
-                                                <ChevronRight className="ml-2 h-4 w-4" />
-                                            </Button>
-                                        </Link>
-
-                                        {/* Learn more button */}
-                                        <Link className='flex items-center px-2 text-sm hover:text-gray-400 w-fit' href={subcategory.link}>
-                                            Learn More <ChevronRight className="h-4 w-4" />
-                                        </Link>
-                                    </div>
-                                </div>
+                {/* Responsive horizontal scroll on mobile */}
+                <div className="md:grid md:grid-cols-1 space-y-8 md:space-y-16">
+                    <div className="flex md:block overflow-x-auto scroll-smooth snap-x snap-mandatory -mx-2 md:mx-0 pb-4 md:pb-0">
+                        {subcategories.map((subcategory, index) => (
+                            <div key={index} className="snap-start">
+                                <SubcategoryCard {...subcategory} link={link} />
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

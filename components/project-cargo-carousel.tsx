@@ -62,9 +62,11 @@ export default function ProjectCargoCarousel() {
   };
 
   return (
-    <section className="w-full flex flex-col items-center justify-center py-16 px-4 font-raleway">
-      <h2 className="text-4xl font-raleway font-regular text-primary text-center mb-2 w-full">Key Industries Leveraging Our Project Cargo Solution</h2>
-      <div className="relative w-full max-w-7xl mx-auto pt-2">
+    <section className="w-full flex flex-col items-start justify-center py-16 px-4 font-raleway">
+      <h2 className="text-4xl font-raleway font-normal text-primary mb-14 pl-2 md:pl-6" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
+        Key Industries Leveraging Our Project Cargo Solution
+      </h2>
+      <div className="relative w-full max-w-7xl mx-auto pt-2 pl-2 md:pl-6">
         <Slider ref={sliderRef} {...settings}>
           {projectCargoIndustries.map((item, idx) => (
             <div key={idx} className="px-2">
@@ -77,8 +79,8 @@ export default function ProjectCargoCarousel() {
                   sizes="(max-width: 768px) 100vw, 25vw"
                 />
               </div>
-              <div className="mt-4 text-center">
-                <span className="block text-base font-raleway font-light text-[#011f4b]">{item.title}</span>
+              <div className="mt-4 text-left pl-1">
+                <span className="block text-base" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300, color: '#011f4b' }}>{item.title}</span>
               </div>
             </div>
           ))}
