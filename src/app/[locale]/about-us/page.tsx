@@ -12,7 +12,7 @@ export default function AboutUs() {
     <main className='w-full max-w-7xl place-self-center' style={{ fontFamily: 'Raleway, sans-serif' }}>
       <div
         className="flex flex-col items-center w-full"
-        style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}
+        style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}
       >
         {/* Top banner image */}
         <div className="w-full max-w-7xl mt-6 rounded-[32px] overflow-hidden">
@@ -135,7 +135,7 @@ export default function AboutUs() {
             className="mb-4 text-primary"
             style={{
               fontSize: "2rem",
-              fontWeight: 400,
+              fontWeight: 300,
               fontFamily: "Raleway, sans-serif",
               letterSpacing: "0.01em",
             }}
@@ -146,7 +146,7 @@ export default function AboutUs() {
             className="text-foreground"
             style={{
               fontSize: "0.98rem",
-              fontWeight: 400,
+              fontWeight: 300,
               lineHeight: 1.6,
               fontFamily: "Raleway, sans-serif",
               opacity: 0.85,
@@ -206,7 +206,7 @@ export default function AboutUs() {
             className="mb-4 text-primary"
             style={{
               fontSize: "2rem",
-              fontWeight: 400,
+              fontWeight: 300,
               fontFamily: "Raleway, sans-serif",
               letterSpacing: "0.01em",
             }}
@@ -217,7 +217,7 @@ export default function AboutUs() {
             className="text-foreground"
             style={{
               fontSize: "0.98rem",
-              fontWeight: 400,
+              fontWeight: 300,
               lineHeight: 1.6,
               fontFamily: "Raleway, sans-serif",
               opacity: 0.85,
@@ -528,16 +528,16 @@ export default function AboutUs() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* ISO 9001 */}
         <div>
-          <h3 className="text-xl md:text-2xl text-primary mb-1" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>ISO 9001</h3>
-          <p className="text-base md:text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Quality Management</p>
+          <h3 className="text-xl md:text-2xl text-primary mb-1" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>ISO 9001</h3>
+          <p className="text-base md:text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>Quality Management</p>
           <p className="text-base md:text-lg text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
             We are committed to Quality Management in accordance with ISO 9001 standards. We strive to consistently deliver operational excellence and services that meet or exceed relevant best benchmarks. Our dedication to quality ensures that we demonstrate strong ethics, transparency, and reliability in every interaction.
           </p>
         </div>
         {/* ISO 14001 */}
         <div>
-          <h3 className="text-xl md:text-2xl text-primary mb-1" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>ISO 14001</h3>
-          <p className="text-base md:text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Environmental Responsibility</p>
+          <h3 className="text-xl md:text-2xl text-primary mb-1" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>ISO 14001</h3>
+          <p className="text-base md:text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>Environmental Responsibility</p>
           <p className="text-base md:text-lg text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
             We are committed to environmental responsibility through our ISO 14001 certification and sustainable practices. Our team is focused on ensuring waste reduction, pollution prevention, and compliance with global environmental standards. We are proactive in regularly reviewing and improving our processes to minimize our environmental footprint, helping to set a positive example for sustainability practices worldwide in our industry.
           </p>
@@ -640,7 +640,7 @@ export default function AboutUs() {
      {/* Mobile: stack overlay below image */}
      <div className="block md:hidden w-full mt-4 px-2">
        <div className="bg-white/90 backdrop-blur-lg rounded-2xl shadow-xl p-6 text-left" style={{ fontFamily: 'Raleway, sans-serif' }}>
-         <h2 className="text-xl font-normal text-primary mb-4" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
+         <h2 className="text-xl font-normal text-primary mb-4" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
            The Partner Who Understands and Delivers
          </h2>
          <p className="text-base mb-3" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
