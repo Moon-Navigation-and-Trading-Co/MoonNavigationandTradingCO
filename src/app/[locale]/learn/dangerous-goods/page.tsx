@@ -349,10 +349,8 @@ export default function DangerousCargoInfo() {
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href="https://www.moonnavigation.com/learn/dangerous" />
             </Head>
-            <OverviewServicesTabs
-                renderOverview={renderOverview}
-                renderServices={renderServices}
-            />
+            {renderOverview()}
+            {renderServices()}
         </>
     );
 }

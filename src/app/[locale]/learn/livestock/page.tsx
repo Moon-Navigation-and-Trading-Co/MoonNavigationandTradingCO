@@ -255,10 +255,11 @@ function services(){
 }
 
 export default function ShippingMethodsInfo() {
-  const t = useTranslations("livestock:");
+  const t = useTranslations('livestock:');
   return (
     <div className="w-full">
-      <OverviewServicesTabs renderOverview={overview} renderServices={services}/>
+      {overview()}
+      {services()}
     </div>
   )
 }

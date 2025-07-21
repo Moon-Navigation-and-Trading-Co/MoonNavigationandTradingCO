@@ -406,9 +406,9 @@ Our services for dangerous goods include</p>
   }
 
   return (
-    <OverviewServicesTabs
-      renderOverview={renderOverview}
-      renderServices={renderServices}
-    />
+    <>
+      {renderOverview()}
+      {renderServices()}
+    </>
   );
 }

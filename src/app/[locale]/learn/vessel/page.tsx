@@ -393,6 +393,9 @@ function services() {
 
 export default function VesselPage() {
   return (
-    <OverviewServicesTabs renderOverview={overview} renderServices={services} />
+    <>
+      {overview()}
+      {services()}
+    </>
   );
 }

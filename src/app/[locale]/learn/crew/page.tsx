@@ -186,12 +186,12 @@ export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-crew");
 
   return (
-  <div
-    className="w-full max-w-7xl place-self-center"
-    style={{ fontFamily: "Raleway, sans-serif" }}
-  >
-<OverviewServicesTabs renderOverview={overview} renderServices={services} />
-  
-  </div>
+    <div
+      className="w-full max-w-7xl place-self-center"
+      style={{ fontFamily: "Raleway, sans-serif" }}
+    >
+      {overview()}
+      {services()}
+    </div>
   );
 }

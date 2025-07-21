@@ -328,7 +328,8 @@ export default function AirFreightInfo() {
 
     return (
         <main className="flex flex-col items-center w-full max-w-7xl mx-auto" style={{ fontFamily: 'Raleway, sans-serif' }}>
-        <OverviewServicesTabs renderOverview={overview} renderServices={services}/>
+            {overview()}
+            {services()}
         </main>
     );
 }

@@ -67,7 +67,7 @@ export default function DangerousCargoInfo() {
         }
     ]
 
-    return (
+    const renderOverview = () => (
         <OverviewServicesTabs
             renderOverview={() => (
                 <>

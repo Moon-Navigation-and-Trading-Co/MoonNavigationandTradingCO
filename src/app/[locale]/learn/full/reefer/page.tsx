@@ -308,10 +308,10 @@ const ReeferPage = () => {
   }
 
   return (
-    <OverviewServicesTabs
-      renderOverview={renderOverview}
-      renderServices={renderServices}
-    />
+    <>
+      {renderOverview()}
+      {renderServices()}
+    </>
   );
 };
 

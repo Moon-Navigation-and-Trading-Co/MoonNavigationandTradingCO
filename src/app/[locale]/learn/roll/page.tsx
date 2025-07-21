@@ -231,6 +231,9 @@ function services() {
 
 export default function RollOnOffHero() {
   return (
-    <OverviewServicesTabs renderOverview={overview} renderServices={services} />
+    <>
+      {overview()}
+      {services()}
+    </>
   );
 }

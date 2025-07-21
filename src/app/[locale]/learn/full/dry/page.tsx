@@ -419,9 +419,9 @@ export default function DryContainerPage() {
   }
 
   return (
-    <OverviewServicesTabs
-      renderOverview={renderOverview}
-      renderServices={renderServices}
-    />
+    <>
+      {renderOverview()}
+      {renderServices()}
+    </>
   );
 }

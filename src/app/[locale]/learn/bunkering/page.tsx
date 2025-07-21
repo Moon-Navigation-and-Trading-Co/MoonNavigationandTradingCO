@@ -167,7 +167,8 @@ export default function BunkeringPage() {
       className="w-full max-w-7xl min-h-screen flex flex-col items-center place-self-center"
       style={{ fontFamily: "Raleway, sans-serif" }}
     >
-<OverviewServicesTabs renderOverview={overview} renderServices={services}/>
+      {overview()}
+      {services()}
     </div>
   );
 }

@@ -143,6 +143,9 @@ function services() {
 
 export default function ShippingMethodsInfo() {
   return (
-    <OverviewServicesTabs renderOverview={overview} renderServices={services} />
+    <>
+      {overview()}
+      {services()}
+    </>
   );
 }

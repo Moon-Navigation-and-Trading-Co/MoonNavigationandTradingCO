@@ -373,7 +373,8 @@ export default function BreakBulkInfo() {
                 <link rel="canonical" href="https://www.moonnavigation.com/learn/breakbulk" />
             </Head>
             
-                <OverviewServicesTabs renderOverview={overview} renderServices={services}/>
+                {overview()}
+                {services()}
                        
             
         </>

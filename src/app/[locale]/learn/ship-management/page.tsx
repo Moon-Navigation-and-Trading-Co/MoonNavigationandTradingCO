@@ -441,6 +441,9 @@ function services() {
 
 export default function ShipManagement() {
   return (
-    <OverviewServicesTabs renderOverview={overview} renderServices={services} />
+    <>
+      {overview()}
+      {services()}
+    </>
   );
 }
