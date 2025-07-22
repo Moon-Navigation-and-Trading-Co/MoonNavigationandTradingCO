@@ -6,42 +6,34 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGrid from "@/components/ReasonsGrid";
+import FormTabs from "@/components/form-tabs";
+import LearnMoreBunkeringPage from "./learn-more-bunkering/page";
+import LearnMoreOilPage from "./learn-more-oil/page";
+import LearnMoreChandleryPage from "./learn-more-chandlery/page";
 
 function overview(){
   return(
     <>
-    <div className="w-full mt-8 mb-0 px-4">
-        <div className="w-full flex flex-row gap-0 rounded-[2rem] overflow-hidden mb-8">
-          <div className="w-full h-[180px] md:h-[220px] relative">
-            <Image
-              src="/bunkering-1.jpg"
-              alt="Bunkering Truck"
-              fill
-              style={{ objectFit: "cover" }}
-              priority
-            />
-          </div>
-        </div>
-        <div className="flex flex-col md:flex-row w-full gap-8">
-          <div className="flex-1">
-            <h1 className="text-2xl md:text-3xl mb-2 leading-tight text-gray-900 dark:text-white">
-              Bunkering | Oil Supply |<br />Ship Chandlery
-            </h1>
-            <div className="mt-6">
-              <Link href="/ship-agency-forms">
-                <RequestQuoteButton>
-                  Request a Quote
-                </RequestQuoteButton>
-              </Link>
-            </div>
-          </div>
-          <div className="flex-1 flex items-start">
-            <p className="text-[#222] dark:text-white text-sm md:text-base mt-1 md:mt-0">
-              At Moon Navigation and Trading Co., we provide essential services to ensure vessels operate efficiently and without interruption. Our bunkering, oil supply, and ship chandlery solutions are designed to meet the demands of modern maritime operations with precision, reliability, and speed.
-            </p>
-          </div>
+    {/* Hero image removed to prevent duplication */}
+    <div className="flex flex-col md:flex-row w-full gap-8">
+      <div className="flex-1">
+        <h1 className="text-2xl md:text-3xl mb-2 leading-tight text-gray-900 dark:text-white">
+          Bunkering | Oil Supply |<br />Ship Chandlery
+        </h1>
+        <div className="mt-6">
+          <Link href="/ship-agency-forms">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
+          </Link>
         </div>
       </div>
+      <div className="flex-1 flex items-start">
+        <p className="text-[#222] dark:text-white text-sm md:text-base mt-1 md:mt-0">
+          At Moon Navigation and Trading Co., we provide essential services to ensure vessels operate efficiently and without interruption. Our bunkering, oil supply, and ship chandlery solutions are designed to meet the demands of modern maritime operations with precision, reliability, and speed.
+        </p>
+      </div>
+    </div>
     </>
   )
 }
@@ -132,43 +124,104 @@ function services(){
         </div>
       </div>
     </div>
-    <div className="w-full max-w-6xl mx-auto mb-24">
-      <ReasonsGrid
-        title="Reasons to Choose Moon Navigation and Trading Co. For Your Bunkering | Oil Supply | Ship Chandlery"
-        subheading=""
-        reasons={[
-          {
-            icon: <img src="/icons/ship agency/59.png" alt="24/7 Service Availability" className="mb-4 h-14 w-14 object-contain mx-auto" />,
-            title: "24/7 Service Availability",
-            description: "Supporting vessels at all times.",
-          },
-          {
-            icon: <img src="/icons/ship agency/58.png" alt="Cost-Effective & Transparent Pricing" className="mb-4 h-14 w-14 object-contain mx-auto" />,
-            title: "Cost-Effective & Transparent Pricing",
-            description: "No hidden fees.",
-          },
-          {
-            icon: <img src="/icons/ship agency/60.png" alt="Compliance with International Standards" className="mb-4 h-14 w-14 object-contain mx-auto" />,
-            title: "Compliance with International Standards",
-            description: "Ensuring regulatory adherence.",
-          },
-        ]}
-      />
-    </div>
-    <GetQuoteComponent topic="Bunkering, Oil Supply, Ship Chandlery"  link="/ship-agency-forms"/>
-    <FAQSearch category="bunkering" />
     </>
   )
 }
 
-export default function BunkeringPage() {
+function OverviewTab() {
   return (
-    <div
-      className="w-full max-w-7xl min-h-screen flex flex-col items-center place-self-center"
-      style={{ fontFamily: "Raleway, sans-serif" }}
-    >
+    <>
       {overview()}
       {services()}
+      {/* Banner section with overlayed text */}
+      <div className="w-full rounded-[2rem] overflow-hidden shadow-lg mb-12">
+        <div className="relative w-full h-[350px] md:h-[350px]">
+          <Image
+            src="/lm-bunkering-1.jpg"
+            alt="Person overlooking the sea with a port in the distance"
+            fill
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-6 m-4 shadow-md max-w-4xl text-center">
+              <p className="text-[#222] dark:text-white text-sm md:text-base">
+                With Moon Navigation and Trading Co., you can count on reliable, timely and cost-effective bunkering solutions and support, and fully customizable solutions to your vessel's needs, ensuring uninterrupted service and operational efficiency.<br /><br />
+                -Wherever and whenever you need to trust.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full max-w-6xl mx-auto mb-24">
+        <ReasonsGrid
+          title="Reasons to Choose Moon Navigation and Trading Co. For Your Bunkering | Oil Supply | Ship Chandlery"
+          subheading=""
+          reasons={[
+            {
+              icon: <img src="/icons/ship agency/59.png" alt="24/7 Service Availability" className="mb-4 h-14 w-14 object-contain mx-auto" />, 
+              title: "24/7 Service Availability",
+              description: "Supporting vessels at all times.",
+            },
+            {
+              icon: <img src="/icons/ship agency/58.png" alt="Cost-Effective & Transparent Pricing" className="mb-4 h-14 w-14 object-contain mx-auto" />, 
+              title: "Cost-Effective & Transparent Pricing",
+              description: "No hidden fees.",
+            },
+            {
+              icon: <img src="/icons/ship agency/60.png" alt="Compliance with International Standards" className="mb-4 h-14 w-14 object-contain mx-auto" />, 
+              title: "Compliance with International Standards",
+              description: "Ensuring regulatory adherence.",
+            },
+          ]}
+        />
+      </div>
+      <GetQuoteComponent topic="Bunkering, Oil Supply, Ship Chandlery" link="/ship-agency-forms" />
+      <FAQSearch category="bunkering" />
+    </>
+  );
+}
+
+export default function BunkeringTabs() {
+  const tabData = [
+    {
+      id: "overview",
+      title: "Overview",
+      content: <OverviewTab />,
+    },
+    {
+      id: "bunkering",
+      title: "Bunkering",
+      content: <LearnMoreBunkeringPage />,
+    },
+    {
+      id: "oil",
+      title: "Oil",
+      content: <LearnMoreOilPage />,
+    },
+    {
+      id: "chandlery",
+      title: "Chandlery",
+      content: <LearnMoreChandleryPage />,
+    },
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto w-full mt-10 mb-16">
+      {/* Hero image at the top */}
+      <div className="w-full flex flex-row gap-0 rounded-[2rem] overflow-hidden mb-8">
+        <div className="w-full h-[180px] md:h-[220px] relative">
+          <Image
+            src="/bunkering-1.jpg"
+            alt="Bunkering Truck"
+            fill
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </div>
+      </div>
+      <FormTabs tabData={tabData} />
     </div>
   );
 }

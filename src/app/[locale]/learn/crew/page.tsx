@@ -8,54 +8,48 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import ReasonsGrid from "@/components/ReasonsGrid";
+import FormTabs from "@/components/form-tabs";
+import CrewLearnMorePage from "./learn-more/page";
 
 
 function overview(){
   return (
     <>
-        {/* Top full-width image */}
-        <div className="w-full rounded-[2rem] overflow-hidden mb-10 mt-6 shadow-lg">
-          <img
-            src="/crew-1.jpg"
-            alt="Ship agent assisting crew member with paperwork"
-            className="w-full h-[220px] md:h-[320px] object-cover"
-            style={{ display: "block" }}
-          />
+      {/* Hero image removed to prevent duplication */}
+      {/* Content below image */}
+      <div className="max-w-6xl mx-auto px-4 mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+        {/* Left: Title and Button */}
+        <div className="flex flex-col items-start mt-2">
+          <h1 className="text-[1.5rem] md:text-[2rem] font-medium text-[#222] dark:text-white mb-4 leading-tight">
+            Crew Management:<br />
+            Sign on/off
+          </h1>
+            <RequestQuoteButton>
+            <Link href="/ship-agency-forms">
+              Request a Quote
+            </Link>  
+          </RequestQuoteButton>
         </div>
-    {/* Content below image */}
-    <div className="max-w-6xl mx-auto px-4 mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-      {/* Left: Title and Button */}
-      <div className="flex flex-col items-start mt-2">
-        <h1 className="text-[1.5rem] md:text-[2rem] font-medium text-[#222] dark:text-white mb-4 leading-tight">
-          Crew Management:<br />
-          Sign on/off
-        </h1>
-          <RequestQuoteButton>
-          <Link href="/ship-agency-forms">
-            Request a Quote
-          </Link>  
-        </RequestQuoteButton>
-      </div>
-      {/* Right: Description */}
-      <div>
-        <h2 className="text-base md:text-lg text-[#2a3a8c] dark:text-blue-400 mb-2">
-          What is Crew Management ?
-        </h2>
-        <p className="text-[#444] dark:text-gray-300 text-sm mb-4 leading-relaxed">
-        Crew management in ship agency involves the comprehensive oversight and coordination of
+        {/* Right: Description */}
+        <div>
+          <h2 className="text-base md:text-lg text-[#2a3a8c] dark:text-blue-400 mb-2">
+            What is Crew Management ?
+          </h2>
+          <p className="text-[#444] dark:text-gray-300 text-sm mb-4 leading-relaxed">
+          Crew management in ship agency involves the comprehensive oversight and coordination of
 maritime personnel to ensure smooth operations. This process includes recruiting crew
 members, providing necessary training, and managing their deployment and schedule. Effective
 crew management is essential for maintaining compliance with maritime regulations and
 fostering a cohesive working environment. Ultimately, it contributes to the overall efficiency and
 success of shipping operations. 
-        </p>
-        <p className="text-[#444] dark:text-gray-300 text-sm leading-relaxed">
-        At Moon Navigation and Trading Co., we provide comprehensive management services,
+          </p>
+          <p className="text-[#444] dark:text-gray-300 text-sm leading-relaxed">
+          At Moon Navigation and Trading Co., we provide comprehensive management services,
 facilitating both the onboarding (sign-on) and disembarkation (sign-off) of crew members in
 compliance with maritime regulations and local port requirements. 
-        </p>
+          </p>
+        </div>
       </div>
-    </div>
     </>
   )
 }
@@ -182,16 +176,44 @@ function services(){
     </>
   )
 }
-export default function ShippingMethodsInfo() {
-  const t = useTranslations("learn-crew");
 
+function OverviewTab() {
   return (
-    <div
-      className="w-full max-w-7xl place-self-center"
-      style={{ fontFamily: "Raleway, sans-serif" }}
-    >
+    <>
       {overview()}
       {services()}
+      <GetQuoteComponent topic="Crew Management" link="/ship-agency-forms" />
+      <FAQSearch category="crew-management" />
+    </>
+  );
+}
+
+export default function CrewTabs() {
+  const tabData = [
+    {
+      id: "overview",
+      title: "Overview",
+      content: <OverviewTab />,
+    },
+    {
+      id: "services",
+      title: "Services",
+      content: <CrewLearnMorePage />,
+    },
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto w-full mt-10 mb-16">
+      {/* Hero image at the top */}
+      <div className="w-full rounded-[2rem] overflow-hidden mb-10 mt-6 shadow-lg">
+        <img
+          src="/crew-1.jpg"
+          alt="Ship agent assisting crew member with paperwork"
+          className="w-full h-[220px] md:h-[320px] object-cover"
+          style={{ display: "block" }}
+        />
+      </div>
+      <FormTabs tabData={tabData} />
     </div>
   );
 }

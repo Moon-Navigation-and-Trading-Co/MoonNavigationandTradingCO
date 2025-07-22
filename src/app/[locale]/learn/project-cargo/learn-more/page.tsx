@@ -7,6 +7,7 @@ import FAQSearch from "@/components/faq";
 export default function ProjectCargoLearnMore() {
   return (
     <div className="w-full px-4 md:px-16 py-10 max-w-7xl mx-auto mt-10">
+      {/* Hero image removed, only in main page */}
       <h1 className="text-4xl mb-24 text-[#3846a5] font-raleway font-normal" style={{ fontWeight: 400 }}>
         Our Project Cargo Solutions-At Moon Navigation and Trading Co.
       </h1>

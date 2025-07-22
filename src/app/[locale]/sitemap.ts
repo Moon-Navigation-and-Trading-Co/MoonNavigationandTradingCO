@@ -32,24 +32,24 @@ const SITE_CONFIG = {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const headersList = headers()
-    const host = headersList.get('host') || 'localhost'
-    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
+    const headersList = await headers();
+    const host = headersList.get('host') || 'localhost';
+    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https';
 
     // Get the current locale from the URL path
-    const currentPath = headersList.get('x-invoke-path') || ''
-    const locale = currentPath.split('/')[1] || SITE_CONFIG.defaultLocale
+    const currentPath = headersList.get('x-invoke-path') || '';
+    const locale = currentPath.split('/')[1] || SITE_CONFIG.defaultLocale;
 
     // Generate URLs for the current locale
     const urls = SITE_CONFIG.paths.map((page) => {
-        const path = locale === SITE_CONFIG.defaultLocale ? page.path : `/${locale}${page.path}`
+        const path = locale === SITE_CONFIG.defaultLocale ? page.path : `/${locale}${page.path}`;
         return {
             url: `${protocol}://${host}${path}`,
             lastModified: new Date(),
             changeFrequency: page.changeFrequency as MetadataRoute.Sitemap[number]['changeFrequency'],
             priority: page.priority
-        }
-    })
+        };
+    });
 
-    return urls
+    return urls;
 }

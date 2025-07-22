@@ -65,7 +65,7 @@ export default async function RootLayout({
   children,
   params: { locale },
 }: Props) {
-  const messages = await getMessages();
+  const messages = await getMessages({ locale });
   const supabase = createClient();
 
   const {

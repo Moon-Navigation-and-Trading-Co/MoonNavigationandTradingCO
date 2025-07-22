@@ -6,22 +6,15 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
+import FormTabs from "@/components/form-tabs";
+import ContainerHandlingPage from "./handling/page";
+import StevedoringPage from "./stevedoring/page";
+import ContainerStoragePage from "./storage/page";
 
 function overview() {
     return (
         <>
-            {/* Top Banner */}
-            <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
-                <div className="relative w-full h-[350px] md:h-[350px]">
-                    <img
-                        src="/hss-1.jpg"
-                        alt="Moon Navigation and Trading Co. Container Handling, Stevedoring and Storage"
-                        className="object-cover w-full h-full"
-                        style={{ objectFit: "cover" }}
-                    />
-                </div>
-            </div>
-            {/* Main Content */}
+            {/* Main Content (hero image removed) */}
             <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
                 {/* Left: Title and CTA */}
                 <div className="flex flex-col items-start justify-start">
@@ -216,11 +209,53 @@ function services() {
     );
 }
 
-export default function StevedoringContainerPage() {
-    return (
-        <>
-            {overview()}
-            {services()}
-        </>
-    );
+function OverviewTab() {
+  return (
+    <>
+      {overview()}
+      {services()}
+    </>
+  );
+}
+
+export default function StevedoringContainerTabs() {
+  const tabData = [
+    {
+      id: "overview",
+      title: "Overview",
+      content: <OverviewTab />,
+    },
+    {
+      id: "handling",
+      title: "Handling",
+      content: <ContainerHandlingPage />,
+    },
+    {
+      id: "stevedoring",
+      title: "Stevedoring",
+      content: <StevedoringPage />,
+    },
+    {
+      id: "storage",
+      title: "Storage",
+      content: <ContainerStoragePage />,
+    },
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto w-full mt-10 mb-16">
+      {/* Hero image at the top */}
+      <div className="w-full max-w-7xl rounded-[2rem] overflow-hidden mb-12 shadow-lg">
+        <div className="relative w-full h-[350px] md:h-[350px]">
+          <img
+            src="/hss-1.jpg"
+            alt="Moon Navigation and Trading Co. Container Handling, Stevedoring and Storage"
+            className="object-cover w-full h-full"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+      </div>
+      <FormTabs tabData={tabData} />
+    </div>
+  );
 }

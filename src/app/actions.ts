@@ -15,7 +15,7 @@ export const signUpAction = async (formData: FormData) => {
   const name = `${firstname} ${lastname}`;
 
   const supabase = createClient();
-  const origin = headers().get("origin") || process.env.NEXT_PUBLIC_SITE_URL;
+  const origin = (await headers()).get("origin") || process.env.NEXT_PUBLIC_SITE_URL;
 
   if (!email || !password || !passwordReconfirm) {
     return encodedRedirect("error", "/sign-up", "Email and password are required");
@@ -77,7 +77,7 @@ export const forgotPasswordAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const callbackUrl = formData.get("callbackUrl")?.toString();
   const supabase = createClient();
-  const origin = headers().get("origin") || process.env.NEXT_PUBLIC_SITE_URL;
+  const origin = (await headers()).get("origin") || process.env.NEXT_PUBLIC_SITE_URL;
 
   if (!email) {
     return encodedRedirect("error", "/forgot-password", "Email is required");

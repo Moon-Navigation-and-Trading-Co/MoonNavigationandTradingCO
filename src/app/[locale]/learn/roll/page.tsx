@@ -8,6 +8,8 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
+import FormTabs from "@/components/form-tabs";
+import LearnMore from "./learn-more/page";
 
 // SEO Metadata for Next.js 13+ App Router
 
@@ -16,13 +18,7 @@ function overview() {
   const locale = useLocale();
   return (
     <>
-      {/* --- HERO IMAGE --- */}
-      <img
-        src="/rorotitleimage.jpg"
-        alt="RoRo Cargo Handling"
-        className="w-full h-[400px] object-cover rounded-[60px] mt-4"
-        style={{ maxHeight: 420 }}
-      />
+      {/* --- HERO IMAGE REMOVED TO PREVENT DUPLICATION --- */}
       {/* --- HERO SECTION --- */}
       <section className="max-w-7xl mx-auto mt-20 mb-24 px-4 md:px-0">
         <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
@@ -229,11 +225,39 @@ function services() {
   );
 }
 
-export default function RollOnOffHero() {
+function RoRoOverviewTab() {
   return (
     <>
       {overview()}
       {services()}
     </>
+  );
+}
+
+export default function RollOnOffHero() {
+  const tabData = [
+    {
+      id: "overview",
+      title: "Overview",
+      content: <RoRoOverviewTab />,
+    },
+    {
+      id: "our-solutions",
+      title: "Our Solutions",
+      content: <LearnMore />,
+    },
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto w-full mt-10 mb-16">
+      {/* --- HERO IMAGE --- */}
+      <img
+        src="/rorotitleimage.jpg"
+        alt="RoRo Cargo Handling"
+        className="w-full h-[400px] object-cover rounded-[60px] mt-4"
+        style={{ maxHeight: 420 }}
+      />
+      <FormTabs tabData={tabData} />
+    </div>
   );
 }

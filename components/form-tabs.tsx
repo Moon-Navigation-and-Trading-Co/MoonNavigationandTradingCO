@@ -28,55 +28,41 @@ interface FormTabsProps {
 
 
 const FormTabs: React.FC<FormTabsProps> = ({ tabData }) => {
-    const [activeTab, setActiveTab] = useState("international")
+    const [activeTab, setActiveTab] = useState(tabData[0]?.id || "overview");
 
     return (
-        <div className="w-full mt-16 mx-auto flex flex-col my-10 ">
-            <div className="relative bg-secondary rounded-t-3xl overflow-hidden">
-                <div className="flex relative z-10 ">
-                    {tabData.map((tab, index) => (
+        <div className="w-full mt-2 mx-auto flex flex-col">
+            <div className="border-b border-gray-200">
+                <div className="flex justify-start ml-8">
+                    {tabData.map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-xl font-medium transition-colors focus:outline-none ${activeTab === tab.id
-                                ? "text-primary"
-                                : "text-foreground bg-secondary hover:bg-green-50 dark:hover:bg-[#171b21]"
-                                } ${index === 0 ? "rounded-tl-2xl" : ""} ${index === tabData.length - 1 ? "rounded-tr-2xl" : ""
-                                }`}
+                            className={`px-8 py-2 text-base font-medium focus:outline-none transition-colors
+                                ${activeTab === tab.id ? "text-[#222] border-b-2 border-[#22313f]" : "text-gray-500 border-b-2 border-transparent"}
+                            `}
+                            style={{ background: 'none', borderRadius: 0 }}
                         >
                             {tab.title}
                         </button>
                     ))}
                 </div>
-                <motion.div
-                    className="absolute top-0 h-full bg-green-100 dark:bg-accent rounded-t-2xl"
-                    initial={false}
-                    animate={{
-                        left: `${(tabData.findIndex(tab => tab.id === activeTab) / tabData.length) * 100}%`,
-                        width: `${100 / tabData.length}%`
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
             </div>
-            <div className="p-1 rounded-3xl rounded-t-sm bg-green-100 dark:bg-accent">
-                <div className="bg-background dark:bg-secondary rounded-3xl py-6 px-4 sm:px-6 shadow-sm">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={activeTab}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.2 }}
-                        >
-                            <h3 className="text-3xl font-semibold mb-10 ">Form details</h3>
-                            {tabData.find(tab => tab.id === activeTab)?.content}
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-
+            <div className="w-full">
+                <AnimatePresence mode="wait">
+                    <motion.div
+                        key={activeTab}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        {tabData.find(tab => tab.id === activeTab)?.content}
+                    </motion.div>
+                </AnimatePresence>
             </div>
         </div>
-    )
+    );
 }
 
 export default FormTabs;

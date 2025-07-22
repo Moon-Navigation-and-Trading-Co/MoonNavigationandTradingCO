@@ -10,6 +10,8 @@ import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
 import ProjectCargoCarousel from "@/components/project-cargo-carousel";
 import ReasonsGrid from "@/components/ReasonsGrid";
+import FormTabs from "@/components/form-tabs";
+import ProjectCargoLearnMore from "./learn-more/page";
 
 //seo
 
@@ -17,40 +19,28 @@ function overview() {
   const t = useTranslations("learn-project-cargo");
   return (
     <div className="space-y-32">
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto w-full mt-10 mb-16">
-        <div className="rounded-[60px] overflow-hidden w-full h-[400px] mb-12">
-          <Image
-            src="/project-cargo-hero.jpg"
-            alt="Project Cargo - Oversized and Heavy Lift Logistics by Moon Navigation and Trading Co."
-            width={1600}
-            height={600}
-            className="object-cover object-center w-full h-full"
-            loading="lazy"
-          />
+      {/* Hero Section removed, now in main export */}
+      <div className="flex flex-col md:flex-row gap-8 w-full ">
+        {/* Left: Title and Button */}
+        <div className="flex-1 flex flex-col items-start justify-center pl-8">
+          <h1 className="text-5xl font-normal mb-12 text-[#222] dark:text-white text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Project Cargo<br />Services</h1>
+          <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
+            <RequestQuoteButton>
+              Request a Quote
+            </RequestQuoteButton>
+          </Link>
         </div>
-        <div className="flex flex-col md:flex-row gap-8 w-full ">
-          {/* Left: Title and Button */}
-          <div className="flex-1 flex flex-col items-start justify-center pl-8">
-            <h1 className="text-5xl font-normal mb-12 text-[#222] dark:text-white text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Project Cargo<br />Services</h1>
-            <Link href="/ocean-freight-forms" title="Request a Project Cargo Quote">
-              <RequestQuoteButton>
-                Request a Quote
-              </RequestQuoteButton>
-            </Link>
-          </div>
-          {/* Right: What is Project Cargo */}
-          <div className="flex-1 flex flex-col justify-center pr-8">
-            <h2 className="text-2xl font-normal mb-4 text-[#3846a5] dark:text-blue-400 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>What is Project Cargo?</h2>
-            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 mb-4 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
-              Project cargo in ocean freight entails the transportation of large, heavy, high-value or complex pieces of equipment and materials. At Moon Navigation and Trading Co., we specialize in managing these specialized shipments, which are intricately linked to specific projects and require meticulous handling, specialized equipment, and precise coordination.
-            </p>
-            <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
-              We understand that ensuring the safe and timely delivery of project cargo is vital for the successful execution of industrial and infrastructure projects. Our dedicated team is committed to providing comprehensive solutions that address the unique challenges of project cargo logistics, making this a critical aspect of services in global trade.
-            </p>
-          </div>
+        {/* Right: What is Project Cargo */}
+        <div className="flex-1 flex flex-col justify-center pr-8 ml-8">
+          <h2 className="text-2xl font-normal mb-4 text-[#3846a5] dark:text-blue-400 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>What is Project Cargo?</h2>
+          <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 mb-4 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+            Project cargo in ocean freight entails the transportation of large, heavy, high-value or complex pieces of equipment and materials. At Moon Navigation and Trading Co., we specialize in managing these specialized shipments, which are intricately linked to specific projects and require meticulous handling, specialized equipment, and precise coordination.
+          </p>
+          <p className="text-base leading-relaxed text-[#444] dark:text-gray-300 text-left" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
+            We understand that ensuring the safe and timely delivery of project cargo is vital for the successful execution of industrial and infrastructure projects. Our dedicated team is committed to providing comprehensive solutions that address the unique challenges of project cargo logistics, making this a critical aspect of services in global trade.
+          </p>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
@@ -265,11 +255,42 @@ function services() {
   );
 }
 
-export default function ProjectCargoPage() {
+function ProjectCargoMainContent() {
   return (
     <>
       {overview()}
       {services()}
     </>
+  );
+}
+
+export default function ProjectCargoPage() {
+  const tabData = [
+    {
+      id: "overview",
+      title: "Overview",
+      content: <ProjectCargoMainContent />,
+    },
+    {
+      id: "our-solutions",
+      title: "Our Solutions",
+      content: <ProjectCargoLearnMore />,
+    },
+  ];
+
+  return (
+    <div className="max-w-7xl mx-auto w-full mt-10 mb-16">
+      <div className="rounded-[60px] overflow-hidden w-full h-[400px] mb-12">
+        <Image
+          src="/project-cargo-hero.jpg"
+          alt="Project Cargo - Oversized and Heavy Lift Logistics by Moon Navigation and Trading Co."
+          width={1600}
+          height={600}
+          className="object-cover object-center w-full h-full"
+          loading="lazy"
+        />
+      </div>
+      <FormTabs tabData={tabData} />
+    </div>
   );
 }
