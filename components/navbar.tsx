@@ -57,7 +57,7 @@ const serviceColumns = [
                 { name: "Oversized Containers", href: "/learn/oversized" },
                 { name: "Out of Gauge Cargo", href: "/learn/out-gauge" },
                 { name: "Inland Container", href: "/learn/inland-container" },
-                { name: "Container HSS Services", href: "/learn/stevedoring-container" }
+                { name: "Container HSS Services", href: "/learn/stevedoring-container" },
             ]
           },
           { 
