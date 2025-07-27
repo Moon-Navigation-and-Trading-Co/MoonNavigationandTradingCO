@@ -91,6 +91,7 @@ const serviceColumns = [
         items: [
           { name: "Request for a PDA", href: "/ship-agency-forms" },
           { name: "Sign On/Off Crew Members", href: "/learn/crew" },
+          { name: "Suez Canal Transit Passage", href: "/learn/suez-canal-transit-passage" },
           { name: "Transit Spare Parts", href: "/learn/spare-parts" },
           { name: "Bunkering | Oil Supply | Ship Chandlery", href: "/learn/bunkering" },
           { name: "Special Services by Case", href: "/special-services-forms" },
