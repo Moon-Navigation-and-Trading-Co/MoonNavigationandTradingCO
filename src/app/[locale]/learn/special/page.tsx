@@ -6,13 +6,14 @@ import Link from "next/link";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
-import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGrid from "@/components/ReasonsGrid";
 
-function overview() {
+export default function ShippingMethodsInfo() {
   const t = useTranslations("learn-special");
+  
   return (
     <>
+      {/* Hero Section */}
       <div className="w-full mb-12">
         <div className="w-full rounded-[2rem] overflow-hidden mb-10">
           <img
@@ -46,14 +47,8 @@ function overview() {
           </div>
         </div>
       </div>
-    </>
-  );
-}
 
-function services() {
-  const t = useTranslations("learn-special");
-  return (
-    <>
+      {/* Services Section */}
       <div className="w-full flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mb-12">
         <div className="w-full md:w-1/2 flex flex-col justify-center items-start mb-8 md:mb-0">
           <h2 className="text-xl md:text-2xl mb-4 text-gray-900 dark:text-white" style={{ fontFamily: "Raleway, sans-serif" }}>
@@ -77,6 +72,8 @@ function services() {
           </div>
         </div>
       </div>
+
+      {/* Additional Services Section */}
       <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mb-0 shadow gap-12">
         <div className="w-full md:w-1/2 flex justify-center items-center mb-8 md:mb-0">
           <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
@@ -97,11 +94,15 @@ function services() {
           </p>
         </div>
       </div>
+
+      {/* Trust Statement */}
       <div className="w-full max-w-6xl mx-auto px-4 mb-12">
         <p className="text-[#444] dark:text-gray-300 text-xs md:text-sm text-center mt-6" style={{ fontFamily: "Raleway, sans-serif" }}>
           Trust Moon Navigation and Trading Company to be your reliable partner in navigating the complexities of logistics, ensuring a seamless and efficient specification for your business—whenever and wherever you need us most.
         </p>
       </div>
+
+      {/* Reasons Section */}
       <div className="w-full max-w-6xl mx-auto mb-24">
         <ReasonsGrid
           title="Reasons to Choose Moon Navigation and Trading Co. For Your Special Services"
@@ -135,17 +136,9 @@ function services() {
           ]}
         />
       </div>
+
       <GetQuoteComponent topic="Special Services" link="/ship-agency-forms" />
       <FAQSearch category="special-services" />
-    </>
-  );
-}
-
-export default function ShippingMethodsInfo() {
-  return (
-    <>
-      {overview()}
-      {services()}
     </>
   );
 }

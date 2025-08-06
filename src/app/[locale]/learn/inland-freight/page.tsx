@@ -462,10 +462,3 @@ export default function InlandFreightInfo() {
     );
 };
 
-    return (
-        <>
-            {renderOverview()}
-            {renderServices()}
-        </>
-    );
-}

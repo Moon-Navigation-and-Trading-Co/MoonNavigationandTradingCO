@@ -52,7 +52,7 @@ const serviceColumns = [
             href: "/learn-more/container", 
             isDropdown: true,
             dropdownItems: [
-                { name: "Less Than Container Load (LCL)", href: "/learn/less" },
+                { name: "Less Than Container Load (LCL)", href: "/learn/Less-Than-Container-Load" },
                 { name: "Full Container Load (FCL)", href: "/learn/full" },
                 { name: "Oversized Containers", href: "/learn/oversized" },
                 { name: "Out of Gauge Cargo", href: "/learn/out-gauge" },
@@ -63,11 +63,7 @@ const serviceColumns = [
           { 
             name: "Inland Freight", 
             href: "/learn-more/inland-freight", 
-            isDropdown: true,
-            dropdownItems: [
-                { name: "Standard Cargo", href: "/learn/standard" },
-                { name: "Special Cargo", href: "/learn/special" },
-            ]
+            isDropdown: false
           },
           { name: "Air Freight", href: "/learn-more/air-freight", isDropdown: false },
         ],
@@ -76,8 +72,8 @@ const serviceColumns = [
         title: "Expand Your Fleet and Capacity",
         description: "Flexible options to support and scale your operations.",
         items: [
-          { name: "Vessel Rentals and Purchases", href: "/buy-rent-vessels-forms" },
-          { name: "Container Rentals and Purchases", href: "/buy-rent-container-forms" },
+          { name: "Vessel Rentals and Purchases", href: "/learn/vessel" },
+          { name: "Container Rentals and Purchases", href: "/learn/container-purchases" },
         ],
       },
     ],
@@ -94,7 +90,7 @@ const serviceColumns = [
           { name: "Suez Canal Transit Passage", href: "/learn/suez-canal-transit-passage" },
           { name: "Transit Spare Parts", href: "/learn/spare-parts" },
           { name: "Bunkering | Oil Supply | Ship Chandlery", href: "/learn/bunkering" },
-          { name: "Special Services by Case", href: "/special-services-forms" },
+          { name: "Special Services by Case", href: "/learn/special" },
         ],
       },
       {
@@ -114,7 +110,7 @@ const serviceColumns = [
         description: "Reliable services to optimize vessel performance and technical operations.",
         items: [
           { name: "Ship Management", href: "/learn/ship-management" },
-          { name: "Docking and Maintenance", href: "/learn/docking" },
+          { name: "Docking and Maintenance", href: "/learn/dockingandmaintenance" },
         ],
       },
       {
