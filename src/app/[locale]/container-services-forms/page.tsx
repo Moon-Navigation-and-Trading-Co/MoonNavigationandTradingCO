@@ -283,7 +283,7 @@ const Page: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full">
-      <FormTabs tabData={tabData} />
+                  <FormTabs tabData={tabData} />
       <FAQSearch category="container" /> 
     </div>
   );

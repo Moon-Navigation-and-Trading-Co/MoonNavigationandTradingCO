@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import FormTabs from '@/components/form-tabs';
+import FormTabs from '@/components/form-tabs-variant-1';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
@@ -114,22 +114,15 @@ const Page: React.FC = () => {
 
     const tabData = [
         {
-            id: "international",
-            title: "International Trading",
-            content:
-                <>
-                    <InternationalTradingForm onSubmit={submitForm} />
-                </>
+            id: "international-trading",
+            title: "International Trading Services",
+            description: "Complete international trading and logistics services",
+            content: <InternationalTradingForm onSubmit={submitForm} />
         }
     ]
 
-
     return (
         <div className='flex flex-col w-full'>
-            <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('international')}</h1>
-                <p className=''>{t('international-p')}</p>
-            </div>
             <FormTabs tabData={tabData} />
             <FAQSearch category="international-trading" />
         </div>

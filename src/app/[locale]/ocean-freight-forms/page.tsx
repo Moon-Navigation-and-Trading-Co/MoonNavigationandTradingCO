@@ -10,6 +10,11 @@ import { useRouter } from 'next/navigation'
 import Spinner from '@/components/spinner';
 import RollOnOffForm from '@/components/roll-on-off-form';
 import { sendFormEmail } from '@/utils/email-helper';
+import { Button } from '@/components/ui/button';
+import OceanFreightQuotationForm from '@/components/ocean-freight-quotation-form';
+import LivestockTransportationForm from '@/components/livestock-transportation-form';
+import TankersQuotationForm from '@/components/tankers-quotation-form';
+import FAQSearch from '@/components/faq';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -90,6 +95,78 @@ const Page: React.FC = () => {
                 additional_email: formData.company_details.additional_email,
                 phone_number: formData.company_details.phone_number,
                 additional_phone_number: formData.company_details.additional_phone_number
+            };
+        } else if (formType === "ocean_freight_quotation") {
+            flattenedData = {
+                user_id: user?.id || null,
+                routing: JSON.stringify(formData.routing),
+                cargo_mode: formData.cargoMode,
+                itemized_cargo: formData.itemizedCargo ? JSON.stringify(formData.itemizedCargo) : null,
+                consolidated_cargo: formData.consolidatedCargo ? JSON.stringify(formData.consolidatedCargo) : null,
+                supporting_files: formData.supportingFiles,
+                additional_information: formData.additionalInformation,
+                effective_date: formData.effectiveDate,
+                expiry_date: formData.expiryDate,
+                service_contract_number: formData.serviceContractNumber,
+                additional_services: JSON.stringify(formData.additionalServices),
+                company_name: formData.companyDetails.companyName,
+                contact_person: formData.companyDetails.contactPerson,
+                title: formData.companyDetails.title,
+                city: formData.companyDetails.city,
+                country: formData.companyDetails.country,
+                email: formData.companyDetails.email,
+                additional_email: formData.companyDetails.additionalEmail,
+                phone: formData.companyDetails.phone,
+                additional_phone: formData.companyDetails.additionalPhone,
+                created_at: new Date().toISOString(),
+            };
+        } else if (formType === "livestock_transportation") {
+            flattenedData = {
+                user_id: user?.id || null,
+                routing: JSON.stringify(formData.routing),
+                effective_date: formData.dates.effectiveDate,
+                expiry_date: formData.dates.expiryDate,
+                livestock_details: JSON.stringify(formData.livestockDetails),
+                special_handling: formData.specialHandling,
+                supporting_files: formData.supportingFiles ? JSON.stringify(formData.supportingFiles) : null,
+                cargo_lifting_points: formData.cargoLiftingPoints || false,
+                additional_information: formData.additionalInformation,
+                service_contract: formData.serviceContract,
+                transport_modes: JSON.stringify(formData.transportModes),
+                additional_services: JSON.stringify(formData.additionalServices),
+                insurance: JSON.stringify(formData.insurance),
+                company_name: formData.companyDetails.companyName,
+                contact_person_name: formData.companyDetails.contactPerson,
+                title: formData.companyDetails.title,
+                city_country: formData.companyDetails.cityCountry,
+                company_email: formData.companyDetails.email,
+                additional_email: formData.companyDetails.additionalEmail,
+                phone_number: formData.companyDetails.phone,
+                additional_phone: formData.companyDetails.additionalPhone,
+            };
+        } else if (formType === "tankers_quotation") {
+            flattenedData = {
+                user_id: user?.id || null,
+                routing: JSON.stringify(formData.routing),
+                effective_date: formData.dates.effectiveDate,
+                expiry_date: formData.dates.expiryDate,
+                cargo_details: JSON.stringify(formData.cargoDetails),
+                vessel_specs: JSON.stringify(formData.vesselSpecs),
+                supporting_files: formData.supportingFiles ? JSON.stringify(formData.supportingFiles) : null,
+                cargo_lifting_points: formData.cargoLiftingPoints || false,
+                additional_information: formData.additionalInformation,
+                service_contract: formData.serviceContract,
+                safety_compliance: JSON.stringify(formData.safetyCompliance),
+                marine_insurance: JSON.stringify(formData.marineInsurance),
+                additional_services: JSON.stringify(formData.additionalServices),
+                company_name: formData.companyDetails.companyName,
+                contact_person_name: formData.companyDetails.contactPerson,
+                title: formData.companyDetails.title,
+                city_country: formData.companyDetails.cityCountry,
+                company_email: formData.companyDetails.email,
+                additional_email: formData.companyDetails.additionalEmail,
+                phone_number: formData.companyDetails.phone,
+                additional_phone: formData.companyDetails.additionalPhone,
             };
         }
 
@@ -174,6 +251,33 @@ const Page: React.FC = () => {
                 <>
                      <RollOnOffForm breakbulk_bool={true} onSubmit={(formData: any) => submitForm(formData, "breakbulk")} /> 
                 </>
+        },
+        {
+            id: "quotation",
+            title: "Ocean Freight Quotation",
+            description: "Comprehensive quotation form with itemized and consolidated cargo entry modes",
+            content:
+                <>
+                    <OceanFreightQuotationForm onSubmit={(formData: any) => submitForm(formData, "ocean_freight_quotation")} />
+                </>
+        },
+        {
+            id: "livestock",
+            title: "Live Stock Transportation",
+            description: "Specialized quotation form for livestock transportation with detailed animal information and special handling requirements",
+            content:
+                <>
+                    <LivestockTransportationForm onSubmit={(formData: any) => submitForm(formData, "livestock_transportation")} />
+                </>
+        },
+                              {
+                          id: "tankers",
+                          title: "Tankers",
+                          description: "Quotation form for tanker services including crude oil, refined petroleum, chemicals, and liquefied gases transportation",
+            content:
+                <>
+                    <TankersQuotationForm onSubmit={(formData: any) => submitForm(formData, "tankers_quotation")} />
+                </>
         }
 
 
@@ -182,11 +286,12 @@ const Page: React.FC = () => {
 
     return (
         <div className='flex flex-col w-full'>
-            {/* <div className='mt-20 flex flex-col gap-5 px-4'>
+            <div className='mt-20 flex flex-col gap-5 px-4'>
                 <h1 className='text-3xl font-bold'>{t('ocean')}</h1>
                 <p className=''>{t('ocean-p')}</p>
-            </div> */}
+            </div>
             <FormTabs tabData={tabData} />
+            <FAQSearch category="ocean-freight" />
         </div>
     );
 };

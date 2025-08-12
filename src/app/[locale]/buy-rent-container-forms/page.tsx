@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import FormTabs from '@/components/form-tabs';
+import FormTabs from '@/components/form-tabs-variant-1';
 import BuyContainerForm from '@/components/buy-container-form';
 import SellContainerForm from '@/components/sell-container-form';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
@@ -137,7 +137,8 @@ const Page: React.FC = () => {
     const tabData = [
         {
             id: "international",
-            title: "Buy Container",
+            title: "Container Purchases",
+            description: "Purchase containers for your shipping and storage needs",
             content:
                 <>
                     <BuyContainerForm onSubmit={(formData: any) => submitForm(formData, "buy_container")} />
@@ -145,7 +146,8 @@ const Page: React.FC = () => {
         },
         {
             id: "sell",
-            title: "Rent Container",
+            title: "Container Rentals",
+            description: "Rent containers for temporary or short-term requirements",
             content: <>
                 <SellContainerForm onSubmit={(formData: any) => submitForm(formData, "rent_container")} />
             </>
@@ -154,11 +156,7 @@ const Page: React.FC = () => {
 
 
     return (
-        <div className='Sell Containers'>
-            <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('inland')}</h1>
-                <p className=''>{t('inland-p')}</p>
-            </div>
+        <div className='flex flex-col w-full'>
             <FormTabs tabData={tabData} />
             <FAQSearch category="container-purchases-rentals" />
         </div>

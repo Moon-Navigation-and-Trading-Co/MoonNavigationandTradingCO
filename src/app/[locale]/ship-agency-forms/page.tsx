@@ -293,7 +293,7 @@ const Page: React.FC = () => {
           All our ship agency services are exclusively available at all Egyptian ports.*
         </p>
       </div>
-      <FormTabs tabData={tabData} />
+                  <FormTabs tabData={tabData} />
     </div>
   );
 };
