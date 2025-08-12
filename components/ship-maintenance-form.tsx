@@ -162,10 +162,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-                {/* Header */}
-                <div className="space-y-4">
-                    <h2 className="text-2xl font-bold">Docking and Maintenance</h2>
-                </div>
+
 
                 {/* Vessel Information */}
                 <div className="space-y-6">
@@ -536,7 +533,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                             </FormControl>
                             <FormLabel className="font-normal">Dry Docking</FormLabel>
                         </FormItem>
-                        <p className="text-sm text-muted-foreground ml-6">Note: Docking may be performed via floating dock depending on the vessel's specifications and dock availability.</p>
+                        <p className="text-sm text-muted-foreground ml-6">Note: Docking may be performed via floating dock depending on the vessel&apos;s specifications and dock availability.</p>
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -929,15 +926,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                {/* Important Information */}
-                <div className="space-y-4 p-4 bg-muted rounded-lg">
-                    <h3 className="text-lg font-semibold">Important Information</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• For quote requests with long-term validity, please contact us.</li>
-                        <li>• Please do not enter personal or financial information, such as credit card details or debit card details, anywhere in your request.</li>
-                        <li>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</li>
-                    </ul>
-                </div>
+
 
                 <Button type="submit" className="mt-8 w-[200px]">
                     Submit

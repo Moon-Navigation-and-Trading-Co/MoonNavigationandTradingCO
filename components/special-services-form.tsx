@@ -26,7 +26,7 @@ const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
             location: z.string().min(1, { message: t("Required") }),
         }),
         requested_services: z.string().min(1, { message: t("Required") }),
-        additional_information: z.string().optional(),
+        supporting_files: z.array(z.instanceof(File)).optional(),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("Required") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
@@ -52,7 +52,7 @@ const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                 location: '',
             },
             requested_services: '',
-            additional_information: '',
+            supporting_files: [],
             company_details: {
                 company_name: '',
                 contact_person_name: '',
@@ -73,10 +73,7 @@ const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-                {/* Header */}
-                <div className="space-y-4">
-                    <h2 className="text-2xl font-bold">Special Services</h2>
-                </div>
+
 
                 {/* Vessel Information */}
                 <div className="space-y-6">
@@ -231,20 +228,32 @@ const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                     </FormItem>
                 </div>
 
-                {/* Additional Information */}
+                {/* Supporting Files */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Additional Information</h3>
+                    <h3 className="text-xl font-semibold">Supporting files (Optional)</h3>
+                    <p className="text-sm text-gray-600">
+                        Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+                    </p>
                     <FormItem>
-                        <FormLabel>Special Requests / Notes</FormLabel>
                         <FormControl>
                             <Controller
                                 control={form.control}
-                                name="additional_information"
+                                name="supporting_files"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Textarea className="max-w-[600px] border-2 rounded-xl min-h-[100px]" placeholder="Additional information..." {...field} />
+                                        <Input
+                                            type="file"
+                                            multiple
+                                            accept=".pdf,.jpeg,.jpg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                                            onChange={(e) => {
+                                                const files = Array.from(e.target.files || []);
+                                                field.onChange(files);
+                                            }}
+                                            className="max-w-md"
+                                        />
                                         {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
+                                    </>
+                                )}
                             />
                         </FormControl>
                     </FormItem>
@@ -253,15 +262,7 @@ const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                {/* Important Information */}
-                <div className="space-y-4 p-4 bg-muted rounded-lg">
-                    <h3 className="text-lg font-semibold">Important Information</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• For quote requests with long-term validity, please contact us.</li>
-                        <li>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</li>
-                        <li>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</li>
-                    </ul>
-                </div>
+
 
                 <Button type="submit" className="mt-8 w-[200px]">
                     Submit

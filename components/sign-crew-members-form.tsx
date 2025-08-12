@@ -10,102 +10,148 @@ import { Checkbox } from './ui/checkbox';
 import PortCard from './port-card';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
-import { CircleMinus } from 'lucide-react';
+import { CircleMinus, Plus } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Textarea } from './ui/textarea';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 
+// Nationalities list
+const nationalities = [
+    "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguans", "Argentinean", "Armenian", "Australian",
+    "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Barbudans", "Batswana", "Belarusian", "Belgian",
+    "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe",
+    "Burmese", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese",
+    "Colombian", "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djibouti",
+    "Dominican", "Dutch", "East Timorese", "Ecuadorean", "Egyptian", "Emirian", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian",
+    "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek",
+    "Grenadian", "Guatemalan", "Guinea-Bissauan", "Guinean", "Guyanese", "Haitian", "Herzegovinian", "Honduran", "Hungarian", "I-Kiribati",
+    "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican",
+    "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kittian and Nevisian", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese",
+    "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivan",
+    "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian",
+    "Moroccan", "Mosotho", "Motswana", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Ni-Vanuatu", "Nicaraguan",
+    "Nigerian", "Nigerien", "North Korean", "Northern Irish", "Norwegian", "Omani", "Pakistani", "Palauan", "Panamanian", "Papua New Guinean",
+    "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran",
+    "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean",
+    "Slovakian", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer",
+    "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan",
+    "Trinidadian or Tobagonian", "Tunisian", "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Vietnamese",
+    "Welsh", "Yemenite", "Zambian", "Zimbabwean"
+];
 
+// Define the crew member schema
+const crewMemberSchema = z.object({
+    crew_number: z.number().min(1, "Crew number is required"),
+    rank: z.string().min(1, "Rank is required"),
+    nationality: z.string().min(1, "Nationality is required"),
+    airport_pickup: z.enum(['yes', 'no']).default('yes'),
+    hotel_accommodation: z.enum(['yes', 'no']).optional(),
+});
 
-// 1. Define a type-safe form handler using z.infer
+// Define the form schema
+const formSchema = z.object({
+    port: z.object({
+        name: z.string().min(1, { message: "Required" }),
+    }),
+    vessel: z.object({
+        name: z.string().min(1, { message: "Required" }),
+        imo: z.number({ message: "Number" }).min(0, { message: "Number" }),
+        location: z.enum(['at_anchor', 'at_berth', 'suez_canal_passage']).optional(),
+        flag: z.string().optional(),
+        port_of_crew_change: z.string().optional(),
+        eta: z.string().optional(),
+        etd: z.string().optional(),
+    }),
+    crew: z.object({
+        on: z.boolean().optional().default(false),
+        off: z.boolean().optional().default(false),
+        sign_on_members: z.array(crewMemberSchema).min(1, "At least one crew member is required for Sign On"),
+        sign_off_members: z.array(crewMemberSchema).optional(),
+        special_requests_on: z.string().optional(),
+        special_requests_off: z.string().optional(),
+        special_instructions: z.string().optional(),
+        supporting_files: z.any().optional(),
+    }),
+    company_details: z.object({
+        company_name: z.string().min(1, { message: "Company name is required" }),
+        contact_person_name: z.string().min(1, { message: "Contact person name is required" }),
+        title: z.string().min(1, { message: "Title is required" }),
+        country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
+        company_email: z.string().email({ message: "Valid email is required" }),
+        additional_email: z.string().optional(),
+        phone_number: z.string().min(1, { message: "Phone number is required" }),
+        additional_phone_number: z.string().optional(),
+    })
+});
+
+type FormData = z.infer<typeof formSchema>;
+
 const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
-    // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
-
-    // Define your Zod schema (as before)
-    const formSchema = z.object({
-        port: z.object({
-            name: z.string().min(1, { message: t("Required") }),
-        }),
-        vessel: z.object({
-            name: z.string().min(1, { message: t("Required") }),
-            imo: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
-            anchor: z.boolean().optional().default(false),
-            berth: z.boolean().optional().default(false),
-        }),
-        crew: z.object({
-            on: z.boolean().optional().default(false),
-            off: z.boolean().optional().default(false),
-            members_on: z
-                .array(
-                    z.object({
-                        number: z.number().optional().default(0),
-                        nationality: z.string().optional().default(""),
-                    })
-                )
-                .optional().default([]),
-            members_off: z
-                .array(
-                    z.object({
-                        number: z.number().optional().default(0),
-                        nationality: z.string().optional().default(""),
-                    })
-                )
-                .optional().default([]),
-            hotel_on: z.string().optional(),
-            hotel_off: z.string().optional(),
-            hotel_req_on: z.string().optional(),
-            hotel_req_off: z.string().optional(),
-            transportation_on: z.string().optional(),
-            transportation_off: z.string().optional(),
-            transportation_req_on: z.string().optional(),
-            transportation_req_off: z.string().optional(),
-        }),
-        company_details: z.object({
-            company_name: z.string().min(1, { message: t("CompanyName") }),
-            contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
-            title: z.string().min(1, { message: t("Title") }),
-            country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
-            company_email: z.string().email({ message: t("CompanyEmail") }),
-            additional_email: z.string().optional(),
-            phone_number: z.string().min(1, { message: t("PhoneNumber") }),
-            additional_phone_number: z.string().min(1, { message: t("PhoneNumber") }).optional(),
-        })
-        // Add more sections as needed
-    });
-
-    type FormData = z.infer<typeof formSchema>;
 
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            vessel: {
+                name: '',
+                imo: 0,
+                location: undefined,
+                flag: '',
+                port_of_crew_change: '',
+                eta: '',
+                etd: '',
+            },
             crew: {
-                members_on: [{ number: 0, nationality: "" }], // Initialize with one empty member
+                on: false,
+                off: false,
+                sign_on_members: [{ 
+                    crew_number: 1, 
+                    rank: '', 
+                    nationality: '', 
+                    airport_pickup: 'yes',
+                    hotel_accommodation: undefined 
+                }],
+                sign_off_members: [],
+                special_requests_on: '',
+                special_requests_off: '',
+                special_instructions: '',
+                supporting_files: undefined,
             },
         }
     });
 
-    const { fields: fieldsOn, append: appendOn, remove: removeOn } = useFieldArray({
+    const { fields: signOnFields, append: appendSignOn, remove: removeSignOn } = useFieldArray({
         control: form.control,
-        name: "crew.members_on",
+        name: "crew.sign_on_members",
     });
 
-    const { fields: fieldsOff, append: appendOff, remove: removeOff } = useFieldArray({
+    const { fields: signOffFields, append: appendSignOff, remove: removeSignOff } = useFieldArray({
         control: form.control,
-        name: "crew.members_off",
+        name: "crew.sign_off_members",
     });
 
     const watchSignOn = form.watch("crew.on");
     const watchSignOff = form.watch("crew.off");
-    const watchTransportOn = form.watch("crew.transportation_on");
-    const watchTransportOff = form.watch("crew.transportation_off");
 
-    // 2. Type-safe submit handler
-    const handleSubmit = (values: any) => {
+    // Add first row to Sign Off when it's selected
+    React.useEffect(() => {
+        if (watchSignOff && signOffFields.length === 0) {
+            appendSignOff({ 
+                crew_number: 1, 
+                rank: '', 
+                nationality: '', 
+                airport_pickup: 'yes',
+                hotel_accommodation: undefined 
+            });
+        }
+    }, [watchSignOff, signOffFields.length, appendSignOff]);
+
+    const handleSubmit = (values: FormData) => {
         console.log("Form submitted successfully:", values);
         onSubmit(values);
     };
-
 
     const handleError = (errors: any) => {
         console.error("Validation errors:", errors);
@@ -114,416 +160,428 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit, handleError)} className="space-y-8">
-
-                {/* Details */}
+                {/* Port and Vessel Details */}
                 <PortCard control={form.control} />
 
-                {/* Sign On/Off */}
-                <div>
-                    <h1 className='text-lg font-semibold pb-2'>Sign On/Off Crew Members</h1>
-                    <div className="flex px-4 pb-3 gap-5 w-full items-center">
-                        <Controller
-                            control={form.control}
-                            name="crew.on"
-                            render={({ field }) => (
-                                <>
+                {/* Sign On/Off Selection */}
+                <div className="space-y-4">
+                    <h2 className="text-lg font-semibold">Sign On/Off Crew Members</h2>
+                    
+                    <div className="flex gap-6">
+                        <div className="flex items-center space-x-2">
+                            <Controller
+                                control={form.control}
+                                name="crew.on"
+                                render={({ field }) => (
                                     <Checkbox
                                         checked={field.value}
                                         onCheckedChange={field.onChange}
-                                        id="on"
-                                        name="on"
+                                        id="sign-on"
                                     />
-                                    <label
-                                        htmlFor="on"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        {tt('crew-on')}
-                                    </label>
-                                </>
-                            )}
-                        />
-                    </div>
+                                )}
+                            />
+                            <label htmlFor="sign-on" className="text-sm font-medium">
+                                Sign On
+                            </label>
+                        </div>
 
-                    <div className="flex px-4 gap-5 w-full items-center">
-                        <Controller
-                            control={form.control}
-                            name="crew.off"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
+                        <div className="flex items-center space-x-2">
+                            <Controller
+                                control={form.control}
+                                name="crew.off"
+                                render={({ field }) => (
                                     <Checkbox
                                         checked={field.value}
                                         onCheckedChange={field.onChange}
-                                        id="off"
-                                        name="off"
+                                        id="sign-off"
                                     />
-                                    <label
-                                        htmlFor="off"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        {tt('crew-off')}
-                                    </label>
-                                </>
-                            )}
-                        />
+                                )}
+                            />
+                            <label htmlFor="sign-off" className="text-sm font-medium">
+                                Sign Off
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                {/* Sign on */}
-                {/* Crew number + nationality dynamic field */}
-                {watchSignOn &&
-                    <div className="flex flex-col gap-4">
-                        <h2 className='font-semibold'>Sign On Members</h2>
-                        {fieldsOn.map((field, index) => (
-                            <div key={field.id} className="flex gap-4">
-                                {/* Crew Number Field */}
-                                <FormItem>
-                                    <FormLabel id={`crew.members_on.${index}.number`}>{tt('crew-number')}</FormLabel>
-                                    <FormControl>
-                                        <Controller
-                                            control={form.control}
-                                            name={`crew.members_on.${index}.number`}
-                                            render={({ field, fieldState: { error } }) => (
-                                                <>
-                                                    <Input
-                                                        className="max-w-[100px] border-2 rounded-xl"
-                                                        type="number"
-                                                        placeholder="No."
-                                                        {...field}
-                                                        value={field.value || ''}
-                                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                                                    />
-                                                    {error && <p className="text-red-500">{error.message}</p>}
-                                                </>
-                                            )}
-                                        />
-                                    </FormControl>
-                                </FormItem>
-
-                                {/* Nationality Field */}
-                                <FormItem>
-                                    <FormLabel htmlFor={`crew.members_on.${index}.nationality`}>{tt("crew-nationality")}</FormLabel>
-                                    <FormControl>
-                                        <Controller
-                                            control={form.control}
-                                            name={`crew.members_on.${index}.nationality`}
-                                            render={({ field, }) => (
-                                                <Input
-                                                    className="max-w-[150px] border-2 rounded-xl"
-                                                    placeholder="Nationality"
-                                                    {...field}
+                {/* Sign On Section */}
+                {watchSignOn && (
+                    <div className="space-y-6">
+                        <h3 className="text-lg font-semibold text-blue-600">Sign On Crew Members</h3>
+                        
+                        <Table className="border rounded-lg">
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead className="w-[60px]">Row</TableHead>
+                                        <TableHead className="w-[100px]">Crew Number</TableHead>
+                                        <TableHead className="w-[150px]">Rank</TableHead>
+                                        <TableHead className="w-[150px]">Nationality</TableHead>
+                                        <TableHead className="w-[200px]">Airport Pickup Required</TableHead>
+                                        <TableHead className="w-[200px]">Hotel Accommodation Needed</TableHead>
+                                        <TableHead className="w-[80px]">Actions</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {signOnFields.map((field, index) => (
+                                        <TableRow key={field.id}>
+                                            <TableCell className="text-center font-medium">
+                                                {index + 1}
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_on_members.${index}.crew_number`}
+                                                    render={({ field }) => (
+                                                        <Input
+                                                            type="number"
+                                                            min="1"
+                                                            className="w-20"
+                                                            {...field}
+                                                            onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
+                                                        />
+                                                    )}
                                                 />
-                                            )}
-                                        />
-                                    </FormControl>
-                                </FormItem>
-
-                                {/* Remove Button */}
-                                <div className='flex items-end'>
-                                    <Button className='rounded-lg hover:bg-accent ' variant={'outline'} type="button" onClick={() => removeOn(index)}>
-                                        <CircleMinus className='text-red-500' />
-                                    </Button>
-                                </div>
-
-                            </div>
-                        ))}
-
-                        {/* Add More Crew Button */}
-                        <Button
-                            type="button"
-                            onClick={() => appendOn({ number: 0, nationality: "" })}
-                            className="max-w-[200px] mt-2"
-                        >
-                            Add More Nationalities
-                        </Button>
-
-                        {/* radio buttons hotel for 1 night? field */}
-
-                        <div className="pt-4">
-                            <h1 className="text-sm font-semibold pb-4">{tt('hotel')}</h1>
-                            <div className=" grid md:grid-cols-3 rounded-3xl">
-                                {/* Radio Group with two items */}
-                                <FormItem className="space-y-3">
-                                    <Controller
-                                        control={form.control}
-                                        name="crew.hotel_on" // Use the correct form field name
-                                        defaultValue="no" // Set a default value
-                                        render={({ field, fieldState: { error } }) => (
-                                            <RadioGroup
-                                                onValueChange={field.onChange} // Update form state
-                                                value={field.value} // The selected value
-                                                className="flex flex-col space-y-0"
-                                            >
-                                                <div className="flex items-center space-x-3">
-                                                    <RadioGroupItem value="yes" />
-                                                    <FormLabel className="font-normal">{tt("yes")}</FormLabel>
-                                                </div>
-
-                                                <div className="flex items-center space-x-3">
-                                                    <RadioGroupItem value="no" />
-                                                    <FormLabel className="font-normal">{tt("no")}</FormLabel>
-                                                </div>
-                                            </RadioGroup>
-                                        )}
-                                    />
-                                    <FormMessage />
-                                </FormItem>
-                            </div>
-                        </div>
-
-                        {/* Hotel Request Field */}
-                        <FormItem>
-                            <FormLabel htmlFor="crew.hotel_req_on" id="crew.hotel_req_on" >{tt('hotel-req')}</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="crew.hotel_req_on"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input id="crew.hotel_req_on" className="max-w-[300px]  border-2 rounded-xl" placeholder="Hotel Special Request" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
-                                />
-                            </FormControl>
-                            <p className='text-red-500 text-xs px-2'>Please declare any special requests for hotel </p>
-                        </FormItem>
-
-                        {/* radio buttons transportation? field */}
-                        <div className="pt-4">
-                            <h1 className="text-sm font-semibold pb-4">{tt('transportation')}</h1>
-                            <div className=" grid md:grid-cols-3 rounded-3xl">
-                                {/* Radio Group with two items */}
-                                <FormItem className="space-y-3">
-                                    <Controller
-                                        control={form.control}
-                                        name="crew.transportation_on" // Use the correct form field name
-                                        defaultValue="no" // Set a default value
-                                        render={({ field }) => (
-                                            <RadioGroup
-                                                onValueChange={field.onChange} // Update form state
-                                                value={field.value} // The selected value
-                                                className="flex flex-col space-y-0"
-                                            >
-                                                {/* Standard Transportation Method */}
-                                                <div className="flex items-center space-x-3">
-                                                    <RadioGroupItem value="yes" />
-                                                    <FormLabel className="font-normal">{tt("yes")}</FormLabel>
-                                                </div>
-
-                                                {/* ULD Transportation Method */}
-                                                <div className="flex items-center space-x-3">
-                                                    <RadioGroupItem value="no" />
-                                                    <FormLabel className="font-normal">{tt("no")}</FormLabel>
-                                                </div>
-                                            </RadioGroup>
-                                        )}
-                                    />
-                                    <FormMessage />
-                                </FormItem>
-                            </div>
-                        </div>
-
-                        {/* From Field */}
-                        {watchTransportOn === "yes" &&
-                            <FormItem>
-                                <FormLabel htmlFor="crew.transportation_req_on" id="crew.transportation_req_on" >{tt('transportation-req')}</FormLabel>
-                                <FormControl>
-                                    <Controller
-                                        control={form.control}
-                                        name="crew.transportation_req_on"
-                                        render={({ field, fieldState: { error } }) => (
-                                            <>
-                                                <Input id="crew.transportation_req_on" className="max-w-[300px]  border-2 rounded-xl" placeholder="Airport Name" {...field} />
-                                                {error && <p className="text-red-500">{error.message}</p>}
-                                            </>)}
-                                    />
-                                </FormControl>
-                            </FormItem>
-                        }
-
-                        <p className='text-sm text-red-500'>kindly note that for some nationalities the transportation is a must.</p>
-
-
-                    </div>
-                }
-
-                {/* Crew number + nationality dynamic field */}
-                {watchSignOff &&
-
-                    <div className="flex flex-col gap-4">
-                        <h2 className='font-semibold'>Sign Off Members</h2>
-                        {fieldsOff.map((field, index) => (
-                            <div key={field.id} className="flex gap-4">
-                                {/* Crew Number Field */}
-                                <FormItem>
-                                    <FormLabel id={`crew.members_off.${index}.number`}>{tt('crew-number')}</FormLabel>
-                                    <FormControl>
-                                        <Controller
-                                            control={form.control}
-                                            name={`crew.members_off.${index}.number`}
-                                            render={({ field, fieldState: { error } }) => (
-                                                <>
-                                                    <Input
-                                                        className="max-w-[100px] border-2 rounded-xl"
-                                                        type="number"
-                                                        placeholder="No."
-                                                        {...field}
-                                                        value={field.value || ''}
-                                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                                                    />
-                                                    {error && <p className="text-red-500">{error.message}</p>}
-                                                </>
-                                            )}
-                                        />
-                                    </FormControl>
-                                </FormItem>
-
-                                {/* Nationality Field */}
-                                <FormItem>
-                                    <FormLabel htmlFor={`crew.members_off.${index}.nationality`}>{tt("crew-nationality")}</FormLabel>
-                                    <FormControl>
-                                        <Controller
-                                            control={form.control}
-                                            name={`crew.members_off.${index}.nationality`}
-                                            render={({ field, }) => (
-                                                <Input
-                                                    className="max-w-[150px] border-2 rounded-xl"
-                                                    placeholder="Nationality"
-                                                    {...field}
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_on_members.${index}.rank`}
+                                                    render={({ field }) => (
+                                                        <Input
+                                                            placeholder="Enter rank"
+                                                            {...field}
+                                                        />
+                                                    )}
                                                 />
-                                            )}
-                                        />
-                                    </FormControl>
-                                </FormItem>
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_on_members.${index}.nationality`}
+                                                    render={({ field }) => (
+                                                        <Select onValueChange={field.onChange} value={field.value}>
+                                                            <SelectTrigger className="w-full">
+                                                                <SelectValue placeholder="Select nationality" />
+                                                            </SelectTrigger>
+                                                            <SelectContent className="max-h-[200px]">
+                                                                {nationalities.map((nationality) => (
+                                                                    <SelectItem key={nationality} value={nationality}>
+                                                                        {nationality}
+                                                                    </SelectItem>
+                                                                ))}
+                                                            </SelectContent>
+                                                        </Select>
+                                                    )}
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_on_members.${index}.airport_pickup`}
+                                                    render={({ field }) => (
+                                                        <RadioGroup
+                                                            value={field.value}
+                                                            onValueChange={field.onChange}
+                                                            className="flex space-x-4"
+                                                        >
+                                                            <div className="flex items-center space-x-2">
+                                                                <RadioGroupItem value="yes" id={`airport-yes-${index}`} />
+                                                                <label htmlFor={`airport-yes-${index}`} className="text-sm">Yes</label>
+                                                            </div>
+                                                            <div className="flex items-center space-x-2">
+                                                                <RadioGroupItem value="no" id={`airport-no-${index}`} />
+                                                                <label htmlFor={`airport-no-${index}`} className="text-sm">No</label>
+                                                            </div>
+                                                        </RadioGroup>
+                                                    )}
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_on_members.${index}.hotel_accommodation`}
+                                                    render={({ field }) => (
+                                                        <RadioGroup
+                                                            value={field.value || ''}
+                                                            onValueChange={field.onChange}
+                                                            className="flex space-x-4"
+                                                        >
+                                                            <div className="flex items-center space-x-2">
+                                                                <RadioGroupItem value="yes" id={`hotel-yes-${index}`} />
+                                                                <label htmlFor={`hotel-yes-${index}`} className="text-sm">Yes</label>
+                                                            </div>
+                                                            <div className="flex items-center space-x-2">
+                                                                <RadioGroupItem value="no" id={`hotel-no-${index}`} />
+                                                                <label htmlFor={`hotel-no-${index}`} className="text-sm">No</label>
+                                                            </div>
+                                                        </RadioGroup>
+                                                    )}
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button
+                                                    type="button"
+                                                    variant="outline"
+                                                    onClick={() => removeSignOn(index)}
+                                                    className="text-red-500 hover:text-red-700 p-2"
+                                                >
+                                                    <CircleMinus className="h-4 w-4" />
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
 
-                                {/* Remove Button */}
-                                <div className='flex items-end'>
-                                    <Button className='rounded-lg hover:bg-gray-200 dark:hover:bg-accent  ' variant={'outline'} type="button" onClick={() => removeOff(index)}>
-                                        <CircleMinus className='text-red-500' />
-                                    </Button>
-                                </div>
-
-                            </div>
-                        ))}
-
-                        {/* Add More Crew Button */}
-                        <Button
-                            type="button"
-                            onClick={() => appendOff({ number: 0, nationality: "" })}
-                            className="max-w-[200px] mt-2"
-                        >
-                            Add More Nationalities
-                        </Button>
-
-                        {/* radio buttons hotel for 1 night? field */}
-
-                        <div className="pt-4">
-                            <h1 className="text-sm font-semibold pb-4">{tt('hotel')}</h1>
-                            <div className=" grid md:grid-cols-3  rounded-3xl">
-                                {/* Radio Group with two items */}
-                                <FormItem className="space-y-3">
-                                    <Controller
-                                        control={form.control}
-                                        name="crew.hotel_off" // Use the correct form field name
-                                        defaultValue="no" // Set a default value
-                                        render={({ field, fieldState: { error } }) => (
-                                            <RadioGroup
-                                                onValueChange={field.onChange} // Update form state
-                                                value={field.value} // The selected value
-                                                className="flex flex-col space-y-0"
-                                            >
-                                                {/* Standard Transportation Method */}
-                                                <div className="flex items-center space-x-3">
-                                                    <RadioGroupItem value="yes" />
-                                                    <FormLabel className="font-normal">{tt("yes")}</FormLabel>
-                                                </div>
-
-                                                {/* ULD Transportation Method */}
-                                                <div className="flex items-center space-x-3">
-                                                    <RadioGroupItem value="no" />
-                                                    <FormLabel className="font-normal">{tt("no")}</FormLabel>
-                                                </div>
-                                            </RadioGroup>
-                                        )}
-                                    />
-                                    <FormMessage />
-                                </FormItem>
-                            </div>
+                        <div className="space-y-2">
+                            <Button
+                                type="button"
+                                onClick={() => appendSignOn({ 
+                                    crew_number: signOnFields.length + 1, 
+                                    rank: '', 
+                                    nationality: '', 
+                                    airport_pickup: 'yes',
+                                    hotel_accommodation: undefined 
+                                })}
+                                className="flex items-center gap-2"
+                            >
+                                <Plus className="h-4 w-4" />
+                                Add Row
+                            </Button>
+                            
+                            <p className="text-red-500 text-sm font-medium">
+                                Please insert quantity for each nationality
+                            </p>
                         </div>
 
-                        {/* From Field */}
-                        <FormItem>
-                            <FormLabel htmlFor="crew.hotel_req_off" id="crew.hotel_req_off" >{tt('hotel-req')}</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="crew.hotel_req_off"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Textarea id="crew.hotel_req_off" className="max-w-[300px]  border-2 rounded-xl" placeholder="Hotel Request" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
-                                />
-                            </FormControl>
-                            <p className='text-red-500 text-xs px-2'>Please declare any special requests for hotel </p>
-                        </FormItem>
-
-                        {/* radio buttons transportation? field */}
-                        <div className="pt-4">
-                            <h1 className="text-sm font-semibold pb-4">{tt('transportation')}</h1>
-                            <div className=" grid md:grid-cols-3 rounded-3xl">
-                                {/* Radio Group with two items */}
-                                <FormItem className="space-y-3">
-                                    <Controller
-                                        control={form.control}
-                                        name="crew.transportation_off" // Use the correct form field name
-                                        defaultValue="no" // Set a default value
-                                        render={({ field, fieldState: { error } }) => (
-                                            <RadioGroup
-                                                onValueChange={field.onChange} // Update form state
-                                                value={field.value} // The selected value
-                                                className="flex flex-col space-y-0"
-                                            >
-                                                {/* Standard Transportation Method */}
-                                                <div className="flex items-center space-x-3">
-                                                    <RadioGroupItem value="yes" />
-                                                    <FormLabel className="font-normal">{tt("yes")}</FormLabel>
-                                                </div>
-
-                                                {/* ULD Transportation Method */}
-                                                <div className="flex items-center space-x-3">
-                                                    <RadioGroupItem value="no" />
-                                                    <FormLabel className="font-normal">{tt("no")}</FormLabel>
-                                                </div>
-                                            </RadioGroup>
-                                        )}
+                        <div className="space-y-2">
+                            <FormLabel>Special Requests</FormLabel>
+                            <Controller
+                                control={form.control}
+                                name="crew.special_requests_on"
+                                render={({ field }) => (
+                                    <Textarea
+                                        placeholder="Enter any special requests for Sign On crew members..."
+                                        className="min-h-[100px]"
+                                        {...field}
                                     />
-                                    <FormMessage />
-                                </FormItem>
-                            </div>
+                                )}
+                            />
                         </div>
-
-                        {/* From Field */}
-                        {watchTransportOff === "yes" &&
-                            <FormItem>
-                                <FormLabel htmlFor="crew.transportation_req_off" id="crew.transportation_req_off" >{tt('transportation-req')}</FormLabel>
-                                <FormControl>
-                                    <Controller
-                                        control={form.control}
-                                        name="crew.transportation_req_off"
-                                        render={({ field, fieldState: { error } }) => (
-                                            <>
-                                                <Input id="crew.transportation_req_off" className="max-w-[300px]  border-2 rounded-xl" placeholder="Airport Name" {...field} />
-                                                {error && <p className="text-red-500">{error.message}</p>}
-                                            </>)}
-                                    />
-                                </FormControl>
-                            </FormItem>
-                        }
-                        <p className='text-sm text-red-500'>kindly note that for some nationalities the transportation is a must.</p>
-
-
                     </div>
-                }
+                )}
+
+                {/* Sign Off Section */}
+                {watchSignOff && (
+                    <div className="space-y-6">
+                        <h3 className="text-lg font-semibold text-blue-600">Sign Off Crew Members</h3>
+                        
+                        <Table className="border rounded-lg">
+                                <TableHeader>
+                                    <TableRow>
+                                        <TableHead className="w-[60px]">Row</TableHead>
+                                        <TableHead className="w-[100px]">Crew Number</TableHead>
+                                        <TableHead className="w-[150px]">Rank</TableHead>
+                                        <TableHead className="w-[150px]">Nationality</TableHead>
+                                        <TableHead className="w-[200px]">Airport Dropoff Required</TableHead>
+                                        <TableHead className="w-[200px]">Hotel Accommodation Needed</TableHead>
+                                        <TableHead className="w-[80px]">Actions</TableHead>
+                                    </TableRow>
+                                </TableHeader>
+                                <TableBody>
+                                    {signOffFields.map((field, index) => (
+                                        <TableRow key={field.id}>
+                                            <TableCell className="text-center font-medium">
+                                                {index + 1}
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_off_members.${index}.crew_number`}
+                                                    render={({ field }) => (
+                                                        <Input
+                                                            type="number"
+                                                            min="1"
+                                                            className="w-20"
+                                                            {...field}
+                                                            onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
+                                                        />
+                                                    )}
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_off_members.${index}.rank`}
+                                                    render={({ field }) => (
+                                                        <Input
+                                                            placeholder="Enter rank"
+                                                            {...field}
+                                                        />
+                                                    )}
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_off_members.${index}.nationality`}
+                                                    render={({ field }) => (
+                                                        <Select onValueChange={field.onChange} value={field.value}>
+                                                            <SelectTrigger className="w-full">
+                                                                <SelectValue placeholder="Select nationality" />
+                                                            </SelectTrigger>
+                                                            <SelectContent className="max-h-[200px]">
+                                                                {nationalities.map((nationality) => (
+                                                                    <SelectItem key={nationality} value={nationality}>
+                                                                        {nationality}
+                                                                    </SelectItem>
+                                                                ))}
+                                                            </SelectContent>
+                                                        </Select>
+                                                    )}
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_off_members.${index}.airport_pickup`}
+                                                    render={({ field }) => (
+                                                        <RadioGroup
+                                                            value={field.value}
+                                                            onValueChange={field.onChange}
+                                                            className="flex space-x-4"
+                                                        >
+                                                            <div className="flex items-center space-x-2">
+                                                                <RadioGroupItem value="yes" id={`dropoff-yes-${index}`} />
+                                                                <label htmlFor={`dropoff-yes-${index}`} className="text-sm">Yes</label>
+                                                            </div>
+                                                            <div className="flex items-center space-x-2">
+                                                                <RadioGroupItem value="no" id={`dropoff-no-${index}`} />
+                                                                <label htmlFor={`dropoff-no-${index}`} className="text-sm">No</label>
+                                                            </div>
+                                                        </RadioGroup>
+                                                    )}
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Controller
+                                                    control={form.control}
+                                                    name={`crew.sign_off_members.${index}.hotel_accommodation`}
+                                                    render={({ field }) => (
+                                                        <RadioGroup
+                                                            value={field.value || ''}
+                                                            onValueChange={field.onChange}
+                                                            className="flex space-x-4"
+                                                        >
+                                                            <div className="flex items-center space-x-2">
+                                                                <RadioGroupItem value="yes" id={`hotel-off-yes-${index}`} />
+                                                                <label htmlFor={`hotel-off-yes-${index}`} className="text-sm">Yes</label>
+                                                            </div>
+                                                            <div className="flex items-center space-x-2">
+                                                                <RadioGroupItem value="no" id={`hotel-off-no-${index}`} />
+                                                                <label htmlFor={`hotel-off-no-${index}`} className="text-sm">No</label>
+                                                            </div>
+                                                        </RadioGroup>
+                                                    )}
+                                                />
+                                            </TableCell>
+                                            <TableCell>
+                                                <Button
+                                                    type="button"
+                                                    variant="outline"
+                                                    onClick={() => removeSignOff(index)}
+                                                    className="text-red-500 hover:text-red-700 p-2"
+                                                >
+                                                    <CircleMinus className="h-4 w-4" />
+                                                </Button>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+
+                        <div className="space-y-2">
+                            <Button
+                                type="button"
+                                onClick={() => appendSignOff({ 
+                                    crew_number: signOffFields.length + 1, 
+                                    rank: '', 
+                                    nationality: '', 
+                                    airport_pickup: 'yes',
+                                    hotel_accommodation: undefined 
+                                })}
+                                className="flex items-center gap-2"
+                            >
+                                <Plus className="h-4 w-4" />
+                                Add Row
+                            </Button>
+                            
+                            <p className="text-red-500 text-sm font-medium">
+                                Please insert quantity for each nationality
+                            </p>
+                        </div>
+
+                        <div className="space-y-2">
+                            <FormLabel>Special Requests</FormLabel>
+                            <Controller
+                                control={form.control}
+                                name="crew.special_requests_off"
+                                render={({ field }) => (
+                                    <Textarea
+                                        placeholder="Enter any special requests for Sign Off crew members..."
+                                        className="min-h-[100px]"
+                                        {...field}
+                                    />
+                                )}
+                            />
+                        </div>
+                    </div>
+                )}
+
+                {/* Additional Information Section */}
+                <div className="space-y-6">
+                    <h3 className="text-lg font-semibold">Additional Information</h3>
+                    
+                    <div className="space-y-4">
+                        <div className="space-y-2">
+                            <FormLabel>Any Special Instructions or Notes:</FormLabel>
+                            <Controller
+                                control={form.control}
+                                name="crew.special_instructions"
+                                render={({ field }) => (
+                                    <Textarea
+                                        placeholder="Enter any special instructions or notes..."
+                                        className="min-h-[120px]"
+                                        {...field}
+                                    />
+                                )}
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <FormLabel>Supporting files (optional)</FormLabel>
+                            <p className="text-sm text-gray-600">
+                                Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+                            </p>
+                            <Controller
+                                control={form.control}
+                                name="crew.supporting_files"
+                                render={({ field }) => (
+                                    <Input
+                                        type="file"
+                                        multiple
+                                        accept=".pdf,.jpeg,.jpg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                                        onChange={(e) => {
+                                            const files = Array.from(e.target.files || []);
+                                            field.onChange(files);
+                                        }}
+                                        className="max-w-md"
+                                    />
+                                )}
+                            />
+                        </div>
+                    </div>
+                </div>
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
