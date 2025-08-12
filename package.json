@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npm run dev"
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -21,8 +23,8 @@
     "@radix-ui/react-slider": "^1.2.1",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-toast": "^1.2.2",
-    "@supabase/ssr": "latest",
-    "@supabase/supabase-js": "^2.49.10",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.54.0",
     "@types/date-fns": "^2.6.3",
     "@types/nodemailer": "^6.4.17",
     "@types/react-calendar": "^4.1.0",
@@ -32,6 +34,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
+    "critters": "^0.0.23",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.34.1",
@@ -42,7 +45,7 @@
     "lucide": "^0.447.0",
     "lucide-react": "^0.436.0",
     "next": "^15.4.1",
-    "next-intl": "^3.20.0",
+    "next-intl": "^3.21.0",
     "next-themes": "^0.3.0",
     "nodemailer": "^7.0.3",
     "postgres": "^3.4.4",
@@ -63,6 +66,8 @@
     "@types/react": "18.2.46",
     "@types/react-dom": "18.2.18",
     "drizzle-kit": "^0.25.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^15.4.1",
     "postcss": "8.4.33",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "3.4.1",
