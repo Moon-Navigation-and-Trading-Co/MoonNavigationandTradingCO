@@ -14,7 +14,7 @@ export default function GetQuoteComponent({ topic, link = "/ocean-freight-forms"
         <div className="flex-1 flex flex-col justify-center">
           <h2 className="text-3xl font-raleway font-regular mb-4 text-black">Get your Quote with Us</h2>
           <p className="text-base font-raleway font-light text-[#222] mb-6 max-w-2xl">
-            Our streamlined {topic} quotation process is designed for efficiency and precision. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will assess your shipment's dimensions, weight, handling requirements, and route feasibility to select the best transport solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless execution for your specialized cargo.
+            Our streamlined {topic} quotation process is designed for efficiency and precision. At Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our Quotation by Request system. Simply fill out our short form to initiate your request. Once submitted, our team will assess your shipment&apos;s dimensions, weight, handling requirements, and route feasibility to select the best transport solution. You will receive a customized quotation directly in your email, ensuring accurate pricing and seamless execution for your specialized cargo.
           </p>
           
           <Link href={link} title={`Request a ${topic} Quote`}>

@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Input } from "./ui/input";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface FAQItem {
     question: string;
@@ -1850,79 +1851,346 @@ const defaultFAQs: FAQItem[] = [
 
 export default function FAQSearch({ category }: { category?: string }) {
     const [search, setSearch] = useState("");
+    const [openItems, setOpenItems] = useState<Set<string>>(new Set());
     const faqs = defaultFAQs;
-  
+
+    // Handle URL parameters for direct linking to FAQ items
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const urlParams = new URLSearchParams(window.location.search);
+            const faqId = urlParams.get('faq');
+            if (faqId) {
+                // Create a mapping of sample questions to actual FAQ questions
+                const questionMapping: Record<string, string> = {
+                    // Ocean Freight
+                    "what-types-of-vessels-do-you-offer": "What types of vessels do you offer?",
+                    "what-vessels-do-you-use-for-transport": "What vessels do you use for transport?",
+                    "what-safety-measures-do-you-implement-for-dangerous-goods-transport": "What safety measures do you implement for dangerous goods transport?",
+                    
+                    // Air Freight
+                    "what-air-freight-services-do-you-provide": "What air freight services do you provide?",
+                    "how-do-you-handle-temperature-sensitive-cargo": "How do you handle temperature-sensitive cargo?",
+                    "are-you-certified-to-ship-dangerous-goods": "Are you certified to ship dangerous goods?",
+                    
+                    // Inland Freight
+                    "what-inland-freight-services-do-you-offer": "What inland freight services do you offer?",
+                    "how-do-you-transport-oversized-or-heavy-cargo": "How do you transport oversized or heavy cargo?",
+                    "what-are-the-benefits-of-rail-freight-over-road-transport": "What are the benefits of rail freight over road transport?",
+                    
+                    // Container Services
+                    "what-is-the-difference-between-fcl-and-lcl-shipping": "What is the difference between FCL and LCL shipping?",
+                    "how-do-you-handle-oversized-and-out-of-gauge-cargo": "How do you handle oversized and out-of-gauge cargo?",
+                    "what-inland-container-services-do-you-provide": "What inland container services do you provide?",
+                    
+                    // International Trading
+                    "what-international-trading-services-do-you-provide": "What international trading services do you provide?",
+                    "what-customs-clearance-services-do-you-offer": "What customs clearance services do you offer?",
+                    "how-do-you-manage-international-payment-risks": "How do you manage international payment risks?",
+                    
+                    // Ship Agency
+                    "how-do-i-request-a-pda-proforma-disbursement-account": "How do I request a PDA (Proforma Disbursement Account)?",
+                    "how-do-you-support-vessels-transiting-the-suez-canal": "How do you support vessels transiting the Suez Canal?",
+                    "what-bunkering-and-fuel-supply-services-do-you-offer": "What bunkering and fuel supply services do you offer?",
+                    
+                    // Customs Clearance
+                    "how-long-does-the-customs-clearance-process-take": "How long does the customs clearance process take?",
+                    "do-you-handle-customs-clearance-for-hazardous-cargo": "Do you handle customs clearance for hazardous cargo?",
+                    
+                    // Ship Management
+                    "what-types-of-ship-management-services-do-you-provide": "What types of ship management services do you provide?",
+                    "how-does-your-crew-management-process-work": "How does your crew management process work?",
+                    "what-is-included-in-your-technical-management-service": "What is included in your technical management service?",
+                    
+                    // Docking & Maintenance
+                    "what-is-the-difference-between-dry-docking-and-wet-docking": "What is the difference between dry docking and wet docking?",
+                    "what-types-of-vessels-do-you-serve": "What types of vessels do you serve?",
+                    "what-does-vessel-maintenance-include": "What does vessel maintenance include?",
+                    
+                    // Investment
+                    "what-types-of-investment-opportunities-do-you-offer": "What types of investment opportunities do you offer?",
+                    "what-is-the-minimum-investment-amount-required": "What is the minimum investment amount required?",
+                    "are-these-investments-secure": "Are these investments secure?"
+                };
+
+                // First try to find the exact mapped question
+                const mappedQuestion = questionMapping[faqId.toLowerCase()];
+                let faqIndex = -1;
+
+                if (mappedQuestion) {
+                    faqIndex = faqs.findIndex(faq => faq.question === mappedQuestion);
+                }
+
+                // If no mapped question found, try direct matching
+                if (faqIndex === -1) {
+                    faqIndex = faqs.findIndex(faq => {
+                        const questionId = faq.question.toLowerCase()
+                            .replace(/[^a-z0-9\s]/g, '')
+                            .replace(/\s+/g, '-')
+                            .replace(/-+/g, '-')
+                            .replace(/^-|-$/g, '');
+                        return questionId === faqId.toLowerCase();
+                    });
+                }
+
+                // If still no match, try partial matching
+                if (faqIndex === -1) {
+                    faqIndex = faqs.findIndex(faq => {
+                        const questionWords = faq.question.toLowerCase().split(' ');
+                        const searchWords = faqId.toLowerCase().split('-');
+                        
+                        // Check if most words match
+                        const matchingWords = searchWords.filter(word => 
+                            questionWords.some(qWord => qWord.includes(word))
+                        );
+                        
+                        return matchingWords.length >= Math.min(3, searchWords.length);
+                    });
+                }
+                
+                if (faqIndex !== -1) {
+                    setOpenItems(new Set([`faq-${faqIndex}`]));
+                    // Scroll to the FAQ item
+                    setTimeout(() => {
+                        const element = document.getElementById(`faq-${faqIndex}`);
+                        if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 100);
+                }
+            }
+        }
+    }, [faqs]);
+
+    // Helper function to get category titles
+    const getCategoryTitle = (cat: string): string => {
+        const titles: Record<string, string> = {
+            "ocean-freight": "Ocean Freight Questions",
+            "container-services": "Container Services Questions", 
+            "ship-agency": "Ship Agency Questions",
+            "air-freight": "Air Freight Questions",
+            "inland-freight": "Inland Freight Questions",
+            "international-trading": "International Trading Questions",
+            "customs-clearance": "Customs Clearance Questions",
+            "ship-management": "Ship Management Questions",
+            "docking-maintenance": "Docking & Maintenance Questions",
+            "investment": "Investment Opportunities Questions"
+        };
+        return titles[cat] || `${cat.charAt(0).toUpperCase() + cat.slice(1).replace('-', ' ')} Questions`;
+    };
+
+    // Helper function to generate FAQ link
+    const getFAQLink = (question: string): string => {
+        const baseUrl = category ? `/faq?topic=${category}` : '/faq';
+        // Create a more robust ID that preserves key words
+        const faqId = question.toLowerCase()
+            .replace(/[^a-z0-9\s]/g, '') // Remove special characters but keep spaces
+            .replace(/\s+/g, '-') // Replace spaces with hyphens
+            .replace(/-+/g, '-') // Replace multiple hyphens with single
+            .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+        return `${baseUrl}&faq=${faqId}`;
+    };
+
     const filteredFAQs = useMemo(() => {
-      if (!search.trim()) return [];
-      const lower = search.toLowerCase();
-      return faqs.filter(
-        (faq) =>
-          faq.question.toLowerCase().includes(lower) ||
-          faq.answer.toLowerCase().includes(lower)
-      );
+        if (!search.trim()) return [];
+        const lower = search.toLowerCase();
+        return faqs.filter(
+            (faq) =>
+                faq.question.toLowerCase().includes(lower) ||
+                faq.answer.toLowerCase().includes(lower)
+        );
     }, [search, faqs]);
-  
+
+    // Define category mappings for broader filtering
+    const categoryMappings: Record<string, string[]> = {
+        "ocean-freight": [
+            "ocean-freight",
+            "project-cargo",
+            "ro-ro-shipping", 
+            "breakbulk-cargo",
+            "dangerous-cargo-transport",
+            "heavy-lift-cargo",
+            "livestock-transportation",
+            "tankers-in-ocean-freight"
+        ],
+        "container-services": [
+            "container-services",
+            "lcl",
+            "fcl",
+            "oversized-container-shipping",
+            "oog",
+            "inland-container-transportation",
+            "container-handling-stevedoring-storage"
+        ],
+        "ship-agency": [
+            "ship-agency-services",
+            "crew-management",
+            "suez-canal",
+            "spare-parts",
+            "bunkering",
+            "special-services"
+        ]
+    };
+
     // Filter by category for default display
     const categoryFAQs = useMemo(() => {
-      // If no category is provided, show popular questions
-      const targetCategory = category || "popular";
-      return faqs.filter(faq => faq.category === targetCategory).slice(0, 3);
+        const targetCategory = category || "popular";
+        
+        // If it's a main category with sub-topics, include all related categories
+        if (categoryMappings[targetCategory]) {
+            const relatedCategories = categoryMappings[targetCategory];
+            const filtered = faqs.filter(faq => 
+                relatedCategories.includes(faq.category || "")
+            );
+            return filtered;
+        }
+        
+        // Otherwise, filter by exact category match
+        const filtered = faqs.filter(faq => faq.category === targetCategory);
+        return category ? filtered : filtered.slice(0, 6);
     }, [faqs, category]);
-  
-    return (
-      <div id="faq" className="w-full max-w-7xl mx-auto  dark:bg-gray-900 rounded-lg shadow-lg p-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
-        <div className="text-start mb-6">
-          <Link href="/faq">
-            <h2 className="text-2xl font-semibold mb-4">Frequently Asked Questions</h2>
-          </Link> 
 
-          <Input
-            type="text"
-            placeholder="Search for answers..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="mb-6"
-          />
-        {category ? (
-          <p className="text-muted-foreground text-sm mb-4">
-            Related Questions:
-          </p>
-        ) : (
-          <p className="text-muted-foreground text-sm mb-4">
-            Popular Questions: 
-          </p>
-        )}
+    const toggleItem = (itemId: string) => {
+        const newOpenItems = new Set(openItems);
+        if (newOpenItems.has(itemId)) {
+            newOpenItems.delete(itemId);
+        } else {
+            newOpenItems.add(itemId);
+        }
+        setOpenItems(newOpenItems);
+    };
+
+    const displayFAQs = search.trim() ? filteredFAQs : categoryFAQs;
+
+    return (
+        <div id="faq" className="w-full max-w-6xl mx-auto bg-white rounded-lg shadow-sm p-8">
+            <div className="text-center mb-8">
+                <Link href="/faq">
+                    <h2 className="text-3xl font-semibold text-gray-900 mb-4">
+                        {category ? getCategoryTitle(category) : "Frequently Asked Questions"}
+                    </h2>
+                </Link>
+                
+                <Input
+                    type="text"
+                    placeholder="Search for answers..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    className="max-w-md mx-auto mb-6"
+                />
+                
+                {category ? (
+                    <p className="text-gray-600 text-sm mb-4">
+                        All questions about {category.replace('-', ' ')} services
+                    </p>
+                ) : (
+                    <p className="text-gray-600 text-sm mb-4">
+                        Popular Questions: 
+                    </p>
+                )}
             </div>
-  
-        {search.trim() ? (
-          <div className="max-h-[300px] overflow-y-auto">
-            {filteredFAQs.length > 0 ? (
-              <Accordion type="single" collapsible className="w-full">
-                {filteredFAQs.map((faq, idx) => (
-                  <AccordionItem value={`faq-${idx}`} key={idx}>
-                    <AccordionTrigger>{faq.question}</AccordionTrigger>
-                    <AccordionContent>{faq.answer}</AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            ) : (
-              <div className="text-muted-foreground py-8 text-center">
-                No answers found for "{search}"
-              </div>
+
+            <div className="space-y-4">
+                <AnimatePresence mode="wait">
+                    {displayFAQs.map((faq, idx) => (
+                        <motion.div
+                            key={`faq-${idx}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.3 }}
+                            className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200"
+                        >
+                            <div className="flex items-center justify-between w-full px-6 py-5">
+                                <div className="flex-1">
+                                    <Link 
+                                        href={getFAQLink(faq.question)}
+                                        className="block text-left"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            toggleItem(`faq-${idx}`);
+                                            // Update URL without page reload
+                                            const newUrl = getFAQLink(faq.question);
+                                            window.history.pushState({}, '', newUrl);
+                                        }}
+                                    >
+                                        <h3 className="text-lg font-medium text-gray-900 hover:text-blue-600 transition-colors duration-200 cursor-pointer">
+                                            {faq.question}
+                                        </h3>
+                                    </Link>
+                                </div>
+                                <button
+                                    onClick={() => toggleItem(`faq-${idx}`)}
+                                    className="flex-shrink-0 ml-4 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                                    aria-expanded={openItems.has(`faq-${idx}`)}
+                                    aria-controls={`faq-answer-${idx}`}
+                                    aria-label="Toggle answer"
+                                >
+                                    <AnimatePresence mode="wait">
+                                        {openItems.has(`faq-${idx}`) ? (
+                                            <motion.div
+                                                initial={{ rotate: 0 }}
+                                                animate={{ rotate: 180 }}
+                                                exit={{ rotate: 0 }}
+                                                transition={{ duration: 0.2 }}
+                                            >
+                                                <ChevronUp className="w-5 h-5 text-gray-500" />
+                                            </motion.div>
+                                        ) : (
+                                            <motion.div
+                                                initial={{ rotate: 180 }}
+                                                animate={{ rotate: 0 }}
+                                                exit={{ rotate: 180 }}
+                                                transition={{ duration: 0.2 }}
+                                            >
+                                                <ChevronDown className="w-5 h-5 text-gray-500" />
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </button>
+                            </div>
+
+                            <AnimatePresence>
+                                {openItems.has(`faq-${idx}`) && (
+                                    <motion.div
+                                        initial={{ height: 0, opacity: 0 }}
+                                        animate={{ height: "auto", opacity: 1 }}
+                                        exit={{ height: 0, opacity: 0 }}
+                                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                                        className="overflow-hidden"
+                                    >
+                                        <div
+                                            id={`faq-answer-${idx}`}
+                                            className="px-6 pb-5"
+                                        >
+                                            <div className="pt-2 border-t border-gray-100">
+                                                <p className="text-gray-600 leading-relaxed">
+                                                    {faq.answer}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
+                    ))}
+                </AnimatePresence>
+            </div>
+
+            {search.trim() && filteredFAQs.length === 0 && (
+                <div className="text-center py-12">
+                    <p className="text-gray-500 text-lg">
+                        No answers found for &quot;{search}&quot;
+                    </p>
+                </div>
             )}
-          </div>
-        ) : (
-          <div className="max-h-[300px] overflow-y-auto">
-            <Accordion type="single" collapsible className="w-full">
-              {categoryFAQs.map((faq, idx) => (
-                <AccordionItem value={`faq-${idx}`} key={idx}>
-                  <AccordionTrigger>{faq.question}</AccordionTrigger>
-                  <AccordionContent>{faq.answer}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        )}
-      </div>
+
+            {!search.trim() && categoryFAQs.length === 0 && (
+                <div className="text-center py-12">
+                    <p className="text-gray-500 text-lg">
+                        No questions found for this category.
+                    </p>
+                </div>
+            )}
+        </div>
     );
-  }
+}

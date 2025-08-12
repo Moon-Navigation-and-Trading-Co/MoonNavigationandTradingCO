@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, ReactNode } from "react"
 import { motion, AnimatePresence } from "framer-motion"
@@ -21,14 +21,15 @@ interface TabData {
 }
 
 interface FormTabsProps {
-
     tabData: TabData[];
-
+    activeTab?: string;
+    setActiveTab?: (tabId: string) => void;
 }
 
-
-const FormTabs: React.FC<FormTabsProps> = ({ tabData }) => {
-    const [activeTab, setActiveTab] = useState(tabData[0]?.id || "overview");
+const FormTabs: React.FC<FormTabsProps> = ({ tabData, activeTab: controlledActiveTab, setActiveTab: controlledSetActiveTab }) => {
+    const [internalActiveTab, internalSetActiveTab] = useState(tabData[0]?.id || "overview");
+    const activeTab = controlledActiveTab ?? internalActiveTab;
+    const setActiveTab = controlledSetActiveTab ?? internalSetActiveTab;
 
     return (
         <div className="w-full mt-2 mx-auto flex flex-col">
@@ -49,17 +50,17 @@ const FormTabs: React.FC<FormTabsProps> = ({ tabData }) => {
                 </div>
             </div>
             <div className="w-full">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={activeTab}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.2 }}
-                    >
-                        {tabData.find(tab => tab.id === activeTab)?.content}
-                    </motion.div>
-                </AnimatePresence>
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeTab}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -20 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            {tabData.find(tab => tab.id === activeTab)?.content}
+                        </motion.div>
+                    </AnimatePresence>
             </div>
         </div>
     );
