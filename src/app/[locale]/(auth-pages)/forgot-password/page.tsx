@@ -1,15 +1,19 @@
+"use client";
+
 import { forgotPasswordAction } from "@/src/app/actions";
 import { FormMessage, Message } from "@/components/form-message";
 import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
-export default function ForgotPassword({
-  searchParams,
-}: {
-  searchParams: Message;
-}) {
+export default function ForgotPassword() {
+  const searchParams = useSearchParams();
+  const message: Message = {
+    message: searchParams.get("error") || searchParams.get("success") || ""
+  };
+  
   return (
     <>
       <div className="flex w-full h-[55svh] justify-center items-center">
@@ -29,11 +33,10 @@ export default function ForgotPassword({
             <SubmitButton formAction={forgotPasswordAction}>
               Reset Password
             </SubmitButton>
-            <FormMessage message={searchParams} />
+            <FormMessage message={message} />
           </div>
         </form>
       </div>
-
     </>
   );
 }

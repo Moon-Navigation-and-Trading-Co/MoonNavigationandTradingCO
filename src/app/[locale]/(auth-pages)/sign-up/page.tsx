@@ -10,16 +10,32 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Eye, EyeOff } from 'lucide-react'
 import { PhoneInput } from '@/components/phone-input'
+import { useSearchParams } from "next/navigation"
 
-export default function Signup({ searchParams }: { searchParams: Message }) {
+export default function Signup() {
   const [showPassword, setShowPassword] = useState(false)
   const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const [phone, setPhone] = useState("")
+  const searchParams = useSearchParams();
+  
+  // Parse message from URL parameters
+  let message: Message | undefined;
+  const success = searchParams.get('success');
+  const error = searchParams.get('error');
+  const messageText = searchParams.get('message');
+  
+  if (success) {
+    message = { success };
+  } else if (error) {
+    message = { error };
+  } else if (messageText) {
+    message = { message: messageText };
+  }
 
-  if ("success" in searchParams) {
+  if (message && "success" in message) {
     return (
       <div className="w-full flex-1 font-semibold flex items-center h-full min-h-[500px]  justify-center gap-2 p-4">
-        <FormMessage message={searchParams} />
+        <FormMessage message={message} />
       </div>
     )
   }
@@ -128,12 +144,12 @@ export default function Signup({ searchParams }: { searchParams: Message }) {
               Create account
             </SubmitButton>
           </div>
-          {searchParams && ("error" in searchParams || "success" in searchParams) && (
+          {message && ("error" in message || "success" in message) && (
             <div className="w-full flex-1 font-normal flex items-center h-auto justify-start mt-2">
-              {"error" in searchParams && <p className="text-red-500 text-xs">Error occurred: {searchParams.error}</p>}
+              {"error" in message && <p className="text-red-500 text-xs">Error occurred: {message.error}</p>}
             </div>
           )}
-          <FormMessage message={searchParams} />
+          {message && <FormMessage message={message} />}
           <div className="w-full flex justify-center mt-4">
             <Link href="/sign-in" className="text-xs text-muted-foreground hover:underline">
               Back to Sign in
