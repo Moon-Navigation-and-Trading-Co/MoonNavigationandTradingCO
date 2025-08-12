@@ -421,6 +421,20 @@
       "when": 1733536512817,
       "tag": "0059_slow_swarm",
       "breakpoints": true
+    },
+    {
+      "idx": 60,
+      "version": "7",
+      "when": 1754702564650,
+      "tag": "0060_mighty_madrox",
+      "breakpoints": true
+    },
+    {
+      "idx": 61,
+      "version": "7",
+      "when": 1754703072504,
+      "tag": "0061_fearless_patch",
+      "breakpoints": true
     }
   ]
 }

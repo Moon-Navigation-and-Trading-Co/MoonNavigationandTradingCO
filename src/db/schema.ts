@@ -865,3 +865,160 @@ export const OutofGauge = pgTable("out_of_gauge", {
     additional_phone_number: text("additional_phone_number"),              // Company phone number
 
 });
+
+// Suez Canal Transit
+export const suezCanalTransitTable = pgTable("suez_canal_transit", {
+    id: uuid().primaryKey().defaultRandom(),
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    user_id: uuid().notNull().references(() => usersTable.id),
+    date: text("date").notNull(),
+    vessel: jsonb("vessel").notNull(),
+    cargo: jsonb("cargo").notNull(),
+    unit_carriage: jsonb("unit_carriage").notNull(),
+    transit: jsonb("transit").notNull(),
+    additional_services: jsonb("additional_services").notNull(),
+    additional_notes: text("additional_notes"),
+    company_details: jsonb("company_details").notNull(),
+});
+
+// Ocean Freight Quotations
+export const oceanFreightQuotationsTable = pgTable("ocean_freight_quotations", {
+    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
+    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+
+    // Form type
+    form_type: text("form_type").notNull(),
+
+    // Routing details
+    routing: jsonb("routing").notNull(),
+
+    // Cargo mode and details
+    cargo_mode: text("cargo_mode").notNull(), // 'itemized' or 'consolidated'
+    itemized_cargo: jsonb("itemized_cargo"), // JSON array for itemized cargo
+    consolidated_cargo: jsonb("consolidated_cargo"), // JSON object for consolidated cargo
+
+    // Supporting files
+    supporting_files: text("supporting_files"),
+
+    // Additional information
+    additional_information: text("additional_information"),
+
+    // Dates
+    effective_date: date("effective_date").notNull(),
+    expiry_date: date("expiry_date").notNull(),
+    service_contract_number: text("service_contract_number"),
+
+    // Additional services
+    additional_services: jsonb("additional_services").notNull(),
+
+    // Company details
+    company_name: text("company_name").notNull(),
+    contact_person: text("contact_person").notNull(),
+    title: text("title").notNull(),
+    city: text("city").notNull(),
+    country: text("country").notNull(),
+    email: text("email").notNull(),
+    additional_email: text("additional_email"),
+    phone: text("phone").notNull(),
+    additional_phone: text("additional_phone"),
+
+});
+
+// Livestock Transportation
+export const livestockTransportationTable = pgTable("livestock_transportation", {
+    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
+    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+
+    // Routing details
+    routing: jsonb("routing").notNull(),
+
+    // Dates
+    effective_date: text("effective_date").notNull(),
+    expiry_date: text("expiry_date").notNull(),
+
+    // Livestock details
+    livestock_details: jsonb("livestock_details").notNull(), // JSON array for livestock entries
+
+    // Special handling requirements
+    special_handling: text("special_handling"),
+
+    // Supporting files
+    supporting_files: jsonb("supporting_files"),
+    cargo_lifting_points: boolean("cargo_lifting_points").default(false),
+
+    // Additional information
+    additional_information: text("additional_information"),
+
+    // Service contract
+    service_contract: text("service_contract"),
+
+    // Transport modes
+    transport_modes: jsonb("transport_modes").notNull(),
+
+    // Additional services
+    additional_services: jsonb("additional_services").notNull(),
+
+    // Insurance
+    insurance: jsonb("insurance").notNull(),
+
+    // Company details
+    company_name: text("company_name").notNull(),
+    contact_person_name: text("contact_person_name").notNull(),
+    title: text("title").notNull(),
+    city_country: text("city_country").notNull(),
+    company_email: text("company_email").notNull(),
+    additional_email: text("additional_email"),
+    phone_number: text("phone_number").notNull(),
+    additional_phone: text("additional_phone"),
+});
+
+// Tankers Quotation
+export const tankersQuotationTable = pgTable("tankers_quotation", {
+    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
+    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+
+    // Routing details
+    routing: jsonb("routing").notNull(),
+
+    // Dates
+    effective_date: text("effective_date").notNull(),
+    expiry_date: text("expiry_date").notNull(),
+
+    // Cargo details
+    cargo_details: jsonb("cargo_details").notNull(), // JSON object for cargo information
+
+    // Vessel specifications
+    vessel_specs: jsonb("vessel_specs").notNull(), // JSON object for vessel specifications
+
+    // Supporting files
+    supporting_files: jsonb("supporting_files"),
+    cargo_lifting_points: boolean("cargo_lifting_points").default(false),
+
+    // Additional information
+    additional_information: text("additional_information"),
+
+    // Service contract
+    service_contract: text("service_contract"),
+
+    // Safety & compliance
+    safety_compliance: jsonb("safety_compliance").notNull(),
+
+    // Marine insurance
+    marine_insurance: jsonb("marine_insurance").notNull(),
+
+    // Additional services
+    additional_services: jsonb("additional_services").notNull(),
+
+    // Company details
+    company_name: text("company_name").notNull(),
+    contact_person_name: text("contact_person_name").notNull(),
+    title: text("title").notNull(),
+    city_country: text("city_country").notNull(),
+    company_email: text("company_email").notNull(),
+    additional_email: text("additional_email"),
+    phone_number: text("phone_number").notNull(),
+    additional_phone: text("additional_phone"),
+});
