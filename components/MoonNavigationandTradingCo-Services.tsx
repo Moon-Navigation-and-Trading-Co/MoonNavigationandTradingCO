@@ -334,6 +334,7 @@ const MoonNavigationandTradingCoServices = () => {
 export default MoonNavigationandTradingCoServices;
 
 // Helper styles for hiding scrollbar
+if (typeof window !== "undefined" && typeof document !== "undefined") {
 const style = document.createElement("style");
 style.innerHTML = `
   .no-scrollbar::-webkit-scrollbar {
@@ -344,6 +345,5 @@ style.innerHTML = `
     scrollbar-width: none;
   }
 `;
-if (typeof window !== "undefined") {
   document.head.appendChild(style);
 } 

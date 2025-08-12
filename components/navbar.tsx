@@ -85,7 +85,7 @@ const serviceColumns = [
         title: "Ship Agency and Operational Services",
         description: "Efficient management and support for vessels at port and at sea ensuring smooth operations in all Egyptian ports.",
         items: [
-          { name: "Request for a PDA", href: "/ship-agency-forms" },
+          { name: "Request for a PDA", href: "/learn/pda" },
           { name: "Sign On/Off Crew Members", href: "/learn/crew" },
           { name: "Suez Canal Transit Passage", href: "/learn/suez-canal-transit-passage" },
           { name: "Transit Spare Parts", href: "/learn/spare-parts" },

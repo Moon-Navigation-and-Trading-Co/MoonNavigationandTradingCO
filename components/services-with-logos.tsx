@@ -27,6 +27,7 @@ const services = [
     href: "/buy-rent-container-forms",
   },
   { icon: Globe, label: "Buy/Rent Vessels", href: "/buy-rent-vessels-forms" },
+  { icon: Globe, label: "Special Services", href: "/learn/special" },
 ];
 
 export default function ServicesWithLogo() {

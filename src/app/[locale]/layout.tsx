@@ -58,15 +58,16 @@ export const metadata = {
 
 type Props = {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 };
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: Props) {
+  const { locale } = await params;
   const messages = await getMessages({ locale });
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const {
     data: { user },
@@ -87,7 +88,7 @@ export default async function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
       </head>
-      <body className="bg-background text-foreground no-horizontal-scroll font-raleway">
+      <body className="bg-background text-foreground no-horizontal-scroll font-raleway" suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light">
           <main className="min-h-screen-mobile md:min-h-screen-desktop flex flex-col items-center">
             <NextIntlClientProvider messages={messages}>

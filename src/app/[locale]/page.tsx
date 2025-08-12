@@ -22,7 +22,7 @@ import { useSearchParams } from "next/navigation";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
 import TSwiping from "@/components/T-Swiping";
-import MaerskServices from "@/components/maersk-services";
+import MaerskServices from "@/components/MoonNavigationandTradingCo-Services";
  
 export default function Index() {
     const t = useTranslations("HomePage");
@@ -112,7 +112,7 @@ export default function Index() {
         title: "Docking and Maintenance",
         description: "",
         image: "/docking-1.jpg",
-        link: "/learn/docking",
+        link: "/learn/dockingandmaintenance",
         quote: "/ship-maintenance-forms"
       },
       {
@@ -268,9 +268,11 @@ export default function Index() {
                           <p className="text-lg text-muted-foreground mb-10 text-left font-raleway font-light">
                             You will receive a customized quotation delivered straight to your email in a timely manner. This effortlessness ensures you can focus on what truly matters while receiving accurate pricing without unnecessary delays.
                           </p>
-                          <RequestQuoteButton className="rounded-full px-10 py-4 text-lg font-raleway font-medium mt-4" type="button">
-                            Request a Quote
-                          </RequestQuoteButton>
+                          <Link href="/quote-request">
+                            <RequestQuoteButton className="rounded-full px-10 py-4 text-lg font-raleway font-medium mt-4" type="button">
+                              Request a Quote
+                            </RequestQuoteButton>
+                          </Link>
                         </div>
                         {/* Right: Image Placeholder */}
                         <div className="flex-1 flex items-center justify-center">
