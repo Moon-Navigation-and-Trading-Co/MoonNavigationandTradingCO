@@ -65,7 +65,7 @@ const serviceColumns = [
             href: "/learn-more/inland-freight", 
             isDropdown: false
           },
-          { name: "Air Freight", href: "/learn-more/air-freight", isDropdown: false },
+          { name: "Air Freight", href: "/learn/air-freight", isDropdown: false },
         ],
       },
       {
@@ -118,7 +118,7 @@ const serviceColumns = [
         description: "Seamless coordination for custom clearance and handling.",
         items: [
           { name: "Customs Clearance Solutions", href: "/learn/customs-clearance" },
-          { name: "Handling, Stevedoring & Storage Services", href: "/learn/stevedoring-container" },
+          { name: "Handling, Stevedoring & Storage Services", href: "/learn/handling-stevedoring-storage/learn-more" },
         ],
       },
       {

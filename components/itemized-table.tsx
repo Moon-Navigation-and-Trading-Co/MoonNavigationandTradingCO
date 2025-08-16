@@ -107,8 +107,8 @@ const ItemizedTable: React.FC<ItemizedTableProps> = ({ control }) => {
                             <th className="border border-gray-300 p-1 sm:p-2 text-left text-xs sm:text-sm font-medium w-20 sm:w-auto">Dangerous Goods *</th>
                             {itemizedData?.some((item: any) => item.dangerous_goods) && (
                                 <>
-                                    <th className="border border-gray-300 p-1 sm:p-2 text-left text-xs sm:text-sm font-medium w-24 sm:w-auto">UN Number *</th>
-                                    <th className="border border-gray-300 p-1 sm:p-2 text-left text-xs sm:text-sm font-medium w-20 sm:w-auto">Class *</th>
+                                    <th className="border border-gray-300 p-1 sm:p-2 text-left text-xs sm:text-sm font-medium min-w-[120px]">UN Number *</th>
+                                    <th className="border border-gray-300 p-1 sm:p-2 text-left text-xs sm:text-sm font-medium min-w-[100px]">Class *</th>
                                 </>
                             )}
                             <th className="border border-gray-300 p-1 sm:p-2 text-left text-xs sm:text-sm font-medium w-16 sm:w-auto">Actions</th>
@@ -257,7 +257,7 @@ const ItemizedTable: React.FC<ItemizedTableProps> = ({ control }) => {
                                                         field.onChange(value);
                                                         calculateRowValues(index);
                                                     }} value={field.value}>
-                                                        <SelectTrigger className="w-16 border-2 rounded text-xs sm:text-sm">
+                                                        <SelectTrigger className="w-20 border-2 rounded text-xs sm:text-sm">
                                                             <SelectValue />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -301,7 +301,7 @@ const ItemizedTable: React.FC<ItemizedTableProps> = ({ control }) => {
                                                         field.onChange(value);
                                                         calculateRowValues(index);
                                                     }} value={field.value}>
-                                                        <SelectTrigger className="w-16 border-2 rounded text-xs sm:text-sm">
+                                                        <SelectTrigger className="w-20 border-2 rounded text-xs sm:text-sm">
                                                             <SelectValue />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -345,7 +345,7 @@ const ItemizedTable: React.FC<ItemizedTableProps> = ({ control }) => {
                                                         field.onChange(value);
                                                         calculateRowValues(index);
                                                     }} value={field.value}>
-                                                        <SelectTrigger className="w-16 border-2 rounded text-xs sm:text-sm">
+                                                        <SelectTrigger className="w-20 border-2 rounded text-xs sm:text-sm">
                                                             <SelectValue />
                                                         </SelectTrigger>
                                                         <SelectContent>

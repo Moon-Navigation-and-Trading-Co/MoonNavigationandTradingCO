@@ -189,16 +189,16 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                             </FormControl>
                         </FormItem>
 
-                        {/* Port of Crew Change Field */}
+                        {/* Port Name Field */}
                         <FormItem>
-                            <FormLabel>Port of Crew Change</FormLabel>
+                            <FormLabel>Port Name</FormLabel>
                             <FormControl>
                                 <Controller
                                     control={form.control}
                                     name="vessel.port_of_crew_change"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Port of Crew Change" {...field} />
+                                            <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Port Name" {...field} />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>)}
                                 />
@@ -353,7 +353,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                                                 <Input
                                                     type="number"
                                                     min="1"
-                                                    className="w-20"
+                                                    className="w-24"
                                                     {...field}
                                                     onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
                                                 />
@@ -414,7 +414,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                                                                         type="number"
                                                                         min="0.1"
                                                                         step="0.1"
-                                                                        className="w-16"
+                                                                        className="w-24"
                                                                         placeholder="L"
                                                                         {...field}
                                                                         onChange={(e) => {
@@ -443,7 +443,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                                                                         type="number"
                                                                         min="0.1"
                                                                         step="0.1"
-                                                                        className="w-16"
+                                                                        className="w-24"
                                                                         placeholder="W"
                                                                         {...field}
                                                                         onChange={(e) => {
@@ -472,7 +472,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                                                                         type="number"
                                                                         min="0.1"
                                                                         step="0.1"
-                                                                        className="w-16"
+                                                                        className="w-24"
                                                                         placeholder="H"
                                                                         {...field}
                                                                         onChange={(e) => {

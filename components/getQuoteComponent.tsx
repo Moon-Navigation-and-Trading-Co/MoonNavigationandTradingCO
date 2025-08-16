@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import RequestQuoteButton from "./RequestQuoteButton";
 
 interface GetQuoteComponentProps {
@@ -25,11 +26,12 @@ export default function GetQuoteComponent({ topic, link = "/ocean-freight-forms"
         </div>
         {/* Right: Illustration */}
         <div className="flex-1 flex items-center justify-center">
-          <img
+          <Image
             src="/quote-illustration.png"
             alt={`Get your ${topic} quote illustration`}
+            width={400}
+            height={240}
             className="object-contain w-full max-w-md h-[200px] md:h-[240px]"
-            loading="lazy"
           />
         </div>
       </div>

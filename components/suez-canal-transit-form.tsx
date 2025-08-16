@@ -164,7 +164,6 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Header */}
                 <div className="space-y-4">
-                    <h2 className="text-2xl font-bold">Suez Canal Transit Quotation Request</h2>
                 </div>
 
                 {/* Date */}
@@ -760,13 +759,13 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
                                                     <FormControl>
                                                         <RadioGroupItem value="northbound" />
                                                     </FormControl>
-                                                    <FormLabel className="font-normal">Northbound</FormLabel>
+                                                    <FormLabel className="font-normal">Northbound (Port Said → Suez)</FormLabel>
                                                 </FormItem>
                                                 <FormItem className="flex items-center space-x-3 space-y-0">
                                                     <FormControl>
                                                         <RadioGroupItem value="southbound" />
                                                     </FormControl>
-                                                    <FormLabel className="font-normal">Southbound</FormLabel>
+                                                    <FormLabel className="font-normal">Southbound (Suez → Port Said)</FormLabel>
                                                 </FormItem>
                                             </RadioGroup>
                                             {error && <p className="text-red-500">{error.message}</p>}
@@ -1006,15 +1005,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                {/* Important Information */}
-                <div className="space-y-4 p-4 bg-muted rounded-lg">
-                    <h3 className="text-lg font-semibold">Important Information</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• For quote requests with long-term validity, please contact us.</li>
-                        <li>• Please do not enter personal or financial information, such as credit card details, or debit card details, anywhere in your request.</li>
-                        <li>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</li>
-                    </ul>
-                </div>
+
 
                 <Button type="submit" className="mt-8 w-[200px]">
                     Submit

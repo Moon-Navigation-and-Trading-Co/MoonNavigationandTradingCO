@@ -19,6 +19,12 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
         name: "cargo_specifications",
     });
 
+    // Watch all cargo specifications for calculations
+    const cargoSpecifications = watch("cargo_specifications");
+
+    // Calculate total weight
+    const totalWeight = cargoSpecifications?.reduce((sum: number, item: any) => sum + (item.gross_weight || 0), 0) || 0;
+
     const standardContainerTypes = [
         "20' Dry Container",
         "40' Dry Container",
@@ -219,7 +225,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                         type="number"
                                                         min="0"
                                                         step="0.01"
-                                                        className={`w-16 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100 text-gray-400' : ''}`}
+                                                        className={`w-20 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100 text-gray-400' : ''}`}
                                                         onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
                                                         disabled={isStandard}
                                                         placeholder={isStandard ? "Auto" : ""}
@@ -235,7 +241,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                         value={field.value}
                                                         disabled={onlyCm || isStandard}
                                                     >
-                                                        <SelectTrigger className={`w-12 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100' : ''}`}>
+                                                        <SelectTrigger className={`w-20 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100' : ''}`}>
                                                             <SelectValue />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -260,7 +266,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                         type="number"
                                                         min="0"
                                                         step="0.01"
-                                                        className={`w-16 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100 text-gray-400' : ''}`}
+                                                        className={`w-20 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100 text-gray-400' : ''}`}
                                                         onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
                                                         disabled={isStandard}
                                                         placeholder={isStandard ? "Auto" : ""}
@@ -276,7 +282,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                         value={field.value}
                                                         disabled={onlyCm || isStandard}
                                                     >
-                                                        <SelectTrigger className={`w-12 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100' : ''}`}>
+                                                        <SelectTrigger className={`w-20 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100' : ''}`}>
                                                             <SelectValue />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -301,7 +307,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                         type="number"
                                                         min="0"
                                                         step="0.01"
-                                                        className={`w-16 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100 text-gray-400' : ''}`}
+                                                        className={`w-20 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100 text-gray-400' : ''}`}
                                                         onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
                                                         disabled={isStandard}
                                                         placeholder={isStandard ? "Auto" : ""}
@@ -317,7 +323,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                         value={field.value}
                                                         disabled={onlyCm || isStandard}
                                                     >
-                                                        <SelectTrigger className={`w-12 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100' : ''}`}>
+                                                        <SelectTrigger className={`w-20 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100' : ''}`}>
                                                             <SelectValue />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -342,7 +348,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                         type="number"
                                                         min="0"
                                                         step="0.01"
-                                                        className={`w-16 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}
+                                                        className={`w-20 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}
                                                         onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
                                                         placeholder={!isStandard ? "Required" : ""}
                                                         required={!isStandard}
@@ -354,7 +360,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                 name={`cargo_specifications.${index}.weight_unit`}
                                                 render={({ field }) => (
                                                     <Select onValueChange={field.onChange} value={field.value}>
-                                                        <SelectTrigger className={`w-12 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}>
+                                                        <SelectTrigger className={`w-16 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}>
                                                             <SelectValue />
                                                         </SelectTrigger>
                                                         <SelectContent>
@@ -457,6 +463,17 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                         })}
                     </tbody>
                 </table>
+                </div>
+            </div>
+
+            {/* Totals */}
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <h3 className="font-semibold text-blue-800 mb-2">Totals</h3>
+                <div className="grid grid-cols-1 gap-4">
+                    <div>
+                        <span className="font-medium">Total Weight:</span>
+                        <span className="ml-2 text-lg font-bold">{totalWeight.toFixed(2)} kg</span>
+                    </div>
                 </div>
             </div>
 

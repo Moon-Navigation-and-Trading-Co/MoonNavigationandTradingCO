@@ -19,6 +19,12 @@ const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ control }
         name: "container_details",
     });
 
+    // Watch all container details for calculations
+    const containerDetails = watch("container_details");
+
+    // Calculate total weight
+    const totalWeight = containerDetails?.reduce((sum: number, item: any) => sum + (item.gross_weight || 0), 0) || 0;
+
     const standardContainerTypes = [
         "20' Dry Container",
         "40' Dry Container",
@@ -194,7 +200,7 @@ const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ control }
                                                                 type="number"
                                                                 min="0"
                                                                 step="0.01"
-                                                                className={`w-20 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}
+                                                                className={`w-24 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}
                                                                 placeholder={!isStandard ? "Required" : ""}
                                                                 onChange={(e) => {
                                                                     const value = parseFloat(e.target.value) || 0;
@@ -214,7 +220,7 @@ const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ control }
                                                     onValueChange={(value) => control.setValue(`container_details.${index}.weight_unit`, value)} 
                                                     value={watch(`container_details.${index}.weight_unit`) || 'kg'}
                                                 >
-                                                    <SelectTrigger className={`w-16 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}>
+                                                    <SelectTrigger className={`w-20 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}>
                                                         <SelectValue />
                                                     </SelectTrigger>
                                                     <SelectContent>
@@ -317,6 +323,17 @@ const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ control }
                             })}
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            {/* Totals */}
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <h3 className="font-semibold text-blue-800 mb-2">Totals</h3>
+                <div className="grid grid-cols-1 gap-4">
+                    <div>
+                        <span className="font-medium">Total Weight:</span>
+                        <span className="ml-2 text-lg font-bold">{totalWeight.toFixed(2)} kg</span>
+                    </div>
                 </div>
             </div>
 
