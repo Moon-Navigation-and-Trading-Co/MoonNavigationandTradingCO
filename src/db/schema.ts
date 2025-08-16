@@ -293,41 +293,35 @@ export const hss = pgTable("handling_stevedoring_storage", {
 
 
 export const buy_container = pgTable("buy_container", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+    id: uuid().primaryKey().defaultRandom(),
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    user_id: uuid().notNull().references(() => usersTable.id),
 
-
-    // Container Type
-    container_type: text("container_type").notNull(),
-
-    // Container Condition
+    // Container Details Section (1st in form)
     container_condition: text("container_condition").notNull(),
-
-    // Number of containers
+    container_type: text("container_type").notNull(),
     container_number: numeric("container_number").notNull(),
 
-
-    // Pick up details
+    // Dates Section (2nd in form)
     pick_up_date: date("pick_up_date").notNull(),
+
+    // Location Details Section (3rd in form)
     pick_up_location: text("pick_up_location").notNull(),
 
-    // Budget
+    // Budget & Additional Information Section (4th in form)
     budget: numeric("budget"),
-
-    // Additional information
     additional_information: text("additional_information"),
 
-    // Company details
-    company_name: text("company_name").notNull(),              // Company name
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
+    // Company Details Section (5th in form)
+    company_name: text("company_name").notNull(),
+    contact_person_name: text("contact_person_name").notNull(),
+    title: text("title").notNull(),
+    country_of_origin: text("country_of_origin").notNull(),
+    company_email: text("company_email").notNull(),
     phone_number: text("phone_number").notNull(),
+    additional_email: text("additional_email"),
     additional_phone_number: text("additional_phone_number"),
-})
+});
 
 export const rent_container = pgTable("rent_container", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
@@ -371,46 +365,41 @@ export const rent_container = pgTable("rent_container", {
 })
 
 export const buy_vessel = pgTable("buy_vessel", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+    id: uuid().primaryKey().defaultRandom(),
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    user_id: uuid().notNull().references(() => usersTable.id),
 
+    // Vessel Details Section (1st in form)
+    vessel_type: text("vessel_type").notNull(),
+    vessel_size: text("vessel_size").notNull(),
+    number_of_vessels: numeric("number_of_vessels").notNull(),
+    new: boolean("new").default(false),
+    used: boolean("used").default(false),
+    one_trip: boolean("one_trip").default(false),
 
-    // Container Type
-    container_type: text("container_type").notNull(),
+    // Dates Section (2nd in form)
+    delivery_date: date("delivery_date").notNull(),
+    pick_up_date: date("pick_up_date").notNull(),
 
-    // Container Condition
-    container_condition: text("container_condition").notNull(),
-
-    // Number of containers
-    container_number: numeric("container_number").notNull(),
-
-
-    // Pick up details
-    delivery_date: date("pick_up_date").notNull(),
+    // Location Details Section (3rd in form)
     pick_up_location: text("pick_up_location").notNull(),
-    detailed_location: text("detailed_location").notNull(),
+    detailed_location: text("detailed_location"),
 
-    // Required Specifications
+    // Specifications & Budget Section (4th in form)
     required_specifications: text("required_specifications").notNull(),
-
-    // Budget
     budget: numeric("budget"),
+    additional_services: text("additional_services"),
 
-    // Additional information
-    additional_information: text("additional_information"),
-
-    // Company details
-    company_name: text("company_name").notNull(),              // Company name
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
+    // Company Details Section (5th in form)
+    company_name: text("company_name").notNull(),
+    contact_person_name: text("contact_person_name").notNull(),
+    title: text("title").notNull(),
+    country_of_origin: text("country_of_origin").notNull(),
+    company_email: text("company_email").notNull(),
     phone_number: text("phone_number").notNull(),
+    additional_email: text("additional_email"),
     additional_phone_number: text("additional_phone_number"),
-
-})
+});
 
 export const rent_vessel = pgTable("rent_vessel", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
