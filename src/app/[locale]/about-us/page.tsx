@@ -49,7 +49,7 @@ export default function AboutUs() {
             We are Moon Navigation and Trading Co., headquartered in Egypt, and we stand as a distinguished leader in maritime services, logistics, and global trade. Backed by extensive industry experience and a network of connections, Moon Navigation and Trading Co. delivers a full spectrum of shipping, logistics, port call, management, maintenance and other supply chain services, with an emphasis on reliability, compliance, and customer-focused solutions.
           </p>
           <p className="text-foreground text-sm md:text-base" style={{ fontWeight: 400 }}>
-            Our unwavering commitment to quality management, environmental responsibility, and customer satisfaction drives our business at every level. Established to meet the complex demands of today's dynamic trade environment, our solutions are rooted in practical knowledge and a flexible mindset, enabling us to turn transportation and vessel needs into success by delivering innovative, reliable, and efficient solutions.
+            Our unwavering commitment to quality management, environmental responsibility, and customer satisfaction drives our business at every level. Established to meet the complex demands of today&apos;s dynamic trade environment, our solutions are rooted in practical knowledge and a flexible mindset, enabling us to turn transportation and vessel needs into success by delivering innovative, reliable, and efficient solutions.
           </p>
         </div>
       </section>
@@ -62,7 +62,7 @@ export default function AboutUs() {
             Our Foundation – 2010
           </h3>
           <p className="text-foreground text-sm md:text-base" style={{ fontWeight: 400 }}>
-            Moon Navigation and Trading Co. was established in September 2010. Operating from the heart of Egypt, we leverage our nation's strategic position as a crossroads of global trade and a gateway to the Suez Canal, one of the world's most vital maritime routes.
+            Moon Navigation and Trading Co. was established in September 2010. Operating from the heart of Egypt, we leverage our nation&apos;s strategic position as a crossroads of global trade and a gateway to the Suez Canal, one of the world&apos;s most vital maritime routes.
           </p>
           <p className="text-foreground text-sm md:text-base" style={{ fontWeight: 400 }}>
             Our prime location grants us unmatched access to the Suez Canal and global seaports, solidifying our role as a pivotal player in international commerce. Partner with us for unparalleled expertise in navigation, logistics, and trade solutions.
@@ -234,27 +234,42 @@ export default function AboutUs() {
           <p className="text-foreground text-base md:text-lg mb-8" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
             Moon Navigation and Trading Co. provides integrated solutions across transportation, vessel operations, logistics, and trade—supporting efficient and compliant performance on a global scale.
           </p>
-          <div className="flex flex-wrap gap-6">
-            <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+          <div className="flex flex-wrap gap-4">
+            <button 
+              onClick={() => document.getElementById('transportation-freight')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md"
+            >
               Transportation & Freight Solutions
             </button>
-            <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+            <button 
+              onClick={() => document.getElementById('ship-agency')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md"
+            >
               Ship Agency & Marine Services
             </button>
-            <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+            <button 
+              onClick={() => document.getElementById('global-trade')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md"
+            >
               Global Trade Solutions
             </button>
-            <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+            <button 
+              onClick={() => document.getElementById('vessel-support')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md"
+            >
               Vessel Support & Maintenance
             </button>
-            <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+            <button 
+              onClick={() => document.getElementById('other-logistics')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md"
+            >
               Other Logistic Services
             </button>
           </div>
         </div>
 
         {/* Efficient Transportation & Freight Solutions Section */}
-        <section className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
+        <section id="transportation-freight" className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
           {/* Left: Text */}
           <div className="flex-1">
             <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -266,7 +281,7 @@ export default function AboutUs() {
             <p className="text-foreground text-base md:text-lg mb-8" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
               From local transport to freight services, we ensure that your goods arrive safely and punctually. Our ocean freight capabilities accommodate a wide range of cargo types, including project cargo, dangerous goods, heavy lift, break bulk, and containers in both standard and nonstandard sizes, along with inland container transport and storage solutions, establishing ourselves as a versatile choice for effectively transporting any shipment without compromising quality or timeliness, whether across borders or overseas. Our integrated sea-air solutions further enhance our logistics offerings, allowing for efficient and timely delivery of your shipments in today's dynamic market.
             </p>
-            <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+            <button className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md">
               Explore Freight & Cargo Solutions
             </button>
           </div>
@@ -282,7 +297,7 @@ export default function AboutUs() {
         </section>
       </section>
 
-      <section className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
+      <section id="ship-agency" className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
         {/* Left: Image */}
         <div className="flex-shrink-0 w-full md:w-[420px] rounded-2xl overflow-hidden mb-6 md:mb-0">
           <img
@@ -306,13 +321,13 @@ export default function AboutUs() {
           <p className="text-foreground text-base md:text-lg mb-8" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
             Additionally, our experienced team ensures smooth and efficient Suez Canal passage, handling all aspects from documentation to coordination with authorities, minimizing delays and ensuring regulatory compliance.
           </p>
-          <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+          <button className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md">
             Explore Ship Agency and Marine Services
           </button>
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
+      <section id="global-trade" className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
         {/* Left: Text */}
         <div className="flex-1 mb-6 md:mb-0">
           <h3 className="text-2xl md:text-3xl font-bold text-primary mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -327,7 +342,7 @@ export default function AboutUs() {
           <p className="text-foreground text-base md:text-lg mb-8" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
             You can rely on our commitment to excellence as we support and guide you toward success at every stage of the process.
           </p>
-          <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+          <button className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md">
             Explore Trade Services
           </button>
         </div>
@@ -342,7 +357,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
+      <section id="vessel-support" className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
         {/* Left: Image */}
         <div className="flex-shrink-0 w-full md:w-[440px] rounded-2xl overflow-hidden mb-6 md:mb-0">
           <img
@@ -366,13 +381,13 @@ export default function AboutUs() {
           <p className="text-foreground text-base md:text-lg mb-8" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
             In parallel, our docking and maintenance services cover every aspect of vessel upkeep, from dry docking and afloat repairs to hull cleaning, mechanical, coating, electrical systems maintenance and safety equipment checks. Whether your vessel requires scheduled maintenance or urgent repairs, our experienced teams work around the clock to keep your operations uninterrupted and your ships in top seaworthy condition.
           </p>
-          <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+          <button className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md">
             Explore Integrated Vessel Support and Maintenance
           </button>
         </div>
       </section>
 
-      <section className="flex flex-col md:flex-row items-center gap-10 mt-16 px-4">
+      <section id="other-logistics" className="flex flex-col md:flex-row items-center gap-10 mt-16 px-4">
         {/* Left: Text */}
         <div className="flex-1 mb-6 md:mb-0">
           <h3 className="text-2xl md:text-3xl font-bold text-primary mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -387,7 +402,7 @@ export default function AboutUs() {
           <p className="text-foreground text-base md:text-lg mb-6" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
             <span className="font-semibold">Handling, Warehousing, and Storage Services:</span> Whether you are dealing with bulk, breakbulk, containerized, or project cargo, we provide professional warehousing, efficient cargo handling, and access to short- or long-term storage solutions. Our skilled ground teams and modern equipment ensure safety, speed, and accuracy at every point of cargo movement.
           </p>
-          <button className="bg-primary text-primary-foreground rounded-full px-8 py-3 text-base font-medium shadow-md hover:bg-primary/90 transition">
+          <button className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md">
             Explore Other Logistic Services
           </button>
         </div>

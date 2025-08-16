@@ -12,10 +12,45 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
+import { useRouter, usePathname } from "next/navigation";
+import FormTabs from "@/components/form-tabs";
+import DangerousGoodsLearnMore from "./learn-more/page";
 
 export default function DangerousCargoInfo() {
     const t = useTranslations("learn-dangerous-cargo")
     const [selectedClass, setSelectedClass] = useState(0)
+    const router = useRouter();
+    const pathname = usePathname();
+
+    // Determine active tab from path
+    let activeTab = "overview";
+    if (pathname.endsWith("/learn-more")) activeTab = "our-solutions";
+
+    const tabData = [
+        {
+            id: "overview",
+            title: "Dangerous Goods Container Shipments",
+            content: renderOverview(),
+        },
+        {
+            id: "our-solutions",
+            title: "Our Solutions",
+            content: <DangerousGoodsLearnMore />,
+        },
+    ];
+
+    // Tab to path mapping
+    const tabToPath = {
+        overview: "/learn/dangerous-goods",
+        "our-solutions": "/learn/dangerous-goods/learn-more",
+    };
+
+    function handleTabChange(tabId: string) {
+        const key = tabId as keyof typeof tabToPath;
+        if (key !== activeTab) {
+            router.push(tabToPath[key]);
+        }
+    }
 
     // Create an array of dangerous cargo classes for the accordion
     const dangerousClasses = [
@@ -69,19 +104,7 @@ export default function DangerousCargoInfo() {
     function renderOverview() {
         return (
             <>
-                {/* Image banner at the top */}
-                <div className="w-full flex justify-center mb-8 mt-10">
-                    <div className="w-full max-w-7xl">
-                        <Image
-                            src="/dangerous-cargo-banner.jpg"
-                            alt="Dangerous Cargo Banner"
-                            width={1200}
-                            height={350}
-                            className="rounded-[60px] object-cover w-full h-[220px] sm:h-[350px]"
-                            priority
-                        />
-                    </div>
-                </div>
+                {/* Image banner at the top removed to prevent duplication */}
                 {/* Two-column content below the image */}
                 <div className="w-full flex flex-col md:flex-row items-start justify-center gap-8 mb-12 max-w-7xl mx-auto">
                     {/* Left column: title and button */}
@@ -331,26 +354,9 @@ export default function DangerousCargoInfo() {
     }
 
     return (
-        <>
-            <Head>
-                <title>Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co.</title>
-                <meta
-                    name="description"
-                    content="Learn about dangerous cargo shipping, IMDG Code, IATA DGR, ADR, and how Moon Navigation and Trading Co. ensures safe, compliant transport of hazardous materials worldwide."
-                />
-                <meta
-                    name="keywords"
-                    content="dangerous cargo, hazardous materials, IMDG Code, IATA DGR, ADR, shipping, transport, Moon Navigation and Trading Co., packaging, labeling, risk assessment, special equipment, safety protocols"
-                />
-                <meta property="og:title" content="Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co." />
-                <meta property="og:description" content="Expert handling and transport of dangerous cargo and hazardous materials. Learn about our process, compliance, and safety standards." />
-                <meta property="og:image" content="/dangerous-cargo-banner.jpg" />
-                <meta property="og:type" content="website" />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href="https://www.moonnavigation.com/learn/dangerous" />
-            </Head>
-            {renderOverview()}
-            {renderServices()}
-        </>
+        <div className="w-full">
+            <FormTabs tabData={tabData} activeTab={activeTab} setActiveTab={handleTabChange} />
+            {/* ...rest of the Dangerous Goods page content (accordion, reasons, FAQ, etc.) can go here if needed... */}
+        </div>
     );
 }

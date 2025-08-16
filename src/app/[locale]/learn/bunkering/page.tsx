@@ -15,25 +15,25 @@ function overview(){
   return(
     <>
     {/* Hero image removed to prevent duplication */}
-    <div className="flex flex-col md:flex-row w-full gap-8">
-      <div className="flex-1">
-        <h1 className="text-2xl md:text-3xl mb-2 leading-tight text-gray-900 dark:text-white">
-          Bunkering | Oil Supply |<br />Ship Chandlery
-        </h1>
-        <div className="mt-6">
-          <Link href="/ship-agency-forms">
-            <RequestQuoteButton>
-              Request a Quote
-            </RequestQuoteButton>
-          </Link>
+        <div className="flex flex-col md:flex-row w-full gap-8">
+          <div className="flex-1">
+            <h1 className="text-2xl md:text-3xl mb-2 leading-tight text-gray-900 dark:text-white">
+              Bunkering | Oil Supply |<br />Ship Chandlery
+            </h1>
+            <div className="mt-6">
+              <Link href="/ship-agency-forms">
+                <RequestQuoteButton>
+                  Request a Quote
+                </RequestQuoteButton>
+              </Link>
+            </div>
+          </div>
+          <div className="flex-1 flex items-start">
+            <p className="text-[#222] dark:text-white text-sm md:text-base mt-1 md:mt-0">
+              At Moon Navigation and Trading Co., we provide essential services to ensure vessels operate efficiently and without interruption. Our bunkering, oil supply, and ship chandlery solutions are designed to meet the demands of modern maritime operations with precision, reliability, and speed.
+            </p>
         </div>
       </div>
-      <div className="flex-1 flex items-start">
-        <p className="text-[#222] dark:text-white text-sm md:text-base mt-1 md:mt-0">
-          At Moon Navigation and Trading Co., we provide essential services to ensure vessels operate efficiently and without interruption. Our bunkering, oil supply, and ship chandlery solutions are designed to meet the demands of modern maritime operations with precision, reliability, and speed.
-        </p>
-      </div>
-    </div>
     </>
   )
 }
@@ -151,34 +151,34 @@ function OverviewTab() {
                 -Wherever and whenever you need to trust.
               </p>
             </div>
-          </div>
         </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto mb-24">
-        <ReasonsGrid
-          title="Reasons to Choose Moon Navigation and Trading Co. For Your Bunkering | Oil Supply | Ship Chandlery"
-          subheading=""
-          reasons={[
-            {
-              icon: <img src="/icons/ship agency/59.png" alt="24/7 Service Availability" className="mb-4 h-14 w-14 object-contain mx-auto" />, 
-              title: "24/7 Service Availability",
-              description: "Supporting vessels at all times.",
-            },
-            {
-              icon: <img src="/icons/ship agency/58.png" alt="Cost-Effective & Transparent Pricing" className="mb-4 h-14 w-14 object-contain mx-auto" />, 
-              title: "Cost-Effective & Transparent Pricing",
-              description: "No hidden fees.",
-            },
-            {
-              icon: <img src="/icons/ship agency/60.png" alt="Compliance with International Standards" className="mb-4 h-14 w-14 object-contain mx-auto" />, 
-              title: "Compliance with International Standards",
-              description: "Ensuring regulatory adherence.",
-            },
-          ]}
-        />
-      </div>
+    </div>
+    <div className="w-full max-w-6xl mx-auto mb-24">
+      <ReasonsGrid
+        title="Reasons to Choose Moon Navigation and Trading Co. For Your Bunkering | Oil Supply | Ship Chandlery"
+        subheading=""
+        reasons={[
+          {
+            icon: <img src="/icons/ship agency/59.png" alt="24/7 Service Availability" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+            title: "24/7 Service Availability",
+            description: "Supporting vessels at all times.",
+          },
+          {
+            icon: <img src="/icons/ship agency/58.png" alt="Cost-Effective & Transparent Pricing" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+            title: "Cost-Effective & Transparent Pricing",
+            description: "No hidden fees.",
+          },
+          {
+            icon: <img src="/icons/ship agency/60.png" alt="Compliance with International Standards" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+            title: "Compliance with International Standards",
+            description: "Ensuring regulatory adherence.",
+          },
+        ]}
+      />
+    </div>
       <GetQuoteComponent topic="Bunkering, Oil Supply, Ship Chandlery" link="/ship-agency-forms" />
-      <FAQSearch category="bunkering" />
+    <FAQSearch category="bunkering" />
     </>
   );
 }

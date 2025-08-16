@@ -389,7 +389,6 @@ function services() {
                             description: "24/7 customer assistance and expert guidance throughout the shipping process.",
                         },
                     ]}
-                    layout="3-2"
                 />
             </div>
             <GetQuoteComponent topic="Tankers" link="/ocean-freight-forms" />

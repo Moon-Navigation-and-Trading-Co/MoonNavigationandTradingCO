@@ -22,7 +22,7 @@ export default function OceanFreightPage() {
       title: t("less"),
       description: t("less-p"),
       image: "/lcl-banner.jpg",
-      link: "/learn/less",
+              link: "/learn/Less-Than-Container-Load",
       quote: "/container-services-forms",
     },
     {

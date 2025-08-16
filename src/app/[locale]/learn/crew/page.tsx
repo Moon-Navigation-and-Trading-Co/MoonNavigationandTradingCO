@@ -146,7 +146,7 @@ function services(){
   <div className="w-full max-w-6xl mx-auto mt-20 mb-10 px-4">
     <ReasonsGrid
       title="Reasons to Choose Moon Navigation and Trading Co. For Your Crew Management"
-      layout="2-2"
+      subheading="We provide comprehensive crew management services with 24/7 support, strict compliance standards, and cost-effective solutions to ensure smooth crew changes and operational continuity."
       reasons={[
         {
           icon: <img src="/icons/ship agency/36.png" alt="24/7 Crew Change Support" className="mb-4 h-14 w-14 object-contain mx-auto" />,

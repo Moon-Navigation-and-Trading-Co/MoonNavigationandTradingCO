@@ -115,15 +115,15 @@ export default function ScheduleMeeting() {
 
                 <div className="relative bg-secondary rounded-t-3xl overflow-hidden">
                     <div className="flex relative z-10">
-                        <button className="flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-2xl font-medium text-primary bg-green-100 dark:bg-accent">
+                        <button className="flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-2xl font-medium text-primary bg-blue-100 dark:bg-accent">
                             Schedule Meeting
                         </button>
                     </div>
                 </div>
                 
-                <div className="p-1 rounded-3xl rounded-t-sm bg-green-100 dark:bg-accent">
+                <div className="p-1 rounded-3xl rounded-t-sm bg-blue-100 dark:bg-accent">
                     <div className="bg-background dark:bg-secondary rounded-3xl py-6 px-4 sm:px-6 shadow-sm">
-                        <h3 className="text-3xl font-semibold mb-10">Form details</h3>
+                        <h3 className="text-3xl font-semibold mb-10">Schedule Meeting Form</h3>
                         
                         <form onSubmit={handleSubmit} className="space-y-8">
                             <div>

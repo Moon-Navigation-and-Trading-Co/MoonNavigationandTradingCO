@@ -10,6 +10,8 @@ import FAQSearch from "@/components/faq";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 import VesselCarousel from "@/components/vessel-carousel";
 import OverviewServicesTabs from "@/components/overview-services";
+import FormTabs from "@/components/form-tabs";
+import LearnMore from "./learn-more/page";
 
 const ReeferPage = () => {
   const router = useRouter();
@@ -51,22 +53,7 @@ const ReeferPage = () => {
   function renderOverview() {
     return (
       <>
-        {/* Top image and company name */}
-        <div className="w-full rounded-[60px] overflow-hidden mb-8">
-          <div className="relative w-[1280px] h-[350px]">
-            <Image
-              src="/reefer-header.jpg"
-              alt="Reefer containers"
-              fill
-              style={{ objectFit: "cover" }}
-              className="rounded-2xl"
-              priority
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-            </div>
-          </div>
-        </div>
-
+        {/* Top image and company name removed to prevent duplication */}
         {/* Main content (heading/description only) */}
         <div className="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Left: Title and CTA */}
@@ -99,6 +86,19 @@ const ReeferPage = () => {
       </>
     );
   }
+
+  const tabData = [
+    {
+      id: "overview",
+      title: "Reefer Containers",
+      content: renderOverview(),
+    },
+    {
+      id: "our-solutions",
+      title: "Our Solutions",
+      content: <LearnMore />,
+    },
+  ];
 
   function renderServices() {
     return (
@@ -308,10 +308,11 @@ const ReeferPage = () => {
   }
 
   return (
-    <>
-      {renderOverview()}
+    <div className="w-full">
+      <FormTabs tabData={tabData} />
+      {/* --- RESTORED CONTENT BELOW TAB SWITCHER --- */}
       {renderServices()}
-    </>
+    </div>
   );
 };
 

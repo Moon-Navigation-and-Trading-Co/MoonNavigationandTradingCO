@@ -16,7 +16,7 @@ export default function DockingAndMaintenance() {
                     {/* Hero Image */}
                     <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mb-10">
                         <img
-                            src="/docking-hero.jpg"
+                            src="/lm-docking-1.jpg"
                             alt="Docking and Maintenance - Ship at dock with workers"
                             className="object-cover w-full h-full"
                             style={{ objectPosition: "center" }}

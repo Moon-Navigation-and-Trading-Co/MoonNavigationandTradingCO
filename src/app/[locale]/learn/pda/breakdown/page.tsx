@@ -13,7 +13,7 @@ export default function PDABreakdownPage() {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         <div>
-          <h2 className="text-lg  text-[#2a4365] mb-2">1. Port & Terminal Charges</h2>
+          <h2 id="port-terminal-charges" className="text-lg  text-[#2a4365] mb-2">1. Port & Terminal Charges</h2>
           <p className="text-[#444] mb-4">
             We provide comprehensive insight into the various associated with port operations, ensuring your costs remain as streamlined and accurate as possible.
           </p>
@@ -55,7 +55,7 @@ export default function PDABreakdownPage() {
         />
       </div>
       <div className="order-1 md:order-2">
-        <h2 className="text-lg  text-[#2a4365] mb-2">2. Pilotage and Towage Fees</h2>
+        <h2 id="pilotage-towage-fees" className="text-lg  text-[#2a4365] mb-2">2. Pilotage and Towage Fees</h2>
         <p className="text-[#444] mb-4">
           We recognize the importance of pilotage and towage services in ensuring safe and efficient maritime operations.
         </p>
@@ -74,7 +74,7 @@ export default function PDABreakdownPage() {
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div>
-        <h2 className="text-lg  text-[#2a4365] mb-2">3. Customs and Immigration Clearance Fees</h2>
+        <h2 id="customs-immigration-fees" className="text-lg  text-[#2a4365] mb-2">3. Customs and Immigration Clearance Fees</h2>
         <p className="text-[#444] mb-4">
           We understand the critical role that customs processing and related fees play in facilitating smooth maritime operations.
         </p>
@@ -83,7 +83,7 @@ export default function PDABreakdownPage() {
             <span className="">Customs Processing Fees:</span> Charges for cargo and vessel clearance through all customs authorities and for routine formal inspections.
           </li>
           <li>
-            <span className="">Crew Immigration Fees:</span> Costs associated with processing crew members’ entry and exit at the port, ensuring compliance with immigration regulations.
+            <span className="">Crew Immigration Fees:</span> Costs associated with processing crew members' entry and exit at the port, ensuring compliance with immigration regulations.
           </li>
           <li>
             <span className="">Health and Sanitary Inspection Charges:</span> Fees required for compliance with port health regulations, safety, and public health and safety.
@@ -116,13 +116,13 @@ export default function PDABreakdownPage() {
         />
       </div>
       <div className="order-2 md:order-2">
-        <h2 className="text-lg  text-[#2a4365] mb-2">4. Cargo Handling and Stevedoring</h2>
+        <h2 id="cargo-handling-stevedoring" className="text-lg  text-[#2a4365] mb-2">4. Cargo Handling and Stevedoring</h2>
         <p className="text-[#444] mb-4">
           We are dedicated to facilitating efficient cargo handling at port through our management of essential services.
         </p>
         <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
           <li>
-            <span className="">Loading and Unloading Fees:</span> Cover labor and the necessary equipment to load and unload, ensuring smooth transition during the ship’s presence.
+            <span className="">Loading and Unloading Fees:</span> Cover labor and the necessary equipment to load and unload, ensuring smooth transition during the ship's presence.
           </li>
           <li>
             <span className="">Stevedore Services:</span> Which incorporates labor charges for skilled cargo handling, guaranteeing that your goods are managed with care and expertise.
@@ -132,13 +132,13 @@ export default function PDABreakdownPage() {
           </li>
         </ul>
         <p className="text-[#444] text-sm">
-          By efficiently managing these expenses, we ensure all cargo is handled and unloaded efficiently and safely, minimizing delays and supporting your supply chain’s reliability.
+          By efficiently managing these expenses, we ensure all cargo is handled and unloaded efficiently and safely, minimizing delays and supporting your supply chain's reliability.
         </p>
       </div>
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div className="order-1 md:order-1">
-        <h2 className="text-lg  text-[#2a4365] mb-2">5. Bunker, Fresh Water and Provisions Supply</h2>
+        <h2 id="bunker-fresh-water" className="text-lg  text-[#2a4365] mb-2">5. Bunker, Fresh Water and Provisions Supply</h2>
         <p className="text-[#444] mb-4">
           We recognize the importance of essential services that keep vessels operational and compliant with safety regulations.
         </p>
@@ -180,7 +180,7 @@ export default function PDABreakdownPage() {
         />
       </div>
       <div className="order-2 md:order-2">
-        <h2 className="text-lg  text-[#2a4365] mb-2">6. Waste Disposal and Environmental Fees</h2>
+        <h2 id="waste-disposal-environmental" className="text-lg  text-[#2a4365] mb-2">6. Waste Disposal and Environmental Fees</h2>
         <p className="text-[#444] mb-4">
           We prioritize environmental responsibility in maritime operations by managing essential waste disposal and compliance costs.
         </p>
@@ -202,7 +202,7 @@ export default function PDABreakdownPage() {
     </div>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mt-12">
       <div className="order-1 md:order-1">
-        <h2 className="text-lg  text-[#2a4365] mb-2">7. Security and Emergency Services</h2>
+        <h2 id="security-emergency" className="text-lg  text-[#2a4365] mb-2">7. Security and Emergency Services</h2>
         <p className="text-[#444] mb-4">
           We prioritize the safety and security of maritime operations.
         </p>
@@ -211,11 +211,11 @@ export default function PDABreakdownPage() {
             <span className="">Port Security Charges:</span> Cost associated with compliance with the International Ship and Port Facility Security (ISPS) Code, including necessary security patrols and surveillance at the port.
           </li>
           <li>
-            <span className="">Firefighting and Emergency Response Fees:</span> Charges for emergency support at the port, ensuring vessels’ safety in critical situations.
+            <span className="">Firefighting and Emergency Response Fees:</span> Charges for emergency support at the port, ensuring vessels' safety in critical situations.
           </li>
         </ul>
         <p className="text-[#444] text-sm">
-          By effectively coordinating these services, we ensure that our clients’ vessels comply with maritime security and emergency protocols. Trusting us reduces overall risk to all maritime activities.
+          By effectively coordinating these services, we ensure that our clients' vessels comply with maritime security and emergency protocols. Trusting us reduces overall risk to all maritime activities.
         </p>
       </div>
       <div className="flex justify-center order-2 md:order-2">
@@ -241,13 +241,13 @@ export default function PDABreakdownPage() {
         />
       </div>
       <div className="order-1 md:order-2">
-        <h2 className="text-lg  text-[#2a4365] mb-2">8. Agency Fees and Documentation</h2>
+        <h2 id="agency-fees" className="text-lg  text-[#2a4365] mb-2">8. Agency Fees and Documentation</h2>
         <p className="text-[#444] mb-4">
-          We offer comprehensive financial and administrative support to ensure smooth operations during a vessel’s port stay.
+          We offer comprehensive financial and administrative support to ensure smooth operations during a vessel's port stay.
         </p>
         <ul className="list-disc ml-6 text-[#444] text-sm mb-4 space-y-2">
           <li>
-            <span className="">Our Ship Agency Fees:</span> Cover the charges for our professionals’ ship agency services, providing expert guidance and management throughout the process.
+            <span className="">Our Ship Agency Fees:</span> Cover the charges for our professionals' ship agency services, providing expert guidance and management throughout the process.
           </li>
           <li>
             <span className="">Administrative Costs:</span> which include fees for managing paperwork, permits, and legal formalities, ensuring compliance with regulatory requirements.

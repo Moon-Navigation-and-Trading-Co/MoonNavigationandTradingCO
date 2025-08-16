@@ -39,7 +39,7 @@ export default function QuotationPage() {
       // If service not found, redirect to contact page
       router.replace("/contact");
     }
-  }, [service, router]);
+  }, [service, router, serviceFormRoutes]);
 
   return (
     <div className="min-h-screen flex items-center justify-center">

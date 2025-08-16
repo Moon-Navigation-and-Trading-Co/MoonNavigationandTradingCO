@@ -256,7 +256,7 @@ function services() {
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
             <img
-              src="/sm-9.jpg"
+              src="/ship-management-crew.jpg"
               alt="Ship management professionals reviewing compliance documents"
               className="w-full h-[250px] object-cover"
             />
@@ -425,12 +425,12 @@ function services() {
         title="Reasons to Choose Moon Navigation and Trading Co. for Your Ship Management Needs:"
         subheading=""
         reasons={[
-          { icon: <img src="/icons/other services/25.png" alt="360° ship management under one roof" className="mb-4 h-16 w-16 object-contain" />, title: <span className="font-raleway font-regular">360° ship management under one roof</span>, description: <span className="font-raleway font-light"></span> },
-          { icon: <img src="/icons/other services/26.png" alt="Transparent communication and owner-first approach" className="mb-4 h-16 w-16 object-contain" />, title: <span className="font-raleway font-regular">Transparent communication and owner-first approach</span>, description: <span className="font-raleway font-light"></span> },
-          { icon: <img src="/icons/other services/27.png" alt="Strict adherence to international maritime standards" className="mb-4 h-16 w-16 object-contain" />, title: <span className="font-raleway font-regular">Strict adherence to international maritime standards</span>, description: <span className="font-raleway font-light"></span> },
-          { icon: <img src="/icons/other services/28.png" alt="Proactive problem-solving and risk mitigation" className="mb-4 h-16 w-16 object-contain" />, title: <span className="font-raleway font-regular">Proactive problem-solving and risk mitigation</span>, description: <span className="font-raleway font-light"></span> },
-          { icon: <img src="/icons/other services/29.png" alt="Scalable services for both small and large fleets" className="mb-4 h-16 w-16 object-contain" />, title: <span className="font-raleway font-regular">Scalable services for both small and large fleets</span>, description: <span className="font-raleway font-light"></span> },
-          { icon: <img src="/icons/other services/30.png" alt="Competitive pricing with uncompromised service quality" className="mb-4 h-16 w-16 object-contain" />, title: <span className="font-raleway font-regular">Competitive pricing with uncompromised service quality</span>, description: <span className="font-raleway font-light"></span> },
+          { icon: <img src="/icons/other services/25.png" alt="360° ship management under one roof" className="mb-4 h-16 w-16 object-contain" />, title: "360° ship management under one roof", description: "Comprehensive management services under a single roof." },
+          { icon: <img src="/icons/other services/26.png" alt="Transparent communication and owner-first approach" className="mb-4 h-16 w-16 object-contain" />, title: "Transparent communication and owner-first approach", description: "Clear communication with an owner-first approach to service." },
+          { icon: <img src="/icons/other services/27.png" alt="Strict adherence to international maritime standards" className="mb-4 h-16 w-16 object-contain" />, title: "Strict adherence to international maritime standards", description: "Compliance with all international maritime standards and regulations." },
+          { icon: <img src="/icons/other services/28.png" alt="Proactive problem-solving and risk mitigation" className="mb-4 h-16 w-16 object-contain" />, title: "Proactive problem-solving and risk mitigation", description: "Anticipating and addressing potential issues before they become problems." },
+          { icon: <img src="/icons/other services/29.png" alt="Scalable services for both small and large fleets" className="mb-4 h-16 w-16 object-contain" />, title: "Scalable services for both small and large fleets", description: "Flexible services that scale with your fleet size and requirements." },
+          { icon: <img src="/icons/other services/30.png" alt="Competitive pricing with uncompromised service quality" className="mb-4 h-16 w-16 object-contain" />, title: "Competitive pricing with uncompromised service quality", description: "High-quality services at competitive market rates." },
         ]}
       />
       <GetQuoteComponent topic="Ship Management" link="/ship-management-forms" />

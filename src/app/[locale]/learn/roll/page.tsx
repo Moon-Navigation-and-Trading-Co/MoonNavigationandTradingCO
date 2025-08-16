@@ -13,9 +13,7 @@ import LearnMore from "./learn-more/page";
 
 // SEO Metadata for Next.js 13+ App Router
 
-
-function overview() {
-  const locale = useLocale();
+function Overview() {
   return (
     <>
       {/* --- HERO IMAGE REMOVED TO PREVENT DUPLICATION --- */}
@@ -52,7 +50,7 @@ function overview() {
   );
 }
 
-function services() {
+function Services() {
   return (
     <>
       {/* --- SPACE BETWEEN SECTIONS --- */}
@@ -100,26 +98,37 @@ function services() {
                   The Design
                 </h3>
                 <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans">
-                  Our RoRo ships, featuring expansive flat decks or multiple levels, are specifically designed to transport a wide range of wheeled vehicles. With strategically placed ramps at both the bow and stern, they enable seamless, efficient loading and unloading, ensuring swift and secure cargo movement.
+                  RoRo vessels feature a unique design with large doors at the bow and stern, along with internal ramps that connect multiple decks. This design allows for efficient loading and unloading of wheeled cargo, maximizing space utilization and reducing handling time compared to traditional container shipping methods.
                 </p>
               </div>
+              {/* The Process */}
+              <div>
+                <h3 className="text-base font-bold mb-2 text-[#222] dark:text-white font-sans">
+                  The Process
+                </h3>
+                <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans">
+                  The RoRo process begins with cargo being driven or towed onto the vessel through specialized ramps. Once loaded, the cargo is secured in place for the journey. Upon arrival at the destination port, the process is reversed, with cargo being driven off the vessel, ensuring a smooth and efficient unloading process.
+                </p>
             </div>
-            {/* Cargo Types - spans both columns */}
-            <div className="mt-2">
+              {/* The Benefits */}
+              <div>
               <h3 className="text-base font-bold mb-2 text-[#222] dark:text-white font-sans">
-                Cargo Types
+                  The Benefits
               </h3>
-              <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans mb-2">
-                Our RoRo vessels are engineered for the seamless transportation of a wide range of vehicles, including cars, trucks, and heavy machinery. Designed for efficiency and safety, they ensure smooth loading, secure transit, and timely delivery.
-              </p>
               <p className="text-sm leading-relaxed text-[#444] dark:text-gray-300 font-sans">
-                Beyond standard automobiles, our fleet accommodates oversized equipment, construction vehicles, and specialized rolling stock such as trains, railway cars, trailers, and buses. With select vessels tailored for diverse wheeled cargo, we provide a reliable and comprehensive RoRo shipping solution to meet your unique logistics needs.
+                  RoRo shipping offers numerous advantages, including faster loading and unloading times, reduced handling costs, and minimized risk of damage to cargo. This method is particularly beneficial for wheeled vehicles and machinery, providing a cost-effective and efficient transportation solution for various industries.
               </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      {/* Maximizing Efficiency in Our RoRo Shipping Section */}
+    </>
+  );
+}
+
+function MaximizingEfficiency() {
+  return (
       <section className="max-w-[1600px] mx-auto mb-16 px-4 md:px-0 flex flex-col md:flex-row items-center gap-8 md:gap-0 relative min-h-[700px]">
         {/* Left: Text Content */}
         <div className="flex-1 flex flex-col justify-center md:pr-12 z-10">
@@ -155,7 +164,11 @@ function services() {
         </div>
         </div>
       </section>
+  );
+}
 
+function TransportProcess() {
+  return (
       <section className="w-full py-12 px-4 md:px-0">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
           {/* Left: Image */}
@@ -180,7 +193,11 @@ function services() {
           </div>
         </div>
       </section>
+  );
+}
 
+function ReasonsToChoose() {
+  return (
       <section className="py-20">
         <h2 className="text-2xl md:text-4xl font-normal text-center mb-16 text-[#222] dark:text-white font-sans">
           Reasons to Choose Us for Your RORO Cargo
@@ -219,22 +236,23 @@ function services() {
           </div>
         </div>
       </section>
-      <GetQuoteComponent topic="RORO" link="/ocean-freight-forms" />
-      <FAQSearch category="ro-ro-shipping" />
-    </>
   );
 }
 
 function RoRoOverviewTab() {
   return (
     <>
-      {overview()}
-      {services()}
+      <Overview />
+      <Services />
+      <MaximizingEfficiency />
+      <TransportProcess />
+      <ReasonsToChoose />
     </>
   );
 }
 
 export default function RollOnOffHero() {
+  const locale = useLocale();
   const tabData = [
     {
       id: "overview",
