@@ -424,30 +424,22 @@ export default function InlandFreightInfo() {
                     title={t("reasons.title")}
                     reasons={[
                         {
-                            icon: (
-                                <img src="/icons/inland/12.png" alt="Network" className="mb-8 h-16 w-16 object-contain" />
-                            ),
+                            icon: <Image src="/icons/inland/12.png" alt="Network" width={64} height={64} className="mb-8 h-16 w-16 object-contain" />,
                             title: t("reasons.network.title"),
                             description: t("reasons.network.description"),
                         },
                         {
-                            icon: (
-                                <img src="/icons/inland/13.png" alt="Solutions" className="mb-8 h-16 w-16 object-contain" />
-                            ),
+                            icon: <Image src="/icons/inland/13.png" alt="Solutions" width={64} height={64} className="mb-8 h-16 w-16 object-contain" />,
                             title: t("reasons.solutions.title"),
                             description: t("reasons.solutions.description"),
                         },
                         {
-                            icon: (
-                                <img src="/icons/inland/14.png" alt="Handling" className="mb-8 h-16 w-16 object-contain" />
-                            ),
+                            icon: <Image src="/icons/inland/14.png" alt="Handling" width={64} height={64} className="mb-8 h-16 w-16 object-contain" />,
                             title: t("reasons.handling.title"),
                             description: t("reasons.handling.description"),
                         },
                         {
-                            icon: (
-                                <img src="/icons/inland/15.png" alt="Safety" className="mb-8 h-16 w-16 object-contain" />
-                            ),
+                            icon: <Image src="/icons/inland/15.png" alt="Safety" width={64} height={64} className="mb-8 h-16 w-16 object-contain" />,
                             title: t("reasons.safety.title"),
                             description: t("reasons.safety.description"),
                         },

@@ -1,11 +1,17 @@
 "use client"
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
-import VesselCarousel from "@/components/vessel-carousel";
+import { useTranslations } from "next-intl";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import FAQPage from "../../faq/page";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
+
+const VesselCarousel = dynamic(() => import("@/components/vessel-carousel"), { ssr: false });
 
 const serve=[
     {img:"/cc-1.jpg",title:"Shipping and Freight Forwarders"},
@@ -15,33 +21,31 @@ const serve=[
     {img:"/cc-5.jpg",title:"Retail and Storage Businesses"},
 ]
 const containers = [
-    {img:"/ccs-1.jpg",title:"Standard Dry Containers (20ft and 40ft)"},
-    {img:"/ccs-2.jpg",title:"High Cube Containers"},
-    {img:"/ccs-3.jpg",title:"Open Top Containers"},
-    {img:"/ccs-4.jpg",title:"Flat Rack Containers"},
-    {img:"/ccs-5.jpg",title:"Refrigerated Containers (Reefers)"},
-    {img:"/ccs-6.jpg",title:"Tank Containers"},
-    {img:"/ccs-7.jpg",title:"Special Purpose and Modified Containers"}
+    {img:"/Container purchases and rentals 5.png",title:"Standard Dry Containers (20ft and 40ft)"},
+    {img:"/Container purchases and rentals 10.png",title:"High Cube Containers"},
+    {img:"/Container purchases and rentals 8.png",title:"Open Top Containers"},
+    {img:"/Container purchases and rentals 11.png",title:"Flat Rack Containers"},
+    {img:"/Container purchases and rentals 14.png",title:"Refrigerated Containers (Reefers)"},
+    {img:"/Container purchases and rentals 6.png",title:"Tank Containers"},
+    {img:"/Container purchases and rentals 13.png",title:"Special Purpose and Modified Containers"}
 ]
 
 function overview(){
     return(
         <>
             <div className="mt-10 mb-8">
-                <img src="/pc-1.jpg" alt="Container Purchases" width={1280} height={350} className="rounded-[60px]" />
+                <Image src="/Container purchases and rentals 1.jpg" alt="Container Purchases" width={1280} height={350} className="rounded-[60px]" priority />
             </div>
             <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16 mb-12">
                 <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
                     <h2 className="text-3xl md:text-4xl font-light text-primary mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
                         Container Purchases and<br />Rentals
                     </h2>
-                    <a href="/buy-rent-container-forms">
+                    <Link href="/buy-rent-container-forms">
                         <RequestQuoteButton >
-                            <Link href="/buy-rent-container-forms">
-                                Get Quote
-                            </Link>
+                            Get Quote
                         </RequestQuoteButton>
-                    </a>
+                    </Link>
                 </div>
                 <div className="md:w-1/2 w-full flex flex-col items-start">
                     <p className="text-primary text-base font-semibold mb-2">
@@ -62,11 +66,12 @@ function services(){
 
 <div className="flex flex-col md:flex-row items-center justify-between rounded-[40px] p-8 md:p-16 mb-12">
             <div className="w-full md:w-[500px] flex-shrink-0 flex items-center justify-center mb-8 md:mb-0">
-                <img
-                    src="/pc-2.jpg"
+                <Image
+                    src="/Container purchases and rentals 2.jpg"
                     alt="Container Solutions"
+                    width={620}
+                    height={420}
                     className="rounded-[60px] object-cover w-[620px] h-[420px]"
-                    style={{ background: "#e5e7eb" }}
                 />
             </div>
             <div className="flex-1 flex flex-col items-start md:pl-12">
@@ -84,13 +89,14 @@ function services(){
                 </p>
             </div>
         </div>
-            <VesselCarousel vessels={serve} />
+            <VesselCarousel />
 
             {/* Renting Containers Section (matches provided image) */}
             <div className="relative w-full min-h-[700px] mt-16 mb-8">
-                <img
-                    src="/pc-3.jpg"
+                <Image
+                    src="/Container purchases and rentals 3.jpg"
                     alt="Renting Containers Background"
+                    fill
                     className="object-cover w-full h-full absolute inset-0"
                     style={{ zIndex: 0 }}
                 />
@@ -156,9 +162,10 @@ function services(){
             </div>
             {/* Buying Containers Section (matches provided image) */}
             <div className="relative w-full min-h-[700px] mb-16">
-                <img
-                    src="/pc-4.jpg"
+                <Image
+                    src="/Container purchases and rentals 4.jpg"
                     alt="Buying Containers Background"
+                    fill
                     className="object-cover w-full h-full absolute inset-0"
                     style={{ zIndex: 0 }}
                 />
@@ -168,7 +175,7 @@ function services(){
                         <div className="text-[#256094] text-5xl md:text-6xl font-light leading-tight mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             Buying<br />Containers
                         </div>
-                        <a href="#" className="text-[#256094] text-lg font-normal mt-2 hover:underline">Seeking a permanent solution?</a>
+                        <Link href="#" className="text-[#256094] text-lg font-normal mt-2 hover:underline">Seeking a permanent solution?</Link>
                         <div className="w-full h-1 border-b-2 border-[#256094] mt-8" />
                     </div>
                     {/* Right column: benefits */}
@@ -234,7 +241,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/pc-5.jpg" alt="Flexible Purchase & Rental Plans" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <Image src="/pc-5.jpg" alt="Flexible Purchase & Rental Plans" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
 
@@ -258,7 +265,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/pc-6.jpg" alt="Container Conditions" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <Image src="/pc-6.jpg" alt="Container Conditions" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
 
@@ -282,7 +289,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/pc-7.jpg" alt="Seamless Delivery & Logistics Support" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <Image src="/pc-7.jpg" alt="Seamless Delivery & Logistics Support" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
 
@@ -307,7 +314,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/pc-8.jpg" alt="Customization Options Available" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <Image src="/pc-8.jpg" alt="Customization Options Available" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
 
@@ -330,13 +337,13 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/pc-9.jpg" alt="Trade-In & Buy-Back Programs" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <Image src="/pc-9.jpg" alt="Trade-In & Buy-Back Programs" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
         </div>
-        <VesselCarousel vessels={containers}/>
+        <VesselCarousel />
         <p className="text-xs text-muted-foreground mt-2 mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-          All containers are thoroughly inspected, certified, and compliant with <a href="#" className="underline hover:text-primary">international safety and quality standards (CSC / ISO Certified)</a>.
+          All containers are thoroughly inspected, certified, and compliant with <Link href="#" className="underline hover:text-primary">international safety and quality standards (CSC / ISO Certified)</Link>.
         </p>
         {/* Block 4: Customization Options Available */}
         <div className="flex flex-col md:flex-row-reverse items-center rounded-[60px] p-8 md:p-16">
@@ -358,7 +365,7 @@ function services(){
               </p>
             </div>
             <div className="flex-1 flex justify-center items-center mt-8 md:mt-0">
-              <img src="/pc-10.jpg" alt="Customization Options Available" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
+              <Image src="/pc-10.jpg" alt="Customization Options Available" width={600} height={320} className="rounded-[60px] object-cover w-[600px] h-[320px]" />
             </div>
           </div>
           <GetQuoteComponent topic="Container Rentals/Purchases" link="/buy-rent-container-forms"/>

@@ -29,13 +29,13 @@ export default function InternationalTradeServices() {
                         </div>
 
                         <div className="md:w-1/2 relative">
-                            <img src="/lm-international-1.jpg" alt="Shipping containers with worker" className="rounded-[70px] w-full h-[350px] object-cover" />
+                            <Image src="/lm-international-1.jpg" alt="Shipping containers with worker" width={600} height={350} className="rounded-[70px] w-full h-[350px] object-cover" />
                         </div>
                     </div>
 
                     <div className="flex flex-col md:flex-row gap-12 mt-16">
                         <div className="md:w-1/2 relative">
-                            <img src="/lm-international-2.jpg" alt="Customs worker checking shipments" className="rounded-lg w-full h-auto object-cover" />
+                            <Image src="/lm-international-2.jpg" alt="Customs worker checking shipments" width={600} height={400} className="rounded-lg w-full h-auto object-cover" />
                         </div>
 
                         <div className="md:w-1/2 space-y-8">
@@ -73,13 +73,13 @@ export default function InternationalTradeServices() {
                         </div>
 
                         <div className="md:w-1/2 relative">
-                            <img src="/lm-international-3.jpg" alt="Airplane logistics" className="rounded-lg w-full h-auto object-cover" />
+                            <Image src="/lm-international-3.jpg" alt="Airplane logistics" width={600} height={400} className="rounded-lg w-full h-auto object-cover" />
                         </div>
                     </div>
 
                     <div className="flex flex-col md:flex-row gap-12 mt-16">
                         <div className="md:w-1/2 relative">
-                            <img src="/lm-international-4.jpg" alt="Cargo logistics" className="rounded-lg w-full h-auto object-cover" />
+                            <Image src="/lm-international-4.jpg" alt="Cargo logistics" width={600} height={400} className="rounded-lg w-full h-auto object-cover" />
                         </div>
 
                         <div className="md:w-1/2 space-y-8">
@@ -116,7 +116,7 @@ export default function InternationalTradeServices() {
                         </div>
 
                         <div className="md:w-1/2 relative">
-                            <img src="/lm-international-5.jpg" alt="Trade expansion and logistics" className="rounded-lg w-full h-auto object-cover" />
+                            <Image src="/lm-international-5.jpg" alt="Trade expansion and logistics" width={600} height={400} className="rounded-lg w-full h-auto object-cover" />
                         </div>
                     </div>
                 </div>

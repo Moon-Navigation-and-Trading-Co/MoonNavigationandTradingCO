@@ -1,5 +1,6 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import React from "react";
+import Image from "next/image";
 import FAQSearch from "@/components/faq";
 
 const sections = [
@@ -147,11 +148,12 @@ export default function DangerousGoodsLearnMore() {
                 </div>
               </div>
               <div className="flex-shrink-0 w-full md:w-[400px]">
-                <img
+                <Image
                   src={section.img}
                   alt={section.imgAlt}
+                  width={400}
+                  height={280}
                   className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-                  loading="lazy"
                 />
               </div>
             </div>

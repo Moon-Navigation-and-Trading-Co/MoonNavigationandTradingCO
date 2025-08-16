@@ -1,5 +1,6 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import Image from "next/image";
 
 export default function ContainerStoragePage() {
     return (
@@ -32,9 +33,11 @@ export default function ContainerStoragePage() {
                         </ul>
                     </div>
                     <div className="w-full rounded-xl overflow-hidden shadow flex items-center">
-                        <img
+                        <Image
                             src="/w-hss-1.jpg"
                             alt="Container yard with reach stacker and containers"
+                            width={600}
+                            height={224}
                             className="object-cover w-full h-40 md:h-56"
                         />
                     </div>
@@ -42,9 +45,11 @@ export default function ContainerStoragePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
                     {/* 2. Specialized Warehousing Solutions (Image left, text right) */}
                     <div className="w-full rounded-xl overflow-hidden shadow flex items-center order-2 md:order-1">
-                        <img
+                        <Image
                             src="/w-hss-2.jpg"
                             alt="Warehouse interior with racking and worker"
+                            width={600}
+                            height={224}
                             className="object-cover w-full h-40 md:h-56"
                         />
                     </div>
@@ -88,9 +93,11 @@ export default function ContainerStoragePage() {
                 {/* Right: Image */}
                 <div>
                     <div className="w-full rounded-xl overflow-hidden shadow">
-                        <img
+                        <Image
                             src="/w-hss-3.jpg"
                             alt="Warehouse inventory management with worker and racking"
+                            width={600}
+                            height={224}
                             className="object-cover w-full h-40 md:h-56"
                         />
                     </div>

@@ -15,7 +15,7 @@ export default function MaintenancePage() {
                     Our Maintenance Services
                 </h1>
                 <p className="text-muted-foreground max-w-7xl text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                    At Moon Navigation and Trading Co., we deliver dependable vessel maintenance services to ensure ships operate at peak performance while maintaining full compliance with international safety and environmental standards. From preventive care to urgent repairs, our expert teams provide comprehensive support tailored to your vessel's operational requirements.<br /><br />
+                    At Moon Navigation and Trading Co., we deliver dependable vessel maintenance services to ensure ships operate at peak performance while maintaining full compliance with international safety and environmental standards. From preventive care to urgent repairs, our expert teams provide comprehensive support tailored to your vessel&apos;s operational requirements.<br /><br />
                     We combine technical expertise with efficient service execution to minimize downtime and enhance vessel reliability.
                 </p>
             </section>
@@ -103,7 +103,7 @@ export default function MaintenancePage() {
                         3. Electrical and Automation Services
                     </h2>
                     <p className="text-muted-foreground text-sm md:text-base mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        We maintain and troubleshoot your vessel's electrical and automation infrastructure for safe and efficient operation. Our services include:
+                        We maintain and troubleshoot your vessel&apos;s electrical and automation infrastructure for safe and efficient operation. Our services include:
                     </p>
                     <ul className="list-disc pl-6 space-y-1 text-muted-foreground text-sm md:text-base">
                         <li>Generator and distribution board servicing</li>

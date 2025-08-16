@@ -18,7 +18,7 @@ export default function LearnMoreBunkeringPage() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-6 m-4 shadow-md max-w-4xl text-center">
               <p className="text-[#222] dark:text-white text-sm md:text-base">
-                With Moon Navigation and Trading Co., you can count on reliable, timely and cost-effective bunkering solutions and support, and fully customizable solutions to your vessel's needs, ensuring uninterrupted service and operational efficiency.<br /><br />
+                With Moon Navigation and Trading Co., you can count on reliable, timely and cost-effective bunkering solutions and support, and fully customizable solutions to your vessel&apos;s needs, ensuring uninterrupted service and operational efficiency.<br /><br />
                 -Wherever and whenever you need to trust.
               </p>
             </div>

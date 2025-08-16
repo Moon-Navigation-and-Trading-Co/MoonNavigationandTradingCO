@@ -1,5 +1,6 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import Image from "next/image";
 
 export default function LearnMore() {
   return (
@@ -14,11 +15,12 @@ export default function LearnMore() {
         <div className="flex flex-col md:flex-row gap-8 items-start">
           {/* Left: Image */}
           <div className="flex-shrink-0 w-full md:w-[400px]">
-            <img
+            <Image
               src="/reefer-truck-road.jpg"
               alt="Reefer truck on highway"
+              width={400}
+              height={280}
               className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-              loading="lazy"
             />
           </div>
           {/* Right: Solution Details */}
@@ -40,11 +42,12 @@ export default function LearnMore() {
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Image */}
         <div className="flex-shrink-0 w-full md:w-[400px]">
-          <img
+          <Image
             src="/reefer-custom-routing.jpg"
             alt="Custom routing for perishable cargo"
+            width={400}
+            height={280}
             className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-            loading="lazy"
           />
         </div>
         {/* Right: Solution Details */}
@@ -79,22 +82,24 @@ export default function LearnMore() {
         </div>
         {/* Right: Image */}
         <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2">
-          <img
+          <Image
             src="/reefer-cold-storage.jpg"
             alt="Modern cold storage warehouse exterior"
+            width={400}
+            height={280}
             className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-            loading="lazy"
           />
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Image */}
         <div className="flex-shrink-0 w-full md:w-[400px]">
-          <img
+          <Image
             src="/reefer-multimodal.jpg"
             alt="Multimodal transport options: sea, air, and inland"
+            width={400}
+            height={280}
             className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-            loading="lazy"
           />
         </div>
         {/* Right: Solution Details */}
@@ -103,7 +108,7 @@ export default function LearnMore() {
             4. Multimodal Transport Options (Sea, Air, Inland)
           </h3>
           <p className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-            We provide flexible multimodal transportation options, combining sea, air, and inland logistics to optimize your supply chain and distribution. Whether it's single or hybrid (e.g. conventional, break-bulk, or reefer) shipments, maintain temperature control across all transport modes.</p>
+            We provide flexible multimodal transportation options, combining sea, air, and inland logistics to optimize your supply chain and distribution. Whether it&apos;s single or hybrid (e.g. conventional, break-bulk, or reefer) shipments, maintain temperature control across all transport modes.</p>
           <ul className="list-disc pl-5 text-sm md:text-base text-muted-foreground space-y-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
             <li>Seamless cross-modal transfers without temperature disruption</li>
             <li>Efficient coordination between sea, air, and land carriers</li>
@@ -127,22 +132,24 @@ export default function LearnMore() {
         </div>
         {/* Right: Image */}
         <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2">
-          <img
+          <Image
             src="/reefer-insurance.jpg"
             alt="Cargo insurance and risk management for reefer shipping"
+            width={400}
+            height={280}
             className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-            loading="lazy"
           />
         </div>
       </div>
       <div className="flex flex-col md:flex-row gap-8 items-start mt-12">
         {/* Left: Image */}
         <div className="flex-shrink-0 w-full md:w-[400px]">
-          <img
+          <Image
             src="/reefer-tracking-monitoring.jpg"
             alt="Cargo tracking and temperature monitoring systems"
+            width={400}
+            height={280}
             className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-            loading="lazy"
           />
         </div>
         {/* Right: Solution Details */}
@@ -178,11 +185,12 @@ export default function LearnMore() {
         </div>
         {/* Right: Image */}
         <div className="flex-shrink-0 w-full md:w-[400px] order-1 md:order-2">
-          <img
+          <Image
             src="/reefer-hazardous-handling.jpg"
             alt="Special handling for hazardous temperature-sensitive cargo"
+            width={400}
+            height={280}
             className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-            loading="lazy"
           />
         </div>
       </div>

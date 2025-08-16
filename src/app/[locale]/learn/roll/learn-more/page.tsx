@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
@@ -40,12 +41,13 @@ export default function LearnMore() {
           </div>
           {/* Right: Image */}
           <div className="flex-shrink-0 w-full md:w-[600px]">
-            <img
+            <Image
               src="/roro-vessel-operations.jpg"
               alt="RoRo vessel operations"
+              width={600}
+              height={340}
               className="rounded-2xl object-cover w-full h-[340px]"
               style={{ maxWidth: 600 }}
-              loading="lazy"
             />
           </div>
         </div>
@@ -55,12 +57,13 @@ export default function LearnMore() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-24 mb-32">
           {/* Left: Image */}
           <div className="flex-shrink-0 w-full md:w-[600px]">
-            <img
+            <Image
               src="/roroBulldozer.jpg"
               alt="Heavy and oversized cargo"
+              width={600}
+              height={340}
               className="rounded-2xl object-cover w-full h-[340px]"
               style={{ maxWidth: 600 }}
-              loading="lazy"
             />
           </div>
           {/* Right: Text */}
@@ -125,12 +128,13 @@ export default function LearnMore() {
           </div>
           {/* Right: Image */}
           <div className="flex-shrink-0 w-full md:w-[600px]">
-            <img
-              src="/roroVehicleTransport.jpg"
+            <Image
+              src="/roro-vehicle-transport.jpg"
               alt="Vehicle transport"
+              width={600}
+              height={340}
               className="rounded-2xl object-cover w-full h-[340px]"
               style={{ maxWidth: 600 }}
-              loading="lazy"
             />
           </div>
         </div>
@@ -140,12 +144,13 @@ export default function LearnMore() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-24 mb-32">
           {/* Left: Image */}
           <div className="flex-shrink-0 w-full md:w-[600px]">
-            <img
-              src="/roroTurnaround.jpg"
-              alt="Fast and flexible turnaround"
+            <Image
+              src="/roro-project-cargo.jpg"
+              alt="Project cargo"
+              width={600}
+              height={340}
               className="rounded-2xl object-cover w-full h-[340px]"
               style={{ maxWidth: 600 }}
-              loading="lazy"
             />
           </div>
           {/* Right: Text */}
@@ -202,12 +207,13 @@ export default function LearnMore() {
           </div>
           {/* Right: Image */}
           <div className="flex-shrink-0 w-full md:w-[600px]">
-            <img
-              src="/roroWorldMap.jpg"
-              alt="Worldwide RoRo coverage"
+            <Image
+              src="/roro-global-network.jpg"
+              alt="Global network"
+              width={600}
+              height={340}
               className="rounded-2xl object-cover w-full h-[340px]"
               style={{ maxWidth: 600 }}
-              loading="lazy"
             />
           </div>
         </div>

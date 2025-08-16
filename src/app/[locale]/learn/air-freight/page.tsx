@@ -13,7 +13,7 @@ export default function AirFreightInfo() {
       {/* Hero Section */}
                     <div className="w-full">
         <div className="relative h-[400px] rounded-3xl overflow-hidden mb-12">
-          <Image src="/air-freight-hero.jpg" alt="Air Freight Services" fill className="object-cover" priority />
+          <Image src="/Air Freight.jpeg" alt="Air Freight Services" fill className="object-cover" priority />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -38,7 +38,7 @@ export default function AirFreightInfo() {
             <Card className="border-0">
                             <CardHeader className="items-center text-center">
                 <div className="w-16 h-16 mb-4">
-                  <Image src="/icons/speed-icon.svg" alt="Speed and Efficiency" width={64} height={64} />
+                  <Image src="/icons/air-freight/3.png" alt="Speed and Efficiency" width={64} height={64} />
                 </div>
                                 <CardTitle className="font-normal">{t("principles.speed.title")}</CardTitle>
                             </CardHeader>
@@ -50,7 +50,7 @@ export default function AirFreightInfo() {
             <Card className="border-0">
                             <CardHeader className="items-center text-center">
                 <div className="w-16 h-16 mb-4">
-                  <Image src="/icons/reliability-icon.svg" alt="Reliability" width={64} height={64} />
+                  <Image src="/icons/air-freight/4.png" alt="Reliability" width={64} height={64} />
                 </div>
                                 <CardTitle className="font-normal">{t("principles.reliability.title")}</CardTitle>
                             </CardHeader>
@@ -62,7 +62,7 @@ export default function AirFreightInfo() {
             <Card className="border-0">
                             <CardHeader className="items-center text-center">
                 <div className="w-16 h-16 mb-4">
-                  <Image src="/icons/security-icon.svg" alt="Security" width={64} height={64} />
+                  <Image src="/icons/air-freight/5.png" alt="Security" width={64} height={64} />
                 </div>
                                 <CardTitle className="font-normal">{t("principles.security.title")}</CardTitle>
                             </CardHeader>
@@ -79,7 +79,7 @@ export default function AirFreightInfo() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="relative rounded-lg overflow-hidden mb-12">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-800/70 z-10"></div>
-            <Image src="/images/air-freight-banner.jpg" alt="Air Freight Services" width={1200} height={400} className="w-full h-[400px] object-cover" />
+            <Image src="/air-2.jpg" alt="Air Freight Services" width={1200} height={400} className="w-full h-[400px] object-cover" />
                         <div className="absolute inset-0 z-20 flex flex-col justify-center px-8 md:px-16">
                             <h3 className="text-white text-2xl md:text-3xl font-light mb-4">{t("services.title")}</h3>
 
@@ -128,16 +128,13 @@ export default function AirFreightInfo() {
               <p className="text-gray-600 leading-relaxed">{t("costManagement.firstParagraph2")}</p>
                         </div>
                         <div className="md:w-1/2">
-              <Image src="/images/supply-chain.jpg" alt="Supply Chain Management" width={500} height={300} className="rounded-lg shadow-lg" />
+              <Image src="/Air Freight 1.jpeg" alt="Supply Chain Management" width={500} height={300} className="rounded-lg shadow-lg" />
                         </div>
                     </div>
 
-          {/* Second paragraph with excellence badge */}
+          {/* Second paragraph */}
                     <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/4">
-              <Image src="/images/excellence-badge.svg" alt="Excellence Badge" width={200} height={200} className="mx-auto" />
-                        </div>
-                        <div className="md:w-3/4">
+                        <div className="w-full">
               <p className="text-gray-600 leading-relaxed">{t("costManagement.secondParagraph")}</p>
               <p className="text-gray-500 text-sm mt-4">{t("costManagement.comment1")}</p>
               <p className="text-gray-500 text-sm mt-2">{t("costManagement.comment2")}</p>
@@ -202,7 +199,7 @@ export default function AirFreightInfo() {
                         <div>
               <div className="relative rounded-3xl overflow-hidden h-[400px]">
                 <div className="absolute inset-0 bg-[#3B4B8C]/20"></div>
-                <Image src="/images/sea-air-solutions.jpg" alt="Sea-Air Solutions" fill className="object-cover" />
+                <Image src="/air-5.jpg" alt="Sea-Air Solutions" fill className="object-cover" />
                             </div>
               <p className="text-sm text-gray-600 mt-2 text-center">{t("seaAir.caption")}</p>
                         </div>
@@ -220,8 +217,8 @@ export default function AirFreightInfo() {
       <div className="w-full py-16 bg-white">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="space-y-8">
-            <div className="relative w-full h-[300px] rounded-lg overflow-hidden mb-8">
-              <Image src="/images/sea-air-combined.jpg" alt="Sea and Air Freight Combined Service" fill className="object-cover" />
+            <div className="relative w-full h-[400px] rounded-lg overflow-hidden mb-8">
+              <Image src="/Air Freight 4.png" alt="Sea and Air Freight Combined Service" fill className="object-cover object-center" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#3B4B8C]/20 to-transparent"></div>
                         </div>
 
@@ -245,7 +242,7 @@ export default function AirFreightInfo() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div className="relative rounded-3xl overflow-hidden h-[400px]">
-              <Image src="/images/specialized-services.jpg" alt="Specialized Air Freight Services" fill className="object-cover" />
+              <Image src="/air-7.jpg" alt="Specialized Air Freight Services" fill className="object-cover" />
                         </div>
 
                         <div className="space-y-6">
@@ -279,7 +276,7 @@ export default function AirFreightInfo() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 flex-shrink-0">
-                <Image src="/icons/specialized-cargo.svg" alt="Specialized Cargo" width={48} height={48} />
+                <Image src="/icons/air-freight/10.png" alt="Specialized Cargo" width={48} height={48} />
               </div>
               <div>
                 <h3 className="font-medium mb-2">{t("reasons.expertHandling")}</h3>
@@ -289,7 +286,7 @@ export default function AirFreightInfo() {
 
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 flex-shrink-0">
-                <Image src="/icons/competitive-rates.svg" alt="Competitive Rates" width={48} height={48} />
+                <Image src="/icons/air-freight/11.png" alt="Competitive Rates" width={48} height={48} />
               </div>
               <div>
                 <h3 className="font-medium mb-2">{t("reasons.competitiveRates")}</h3>
@@ -299,7 +296,7 @@ export default function AirFreightInfo() {
 
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 flex-shrink-0">
-                <Image src="/icons/solutions.svg" alt="Solutions" width={48} height={48} />
+                <Image src="/icons/air-freight/12.png" alt="Solutions" width={48} height={48} />
               </div>
               <div>
                 <h3 className="font-medium mb-2">{t("reasons.customizedSolutions")}</h3>
@@ -309,7 +306,7 @@ export default function AirFreightInfo() {
 
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 flex-shrink-0">
-                <Image src="/icons/support.svg" alt="Support" width={48} height={48} />
+                <Image src="/icons/air-freight/13.png" alt="Support" width={48} height={48} />
               </div>
               <div>
                 <h3 className="font-medium mb-2">{t("reasons.support")}</h3>
@@ -323,15 +320,11 @@ export default function AirFreightInfo() {
       {/* Quote Request Section */}
       <div className="w-full py-16 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+          <div className="flex justify-center">
+            <div className="space-y-6 text-center">
               <h2 className="text-3xl font-semibold">{t("quoteRequest.title")}</h2>
               <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
               <Button className="bg-[#3B4B8C] hover:bg-[#2d3a6d]">{t("quoteRequest.button")}</Button>
-            </div>
-
-            <div className="relative h-[400px]">
-              <Image src="/quote-request-illustration.jpg" alt="Quote Request" fill className="object-contain" />
             </div>
           </div>
         </div>

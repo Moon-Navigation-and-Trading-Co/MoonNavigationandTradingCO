@@ -182,7 +182,7 @@ export default function FormsPage() {
         <div className="bg-muted/50 rounded-lg p-6 max-w-2xl mx-auto">
           <h3 className="text-lg font-semibold mb-2">Need Help?</h3>
           <p className="text-muted-foreground mb-4">
-            Can't find the form you're looking for? Contact our support team for assistance.
+            Can&apos;t find the form you&apos;re looking for? Contact our support team for assistance.
           </p>
           <Link href="/contact">
             <Button variant="outline">

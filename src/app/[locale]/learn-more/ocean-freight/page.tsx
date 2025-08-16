@@ -100,7 +100,7 @@ export default function OceanFreightPage() {
                             Ocean Freight
                         </h1>
                         <Button asChild>
-                            <a href="/ocean-freight-forms">Request a Quote</a>
+                            <Link href="/ocean-freight-forms">Request a Quote</Link>
                         </Button>
                     </div>
                     {/* Right: Description */}

@@ -1,52 +1,37 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo, useCallback, Suspense } from 'react';
 import { useTranslations } from 'next-intl';
-import FormTabs from '@/components/form-tabs-variant-1';
-import ProjectCargoServicesForm from '@/components/project-cargo-services-form';
-import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
+import { createClient } from '@/utils/supabase/client';
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import Spinner from '@/components/spinner';
-import RollOnOffForm from '@/components/roll-on-off-form';
 import { sendFormEmail } from '@/utils/email-helper';
 import { Button } from '@/components/ui/button';
+import FormTabs from '@/components/form-tabs-variant-1';
+import ProjectCargoServicesForm from '@/components/project-cargo-services-form';
+import RollOnOffForm from '@/components/roll-on-off-form';
 import OceanFreightQuotationForm from '@/components/ocean-freight-quotation-form';
 import LivestockTransportationForm from '@/components/livestock-transportation-form';
 import TankersQuotationForm from '@/components/tankers-quotation-form';
-import FAQSearch from '@/components/faq';
+import dynamic from 'next/dynamic';
+
+// Only lazy load the FAQ component as it's not immediately visible
+const FAQSearch = dynamic(() => import('@/components/faq'), {
+    loading: () => <div className="flex justify-center p-4"><Spinner /></div>,
+    ssr: false
+});
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
     const supabase = createClient();
-    const [isLoading, setIsLoading] = useState(true); // Loading state
-    const [user, setUser] = useState<any>(null); // State to hold the user
+    const [isLoading, setIsLoading] = useState(true);
+    const [user, setUser] = useState<any>(null);
     const { toast } = useToast()
     const router = useRouter()
 
-    // Fetch the authenticated user on component mount
-    useEffect(() => {
-        const fetchUser = async () => {
-            const {
-                data: { user },
-            } = await supabase.auth.getUser();
-
-            if (user) {
-                setUser(user); // User is logged in, set the state
-            }
-            setIsLoading(false); // Stop loading after checking user
-        };
-
-        fetchUser();
-    }, [router, supabase]); // Only run once when the component mounts
-
-
-    if (isLoading) {
-        return <div className='w-full h-[400px] flex items-center justify-center rounded-3xl'>
-            <Spinner />
-        </div>; // Display loading state while checking
-    }
-    const submitForm = async (formData: any, formType: any) => {
+    // Memoize the submit function to prevent unnecessary re-renders
+    const submitForm = useCallback(async (formData: any, formType: any) => {
         console.log("hi")
         // Flatten the formData before inserting into Supabase
         let flattenedData;
@@ -99,190 +84,200 @@ const Page: React.FC = () => {
         } else if (formType === "ocean_freight_quotation") {
             flattenedData = {
                 user_id: user?.id || null,
-                routing: JSON.stringify(formData.routing),
-                cargo_mode: formData.cargoMode,
-                itemized_cargo: formData.itemizedCargo ? JSON.stringify(formData.itemizedCargo) : null,
-                consolidated_cargo: formData.consolidatedCargo ? JSON.stringify(formData.consolidatedCargo) : null,
-                supporting_files: formData.supportingFiles,
-                additional_information: formData.additionalInformation,
-                effective_date: formData.effectiveDate,
-                expiry_date: formData.expiryDate,
-                service_contract_number: formData.serviceContractNumber,
-                additional_services: JSON.stringify(formData.additionalServices),
-                company_name: formData.companyDetails.companyName,
-                contact_person: formData.companyDetails.contactPerson,
-                title: formData.companyDetails.title,
-                city: formData.companyDetails.city,
-                country: formData.companyDetails.country,
-                email: formData.companyDetails.email,
-                additional_email: formData.companyDetails.additionalEmail,
-                phone: formData.companyDetails.phone,
-                additional_phone: formData.companyDetails.additionalPhone,
-                created_at: new Date().toISOString(),
+                routing: formData.routing,
+                effective_date: formData.dates.effective_date,
+                expiry_date: formData.dates.expiry_date,
+                commodities: formData.commodities,
+                value_added_service: formData.value_added_service.request,
+                service_contract: formData.service_contract.service_contract,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         } else if (formType === "livestock_transportation") {
             flattenedData = {
                 user_id: user?.id || null,
-                routing: JSON.stringify(formData.routing),
-                effective_date: formData.dates.effectiveDate,
-                expiry_date: formData.dates.expiryDate,
-                livestock_details: JSON.stringify(formData.livestockDetails),
-                special_handling: formData.specialHandling,
-                supporting_files: formData.supportingFiles ? JSON.stringify(formData.supportingFiles) : null,
-                cargo_lifting_points: formData.cargoLiftingPoints || false,
-                additional_information: formData.additionalInformation,
-                service_contract: formData.serviceContract,
-                transport_modes: JSON.stringify(formData.transportModes),
-                additional_services: JSON.stringify(formData.additionalServices),
-                insurance: JSON.stringify(formData.insurance),
-                company_name: formData.companyDetails.companyName,
-                contact_person_name: formData.companyDetails.contactPerson,
-                title: formData.companyDetails.title,
-                city_country: formData.companyDetails.cityCountry,
-                company_email: formData.companyDetails.email,
-                additional_email: formData.companyDetails.additionalEmail,
-                phone_number: formData.companyDetails.phone,
-                additional_phone: formData.companyDetails.additionalPhone,
+                routing: formData.routing,
+                effective_date: formData.dates.effective_date,
+                expiry_date: formData.dates.expiry_date,
+                commodities: formData.commodities,
+                value_added_service: formData.value_added_service.request,
+                service_contract: formData.service_contract.service_contract,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         } else if (formType === "tankers_quotation") {
             flattenedData = {
                 user_id: user?.id || null,
-                routing: JSON.stringify(formData.routing),
-                effective_date: formData.dates.effectiveDate,
-                expiry_date: formData.dates.expiryDate,
-                cargo_details: JSON.stringify(formData.cargoDetails),
-                vessel_specs: JSON.stringify(formData.vesselSpecs),
-                supporting_files: formData.supportingFiles ? JSON.stringify(formData.supportingFiles) : null,
-                cargo_lifting_points: formData.cargoLiftingPoints || false,
-                additional_information: formData.additionalInformation,
-                service_contract: formData.serviceContract,
-                safety_compliance: JSON.stringify(formData.safetyCompliance),
-                marine_insurance: JSON.stringify(formData.marineInsurance),
-                additional_services: JSON.stringify(formData.additionalServices),
-                company_name: formData.companyDetails.companyName,
-                contact_person_name: formData.companyDetails.contactPerson,
-                title: formData.companyDetails.title,
-                city_country: formData.companyDetails.cityCountry,
-                company_email: formData.companyDetails.email,
-                additional_email: formData.companyDetails.additionalEmail,
-                phone_number: formData.companyDetails.phone,
-                additional_phone: formData.companyDetails.additionalPhone,
+                routing: formData.routing,
+                effective_date: formData.dates.effective_date,
+                expiry_date: formData.dates.expiry_date,
+                commodities: formData.commodities,
+                value_added_service: formData.value_added_service.request,
+                service_contract: formData.service_contract.service_contract,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
+            };
+        } else if (formType === "breakbulk") {
+            flattenedData = {
+                user_id: user?.id || null,
+                routing: formData.routing,
+                effective_date: formData.dates.effective_date,
+                expiry_date: formData.dates.expiry_date,
+                commodities: formData.commodities,
+                value_added_service: formData.value_added_service.request,
+                service_contract: formData.service_contract.service_contract,
+                company_name: formData.company_details.company_name,
+                contact_person_name: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                country_of_origin: formData.company_details.country_of_origin,
+                company_email: formData.company_details.company_email,
+                additional_email: formData.company_details.additional_email,
+                phone_number: formData.company_details.phone_number,
+                additional_phone_number: formData.company_details.additional_phone_number
             };
         }
 
-
-        console.log(flattenedData)
-
-        // Send email notification FIRST
         try {
-            await sendFormEmail(formData, formType);
-            console.log('Email sent successfully');
-        } catch (emailError) {
-            console.error('Email sending failed:', emailError);
-            // Continue with form submission even if email fails
-        }
+            const { data, error } = await supabase
+                .from('ocean_freight_forms')
+                .insert([flattenedData]);
 
-        const { data, error } = await supabase
-            .from(formType)  // Your Supabase table
-            .insert([flattenedData]);  // Insert the flattened data
+            if (error) {
+                console.error('Error inserting data:', error);
+                toast({
+                    variant: "destructive",
+                    title: "Error",
+                    description: "Failed to submit form. Please try again.",
+                })
+                return;
+            }
 
-        if (error) {
-            console.log(flattenedData)
-            console.log(error)
-            toast({
-                title: "Error",
-                description: "Database insert failed, but email was sent",
-                variant: "destructive"
-            })
-        } else {
-            //green toast
+            // Send email notification
+            await sendFormEmail(formData, formType, ['ocean_freight_forms']);
+
             toast({
                 title: "Success",
                 description: "Form Added Successfully",
             })
             router.push('/ocean-freight-forms')
 
+        } catch (error) {
+            console.error('Error:', error);
+            toast({
+                variant: "destructive",
+                title: "Error",
+                description: "Failed to submit form. Please try again.",
+            })
         }
-    };
+    }, [user?.id, supabase, toast, router]);
 
+    // Fetch the authenticated user on component mount
+    useEffect(() => {
+        const fetchUser = async () => {
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
 
-    const tabData = [
+            if (user) {
+                setUser(user);
+            }
+            setIsLoading(false);
+        };
+
+        fetchUser();
+    }, [supabase.auth]);
+
+    // Memoize tab data to prevent unnecessary re-renders
+    const tabData = useMemo(() => [
         {
             id: "international",
             title: t('project-cargo'),
             description: t('project-cargo-p'),
-            content:
-                <>
-                    <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "project_cargo_services")} />
-                </>
+            content: (
+                <ProjectCargoServicesForm onSubmit={(formData: any) => submitForm(formData, "project_cargo_services")} />
+            )
         },
         {
             id: "roll",
             title: t('roll-on-off'),
             description: t('roll-on-off-p'),
-            content:
-                <>
-                    <RollOnOffForm onSubmit={(formData: any) => submitForm(formData, "roll_on_off")} />
-                </>
+            content: (
+                <RollOnOffForm onSubmit={(formData: any) => submitForm(formData, "roll_on_off")} />
+            )
         },
         {
             id: "heavy",
             title: t('heavy-lift'),
             description: t('heavy-lift-p'),
-            content:
-                <>
-                    <RollOnOffForm onSubmit={(formData: any) => submitForm(formData, "heavy_lift")} />
-                </>
+            content: (
+                <RollOnOffForm onSubmit={(formData: any) => submitForm(formData, "heavy_lift")} />
+            )
         },
         {
             id: "dangerous",
             title: t('dangerous-cargo'),
             description: t('dangerous-cargo-p'),
-            content:
-                <>
-                    <RollOnOffForm dangerous_bool={true} onSubmit={(formData: any) => submitForm(formData, "dangerous_cargo_services")} />
-                </>
+            content: (
+                <RollOnOffForm dangerous_bool={true} onSubmit={(formData: any) => submitForm(formData, "dangerous_cargo_services")} />
+            )
         },
         {
             id: "breakbulk",
             title: t('breakbulk'),
             description: t('breakbulk-p'),
-            content:
-                <>
-                     <RollOnOffForm breakbulk_bool={true} onSubmit={(formData: any) => submitForm(formData, "breakbulk")} /> 
-                </>
+            content: (
+                <RollOnOffForm breakbulk_bool={true} onSubmit={(formData: any) => submitForm(formData, "breakbulk")} />
+            )
         },
         {
             id: "quotation",
             title: "Ocean Freight Quotation",
             description: "Comprehensive quotation form with itemized and consolidated cargo entry modes",
-            content:
-                <>
-                    <OceanFreightQuotationForm onSubmit={(formData: any) => submitForm(formData, "ocean_freight_quotation")} />
-                </>
+            content: (
+                <OceanFreightQuotationForm onSubmit={(formData: any) => submitForm(formData, "ocean_freight_quotation")} />
+            )
         },
         {
             id: "livestock",
             title: "Live Stock Transportation",
             description: "Specialized quotation form for livestock transportation with detailed animal information and special handling requirements",
-            content:
-                <>
-                    <LivestockTransportationForm onSubmit={(formData: any) => submitForm(formData, "livestock_transportation")} />
-                </>
+            content: (
+                <LivestockTransportationForm onSubmit={(formData: any) => submitForm(formData, "livestock_transportation")} />
+            )
         },
-                              {
-                          id: "tankers",
-                          title: "Tankers",
-                          description: "Quotation form for tanker services including crude oil, refined petroleum, chemicals, and liquefied gases transportation",
-            content:
-                <>
-                    <TankersQuotationForm onSubmit={(formData: any) => submitForm(formData, "tankers_quotation")} />
-                </>
+        {
+            id: "tankers",
+            title: "Tankers",
+            description: "Quotation form for tanker services including crude oil, refined petroleum, chemicals, and liquefied gases transportation",
+            content: (
+                <TankersQuotationForm onSubmit={(formData: any) => submitForm(formData, "tankers_quotation")} />
+            )
         }
+    ], [t, submitForm]);
 
-
-    ]
-
+    if (isLoading) {
+        return <div className='w-full h-[400px] flex items-center justify-center rounded-3xl'>
+            <Spinner />
+        </div>;
+    }
 
     return (
         <div className='flex flex-col w-full'>
@@ -291,7 +286,9 @@ const Page: React.FC = () => {
                 <p className=''>{t('ocean-p')}</p>
             </div>
             <FormTabs tabData={tabData} />
-            <FAQSearch category="ocean-freight" />
+            <Suspense fallback={<div className="flex justify-center p-4"><Spinner /></div>}>
+                <FAQSearch category="ocean-freight" />
+            </Suspense>
         </div>
     );
 };

@@ -60,9 +60,11 @@ function services(){
               </Link>
       </div>
       <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm flex justify-center">
-        <img
+        <Image
           src="/bunkering-2.jpg"
           alt="Bunkering Tank"
+          width={400}
+          height={275}
           className="w-full h-auto object-cover"
           style={{ aspectRatio: '16/11', minHeight: '260px', maxHeight: '400px' }}
         />
@@ -70,9 +72,11 @@ function services(){
     </div>
     <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
       <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm flex justify-center">
-        <img
+        <Image
           src="/bunkering-3.jpg"
           alt="Oil & Lubricants Supply"
+          width={400}
+          height={275}
           className="w-full h-auto object-cover"
           style={{ aspectRatio: '16/11', minHeight: '260px', maxHeight: '400px' }}
         />
@@ -98,9 +102,11 @@ function services(){
     </div>
     <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-0 md:p-4 shadow-none mb-12">
       <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm flex justify-center order-2 md:order-2">
-        <img
+        <Image
           src="/bunkering-4.jpg"
           alt="Ship Chandlery"
+          width={400}
+          height={275}
           className="w-full h-auto object-cover"
           style={{ aspectRatio: '16/11', minHeight: '260px', maxHeight: '400px' }}
         />
@@ -111,7 +117,7 @@ function services(){
             Ship Chandlery
           </h2>
           <p className="text-[#222] dark:text-white text-sm md:text-base mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
-            We offer extensive ship chandlery services dedicated to serving your vessel's every requirement with onboard supplies and equipment for smooth operations. Our global network enables seamless sourcing of top-tier products, including fresh provisions, deck and engine consumables, cleaning agents, and safety equipment.
+            We offer extensive ship chandlery services dedicated to serving your vessel&apos;s every requirement with onboard supplies and equipment for smooth operations. Our global network enables seamless sourcing of top-tier products, including fresh provisions, deck and engine consumables, cleaning agents, and safety equipment.
           </p>
           <p className="text-[#222] dark:text-white text-sm md:text-base mb-6" style={{ fontFamily: "Raleway, sans-serif" }}>
             We take pride in providing high-quality food and beverages, technical stores, safety equipment, bonded items, and cleaning materials, all tailored to your specific needs. Our experienced team understands the unique challenges of the maritime industry, so you can trust that your supplies will always be delivered efficiently and in compliance with the highest standards. Our service is available globally, ensuring your vessel receives the right products wherever you operate.
@@ -147,7 +153,7 @@ function OverviewTab() {
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="bg-white/90 dark:bg-gray-800/90 rounded-3xl p-6 m-4 shadow-md max-w-4xl text-center">
               <p className="text-[#222] dark:text-white text-sm md:text-base">
-                With Moon Navigation and Trading Co., you can count on reliable, timely and cost-effective bunkering solutions and support, and fully customizable solutions to your vessel's needs, ensuring uninterrupted service and operational efficiency.<br /><br />
+                With Moon Navigation and Trading Co., you can count on reliable, timely and cost-effective bunkering solutions and support, and fully customizable solutions to your vessel&apos;s needs, ensuring uninterrupted service and operational efficiency.<br /><br />
                 -Wherever and whenever you need to trust.
               </p>
             </div>
@@ -160,17 +166,17 @@ function OverviewTab() {
         subheading=""
         reasons={[
           {
-            icon: <img src="/icons/ship agency/59.png" alt="24/7 Service Availability" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+            icon: <Image src="/icons/ship agency/59.png" alt="24/7 Service Availability" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
             title: "24/7 Service Availability",
             description: "Supporting vessels at all times.",
           },
           {
-            icon: <img src="/icons/ship agency/58.png" alt="Cost-Effective & Transparent Pricing" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+            icon: <Image src="/icons/ship agency/58.png" alt="Cost-Effective & Transparent Pricing" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
             title: "Cost-Effective & Transparent Pricing",
             description: "No hidden fees.",
           },
           {
-            icon: <img src="/icons/ship agency/60.png" alt="Compliance with International Standards" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+            icon: <Image src="/icons/ship agency/60.png" alt="Compliance with International Standards" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
             title: "Compliance with International Standards",
             description: "Ensuring regulatory adherence.",
           },

@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import FAQSearch from "@/components/faq";
 
 export default function ShippingMethodsInfo() {
@@ -11,11 +12,13 @@ export default function ShippingMethodsInfo() {
     <div className="min-h-screen flex flex-col justify-center items-center py-8 px-4">
       {/* Banner Image */}
       <div className="w-full max-w-7xl rounded-[60px] overflow-hidden mb-12">
-        <img
+        <Image
           src="/lcl-banner.jpg"
           alt="Less Than Container Load Banner"
+          width={1200}
+          height={320}
           className="w-full h-[320px] object-cover"
-          loading="lazy"
+          priority
         />
       </div>
       {/* Content Section */}
@@ -72,11 +75,12 @@ export default function ShippingMethodsInfo() {
         </div>
         {/* Right: Image */}
         <div className="flex justify-center items-center">
-          <img
+          <Image
             src="/lcl-when-to-use.jpg"
             alt="Workers loading Less Than Container Load"
+            width={800}
+            height={600}
             className="rounded-3xl shadow-lg w-full max-w-7xl md:max-w-7xl"
-            loading="lazy"
           />
         </div>
       </div>
@@ -125,11 +129,12 @@ export default function ShippingMethodsInfo() {
       </div>
       <div className="w-full max-w-7xl mt-20 flex flex-col md:flex-row items-center gap-8">
         <div className="flex-shrink-0 w-full md:w-1/2 flex justify-center">
-          <img
+          <Image
             src="/lcl-experience.jpg"
             alt="Shipping professional with containers"
+            width={800}
+            height={600}
             className="rounded-2xl shadow-lg w-full max-w-7xl md:max-w-7xl"
-            loading="lazy"
           />
         </div>
         <div className="w-full md:w-3/4">
@@ -158,9 +163,11 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         {/* Image Section */}
         <div className="flex justify-center">
-          <img
+          <Image
             src="/lcl-additional-services.jpg"
             alt="Workers discussing logistics at port"
+            width={800}
+            height={600}
             className="rounded-2xl w-full max-w-7xl md:max-w-7xl object-cover"
           />
         </div>
@@ -196,6 +203,15 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Global Network */}
           <div className="flex flex-col items-center text-center px-4">
+            <div className="w-16 h-16 mb-4 flex items-center justify-center">
+              <Image
+                src="/icons/container/7.png"
+                alt="Global Network"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+            </div>
             <h3 className="font-semibold text-base md:text-lg mb-2 text-primary">Global Network</h3>
             <p className="text-muted-foreground text-sm md:text-base">
               Our extensive network provides reliable consolidation services that ensure seamless connections for your cargo worldwide, ensuring timely delivery.
@@ -203,6 +219,15 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Cost-Optimized Transportation */}
           <div className="flex flex-col items-center text-center px-4">
+            <div className="w-16 h-16 mb-4 flex items-center justify-center">
+              <Image
+                src="/icons/container/8.png"
+                alt="Cost-Optimized Transportation"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+            </div>
             <h3 className="font-semibold text-base md:text-lg mb-2 text-primary">Cost-Optimized Transportation</h3>
             <p className="text-muted-foreground text-sm md:text-base">
               We focus on delivering efficient and budget-friendly transportation options for smaller shipments without compromising on quality.
@@ -210,6 +235,15 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Secure Handling */}
           <div className="flex flex-col items-center text-center px-4">
+            <div className="w-16 h-16 mb-4 flex items-center justify-center">
+              <Image
+                src="/icons/container/9.png"
+                alt="Secure Handling"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+            </div>
             <h3 className="font-semibold text-base md:text-lg mb-2 text-primary">Secure Handling</h3>
             <p className="text-muted-foreground text-sm md:text-base">
               Our team employs meticulous packaging, precise labeling, and advanced tracking to ensure your shipment is always protected, even in shared shipping spaces, ensuring that it arrives in perfect condition.
@@ -219,6 +253,15 @@ export default function ShippingMethodsInfo() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* End-to-End Logistics */}
           <div className="flex flex-col items-center text-center px-4">
+            <div className="w-16 h-16 mb-4 flex items-center justify-center">
+              <Image
+                src="/icons/container/10.png"
+                alt="End-to-End Logistics"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+            </div>
             <h3 className="font-semibold text-base md:text-lg mb-2 text-primary">End-to-End Logistics</h3>
             <p className="text-muted-foreground text-sm md:text-base">
               We provide comprehensive logistics solutions that guarantee timely and reliable delivery outcomes, from pickup to final destination, allowing you to focus on your business.
@@ -226,6 +269,15 @@ export default function ShippingMethodsInfo() {
           </div>
           {/* Expert Documentation Management */}
           <div className="flex flex-col items-center text-center px-4">
+            <div className="w-16 h-16 mb-4 flex items-center justify-center">
+              <Image
+                src="/icons/container/11.png"
+                alt="Expert Documentation Management"
+                width={64}
+                height={64}
+                className="object-contain"
+              />
+            </div>
             <h3 className="font-semibold text-base md:text-lg mb-2 text-primary">Expert Documentation Management</h3>
             <p className="text-muted-foreground text-sm md:text-base">
               With our deep understanding of customs regulations and compliance requirements, we expertly manage all necessary documentation, minimizing delays and ensuring a hassle-free shipping experience.
@@ -243,7 +295,7 @@ export default function ShippingMethodsInfo() {
             Our streamlined LCL freight quotation process is designed for speed and convenience. At
             Moon Navigation and Trading Co., obtaining a quote is quick and hassle-free with our
             Quotation by Request system. Simply fill out our short form to initiate your request. Once
-            submitted, our team will assess your shipment's volume, weight, and consolidation options to
+            submitted, our team will assess your shipment&apos;s volume, weight, and consolidation options to
             find the most efficient and cost-effective transport solution. You will receive a customized
             quotation directly in your email, ensuring accurate pricing, reliable scheduling, and seamless
             cargo movement.
@@ -256,9 +308,11 @@ export default function ShippingMethodsInfo() {
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-          <img
+          <Image
             src="/quote-illustration.png"
             alt="Quotation illustration"
+            width={320}
+            height={240}
             className="w-[320px] h-auto object-contain"
             style={{ maxWidth: 380 }}
           />

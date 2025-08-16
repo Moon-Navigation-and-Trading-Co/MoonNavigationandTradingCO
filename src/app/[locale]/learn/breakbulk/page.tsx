@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl"
 import Link from "next/link"
 import { Metadata } from "next"
 import Head from "next/head"
+import Image from "next/image"
 import RequestQuoteButton from "@/components/RequestQuoteButton"
 import FAQSearch from "@/components/faq"
 import GetQuoteComponent from "@/components/getQuoteComponent"
@@ -18,12 +19,14 @@ function overview(){
         <div className="w-full max-w-7xl mx-auto">
                 {/* Top Banner Image */}
                 <div className="object-cover object-center mt-10 rounded-[60px] overflow-hidden">
-                    <img
+                    <Image
                         src="/breakbulk-banner.jpg"
                         alt="BreakBulk Cargo at port"
+                        width={1280}
+                        height={350}
                         className="object-cover object-center mb-8 object-bottom"
                         style={{ borderRadius: "60px", height: "350px", width: "1280px" }}
-                        loading="lazy"
+                        priority
                     />
                 </div>
                 <div className="flex flex-col md:flex-row gap-8 px-4 md:px-12">
@@ -44,7 +47,7 @@ function overview(){
                             What is BreakBulk Cargoandnbsp;?
                         </h2>
                         <p className="text-muted-foreground mb-2 text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Breakbulk cargo refers to large, non-containerized shipments that require individual loading and unloading. Too heavy or heavy in large blocks, breakbulk demands careful handling and specialized logistics. Typically managed using durable vessels, breakbulk cargo is comprised of miscellaneous vessels (MPP's) designed for modular cargo capabilities. Common examples of breakbulk cargo include steel, construction materials, and machinery.
+                            Breakbulk cargo refers to large, non-containerized shipments that require individual loading and unloading. Too heavy or heavy in large blocks, breakbulk demands careful handling and specialized logistics. Typically managed using durable vessels, breakbulk cargo is comprised of miscellaneous vessels (MPP&apos;s) designed for modular cargo capabilities. Common examples of breakbulk cargo include steel, construction materials, and machinery.
                         </p>
                         <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             At Moon Navigation and Trading Co., we excel in the transportation of breakbulk cargo, leveraging our expertise to manage the unique challenges associated with each shipment. Dedicated project teams provide safety and efficiency, ensuring every project proceeds smoothly. We deliver tailored logistics solutions that meet the specific needs of our clients, delivering reliable and timely transportation for all breakbulk shipments.
@@ -79,11 +82,13 @@ function services(){
                                 {/* Card 1 */}
                                 <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
                                     <div className="flex flex-col items-center text-center">
-                                        <img
+                                        <Image
                                             src="/breakbulk-steel-beams.jpg"
                                             alt="Steel Beams, Pipes and Coils"
+                                            width={200}
+                                            height={192}
                                             className="rounded-[50px] w-full h-48 md:h-56 object-cover mb-4 border border-gray-200 shadow-lg"
-                                            loading="lazy"
+                                            priority
                                         />
                                         <h3 className="text-sm md:text-base font-medium mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                             Steel Beams, Pipes and Coils
@@ -94,11 +99,13 @@ function services(){
                                 {/* Card 2 */}
                                 <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
                                     <div className="flex flex-col items-center text-center">
-                                        <img
+                                        <Image
                                             src="/breakbulk-prefab-units.jpg"
                                             alt="Pre-Fabricated Housing Units and Industrial Components"
+                                            width={200}
+                                            height={192}
                                             className="rounded-[50px] w-full h-48 md:h-56 object-cover mb-4 border border-gray-200 shadow-lg"
-                                            loading="lazy"
+                                            priority
                                         />
                                         <h3 className="text-sm md:text-base font-medium mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                             Pre-Fabricated Housing Units and Industrial Components
@@ -109,11 +116,13 @@ function services(){
                                 {/* Card 3 */}
                                 <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
                                     <div className="flex flex-col items-center text-center">
-                                        <img
+                                        <Image
                                             src="/breakbulk-construction-machinery.jpg"
                                             alt="Construction Machinery"
+                                            width={200}
+                                            height={192}
                                             className="rounded-[50px] w-full h-48 md:h-56 object-cover mb-4 border border-gray-200 shadow-lg"
-                                            loading="lazy"
+                                            priority
                                         />
                                         <h3 className="text-sm md:text-base font-medium mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                             Construction Machinery
@@ -124,11 +133,13 @@ function services(){
                                 {/* Card 4 */}
                                 <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
                                     <div className="flex flex-col items-center text-center">
-                                        <img
+                                        <Image
                                             src="/breakbulk-railway-equipment.jpg"
                                             alt="Railway Equipment and Vehicles"
+                                            width={200}
+                                            height={192}
                                             className="rounded-[50px] w-full h-48 md:h-56 object-cover mb-4 border border-gray-200 shadow-lg"
-                                            loading="lazy"
+                                            priority
                                         />
                                         <h3 className="text-sm md:text-base font-medium mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                             Railway Equipment and Vehicles
@@ -139,11 +150,13 @@ function services(){
                                 {/* Card 5 */}
                                 <CarouselItem className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
                                     <div className="flex flex-col items-center text-center">
-                                        <img
+                                        <Image
                                             src="/breakbulk-project-cargo.jpg"
                                             alt="Project/Out of Gauge Cargo"
+                                            width={200}
+                                            height={192}
                                             className="rounded-[50px] w-full h-48 md:h-56 object-cover mb-4 border border-gray-200 shadow-lg"
-                                            loading="lazy"
+                                            priority
                                         />
                                         <h3 className="text-sm md:text-base font-medium mb-1" style={{ fontFamily: 'Raleway, sans-serif' }}>
                                             Project/Out of Gauge Cargo Too Large for Containers
@@ -199,7 +212,7 @@ function services(){
                             <li className="flex items-start">
                                 <span className="text-[#222] mr-2" style={{ fontWeight: 600, fontSize: "13px" }}>✔</span>
                                 <span>
-                                    <span className=" text-primary">Ideal for Cargo That Can't Fit into Containers:</span> Our breakbulk shipments are secured individually for reliable, efficient loading and lashing, making them the best choice for items that defy unitization.
+                                    <span className=" text-primary">Ideal for Cargo That Can&apos;t Fit into Containers:</span> Our breakbulk shipments are secured individually for reliable, efficient loading and lashing, making them the best choice for items that defy unitization.
                                 </span>
                             </li>
                             <li className="flex items-start">
@@ -236,14 +249,30 @@ function services(){
                         </div>
                         {/* Right: Images */}
                         <div className="flex-1 flex flex-row gap-4 justify-center items-start">
-                            <img src="/breakbulk-cargo-windmill.jpg" alt="Breakbulk Windmill Cargo" className="rounded-[70px] w-[600px] h-[300px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
+                            <Image
+                                src="/breakbulk-cargo-windmill.jpg"
+                                alt="Breakbulk Windmill Cargo"
+                                width={600}
+                                height={300}
+                                className="rounded-[70px] w-[600px] h-[300px] object-cover"
+                                style={{ objectPosition: 'center' }}
+                                priority
+                            />
                         
                         </div>
                     </div>
                     <div className="flex flex-col md:flex-row gap-12 items-center mt-16">
                         {/* Left: Image for 2. Custom Handling and Stowage */}
                         <div className="flex-1 flex justify-center">
-                            <img src="/breakbulk-handling-stowage.jpg" alt="Breakbulk Handling and Stowage" className="rounded-[60px] w-[600px] h-[300px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
+                            <Image
+                                src="/breakbulk-handling-stowage.jpg"
+                                alt="Breakbulk Handling and Stowage"
+                                width={600}
+                                height={300}
+                                className="rounded-[60px] w-[600px] h-[300px] object-cover"
+                                style={{ objectPosition: 'center' }}
+                                priority
+                            />
                         </div>
                         {/* Right: Text for 2. Custom Handling and Stowage */}
                         <div className="flex-1 min-w-[340px]">
@@ -275,13 +304,29 @@ function services(){
                         </div>
                         {/* Right: Image for 3. Crane and Port Handling */}
                         <div className="flex-1 flex justify-center">
-                            <img src="/breakbulk-inland-delivery.jpg" alt="Breakbulk Inland Delivery" className="rounded-[60px] w-[600px] h-[300px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
+                            <Image
+                                src="/breakbulk-inland-delivery.jpg"
+                                alt="Breakbulk Inland Delivery"
+                                width={600}
+                                height={300}
+                                className="rounded-[60px] w-[600px] h-[300px] object-cover"
+                                style={{ objectPosition: 'center' }}
+                                priority
+                            />
                         </div>
                     </div>
                     <div className="flex flex-col md:flex-row gap-12 items-center mt-16">
                         {/* Left: Image for 4. Customs Clearance and Documentation */}
                         <div className="flex-1 flex justify-center order-2 md:order-1">
-                            <img src="/breakbulk-customs-docs.jpg" alt="Breakbulk Customs Clearance" className="rounded-[60px] w-[600px] h-[300px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
+                            <Image
+                                src="/breakbulk-customs-docs.jpg"
+                                alt="Breakbulk Customs Clearance"
+                                width={600}
+                                height={300}
+                                className="rounded-[60px] w-[600px] h-[300px] object-cover"
+                                style={{ objectPosition: 'center' }}
+                                priority
+                            />
                         </div>
                         {/* Right: Text for 4. Customs Clearance and Documentation */}
                         <div className="flex-1 min-w-[340px] order-1 md:order-2">
@@ -313,7 +358,15 @@ function services(){
                         </div>
                         {/* Right: Image for 5. Inland Transport and Final Delivery */}
                         <div className="flex-1 flex justify-center">
-                            <img src="/breakbulk-project-cargo.jpg" alt="Breakbulk Project Cargo" className="rounded-[60px] w-[600px] h-[300px] object-cover" style={{ objectPosition: 'center' }} loading="lazy" />
+                            <Image
+                                src="/breakbulk-project-cargo.jpg"
+                                alt="Breakbulk Project Cargo"
+                                width={600}
+                                height={300}
+                                className="rounded-[60px] w-[600px] h-[300px] object-cover"
+                                style={{ objectPosition: 'center' }}
+                                priority
+                            />
                         </div>
                     </div>
                 </section>
@@ -324,27 +377,27 @@ function services(){
                         layout="3-2"
                         reasons={[
                             {
-                                icon: <img src="/icons/ocean freight/98.png" alt="Specialized Expertise" className="h-16 w-16 mb-6 object-contain mx-auto mt-20" />, 
+                                icon: <Image src="/icons/ocean freight/98.png" alt="Specialized Expertise" width={64} height={64} className="h-16 w-16 mb-6 object-contain mx-auto mt-20" />, 
                                 title: "Specialized Expertise",
                                 description: "Years of experience handling non-containerized, oversized, and irregular cargo with precision."
                             },
                             {
-                                icon: <img src="/icons/ocean freight/99.png" alt="End-to-End Logistics" className="h-16 w-16 mb-6 object-contain mx-auto mt-20" />, 
+                                icon: <Image src="/icons/ocean freight/99.png" alt="End-to-End Logistics" width={64} height={64} className="h-16 w-16 mb-6 object-contain mx-auto mt-20" />, 
                                 title: "End-to-End Logistics",
                                 description: "From custom stowage planning and port handling to compliance and documentation."
                             },
                             {
-                                icon: <img src="/icons/ocean freight/100.png" alt="Advanced Handling Solutions" className="h-16 w-16 mb-6 object-contain mx-auto mt-20" />, 
+                                icon: <Image src="/icons/ocean freight/100.png" alt="Advanced Handling Solutions" width={64} height={64} className="h-16 w-16 mb-6 object-contain mx-auto mt-20" />, 
                                 title: "Advanced Handling Solutions",
                                 description: "State-of-the-art cranes, lifting gear, and securing techniques for safe transport."
                             },
                             {
-                                icon: <img src="/icons/ocean freight/101.png" alt="Global Shipping Network" className="h-16 w-16 mb-6 object-contain mx-auto" />, 
+                                icon: <Image src="/icons/ocean freight/101.png" alt="Global Shipping Network" width={64} height={64} className="h-16 w-16 mb-6 object-contain mx-auto" />, 
                                 title: "Global Shipping Network",
                                 description: "Strong partnerships with breakbulk carriers, ports, and specialized equipment providers worldwide."
                             },
                             {
-                                icon: <img src="/icons/ocean freight/102.png" alt="Regulatory Compliance & Dedicated Support" className="h-16 w-16 mb-6 object-contain mx-auto" />, 
+                                icon: <Image src="/icons/ocean freight/102.png" alt="Regulatory Compliance & Dedicated Support" width={64} height={64} className="h-16 w-16 mb-6 object-contain mx-auto" />, 
                                 title: "Regulatory Compliance & Dedicated Support",
                                 description: "Ensuring adherence to international shipping regulations with expert guidance at every stage."
                             }

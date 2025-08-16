@@ -1,5 +1,6 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import Image from "next/image";
 
 export default function LearnMore() {
   return (
@@ -18,11 +19,11 @@ export default function LearnMore() {
             <div className="flex-1 flex flex-col items-start text-left justify-center">
               <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff] text-left">1. Cargo Classification and Planning</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
-                Before shipment, our experts assess your cargo's nature, dimensions, and packaging to determine the most efficient container configuration. We help you plan the right load capacity to reduce wasted space and ensure safe transit—whether it's palletized goods, cartons, or oversized units.
+                Before shipment, our experts assess your cargo&apos;s nature, dimensions, and packaging to determine the most efficient container configuration. We help you plan the right load capacity to reduce wasted space and ensure safe transit—whether it&apos;s palletized goods, cartons, or oversized units.
               </p>
             </div>
             <div className="flex-1 w-full rounded-2xl overflow-hidden mb-4 md:mb-0">
-              <img src="/lm-dry-1.jpg" alt="Cargo Classification and Planning" className="object-cover w-full h-64 md:h-80 rounded-2xl" />
+              <Image src="/lm-dry-1.jpg" alt="Cargo Classification and Planning" width={600} height={320} className="object-cover w-full h-64 md:h-80 rounded-2xl" />
             </div>
           </div>
           {/* Solution 2 */}
@@ -34,7 +35,7 @@ export default function LearnMore() {
               </p>
             </div>
             <div className="flex-1 w-full rounded-2xl overflow-hidden mb-4 md:mb-0">
-              <img src="/lm-dry-2.jpg" alt="Space Optimization and Container Stuffing Guidance" className="object-cover w-full h-64 md:h-80 rounded-2xl" />
+              <Image src="/lm-dry-2.jpg" alt="Space Optimization and Container Stuffing Guidance" width={600} height={320} className="object-cover w-full h-64 md:h-80 rounded-2xl" />
             </div>
           </div>
           {/* Solution 3 */}
@@ -46,7 +47,7 @@ export default function LearnMore() {
               </p>
             </div>
             <div className="flex-1 w-full rounded-2xl overflow-hidden mb-4 md:mb-0">
-              <img src="/lm-dry-3.jpg" alt="Customized Container Booking and Routing" className="object-cover w-full h-64 md:h-80 rounded-2xl" />
+              <Image src="/lm-dry-3.jpg" alt="Customized Container Booking and Routing" width={600} height={320} className="object-cover w-full h-64 md:h-80 rounded-2xl" />
             </div>
           </div>
           {/* Solution 4 */}
@@ -67,7 +68,7 @@ export default function LearnMore() {
               </ul>
             </div>
             <div className="flex-1 w-full rounded-2xl overflow-hidden mb-4 md:mb-0">
-              <img src="/lm-dry-4.jpg" alt="Full Documentation and Customs Clearance Support" className="object-cover w-full h-64 md:h-80 rounded-2xl" />
+              <Image src="/lm-dry-4.jpg" alt="Full Documentation and Customs Clearance Support" width={600} height={320} className="object-cover w-full h-64 md:h-80 rounded-2xl" />
             </div>
           </div>
           {/* Solution 5 */}
@@ -75,11 +76,11 @@ export default function LearnMore() {
             <div className="flex-1 flex flex-col items-start text-left justify-center">
               <h3 className="text-xl  mb-2 text-[#23294d] dark:text-[#e0e7ff] text-left">5. Inland Transportation Coordination</h3>
               <p className="text-base text-gray-700 dark:text-gray-200 mb-4">
-                Beyond sea freight, we manage the first-mile and last-mile delivery of your containers. Whether it is trucking from your factory to the port or delivery to your consignee's warehouse, we ensure smooth and timely inland movement of your cargo using our network of reliable local transport partners.
+                Beyond sea freight, we manage the first-mile and last-mile delivery of your containers. Whether it is trucking from your factory to the port or delivery to your consignee&apos;s warehouse, we ensure smooth and timely inland movement of your cargo using our network of reliable local transport partners.
               </p>
             </div>
             <div className="flex-1 w-full rounded-2xl overflow-hidden mb-4 md:mb-0">
-              <img src="/lm-dry-5.jpg" alt="Inland Transportation Coordination" className="object-cover w-full h-64 md:h-80 rounded-2xl" />
+              <Image src="/lm-dry-5.jpg" alt="Inland Transportation Coordination" width={600} height={320} className="object-cover w-full h-64 md:h-80 rounded-2xl" />
             </div>
           </div>
           {/* Solution 6 */}
@@ -91,7 +92,7 @@ export default function LearnMore() {
               </p>
             </div>
             <div className="flex-1 w-full rounded-2xl overflow-hidden mb-4 md:mb-0">
-              <img src="/lm-dry-6.jpg" alt="Cargo Supervision and Secure Container Sealing" className="object-cover w-full h-64 md:h-80 rounded-2xl" />
+              <Image src="/lm-dry-6.jpg" alt="Cargo Supervision and Secure Container Sealing" width={600} height={320} className="object-cover w-full h-64 md:h-80 rounded-2xl" />
             </div>
           </div>
           {/* Solution 7 */}
@@ -103,7 +104,7 @@ export default function LearnMore() {
               </p>
             </div>
             <div className="flex-1 w-full rounded-2xl overflow-hidden mb-4 md:mb-0">
-              <img src="/lm-dry-7.jpg" alt="Loading/Unloading Assistance at Port or Final Destination" className="object-cover w-full h-64 md:h-80 rounded-2xl" />
+              <Image src="/lm-dry-7.jpg" alt="Loading/Unloading Assistance at Port or Final Destination" width={600} height={320} className="object-cover w-full h-64 md:h-80 rounded-2xl" />
             </div>
           </div>
         </div>
@@ -119,7 +120,7 @@ export default function LearnMore() {
           </div>
           <div className="flex-1">
             <div className="w-full rounded-2xl overflow-hidden">
-              <img src="/lm-dry-8.jpg" alt="Supporting Your Supply Chain" className="object-cover w-full h-64 md:h-80 rounded-2xl" />
+              <Image src="/lm-dry-8.jpg" alt="Supporting Your Supply Chain" width={600} height={320} className="object-cover w-full h-64 md:h-80 rounded-2xl" />
             </div>
           </div>
         </div>

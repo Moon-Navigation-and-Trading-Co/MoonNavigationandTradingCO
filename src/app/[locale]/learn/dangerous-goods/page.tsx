@@ -140,7 +140,7 @@ export default function DangerousCargoInfo() {
             <>
                 <CardTitle className="text-3xl font-bold mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
                 <div className="w-full flex justify-center items-center h-[60px] mt-10">
-                        <img src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" className="max-w-2xl w-full " />
+                        <Image src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" width={800} height={200} className="max-w-2xl w-full" />
                     </div>
                 {/* Accordion/classes section below */}
                 <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
@@ -222,11 +222,12 @@ export default function DangerousCargoInfo() {
                                 plans.</p>
                         </div>
                         <div className="flex-1 flex justify-center">
-                            <img
+                            <Image
                                 src="/risk-assessment.jpg"
                                 alt="Risk Assessment"
+                                width={600}
+                                height={400}
                                 className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
-                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -248,11 +249,12 @@ export default function DangerousCargoInfo() {
                             </p>
                         </div>
                         <div className="flex-1 flex justify-center">
-                            <img
+                            <Image
                                 src="/packaging-labeling.jpg"
                                 alt="Packaging and Labeling"
+                                width={600}
+                                height={400}
                                 className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
-                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -274,11 +276,12 @@ export default function DangerousCargoInfo() {
                             </ul>
                         </div>
                         <div className="flex-1 flex justify-center">
-                            <img
+                            <Image
                                 src="/special-equipment.jpg"
                                 alt="Special Equipment"
+                                width={600}
+                                height={400}
                                 className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
-                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -300,11 +303,12 @@ export default function DangerousCargoInfo() {
                                 <RequestQuoteButton> <Link href={"/learn/dangerous-goods/learn-more"}>Learn more about our dangerous container shipment solutions</Link></RequestQuoteButton>
                         </div>
                         <div className="flex-1 flex justify-center">
-                            <img
+                            <Image
                                 src="/safety-protocols.jpg"
                                 alt="Safety and Emergency Protocols"
+                                width={600}
+                                height={400}
                                 className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
-                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -315,32 +319,32 @@ export default function DangerousCargoInfo() {
                     layout="3-3"
                     reasons={[
                       {
-                        icon: <img src="/icons/container/57.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        icon: <Image src="/icons/container/57.png" alt="Certified Team Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
                         title: "Certified team with deep expertise in hazardous cargo handling.",
                         description: "",
                       },
                       {
-                        icon: <img src="/icons/container/58.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        icon: <Image src="/icons/container/58.png" alt="Compliance Standards Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
                         title: "Full compliance with IMDG, ADR, and IATA standards.",
                         description: "",
                       },
                       {
-                        icon: <img src="/icons/container/59.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        icon: <Image src="/icons/container/59.png" alt="Container Options Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
                         title: "Wide range of DG container options and equipment.",
                         description: "",
                       },
                       {
-                        icon: <img src="/icons/container/60.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        icon: <Image src="/icons/container/60.png" alt="Operational Support Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
                         title: "End-to-end operational support and coordination.",
                         description: "",
                       },
                       {
-                        icon: <img src="/icons/container/61.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        icon: <Image src="/icons/container/61.png" alt="Safety Commitment Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
                         title: "Commitment to safety, reliability, and regulatory excellence.",
                         description: "",
                       },
                       {
-                        icon: <img src="/icons/container/62.png" className="mb-8 h-20 w-20 object-contain"/>,
+                        icon: <Image src="/icons/container/62.png" alt="Transparent Process Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
                         title: "Transparent documentation, routing, and pricing process",
                         description: "",
                       },
@@ -356,7 +360,7 @@ export default function DangerousCargoInfo() {
     return (
         <div className="w-full">
             <FormTabs tabData={tabData} activeTab={activeTab} setActiveTab={handleTabChange} />
-            {/* ...rest of the Dangerous Goods page content (accordion, reasons, FAQ, etc.) can go here if needed... */}
+            {activeTab === "overview" && renderServices()}
         </div>
     );
 }

@@ -7,7 +7,12 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 import OverviewServicesTabs from "@/components/overview-services";
-import VesselCarousel from "@/components/vessel-carousel";
+import { useTranslations } from "next-intl";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import dynamic from "next/dynamic";
+
+const VesselCarousel = dynamic(() => import("@/components/vessel-carousel"), { ssr: false });
 import FormTabs from "@/components/form-tabs";
 import LearnMore from "./learn-more/page";
  
@@ -115,10 +120,7 @@ export default function DryContainerPage() {
           Our Standard Dry Shipment solutions are tailored for a wide range of industries, including:
         </p>
         <div className="relative px-2">
-          <VesselCarousel
-            vessels={industries}
-            className="w-full"
-          />
+          <VesselCarousel />
         </div>
       </div>
       {/* Comparison Table Section */}
@@ -198,27 +200,27 @@ export default function DryContainerPage() {
           layout="3-2"
           reasons={[
             {
-              icon: <img src="/icons/container/75.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/75.png" alt="Freight Forwarding Expertise Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Decades of freight forwarding expertise",
               description: "",
             },
             {
-              icon: <img src="/icons/container/110.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/110.png" alt="Logistics Planning Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Personalized logistics planning and container management",
               description: "",
             },
             {
-              icon: <img src="/icons/container/107.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/107.png" alt="Competitive Pricing Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Competitive pricing and flexible schedules",
               description: "",
             },
             {
-              icon: <img src="/icons/container/108.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/108.png" alt="Global Network Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Global partner network and port coverage",
               description: "",
             },
             {
-              icon: <img src="/icons/container/109.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/109.png" alt="Reliable Service Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Reliable service, responsive support, and professional handling",
               description: "",
             },

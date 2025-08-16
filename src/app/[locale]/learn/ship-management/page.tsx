@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
+import Image from "next/image"
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
@@ -12,10 +13,13 @@ function overview() {
   return (
     <>
       <div className="w-full rounded-[60px] overflow-hidden">
-        <img
+        <Image
           src="/sm-1.jpg"
           alt="Ship management at port"
+          width={1200}
+          height={350}
           className="w-full h-[350px] object-cover"
+          priority
         />
       </div>
       <div className="pt-8 pb-4 px-2 md:px-8">
@@ -70,7 +74,7 @@ function AnchorNav() {
         ))}
       </div>
       <div className="flex justify-center mt-8">
-        <a href="#crisis-emergency" className="bg-[#a32424] text-white rounded-xl px-8 py-4 font-raleway font-regular text-base shadow hover:bg-[#7a1818] transition-colors">Crisis & Emergency Response Management</a>
+        <Link href="#crisis-emergency" className="bg-[#a32424] text-white rounded-xl px-8 py-4 font-raleway font-regular text-base shadow hover:bg-[#7a1818] transition-colors">Crisis & Emergency Response Management</Link>
       </div>
     </section>
   );
@@ -84,9 +88,11 @@ function services() {
         {/* Technical Management Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-2.jpg"
               alt="Technical management team reviewing ship operations"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -122,9 +128,11 @@ function services() {
         {/* Crew Management Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-3.jpg"
               alt="Two crew members in uniform smiling on deck"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover object-[80%_20%]"
             />
           </div>
@@ -134,9 +142,11 @@ function services() {
         {/* Operational Management Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-4.jpg"
               alt="Ship operational management team at port"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -170,9 +180,11 @@ function services() {
         {/* Procurement & Supply Chain Support Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-5.jpg"
               alt="Warehouse worker in high-visibility vest standing in aisle of stocked shelves"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -182,9 +194,11 @@ function services() {
         {/* Maintenance Planning & Condition Monitoring Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-6.jpg"
               alt="Engineers monitoring vessel maintenance and condition data on digital screens"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -207,9 +221,11 @@ function services() {
         {/* Safety & Quality Management Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-7.jpg"
               alt="Engineer in safety gear inspecting control panels for quality management"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -243,9 +259,11 @@ function services() {
         {/* Fuel & Provision Management Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-8.jpg"
               alt="Engineer in safety gear managing fuel and provisions on a ship"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -255,9 +273,11 @@ function services() {
         {/* Regulatory Compliance & Certification Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/ship-management-crew.jpg"
               alt="Ship management professionals reviewing compliance documents"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -292,9 +312,11 @@ function services() {
         {/* Financial Management & Budget Control Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-10.jpg"
               alt="Ship management financial expert reviewing budget documents"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -304,9 +326,11 @@ function services() {
         {/* Insurance & Claims Handling Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-11.jpg"
               alt="Insurance and claims handling meeting"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -341,9 +365,11 @@ function services() {
         {/* Dry Docking & Project Management Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-12.jpg"
               alt="Shipyard team planning dry docking project"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -353,9 +379,11 @@ function services() {
         {/* Performance Monitoring & Reporting Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-13.jpg"
               alt="Team analyzing ship performance data on screens"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -386,9 +414,11 @@ function services() {
         {/* Customized Ship Management Solutions Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md bg-white flex items-center justify-center">
-            <img
+            <Image
               src="/sm-14.jpg"
               alt="Business meeting for customized ship management solutions with ships in background"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -399,9 +429,11 @@ function services() {
         {/* Crisis & Emergency Response Management Image */}
         <div className="flex-1 flex justify-center">
           <div className="w-full max-w-xl rounded-[40px] overflow-hidden shadow-md">
-            <img
+            <Image
               src="/sm-15.jpg"
               alt="Crisis and emergency response control room"
+              width={500}
+              height={250}
               className="w-full h-[250px] object-cover"
             />
           </div>
@@ -425,12 +457,12 @@ function services() {
         title="Reasons to Choose Moon Navigation and Trading Co. for Your Ship Management Needs:"
         subheading=""
         reasons={[
-          { icon: <img src="/icons/other services/25.png" alt="360° ship management under one roof" className="mb-4 h-16 w-16 object-contain" />, title: "360° ship management under one roof", description: "Comprehensive management services under a single roof." },
-          { icon: <img src="/icons/other services/26.png" alt="Transparent communication and owner-first approach" className="mb-4 h-16 w-16 object-contain" />, title: "Transparent communication and owner-first approach", description: "Clear communication with an owner-first approach to service." },
-          { icon: <img src="/icons/other services/27.png" alt="Strict adherence to international maritime standards" className="mb-4 h-16 w-16 object-contain" />, title: "Strict adherence to international maritime standards", description: "Compliance with all international maritime standards and regulations." },
-          { icon: <img src="/icons/other services/28.png" alt="Proactive problem-solving and risk mitigation" className="mb-4 h-16 w-16 object-contain" />, title: "Proactive problem-solving and risk mitigation", description: "Anticipating and addressing potential issues before they become problems." },
-          { icon: <img src="/icons/other services/29.png" alt="Scalable services for both small and large fleets" className="mb-4 h-16 w-16 object-contain" />, title: "Scalable services for both small and large fleets", description: "Flexible services that scale with your fleet size and requirements." },
-          { icon: <img src="/icons/other services/30.png" alt="Competitive pricing with uncompromised service quality" className="mb-4 h-16 w-16 object-contain" />, title: "Competitive pricing with uncompromised service quality", description: "High-quality services at competitive market rates." },
+          { icon: <Image src="/icons/other services/25.png" alt="360° ship management under one roof" width={64} height={64} className="mb-4 h-16 w-16 object-contain" />, title: "360° ship management under one roof", description: "Comprehensive management services under a single roof." },
+          { icon: <Image src="/icons/other services/26.png" alt="Transparent communication and owner-first approach" width={64} height={64} className="mb-4 h-16 w-16 object-contain" />, title: "Transparent communication and owner-first approach", description: "Clear communication with an owner-first approach to service." },
+          { icon: <Image src="/icons/other services/27.png" alt="Strict adherence to international maritime standards" width={64} height={64} className="mb-4 h-16 w-16 object-contain" />, title: "Strict adherence to international maritime standards", description: "Compliance with all international maritime standards and regulations." },
+          { icon: <Image src="/icons/other services/28.png" alt="Proactive problem-solving and risk mitigation" width={64} height={64} className="mb-4 h-16 w-16 object-contain" />, title: "Proactive problem-solving and risk mitigation", description: "Anticipating and addressing potential issues before they become problems." },
+          { icon: <Image src="/icons/other services/29.png" alt="Scalable services for both small and large fleets" width={64} height={64} className="mb-4 h-16 w-16 object-contain" />, title: "Scalable services for both small and large fleets", description: "Flexible services that scale with your fleet size and requirements." },
+          { icon: <Image src="/icons/other services/30.png" alt="Competitive pricing with uncompromised service quality" width={64} height={64} className="mb-4 h-16 w-16 object-contain" />, title: "Competitive pricing with uncompromised service quality", description: "High-quality services at competitive market rates." },
         ]}
       />
       <GetQuoteComponent topic="Ship Management" link="/ship-management-forms" />

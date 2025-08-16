@@ -8,6 +8,7 @@ import TransitSparePartsForm from "@/components/transit-spare-parts-form";
 import RequestForPdaForm from "@/components/request-for-pda-form";
 import BunkeringOilSupplyForm from "@/components/bunkering-oil-supply-form";
 import SpecialServicesForm from "@/components/special-services-form";
+import SuezCanalTransitForm from "@/components/suez-canal-transit-form";
 import { createClient } from "@/utils/supabase/client"; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast";
 import { redirect } from "next/navigation";
@@ -24,20 +25,20 @@ const Page: React.FC = () => {
   const router = useRouter();
 
   // Fetch the authenticated user on component mount
-  useEffect(() => {
-    const fetchUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      useEffect(() => {
+        const fetchUser = async () => {
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
 
-      if (user) {
-        setUser(user); // User is logged in, set the state
-      }
-      setIsLoading(false); // Stop loading after checking user
-    };
+            if (user) {
+                setUser(user); // User is logged in, set the state
+            }
+            setIsLoading(false); // Stop loading after checking user
+        };
 
-    fetchUser();
-  }, [router, supabase]); // Only run once when the component mounts
+        fetchUser();
+    }, [supabase.auth]); // Include supabase.auth in dependency array
 
   if (isLoading) {
     return (
@@ -179,6 +180,56 @@ const Page: React.FC = () => {
         phone_number: formData.company_details.phone_number,
         additional_phone_number: formData.company_details.additional_phone_number,
       };
+    } else if (formType === "suez_canal_transit") {
+      flattenedData = {
+        user_id: user?.id || null,
+        vessel_name: formData.vessel.name,
+        vessel_imo: formData.vessel.imo,
+        flag: formData.vessel.flag,
+        vessel_type: formData.vessel.type,
+        call_sign: formData.vessel.call_sign,
+        gross_tonnage: formData.vessel.gross_tonnage,
+        net_tonnage: formData.vessel.net_tonnage,
+        length_overall: formData.vessel.length_overall,
+        beam: formData.vessel.beam,
+        draft: formData.vessel.draft,
+        air_draft: formData.vessel.air_draft,
+        deadweight: formData.vessel.deadweight,
+        cargo_description: formData.vessel.cargo_description,
+        cargo_quantity: formData.vessel.cargo_quantity,
+        cargo_unit: formData.vessel.cargo_unit,
+        eta: formData.vessel.eta,
+        etd: formData.vessel.etd,
+        transit_type: formData.transit_details.transit_type,
+        convoy_number: formData.transit_details.convoy_number,
+        convoy_date: formData.transit_details.convoy_date,
+        convoy_time: formData.transit_details.convoy_time,
+        transit_route: formData.transit_details.transit_route,
+        transit_direction: formData.transit_details.transit_direction,
+        transit_purpose: formData.transit_details.transit_purpose,
+        additional_transit_info: formData.transit_details.additional_info,
+        agent_name: formData.agent_details.agent_name,
+        agent_contact: formData.agent_details.agent_contact,
+        agent_phone: formData.agent_details.agent_phone,
+        agent_email: formData.agent_details.agent_email,
+        agent_address: formData.agent_details.agent_address,
+        agent_license: formData.agent_details.agent_license,
+        agent_license_expiry: formData.agent_details.agent_license_expiry,
+        agent_authorization: formData.agent_details.agent_authorization,
+        agent_authorization_expiry: formData.agent_details.agent_authorization_expiry,
+        agent_services: formData.agent_details.services,
+        agent_additional_services: formData.agent_details.additional_services,
+        agent_notes: formData.agent_details.notes,
+        company_name: formData.company_details.company_name,
+        contact_person_name: formData.company_details.contact_person_name,
+        title: formData.company_details.title,
+        country_of_origin: formData.company_details.country_of_origin,
+        company_email: formData.company_details.company_email,
+        additional_email: formData.company_details.additional_email,
+        phone_number: formData.company_details.phone_number,
+        additional_phone_number: formData.company_details.additional_phone_number,
+        additional_notes: formData.additional_notes,
+      };
     }
 
     console.log(flattenedData);
@@ -236,6 +287,20 @@ const Page: React.FC = () => {
           <SignCrewMembersForm
             onSubmit={(formData: any) =>
               submitForm(formData, "sign_crew_members")
+            }
+          />
+        </>
+      ),
+    },
+    {
+      id: "suez-canal",
+      title: "Suez Canal Transit",
+      description: "Suez Canal transit services",
+      content: (
+        <>
+          <SuezCanalTransitForm
+            onSubmit={(formData: any) =>
+              submitForm(formData, "suez_canal_transit")
             }
           />
         </>

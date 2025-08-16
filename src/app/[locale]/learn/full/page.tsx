@@ -68,11 +68,12 @@ function OverviewTab() {
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-center">
-          <img
+          <Image
             src="/fcl-when-to-use.jpg"
             alt="FCL container being lifted"
+            width={400}
+            height={300}
             className="rounded-2xl object-cover w-full max-w-xs md:max-w-sm shadow-lg"
-            loading="lazy"
           />
         </div>
       </div>
@@ -88,9 +89,11 @@ function OverviewTab() {
           {/* Standard Containers */}
           <div className="flex-1 flex flex-col items-center">
             <div className="rounded-[40px] overflow-hidden shadow-lg mb-4">
-              <img
+              <Image
                 src="/container-standard.jpg"
                 alt="Standard Containers"
+                width={250}
+                height={150}
                 className="object-cover w-[250px] h-[150px]"
               />
             </div>
@@ -102,29 +105,33 @@ function OverviewTab() {
           {/* Reefer Containers */}
           <div className="flex-1 flex flex-col items-center">
             <div className="rounded-[40px] overflow-hidden shadow-lg mb-4">
-              <img
-                src="/container-banner.jpg"
+              <Image
+                src="/container-reefer.jpg"
                 alt="Reefer Containers"
+                width={250}
+                height={150}
                 className="object-cover w-[250px] h-[150px]"
               />
             </div>
             <div className="text-center">
               <div className=" text-foreground">Reefer Containers</div>
-              <div className="text-xs text-muted-foreground mt-1">– Temperature-Sensitive Cargo</div>
+              <div className="text-xs text-muted-foreground mt-1">– Temperature Controlled</div>
             </div>
           </div>
-          {/* Dangerous Goods Containers */}
+          {/* Dangerous Cargo Containers */}
           <div className="flex-1 flex flex-col items-center">
             <div className="rounded-[40px] overflow-hidden shadow-lg mb-4">
-              <img
+              <Image
                 src="/container-dangerous.jpg"
-                alt="Dangerous Goods Containers"
+                alt="Dangerous Cargo Containers"
+                width={250}
+                height={150}
                 className="object-cover w-[250px] h-[150px]"
               />
             </div>
             <div className="text-center">
-              <div className=" text-foreground">Dangerous Goods Containers</div>
-              <div className="text-xs text-muted-foreground mt-1">– Hazardous Cargo</div>
+              <div className=" text-foreground">Dangerous Cargo</div>
+              <div className="text-xs text-muted-foreground mt-1">– Hazardous Materials</div>
             </div>
           </div>
         </div>
@@ -209,31 +216,31 @@ function OverviewTab() {
           layout="3-2"
           reasons={[
             {
-              icon: <img src="/icons/container/24.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/24.png" alt="Shipment Management Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Complex Shipment Management",
               description:
                 "We handle every stage of your FCL shipment—from booking and documentation to delivery—ensuring a smooth and hassle-free process.",
             },
             {
-              icon: <img src="/icons/container/27.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/27.png" alt="Carrier Partnerships Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Global Carrier Partnerships",
               description:
                 "Our strong relationships with leading carriers guarantee competitive rates, priority space, and wide geographic coverage.",
             },
             {
-              icon: <img src="/icons/container/28.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/28.png" alt="Secure Deliveries Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Secure & Timely Deliveries",
               description:
                 "With proper cargo handling, sealed containers, and optimized transit times, your goods reach their destination safely and on schedule.",
             },
             {
-              icon: <img src="/icons/container/26.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/26.png" alt="Routing Solutions Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Flexible Routing Solutions",
               description:
                 "We offer tailored routing and scheduling options to meet your cargo requirements and delivery timelines.",
             },
             {
-              icon: <img src="/icons/container/37.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/37.png" alt="Support & Compliance Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Expert Support & Compliance Handling",
               description:
                 "Our team provides timely updates, manages documentation, and ensures full customs and regulatory compliance throughout the journey.",

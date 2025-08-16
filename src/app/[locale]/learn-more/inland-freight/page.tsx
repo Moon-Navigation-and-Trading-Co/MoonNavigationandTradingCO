@@ -13,22 +13,22 @@ export default function InlandFreightLearnMorePage() {
         {
             title: t("types.intermodal.title"),
             description: t("types.intermodal.description"),
-            image: "/intermodal-freight.jpg",
+            image: "/f-inland-2.jpg",
         },
             {
             title: t("types.rail.title"),
             description: t("types.rail.description"),
-            image: "/rail-freight.jpg",
+            image: "/f-inland-3.jpg",
         },
         {
             title: t("types.truck.title"),
             description: t("types.truck.description"),
-            image: "/truck-freight.jpg",
+            image: "/f-inland-4.jpg",
             },
             {
             title: t("types.waterways.title"),
             description: t("types.waterways.description"),
-            image: "/inland-waterways.jpg",
+            image: "/f-inland-5.jpg",
         },
     ];
 
@@ -59,7 +59,7 @@ export default function InlandFreightLearnMorePage() {
         <main className="flex flex-col items-center w-full">
             {/* Hero Section */}
             <div className="w-full h-[400px] relative rounded-b-3xl overflow-hidden">
-                <Image src="/inland-freight-hero.jpg" alt={t("title") ?? "Inland Freight Hero"} fill className="object-cover" />
+                <Image src="/f-inland-4.jpg" alt={t("title") ?? "Inland Freight Hero"} fill className="object-cover" />
                 <div className="absolute inset-0 bg-black/50" />
             </div>
 
@@ -102,11 +102,8 @@ export default function InlandFreightLearnMorePage() {
             </div>
 
             {/* Our Diverse Inland Freight Solutions */}
-            <div className="w-full relative py-16">
-                <div className="absolute inset-0 bg-[#1a237e] opacity-90">
-                    <Image src="/freight-bg.jpg" alt="Background" fill className="object-cover mix-blend-overlay" />
-                </div>
-                <div className="relative max-w-7xl mx-auto px-4 md:px-8 text-white">
+            <div className="w-full py-16 bg-[#1a237e]">
+                <div className="max-w-7xl mx-auto px-4 md:px-8 text-white">
                     <h2 className="text-3xl font-semibold mb-8">{t("solutionsTitle")}</h2>
                     <p className="mb-12">{t("solutionsDescription")}</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -181,7 +178,7 @@ export default function InlandFreightLearnMorePage() {
                         </div>
 
                         <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                            <Image src="/road-freight-trucks.jpg" alt="Road Freight Trucks" fill className="object-cover" />
+                            <Image src="/f-inland-7.jpg" alt="Road Freight Trucks" fill className="object-cover" />
                         </div>
                     </div>
                 </div>
@@ -192,12 +189,12 @@ export default function InlandFreightLearnMorePage() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                            <Image src="/rail-freight-hero.jpg" alt="Rail Freight Transport" fill className="object-cover" />
+                            <Image src="/f-inland-3.jpg" alt="Rail Freight Transport" fill className="object-cover" />
                         </div>
 
                         <div className="space-y-6">
                             <h2 className="text-3xl font-semibold">{t("railFreight.title")}</h2>
-                            <p className="text-muted-foreground">{t("railFreight.description")}</p>
+                            <p className="text-muted-foreground">We recognise the importance of efficient and sustainable logistics solutions for long-distance, high-volume shipments. Our rail freight services provide a cost-effective and environmentally friendly alternative to traditional trucking, ensuring your cargo is transported safely and efficiently</p>
 
                             <div className="space-y-4">
                                 <div className="space-y-2">
@@ -295,7 +292,7 @@ export default function InlandFreightLearnMorePage() {
                         </div>
 
                         <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                            <Image src="/inland-waterway-hero.jpg" alt="Inland Waterway Transport" fill className="object-cover" />
+                            <Image src="/f-inland-9.jpg" alt="Inland Waterway Transport" fill className="object-cover" />
                         </div>
                     </div>
                 </div>
@@ -306,7 +303,7 @@ export default function InlandFreightLearnMorePage() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                         <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                            <Image src="/intermodal-freight-hero.jpg" alt="Intermodal Freight Transport" fill className="object-cover" />
+                            <Image src="/f-inland-10.jpg" alt="Intermodal Freight Transport" fill className="object-cover" />
                         </div>
 
                         <div className="space-y-6">
@@ -380,7 +377,7 @@ export default function InlandFreightLearnMorePage() {
                         </div>
 
                         <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                            <Image src="/supply-chain-trucks.jpg" alt="Supply Chain Enhancement" fill className="object-cover" />
+                            <Image src="/f-inland-11.jpg" alt="Supply Chain Enhancement" fill className="object-cover" />
                         </div>
                     </div>
                 </div>
@@ -391,7 +388,7 @@ export default function InlandFreightLearnMorePage() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                         <div className="relative h-[500px] rounded-2xl overflow-hidden">
-                            <Image src="/inland-freight-workers.jpg" alt="Inland Freight Workers" fill className="object-cover" />
+                            <Image src="/f-inland-12.jpg" alt="Inland Freight Workers" fill className="object-cover" />
                         </div>
 
                         <div className="space-y-6">
@@ -409,18 +406,120 @@ export default function InlandFreightLearnMorePage() {
                 </div>
             </div>
 
+            {/* Reasons to Choose Moon Navigation and Trading Co. For Your Inland Transportation */}
+            <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mb-20">
+                <h2 className="text-3xl font-bold text-left mb-12 text-foreground">
+                    Reasons to Choose Moon Navigation and Trading Co. For Your Inland Transportation
+                </h2>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    {/* Extensive Network */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/inland/12.png"
+                                alt="Extensive Network"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            Extensive Network
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            Our comprehensive network spans across multiple transportation modes, ensuring seamless connectivity and efficient delivery solutions.
+                        </p>
+                    </div>
+
+                    {/* Expert Handling */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/inland/13.png"
+                                alt="Expert Handling"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            Expert Handling
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            Our experienced team ensures professional handling of all cargo types with the highest standards of care and safety.
+                        </p>
+                    </div>
+
+                    {/* Tailored Solutions */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/inland/14.png"
+                                alt="Tailored Solutions"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            Tailored Solutions
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            Customized transportation solutions designed to meet your specific requirements and optimize your supply chain.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* Safety & Compliance */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/inland/15.png"
+                                alt="Safety & Compliance"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            Safety & Compliance
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            Strict adherence to safety protocols and regulatory compliance ensures secure and reliable transportation services.
+                        </p>
+                    </div>
+
+                    {/* Cost-Effective Solutions */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/inland/12.png"
+                                alt="Cost-Effective Solutions"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            Cost-Effective Solutions
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            Optimized routes and efficient operations deliver competitive pricing without compromising on service quality.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
             {/* Quote Request Section */}
             <div className="w-full py-16 bg-blue-50">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                        <div className="space-y-6">
+                    <div className="flex justify-center">
+                        <div className="space-y-6 text-center">
                             <h2 className="text-3xl font-semibold">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
                             <Button className="bg-[#3B4B8C] hover:bg-[#2d3a6d]">{t("quoteRequest.button")}</Button>
-                        </div>
-
-                        <div className="relative h-[400px]">
-                            <Image src="/quote-request-illustration.jpg" alt="Quote Request" fill className="object-contain" />
                         </div>
                     </div>
                 </div>
@@ -434,7 +533,7 @@ export default function InlandFreightLearnMorePage() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div className="space-y-4">
                             <div className="flex justify-center mb-6">
-                                <Image src="/icons/globe-network.svg" alt="Extensive Network" width={48} height={48} />
+                                <Image src="/icons/inland/12.png" alt="Extensive Network" width={48} height={48} />
                             </div>
                             <h3 className="text-lg font-semibold text-center">{t("reasons.network.title")}</h3>
                             <p className="text-muted-foreground text-center">{t("reasons.network.description")}</p>
@@ -442,7 +541,7 @@ export default function InlandFreightLearnMorePage() {
 
                         <div className="space-y-4">
                             <div className="flex justify-center mb-6">
-                                <Image src="/icons/forklift.svg" alt="Expert Handling" width={48} height={48} />
+                                <Image src="/icons/inland/13.png" alt="Expert Handling" width={48} height={48} />
                             </div>
                             <h3 className="text-lg font-semibold text-center">{t("reasons.handling.title")}</h3>
                             <p className="text-muted-foreground text-center">{t("reasons.handling.description")}</p>
@@ -450,7 +549,7 @@ export default function InlandFreightLearnMorePage() {
 
                         <div className="space-y-4">
                             <div className="flex justify-center mb-6">
-                                <Image src="/icons/logistics.svg" alt="Tailored Solutions" width={48} height={48} />
+                                <Image src="/icons/inland/14.png" alt="Tailored Solutions" width={48} height={48} />
                             </div>
                             <h3 className="text-lg font-semibold text-center">{t("reasons.solutions.title")}</h3>
                             <p className="text-muted-foreground text-center">{t("reasons.solutions.description")}</p>
@@ -458,7 +557,7 @@ export default function InlandFreightLearnMorePage() {
 
                         <div className="space-y-4">
                             <div className="flex justify-center mb-6">
-                                <Image src="/icons/safety.svg" alt="Safety & Compliance" width={48} height={48} />
+                                <Image src="/icons/inland/15.png" alt="Safety & Compliance" width={48} height={48} />
                             </div>
                             <h3 className="text-lg font-semibold text-center">{t("reasons.safety.title")}</h3>
                             <p className="text-muted-foreground text-center">{t("reasons.safety.description")}</p>

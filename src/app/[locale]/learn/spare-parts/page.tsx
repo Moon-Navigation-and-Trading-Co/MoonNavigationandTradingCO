@@ -3,6 +3,7 @@ import FAQSearch from "@/components/faq";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
+import Image from "next/image";
 import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGrid from "@/components/ReasonsGrid";
 
@@ -11,11 +12,14 @@ function overview() {
     <>
       {/* Top full-width image */}
       <div className="w-full mb-10">
-        <img
+        <Image
           src="/spare-1.jpg"
           alt="Spare parts on dock ready for vessel transit"
+          width={1200}
+          height={320}
           className="w-full h-[220px] md:h-[320px] object-cover rounded-[40px] md:rounded-[48px] mt-2"
           style={{ width: "100%", objectFit: "cover" }}
+          priority
         />
       </div>
       {/* Main content grid */}
@@ -75,9 +79,11 @@ function services() {
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-center">
-          <img
+          <Image
             src="/spare-2.jpg"
             alt="Spare parts reception at port with agent and delivery vehicle"
+            width={320}
+            height={180}
             className="rounded-xl shadow-md object-cover w-[320px] h-[180px]"
             style={{ maxWidth: "100%", height: "auto" }}
           />
@@ -87,9 +93,11 @@ function services() {
       <div className="w-full bg-[#3b478b] dark:bg-blue-900 rounded-[32px] px-4 md:px-12 py-10 mt-10 flex flex-col md:flex-row items-center gap-8">
         {/* Left: Image */}
         <div className="flex-1 flex justify-center mb-6 md:mb-0">
-          <img
+          <Image
             src="/spare-3.jpg"
             alt="Customs officer inspecting documents for spare parts at port"
+            width={320}
+            height={180}
             className="rounded-xl shadow-md object-cover w-[320px] h-[180px]"
             style={{ maxWidth: "100%", height: "auto" }}
           />
@@ -138,9 +146,11 @@ function services() {
         </div>
         {/* Right: Image */}
         <div className="flex-1 flex justify-center order-1 md:order-2 mb-6 md:mb-0">
-          <img
+          <Image
             src="/spare-4.jpg"
             alt="Spare parts being delivered directly to ship at port"
+            width={320}
+            height={180}
             className="rounded-xl shadow-md object-cover w-[320px] h-[180px]"
             style={{ maxWidth: "100%", height: "auto" }}
           />
@@ -152,22 +162,22 @@ function services() {
           subheading=""
           reasons={[
             {
-              icon: <img src="/icons/ship agency/49.png" alt="Fast and Reliable Service" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              icon: <Image src="/icons/ship agency/49.png" alt="Fast and Reliable Service" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
               title: "Fast and Reliable Service",
               description: "No delays in spare parts delivery.",
             },
             {
-              icon: <img src="/icons/ship agency/50.png" alt="Customs Clearance Expertise" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              icon: <Image src="/icons/ship agency/50.png" alt="Customs Clearance Expertise" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
               title: "Customs Clearance Expertise",
               description: "Smooth handling of all regulatory procedures.",
             },
             {
-              icon: <img src="/icons/ship agency/48.png" alt="24/7 Support" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              icon: <Image src="/icons/ship agency/48.png" alt="24/7 Support" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
               title: "24/7 Support",
               description: "Available for urgent and emergency deliveries.",
             },
             {
-              icon: <img src="/icons/ship agency/51.png" alt="End-to-End Coordination" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              icon: <Image src="/icons/ship agency/51.png" alt="End-to-End Coordination" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
               title: "End-to-End Coordination",
               description: "From reception to final ship delivery.",
             },

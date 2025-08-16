@@ -17,12 +17,14 @@ import ContactForm from "@/components/contact-form";
 import OtherServices from "@/components/other-services-home";
 import PartnerLogoCarousel from "@/components/partners-carousel";
 import { QuoteDialog } from "@/components/dialog-services";
-import IndustryCarousel from "@/components/industry-carousel";
 import { useSearchParams } from "next/navigation";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
-import TSwiping from "@/components/T-Swiping";
 import MaerskServices from "@/components/MoonNavigationandTradingCo-Services";
+import dynamic from "next/dynamic";
+
+const IndustryCarousel = dynamic(() => import("@/components/industry-carousel"), { ssr: false });
+const TSwiping = dynamic(() => import("@/components/T-Swiping"), { ssr: false });
  
 export default function Index() {
     const t = useTranslations("HomePage");
@@ -137,7 +139,7 @@ export default function Index() {
         title: "Handling, Stevedoring and Storage Services",
         description: "",
         image: "/hss-1.jpg",
-        link: "/learn/hss",
+        link: "/learn/handling-stevedoring-storage/learn-more",
         quote: "/container-services-forms"
 
       },
@@ -277,7 +279,7 @@ export default function Index() {
                         {/* Right: Image Placeholder */}
                         <div className="flex-1 flex items-center justify-center">
                           <div className="w-[500px] h-[500px] rounded-[48px] bg-muted flex items-center justify-center overflow-hidden">
-                            <img src="/icons/about us/man.jpeg" alt="Quote" className="w-full h-full object-cover rounded-[48px]" />
+                            <Image src="/icons/about us/man.jpeg" alt="Quote" width={400} height={300} className="w-full h-full object-cover rounded-[48px]" />
                           </div>
                         </div>
                       </div>
@@ -303,7 +305,7 @@ export default function Index() {
                             <p className="text-muted-foreground text-sm leading-relaxed">Handling global trade requires a partner you can trust. We offer comprehensive support for international trading, ship management, customs clearance, and cargo handling. With Moon Navigation and Trading Co., you will experience streamlined logistics, reduced downtime, and personalized attention to every shipment.</p>
                           </div>
                           <div className="rounded-[32px] overflow-hidden shadow-sm">
-                            <img src="/p3.jpg" alt="Team" className="w-full h-full object-cover" />
+                            <Image src="/p3.jpg" alt="Team" width={400} height={300} className="w-full h-full object-cover" />
                           </div>
                         </div>
                         {/* Column 2 */}
@@ -313,11 +315,11 @@ export default function Index() {
                             <p className="text-muted-foreground text-sm leading-relaxed">We value partnerships over transactions. That is why we work closely with our clients to understand their unique requirements. With loyalty incentives, bespoke service packages, and strategic planning, we ensure that your business benefits from cost savings and operational efficiency at every step.</p>
                           </div>
                           <div className="rounded-[32px] overflow-hidden shadow-sm">
-                            <img src="/p1.jpg" alt="Custom Solutions" className="w-full h-full object-cover" />
+                            <Image src="/p1.jpg" alt="Custom Solutions" width={400} height={300} className="w-full h-full object-cover" />
                           </div>
                           <div className="bg-card rounded-[32px] border border-border shadow-sm p-6">
                             <h4 className="text-lg font-semibold text-primary mb-3">Partner with Us Today</h4>
-                            <p className="text-muted-foreground text-sm leading-relaxed">At Moon Navigation and Trading Co., we believe in building relationships that last. Let's work together to create solutions that meet your needs and exceed your expectations. <Link href="/schedule-meeting" className="text-primary underline">Schedule a meeting</Link> with us today to see how we can help you navigate your maritime operations more efficiently.</p>
+                            <p className="text-muted-foreground text-sm leading-relaxed">At Moon Navigation and Trading Co., we believe in building relationships that last. Let&apos;s work together to create solutions that meet your needs and exceed your expectations. <Link href="/schedule-meeting" className="text-primary underline">Schedule a meeting</Link> with us today to see how we can help you navigate your maritime operations more efficiently.</p>
                           </div>
                         </div>
                         {/* Column 3 */}
@@ -327,7 +329,7 @@ export default function Index() {
                             <p className="text-muted-foreground text-sm leading-relaxed">Moon Navigation and Trading Co. is committed to delivering clarity and precision in every transaction. With a straightforward quotation process, we provide detailed, accurate, and competitive pricing tailored to your specific needs. Whether you are planning long-term investments or seeking immediate shipping solutions, we have got you covered—anytime, day or night, with our 24/7 availability to assist you.</p>
                           </div>
                            <div className="rounded-[32px] overflow-hidden shadow-sm">
-                            <img src="/p2.jpg" alt="Fleet Excellence" className="w-full h-full object-cover" />
+                            <Image src="/p2.jpg" alt="Fleet Excellence" width={400} height={300} className="w-full h-full object-cover" />
                           </div>
                           <div className="bg-card rounded-[32px] border border-border shadow-sm p-6">
                             <h4 className="text-lg font-semibold text-primary mb-3">Operational Excellence for Your Fleet</h4>

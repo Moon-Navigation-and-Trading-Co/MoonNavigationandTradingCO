@@ -184,9 +184,11 @@ export default function DockingPage() {
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                    <img
+                    <Image
                         src="/quote-illustration.png"
                         alt="Quotation illustration"
+                        width={320}
+                        height={240}
                         className="w-[320px] h-auto object-contain"
                         style={{ maxWidth: 380 }}
                     />

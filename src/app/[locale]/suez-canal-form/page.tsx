@@ -7,6 +7,8 @@ import { useToast } from "@/hooks/use-toast"
 import { useRouter } from 'next/navigation'
 import Spinner from '@/components/spinner';
 import { sendFormEmail } from '@/utils/email-helper';
+import FormTabs from '@/components/form-tabs-variant-1';
+import FAQSearch from '@/components/faq';
 
 const SuezCanalFormPage = () => {
     const t = useTranslations('Inland-errors');
@@ -30,7 +32,7 @@ const SuezCanalFormPage = () => {
         };
 
         fetchUser();
-    }, [router, supabase]);
+    }, [supabase.auth]); // Include supabase.auth in dependency array
 
     if (isLoading) {
         return <div className='w-full h-[400px] flex items-center justify-center rounded-3xl'>
@@ -82,25 +84,26 @@ const SuezCanalFormPage = () => {
         }
     };
 
-    return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-8">
-            <div className="container mx-auto px-4 max-w-6xl">
-                {/* Header Section */}
-                <div className="text-center mb-8">
-                    <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Suez Canal Transit Quotation Request
-                    </h1>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-                        Request a comprehensive quote for your vessel's transit through the Suez Canal. 
-                        Our experienced team will provide you with detailed pricing and transit arrangements.
-                    </p>
-                </div>
-
-                {/* Form Section */}
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8">
+    const tabData = [
+        {
+            id: "suez-canal-transit",
+            title: "Suez Canal Transit Services",
+            description: "Comprehensive transit solutions through the Suez Canal",
+            content:
+                <>
                     <SuezCanalTransitForm onSubmit={handleSubmit} />
-                </div>
+                </>
+        }
+    ]
+
+    return (
+        <div className='flex flex-col w-full'>
+            <div className='mt-20 flex flex-col gap-5 px-4'>
+                <h1 className='text-3xl font-bold'>Suez Canal Transit</h1>
+                <p className=''>Professional transit services through the Suez Canal</p>
             </div>
+            <FormTabs tabData={tabData} />
+            <FAQSearch category="suez-canal-transit" />
         </div>
     );
 };

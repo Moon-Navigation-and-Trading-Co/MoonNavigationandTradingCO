@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -68,12 +69,13 @@ export default function OceanFreightPage() {
         {/* Top Banner */}
         <div className="w-full rounded-[60px] overflow-hidden mb-8 shadow-lg">
           <div className="relative w-full h-[350px]">
-            <img
+            <Image
               src="/container-banner-out.jpg"
               alt="Moon Navigation and Trading Co. Full Container"
+              fill
               className="object-cover w-full h-full"
               style={{ objectFit: "cover", borderRadius: "2rem" }}
-              loading="eager"
+              priority
             />
           </div>
         </div>
@@ -84,11 +86,11 @@ export default function OceanFreightPage() {
             <h1 className="text-12xl  text-foreground mb-4 mt-10"  >
               Containers
             </h1>
-            <a href="/container-services-forms">
+            <Link href="/container-services-forms">
               <RequestQuoteButton>
                 Request a Quote
               </RequestQuoteButton>
-            </a>
+            </Link>
           </div>
           {/* Right: Description */}
           <div>
