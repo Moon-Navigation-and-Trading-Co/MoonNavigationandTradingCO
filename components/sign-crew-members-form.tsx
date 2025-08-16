@@ -235,7 +235,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                                         <Input
                                                             type="number"
                                                             min="1"
-                                                            className="w-20"
+                                                            className="w-24"
                                                             {...field}
                                                             onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
                                                         />
@@ -402,7 +402,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                                         <Input
                                                             type="number"
                                                             min="1"
-                                                            className="w-20"
+                                                            className="w-24"
                                                             {...field}
                                                             onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
                                                         />

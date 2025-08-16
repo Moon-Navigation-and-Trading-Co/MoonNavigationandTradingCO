@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Controller, useForm, useFieldArray } from "react-hook-form";
+import { Controller, useForm, useFieldArray, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
@@ -23,6 +23,16 @@ const CommodityDetailsList = ({ control }: { control: any }) => {
         control,
         name: "commodity_details",
     });
+
+    // Watch all commodity details for calculations
+    const commodityDetails = useWatch({
+        control,
+        name: "commodity_details",
+    });
+
+    // Calculate totals
+    const totalVolume = commodityDetails?.reduce((sum: number, item: any) => sum + (item.gross_volume || 0), 0) || 0;
+    const totalWeight = commodityDetails?.reduce((sum: number, item: any) => sum + (item.cargo_weight || 0), 0) || 0;
 
     const addNewCommodity = () => {
         append({
@@ -341,6 +351,21 @@ const CommodityDetailsList = ({ control }: { control: any }) => {
                     </div>
                 </div>
             ))}
+
+            {/* Totals */}
+            <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                <h3 className="font-semibold text-blue-800 mb-2">Totals</h3>
+                <div className="grid grid-cols-2 gap-4">
+                    <div>
+                        <span className="font-medium">Total Volume:</span>
+                        <span className="ml-2 text-lg font-bold">{totalVolume.toFixed(2)} CBM</span>
+                    </div>
+                    <div>
+                        <span className="font-medium">Total Weight:</span>
+                        <span className="ml-2 text-lg font-bold">{totalWeight.toFixed(2)} kg</span>
+                    </div>
+                </div>
+            </div>
 
             {/* Add Additional Commodity Button */}
             <div className="flex justify-start">

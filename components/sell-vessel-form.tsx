@@ -300,18 +300,18 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
 
 
                 <FormItem>
-                    <FormLabel>Budget <span className="text-sm text-gray-500">(optional)</span></FormLabel>
-                    <p className='text-sm text-muted-foreground'>Share your budget for renting the vessel, which can help determine the most suitable options.</p>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="budget"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        type="number"
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Budget"
+                                            <FormLabel>Budget (USD) <span className="text-sm text-gray-500">(optional)</span></FormLabel>
+                        <p className='text-sm text-muted-foreground'>Share your budget in USD for renting the vessel, which can help determine the most suitable options.</p>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="budget"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input
+                                            type="number"
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            placeholder="Budget in USD"
                                         {...field}
                                         value={field.value || ''}
                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}

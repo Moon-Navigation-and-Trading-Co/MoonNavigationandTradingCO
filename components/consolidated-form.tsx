@@ -106,7 +106,7 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
                                 name="consolidated_data.weight_unit"
                                 render={({ field }) => (
                                     <Select onValueChange={field.onChange} value={field.value || 'kg'}>
-                                        <SelectTrigger className="w-24 border-2 rounded-xl">
+                                        <SelectTrigger className="w-28 border-2 rounded-xl">
                                             <SelectValue />
                                         </SelectTrigger>
                                         <SelectContent>
@@ -148,7 +148,7 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
                                 name="consolidated_data.volume_unit"
                                 render={({ field }) => (
                                     <Select onValueChange={field.onChange} value={field.value || 'cbm'}>
-                                        <SelectTrigger className="w-24 border-2 rounded-xl">
+                                        <SelectTrigger className="w-28 border-2 rounded-xl">
                                             <SelectValue />
                                         </SelectTrigger>
                                         <SelectContent>
@@ -285,7 +285,7 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
                                                         <>
                                                             <Input
                                                                 type="number"
-                                                                className="w-20 border-2 border-blue-300 rounded-xl"
+                                                                className="w-24 border-2 border-blue-300 rounded-xl"
                                                                 placeholder="Min"
                                                                 {...minField}
                                                                 onChange={(e) => minField.onChange(parseFloat(e.target.value) || 0)}
@@ -293,7 +293,7 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
                                                             <span className="text-sm">°C to</span>
                                         <Input
                                             type="number"
-                                                                className="w-20 border-2 border-blue-300 rounded-xl"
+                                                                className="w-24 border-2 border-blue-300 rounded-xl"
                                                                 placeholder="Max"
                                                                 {...maxField}
                                                                 onChange={(e) => maxField.onChange(parseFloat(e.target.value) || 0)}

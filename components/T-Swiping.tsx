@@ -1,152 +1,123 @@
 "use client";
 
-import { useRef } from "react";
-import Slider from "react-slick";
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
-import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
-import { AlignCenter, ChevronRight } from "lucide-react";
+import { ArrowRight, Clock, Truck } from "lucide-react";
 import { useRouter } from "next/navigation";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 interface FreightType {
+  id: number;
   title: string;
   description: string;
-  image: string;
-  link: string;
-  quote: string;
+  icon: React.ReactNode;
+  features: string[];
+  price: string;
+  duration: string;
+  route: string;
+  color: string;
 }
 
-interface CarouselAnimationProps {
-  freightTypes: FreightType[];
-  title: string;
-}
+const freightTypes: FreightType[] = [
+  {
+    id: 1,
+    title: "Ocean Freight",
+    description: "Reliable sea transportation for large cargo volumes",
+    icon: <Truck className="w-8 h-8" />,
+    features: ["Global coverage", "Cost-effective", "Large capacity"],
+    price: "From $500",
+    duration: "15-30 days",
+    route: "/ocean-freight-forms",
+    color: "bg-blue-50 border-blue-200",
+  },
+  {
+    id: 2,
+    title: "Air Freight",
+    description: "Fast and secure air transportation solutions",
+    icon: <Truck className="w-8 h-8" />,
+    features: ["Express delivery", "Global network", "Secure handling"],
+    price: "From $1,200",
+    duration: "2-5 days",
+    route: "/air-freight-forms",
+    color: "bg-green-50 border-green-200",
+  },
+  {
+    id: 3,
+    title: "Land Freight",
+    description: "Efficient ground transportation across continents",
+    icon: <Truck className="w-8 h-8" />,
+    features: ["Door-to-door", "Flexible routes", "Real-time tracking"],
+    price: "From $300",
+    duration: "3-7 days",
+    route: "/inland-services-forms",
+    color: "bg-orange-50 border-orange-200",
+  },
+];
 
-export default function TSwiping({
-  freightTypes,
-  title,
-}: CarouselAnimationProps) {
-  const t = useTranslations("HomePage");
+export default function TSwiping() {
   const tt = useTranslations("Buttons");
   const router = useRouter();
-  const sliderRef = useRef<Slider>(null);
-
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    dots: false,
-    swipe: true,
-    adaptiveHeight: true,
-    autoplay: false
-  };
 
   return (
-    <div className="flex flex-col lg:flex-row h-[400px] lg:h-[400px] w-full my-16 px-2 place-items-center">
-      {/* Title/Image Section */}
-      <div className="w-full lg:w-[160px] relative shadow-md overflow-hidden shadow-black h-[180px] lg:h-full rounded-2xl flex items-center">
-        <div className="bg-black/35 z-[104] absolute w-full h-full"></div>
-        <Image
-          src={"/container-top-v.jpeg"}
-          className="object-cover hidden lg:flex"
-          fill
-          alt="Transportation Services Background"
-        />
-        <Image
-          src={"/container-top-h.jpeg"}
-          className="object-cover flex lg:hidden"
-          fill
-          alt="Transportation Services Background"
-        />
-        <h1 className="!text-center z-[105] text-3xl lg:text-xl font-semibold text-[#E2F1E7] w-full" >
-          {title}
-        </h1>
-        
-
+    <div className="w-full max-w-7xl mx-auto px-4 py-16">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          Choose Your Freight Solution
+        </h2>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          Select the transportation method that best fits your cargo requirements and timeline
+        </p>
       </div>
-      <Separator className=" w-[2px] rounded-[100px] lg:my-24" />
-      {/* Carousel Section */}
-      <div className="relative w-full flex items-center justify-center h-[400px] max-w-xl">
-        <Slider ref={sliderRef} {...settings} className="w-full h-full">
-          {freightTypes.map((freight) => (
-            <div key={freight.title} className="flex items-center justify-center h-[400px]">
-              <Card
-                className="h-full w-full border-0 cursor-pointer bg-black shadow-xl overflow-hidden rounded-2xl"
-                onClick={() => router.push(freight.link)}
-              >
-                <CardContent className="relative w-full h-full p-0">
-                  <Image
-                    src={freight.image}
-                    alt={freight.title}
-                    fill
-                    className="h-full w-full object-cover overflow-hidden rounded-[18px]"
-                  />
-                  <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-black/100 to-black/50" />
-                  <div className="absolute w-full h-full bottom-0 left-0 px-2 py-4 text-white flex flex-col justify-end gap-4">
-                    <div>
-                      <h2 className="text-xl w-full font-semibold">
-                        {freight.title}
-                      </h2>
-                      <p className="mb-4 mt-2 text-base text-gray-300 font-light max-w-[500px]">
-                        {freight.description}
-                      </p>
-                    </div>
-                    <div className="flex gap-2 justify-start items-end">
-                      <Button className="bg-white text-black p-0 hover:bg-gray-200">
-                        <Link
-                          className="w-full h-full flex items-center px-3"
-                          href={freight.quote}
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          {tt("getQuote")}
-                        </Link>
-                      </Button>
-                      <button
-                        className="flex bg-transparent text-gray-300 px-2 items-end text-xs hover:text-gray-400"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          router.push(freight.link);
-                        }}
-                      >
-                        {tt("learnmore")} <ChevronRight height={15} width={15} />
-                      </button>
-                    </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {freightTypes.map((freight) => (
+          <Card key={freight.id} className={`h-full ${freight.color} hover:shadow-lg transition-shadow`}>
+            <CardContent className="p-6">
+              <div className="flex items-center mb-4">
+                <div className="p-2 rounded-lg bg-white mr-3">
+                  {freight.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">
+                  {freight.title}
+                </h3>
+              </div>
+              
+              <p className="text-gray-600 mb-4">
+                {freight.description}
+              </p>
+              
+              <div className="space-y-2 mb-6">
+                {freight.features.map((feature, index) => (
+                  <div key={index} className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
+                    {feature}
                   </div>
-                </CardContent>
-              </Card>
-            </div>
-          ))}
-        </Slider>
+                ))}
+              </div>
+              
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center text-sm text-gray-600">
+                  <Clock className="w-4 h-4 mr-1" />
+                  {freight.duration}
+                </div>
+                <Badge variant="secondary" className="text-sm">
+                  {freight.price}
+                </Badge>
+              </div>
+              
+              <Button
+                onClick={() => router.push(freight.route)}
+                className="w-full bg-blue-600 hover:bg-blue-700"
+              >
+                Get Quote
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
       </div>
     </div>
-  );
-}
-
-// Custom arrow components for slick
-function SampleNextArrow(props: any) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", right: 0, zIndex: 10 }}
-      onClick={onClick}
-    />
-  );
-}
-
-function SamplePrevArrow(props: any) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", left: 0, zIndex: 10 }}
-      onClick={onClick}
-    />
   );
 }

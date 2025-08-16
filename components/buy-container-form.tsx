@@ -6,6 +6,7 @@ import { number, z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import CompanyDetailsCard from './company-details-card-variant-1';
 import { useTranslations } from 'next-intl';
 import DatesCard from './dates-card-variant-3';
@@ -17,6 +18,24 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
+
+    // Standard container types and sizes (14 most commonly used)
+    const containerTypes = [
+        "20' Dry Container",
+        "40' Dry Container", 
+        "40' High Cube Dry Container",
+        "20' Reefer Container",
+        "40' Reefer Container",
+        "40' High Cube Reefer Container",
+        "20' Open Top Container",
+        "40' Open Top Container",
+        "40' High Cube Open Top Container",
+        "20' Flat Rack Container",
+        "40' Flat Rack Container",
+        "20' Tank Container",
+        "40' Tank Container",
+        "40' Platform Container"
+    ];
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
@@ -92,11 +111,18 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
                                         name={`container.type`}
                                         render={({ field, fieldState: { error } }) => (
                                             <>
-                                                <Input
-                                                    className="w-full max-w-[300px] border-2 rounded-xl"
-                                                    placeholder="Type a container"
-                                                    {...field}
-                                                />
+                                                <Select onValueChange={field.onChange} value={field.value}>
+                                                    <SelectTrigger className="w-full max-w-[300px] border-2 rounded-xl">
+                                                        <SelectValue placeholder="Select container type" />
+                                                    </SelectTrigger>
+                                                    <SelectContent className="max-h-[300px]">
+                                                        {containerTypes.map((type) => (
+                                                            <SelectItem key={type} value={type}>
+                                                                {type}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
                                                 {error && <p className="text-red-500">{error.message}</p>}
                                             </>
                                         )}
@@ -219,7 +245,7 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
                             <h1 className='text-xl font-semibold mb-4'>Budget & Additional Information</h1>
                             <div className='flex gap-5 p-4 items-center'>
                                 <FormItem>
-                                    <FormLabel>Share your budget for purchasing the container, which can help determine the most suitable options. (optional)</FormLabel>
+                                    <FormLabel>Share your budget in USD for purchasing the container, which can help determine the most suitable options. (optional)</FormLabel>
                                     <FormControl>
                                         <Controller
                                             control={form.control}
@@ -229,7 +255,7 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
                                                     <Input
                                                         type="number"
                                                         className="w-full max-w-[300px] border-2 rounded-xl"
-                                                        placeholder="Budget"
+                                                        placeholder="Budget in USD"
                                                         {...field}
                                                         value={field.value || ''}
                                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}
