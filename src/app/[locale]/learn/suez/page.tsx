@@ -204,27 +204,27 @@ function services() {
       subheading={""}
       reasons={[
           {
-            icon: <img src="/icons/ship agency/24.png" alt="Industry Expertise" className="mb-6 h-16 w-16 object-contain" />,
+            icon: <Image src="/icons/ship agency/24.png" alt="Industry Expertise" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
             title: "Industry Expertise",
             description: "With years of experience and local insight, we are your trusted partner for navigating the Suez Canal efficiently and compliantly.",
           },
           {
-            icon: <img src="/icons/ship agency/25.png" alt="All-Inclusive Service" className="mb-6 h-16 w-16 object-contain" />,
+            icon: <Image src="/icons/ship agency/25.png" alt="All-Inclusive Service" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
             title: "All-Inclusive Service",
             description: "From Suez Canal passage coordination to full agency services, we manage all aspects of your vessel’s journey to ensure a seamless and efficient experience.",
           },
           {
-            icon: <img src="/icons/ship agency/26.png" alt="Cost-Effective Solutions" className="mb-6 h-16 w-16 object-contain" />,
+            icon: <Image src="/icons/ship agency/26.png" alt="Cost-Effective Solutions" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
             title: "Cost-Effective Solutions",
             description: "We optimize every part of the process, minimizing costs and avoiding unnecessary delays.",
           },
           {
-            icon: <img src="/icons/ship agency/27.png" alt="24/7 Support" className="mb-6 h-16 w-16 object-contain" />,
+            icon: <Image src="/icons/ship agency/27.png" alt="24/7 Support" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
             title: "24/7 Support",
             description: "Our dedicated team is available round-the-clock, providing real-time solutions and proactive attention to ensure smooth sailing.",
           },
           {
-            icon: <img src="/icons/ship agency/28.png" alt="Emergency Assistance & Contingency Handling" className="mb-6 h-16 w-16 object-contain" />,
+            icon: <Image src="/icons/ship agency/28.png" alt="Emergency Assistance & Contingency Handling" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
             title: "Emergency Assistance & Contingency Handling",
             description: "When the unexpected happens, we deliver rapid hands-on emergency solutions to keep your vessel on course.",
           },

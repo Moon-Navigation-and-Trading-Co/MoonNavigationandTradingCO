@@ -24,20 +24,20 @@ const Page: React.FC = () => {
   const router = useRouter();
 
   // Fetch the authenticated user on component mount
-  useEffect(() => {
-    const fetchUser = async () => {
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
+      useEffect(() => {
+        const fetchUser = async () => {
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
 
-      if (user) {
-        setUser(user); // User is logged in, set the state
-      }
-      setIsLoading(false); // Stop loading after checking user
-    };
+            if (user) {
+                setUser(user); // User is logged in, set the state
+            }
+            setIsLoading(false); // Stop loading after checking user
+        };
 
-    fetchUser();
-  }, [router, supabase]); // Only run once when the component mounts
+        fetchUser();
+    }, [supabase.auth]); // Include supabase.auth in dependency array
 
   if (isLoading) {
     return (

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
@@ -17,11 +18,14 @@ export default function ShippingMethodsInfo() {
             {/* Hero Section */}
             <div className="w-full max-w-7xl place-self-center">
                 <div className="w-full rounded-[2rem] overflow-hidden mb-10 mt-6 shadow-lg">
-                    <img
+                    <Image
                         src="/pda-1.jpg"
                         alt="Financial Report and Disbursement Account"
+                        width={1200}
+                        height={320}
                         className="w-full h-[220px] md:h-[320px] object-cover"
                         style={{ display: "block" }}
+                        priority
                     />
                 </div>
                 <div className="flex flex-col md:flex-row items-start justify-between gap-8">
@@ -42,7 +46,7 @@ export default function ShippingMethodsInfo() {
                             What Is Requesting for a PDA?
                         </h4>
                         <p className="text-base text-foreground mb-2">
-                            A ProForma Disbursement Account (PDA) serves as a comprehensive estimate of all anticipated costs associated with a vessel's port call. It is issued to the vessel's operator, master, or their appointed financial representative, enabling stakeholders to prepare adequately for a vessel's arrival.
+                            A ProForma Disbursement Account (PDA) serves as a comprehensive estimate of all anticipated costs associated with a vessel&apos;s port call. It is issued to the vessel&apos;s operator, master, or their appointed financial representative, enabling stakeholders to prepare adequately for a vessel&apos;s arrival.
                         </p>
                         <p className="text-base text-foreground">
                             By providing a clear overview of expected expenses, a PDA helps ensure a smooth and efficient operation, minimizes unforeseen costs, and facilitates transparent financial planning. The information and estimates detailed PDAs help empower our clients to make informed decisions and optimize their logistics strategies.
@@ -126,9 +130,11 @@ export default function ShippingMethodsInfo() {
                 <div className="flex flex-col md:flex-row items-center justify-center gap-10">
                     {/* Left: Image */}
                     <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm">
-                        <img
+                        <Image
                             src="/pda-3.jpg"
                             alt="Professional at port with laptop"
+                            width={600}
+                            height={400}
                             className="w-full h-auto object-cover"
                             style={{ aspectRatio: '16/11', minHeight: '260px', maxHeight: '400px' }}
                         />
@@ -172,22 +178,22 @@ export default function ShippingMethodsInfo() {
                     subheading=""
                     reasons={[
                         {
-                            icon: <img src="/icons/ship agency/7.png" alt="Cost Estimate Icon" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <Image src="/icons/ship agency/7.png" alt="Cost Estimate Icon" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
                             title: "Accurate & Transparent Cost Estimates",
                             description: "We ensure realistic pricing with no hidden fees; our PDAs are based on official port tariffs and real-time market conditions.",
                         },
                         {
-                            icon: <img src="/icons/ship agency/8.png" alt="Port Authority Icon" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <Image src="/icons/ship agency/8.png" alt="Port Authority Icon" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
                             title: "Strong Relationships with Port Authorities",
                             description: "We work closely with port operators, customs officials, and maritime regulators as we negotiate the best possible rates for port services.",
                         },
                         {
-                            icon: <img src="/icons/ship agency/9.png" alt="Ship Agency Icon" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <Image src="/icons/ship agency/9.png" alt="Ship Agency Icon" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
                             title: "Expert Ship Agency Services",
                             description: "With years of experience managing vessel disbursements, we are specialized in handling bulk carriers, tankers, container ships, RORO vessels, and project cargo.",
                         },
                         {
-                            icon: <img src="/icons/ship agency/10.png" alt="Support Icon" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <Image src="/icons/ship agency/10.png" alt="Support Icon" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
                             title: "24/7 Support",
                             description: "Our dedicated operations team is available 24/7 for inquiries and assistance.",
                         },

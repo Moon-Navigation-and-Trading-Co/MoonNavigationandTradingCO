@@ -25,9 +25,11 @@ export default function LearnMoreChandleryPage() {
           </div>
           <div className="flex-1 flex items-center justify-center">
             <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-sm md:max-w-md flex justify-center">
-              <img
+              <Image
                 src="/lm-chandlery-1.jpg"
                 alt="Deck & Engine Stores"
+                width={400}
+                height={275}
                 className="w-full h-[260px] md:h-[320px] object-cover"
                 style={{ aspectRatio: '16/11' }}
               />
@@ -37,9 +39,11 @@ export default function LearnMoreChandleryPage() {
         <div className="flex flex-col md:flex-row gap-12 mb-20">
           <div className="flex-1 flex items-center justify-center mb-6 md:mb-0">
             <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-sm md:max-w-md flex justify-center">
-              <img
+              <Image
                 src="/lm-chandlery-2.jpg"
                 alt="Provisions & Catering Supplies"
+                width={400}
+                height={275}
                 className="w-full h-[260px] md:h-[320px] object-cover"
                 style={{ aspectRatio: '16/11' }}
               />
@@ -75,9 +79,11 @@ export default function LearnMoreChandleryPage() {
           </div>
           <div className="flex-1 flex items-center justify-center">
             <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-sm md:max-w-md flex justify-center">
-              <img
+              <Image
                 src="/lm-chandlery-3.jpg"
                 alt="Bonded Stores & Duty-Free Items"
+                width={400}
+                height={275}
                 className="w-full h-[260px] md:h-[320px] object-cover"
                 style={{ aspectRatio: '16/11' }}
               />

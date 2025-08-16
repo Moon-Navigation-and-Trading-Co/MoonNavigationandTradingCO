@@ -68,10 +68,10 @@ export default function AboutUs() {
             Our prime location grants us unmatched access to the Suez Canal and global seaports, solidifying our role as a pivotal player in international commerce. Partner with us for unparalleled expertise in navigation, logistics, and trade solutions.
           </p>
           <p className="text-foreground text-sm md:text-base" style={{ fontWeight: 400 }}>
-            We believe that true success stems from creativity and a profound understanding of our clients' needs.
+            We believe that true success stems from creativity and a profound understanding of our clients&apos; needs.
           </p>
           <p className="text-foreground text-sm md:text-base" style={{ fontWeight: 400 }}>
-            From the very beginning, we have embraced the role of the "unconventional partner," consistently innovating to tackle challenges with expertise. Our commitment to excellence ensures that we provide tailored solutions that go beyond ordinary, setting us apart in the industry. Partner with us and experience the difference that a dedicated and imaginative approach can make for your business.
+            From the very beginning, we have embraced the role of the &quot;unconventional partner,&quot; consistently innovating to tackle challenges with expertise. Our commitment to excellence ensures that we provide tailored solutions that go beyond ordinary, setting us apart in the industry. Partner with us and experience the difference that a dedicated and imaginative approach can make for your business.
           </p>
         </div>
         {/* Right: Suez Canal image */}
@@ -106,9 +106,10 @@ export default function AboutUs() {
           }}
         >
 
-          <img
+          <Image
             src="/a-4.jpg"
             alt="Mission background"
+            fill
             style={{
               position: "absolute",
               inset: 0,
@@ -175,9 +176,10 @@ export default function AboutUs() {
           }}
         >
 
-          <img
+          <Image
             src="/a-5.jpg"
             alt="Mission background"
+            fill
             style={{
               position: "absolute",
               inset: 0,
@@ -279,7 +281,7 @@ export default function AboutUs() {
               We pride ourselves on providing comprehensive transportation and freight solutions designed to meet diverse logistical needs.
             </p>
             <p className="text-foreground text-base md:text-lg mb-8" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
-              From local transport to freight services, we ensure that your goods arrive safely and punctually. Our ocean freight capabilities accommodate a wide range of cargo types, including project cargo, dangerous goods, heavy lift, break bulk, and containers in both standard and nonstandard sizes, along with inland container transport and storage solutions, establishing ourselves as a versatile choice for effectively transporting any shipment without compromising quality or timeliness, whether across borders or overseas. Our integrated sea-air solutions further enhance our logistics offerings, allowing for efficient and timely delivery of your shipments in today's dynamic market.
+              From local transport to freight services, we ensure that your goods arrive safely and punctually. Our ocean freight capabilities accommodate a wide range of cargo types, including project cargo, dangerous goods, heavy lift, break bulk, and containers in both standard and nonstandard sizes, along with inland container transport and storage solutions, establishing ourselves as a versatile choice for effectively transporting any shipment without compromising quality or timeliness, whether across borders or overseas. Our integrated sea-air solutions further enhance our logistics offerings, allowing for efficient and timely delivery of your shipments in today&apos;s dynamic market.
             </p>
             <button className="bg-[#011f4b] text-white hover:bg-[#022c6a] px-6 py-2 text-sm font-medium shadow-md transition-colors duration-200 rounded-md">
               Explore Freight & Cargo Solutions
@@ -287,9 +289,11 @@ export default function AboutUs() {
           </div>
           {/* Right: Image */}
           <div className="flex-shrink-0 w-full md:w-[480px] rounded-2xl overflow-hidden">
-            <img
+            <Image
               src="/a-6.jpg"
               alt="Freight and Cargo"
+              width={480}
+              height={320}
               className="w-full h-[260px] md:h-[320px] object-cover"
               style={{ borderRadius: '1.5rem' }}
             />
@@ -300,9 +304,11 @@ export default function AboutUs() {
       <section id="ship-agency" className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
         {/* Left: Image */}
         <div className="flex-shrink-0 w-full md:w-[420px] rounded-2xl overflow-hidden mb-6 md:mb-0">
-          <img
+          <Image
             src="/a-7.jpg"
             alt="Ship agency workers at port"
+            width={420}
+            height={494}
             className="w-full h-[813x] md:h-[494px] object-cover"
             style={{ borderRadius: '1.5rem' }}
           />
@@ -316,7 +322,7 @@ export default function AboutUs() {
             At Moon Navigation and Trading Co., we take pride in being a foremost ship agent dedicated to ensuring seamless vessel operations across all Egyptian sea ports and the Suez Canal Transit. We deliver top-tier efficiency, compliance, and reliability, with minimized delays and optimized port turnaround times, providing essential support to shipowners, operators, and charterers.
           </p>
           <p className="text-foreground text-base md:text-lg mb-4" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
-            Our port call management services cover piloting, berthing, bunkage, and disbursement accounting, ensuring smooth short and long port calls with highly synchronized coordination across cargo cargo discharging, crew handling, husbandry, and shipyard services. As a full-service ship agency, we handle vessel clearances, documentation, and port authority requirements, while our 24/7 operations desk ensures we are fully involved with every vessel's requirements before, during, and after port calls. We proactively manage schedules, resolve any issues, and keep all stakeholders well informed, ensuring that vessel owners and operators experience a seamless and transparent voyage at any time, including out-of-hours and weekend or in-distress transits or situations.
+            Our port call management services cover piloting, berthing, bunkage, and disbursement accounting, ensuring smooth short and long port calls with highly synchronized coordination across cargo cargo discharging, crew handling, husbandry, and shipyard services. As a full-service ship agency, we handle vessel clearances, documentation, and port authority requirements, while our 24/7 operations desk ensures we are fully involved with every vessel&apos;s requirements before, during, and after port calls. We proactively manage schedules, resolve any issues, and keep all stakeholders well informed, ensuring that vessel owners and operators experience a seamless and transparent voyage at any time, including out-of-hours and weekend or in-distress transits or situations.
           </p>
           <p className="text-foreground text-base md:text-lg mb-8" style={{ fontFamily: 'Raleway, sans-serif', opacity: 0.85 }}>
             Additionally, our experienced team ensures smooth and efficient Suez Canal passage, handling all aspects from documentation to coordination with authorities, minimizing delays and ensuring regulatory compliance.
@@ -348,9 +354,11 @@ export default function AboutUs() {
         </div>
         {/* Right: Image */}
         <div className="flex-shrink-0 w-full md:w-[340px] rounded-2xl overflow-hidden">
-          <img
+          <Image
             src="/a-8.jpg"
             alt="Global trade connections"
+            width={340}
+            height={240}
             className="w-full h-[220px] md:h-[240px] object-cover"
             style={{ borderRadius: '1.5rem' }}
           />
@@ -360,9 +368,11 @@ export default function AboutUs() {
       <section id="vessel-support" className="flex flex-col md:flex-row items-center gap-10 mt-16 border-b border-border pb-12 px-4">
         {/* Left: Image */}
         <div className="flex-shrink-0 w-full md:w-[440px] rounded-2xl overflow-hidden mb-6 md:mb-0">
-          <img
+          <Image
             src="/a-9.jpg"
             alt="Vessel in dry dock for maintenance"
+            width={440}
+            height={260}
             className="w-full h-[240px] md:h-[260px] object-cover"
             style={{ borderRadius: '1.5rem' }}
           />
@@ -408,9 +418,11 @@ export default function AboutUs() {
         </div>
         {/* Right: Image */}
         <div className="flex-shrink-0 w-full md:w-[340px] rounded-2xl overflow-hidden">
-          <img
+          <Image
             src="/a-10.jpg"
             alt="Logistics worker inspecting containers at port"
+            width={340}
+            height={240}
             className="w-full h-[220px] md:h-[240px] object-cover"
             style={{ borderRadius: '1.5rem' }}
           />
@@ -427,24 +439,26 @@ export default function AboutUs() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Integrity & Transparency */}
           <div className="relative rounded-2xl overflow-hidden shadow-md min-h-[200px] flex items-end bg-muted">
-            <img
+            <Image
               src="/a-11.jpg"
               alt="Integrity & Transparency handshake"
+              fill
               className="absolute inset-0 w-full h-full object-cover opacity-80"
               style={{ borderRadius: '1.5rem' }}
             />
             <div className="relative z-10 p-6 text-white" style={{ fontFamily: 'Raleway, sans-serif' }}>
               <h3 className="text-xl font-bold mb-2">Integrity and Transparency</h3>
               <p className="text-base opacity-90">
-                We build trust through honest, transparent dealings and ethical business practices—always putting our clients' interests first.
+                We build trust through honest, transparent dealings and ethical business practices—always putting our clients&apos; interests first.
               </p>
             </div>
           </div>
           {/* Customer-Centric Excellence */}
           <div className="relative rounded-2xl overflow-hidden shadow-md min-h-[200px] flex items-end bg-muted">
-            <img
+            <Image
               src="/a-12.jpg"
               alt="Customer-Centric Excellence"
+              fill
               className="absolute inset-0 w-full h-full object-cover opacity-80"
               style={{ borderRadius: '1.5rem' }}
             />
@@ -457,9 +471,10 @@ export default function AboutUs() {
           </div>
           {/* Forward-Thinking & Innovation */}
           <div className="relative rounded-2xl overflow-hidden shadow-md min-h-[200px] flex items-end bg-muted">
-            <img
+            <Image
               src="/a-13.jpg"
               alt="Forward-Thinking & Innovation"
+              fill
               className="absolute inset-0 w-full h-full object-cover opacity-80"
               style={{ borderRadius: '1.5rem' }}
             />
@@ -472,9 +487,10 @@ export default function AboutUs() {
           </div>
           {/* Safety & Responsibility */}
           <div className="relative rounded-2xl overflow-hidden shadow-md min-h-[200px] flex items-end bg-muted">
-            <img
+            <Image
               src="/a-14.jpg"
               alt="Safety and Responsibility"
+              fill
               className="absolute inset-0 w-full h-full object-cover opacity-80"
               style={{ borderRadius: '1.5rem' }}
             />
@@ -487,9 +503,10 @@ export default function AboutUs() {
           </div>
           {/* Collaboration */}
           <div className="relative rounded-2xl overflow-hidden shadow-md min-h-[200px] flex items-end bg-muted">
-            <img
+            <Image
               src="/a-15.jpg"
               alt="Collaboration"
+              fill
               className="absolute inset-0 w-full h-full object-cover opacity-80"
               style={{ borderRadius: '1.5rem' }}
             />
@@ -507,9 +524,10 @@ export default function AboutUs() {
           </div>
           {/* Sustainability */}
           <div className="relative rounded-2xl overflow-hidden shadow-md min-h-[200px] flex items-end bg-muted">
-            <img
+            <Image
               src="/a-16.jpg"
               alt="Sustainability"
+              fill
               className="absolute inset-0 w-full h-full object-cover opacity-80"
               style={{ borderRadius: '1.5rem' }}
             />
@@ -531,8 +549,8 @@ export default function AboutUs() {
       <section className="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-start gap-12 mt-24 mb-20 px-4">
         {/* Left: ISO Images */}
         <div className="flex flex-col items-center md:items-start gap-8 min-w-[160px] md:min-w-[200px]">
-          <img src="/a-20.jpg" alt="ISO 9001:2008" className="w-32 md:w-40 h-auto" style={{ fontFamily: 'Raleway, sans-serif' }} />
-          <img src="/a-21.jpg" alt="ISO 14001" className="w-32 md:w-40 h-auto" style={{ fontFamily: 'Raleway, sans-serif' }} />
+                          <Image src="/a-20.jpg" alt="ISO 9001:2008" width={160} height={160} className="w-32 md:w-40 h-auto" style={{ fontFamily: 'Raleway, sans-serif' }} />
+                <Image src="/a-21.jpg" alt="ISO 14001" width={160} height={160} className="w-32 md:w-40 h-auto" style={{ fontFamily: 'Raleway, sans-serif' }} />
         </div>
         {/* Right: Text Content */}
         <div className="flex-1 flex flex-col gap-8">
@@ -573,61 +591,71 @@ export default function AboutUs() {
           BIMCO | ISO 9001:2008 | ISO 14001 | IAF | JAS-ANZ | Vesseltracker | Maritime Transport Sector | AFCS
         </p>
         <div className="flex flex-row flex-wrap items-center gap-6 justify-start">
-          <img
+          <Image
             src="/a-19.jpg"
             alt="BIMCO"
+            width={64}
+            height={64}
             className="h-16 w-16"
-            style={{  }}
           />
-          <img
+          <Image
             src="/a-20.jpg"
             alt="ISO 9001:2008"
+            width={64}
+            height={64}
             className="h-16 w-16"
-            style={{ }}
           />
-          <img
+          <Image
             src="/a-21.jpg"
             alt="ISO 14001"
+            width={96}
+            height={96}
             className="h-24 w-24"
-            style={{  }}
           />
-          <img
+          <Image
             src="/a-22.jpg"
             alt="IAF"
+            width={96}
+            height={96}
             className="h-24 w-24"
-            style={{  }}
           />
-          <img
+          <Image
             src="/a-23.jpg"
             alt="JAS-ANZ"
+            width={96}
+            height={96}
             className="h-24 w-24"
-            style={{  }}
           />
-          <img
+          <Image
             src="/a-24.jpg"
             alt="JAS-ANZ G"
+            width={96}
+            height={96}
             className="h-24 w-24"
-            style={{  }}
           />
-          <img
+          <Image
             src="/a-25.jpg"
             alt="Vesseltracker"
+            width={96}
+            height={96}
             className="h-24 w-24"
-            style={{  }}
           />
-          <img
+          <Image
             src="/a-26.jpg"
             alt="Maritime Transport Sector"
+            width={96}
+            height={96}
             className="h-24 w-24"
-            style={{  }}
           />
         </div>
       </section>
       <section className="relative max-w-7xl mx-auto overflow-hidden min-h-[520px] my-20">
         {/* Background image */}
-        <img
+        <Image
           src="/a-28.jpg"
           alt="Two logistics professionals in safety vests and helmets at port"
+          width={1200}
+          height={700}
           className="w-full h-auto object-cover object-center"
           style={{ minHeight: 520, maxHeight: 700 }}
         />
@@ -687,32 +715,32 @@ export default function AboutUs() {
         subheading="We combine our industry expertise with a strategic location to deliver reliable, tailored services. Our commitment to sustainability and end-to-end solutions ensures global reach, operational excellence, and trusted partnerships you can rely on."
         reasons={[
           {
-            icon: <img src="/icons/industry-expertise.png" alt="Industry Expertise" className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
+            icon: <Image src="/icons/industry-expertise.png" alt="Industry Expertise" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
             title: "Industry Expertise",
             description: "Experience in navigating the intricacies of maritime and logistics operations for reliable results.",
           },
           {
-            icon: <img src="/icons/strategic-location.png" alt="Strategic Location" className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
+            icon: <Image src="/icons/strategic-location.png" alt="Strategic Location" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
             title: "Strategic Location",
             description: "Based in Egypt, with unparalleled access to the Suez Canal and regional seaports, making us a hub for global trade.",
           },
           {
-            icon: <img src="/icons/end-to-end.png" alt="End-to-End Solutions" className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
+            icon: <Image src="/icons/end-to-end.png" alt="End-to-End Solutions" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
             title: "End-to-End Solutions",
             description: "From cargo handling to vessel management, we provide a full spectrum of services under one roof.",
           },
           {
-            icon: <img src="/icons/global-reach.png" alt="Global Reach" className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
+            icon: <Image src="/icons/global-reach.png" alt="Global Reach" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
             title: "Global Reach",
             description: "Established networks with international partners ensure smooth cross-border operations.",
           },
           {
-            icon: <img src="/icons/tailored-services.png" alt="Tailored Services" className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
+            icon: <Image src="/icons/tailored-services.png" alt="Tailored Services" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
             title: "Tailored Services",
             description: "Our solutions are designed around your specific business needs, offering flexibility and efficiency.",
           },
           {
-            icon: <img src="/icons/sustainability.png" alt="Sustainability Commitment" className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
+            icon: <Image src="/icons/sustainability.png" alt="Sustainability Commitment" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />, // Replace with your actual icon path
             title: "Sustainability Commitment",
             description: "We prioritize environmentally responsible practices in all operations.",
           },

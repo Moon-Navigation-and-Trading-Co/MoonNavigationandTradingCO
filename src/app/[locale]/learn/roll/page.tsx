@@ -173,7 +173,7 @@ function TransportProcess() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
           {/* Left: Image */}
           <div className="w-full md:w-[520px] flex justify-center md:justify-start items-center">
-            <img
+            <Image
               src="/roroCarsImage.jpg"
               alt="Cars getting off a Moon Navigation RoRo ship"
               width={520}
@@ -206,17 +206,17 @@ function ReasonsToChoose() {
           <div className="w-full flex flex-col md:flex-row justify-center gap-12">
             {/* First row: 3 reasons */}
             <div className="flex-1 flex flex-col items-center text-center max-w-xs">
-              <img src="/icons/23.png" alt="Efficiency & Reliability" className="mb-8 h-20 w-20 object-contain" />
+              <Image src="/icons/23.png" alt="Efficiency & Reliability" width={80} height={80} className="mb-8 h-20 w-20 object-contain" />
               <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Efficiency & Reliability</div>
               <div className="text-base text-[#444] dark:text-gray-300 font-sans">Fast, secure, and dependable shipping services for wheeled cargo.</div>
             </div>
             <div className="flex-1 flex flex-col items-center text-center max-w-xs">
-              <img src="/icons/22.png" alt="Expert Handling" className="mb-8 h-20 w-20 object-contain" />
+              <Image src="/icons/22.png" alt="Expert Handling" width={80} height={80} className="mb-8 h-20 w-20 object-contain" />
               <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Handling</div>
               <div className="text-base text-[#444] dark:text-gray-300 font-sans">Smooth roll-on/roll-off loading and unloading, minimizing handling risks and transit time.</div>
             </div>
             <div className="flex-1 flex flex-col items-center text-center max-w-xs">
-              <img src="/icons/24.png" alt="Secure & Cost-Effective Transport" className="mb-8 h-20 w-20 object-contain" />
+              <Image src="/icons/24.png" alt="Secure & Cost-Effective Transport" width={80} height={80} className="mb-8 h-20 w-20 object-contain" />
               <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Secure & Cost-Effective Transport</div>
               <div className="text-base text-[#444] dark:text-gray-300 font-sans">Optimized solutions ensuring safe stowage, reduced costs, and fast transit times.</div>
             </div>
@@ -224,12 +224,12 @@ function ReasonsToChoose() {
           <div className="w-full flex flex-col md:flex-row justify-center gap-12">
             {/* Second row: 2 reasons */}
             <div className="flex-1 flex flex-col items-center text-center max-w-xs">
-              <img src="/icons/25.png" alt="Global Connectivity" className="mb-8 h-20 w-20 object-contain" />
+              <Image src="/icons/25.png" alt="Global Connectivity" width={80} height={80} className="mb-8 h-20 w-20 object-contain" />
               <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Global Connectivity</div>
               <div className="text-base text-[#444] dark:text-gray-300 font-sans">Strong partnerships with major RORO carriers and ports worldwide for reliable shipping routes.</div>
             </div>
             <div className="flex-1 flex flex-col items-center text-center max-w-xs">
-              <img src="/icons/26.png" alt="Expert Compliance & Support" className="mb-8 h-20 w-20 object-contain" />
+              <Image src="/icons/26.png" alt="Expert Compliance & Support" width={80} height={80} className="mb-8 h-20 w-20 object-contain" />
               <div className="font-bold text-base text-[#222] dark:text-white font-sans mb-2">Expert Compliance & Support</div>
               <div className="text-base text-[#444] dark:text-gray-300 font-sans">Dedicated assistance in customs clearance, documentation, and regulatory requirements.</div>
             </div>
@@ -269,11 +269,13 @@ export default function RollOnOffHero() {
   return (
     <div className="max-w-7xl mx-auto w-full mt-10 mb-16">
       {/* --- HERO IMAGE --- */}
-      <img
+      <Image
         src="/rorotitleimage.jpg"
         alt="RoRo Cargo Handling"
-        className="w-full h-[400px] object-cover rounded-[60px] mt-4"
-        style={{ maxHeight: 420 }}
+        width={1200}
+        height={350}
+        className="rounded-[60px] object-cover w-full h-[220px] sm:h-[350px]"
+        priority
       />
       <FormTabs tabData={tabData} />
     </div>

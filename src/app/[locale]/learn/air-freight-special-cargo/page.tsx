@@ -28,14 +28,14 @@ export default function AirFreightSpecialCargoInfo() {
                             </p>
                         </div>
                         <div className="relative h-[300px] lg:h-[400px]">
-                            <Image src="/temperature-controlled-cargo.jpg" alt="Temperature controlled cargo handling" fill className="object-cover rounded-lg" />
+                            <Image src="/Air freight special 1.png" alt="Temperature controlled cargo handling" fill className="object-cover rounded-lg" />
                         </div>
                     </div>
 
                     {/* Dangerous Goods Section */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
                         <div className="relative h-[300px] lg:h-[400px] lg:order-1 order-2">
-                            <Image src="/dangerous-goods-cargo.jpg" alt="Dangerous goods handling" fill className="object-cover rounded-lg" />
+                            <Image src="/Air freight special 2.png" alt="Dangerous goods handling" fill className="object-cover rounded-lg" />
                         </div>
                         <div className="space-y-6 lg:order-2 order-1">
                             <h2 className="text-2xl font-semibold">{t("hero.dangerous.title")}</h2>
@@ -52,7 +52,7 @@ export default function AirFreightSpecialCargoInfo() {
                             <p className="text-gray-600">{t("hero.oversized.description2")}</p>
                         </div>
                         <div className="relative h-[300px] lg:h-[400px]">
-                            <Image src="/oversized-cargo.jpg" alt="Oversized air cargo handling" fill className="object-cover rounded-lg" />
+                            <Image src="/Air freight special 3.png" alt="Oversized air cargo handling" fill className="object-cover rounded-lg" />
                         </div>
                     </div>
                 </div>

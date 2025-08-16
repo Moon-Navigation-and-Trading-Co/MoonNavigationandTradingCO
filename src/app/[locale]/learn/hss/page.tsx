@@ -6,9 +6,11 @@ import Link from "next/link"
 import OverviewServicesTabs from "@/components/overview-services";
 import GetQuoteComponent from "@/components/getQuoteComponent"
 import FAQSearch from "@/components/faq"
-import VesselCarousel from "@/components/vessel-carousel";
+import dynamic from "next/dynamic";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
+
+const VesselCarousel = dynamic(() => import("@/components/vessel-carousel"), { ssr: false });
 
 export default function HSS() {
     const t = useTranslations("learn-hss")

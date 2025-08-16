@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
@@ -16,11 +17,14 @@ export default function ShippingMethodsInfo() {
       {/* Hero Section */}
       <div className="w-full mb-12">
         <div className="w-full rounded-[2rem] overflow-hidden mb-10">
-          <img
+          <Image
             src="/special-1.jpg"
             alt="Special Services Crew"
+            width={1200}
+            height={320}
             className="w-full h-[260px] md:h-[320px] object-cover"
             style={{ display: "block" }}
+            priority
           />
         </div>
         <div className="flex flex-col md:flex-row gap-8">
@@ -39,10 +43,10 @@ export default function ShippingMethodsInfo() {
               Special Requirements Tailored to Your Needs
             </h3>
             <p className="text-[#444] dark:text-gray-300 text-sm md:text-base mb-4" style={{ fontFamily: "Raleway, sans-serif" }}>
-              Special Services by Case are custom, value-tailored solutions designed to meet the unique needs of our clients. At Moon Navigation and Trading Co., we recognize that no two clients are the same—whether you require unusual handling, logistics, or managing a schedule. That's why we offer flexible solutions and industry-leading support that provide bespoke, customer-focused services to solve the unique needs of each individual case.
+              Special Services by Case are custom, value-tailored solutions designed to meet the unique needs of our clients. At Moon Navigation and Trading Co., we recognize that no two clients are the same—whether you require unusual handling, logistics, or managing a schedule. That&apos;s why we offer flexible solutions and industry-leading support that provide bespoke, customer-focused services to solve the unique needs of each individual case.
             </p>
             <p className="text-[#444] dark:text-gray-300 text-sm md:text-base" style={{ fontFamily: "Raleway, sans-serif" }}>
-              Our team of experienced professionals collaborates with you to understand your special requirements, providing customized support and services to ensure your vessel's safe, secure, and on-time efficiency. With a commitment to excellence, we tackle the details and provide the fastest turnaround for the most critical or complex shipping scenarios.
+              Our team of experienced professionals collaborates with you to understand your special requirements, providing customized support and services to ensure your vessel&apos;s safe, secure, and on-time efficiency. With a commitment to excellence, we tackle the details and provide the fastest turnaround for the most critical or complex shipping scenarios.
             </p>
           </div>
         </div>
@@ -63,9 +67,11 @@ export default function ShippingMethodsInfo() {
         </div>
         <div className="w-full md:w-1/2 flex justify-center items-center">
           <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
-            <img
+            <Image
               src="/special-2.jpg"
               alt="Tailored Shipping Solutions"
+              width={400}
+              height={225}
               className="object-cover w-full h-full"
               style={{ display: "block" }}
             />
@@ -77,9 +83,11 @@ export default function ShippingMethodsInfo() {
       <div className="w-full max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between rounded-[2rem] p-6 md:p-12 mb-0 shadow gap-12">
         <div className="w-full md:w-1/2 flex justify-center items-center mb-8 md:mb-0">
           <div className="relative w-full max-w-md aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
-            <img
+            <Image
               src="/special-3.jpg"
               alt="Business Handshake in Field"
+              width={400}
+              height={225}
               className="object-cover w-full h-full"
               style={{ display: "block" }}
             />
@@ -109,27 +117,27 @@ export default function ShippingMethodsInfo() {
           subheading=""
           reasons={[
             {
-              icon: <img src="/icons/ship agency/72.png" alt="24/7 Support" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              icon: <Image src="/icons/ship agency/72.png" alt="24/7 Support" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
               title: "24/7 Support",
               description: "Available anytime, anywhere.",
             },
             {
-              icon: <img src="/icons/ship agency/73.png" alt="Industry Experts" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              icon: <Image src="/icons/ship agency/73.png" alt="Industry Experts" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
               title: "Industry Experts",
               description: "Highly skilled team with maritime expertise.",
             },
             {
-              icon: <img src="/icons/ship agency/74.png" alt="End-to-End Solutions" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              icon: <Image src="/icons/ship agency/74.png" alt="End-to-End Solutions" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
               title: "End-to-End Solutions",
               description: "One-stop service for all vessel & cargo needs.",
             },
             {
-              icon: <img src="/icons/ship agency/75.png" alt="Regulatory Compliance" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              icon: <Image src="/icons/ship agency/75.png" alt="Regulatory Compliance" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
               title: "Regulatory Compliance",
               description: "Meeting IMO, ISM, MARPOL, and port regulations.",
             },
             {
-              icon: <img src="/icons/ship agency/76.png" alt="Cost-Effective & Transparent Pricing" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+              icon: <Image src="/icons/ship agency/76.png" alt="Cost-Effective & Transparent Pricing" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
               title: "Cost-Effective & Transparent Pricing",
               description: "No hidden fees, optimized budgeting.",
             },

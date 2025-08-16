@@ -6,7 +6,9 @@ import Link from "next/link";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
-import TankersIndustryCarousel from "@/components/tankers-industry-carousel";
+import dynamic from "next/dynamic";
+
+const TankersIndustryCarousel = dynamic(() => import("@/components/tankers-industry-carousel"), { ssr: false });
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 
@@ -364,27 +366,27 @@ function services() {
                     subheading=""
                     reasons={[
                         {
-                            icon: <img src="/icons/71.png" alt="Tanker Expertise" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <Image src="/icons/71.png" alt="Tanker Expertise" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
                             title: "Tanker Expertise",
                             description: "Extensive experience in liquid cargo transport, ensuring safe and efficient shipping solutions.",
                         },
                         {
-                            icon: <img src="/icons/72.png" alt="Advanced Fleet" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <Image src="/icons/72.png" alt="Advanced Fleet" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
                             title: "Advanced Fleet",
                             description: "Modern, high-performance tankers built to meet strict industry and safety standards.",
                         },
                         {
-                            icon: <img src="/icons/73.png" alt="Global Reach" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <Image src="/icons/73.png" alt="Global Reach" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
                             title: "Global Reach",
                             description: "Seamless logistics coordination for timely deliveries across international markets.",
                         },
                         {
-                            icon: <img src="/icons/74.png" alt="Sustainability Focus" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <Image src="/icons/74.png" alt="Sustainability Focus" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
                             title: "Sustainability Focus",
                             description: "Committed to eco-friendly operations, reducing environmental impact.",
                         },
                         {
-                            icon: <img src="/icons/75.png" alt="Dedicated Support" className="mb-6 h-16 w-16 object-contain" />,
+                            icon: <Image src="/icons/75.png" alt="Dedicated Support" width={64} height={64} className="mb-6 h-16 w-16 object-contain" />,
                             title: "Dedicated Support",
                             description: "24/7 customer assistance and expert guidance throughout the shipping process.",
                         },

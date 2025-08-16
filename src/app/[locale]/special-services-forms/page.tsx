@@ -36,7 +36,7 @@ const Page: React.FC = () => {
         };
 
         fetchUser();
-    }, [router, supabase]); // Only run once when the component mounts
+    }, [supabase.auth]); // Include supabase.auth in dependency array
 
 
     if (isLoading) {

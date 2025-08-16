@@ -33,9 +33,11 @@ export default function CrewLearnMorePage() {
         </div>
         {/* Right: Image */}
         <div className="w-full max-w-md md:max-w-lg rounded-2xl overflow-hidden shadow-md flex justify-center">
-          <img
+          <Image
             src="/lm-crew-2.jpg"
             alt="Female ship crew member in safety gear at port"
+            width={400}
+            height={275}
             className="w-full h-[260px] md:h-[340px] object-cover"
             style={{ aspectRatio: '16/11' }}
           />
@@ -45,9 +47,11 @@ export default function CrewLearnMorePage() {
     <div className="w-full flex flex-col md:flex-row items-center justify-between gap-8 mt-20">
       {/* Left: Image */}
       <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm flex justify-center order-1 md:order-1">
-        <img
+        <Image
           src="/lm-crew-3.jpg"
           alt="Ship agent assisting crew member with sign-off procedures"
+          width={400}
+          height={275}
           className="w-full h-[260px] md:h-[340px] object-cover"
           style={{ aspectRatio: '16/11' }}
         />
@@ -97,9 +101,11 @@ export default function CrewLearnMorePage() {
       </div>
       {/* Right: Image */}
       <div className="flex-shrink-0 rounded-2xl overflow-hidden shadow-md w-full max-w-xs md:max-w-sm flex justify-center order-2 md:order-2">
-        <img
+        <Image
           src="/lm-crew-4.jpg"
-          alt="Emergency crew change with helicopter and ship crew member"
+          alt="Emergency crew change operations"
+          width={400}
+          height={275}
           className="w-full h-[260px] md:h-[340px] object-cover"
           style={{ aspectRatio: '16/11' }}
         />

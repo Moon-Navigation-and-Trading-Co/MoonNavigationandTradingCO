@@ -69,7 +69,7 @@ export default function CustomsClearanceLearnMore() {
             Our team leverages Free Trade Agreements (FTAs) to minimize import and export levies by customizing them to the most favorable trade scenarios available. Additionally, we provide Customs Valuations to ensure accurate tax assessments, helping to avoid unnecessary expenses and complications.
           </p>
           <p className="text-sm text-muted-foreground">
-            Whether you're minimizing customs costs or enhancing profit margins, we empower businesses to navigate the complexities of international trade while optimizing their financial outcomes.
+            Whether you&apos;re minimizing customs costs or enhancing profit margins, we empower businesses to navigate the complexities of international trade while optimizing their financial outcomes.
           </p>
         </div>
       </div>
@@ -170,7 +170,7 @@ export default function CustomsClearanceLearnMore() {
         </div>
       </div>
     </div>
-    <GetQuoteComponent topic="Customs Clearance" link="/ship-agency-forms"/>
+    <GetQuoteComponent topic="Customs Clearance" link="/customs-clearance-forms"/>
     <FAQSearch category="customs-clearance" />
     </main>
   );

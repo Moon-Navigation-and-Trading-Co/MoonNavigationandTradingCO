@@ -15,7 +15,7 @@ export default function CustomsClearance() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     {/* Hero Image */}
                     <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mb-16">
-                        <Image src="/images/customs-worker-containers.jpg" alt="Customs clearance worker with shipping containers" fill className="object-cover" />
+                        <Image src="/Custom 1.jpg" alt="Customs clearance worker with shipping containers" fill className="object-cover" />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -23,7 +23,7 @@ export default function CustomsClearance() {
                             <h1 className="text-4xl font-bold mb-8 text-foreground">{t("hero.title")}</h1>
                             <div className="mt-8">
                                 <Button asChild>
-                                    <Link href="/contact">
+                                    <Link href="/customs-clearance-forms">
                                         {t("quoteRequest.button")}
                                     </Link>
                                 </Button>
@@ -47,7 +47,7 @@ export default function CustomsClearance() {
                         {/* Regulatory Compliance */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/images/icons/regulatory-compliance.svg" alt="Regulatory Compliance" className="w-full h-full" />
+                                <Image src="/icons/other services/69.png" alt="Regulatory Compliance" width={64} height={64} className="w-full h-full" />
                             </div>
                             <h3 className="text-xl font-semibold mb-4 text-foreground">{t("critical-role.regulatory.title")}</h3>
                             <p className="text-muted-foreground">{t("critical-role.regulatory.description")}</p>
@@ -56,7 +56,7 @@ export default function CustomsClearance() {
                         {/* Avoiding Delays */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/images/icons/avoiding-delays.svg" alt="Avoiding Delays" className="w-full h-full" />
+                                <Image src="/icons/other services/70.png" alt="Avoiding Delays" width={64} height={64} className="w-full h-full" />
                             </div>
                             <h3 className="text-xl font-semibold mb-4 text-foreground">{t("critical-role.delays.title")}</h3>
                             <p className="text-muted-foreground">{t("critical-role.delays.description")}</p>
@@ -65,7 +65,7 @@ export default function CustomsClearance() {
                         {/* Cost Management */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/images/icons/cost-management.svg" alt="Cost Management" className="w-full h-full" />
+                                <Image src="/icons/other services/71.png" alt="Cost Management" width={64} height={64} className="w-full h-full" />
                             </div>
                             <h3 className="text-xl font-semibold mb-4 text-foreground">{t("critical-role.cost.title")}</h3>
                             <p className="text-muted-foreground">{t("critical-role.cost.description")}</p>
@@ -75,7 +75,7 @@ export default function CustomsClearance() {
                     {/* Security and Transparency */}
                     <div className="flex flex-col items-center text-center max-w-7xl mx-auto">
                         <div className="w-16 h-16 mb-6">
-                            <img src="/images/icons/security-transparency.svg" alt="Security and Transparency" className="w-full h-full" />
+                            <Image src="/icons/other services/72.png" alt="Security and Transparency" width={64} height={64} className="w-full h-full" />
                         </div>
                         <h3 className="text-xl font-semibold mb-4 text-foreground">{t("critical-role.security.title")}</h3>
                         <p className="text-muted-foreground">{t("critical-role.security.description")}</p>
@@ -92,7 +92,7 @@ export default function CustomsClearance() {
                         {/* Image Column */}
                         <div className="md:col-span-5">
                             <div className="rounded-lg overflow-hidden h-full">
-                                <img src="/images/customs-officer.jpg" alt="Customs clearance officer" className="w-full h-full object-cover" />
+                                <Image src="/Custom 2.jpg" alt="Customs clearance officer" width={600} height={400} className="w-full h-full object-cover" />
                             </div>
                         </div>
 
@@ -142,7 +142,7 @@ export default function CustomsClearance() {
                     {/* Learn More Button */}
                     <div className="flex justify-end mt-8">
                         <Button asChild>
-                            <Link href="/learn/custom-clearance-services">
+                            <Link href="/learn/customs-clearance/learn-more">
                                 {t("key-activities.learn-more")}
                             </Link>
                         </Button>
@@ -159,7 +159,7 @@ export default function CustomsClearance() {
                         {/* Licensed Customs Brokers & Trade Experts */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/images/icons/licensed-brokers.svg" alt="Licensed Customs Brokers" className="w-full h-full" />
+                                <Image src="/icons/other services/75.png" alt="Licensed Customs Brokers" width={64} height={64} className="w-full h-full" />
                             </div>
                             <h3 className="text-xl font-semibold mb-4 text-foreground">{t("reasons.licensed.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.licensed.description")}</p>
@@ -168,7 +168,7 @@ export default function CustomsClearance() {
                         {/* Strong Government & Trade Partnerships */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/images/icons/government-partnerships.svg" alt="Government Partnerships" className="w-full h-full" />
+                                <Image src="/icons/other services/76.png" alt="Government Partnerships" width={64} height={64} className="w-full h-full" />
                             </div>
                             <h3 className="text-xl font-semibold mb-4 text-foreground">{t("reasons.partnerships.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.partnerships.description")}</p>
@@ -177,7 +177,7 @@ export default function CustomsClearance() {
                         {/* Global Network & Digital Customs Solutions */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/images/icons/global-network.svg" alt="Global Network" className="w-full h-full" />
+                                <Image src="/icons/other services/77.png" alt="Global Network" width={64} height={64} className="w-full h-full" />
                             </div>
                             <h3 className="text-xl font-semibold mb-4 text-foreground">{t("reasons.network.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.network.description")}</p>
@@ -186,7 +186,7 @@ export default function CustomsClearance() {
                         {/* 24/7 Support & Real-Time Tracking */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/images/icons/support-tracking.svg" alt="24/7 Support" className="w-full h-full" />
+                                <Image src="/icons/other services/78.png" alt="24/7 Support" width={64} height={64} className="w-full h-full" />
                             </div>
                             <h3 className="text-xl font-semibold mb-4 text-foreground">{t("reasons.support.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.support.description")}</p>
@@ -203,7 +203,7 @@ export default function CustomsClearance() {
                             <h2 className="text-3xl font-semibold text-foreground">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
                             <Button asChild>
-                                <Link href="/contact">
+                                <Link href="/customs-clearance-forms">
                                     {t("quoteRequest.button")}
                                 </Link>
                             </Button>

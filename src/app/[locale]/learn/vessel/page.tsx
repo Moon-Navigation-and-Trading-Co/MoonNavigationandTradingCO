@@ -31,27 +31,38 @@ const industries=[
 function overview() {
   return (
     <>
-      <div className="mt-10 mb-8">
-        <Image src="/ve-1.jpg" alt="Vessel Hero" width={1280} height={350} className="rounded-[60px]" />
-      </div>
-      <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16">
-        <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
-          <h2 className="text-3xl md:text-4xl font-light text-[#256094] mb-6">
-            Vessel Purchases<br />and Rentals
-          </h2>
-          <RequestQuoteButton>
-            <Link href="/buy-rent-vessels-forms">
-              Get Quote
-            </Link>
-          </RequestQuoteButton>
+      <div className="w-full max-w-7xl mx-auto">
+        {/* Top Banner Image */}
+        <div className="object-cover object-center mt-10 rounded-[60px] overflow-hidden">
+          <Image
+            src="/vessel rentals and purchases 1.jpg"
+            alt="Vessel purchases and rentals"
+            width={1280}
+            height={350}
+            className="object-cover object-center mb-8 object-bottom"
+            style={{ borderRadius: "60px", height: "350px", width: "1280px" }}
+            priority
+          />
         </div>
-        <div className="md:w-1/2 w-full flex flex-col items-start">
-          <p className="text-gray-700 text-sm md:text-base mb-2 font-medium">
-            Looking to buy or rent a vessel?
-          </p>
-          <p className="text-gray-600 text-sm md:text-base leading-relaxed">
-            We recognize the diverse needs of businesses and individuals in shipping and transport solutions. That is why we offer a comprehensive selection of high-quality vessels for sale and rental, tailored to meet your specific requirements. Our services ensure a seamless experience, whether you are seeking to acquire a vessel or finalize perfect charters. Trust us to provide exceptional options and expert guidance to fulfill your maritime needs efficiently at Moon Marine and Sea Trading Company.
-          </p>
+        <div className="flex flex-col md:flex-row items-center rounded-[40px] p-8 md:p-16">
+          <div className="md:w-1/2 w-full flex flex-col items-start mb-8 md:mb-0">
+            <h2 className="text-3xl md:text-4xl font-light text-[#256094] mb-6">
+              Vessel Purchases<br />and Rentals
+            </h2>
+            <RequestQuoteButton>
+              <Link href="/buy-rent-vessels-forms">
+                Get Quote
+              </Link>
+            </RequestQuoteButton>
+          </div>
+          <div className="md:w-1/2 w-full flex flex-col items-start">
+            <p className="text-gray-700 text-sm md:text-base mb-2 font-medium">
+              Looking to buy or rent a vessel?
+            </p>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+              We recognize the diverse needs of businesses and individuals in shipping and transport solutions. That is why we offer a comprehensive selection of high-quality vessels for sale and rental, tailored to meet your specific requirements. Our services ensure a seamless experience, whether you are seeking to acquire a vessel or finalize perfect charters. Trust us to provide exceptional options and expert guidance to fulfill your maritime needs efficiently at Moon Marine and Sea Trading Company.
+            </p>
+          </div>
         </div>
       </div>
     </>
@@ -61,12 +72,11 @@ function overview() {
 function services() {
   return (
     <>
-      <h2 className="text-4xl font-normal text-[#232B50] text-center mt-16 mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>Types of Vessels Available for Sale:</h2>
       <div className="relative w-full max-w-7xl mx-auto">
       </div>
     <div className="relative w-full aspect-[16/9] mt-12 mb-8 rounded-[60px]">
       <Image
-          src="/ve-2.jpg"
+          src="/vessel rentals and purchases 2.jpg"
         alt="Vessel Solutions"
         fill
         className="object-cover rounded-[60px]"
@@ -91,149 +101,129 @@ function services() {
             Our offerings include customizable options, catering to a wide array of requirements—from specialized vessels designed for specific cargo types to versatile multipurpose vessels.
           </p>
           <p className="text-gray-600 text-sm md:text-base">
-            With an extensive selection of vessels and leases, we enable you to select the ideal solution to meet your project’s demands. Furthermore, our cost-effective and scalable services ensure the optimum fit for both economic and rental options, and our expert solutions are accessible to all without compromising on quality.
+            With an extensive selection of vessels and leases, we enable you to select the ideal solution to meet your project&apos;s demands. Furthermore, our cost-effective and scalable services ensure the optimum fit for both economic and rental options, and our expert solutions are accessible to all without compromising on quality.
           </p>
         </div>
       </div>
     </div>
-      <VesselCarousel vessels={vessels} />
       <div className="relative w-full aspect-[16/9] mt-12 mb-8 rounded-[60px]">
         <Image
-          src="/ve-3.jpg"
-          alt="Vessel Rental Background"
+          src="/vessel rentals and purchases 3.jpg"
+          alt="Vessel Rental and Purchase Background"
           fill
           className="object-cover rounded-[60px]"
           style={{ zIndex: 0 }}
           priority
         />
         <div
-          className="absolute top-0 left-0 w-full h-full flex items-center"
+          className="absolute top-0 left-0 w-full h-full flex items-center p-4 md:p-0"
           style={{ zIndex: 1 }}
         >
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg flex flex-col md:flex-row gap-8 w-full max-w-4xl mx-auto" style={{ opacity: 0.92 }}>
-            <div className="flex-1 flex flex-col gap-6">
-              <h4 className="text-base md:text-lg font-medium text-gray-700 mb-2">
-                We offer the following services to ensure a seamless<br className="hidden md:block" />rental experience.
-              </h4>
-              <div className="flex flex-col gap-5">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#256094]"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M7 3v4M17 3v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+          <div className="bg-white rounded-2xl p-4 md:p-8 lg:p-12 shadow-lg flex flex-col gap-6 md:gap-8 w-full max-w-6xl mx-auto overflow-y-auto max-h-[90vh] md:max-h-none" style={{ opacity: 0.92 }}>
+            {/* Title Section */}
+            <div className="flex flex-col justify-center items-center mb-4 md:mb-0">
+              <div className="text-xl md:text-2xl lg:text-3xl font-light text-[#232B50] mb-2 text-center" style={{fontFamily: 'Raleway, sans-serif'}}>
+                Vessel Purchases and Rentals
+              </div>
+            </div>
+            
+            {/* Buying Vessels Section */}
+            <div className="flex flex-col justify-center">
+              <div className="text-lg md:text-2xl lg:text-3xl font-light text-[#256094] mb-4 md:mb-6 text-center" style={{fontFamily: 'Raleway, sans-serif'}}>
+                Our Vessels offer the following benefits:
+              </div>
+              <div className="flex flex-col gap-4 md:gap-7">
+                {/* Benefit 1 */}
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    {/* Magnifying glass icon */}
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-[#256094] md:w-8 md:h-8"><circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M20 20l-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
                   </div>
                   <div>
-                    <div className=" text-gray-800">Rental Terms</div>
-                    <div className="text-gray-600 text-sm">
+                    <div className="text-gray-800 text-sm md:text-base font-medium">Ready for Immediate Use</div>
+                    <div className="text-gray-600 text-xs md:text-sm mt-1">
+                      Each vessel undergoes comprehensive inspections and is certified to meet stringent industry standards, ensuring reliability from day one.
+                    </div>
+                  </div>
+                </div>
+                {/* Benefit 2 */}
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    {/* Gears icon */}
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-[#256094] md:w-8 md:h-8"><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1.82.33l-.06-.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 8.6 15a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 8.6c.26-.1.54-.1.8 0a1.65 1.65 0 0 0 1.82-.33l-.06-.06a2 2 0 1 1 2.83 2.83l.06.06A1.65 1.65 0 0 0 15 8.6c.1.26.1.54 0 .8a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1 2.83 2.83l-.06-.06A1.65 1.65 0 0 0 19.4 15z" stroke="currentColor" strokeWidth="1.5"/></svg>
+                  </div>
+                  <div>
+                    <div className="text-gray-800 text-sm md:text-base font-medium">Customizable</div>
+                    <div className="text-gray-600 text-xs md:text-sm mt-1">
+                      Tailor your vessel with specialized equipment or advanced navigation systems to align perfectly with your operational requirements.
+                    </div>
+                  </div>
+                </div>
+                {/* Benefit 3 */}
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    {/* Dollar icon */}
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-[#256094] md:w-8 md:h-8"><path d="M12 3v18M17 7H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                  </div>
+                  <div>
+                    <div className="text-gray-800 text-sm md:text-base font-medium">Cost-Effective</div>
+                    <div className="text-gray-600 text-xs md:text-sm mt-1">
+                      Our competitive pricing offers affordability while delivering long-term value, ensuring you make a wise investment without compromising on quality.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="text-xs text-gray-700 mt-6 md:mt-8 text-center">
+                Choose us, Moon Navigation and Trading Co. for a dependable and versatile solution that meets your needs.
+              </div>
+            </div>
+            
+            {/* Renting Vessels Section */}
+            <div className="flex flex-col gap-4 md:gap-6">
+              <h4 className="text-sm md:text-base lg:text-lg font-medium text-gray-700 mb-2 text-center md:text-left">
+                We offer the following services to ensure a seamless rental experience.
+              </h4>
+              <div className="flex flex-col gap-4 md:gap-5">
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-[#256094] md:w-8 md:h-8"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M7 3v4M17 3v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
+                  </div>
+                  <div>
+                    <div className="text-gray-800 text-sm md:text-base font-medium">Rental Terms</div>
+                    <div className="text-gray-600 text-xs md:text-sm mt-1">
                       Choose from daily, monthly, or long-term rental agreements to suit your needs.
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#256094]"><rect x="3" y="11" width="18" height="7" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="1.5"/></svg>
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-[#256094] md:w-8 md:h-8"><rect x="3" y="11" width="18" height="7" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="1.5"/></svg>
                   </div>
                   <div>
-                    <div className=" text-gray-800">Quick Delivery</div>
-                    <div className="text-gray-600 text-sm">
+                    <div className="text-gray-800 text-sm md:text-base font-medium">Quick Delivery</div>
+                    <div className="text-gray-600 text-xs md:text-sm mt-1">
                       Enjoy fast and efficient delivery directly to your location.
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#256094]"><path d="M4 17v-2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2" stroke="currentColor" strokeWidth="1.5"/><circle cx="7" cy="17" r="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="17" cy="17" r="2" stroke="currentColor" strokeWidth="1.5"/><path d="M7 17v-2m10 2v-2" stroke="currentColor" strokeWidth="1.5"/></svg>
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="flex-shrink-0 mt-1">
+                    <svg width="24" height="24" fill="none" viewBox="0 0 24 24" className="text-[#256094] md:w-8 md:h-8"><path d="M4 17v-2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2" stroke="currentColor" strokeWidth="1.5"/><circle cx="7" cy="17" r="2" stroke="currentColor" strokeWidth="1.5"/><circle cx="17" cy="17" r="2" stroke="currentColor" strokeWidth="1.5"/><path d="M7 17v-2m10 2v-2" stroke="currentColor" strokeWidth="1.5"/></svg>
                   </div>
                   <div>
-                    <div className=" text-gray-800">Maintenance Included</div>
-                    <div className="text-gray-600 text-sm">
+                    <div className="text-gray-800 text-sm md:text-base font-medium">Maintenance Included</div>
+                    <div className="text-gray-600 text-xs md:text-sm mt-1">
                       Rest assured that we handle all repairs and maintenance throughout your rental period.
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex-1 flex flex-col justify-center">
-              <div className="text-2xl md:text-3xl font-light text-[#232B50] mb-2" style={{fontFamily: 'Raleway, sans-serif'}}>
-                Renting<br />Vessels
-              </div>
-            </div>
           </div>
         </div>
       </div>
-      {/* Buying Vessels Section (moved to bottom, smaller box) */}
-      <div className="relative w-full aspect-[16/9] mt-12 mb-8 rounded-[60px]">
-        <Image
-          src="/ve-4.jpg"
-          alt="Buying Vessels Background"
-          fill
-          className="object-cover rounded-[60px]"
-          style={{ zIndex: 0 }}
-          priority
-        />
-        <div
-          className="absolute top-0 left-0 w-full h-full flex items-center"
-          style={{ zIndex: 1 }}
-        >
-          <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg flex flex-col md:flex-row gap-8 w-full max-w-4xl mx-auto" style={{ opacity: 0.92 }}>
-            {/* Left column */}
-            <div className="flex-1 flex flex-col justify-center items-start md:items-start">
-              <div className="text-4xl md:text-5xl font-light text-black mb-4" style={{fontFamily: 'Raleway, sans-serif'}}>
-                Buying<br />Vessels
-              </div>
-              <a href="#" className="text-[#256094] text-base md:text-lg font-normal mt-2 hover:underline">Seeking a permanent solution?</a>
-            </div>
-            {/* Right column */}
-            <div className="flex-1 flex flex-col justify-center">
-              <div className="text-2xl md:text-3xl font-light text-[#256094] mb-6 text-left md:text-left" style={{fontFamily: 'Raleway, sans-serif'}}>
-                Our Vessels offer the following benefits:
-              </div>
-              <div className="flex flex-col gap-7">
-                {/* Benefit 1 */}
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    {/* Magnifying glass icon */}
-                    <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#256094]"><circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.5"/><path d="M20 20l-3-3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                  </div>
-                  <div>
-                    <div className=" text-gray-800">Ready for Immediate Use</div>
-                    <div className="text-gray-600 text-sm">
-                      Each vessel undergoes comprehensive inspections and is certified to meet stringent industry standards, ensuring reliability from day one.
-                    </div>
-                  </div>
-                </div>
-                {/* Benefit 2 */}
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    {/* Gears icon */}
-                    <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#256094]"><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="1.5"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.65 1.65 0 0 0 15 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 8.6 15a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 8.6c.26-.1.54-.1.8 0a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 15 8.6c.1.26.1.54 0 .8a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 15z" stroke="currentColor" strokeWidth="1.5"/></svg>
-                  </div>
-                  <div>
-                    <div className=" text-gray-800">Customizable</div>
-                    <div className="text-gray-600 text-sm">
-                      Tailor your vessel with specialized equipment or advanced navigation systems to align perfectly with your operational requirements.
-                    </div>
-                  </div>
-                </div>
-                {/* Benefit 3 */}
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    {/* Dollar icon */}
-                    <svg width="32" height="32" fill="none" viewBox="0 0 24 24" className="text-[#256094]"><path d="M12 3v18M17 7H9.5a2.5 2.5 0 0 0 0 5h5a2.5 2.5 0 0 1 0 5H7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>
-                  </div>
-                  <div>
-                    <div className=" text-gray-800">Cost-Effective</div>
-                    <div className="text-gray-600 text-sm">
-                      Our competitive pricing offers affordability while delivering long-term value, ensuring you make a wise investment without compromising on quality.
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="text-xs text-gray-700 mt-8 text-center md:text-left">
-                Choose us, Moon Navigation and Trading Co. for a dependable and versatile solution that meets your needs.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h2 className="text-4xl font-normal text-[#232B50] text-center mt-16 mb-8" style={{fontFamily: 'Raleway, sans-serif'}}>Types of Vessels Available for Sale:</h2>
+      <VesselCarousel />
     <div className="mt-16 w-full flex flex-col items-center">
       <div className=" w-full">
         <h2 className="text-2xl md:text-3xl  text-[#232B50] mb-2 text-center md:text-left">
@@ -365,7 +355,7 @@ function services() {
         <div className="text-gray-700 text-sm mb-6  md:text-left">
           We serve a diverse range of industries, ensuring we provide the right vessel for your needs.
         </div>
-        <VesselCarousel vessels={industries} />
+        <VesselCarousel />
     </div>
       {/* Global Delivery & Deployment section */}
       <div className="flex flex-col md:flex-row items-center justify-between gap-8 px-6 py-12 rounded-[40px] mt-12 mb-8 ">

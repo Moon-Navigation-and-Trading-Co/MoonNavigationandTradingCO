@@ -117,7 +117,7 @@ export default function InvestPage() {
             <div>
               <h4 className="text-2xl mb-2 text-white" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}><span className="mr-1">6.</span>Equity Investment</h4>
               <p className="mb-2 text-base text-white" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
-                Gain long-term ownership and participate in the company's overall growth and profitability.
+                Gain long-term ownership and participate in the company&apos;s overall growth and profitability.
               </p>
               <ul className="list-disc ml-6 text-base space-y-1 text-white" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
                 <li>Company shares with capital appreciation</li>
@@ -140,7 +140,7 @@ export default function InvestPage() {
           </p>
         </div>
         <div id="start-conversation" className="max-w-6xl w-full bg-blue-100 rounded-2xl p-8">
-          <h3 className="text-2xl font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Let's Start the Conversation</h3>
+          <h3 className="text-2xl font-semibold mb-2" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>Let&apos;s Start the Conversation</h3>
           <p className="text-gray-700 text-base mb-4" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>If you are interested in investing, simply submit your interest, and our team will get in touch to arrange a dedicated meeting with you.<br />During this meeting, we will:</p>
           <ul className="list-disc ml-6 text-base text-gray-700 mb-4 space-y-1" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}>
             <li>Understand your investment goals</li>

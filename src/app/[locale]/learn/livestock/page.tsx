@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { useTranslations } from 'next-intl'
 import { Metadata } from 'next'
@@ -16,11 +17,13 @@ function overview(){
     <>
           {/* Banner Image */}
           <div className="w-full max-w-7xl rounded-[60px] overflow-hidden mb-8">
-        <img
+        <Image
           src="/livestock-banner.jpg"
           alt="Livestock Transportation Banner"
+          width={1200}
+          height={320}
           className="w-full h-[320px] object-cover"
-          loading="lazy"
+          priority
         />
       </div>
       {/* Content Section */}
@@ -60,11 +63,12 @@ function services(){
         <div className="flex flex-col md:flex-row gap-8 justify-center items-stretch">
           {/* Card 1 */}
           <div className="flex-1 flex flex-col items-center">
-            <img
+            <Image
               src="/industry-agriculture.jpg"
               alt="Agriculture & Dairy Farming"
+              width={400}
+              height={180}
               className="rounded-3xl object-cover w-full max-w-7xl h-[180px] mb-4"
-              loading="lazy"
             />
             <h3 className="text-lg  mb-2 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Agriculture & Dairy Farming</h3>
             <p className="text-muted-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -73,11 +77,12 @@ function services(){
           </div>
           {/* Card 2 */}
           <div className="flex-1 flex flex-col items-center">
-            <img
+            <Image
               src="/industry-equestrian.jpg"
               alt="Equestrian & Racing"
+              width={400}
+              height={180}
               className="rounded-3xl object-cover w-full max-w-7xl h-[180px] mb-4"
-              loading="lazy"
             />
             <h3 className="text-lg  mb-2 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Equestrian & Racing</h3>
             <p className="text-muted-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -86,11 +91,12 @@ function services(){
           </div>
           {/* Card 3 */}
           <div className="flex-1 flex flex-col items-center">
-            <img
+            <Image
               src="/industry-zoo.jpg"
               alt="Zoos & Wildlife Conservation"
+              width={400}
+              height={180}
               className="rounded-3xl object-cover w-full max-w-7xl h-[180px] mb-4"
-              loading="lazy"
             />
             <h3 className="text-lg  mb-2 text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>Zoos & Wildlife Conservation</h3>
             <p className="text-muted-foreground text-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
@@ -125,11 +131,13 @@ function services(){
           </div>
           {/* Right: Main Image with Inset */}
           <div className="flex-1 relative flex justify-center">
-            <img
+            <Image
               src="/livestock-ship.jpg"
               alt="Livestock Carrier Ship"
+              width={400}
+              height={280}
               className="rounded-3xl object-cover w-full max-w-7xl h-[280px] md:h-[340px]"
-              loading="lazy"
+              priority
             />
           </div>
         </div>
@@ -138,11 +146,13 @@ function services(){
         <div className="flex flex-col md:flex-row items-center gap-12">
           {/* Left: Image */}
           <div className="flex-1 flex justify-center">
-            <img
+            <Image
               src="/animal-welfare.jpg"
               alt="Veterinarian with livestock"
+              width={400}
+              height={280}
               className="rounded-3xl object-cover w-full max-w-7xl h-[280px] md:h-[340px]"
-              loading="lazy"
+              priority
             />
           </div>
           {/* Right: Text Content */}
@@ -187,27 +197,33 @@ function services(){
           </div>
           {/* Right: Image */}
           <div className="flex-1 flex justify-center">
-            <img
+            <Image
               src="/compliance-safety.jpg"
               alt="Compliance and Safety at Port"
+              width={400}
+              height={280}
               className="rounded-3xl object-cover w-full max-w-7xl h-[280px] md:h-[340px]"
-              loading="lazy"
+              priority
             />
           </div>
         </div>
         {/* Logos Row */}
         <div className="flex flex-row items-center justify-start gap-10 mt-12">
-          <img
+          <Image
             src="/logo-woah.png"
             alt="World Organisation for Animal Health"
+            width={56}
+            height={56}
             className="h-14 w-auto"
-            loading="lazy"
+            priority
           />
-          <img
+          <Image
             src="/logo-imo.png"
             alt="International Maritime Organization"
+            width={56}
+            height={56}
             className="h-14 w-auto"
-            loading="lazy"
+            priority
           />
           {/* Add more logos as needed */}
         </div>
@@ -218,28 +234,28 @@ function services(){
           reasons={[
             {
               icon: (
-                <img src="/icons/56.png" alt="Global Network & Port Access" className="mb-8 h-20 w-20 object-contain" />
+                <Image src="/icons/56.png" alt="Global Network & Port Access" width={80} height={80} className="mb-8 h-20 w-20 object-contain" />
               ),
               title: "Global Network & Port Access",
               description: "Our extensive shipping routes cover major livestock trade destinations, ensuring timely and efficient deliveries.",
             },
             {
               icon: (
-                <img src="/icons/57.png" alt="Advanced Biosecurity Measures" className="mb-8 h-24 w-24 object-contain" />
+                <Image src="/icons/57.png" alt="Advanced Biosecurity Measures" width={96} height={96} className="mb-8 h-24 w-24 object-contain" />
               ),
               title: "Advanced Biosecurity Measures",
               description: "We implement strict hygiene protocols, quarantine measures, and disease prevention practices.",
             },
             {
               icon: (
-                <img src="/icons/58.png" alt="Custom-Tailored Transport Solutions" className="mb-8 h-20 w-20 object-contain" />
+                <Image src="/icons/58.png" alt="Custom-Tailored Transport Solutions" width={80} height={80} className="mb-8 h-20 w-20 object-contain" />
               ),
               title: "Custom-Tailored Transport Solutions",
               description: "Whether you need short-haul regional shipping or long-haul transcontinental transport, we design solutions tailored to your needs.",
             },
             {
               icon: (
-                <img src="/icons/59.png" alt="Seamless Logistics & Documentation Handling" className="mb-8 h-20 w-20 object-contain" />
+                <Image src="/icons/59.png" alt="Seamless Logistics & Documentation Handling" width={80} height={80} className="mb-8 h-20 w-20 object-contain" />
               ),
               title: "Seamless Logistics & Documentation Handling",
               description: "From permits and health certificates to customs clearance, we manage all necessary documentation.",

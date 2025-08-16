@@ -3,23 +3,33 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
+import dynamic from "next/dynamic";
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
-import VesselCarousel from "@/components/vessel-carousel";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
+
+// Dynamic import for heavy carousel component
+const VesselCarousel = dynamic(() => import("@/components/vessel-carousel"), {
+  loading: () => <div className="animate-pulse bg-gray-200 h-64 rounded-lg"></div>,
+  ssr: false
+});
 
 function overview() {
   return (
     <div className="min-h-screen flex flex-col items-center py-10 px-2 md:px-0 w-full max-w-7xl mx-auto">
       {/* Top Banner - Wide Image with Large Rounded Corners */}
       <div className="w-full max-w-[1600px] rounded-[3rem] overflow-hidden mb-12" style={{ marginTop: 0 }}>
-        <img
+        <Image
           src="/ov-1.jpg"
           alt="Oversized containers at port"
+          width={1600}
+          height={420}
           className="object-cover w-full h-[320px] md:h-[380px] lg:h-[420px]"
           style={{ borderRadius: '3rem', objectFit: 'cover' }}
+          priority
         />
       </div>
       {/* Main Content - Two Column Layout */}
@@ -63,168 +73,226 @@ function services() {
         <p className="text-[#888] mb-10 text-base md:text-lg max-w-3xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
           Our oversized container services are designed to handle a wide range of large and irregularly shaped shipments, including but not limited to:
         </p>
-        <VesselCarousel vessels={[
-          {
-            img: "/oversized-cargo-heavy-machinery.jpg",
-            title: "Heavy machinery",
-            subtitle: "(e.g. bulldozers, forklifts)",
-          },
-          {
-            img: "/oversized-cargo-industrial-equipment.jpg",
-            title: "Large industrial equipment",
-            subtitle: "",
-          },
-          {
-            img: "/oversized-cargo-prefab-materials.jpg",
-            title: "Prefabricated construction materials",
-            subtitle: "",
-          },
-          {
-            img: "/oversized-cargo-wind-turbine.jpg",
-            title: "Wind turbine blades",
-            subtitle: "(if within the container's dimensions)",
-          },
-          {
-            img: "/oversized-cargo-pipes.jpg",
-            title: "Large pipes and metal structures",
-            subtitle: "",
-          },
-        ]} />
+        <VesselCarousel />
       </div>
       {/* Features Section */}
       <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         {/* Engineered for Heavy & Large Cargo - Image Left */}
         <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
-          <img
+          <Image
             src="/ov-2.jpg"
             alt="Crane loading oversized cargo"
-            className="object-cover w-full h-full"
+            width={600}
+            height={400}
+            className="rounded-[60px] object-cover w-full h-full"
           />
         </div>
-        <div className="flex flex-col">
-          <h3 className="text-lg md:text-xl  mb-2 text-foreground">
+        {/* Text Right */}
+        <div className="flex flex-col justify-center">
+          <h3 className="text-xl md:text-2xl font-medium mb-4 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
             Engineered for Heavy & Large Cargo
           </h3>
-          <p className="text-muted-foreground mb-4 text-sm md:text-base">
-            At Moon Navigation and Trading Co., our oversized containers are designed to transport goods that exceed standard container dimensions or weight limits. These containers feature reinforced structures and enhanced loading capabilities, making them suitable for industrial, mining, and energy-sector cargo.
+          <p className="text-base text-foreground mb-4 font-light" style={{ fontFamily: 'Raleway, sans-serif', lineHeight: 1.6 }}>
+            Our oversized container solutions are specifically designed to handle cargo that exceeds standard container dimensions. We utilize specialized equipment and containers including:
           </p>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-20 items-center">
-        {/* Versatile Loading Options - Image Right */}
-        <div className="flex flex-col">
-          <h3 className="text-lg md:text-xl  mb-2 text-foreground">
-            Versatile Loading Options
-          </h3>
-          <p className="text-muted-foreground mb-3 text-sm md:text-base">
-            Unlike standard containers, oversized containers allow for multiple loading configurations, including:
-          </p>
-          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-4">
+          <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0 mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
             <li>
-              <span className="">Top Loading</span>: Ideal for gantry cranes to lift or vertically deposit heavy cargo.
+              <span className="font-medium">Flat Rack Containers</span> – Open-sided containers for wide or tall cargo
             </li>
             <li>
-              <span className="">Side Loading</span>: Suitable for specialized lifting equipment or side entry, for easy, low-clearance access.
+              <span className="font-medium">Open Top Containers</span> – Removable roof for top-loading access
             </li>
             <li>
-              <span className="">End Loading</span>: Most effective for stacked materials such as trucks, excavators, and over-size sections.
+              <span className="font-medium">Platform Containers</span> – Flat platforms for extremely heavy loads
+            </li>
+            <li>
+              <span className="font-medium">Specialized Securing Equipment</span> – Custom lashing and bracing solutions
             </li>
           </ul>
         </div>
+      </div>
+
+      {/* Route Planning & Compliance - Text Left, Image Right */}
+      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Text Left */}
+        <div className="flex flex-col justify-center">
+          <h3 className="text-xl md:text-2xl font-medium mb-4 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            Route Planning & Compliance Management
+          </h3>
+          <p className="text-base text-foreground mb-4 font-light" style={{ fontFamily: 'Raleway, sans-serif', lineHeight: 1.6 }}>
+            Transporting oversized cargo requires meticulous planning and strict compliance with international regulations. Our expertise includes:
+          </p>
+          <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0 mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <li>
+              <span className="font-medium">Route Analysis</span> – Identifying safe transit corridors and clearance requirements
+            </li>
+            <li>
+              <span className="font-medium">Permit Coordination</span> – Managing all necessary transport and port permits
+            </li>
+            <li>
+              <span className="font-medium">Regulatory Compliance</span> – Ensuring adherence to IMO, SOLAS, and local regulations
+            </li>
+            <li>
+              <span className="font-medium">Insurance & Documentation</span> – Comprehensive coverage and proper documentation
+            </li>
+          </ul>
+        </div>
+        {/* Image Right */}
         <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
-          <img
+          <Image
             src="/ov-3.jpg"
-            alt="Side loader handling container"
-            className="object-cover w-full h-full"
+            alt="Route planning for oversized cargo transport"
+            width={600}
+            height={400}
+            className="rounded-[60px] object-cover w-full h-full"
           />
         </div>
       </div>
+
+      {/* Global Network & Port Access - Image Left, Text Right */}
       <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Weather Protection & Secure Lashing - Image Left */}
+        {/* Image Left */}
         <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
-          <img
+          <Image
             src="/ov-4.jpg"
-            alt="Workers securing tarp over oversized cargo"
-            className="object-cover w-full h-full"
+            alt="Global port network for oversized cargo"
+            width={600}
+            height={400}
+            className="rounded-[60px] object-cover w-full h-full"
           />
         </div>
-        <div className="flex flex-col">
-          <h3 className="text-lg md:text-xl  mb-2 text-foreground">
-            Weather Protection and Secure Lashing
+        {/* Text Right */}
+        <div className="flex flex-col justify-center">
+          <h3 className="text-xl md:text-2xl font-medium mb-4 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            Global Network & Port Access
           </h3>
-          <p className="text-muted-foreground mb-4 text-sm md:text-base">
-            At Moon Navigation and Trading Co., we secure open-top containers with durable, weatherproof tarpaulin covers, safeguarding cargo from rain, wind, and environmental elements. Our flat racks and platforms are designed with custom tie-down points, steel lashing rails, and locking mechanisms, ensuring maximum stability and security throughout transportation.
+          <p className="text-base text-foreground mb-4 font-light" style={{ fontFamily: 'Raleway, sans-serif', lineHeight: 1.6 }}>
+            Our extensive global network provides access to major ports and terminals equipped to handle oversized cargo. We offer:
           </p>
-        </div>
-      </div>
-      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Fully Customizable for Unique Cargo - Image Right */}
-        <div className="flex flex-col">
-          <h3 className="text-lg md:text-xl  mb-2 text-foreground">
-            Fully Customizable for Unique Cargo
-          </h3>
-          <p className="text-muted-foreground mb-2 text-sm md:text-base">
-            Our Oversized containers can be modified with specialized reinforcements, including:
-          </p>
-          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-4">
-            <li>Heavy-duty lashing slots for outsize cargo</li>
-            <li>Additional support beams for enhanced structural stability</li>
-            <li>Custom fittings for sensitive or irregular equipment</li>
-            <li>Shock-absorbing materials to minimize vibration during transport</li>
+          <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0 mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <li>
+              <span className="font-medium">Major Port Access</span> – Connections to ports with heavy-lift capabilities
+            </li>
+            <li>
+              <span className="font-medium">Specialized Terminals</span> – Access to terminals equipped for oversized cargo
+            </li>
+            <li>
+              <span className="font-medium">Equipment Availability</span> – Guaranteed access to necessary handling equipment
+            </li>
+            <li>
+              <span className="font-medium">Local Expertise</span> – Knowledge of local regulations and procedures
+            </li>
           </ul>
         </div>
+      </div>
+
+      {/* Cargo Securing & Safety - Text Left, Image Right */}
+      <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        {/* Text Left */}
+        <div className="flex flex-col justify-center">
+          <h3 className="text-xl md:text-2xl font-medium mb-4 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            Cargo Securing & Safety Protocols
+          </h3>
+          <p className="text-base text-foreground mb-4 font-light" style={{ fontFamily: 'Raleway, sans-serif', lineHeight: 1.6 }}>
+            The safety of oversized cargo during transport is our top priority. We implement comprehensive securing and safety measures:
+          </p>
+          <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0 mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <li>
+              <span className="font-medium">Custom Securing Solutions</span> – Tailored lashing and bracing for each cargo type
+            </li>
+            <li>
+              <span className="font-medium">Safety Inspections</span> – Regular checks throughout the transport journey
+            </li>
+            <li>
+              <span className="font-medium">Weather Protection</span> – Appropriate covering and protection measures
+            </li>
+            <li>
+              <span className="font-medium">Emergency Procedures</span> – Contingency plans for unexpected situations
+            </li>
+          </ul>
+        </div>
+        {/* Image Right */}
         <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
-          <img
+          <Image
             src="/ov-5.jpg"
-            alt="Workers planning oversized cargo loading"
-            className="object-cover w-full h-full"
+            alt="Cargo securing and safety protocols"
+            width={600}
+            height={400}
+            className="rounded-[60px] object-cover w-full h-full"
           />
         </div>
       </div>
+
+      {/* Cost-Effective Solutions - Image Left, Text Right */}
       <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Seamless Multimodal Transport Compatibility - Image Left */}
+        {/* Image Left */}
         <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
-          <img
+          <Image
             src="/ov-6.jpg"
-            alt="Workers loading oversized cargo onto a truck with a container crane"
-            className="object-cover w-full h-full"
+            alt="Cost-effective oversized cargo solutions"
+            width={600}
+            height={400}
+            className="rounded-[60px] object-cover w-full h-full"
           />
         </div>
-        <div className="flex flex-col">
-          <h3 className="text-lg md:text-xl  mb-2 text-foreground">
-            Seamless Multimodal Transport Compatibility
+        {/* Text Right */}
+        <div className="flex flex-col justify-center">
+          <h3 className="text-xl md:text-2xl font-medium mb-4 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            Cost-Effective Solutions
           </h3>
-          <p className="text-muted-foreground mb-4 text-sm md:text-base">
-            We design our oversized containers to integrate with multiple transport modes, including:
+          <p className="text-base text-foreground mb-4 font-light" style={{ fontFamily: 'Raleway, sans-serif', lineHeight: 1.6 }}>
+            We understand that oversized cargo transport can be expensive. Our solutions are designed to optimize costs while maintaining quality:
           </p>
-          <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-1 pl-2 mb-4">
+          <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0 mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
             <li>
-              <span className="">Ocean Freight</span>: Secure and custom-adapted stowage onto specialized flatbeds and breakbulk vessels.
+              <span className="font-medium">Optimized Routing</span> – Efficient routes to minimize transport costs
             </li>
             <li>
-              <span className="">Rail Transport</span>: Flat-rack and flatbed solutions for high-clearance rail-based transportation.
+              <span className="font-medium">Equipment Optimization</span> – Right-sizing equipment for cost efficiency
             </li>
             <li>
-              <span className="">Trucking and Special Flatbeds</span>: Compatible with highway trailers, extendable flatbeds, and modular transporters for oversized road transport.
+              <span className="font-medium">Consolidation Opportunities</span> – Combining shipments when possible
+            </li>
+            <li>
+              <span className="font-medium">Transparent Pricing</span> – Clear breakdown of all costs involved
             </li>
           </ul>
         </div>
       </div>
+
+      {/* Project Cargo Expertise - Text Left, Image Right */}
       <div className="w-full max-w-7xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Reduced Handling Risks & Compliance Ready - Image Right */}
-        <div className="flex flex-col">
-          <h3 className="text-lg md:text-xl  mb-2 text-foreground">
-            Reduced Handling Risks and Compliance Ready
+        {/* Text Left */}
+        <div className="flex flex-col justify-center">
+          <h3 className="text-xl md:text-2xl font-medium mb-4 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            Project Cargo Expertise
           </h3>
-          <p className="text-muted-foreground mb-4 text-sm md:text-base">
-            With our built-in safety features, standardized lifting points, and reinforced structures, oversized containers minimize handling risks while ensuring compliance with IMO, SOLAS, and international shipping regulations.
+          <p className="text-base text-foreground mb-4 font-light" style={{ fontFamily: 'Raleway, sans-serif', lineHeight: 1.6 }}>
+            Our experience extends to complex project cargo requirements, including industrial and construction projects:
           </p>
+          <ul className="list-none text-sm md:text-base text-foreground space-y-2 pl-0 mb-6" style={{ fontFamily: 'Raleway, sans-serif' }}>
+            <li>
+              <span className="font-medium">Industrial Equipment</span> – Machinery, turbines, and manufacturing equipment
+            </li>
+            <li>
+              <span className="font-medium">Construction Materials</span> – Prefabricated structures and building components
+            </li>
+            <li>
+              <span className="font-medium">Energy Sector</span> – Wind turbines, solar panels, and power generation equipment
+            </li>
+            <li>
+              <span className="font-medium">Mining & Infrastructure</span> – Heavy equipment for mining and construction projects
+            </li>
+          </ul>
         </div>
+        {/* Image Right */}
         <div className="w-full rounded-xl overflow-hidden shadow h-64 md:h-72">
-          <img
+          <Image
             src="/ov-7.jpg"
-            alt="Warehouse workers moving oversized cargo with pallet jack"
-            className="object-cover w-full h-full"
+            alt="Project cargo expertise for oversized shipments"
+            width={600}
+            height={400}
+            className="rounded-[60px] object-cover w-full h-full"
           />
         </div>
       </div>
@@ -279,27 +347,27 @@ function services() {
           layout="3-2"
           reasons={[
             {
-              icon: <img src="/icons/container/129.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/129.png" alt="Specialized Expertise Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Specialized Expertise",
               description: "A highly experienced team delivering efficient, safe, and precise cargo handling, securing, and transport for oversized shipments.",
             },
             {
-              icon: <img src="/icons/container/130.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/130.png" alt="Advanced Equipment Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Advanced Equipment",
               description: "We utilize state-of-the-art cranes, forklifts, and lashing gear for safe and efficient operations.",
             },
             {
-              icon: <img src="/icons/container/131.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/131.png" alt="Seamless Port Operations Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Seamless Port Operations",
               description: "Integrated with major ports and terminals for smooth logistics and fast turnaround.",
             },
             {
-              icon: <img src="/icons/container/132.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/132.png" alt="Secure Storage Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Secure & Reliable Storage",
               description: "Short- and long-term storage with 24/7 monitoring and protection from environmental factors.",
             },
             {
-              icon: <img src="/icons/container/133.png" className="mb-8 h-20 w-20 object-contain"/>,
+              icon: <Image src="/icons/container/133.png" alt="Comprehensive Service Icon" width={80} height={80} className="mb-8 h-20 w-20 object-contain"/>,
               title: "Comprehensive Service",
               description: "From vessel unloading to final transport, we provide end-to-end solutions tailored to your logistics needs.",
             },

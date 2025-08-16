@@ -31,7 +31,7 @@ const OceanFreightQuotationPage: React.FC = () => {
         };
 
         fetchUser();
-    }, [router, supabase]);
+    }, [supabase.auth]); // Include supabase.auth in dependency array
 
     if (isLoading) {
         return (

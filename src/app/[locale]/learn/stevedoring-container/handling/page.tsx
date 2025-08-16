@@ -37,9 +37,11 @@ export default function ContainerHandlingPage() {
                </div>
                {/* Right: Image */}
                <div className="w-full rounded-xl overflow-hidden shadow">
-                   <img
+                   <Image
                        src="/h-hss-1.jpg"
                        alt="Container loading and unloading operations"
+                       width={600}
+                       height={224}
                        className="object-cover w-full h-40 md:h-56"
                    />
                </div>
@@ -49,9 +51,11 @@ export default function ContainerHandlingPage() {
            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
                {/* Left: Image */}
                <div className="w-full rounded-xl overflow-hidden shadow">
-                   <img
+                   <Image
                        src="/h-hss-2.jpg"
                        alt="Specialized container handling with crane"
+                       width={600}
+                       height={224}
                        className="object-cover w-full h-40 md:h-56"
                    />
                </div>
@@ -95,10 +99,12 @@ export default function ContainerHandlingPage() {
            </div>
            {/* Right: Image */}
            <div className="flex-1 flex justify-center">
-               <img
+               <Image
                    src="/h-hss-3.jpg"
                    alt="Workers securing cargo inside a shipping container"
-                   className="object-cover w-full h-40 md:h-56  rounded-2xl"
+                   width={600}
+                   height={400}
+                   className="rounded-xl object-cover w-full max-w-md h-64"
                />
            </div>
        </div>

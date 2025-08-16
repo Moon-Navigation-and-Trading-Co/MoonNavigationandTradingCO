@@ -1,5 +1,6 @@
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import Image from "next/image";
 
 export default function StevedoringPage() {
     return (
@@ -35,9 +36,11 @@ export default function StevedoringPage() {
                     </div>
                     {/* Right: Image */}
                     <div className="w-full rounded-xl overflow-hidden shadow">
-                        <img
+                        <Image
                             src="/s-hss-1.jpg"
                             alt="Stevedores operating cranes to load cargo onto a vessel"
+                            width={600}
+                            height={224}
                             className="object-cover w-full h-40 md:h-56"
                         />
                     </div>
@@ -47,9 +50,11 @@ export default function StevedoringPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
                     {/* Left: Image */}
                     <div className="w-full rounded-xl overflow-hidden shadow">
-                        <img
+                        <Image
                             src="/s-hss-2.jpg"
                             alt="Modern container handling equipment at port"
+                            width={600}
+                            height={224}
                             className="object-cover w-full h-40 md:h-56"
                         />
                     </div>
@@ -93,9 +98,11 @@ export default function StevedoringPage() {
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-end items-start">
-                    <img
+                    <Image
                         src="/s-hss-3.jpg"
                         alt="Stevedore in safety gear inspecting containers"
+                        width={600}
+                        height={400}
                         className="rounded-xl shadow w-full max-w-7xl object-cover"
                     />
                 </div>

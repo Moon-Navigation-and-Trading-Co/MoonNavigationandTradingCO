@@ -13,7 +13,7 @@ export default function InternationalTrading() {
             {/* Hero Section */}
             <div className="w-full">
                 <div className="relative h-[400px] rounded-3xl overflow-hidden mb-12">
-                    <Image src="/images/international-trading-hero.jpg" alt="International Trading Network" fill className="object-cover" priority />
+                    <Image src="/international-1.jpg" alt="International Trading Network" fill className="object-cover" priority />
                 </div>
 
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -21,7 +21,7 @@ export default function InternationalTrading() {
                         <div>
                             <h1 className="text-4xl mb-6 text-foreground">{t("title")}</h1>
                             <Link href="/international-trading-forms">
-                                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">{t("quoteRequest.button")}</Button>
+                                <Button>{t("quoteRequest.button")}</Button>
                             </Link>
                         </div>
                         <div className="space-y-6">
@@ -43,10 +43,10 @@ export default function InternationalTrading() {
                         <div className="relative">
                             <div className="relative w-full aspect-square rounded-3xl overflow-hidden bg-primary">
                                 <div className="absolute inset-4">
-                                    <Image src="/images/globe-hand.jpg" alt="Global Trade Services" fill className="object-cover rounded-2xl" />
+                                    <Image src="/international-2.jpg" alt="Global Trade Services" fill className="object-cover rounded-2xl" />
                                 </div>
                             </div>
-                            <Button variant="secondary" className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90" asChild>
+                            <Button variant="outline" className="mt-6" asChild>
                                 <Link href="/learn/international-trade-services">{t("learnMoreButton")}</Link>
                             </Button>
                         </div>
@@ -95,7 +95,7 @@ export default function InternationalTrading() {
                             </div>
                             <div className="order-1 md:order-2">
                                 <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                    <Image src="/images/freight-services.jpg" alt="Freight Services" fill className="object-cover" />
+                                    <Image src="/international-3.jpg" alt="Freight Services" fill className="object-cover" />
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@ export default function InternationalTrading() {
                         {/* Expert Customs Clearance */}
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                <Image src="/images/customs-clearance.jpg" alt="Customs Clearance" fill className="object-cover" />
+                                <Image src="/international-4.jpg" alt="Customs Clearance" fill className="object-cover" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold mb-4 text-foreground">{t("solutions.customs.title")}</h3>
@@ -119,7 +119,7 @@ export default function InternationalTrading() {
                             </div>
                             <div className="order-1 md:order-2">
                                 <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                    <Image src="/images/global-network.jpg" alt="Global Network" fill className="object-cover" />
+                                    <Image src="/international-5.jpg" alt="Global Network" fill className="object-cover" />
                                 </div>
                             </div>
                         </div>
@@ -127,7 +127,7 @@ export default function InternationalTrading() {
                         {/* Strategic Storage and Warehousing */}
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                <Image src="/images/warehousing.jpg" alt="Strategic Storage and Warehousing" fill className="object-cover" />
+                                <Image src="/international-6.jpg" alt="Strategic Storage and Warehousing" fill className="object-cover" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold mb-4 text-foreground">{t("solutions.warehousing.title")}</h3>
@@ -143,7 +143,7 @@ export default function InternationalTrading() {
                             </div>
                             <div className="order-1 md:order-2">
                                 <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                    <Image src="/images/consultancy.jpg" alt="Consultancy Services" fill className="object-cover" />
+                                    <Image src="/international-7.jpg" alt="Consultancy Services" fill className="object-cover" />
                                 </div>
                             </div>
                         </div>
@@ -151,7 +151,7 @@ export default function InternationalTrading() {
                         {/* Safe Handling of Dangerous Cargo */}
                         <div className="grid md:grid-cols-2 gap-8 items-center">
                             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden">
-                                <Image src="/images/dangerous-cargo.jpg" alt="Safe Handling of Dangerous Cargo" fill className="object-cover" />
+                                <Image src="/international-8.jpg" alt="Safe Handling of Dangerous Cargo" fill className="object-cover" />
                             </div>
                             <div>
                                 <h3 className="text-xl font-bold mb-4 text-foreground">{t("solutions.dangerousCargo.title")}</h3>
@@ -171,7 +171,7 @@ export default function InternationalTrading() {
                         {/* Expert Trade Knowledge */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/icons/container/57.png" alt="Expert Trade Knowledge" className="w-full h-full object-contain" />
+                                <Image src="/icons/container/57.png" alt="Expert Trade Knowledge" width={64} height={64} className="w-full h-full object-contain" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3 text-foreground">{t("reasons.customs.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.customs.description")}</p>
@@ -180,7 +180,7 @@ export default function InternationalTrading() {
                         {/* Strong Global Network */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/icons/container/58.png" alt="Strong Global Network" className="w-full h-full object-contain" />
+                                <Image src="/icons/container/58.png" alt="Strong Global Network" width={64} height={64} className="w-full h-full object-contain" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3 text-foreground">{t("reasons.network.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.network.description")}</p>
@@ -189,7 +189,7 @@ export default function InternationalTrading() {
                         {/* Custom-Tailored Trade Solutions */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/icons/container/59.png" alt="Custom-Tailored Trade Solutions" className="w-full h-full object-contain" />
+                                <Image src="/icons/container/59.png" alt="Custom-Tailored Trade Solutions" width={64} height={64} className="w-full h-full object-contain" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3 text-foreground">{t("reasons.freight.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.freight.description")}</p>
@@ -198,7 +198,7 @@ export default function InternationalTrading() {
                         {/* Reliable Compliance & Risk Management */}
                         <div className="flex flex-col items-center text-center">
                             <div className="w-16 h-16 mb-6">
-                                <img src="/icons/container/60.png" alt="Reliable Compliance & Risk Management" className="w-full h-full object-contain" />
+                                <Image src="/icons/container/60.png" alt="Reliable Compliance & Risk Management" width={64} height={64} className="w-full h-full object-contain" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3 text-foreground">{t("reasons.consultancy.title")}</h3>
                             <p className="text-muted-foreground">{t("reasons.consultancy.description")}</p>
@@ -215,11 +215,11 @@ export default function InternationalTrading() {
                             <h2 className="text-3xl font-semibold text-foreground">{t("quoteRequest.title")}</h2>
                             <p className="text-muted-foreground">{t("quoteRequest.description")}</p>
                             <Link href="/international-trading-forms">
-                                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">{t("quoteRequest.button")}</Button>
+                                <Button>{t("quoteRequest.button")}</Button>
                             </Link>
                         </div>
                         <div className="flex justify-center">
-                            <img src="/quote-illustration.png" alt="Quote illustration" className="w-64 h-auto" />
+                            <Image src="/quote-illustration.png" alt="Quote illustration" width={256} height={192} className="w-64 h-auto" />
                         </div>
                     </div>
                 </div>

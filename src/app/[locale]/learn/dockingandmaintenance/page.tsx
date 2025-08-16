@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
 export default function DockingAndMaintenance() {
@@ -15,9 +16,10 @@ export default function DockingAndMaintenance() {
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
                     {/* Hero Image */}
                     <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mb-10">
-                        <img
+                        <Image
                             src="/lm-docking-1.jpg"
                             alt="Docking and Maintenance - Ship at dock with workers"
+                            fill
                             className="object-cover w-full h-full"
                             style={{ objectPosition: "center" }}
                         />
@@ -174,10 +176,11 @@ export default function DockingAndMaintenance() {
                                     <div className="flex justify-center md:justify-end">
                                         <div className="relative rounded-2xl overflow-hidden shadow-lg" style={{ background: "#2D3A7B", padding: "24px" }}>
                                             <div className="relative w-[340px] h-[200px] md:w-[400px] md:h-[240px] rounded-xl overflow-hidden bg-background">
-                                                <img
-                                                    src="/images/docking-services-ship.jpg"
-                                                    alt="Docked ship with cranes and workers"
-                                                    className="object-cover w-full h-full"
+                                                <Image
+                                                    src="/D1.png"
+                                                    alt="Our Docking Services - Docked ship with cranes and workers"
+                                                    fill
+                                                    className="object-cover"
                                                     style={{ borderRadius: "12px" }}
                                                 />
                                             </div>
@@ -193,10 +196,11 @@ export default function DockingAndMaintenance() {
                                     <div className="flex justify-center md:justify-start">
                                         <div className="relative rounded-2xl overflow-hidden shadow-lg" style={{ background: "#3B4B8A", padding: "18px" }}>
                                             <div className="relative w-[320px] h-[180px] md:w-[400px] md:h-[220px] rounded-xl overflow-hidden bg-background">
-                                                <img
-                                                    src="/images/docking-services-ship.jpg"
-                                                    alt="Docked ship with cranes and workers"
-                                                    className="object-cover w-full h-full"
+                                                <Image
+                                                    src="/D2.png"
+                                                    alt="Our Docking Solutions - Docked ship with cranes and workers"
+                                                    fill
+                                                    className="object-cover"
                                                     style={{ borderRadius: "12px" }}
                                                 />
                                             </div>
@@ -288,10 +292,11 @@ export default function DockingAndMaintenance() {
                                     <div className="flex justify-center items-center">
                                         <div className="relative w-full max-w-7xl">
                                             <div className="absolute top-4 left-0 w-full h-full bg-primary rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
-                                            <img
-                                                src="/images/maintenance-crew.jpg"
-                                                alt="Maintenance crew working on vessel"
-                                                className="rounded-lg w-full object-cover"
+                                            <Image
+                                                src="/M1.png"
+                                                alt="Our Maintenance Services - Maintenance crew working on vessel"
+                                                fill
+                                                className="rounded-lg object-cover"
                                                 style={{ minHeight: "250px", maxHeight: "340px" }}
                                             />
                                         </div>
@@ -348,10 +353,11 @@ export default function DockingAndMaintenance() {
                                     <div className="flex justify-center items-center">
                                         <div className="relative w-full max-w-7xl">
                                             <div className="absolute top-4 left-0 w-full h-full bg-primary rounded-lg -z-10" style={{ height: "90%", width: "90%" }}></div>
-                                            <img
-                                                src="/images/maintenance-workers-tablet.jpg"
-                                                alt="Two maintenance workers discussing with a tablet"
-                                                className="rounded-lg w-full object-cover"
+                                            <Image
+                                                src="/M2.png"
+                                                alt="Our Maintenance Solutions - Two maintenance workers discussing with a tablet"
+                                                fill
+                                                className="rounded-lg object-cover"
                                                 style={{ minHeight: "250px", maxHeight: "340px" }}
                                             />
                                         </div>
@@ -360,6 +366,112 @@ export default function DockingAndMaintenance() {
                             </div>
                         </div>
                     )}
+                </div>
+            </div>
+
+            {/* Reasons to Choose Section */}
+            <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mb-20">
+                <h2 className="text-3xl font-bold text-left mb-12 text-foreground">
+                    Reasons to Choose Moon Navigation and Trading Co. for Your Docking and Maintenance
+                </h2>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                    {/* Expert Technical Team */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/other services/49.png"
+                                alt="Expert Technical Team"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            Expert Technical Team
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            Our certified engineers and marine technicians deliver high-quality maintenance and repair services aligned with international standards.
+                        </p>
+                    </div>
+
+                    {/* Tailored Maintenance Solutions */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/other services/50.png"
+                                alt="Tailored Maintenance Solutions"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            Tailored Maintenance Solutions
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            Customized service plans based on vessel condition and voyage schedule to ensure optimal performance and cost-efficiency.
+                        </p>
+                    </div>
+
+                    {/* Integrated Services */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/other services/51.png"
+                                alt="Integrated Services"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            Integrated Services
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            From ship agency support to spare parts logistics, we handle everything needed during your vessel&apos;s stay in port.
+                        </p>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {/* 24/7 Availability */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/other services/52.png"
+                                alt="24/7 Availability"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            24/7 Availability
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            We offer around-the-clock support to minimize delays and keep your vessel on schedule.
+                        </p>
+                    </div>
+
+                    {/* Reliable & Transparent */}
+                    <div className="text-center">
+                        <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                            <Image
+                                src="/icons/other services/53.png"
+                                alt="Reliable & Transparent"
+                                width={64}
+                                height={64}
+                                className="object-contain"
+                            />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-3">
+                            Reliable & Transparent
+                        </h3>
+                        <p className="text-muted-foreground text-sm leading-relaxed">
+                            We prioritize clear communication, accurate timelines, and fair pricing for every client.
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -386,9 +498,11 @@ export default function DockingAndMaintenance() {
                 </div>
                 {/* Right: Image */}
                 <div className="flex-1 flex justify-end items-end mt-8 md:mt-0">
-                    <img
+                    <Image
                         src="/quote-illustration.png"
                         alt="Quotation illustration"
+                        width={380}
+                        height={320}
                         className="w-[320px] h-auto object-contain"
                         style={{ maxWidth: 380 }}
                     />

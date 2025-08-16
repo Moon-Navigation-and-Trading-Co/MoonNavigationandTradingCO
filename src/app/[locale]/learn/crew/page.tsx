@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import Image from "next/image";
 import ReasonsGrid from "@/components/ReasonsGrid";
 import FormTabs from "@/components/form-tabs";
 import CrewLearnMorePage from "./learn-more/page";
@@ -89,9 +90,11 @@ function services(){
     </div>
     {/* Right: Image */}
     <div className="w-full rounded-[2rem] overflow-hidden shadow-lg flex justify-center">
-      <img
+      <Image
         src="/crew-2.jpg"
         alt="Ship agent assisting crew member with onboarding paperwork"
+        width={600}
+        height={320}
         className="w-full h-[220px] md:h-[320px] object-cover"
         style={{ display: "block" }}
       />
@@ -99,10 +102,12 @@ function services(){
   </div>
   <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mt-16">
     {/* Left: Image */}
-    <div className="w-full rounded-[2rem] overflow-hidden shadow-lg flex justify-center order-1 md:order-1">
-      <img
+    <div className="w-full rounded-[2rem] overflow-hidden shadow-lg flex justify-center">
+      <Image
         src="/crew-3.jpg"
-        alt="Ship agent reviewing crew member documents for sign-off"
+        alt="Crew member disembarking from vessel"
+        width={600}
+        height={320}
         className="w-full h-[220px] md:h-[320px] object-cover"
         style={{ display: "block" }}
       />
@@ -110,7 +115,7 @@ function services(){
     {/* Right: Text Content */}
     <div className="order-2 md:order-2">
       <h2 className="text-xl md:text-2xl text-[#2a6db0] dark:text-blue-400 mb-4">
-        We facilitate the review of crew members' documents to ensure compliance with exit formalities. (Signing off)
+        We facilitate the review of crew members&apos; documents to ensure compliance with exit formalities. (Signing off)
       </h2>
       <div className="mb-6">
         <h3 className="text-[#222] dark:text-white mb-1 text-base">Customs and Immigration Clearance</h3>
@@ -149,24 +154,24 @@ function services(){
       subheading="We provide comprehensive crew management services with 24/7 support, strict compliance standards, and cost-effective solutions to ensure smooth crew changes and operational continuity."
       reasons={[
         {
-          icon: <img src="/icons/ship agency/36.png" alt="24/7 Crew Change Support" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+          icon: <Image src="/icons/ship agency/36.png" alt="24/7 Crew Change Support" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
           title: "24/7 Crew Change Support",
-          description: "Anytime, anywhere: meet your crew change needs.",
+          description: "Available around the clock for emergency crew changes.",
         },
         {
-          icon: <img src="/icons/ship agency/34.png" alt="Strict Compliance and Safety Standards" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+          icon: <Image src="/icons/ship agency/34.png" alt="Strict Compliance and Safety Standards" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
           title: "Strict Compliance and Safety Standards",
-          description: "We adhere to IMO, MLC, ISPS, and all flag state regulations.",
+          description: "Ensuring all procedures meet international maritime regulations.",
         },
         {
-          icon: <img src="/icons/ship agency/35.png" alt="Cost-Effective and Efficient Solutions" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+          icon: <Image src="/icons/ship agency/35.png" alt="Cost-Effective and Efficient Solutions" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
           title: "Cost-Effective and Efficient Solutions",
-          description: "Our strategies are designed to minimize vessel downtime and optimize crew.",
+          description: "Optimizing crew change processes to minimize costs and delays.",
         },
         {
-          icon: <img src="/icons/ship agency/37.png" alt="Emergency Crew Change Capability" className="mb-4 h-14 w-14 object-contain mx-auto" />,
+          icon: <Image src="/icons/ship agency/37.png" alt="Emergency Crew Change Capability" width={56} height={56} className="mb-4 h-14 w-14 object-contain mx-auto" />,
           title: "Emergency Crew Change Capability",
-          description: "Ready for urgent crew replacement needs, ensuring operational continuity.",
+          description: "Rapid response for urgent crew replacement needs.",
         },
       ]}
     />
@@ -206,10 +211,12 @@ export default function CrewTabs() {
     <div className="max-w-7xl mx-auto w-full mt-10 mb-16">
       {/* Hero image at the top */}
       <div className="w-full rounded-[2rem] overflow-hidden mb-10 mt-6 shadow-lg">
-        <img
+        <Image
           src="/crew-1.jpg"
-          alt="Ship agent assisting crew member with paperwork"
-          className="w-full h-[220px] md:h-[320px] object-cover"
+          alt="Crew management services"
+          width={1200}
+          height={350}
+          className="w-full h-[220px] md:h-[350px] object-cover"
           style={{ display: "block" }}
         />
       </div>
