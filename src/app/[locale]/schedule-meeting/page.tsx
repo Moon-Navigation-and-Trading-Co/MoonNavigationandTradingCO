@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { generateQuotationNumber } from "@/utils/quotation/generator";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -13,6 +14,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone } from 'lucide-react';
 import { useState } from "react";
+import { PhoneInput } from "@/components/phone-input";
 
 // Define the Zod schema
 const scheduleMeetingSchema = z.object({
@@ -27,7 +29,7 @@ const scheduleMeetingSchema = z.object({
     preferred_date_2: z.string().optional(),
     preferred_time_1: z.string().min(1, { message: "Preferred time 1 is required" }),
     preferred_time_2: z.string().optional(),
-    service_of_interest: z.string().min(1, { message: "Service of interest is required" }),
+    service_of_interest: z.array(z.string()).min(1, { message: "At least one service must be selected" }),
     service_other: z.string().optional(),
     meeting_preference: z.enum(["in-person", "virtual"], { required_error: "Meeting preference is required" }),
     message: z.string().optional(),
@@ -57,7 +59,7 @@ export default function ScheduleMeeting() {
             preferred_date_2: '',
             preferred_time_1: '',
             preferred_time_2: '',
-            service_of_interest: '',
+            service_of_interest: [],
             service_other: '',
             meeting_preference: 'in-person',
             message: '',
@@ -99,8 +101,8 @@ export default function ScheduleMeeting() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8">
-            <div className="max-w-4xl mx-auto px-4">
+        <div className="min-h-screen bg-white py-8">
+            <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
                 {/* Header Section */}
                 <div className="text-left mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 mb-4">Meeting Scheduling</h1>
@@ -117,7 +119,7 @@ export default function ScheduleMeeting() {
                 {/* Blue Shadow Border Container */}
                 <div className="relative bg-blue-100 rounded-t-3xl overflow-hidden">
                     <div className="flex relative z-10">
-                        <button className="flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-2xl font-medium text-primary bg-blue-100 dark:bg-accent">
+                        <button className="flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-2xl font-medium text-primary bg-blue-100 dark:bg-accent flex items-center justify-center">
                             Schedule Meeting
                         </button>
                     </div>
@@ -129,7 +131,7 @@ export default function ScheduleMeeting() {
                             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                         
                         {/* Personal Information Section */}
-                        <div className="bg-white rounded-lg shadow-md p-6">
+                        <div className="bg-transparent rounded-lg p-6">
                             <h2 className="text-xl font-semibold mb-6">Personal Information</h2>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -142,7 +144,7 @@ export default function ScheduleMeeting() {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Input 
-                                                        className="max-w-[250px] border-2 rounded-xl" 
+                                                        className="max-w-[400px] border-2 rounded-xl" 
                                                         placeholder="Company Name"
                                                         {...field}
                                                     />
@@ -162,7 +164,7 @@ export default function ScheduleMeeting() {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Input 
-                                                        className="max-w-[250px] border-2 rounded-xl" 
+                                                        className="max-w-[400px] border-2 rounded-xl" 
                                                         placeholder="Contact Person Name"
                                                         {...field}
                                                     />
@@ -182,7 +184,7 @@ export default function ScheduleMeeting() {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Input 
-                                                        className="max-w-[250px] border-2 rounded-xl" 
+                                                        className="max-w-[400px] border-2 rounded-xl" 
                                                         placeholder="Mr, Ms, etc."
                                                         {...field}
                                                     />
@@ -194,7 +196,7 @@ export default function ScheduleMeeting() {
                                 </FormItem>
 
                                 <FormItem>
-                                    <FormLabel>Company Email *</FormLabel>
+                                    <FormLabel>Company Email Address *</FormLabel>
                                     <FormControl>
                                         <Controller
                                             control={form.control}
@@ -203,7 +205,7 @@ export default function ScheduleMeeting() {
                                                 <>
                                                     <Input 
                                                         type="email"
-                                                        className="max-w-[250px] border-2 rounded-xl" 
+                                                        className="max-w-[400px] border-2 rounded-xl" 
                                                         placeholder="Email"
                                                         {...field}
                                                     />
@@ -222,11 +224,14 @@ export default function ScheduleMeeting() {
                                             name="phone_number"
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
-                                                    <Input 
-                                                        type="tel"
-                                                        className="max-w-[250px] border-2 rounded-xl" 
-                                                        placeholder="Phone Number"
-                                                        {...field}
+                                                    <PhoneInput
+                                                        value={field.value}
+                                                        onChange={(value) => field.onChange(value)}
+                                                        defaultCountry="EG"
+                                                        international
+                                                        countryCallingCodeEditable={false}
+                                                        placeholder="Enter phone number"
+                                                        className="max-w-[400px] border-2 rounded-xl"
                                                     />
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                 </>
@@ -262,7 +267,7 @@ export default function ScheduleMeeting() {
                                                         <>
                                                             <Input 
                                                                 type="email"
-                                                                className="max-w-[250px] border-2 rounded-xl" 
+                                                                className="max-w-[400px] border-2 rounded-xl" 
                                                                 placeholder="Additional Email"
                                                                 {...field}
                                                             />
@@ -314,7 +319,7 @@ export default function ScheduleMeeting() {
                                                         <>
                                                             <Input 
                                                                 type="tel"
-                                                                className="max-w-[250px] border-2 rounded-xl" 
+                                                                className="max-w-[400px] border-2 rounded-xl" 
                                                                 placeholder="Additional Phone"
                                                                 {...field}
                                                             />
@@ -342,7 +347,7 @@ export default function ScheduleMeeting() {
                         </div>
 
                         {/* Appointment Details Section */}
-                        <div className="bg-white rounded-lg shadow-md p-6">
+                        <div className="bg-transparent rounded-lg p-6">
                             <h2 className="text-xl font-semibold mb-6">Appointment Details</h2>
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -356,7 +361,7 @@ export default function ScheduleMeeting() {
                                                 <>
                                                     <Input 
                                                         type="date"
-                                                        className="max-w-[250px] border-2 rounded-xl" 
+                                                        className="max-w-[400px] border-2 rounded-xl" 
                                                         {...field}
                                                     />
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
@@ -376,7 +381,7 @@ export default function ScheduleMeeting() {
                                                 <>
                                                     <Input 
                                                         type="date"
-                                                        className="max-w-[250px] border-2 rounded-xl" 
+                                                        className="max-w-[400px] border-2 rounded-xl" 
                                                         {...field}
                                                     />
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
@@ -395,23 +400,80 @@ export default function ScheduleMeeting() {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Select onValueChange={field.onChange} value={field.value}>
-                                                        <SelectTrigger className="max-w-[250px] border-2 rounded-xl">
+                                                        <SelectTrigger className="max-w-[400px] border-2 rounded-xl">
                                                             <SelectValue placeholder="Select time" />
                                                         </SelectTrigger>
                                                         <SelectContent>
-                                                            <SelectItem value="grillage">Grillage Time</SelectItem>
-                                                            <SelectItem value="grillage+2">Grillage +2</SelectItem>
-                                                            <SelectItem value="grillage+1">Grillage +1</SelectItem>
-                                                            <SelectItem value="grillage-1">Grillage -1</SelectItem>
-                                                            <SelectItem value="grillage-2">Grillage -2</SelectItem>
-                                                            <SelectItem value="grillage-3">Grillage -3</SelectItem>
-                                                            <SelectItem value="grillage-4">Grillage -4</SelectItem>
-                                                            <SelectItem value="grillage-5">Grillage -5</SelectItem>
-                                                            {Array.from({ length: 24 }, (_, i) => (
-                                                                <SelectItem key={i} value={`${i.toString().padStart(2, "0")}:00`}>
-                                                                    {`${i.toString().padStart(2, "0")}:00`}
-                                                                </SelectItem>
-                                                            ))}
+                                                            <SelectItem value="09:00 UTC">9:00 AM UTC</SelectItem>
+                                                            <SelectItem value="10:00 UTC">10:00 AM UTC</SelectItem>
+                                                            <SelectItem value="11:00 UTC">11:00 AM UTC</SelectItem>
+                                                            <SelectItem value="12:00 UTC">12:00 PM UTC</SelectItem>
+                                                            <SelectItem value="13:00 UTC">1:00 PM UTC</SelectItem>
+                                                            <SelectItem value="14:00 UTC">2:00 PM UTC</SelectItem>
+                                                            <SelectItem value="15:00 UTC">3:00 PM UTC</SelectItem>
+                                                            <SelectItem value="16:00 UTC">4:00 PM UTC</SelectItem>
+                                                            <SelectItem value="17:00 UTC">5:00 PM UTC</SelectItem>
+                                                            <SelectItem value="09:00 UTC-5">9:00 AM UTC-5</SelectItem>
+                                                            <SelectItem value="10:00 UTC-5">10:00 AM UTC-5</SelectItem>
+                                                            <SelectItem value="11:00 UTC-5">11:00 AM UTC-5</SelectItem>
+                                                            <SelectItem value="12:00 UTC-5">12:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="13:00 UTC-5">1:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="14:00 UTC-5">2:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="15:00 UTC-5">3:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="16:00 UTC-5">4:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="17:00 UTC-5">5:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="09:00 UTC+1">9:00 AM UTC+1</SelectItem>
+                                                            <SelectItem value="10:00 UTC+1">10:00 AM UTC+1</SelectItem>
+                                                            <SelectItem value="11:00 UTC+1">11:00 AM UTC+1</SelectItem>
+                                                            <SelectItem value="12:00 UTC+1">12:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="13:00 UTC+1">1:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="14:00 UTC+1">2:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="15:00 UTC+1">3:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="16:00 UTC+1">4:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="17:00 UTC+1">5:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="09:00 UTC+2">9:00 AM UTC+2</SelectItem>
+                                                            <SelectItem value="10:00 UTC+2">10:00 AM UTC+2</SelectItem>
+                                                            <SelectItem value="11:00 UTC+2">11:00 AM UTC+2</SelectItem>
+                                                            <SelectItem value="12:00 UTC+2">12:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="13:00 UTC+2">1:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="14:00 UTC+2">2:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="15:00 UTC+2">3:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="16:00 UTC+2">4:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="17:00 UTC+2">5:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="09:00 UTC+8">9:00 AM UTC+8</SelectItem>
+                                                            <SelectItem value="10:00 UTC+8">10:00 AM UTC+8</SelectItem>
+                                                            <SelectItem value="11:00 UTC+8">11:00 AM UTC+8</SelectItem>
+                                                            <SelectItem value="12:00 UTC+8">12:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="13:00 UTC+8">1:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="14:00 UTC+8">2:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="15:00 UTC+8">3:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="16:00 UTC+8">4:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="17:00 UTC+8">5:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="UTC">UTC (Coordinated Universal Time)</SelectItem>
+                                                            <SelectItem value="UTC+1">UTC+1 (Central European Time)</SelectItem>
+                                                            <SelectItem value="UTC+2">UTC+2 (Eastern European Time)</SelectItem>
+                                                            <SelectItem value="UTC+3">UTC+3 (Moscow Time)</SelectItem>
+                                                            <SelectItem value="UTC+4">UTC+4 (Gulf Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+5">UTC+5 (Pakistan Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+6">UTC+6 (Bangladesh Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+7">UTC+7 (Indochina Time)</SelectItem>
+                                                            <SelectItem value="UTC+8">UTC+8 (China Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+9">UTC+9 (Japan Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+10">UTC+10 (Australian Eastern Time)</SelectItem>
+                                                            <SelectItem value="UTC+11">UTC+11 (Solomon Islands Time)</SelectItem>
+                                                            <SelectItem value="UTC+12">UTC+12 (New Zealand Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-1">UTC-1 (Azores Time)</SelectItem>
+                                                            <SelectItem value="UTC-2">UTC-2 (South Georgia Time)</SelectItem>
+                                                            <SelectItem value="UTC-3">UTC-3 (Argentina Time)</SelectItem>
+                                                            <SelectItem value="UTC-4">UTC-4 (Atlantic Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-5">UTC-5 (Eastern Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-6">UTC-6 (Central Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-7">UTC-7 (Mountain Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-8">UTC-8 (Pacific Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-9">UTC-9 (Alaska Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-10">UTC-10 (Hawaii Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-11">UTC-11 (Samoa Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-12">UTC-12 (Baker Island Time)</SelectItem>
                                                         </SelectContent>
                                                     </Select>
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
@@ -430,23 +492,80 @@ export default function ScheduleMeeting() {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Select onValueChange={field.onChange} value={field.value}>
-                                                        <SelectTrigger className="max-w-[250px] border-2 rounded-xl">
+                                                        <SelectTrigger className="max-w-[400px] border-2 rounded-xl">
                                                             <SelectValue placeholder="Select time" />
                                                         </SelectTrigger>
                                                         <SelectContent>
-                                                            <SelectItem value="grillage">Grillage Time</SelectItem>
-                                                            <SelectItem value="grillage+2">Grillage +2</SelectItem>
-                                                            <SelectItem value="grillage+1">Grillage +1</SelectItem>
-                                                            <SelectItem value="grillage-1">Grillage -1</SelectItem>
-                                                            <SelectItem value="grillage-2">Grillage -2</SelectItem>
-                                                            <SelectItem value="grillage-3">Grillage -3</SelectItem>
-                                                            <SelectItem value="grillage-4">Grillage -4</SelectItem>
-                                                            <SelectItem value="grillage-5">Grillage -5</SelectItem>
-                                                            {Array.from({ length: 24 }, (_, i) => (
-                                                                <SelectItem key={i} value={`${i.toString().padStart(2, "0")}:00`}>
-                                                                    {`${i.toString().padStart(2, "0")}:00`}
-                                                                </SelectItem>
-                                                            ))}
+                                                            <SelectItem value="09:00 UTC">9:00 AM UTC</SelectItem>
+                                                            <SelectItem value="10:00 UTC">10:00 AM UTC</SelectItem>
+                                                            <SelectItem value="11:00 UTC">11:00 AM UTC</SelectItem>
+                                                            <SelectItem value="12:00 UTC">12:00 PM UTC</SelectItem>
+                                                            <SelectItem value="13:00 UTC">1:00 PM UTC</SelectItem>
+                                                            <SelectItem value="14:00 UTC">2:00 PM UTC</SelectItem>
+                                                            <SelectItem value="15:00 UTC">3:00 PM UTC</SelectItem>
+                                                            <SelectItem value="16:00 UTC">4:00 PM UTC</SelectItem>
+                                                            <SelectItem value="17:00 UTC">5:00 PM UTC</SelectItem>
+                                                            <SelectItem value="09:00 UTC-5">9:00 AM UTC-5</SelectItem>
+                                                            <SelectItem value="10:00 UTC-5">10:00 AM UTC-5</SelectItem>
+                                                            <SelectItem value="11:00 UTC-5">11:00 AM UTC-5</SelectItem>
+                                                            <SelectItem value="12:00 UTC-5">12:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="13:00 UTC-5">1:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="14:00 UTC-5">2:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="15:00 UTC-5">3:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="16:00 UTC-5">4:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="17:00 UTC-5">5:00 PM UTC-5</SelectItem>
+                                                            <SelectItem value="09:00 UTC+1">9:00 AM UTC+1</SelectItem>
+                                                            <SelectItem value="10:00 UTC+1">10:00 AM UTC+1</SelectItem>
+                                                            <SelectItem value="11:00 UTC+1">11:00 AM UTC+1</SelectItem>
+                                                            <SelectItem value="12:00 UTC+1">12:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="13:00 UTC+1">1:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="14:00 UTC+1">2:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="15:00 UTC+1">3:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="16:00 UTC+1">4:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="17:00 UTC+1">5:00 PM UTC+1</SelectItem>
+                                                            <SelectItem value="09:00 UTC+2">9:00 AM UTC+2</SelectItem>
+                                                            <SelectItem value="10:00 UTC+2">10:00 AM UTC+2</SelectItem>
+                                                            <SelectItem value="11:00 UTC+2">11:00 AM UTC+2</SelectItem>
+                                                            <SelectItem value="12:00 UTC+2">12:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="13:00 UTC+2">1:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="14:00 UTC+2">2:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="15:00 UTC+2">3:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="16:00 UTC+2">4:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="17:00 UTC+2">5:00 PM UTC+2</SelectItem>
+                                                            <SelectItem value="09:00 UTC+8">9:00 AM UTC+8</SelectItem>
+                                                            <SelectItem value="10:00 UTC+8">10:00 AM UTC+8</SelectItem>
+                                                            <SelectItem value="11:00 UTC+8">11:00 AM UTC+8</SelectItem>
+                                                            <SelectItem value="12:00 UTC+8">12:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="13:00 UTC+8">1:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="14:00 UTC+8">2:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="15:00 UTC+8">3:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="16:00 UTC+8">4:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="17:00 UTC+8">5:00 PM UTC+8</SelectItem>
+                                                            <SelectItem value="UTC">UTC (Coordinated Universal Time)</SelectItem>
+                                                            <SelectItem value="UTC+1">UTC+1 (Central European Time)</SelectItem>
+                                                            <SelectItem value="UTC+2">UTC+2 (Eastern European Time)</SelectItem>
+                                                            <SelectItem value="UTC+3">UTC+3 (Moscow Time)</SelectItem>
+                                                            <SelectItem value="UTC+4">UTC+4 (Gulf Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+5">UTC+5 (Pakistan Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+6">UTC+6 (Bangladesh Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+7">UTC+7 (Indochina Time)</SelectItem>
+                                                            <SelectItem value="UTC+8">UTC+8 (China Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+9">UTC+9 (Japan Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC+10">UTC+10 (Australian Eastern Time)</SelectItem>
+                                                            <SelectItem value="UTC+11">UTC+11 (Solomon Islands Time)</SelectItem>
+                                                            <SelectItem value="UTC+12">UTC+12 (New Zealand Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-1">UTC-1 (Azores Time)</SelectItem>
+                                                            <SelectItem value="UTC-2">UTC-2 (South Georgia Time)</SelectItem>
+                                                            <SelectItem value="UTC-3">UTC-3 (Argentina Time)</SelectItem>
+                                                            <SelectItem value="UTC-4">UTC-4 (Atlantic Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-5">UTC-5 (Eastern Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-6">UTC-6 (Central Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-7">UTC-7 (Mountain Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-8">UTC-8 (Pacific Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-9">UTC-9 (Alaska Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-10">UTC-10 (Hawaii Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-11">UTC-11 (Samoa Standard Time)</SelectItem>
+                                                            <SelectItem value="UTC-12">UTC-12 (Baker Island Time)</SelectItem>
                                                         </SelectContent>
                                                     </Select>
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
@@ -456,7 +575,7 @@ export default function ScheduleMeeting() {
                                     </FormControl>
                                 </FormItem>
 
-                                <FormItem>
+                                <FormItem className="mt-8">
                                     <FormLabel>Service of Interest *</FormLabel>
                                     <FormControl>
                                         <Controller
@@ -464,25 +583,43 @@ export default function ScheduleMeeting() {
                                             name="service_of_interest"
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
-                                                    <Select onValueChange={field.onChange} value={field.value}>
-                                                        <SelectTrigger className="max-w-[250px] border-2 rounded-xl">
-                                                            <SelectValue placeholder="Select a service" />
-                                                        </SelectTrigger>
-                                                        <SelectContent>
-                                                            <SelectItem value="freight">Freight Solutions (Ocean, Inland, Air)</SelectItem>
-                                                            <SelectItem value="containers">Containers services</SelectItem>
-                                                            <SelectItem value="trade">International Trade</SelectItem>
-                                                            <SelectItem value="agency">Ship Agency</SelectItem>
-                                                            <SelectItem value="suez">Suez Canal Transit</SelectItem>
-                                                            <SelectItem value="docking">Docking and Maintenance</SelectItem>
-                                                            <SelectItem value="storage">Storage and Warehousing</SelectItem>
-                                                            <SelectItem value="handling">Cargo Handling and Stevedoring</SelectItem>
-                                                            <SelectItem value="customs">Customs Clearance and Compliance</SelectItem>
-                                                            <SelectItem value="investing">Investing with us</SelectItem>
-                                                            <SelectItem value="partnership">Partnership</SelectItem>
-                                                            <SelectItem value="other">Other</SelectItem>
-                                                        </SelectContent>
-                                                    </Select>
+                                                    <div className="space-y-3 max-w-[400px]">
+                                                        {[
+                                                            { value: "freight", label: "Freight Solutions (Ocean, Inland, Air)" },
+                                                            { value: "containers", label: "Containers services" },
+                                                            { value: "trade", label: "International Trade" },
+                                                            { value: "agency", label: "Ship Agency" },
+                                                            { value: "suez", label: "Suez Canal Transit" },
+                                                            { value: "docking", label: "Docking and Maintenance" },
+                                                            { value: "storage", label: "Storage and Warehousing" },
+                                                            { value: "handling", label: "Cargo Handling and Stevedoring" },
+                                                            { value: "customs", label: "Customs Clearance and Compliance" },
+                                                            { value: "investing", label: "Investing with us" },
+                                                            { value: "partnership", label: "Partnership" },
+                                                            { value: "other", label: "Other" }
+                                                        ].map((service) => (
+                                                            <div key={service.value} className="flex items-center space-x-2">
+                                                                <Checkbox
+                                                                    id={service.value}
+                                                                    checked={field.value?.includes(service.value) || false}
+                                                                    onCheckedChange={(checked) => {
+                                                                        const currentValues = field.value || [];
+                                                                        if (checked) {
+                                                                            field.onChange([...currentValues, service.value]);
+                                                                        } else {
+                                                                            field.onChange(currentValues.filter((v: string) => v !== service.value));
+                                                                        }
+                                                                    }}
+                                                                />
+                                                                <label
+                                                                    htmlFor={service.value}
+                                                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 font-raleway"
+                                                                >
+                                                                    {service.label}
+                                                                </label>
+                                                            </div>
+                                                        ))}
+                                                    </div>
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                 </>
                                             )}
@@ -490,7 +627,7 @@ export default function ScheduleMeeting() {
                                     </FormControl>
                                 </FormItem>
 
-                                {form.watch("service_of_interest") === "other" && (
+                                {form.watch("service_of_interest")?.includes("other") && (
                                     <FormItem>
                                         <FormLabel>Please specify</FormLabel>
                                         <FormControl>
@@ -500,7 +637,7 @@ export default function ScheduleMeeting() {
                                                 render={({ field, fieldState: { error } }) => (
                                                     <>
                                                         <Input 
-                                                            className="max-w-[250px] border-2 rounded-xl" 
+                                                            className="max-w-[400px] border-2 rounded-xl" 
                                                             placeholder="Please specify"
                                                             {...field}
                                                         />
@@ -513,7 +650,7 @@ export default function ScheduleMeeting() {
                                 )}
                             </div>
 
-                            <div className="mt-6">
+                            <div className="mt-8">
                                 <FormItem>
                                     <FormLabel>Meeting Preference *</FormLabel>
                                     <FormControl>
@@ -546,7 +683,7 @@ export default function ScheduleMeeting() {
                         </div>
 
                         {/* Additional Information Section */}
-                        <div className="bg-white rounded-lg shadow-md p-6">
+                        <div className="bg-transparent rounded-lg p-6">
                             <h2 className="text-xl font-semibold mb-6">Additional Information</h2>
                             
                             <FormItem>
