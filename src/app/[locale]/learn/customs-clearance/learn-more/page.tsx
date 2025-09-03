@@ -6,172 +6,352 @@ import FAQSearch from "@/components/faq";
 
 export default function CustomsClearanceLearnMore() {
   return (
-    <main className="flex flex-col items-center w-full " style={{ fontFamily: 'Raleway, sans-serif' }}>
-      <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mt-10 mb-20">
-        <h1 className="text-xl md:text-2xl font-raleway font-regular text-[#253A5C] mb-10">
-          Our Customs and Clearance Services-At Moon Navigation and Trading Co.
-        </h1>
-        <div className="flex flex-col md:flex-row gap-8 items-start">
-          {/* Left: Text Content */}
-          <div className="flex-1">
-            <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
-              Import and Export Customs Clearance
+    <>
+      {/* Header Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium mb-6">
+              <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+              <span>Customs Clearance</span>
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-light text-black mb-6 leading-tight">
+              Our <span className="text-black font-light">Customs and Clearance Services</span>
             </h2>
-            <p className="text-sm text-muted-foreground mb-4">
-              We excel in processing customs clearances while ensuring compliance with laws to facilitate seamless import and export operations.
-            </p>
-            <p className="text-sm text-muted-foreground mb-4">
-              Our experienced team handles import duties, tariffs, and fee exemptions, providing cost-effective clearance solutions tailored to each of our clients’ needs. We also facilitate customs approvals for restricted or regulated goods, ensuring that all paperwork adheres to the necessary regulations.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              With our commitment to delivering fast and compliant import/export processing for all types of cargo, we empower businesses to navigate the complexities of international trade with confidence and efficiency.
+            <p className="text-sm md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              At Moon Navigation and Trading Co., we excel in processing customs clearances while ensuring compliance with laws to facilitate seamless import and export operations.
             </p>
           </div>
-          {/* Right: Image */}
-          <div className="flex-1 flex justify-center md:justify-end">
-            <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
-              <Image
-                src="/lc-1.jpg"
-                alt="Customs clearance worker with shipping containers"
-                width={600}
-                height={340}
-                className="object-cover w-full h-[300px]"
-                priority
-              />
+        </div>
+      </section>
+
+      {/* Import and Export Customs Clearance Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text Content */}
+            <div className="order-2 lg:order-1 space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium mb-6">
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                  <span>Import & Export</span>
+                </div>
+                <h3 className="text-2xl lg:text-3xl font-light text-black mb-4 leading-tight">
+                  1. <span className="text-black font-light">Import and Export Customs Clearance</span>
+                </h3>
+              </div>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                We excel in processing customs clearances while ensuring compliance with laws to facilitate seamless import and export operations.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Import Duties & Tariffs—</span>
+                    <span className="text-gray-600">Handling import duties, tariffs, and fee exemptions with expertise.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Cost-Effective Solutions—</span>
+                    <span className="text-gray-600">Providing tailored clearance solutions for each client's needs.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Regulatory Compliance—</span>
+                    <span className="text-gray-600">Ensuring all paperwork adheres to necessary regulations.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Fast Processing—</span>
+                    <span className="text-gray-600">Delivering fast and compliant import/export processing for all cargo types.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Right: Image */}
+            <div className="order-1 lg:order-2 relative">
+              <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/lc-1.jpg"
+                  alt="Customs clearance worker with shipping containers"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mb-20">
-      <div className="flex flex-col md:flex-row gap-8 items-start">
-        {/* Left: Image */}
-        <div className="flex-1 flex justify-center md:justify-start">
-          <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
-            <Image
-              src="/lc-2.jpg"
-              alt="Business person analyzing duty and tax documents"
-              width={800}
-              height={400}
-              className="object-cover w-full h-[350px]"
-              priority
-            />
+      </section>
+
+      {/* Duty and Tax Optimization Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Image */}
+            <div className="order-1 lg:order-1 relative">
+              <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/lc-2.jpg"
+                  alt="Business person analyzing duty and tax documents"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            {/* Right: Text Content */}
+            <div className="order-2 lg:order-2 space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium mb-6">
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                  <span>Tax Optimization</span>
+                </div>
+                <h3 className="text-2xl lg:text-3xl font-light text-black mb-4 leading-tight">
+                  2. <span className="text-black font-light">Duty and Tax Optimization</span>
+                </h3>
+              </div>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                We specialize in identifying duty exemptions and preferential tariff programs to help clients maximize their savings.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Free Trade Agreements—</span>
+                    <span className="text-gray-600">Leveraging FTAs to minimize import and export levies.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Customs Valuations—</span>
+                    <span className="text-gray-600">Ensuring accurate tax assessments to avoid unnecessary expenses.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Preferential Tariffs—</span>
+                    <span className="text-gray-600">Customizing to the most favorable trade scenarios available.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Financial Optimization—</span>
+                    <span className="text-gray-600">Enhancing profit margins while navigating international trade complexities.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {/* Right: Text Content */}
-        <div className="flex-1">
-          <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
-            Duty and Tax Optimization
-          </h2>
-          <p className="text-sm text-muted-foreground mb-4">
-            We specialize in identifying duty exemptions and preferential tariff programs to help clients maximize their savings.
-          </p>
-          <p className="text-sm text-muted-foreground mb-4">
-            Our team leverages Free Trade Agreements (FTAs) to minimize import and export levies by customizing them to the most favorable trade scenarios available. Additionally, we provide Customs Valuations to ensure accurate tax assessments, helping to avoid unnecessary expenses and complications.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Whether you&apos;re minimizing customs costs or enhancing profit margins, we empower businesses to navigate the complexities of international trade while optimizing their financial outcomes.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mb-20">
-      <div className="flex flex-col md:flex-row gap-8 items-start">
-        {/* Left: Text Content */}
-        <div className="flex-1">
-          <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
-            Special Cargo and Regulatory Compliance
-          </h2>
-          <p className="text-sm text-muted-foreground mb-4">
-            We provide customs clearance services tailored for temperature, perishable, and high-value cargo.
-          </p>
-          <p className="text-sm text-muted-foreground mb-4">
-            Our expertise includes obtaining special permits for restricted goods, such as pharmaceuticals, chemicals, and food products, ensuring compliance with necessary regulations. We provide assistance in international trade barrier matters, including SPS, TBT, and WTO regulations, to guarantee secure and speedy clearance of sensitive cargo.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            With our commitment to delivering efficient and reliable customs solutions, we empower our clients in the completion of international trade with confidence and peace of mind.
-          </p>
-        </div>
-        {/* Right: Image */}
-        <div className="flex-1 flex justify-center md:justify-end">
-          <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
-            <Image
-              src="/lc-3.jpg"
-              alt="Customs officer inspecting special cargo at port"
-              width={800}
-              height={400}
-              className="object-cover w-full h-[350px]"
-              priority
-            />
+      </section>
+
+      {/* Special Cargo and Regulatory Compliance Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text Content */}
+            <div className="order-2 lg:order-1 space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium mb-6">
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                  <span>Special Cargo</span>
+                </div>
+                <h3 className="text-2xl lg:text-3xl font-light text-black mb-4 leading-tight">
+                  3. <span className="text-black font-light">Special Cargo and Regulatory Compliance</span>
+                </h3>
+              </div>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                We provide customs clearance services tailored for temperature, perishable, and high-value cargo.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Special Permits—</span>
+                    <span className="text-gray-600">Obtaining permits for restricted goods like pharmaceuticals and chemicals.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">International Trade Barriers—</span>
+                    <span className="text-gray-600">Assistance with SPS, TBT, and WTO regulations.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Sensitive Cargo—</span>
+                    <span className="text-gray-600">Guaranteeing secure and speedy clearance of sensitive cargo.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Compliance Expertise—</span>
+                    <span className="text-gray-600">Ensuring compliance with necessary regulations for all cargo types.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Right: Image */}
+            <div className="order-1 lg:order-2 relative">
+              <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/lc-3.jpg"
+                  alt="Customs officer inspecting special cargo at port"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mb-20">
-      <div className="flex flex-col md:flex-row gap-8 items-start">
-        {/* Left: Image */}
-        <div className="flex-1 flex justify-center md:justify-start">
-          <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
-            <Image
-              src="/lc-4.jpg"
-              alt="Customs broker preparing shipping documents at a desk with a port view"
-              width={800}
-              height={400}
-              className="object-cover w-full h-[350px]"
-              priority
-            />
+      </section>
+
+      {/* Trade Documentation and Customs Brokerage Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Image */}
+            <div className="order-1 lg:order-1 relative">
+              <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/lc-4.jpg"
+                  alt="Customs broker preparing shipping documents at a desk with a port view"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            {/* Right: Text Content */}
+            <div className="order-2 lg:order-2 space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium mb-6">
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                  <span>Documentation</span>
+                </div>
+                <h3 className="text-2xl lg:text-3xl font-light text-black mb-4 leading-tight">
+                  4. <span className="text-black font-light">Trade Documentation and Customs Brokerage</span>
+                </h3>
+              </div>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                We specialize in the meticulous preparation of key shipping documents essential for seamless trade operations.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Shipping Documents—</span>
+                    <span className="text-gray-600">Creating Bill of Lading, Commercial Invoices, and Packing Lists.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Electronic Filing—</span>
+                    <span className="text-gray-600">Electronic Customs Filing for faster clearance and minimal delays.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Trade Finance—</span>
+                    <span className="text-gray-600">Handling Letters of Credit and other trade finance documents.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Accurate Documentation—</span>
+                    <span className="text-gray-600">Ensuring all documentation is accurate and compliant with regulations.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {/* Right: Text Content */}
-        <div className="flex-1">
-          <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
-            Trade Documentation and Customs Brokerage
-          </h2>
-          <p className="text-sm text-muted-foreground mb-4">
-            We specialize in the meticulous preparation of key shipping documents essential for seamless trade operations.
-          </p>
-          <p className="text-sm text-muted-foreground mb-4">
-            Our services include the creation of Bill of Lading (B/L), Commercial Invoices, Packing Lists, and Certificates of Origin, ensuring that all documentation is accurate and compliant with regulations. We also offer Electronic Customs Filing for faster clearance, streamlining the process to minimize delays. Additionally, our team is experienced in handling Letters of Credit (L/C) and other trade finance documents, providing comprehensive support for your transactions.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            With our focus on accurate documentation, we ensure smooth trade operations for our clients, enabling them to navigate the complexities of international shipping with confidence.
-          </p>
-        </div>
-      </div>
-    </div>
-    <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mb-20">
-      <div className="flex flex-col md:flex-row gap-8 items-start">
-        {/* Left: Text Content */}
-        <div className="flex-1">
-          <h2 className="text-lg md:text-xl font-raleway font-regular text-foreground mb-4">
-            Bonded Warehousing and Free Zones
-          </h2>
-          <p className="text-sm text-muted-foreground mb-4">
-            We offer secure storage solutions for cargo awaiting customs clearance, ensuring peace of mind during the import process.
-          </p>
-          <p className="text-sm text-muted-foreground mb-4">
-            Our services include access to Duty-Free Zones and Bonded Warehousing solutions, specifically for re-export, allowing businesses to optimize their logistics operations. We also provide Deferred Tax and Duty Payment options, which can significantly reduce cash flow risk for our clients.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            With our focus on delivering storage and tax-efficient trade solutions, we empower businesses to navigate the complexities of international trade while maximizing their operational efficiency.
-          </p>
-        </div>
-        {/* Right: Image */}
-        <div className="flex-1 flex justify-center md:justify-end">
-          <div className="w-full max-w-xs md:max-w-sm rounded-xl overflow-hidden shadow-md bg-white">
-            <Image
-              src="/lc-5.jpg"
-              alt="Bonded warehousing with customs officer and shipping containers"
-              width={800}
-              height={400}
-              className="object-cover w-full h-[350px]"
-              priority
-            />
+      </section>
+
+      {/* Bonded Warehousing and Free Zones Section */}
+      <section className="px-4 sm:px-6 lg:px-8 py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Text Content */}
+            <div className="order-2 lg:order-1 space-y-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium mb-6">
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                  <span>Warehousing</span>
+                </div>
+                <h3 className="text-2xl lg:text-3xl font-light text-black mb-4 leading-tight">
+                  5. <span className="text-black font-light">Bonded Warehousing and Free Zones</span>
+                </h3>
+              </div>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                We offer secure storage solutions for cargo awaiting customs clearance, ensuring peace of mind during the import process.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Duty-Free Zones—</span>
+                    <span className="text-gray-600">Access to Duty-Free Zones and Bonded Warehousing solutions.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Re-Export Solutions—</span>
+                    <span className="text-gray-600">Specifically designed for re-export operations.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Deferred Payments—</span>
+                    <span className="text-gray-600">Deferred Tax and Duty Payment options to reduce cash flow risk.</span>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+                  <div>
+                    <span className="font-medium text-black">Operational Efficiency—</span>
+                    <span className="text-gray-600">Maximizing operational efficiency while navigating international trade.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* Right: Image */}
+            <div className="order-1 lg:order-2 relative">
+              <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/lc-5.jpg"
+                  alt="Bonded warehousing with customs officer and shipping containers"
+                  fill
+                  className="object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <GetQuoteComponent topic="Customs Clearance" link="/customs-clearance-forms"/>
-    <FAQSearch category="customs-clearance" />
-    </main>
+      </section>
+
+      <GetQuoteComponent topic="Customs Clearance" link="/customs-clearance-forms"/>
+      <FAQSearch category="customs-clearance" />
+    </>
   );
 }

@@ -10,7 +10,7 @@ import { useState } from "react"
 import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
-import { Award, ShieldCheck, Briefcase, TrendingUp, PackageCheck } from "lucide-react";
+import { Award, ShieldCheck, Briefcase, TrendingUp, PackageCheck, AlertTriangle, Globe, FileText, Shield } from "lucide-react";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function DangerousCargoInfo() {
@@ -66,8 +66,77 @@ export default function DangerousCargoInfo() {
         }
     ]
 
+    const businessBenefits = [
+        {
+            icon: <Image src="/icons/other services/34.png" alt="Premium Service, Premium Returns" width={48} height={48} className="w-12 h-12" />,
+            title: "Premium Service, Premium Returns",
+            description: "Elevate business results with specialized handling, skill, and care. Our tailored solutions help you secure higher-value shipments while upholding top-level service every mile—maximizing your returns."
+        },
+        {
+            icon: <Image src="/icons/other services/35.png" alt="Trust Built on Compliance" width={48} height={48} className="w-12 h-12" />,
+            title: "Trust Built on Compliance",
+            description: "As certified experts in IMDG Code compliance, we manage all regulatory requirements on your behalf. This reliability ensures smooth operations and upholds your reputation in the industry."
+        },
+        {
+            icon: <Image src="/icons/other services/36.png" alt="End-to-End Expertise" width={48} height={48} className="w-12 h-12" />,
+            title: "End-to-End Expertise",
+            description: "From documentation and vessel selection to emergency response plans, Moon Navigation and Trading Co. provides comprehensive support, ensuring your dangerous cargo is handled with the utmost professionalism and care."
+        },
+        {
+            icon: <Image src="/icons/other services/37.png" alt="Unlock New Opportunities" width={48} height={48} className="w-12 h-12" />,
+            title: "Unlock New Opportunities",
+            description: "Expand what you ship with this elevated service. Risk thresholds, money, and effort are minimized as Moon Navigation and Trading Co. unlocks new commercial opportunities—allowing dangerous cargo to confidently enter viable, specialized trades."
+        },
+        {
+            icon: <Image src="/icons/other services/38.png" alt="Tailored Safety and Handling" width={48} height={48} className="w-12 h-12" />,
+            title: "Tailored Safety and Handling",
+            description: "Every shipment and packaging need is unique. Rely on solutions not available off the shelf or designed for broad categories. Our solutions are designed to mitigate risks while maintaining the integrity of your cargo."
+        }
+    ];
+
+    const challengesAndSolutions = [
+        {
+            icon: <Image src="/icons/other services/39.png" alt="Elevated Costs" width={48} height={48} className="w-12 h-12" />,
+            title: "Elevated Costs",
+            description: "Specialized handling, packaging, and insurance come with a premium. However, these investments are essential to ensure the safety and compliance of your shipments."
+        },
+        {
+            icon: <Image src="/icons/other services/40.png" alt="Intricate Regulations" width={48} height={48} className="w-12 h-12" />,
+            title: "Intricate Regulations",
+            description: "Dangerous cargo is governed by stringent regulations and route restrictions. Our team's expertise guarantees that these challenges are navigated efficiently and effectively."
+        },
+        {
+            icon: <Image src="/icons/other services/41.png" alt="Risk Management and Liability" width={48} height={48} className="w-12 h-12" />,
+            title: "Risk Management and Liability",
+            description: "The transportation of hazardous materials carries inherent risks. We proactively address these concerns through robust management systems and comprehensive training for our staff, ensuring your shipments are handled with the utmost care."
+        }
+    ];
+
+    const internationalTradeBenefits = [
+        {
+            icon: <Image src="/icons/other services/42.png" alt="Expert Trade Knowledge" width={48} height={48} className="w-12 h-12" />,
+            title: "Expert Trade Knowledge",
+            description: "Our deep expertise in global commerce, logistics, and customs regulations."
+        },
+        {
+            icon: <Image src="/icons/other services/43.png" alt="Strong Global Network" width={48} height={48} className="w-12 h-12" />,
+            title: "Strong Global Network",
+            description: "Our strong partnerships with airlines, shipping lines, and regulatory bodies worldwide."
+        },
+        {
+            icon: <Image src="/icons/other services/44.png" alt="Custom-Tailored Trade Solutions" width={48} height={48} className="w-12 h-12" />,
+            title: "Custom-Tailored Trade Solutions",
+            description: "Our personalized strategies for importers, exporters, and traders."
+        },
+        {
+            icon: <Image src="/icons/other services/45.png" alt="Reliable Compliance & Risk Management" width={48} height={48} className="w-12 h-12" />,
+            title: "Reliable Compliance & Risk Management",
+            description: "Our full compliance with international trade laws."
+        }
+    ];
+
     return (
-        <>
+        <main className="flex-1 flex flex-col gap-20 sm:gap-28 md:gap-36" style={{ fontFamily: 'Raleway, sans-serif' }}>
             <Head>
                 <title>Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co.</title>
                 <meta
@@ -86,51 +155,123 @@ export default function DangerousCargoInfo() {
                 <link rel="canonical" href="https://www.moonnavigation.com/learn/dangerous" />
             </Head>
             
-            {/* Image banner at the top */}
-            <div className="w-full flex justify-center mb-8 mt-10">
-                <div className="w-full max-w-7xl">
-                    <Image
-                        src="/dangerous-cargo-banner.jpg"
-                        alt="Dangerous Cargo Banner"
-                        width={1200}
-                        height={350}
-                        className="rounded-[60px] object-cover w-full h-[220px] sm:h-[350px]"
-                        priority
-                    />
+            {/* Hero Section */}
+            <section className="relative w-full min-h-[600px] md:min-h-[700px] mt-8 md:mt-12">
+                <div className="relative flex items-center rounded-[2rem] md:rounded-[3rem] bg-gradient-to-br from-slate-50 via-white to-blue-50/30 bg-center bg-cover w-full h-full min-h-[600px] md:min-h-[700px] shadow-2xl shadow-black/30 overflow-hidden">
+                    {/* Enhanced Background Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/10 via-transparent to-black/5 rounded-[2rem] md:rounded-[3rem] z-10"></div>
+                    
+                    {/* Animated Background Elements */}
+                    <div className="absolute inset-0 z-5">
+                        <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+                        <div className="absolute bottom-20 right-20 w-40 h-40 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+                        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl animate-pulse delay-500"></div>
+                    </div>
+
+                    {/* Hero Image */}
+                    <div className="absolute inset-0 z-10">
+                        <Image
+                            src="/dangerous-cargo-banner.jpg"
+                            alt="Dangerous Cargo Hero"
+                            fill
+                            className="object-cover"
+                            priority
+                            sizes="(max-width: 768px) 100vw, 1200px"
+                        />
+                        {/* Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60"></div>
+                    </div>
+
+                    {/* Main Content */}
+                    <div className="relative z-20 flex md:px-20 px-8 flex-col justify-center gap-8 max-w-6xl w-full">
+                        {/* Badge */}
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full w-fit">
+                            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                            <span className="text-white/90 text-sm font-medium">Dangerous Cargo Services</span>
+                        </div>
+
+                        {/* Enhanced Heading */}
+                        <div className="space-y-6">
+                            <h1 className="text-white w-full font-raleway font-light text-3xl md:text-4xl lg:text-5xl leading-[0.7] tracking-tight max-w-6xl" style={{ lineHeight: '1.05' }}>
+                                Dangerous Cargo Shipping
+                            </h1>
+                            <h2 className="font-light text-white text-sm md:text-base lg:text-lg max-w-3xl leading-relaxed">
+                                Expert handling and transport of dangerous cargo and hazardous materials with full compliance and safety standards
+                            </h2>
+                        </div>
+
+                        {/* Classic Buttons */}
+                        <div className="flex flex-col sm:flex-row gap-6 mt-12">
+                            <Link href="/ocean-freight-forms">
+                                <button className="group relative bg-white text-gray-900 hover:bg-gray-50 px-10 py-4 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-gray-300 transform hover:-translate-y-1 active:translate-y-0">
+                                    <span className="flex items-center gap-2">
+                                        <svg className="w-4 h-4 text-blue-600 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                        Request a Quote
+                                    </span>
+                                </button>
+                            </Link>
+                            <Link href="#services">
+                                <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
+                                    <span className="flex items-center gap-2">
+                                        <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                                        </svg>
+                                        Learn More
+                                    </span>
+                                </button>
+                            </Link>
+                        </div>
+                    </div>
+
+                    {/* Scroll Indicator */}
+                    <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+                        <button 
+                            onClick={() => {
+                                const servicesSection = document.querySelector('#services');
+                                if (servicesSection) {
+                                    servicesSection.scrollIntoView({ behavior: 'smooth' });
+                                }
+                            }}
+                            className="flex flex-col items-center gap-2 text-white/60 hover:text-white transition-colors duration-300 cursor-pointer group"
+                        >
+                            <span className="text-sm font-medium group-hover:scale-105 transition-transform duration-300">Scroll to explore</span>
+                            <svg className="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            
-            {/* Two-column content below the image */}
-            <div className="w-full flex flex-col md:flex-row items-start justify-center gap-8 mb-12 max-w-7xl mx-auto">
-                {/* Left column: title and button */}
-                <div className="flex-1 flex flex-col items-center md:items-start w-full">
-                    <h1 className="mb-10 text-4xl font-light text-left md:text-left w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>Dangerous<br />Cargo</h1>
-                    <Link href="/ocean-freight-forms">
-                        <RequestQuoteButton>Request a Quote</RequestQuoteButton>
-                    </Link>
+            </section>
+
+            {/* Content Section */}
+            <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    {/* Right column: heading and description */}
+                    <div className="flex-1 rounded-2xl p-6">
+                        <h2 className="text-lg mb-3 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                            What is Dangerous Cargo ?
+                        </h2>
+                        <p className="text-muted-foreground mb-2 text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                            Dangerous cargo includes materials that pose significant risks to health, safety, property, and the environment due to their hazardous nature. These materials, ranging from flammable and explosive substances to toxic, radioactive, and corrosive chemicals, require meticulous handling and adherence to strict international safety regulations such as the IMDG Code, IATA DGR, and ADR. Ensuring proper classification, packaging, labeling, and documentation is essential to prevent accidents and ensure seamless transportation.
+                        </p>
+                        <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                            At Moon Navigation and Trading Co., we specialize in the safe, secure, and fully compliant transportation of hazardous materials. With extensive industry expertise, we provide tailored solutions that guarantee the highest safety standards, regulatory compliance, and efficient logistics management. Trust us to handle your most challenging cargo needs with professionalism and precision.
+                        </p>
+                    </div>
                 </div>
-                {/* Right column: heading and description */}
-                <div className="flex-1 rounded-2xl p-6">
-                    <h2 className="text-lg mb-3 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        What is Dangerous Cargo ?
-                    </h2>
-                    <p className="text-muted-foreground mb-2 text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        Dangerous cargo includes materials that pose significant risks to health, safety, property, and the environment due to their hazardous nature. These materials, ranging from flammable and explosive substances to toxic, radioactive, and corrosive chemicals, require meticulous handling and adherence to strict international safety regulations such as the IMDG Code, IATA DGR, and ADR. Ensuring proper classification, packaging, labeling, and documentation is essential to prevent accidents and ensure seamless transportation.
-                    </p>
-                    <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                        At Moon Navigation and Trading Co., we specialize in the safe, secure, and fully compliant transportation of hazardous materials. With extensive industry expertise, we provide tailored solutions that guarantee the highest safety standards, regulatory compliance, and efficient logistics management. Trust us to handle your most challenging cargo needs with professionalism and precision.
-                    </p>
-                </div>
-            </div>
+            </section>
 
             {/* IMO class strip image above the card */}
-            <CardTitle className="text-3xl mb-4 max-w-7xl mx-auto" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
+            <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
+                <CardTitle className="text-3xl mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
             <div className="w-full flex justify-center items-center h-[60px] mt-10">
                 <Image src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" width={800} height={200} className="max-w-2xl w-full" />
             </div>
             
             {/* Accordion/classes section below */}
-            <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
+                <Card className="w-full mt-10 p-0 sm:p-5">
                 <CardHeader>
                     <CardContent className="p-0" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     </CardContent>
@@ -170,8 +311,10 @@ export default function DangerousCargoInfo() {
                     </section>
                 </CardContent>
             </Card>
+            </section>
 
-            <div className="w-full max-w-7xl mx-auto mt-20 mb-20">
+            {/* Process Section */}
+            <section id="services" className="w-full max-w-7xl mx-auto px-4 md:px-8">
                 <h2
                     className="text-3xl sm:text-4xl mb-16"
                     style={{
@@ -229,9 +372,9 @@ export default function DangerousCargoInfo() {
                         />
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div className="w-full max-w-7xl mx-auto mt-20 mb-20">
+            <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
                 {/* Special Equipment Use */}
                 <div className="flex flex-col md:flex-row gap-10 mb-16 items-center">
                     <div className="flex-1">
@@ -277,117 +420,33 @@ export default function DangerousCargoInfo() {
                         />
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <section className="w-full max-w-7xl mx-auto mb-20">
+            {/* Business Benefits Section */}
+            <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
                 <h2 className="text-2xl md:text-3xl font-normal mb-8 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Elevate Your Business with Our Expert Dangerous Cargo Services
                 </h2>
                 <p className="mb-10 text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
                     Transporting dangerous cargo demands expertise, precision, and a steadfast commitment to safety. At Moon Navigation and Trading Co., we recognize the complexities involved in handling hazardous materials. Here&apos;s how partnering with us can benefit your business:
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div>
-                        <div className="flex items-start gap-6 mb-10">
-                            <Image src="/icons/ocean freight/39.png" alt="Premium Service Icon" width={56} height={56} className="h-14 w-14" />
-                            <div>
-                                <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Premium Service, Premium Returns
-                                </h3>
-                                <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Elevate business results with specialized handling, skill, and care. Our tailored solutions help you secure higher-value shipments while upholding top-level service every mile—maximizing your returns.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex items-start gap-6 mb-10">
-                            <Image src="/icons/ocean freight/40.png" alt="Compliance Icon" width={56} height={56} className="h-14 w-14" />
-                            <div>
-                                <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Trust Built on Compliance
-                                </h3>
-                                <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    As certified experts in IMDG Code compliance, we manage all regulatory requirements on your behalf. This reliability ensures smooth operations and upholds your reputation in the industry.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex items-start gap-6 mb-10">
-                            <Image src="/icons/ocean freight/41.png" alt="Expertise Icon" width={56} height={56} className="h-14 w-14" />
-                            <div>
-                                <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    End-to-End Expertise
-                                </h3>
-                                <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    From documentation and vessel selection to emergency response plans, Moon Navigation and Trading Co. provides comprehensive support, ensuring your dangerous cargo is handled with the utmost professionalism and care.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div className="flex items-start gap-6 mb-10">
-                            <Image src="/icons/ocean freight/42.png" alt="Opportunities Icon" width={56} height={56} className="h-14 w-14" />
-                            <div>
-                                <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Unlock New Opportunities
-                                </h3>
-                                <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Expand what you ship with this elevated service. Risk thresholds, money, and effort are minimized as Moon Navigation and Trading Co. unlocks new commercial opportunities—allowing dangerous cargo to confidently enter viable, specialized trades.
-                                </p>
-                            </div>
-                        </div>
-                        <div className="flex items-start gap-6 mb-10">
-                            <Image src="/icons/ocean freight/43.png" alt="Safety Icon" width={56} height={56} className="h-14 w-14" />
-                            <div>
-                                <h3 className="text-lg mb-2" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Tailored Safety and Handling
-                                </h3>
-                                <p className="text-muted-foreground" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Every shipment and packaging need is unique. Rely on solutions not available off the shelf or designed for broad categories. Our solutions are designed to mitigate risks while maintaining the integrity of your cargo.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </section>
 
-            <section className="w-full max-w-7xl mx-auto mb-20">
-                <h2 className="text-2xl md:text-3xl font-normal mb-4 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                    Mastering the Challenges of Dangerous Goods Transportation
-                </h2>
-                <p className="mb-12 text-muted-foreground text-sm md:text-base max-w-3xl" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                    Transporting dangerous goods presents substantial business opportunities but requires a deep understanding of its complexities. At Moon Navigation and Trading Co., we specialize in offering comprehensive solutions to navigate the intricacies of this critical industry.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center mt-32">
-                    <div className="flex flex-col items-center">
-                        <Image src="/icons/ocean freight/45.png" alt="Elevated Costs Icon" width={80} height={80} className="h-20 w-20 mb-6 object-contain" />
-                        <h3 className="text-base mb-2 font-semibold" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Elevated Costs
-                        </h3>
-                        <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Specialized handling, packaging, and insurance come with a premium. However, these investments are essential to ensure the safety and compliance of your shipments.
-                        </p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <Image src="/icons/ocean freight/46.png" alt="Intricate Regulations Icon" width={80} height={80} className="h-20 w-20 mb-6 object-contain" />
-                        <h3 className="text-base mb-2 font-semibold" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Intricate Regulations
-                        </h3>
-                        <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Dangerous cargo is governed by stringent regulations and route restrictions. Our team&apos;s expertise guarantees that these challenges are navigated efficiently and effectively.
-                        </p>
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <Image src="/icons/ocean freight/47.png" alt="Risk Management Icon" width={80} height={80} className="h-20 w-20 mb-6 object-contain" />
-                        <h3 className="text-base mb-2 font-semibold" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Risk Management and Liability
-                        </h3>
-                        <p className="text-muted-foreground text-sm" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            The transportation of hazardous materials carries inherent risks. We proactively address these concerns through robust management systems and comprehensive training for our staff, ensuring your shipments are handled with the utmost care.
-                        </p>
-                    </div>
-                </div>
-            </section>
+            <ReasonsGridUniversal
+                title=""
+                reasons={businessBenefits}
+                layout="default"
+            />
 
-            <section className="w-full max-w-7xl mx-auto mb-20">
+            {/* Challenges and Solutions Section */}
+            <ReasonsGridUniversal
+                title="Mastering the Challenges of Dangerous Goods Transportation"
+                subheading="Transporting dangerous goods presents substantial business opportunities but requires a deep understanding of its complexities. At Moon Navigation and Trading Co., we specialize in offering comprehensive solutions to navigate the intricacies of this critical industry."
+                reasons={challengesAndSolutions}
+                layout="default"
+            />
+
+            <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     {/* Left: Text Content */}
                     <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-md p-6 md:p-10 flex flex-col justify-center h-full">
@@ -423,40 +482,16 @@ export default function DangerousCargoInfo() {
                 </div>
             </section>
 
-            <section className="w-full max-w-7xl mx-auto my-20">
-                <ReasonsGridUniversal
-                    title={
-                        <>
-                            Reasons to Choose Moon Navigation and Trading Co. For Your International Trade
-                        </>
-                    }
-                    reasons={[
-                        {
-                            icon: <Image src="/icons/ocean freight/22.png" alt="Expert Trade Knowledge" width={64} height={64} className="h-16 w-16 mb-6 object-contain mx-auto" />, 
-                            title: "Expert Trade Knowledge",
-                            description: "Our deep expertise in global commerce, logistics, and customs regulations."
-                        },
-                        {
-                            icon: <Image src="/icons/ocean freight/25.png" alt="Strong Global Network" width={64} height={64} className="h-16 w-16 mb-6 object-contain mx-auto" />, 
-                            title: "Strong Global Network",
-                            description: "Our strong partnerships with airlines, shipping lines, and regulatory bodies worldwide."
-                        },
-                        {
-                            icon: <Image src="/icons/container/38.png" alt="Custom-Tailored Trade Solutions" width={64} height={64} className="h-16 w-16 mb-6 object-contain mx-auto" />, 
-                            title: "Custom-Tailored Trade Solutions",
-                            description: "Our personalized strategies for importers, exporters, and traders."
-                        },
-                        {
-                            icon: <Image src="/icons/ocean freight/8.png" alt="Reliable Compliance & Risk Management" width={64} height={64} className="h-16 w-16 mb-6 object-contain mx-auto" />, 
-                            title: "Reliable Compliance & Risk Management",
-                            description: "Our full compliance with international trade laws."
-                        }
-                    ]}
-                />
-            </section>
+            {/* International Trade Benefits Section */}
+            <ReasonsGridUniversal
+                title="Reasons to Choose Moon Navigation and Trading Co. For Your International Trade"
+                subheading="Expert trade knowledge with strong global networks and custom-tailored solutions for international commerce."
+                reasons={internationalTradeBenefits}
+                layout="default"
+            />
 
             <GetQuoteComponent topic="Dangerous Cargo" link="/ocean-freight-forms" />
             <FAQSearch category="dangerous-cargo-transport" />
-        </>
+        </main>
     )
 }

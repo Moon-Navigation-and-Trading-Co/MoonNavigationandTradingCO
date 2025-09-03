@@ -132,7 +132,7 @@ export default function FormsPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">All Forms</h1>
+        <h1 className="text-4xl font-raleway font-medium mb-4">All Forms</h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
           Access all our service forms organized by category. Select the form you need to get started with your request.
         </p>
@@ -143,7 +143,7 @@ export default function FormsPage() {
           <div key={category} className="space-y-6">
             <div className="flex items-center gap-2">
               <Building2 className="h-6 w-6 text-primary" />
-              <h2 className="text-2xl font-semibold">{category}</h2>
+              <h2 className="text-2xl font-raleway font-medium">{category}</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -180,7 +180,7 @@ export default function FormsPage() {
 
       <div className="mt-16 text-center">
         <div className="bg-muted/50 rounded-lg p-6 max-w-2xl mx-auto">
-          <h3 className="text-lg font-semibold mb-2">Need Help?</h3>
+          <h3 className="text-lg font-raleway font-medium mb-2">Need Help?</h3>
           <p className="text-muted-foreground mb-4">
             Can&apos;t find the form you&apos;re looking for? Contact our support team for assistance.
           </p>
