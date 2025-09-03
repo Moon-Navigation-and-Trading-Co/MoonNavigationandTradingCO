@@ -1,4 +1,6 @@
-"use client"
+"use client";
+
+import { generateQuotationNumber } from "@/utils/quotation/generator";
 
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
@@ -85,6 +87,7 @@ export default function HandlingStevedoringStorageFormsPage() {
       company_email: formData.company_details?.company_email,
       additional_email: formData.company_details?.additional_email,
       phone_number: formData.company_details?.phone_number,
+      quotation_number: await generateQuotationNumber("handling_stevedoring_storage"),
       additional_phone_number: formData.company_details?.additional_phone_number,
     };
 
@@ -134,7 +137,7 @@ export default function HandlingStevedoringStorageFormsPage() {
   return (
     <div className='flex flex-col w-full'>
       <div className='mt-20 flex flex-col gap-5 px-4'>
-        <h1 className='text-3xl font-bold'>Handling, Stevedoring and Storage</h1>
+        <h1 className='text-3xl font-raleway font-medium'>Handling, Stevedoring and Storage</h1>
         <p className=''>Professional handling, stevedoring, and storage services for your cargo needs</p>
       </div>
       <FormTabs tabData={tabData} />

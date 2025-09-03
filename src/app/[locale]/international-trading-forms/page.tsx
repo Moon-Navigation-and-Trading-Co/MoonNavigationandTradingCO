@@ -1,4 +1,6 @@
-"use client"
+"use client";
+
+import { generateQuotationNumber } from "@/utils/quotation/generator";
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import FormTabs from '@/components/form-tabs-variant-1';
@@ -72,7 +74,8 @@ const Page: React.FC = () => {
             title: formData.company_details.title,
             country_of_origin: formData.company_details.country_of_origin,
             company_email: formData.company_details.company_email,
-            phone_number: formData.company_details.phone_number
+            phone_number: formData.company_details.phone_number,
+            quotation_number: await generateQuotationNumber("international_trading")
         };
 
 

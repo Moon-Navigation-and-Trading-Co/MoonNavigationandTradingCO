@@ -1,4 +1,6 @@
-"use client"
+"use client";
+
+import { generateQuotationNumber } from "@/utils/quotation/generator";
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import FormTabs from '@/components/form-tabs-variant-1';
@@ -71,7 +73,8 @@ const Page: React.FC = () => {
             company_email: formData.company_details.company_email,
             additional_email: formData.company_details.additional_email,
             phone_number: formData.company_details.phone_number,
-            additional_phone_number: formData.company_details.additional_phone_number
+            additional_phone_number: formData.company_details.additional_phone_number,
+            quotation_number: await generateQuotationNumber("air_freight_services")
         };
 
 
@@ -127,7 +130,7 @@ const Page: React.FC = () => {
     return (
         <div className='flex flex-col w-full'>
             <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('air')}</h1>
+                <h1 className='text-3xl font-raleway font-medium'>{t('air')}</h1>
                 <p className=''>{t('air-p')}</p>
             </div>
             <FormTabs tabData={tabData} />
