@@ -141,7 +141,7 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
 
                 {/* Vessel Information */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Vessel Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Vessel Information</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -298,7 +298,7 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
 
                 {/* Required Management Services */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Required Management Services</h3>
+                    <h3 className="text-xl font-raleway font-medium">Required Management Services</h3>
                     <p className="text-sm text-muted-foreground">(Please check the services you wish to receive.)</p>
                     
                     <div className="space-y-3">
@@ -530,7 +530,7 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
 
                 {/* Current Vessel Condition & Operation */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Current Vessel Condition & Operation</h3>
+                    <h3 className="text-xl font-raleway font-medium">Current Vessel Condition & Operation</h3>
                     
                     <FormItem>
                         <FormLabel>Is the vessel currently operational? *</FormLabel>
@@ -596,7 +596,7 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
 
                 {/* Expected Duration of Management Contract */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Expected Duration of Management Contract</h3>
+                    <h3 className="text-xl font-raleway font-medium">Expected Duration of Management Contract</h3>
                     
                     <FormItem>
                         <FormLabel>Duration Type *</FormLabel>
@@ -654,7 +654,7 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
 
                 {/* Supporting Files */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Supporting files</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Supporting files</h2>
                     <p className="text-sm text-gray-600 mb-4">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
                     
                     <div className="space-y-4">
@@ -733,7 +733,7 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
 
                 {/* Additional Information */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Additional Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Additional Information</h3>
                     <FormItem>
                         <FormLabel>Special Requests / Notes</FormLabel>
                         <FormControl>

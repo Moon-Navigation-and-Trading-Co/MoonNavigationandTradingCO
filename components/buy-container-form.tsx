@@ -99,7 +99,7 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
                 
                 {/* Container Details Section */}
                 <div className="">
-                    <h1 className='text-xl font-semibold'>Container Details</h1>
+                    <h1 className='text-xl font-raleway font-medium'>Container Details</h1>
                     <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                         {/* Container Type and Number on same line */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -187,7 +187,7 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Dates Section */}
                     <div className="">
-                        <h1 className='text-xl font-semibold'>Dates</h1>
+                        <h1 className='text-xl font-raleway font-medium'>Dates</h1>
                         <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                             <FormItem>
                                 <FormLabel>Pick-up Date</FormLabel>
@@ -213,7 +213,7 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
 
                     {/* Location Details */}
                     <div className="">
-                        <h1 className='text-xl font-semibold'>Location Details</h1>
+                        <h1 className='text-xl font-raleway font-medium'>Location Details</h1>
                         <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                             <FormItem>
                                 <FormLabel>Pick-up Location</FormLabel>
@@ -242,7 +242,7 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
                 <FormItem className='pb-4'>
                     <FormControl>
                         <div>
-                            <h1 className='text-xl font-semibold mb-4'>Budget & Additional Information</h1>
+                            <h1 className='text-xl font-raleway font-medium mb-4'>Budget & Additional Information</h1>
                             <div className='flex gap-5 p-4 items-center'>
                                 <FormItem>
                                     <FormLabel>Share your budget in USD for purchasing the container, which can help determine the most suitable options. (optional)</FormLabel>
@@ -275,7 +275,7 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
                 <FormItem className='pb-4'>
                     <FormControl>
                         <div>
-                            <h1 className='text-xl font-semibold mb-4'>Additional Information</h1>
+                            <h1 className='text-xl font-raleway font-medium mb-4'>Additional Information</h1>
                             <div className='flex gap-5 p-4 items-center'>
                                 <FormItem>
                                     <FormLabel>Additional requirements or specifications</FormLabel>
@@ -308,7 +308,7 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
 
                 {/* Important Information */}
                 <div className="">
-                    <h1 className='text-xl font-semibold'>Important Information</h1>
+                    <h1 className='text-xl font-raleway font-medium'>Important Information</h1>
                     <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                         <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
                             <p>• For quote requests with long-term validity, please contact us.</p>

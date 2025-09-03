@@ -26,31 +26,31 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
         port: z.object({
             name: z.string().min(1, { message: t("Required") }),
         }),
-        vessel: z.object({
-            name: z.string().min(1, { message: t("Required") }),
-            imo: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
-            type: z.string().min(1, { message: t("Required") }),
-            flag: z.string().min(1, { message: t("Required") }),
-            ship_gross_tonnage: z.string().min(1, { message: t("Required") }),
-            ship_net_tonnage: z.string().min(1, { message: t("Required") }),
-            deadweight: z.string().min(1, { message: t("Required") }),
-            draft: z.string().min(1, { message: t("Required") }),
-            length: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
+                    vessel: z.object({
+                name: z.string().min(1, { message: t("Required") }),
+                imo: z.coerce.number().min(1, { message: t("Required") }),
+                type: z.string().min(1, { message: t("Required") }),
+                flag: z.string().min(1, { message: t("Required") }),
+                ship_gross_tonnage: z.string().min(1, { message: t("Required") }),
+                ship_net_tonnage: z.string().min(1, { message: t("Required") }),
+                deadweight: z.string().min(1, { message: t("Required") }),
+                draft: z.string().min(1, { message: t("Required") }),
+                length: z.coerce.number().min(1, { message: t("Required") }),
             call_for_commercial: z.boolean().optional().default(false),
             call_for_maintenance: z.boolean().optional().default(false),
             call_for_other: z.boolean().optional().default(false),
             other_purpose_details: z.string().optional(),
-            total_discharged_cargo: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
-            discharged_cargo_type: z.string().optional(),
-            discharged_dangerous_cargo: z.boolean().optional().default(false),
-            total_days_needed_for_discharging: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
-            total_loaded_cargo: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
-            loaded_cargo_type: z.string().optional(),
-            loaded_dangerous_cargo: z.boolean().optional().default(false),
-            total_days_needed_for_loading: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
-            eta_expected_date: z.string().optional(),
-            total_expected_berthing_days: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
-            total_expected_anchor_days: z.number({ message: t("Number") }).min(0, { message: t("Number") }),
+                            total_discharged_cargo: z.coerce.number().min(1, { message: t("Required") }),
+                discharged_cargo_type: z.string().optional(),
+                discharged_dangerous_cargo: z.boolean().optional().default(false),
+                total_days_needed_for_discharging: z.coerce.number().min(1, { message: t("Required") }),
+                total_loaded_cargo: z.coerce.number().min(1, { message: t("Required") }),
+                loaded_cargo_type: z.string().optional(),
+                loaded_dangerous_cargo: z.boolean().optional().default(false),
+                total_days_needed_for_loading: z.coerce.number().min(1, { message: t("Required") }),
+                eta_expected_date: z.string().optional(),
+                total_expected_berthing_days: z.coerce.number().min(1, { message: t("Required") }),
+                total_expected_anchor_days: z.coerce.number().min(1, { message: t("Required") }),
         }),
         services: z.object({
             bunkering: z.object({
@@ -233,13 +233,37 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
 
     // 2. Type-safe submit handler
     const handleSubmit = (values: any) => {
-        console.log("Form submitted successfully:", values);
-        onSubmit(values);
+        // eslint-disable-next-line no-console
+        console.log("=== FORM SUBMISSION START ===");
+        // eslint-disable-next-line no-console
+        console.log("Form values:", values);
+        // eslint-disable-next-line no-console
+        console.log("Form is valid:", form.formState.isValid);
+        // eslint-disable-next-line no-console
+        console.log("Form errors:", form.formState.errors);
+        try {
+            // eslint-disable-next-line no-console
+            console.log("Calling onSubmit function...");
+            onSubmit(values);
+            // eslint-disable-next-line no-console
+            console.log("onSubmit completed successfully");
+        } catch (error) {
+            // eslint-disable-next-line no-console
+            console.error("Error in onSubmit:", error);
+        }
+        // eslint-disable-next-line no-console
+        console.log("=== FORM SUBMISSION END ===");
     };
 
 
-    const handleError = (errors: any) => {
-        console.error("Validation errors:", errors);
+    const handleError = (errors: unknown) => {
+        // Log validation errors for debugging
+        if (process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
+            console.log("Validation errors:", errors);
+            // eslint-disable-next-line no-console
+            console.log("Form values:", form.getValues());
+        }
     };
 
     return (
@@ -254,6 +278,23 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
 
                 <Button type="submit" className="mt-4 w-[200px]">
                     Submit
+                </Button>
+                
+                {/* Debug button */}
+                <Button 
+                    type="button" 
+                    onClick={() => {
+                        // eslint-disable-next-line no-console
+                        console.log("Debug: Form values:", form.getValues());
+                        // eslint-disable-next-line no-console
+                        console.log("Debug: Form errors:", form.formState.errors);
+                        // eslint-disable-next-line no-console
+                        console.log("Debug: Form is valid:", form.formState.isValid);
+                    }}
+                    className="mt-4 w-[200px] ml-4"
+                    variant="outline"
+                >
+                    Debug Form
                 </Button>
             </form>
         </Form>

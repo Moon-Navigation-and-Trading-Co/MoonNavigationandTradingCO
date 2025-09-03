@@ -21,7 +21,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
     return (
         <div className="flex flex-col w-full h-full">
-            <h1 className="text-xl font-semibold">{t('commodities')}</h1>
+            <h1 className="text-xl font-medium font-raleway">{t('commodities')}</h1>
 
             {fields.map((field, index) => {
                 const Watchdangerous = watch(`commodities.${index}.dangerous`);

@@ -12,6 +12,7 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Checkbox } from './ui/checkbox';
 import RequestQuoteButton from './RequestQuoteButton';
 import { Mail, Phone } from 'lucide-react';
+import { SearchableCountrySelect } from './searchable-country-select';
 
 // 1. Define a type-safe form handler using z.infer
 const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
@@ -119,7 +120,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Personal / Company Information */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Personal / Company Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Personal / Company Information</h3>
                     
                     {/* First Row: Full Name, Company Name */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -179,7 +180,12 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                                     name="nationality"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input className="w-full max-w-[280px] h-10 border-2 rounded-xl" placeholder="Insert Country" {...field} />
+                                            <SearchableCountrySelect
+                                              value={field.value}
+                                              onValueChange={field.onChange}
+                                              placeholder="Select country"
+                                              className="w-full max-w-[280px]"
+                                            />
                                             {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
                                         </>)}
                                 />
@@ -325,7 +331,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Investment Interest */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Investment Interest</h3>
+                    <h3 className="text-xl font-raleway font-medium">Investment Interest</h3>
                     
                     <FormItem className="space-y-3">
                         <FormLabel>Type of Investor *</FormLabel>
@@ -569,7 +575,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Area of Interest */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Area of Interest</h3>
+                    <h3 className="text-xl font-raleway font-medium">Area of Interest</h3>
                     <p className="text-muted-foreground">(Which sectors or services are you most interested in?)</p>
                     
                     <FormItem className="space-y-3">
@@ -631,7 +637,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Preferred Interest Rate */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Preferred Interest Rate (for Financial Investment Structures) (Optional)</h3>
+                    <h3 className="text-xl font-raleway font-medium">Preferred Interest Rate (for Financial Investment Structures) (Optional)</h3>
                     <p className="text-muted-foreground">Please indicate your preference regarding the investment return structure:</p>
                     
                     <FormItem className="space-y-3">
@@ -679,7 +685,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Background & Intent */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Background & Intent</h3>
+                    <h3 className="text-xl font-raleway font-medium">Background & Intent</h3>
                     
                     <FormItem>
                         <FormLabel>Brief Background or LinkedIn Profile (Optional)</FormLabel>
@@ -754,7 +760,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Additional Notes */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Additional Notes or Inquiries</h3>
+                    <h3 className="text-xl font-raleway font-medium">Additional Notes or Inquiries</h3>
                     <p className="text-muted-foreground">Please include any specific comments, questions, or areas of clarification you would like us to address:</p>
                     
                     <FormItem>

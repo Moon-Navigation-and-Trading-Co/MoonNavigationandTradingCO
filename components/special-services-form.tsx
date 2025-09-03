@@ -77,7 +77,7 @@ const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Vessel Information */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Vessel Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Vessel Information</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -212,7 +212,7 @@ const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Requested Services */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Please Declare the Requested Services</h3>
+                    <h3 className="text-xl font-raleway font-medium">Please Declare the Requested Services</h3>
                     <FormItem>
                         <FormControl>
                             <Controller
@@ -230,7 +230,7 @@ const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Supporting Files */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Supporting files (Optional)</h3>
+                    <h3 className="text-xl font-raleway font-medium">Supporting files (Optional)</h3>
                     <p className="text-sm text-gray-600">
                         Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
                     </p>

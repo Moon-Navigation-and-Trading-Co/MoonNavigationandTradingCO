@@ -87,7 +87,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                 {/* Routing Section */}
                 {/* <RoutingCard control={form.control} /> */}
                 <FormItem>
-                    <h2 className='text-lg mb-2 font-semibold'>{tt('vesselDetails')}</h2>
+                    <h2 className='text-lg mb-2 font-raleway font-medium'>{tt('vesselDetails')}</h2>
                     <FormLabel>{t('vesselTypeandSize')}</FormLabel>
                     <FormControl>
                         <Controller
@@ -288,7 +288,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
 
 
                 <div className='mt-24'>
-                    <h1 className='font-semibold text-xl mb-6'>Important Information</h1>
+                    <h1 className='font-raleway font-medium text-xl mb-6'>Important Information</h1>
                     <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
                         <p>• For quote requests with long-term validity, please contact us.</p>
                         <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>

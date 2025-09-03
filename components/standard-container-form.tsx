@@ -212,7 +212,7 @@ const StandardContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
                 {/* Supporting Files */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Supporting Files (Optional)</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Supporting Files (Optional)</h2>
                     <p className="text-sm text-gray-600 mb-4">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
                     
                     <div className="space-y-4">
@@ -290,7 +290,7 @@ const StandardContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
                 {/* Additional Required Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Additional Required Services</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Additional Required Services</h2>
                     <p className="text-sm text-gray-600 mb-6">Please select any extra services needed with your container shipment</p>
                     
                     <div className="space-y-4">

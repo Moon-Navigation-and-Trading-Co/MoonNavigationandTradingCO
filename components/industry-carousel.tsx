@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import useEmblaCarousel from "embla-carousel-react";
+import SimpleCarousel from "./simple-carousel";
 
 const industryItems = [
   {
@@ -29,39 +29,80 @@ const industryItems = [
     img: "/icons/container/110.png",
     title: "Logistics Solutions",
   },
+  {
+    img: "/icons/container/11.png",
+    title: "Oil & Gas",
+  },
+  {
+    img: "/icons/container/119.png",
+    title: "Automotive",
+  },
+  {
+    img: "/icons/container/120.png",
+    title: "Construction",
+  },
+  {
+    img: "/icons/container/121.png",
+    title: "Agriculture",
+  },
+  {
+    img: "/icons/container/122.png",
+    title: "Mining",
+  },
+  {
+    img: "/icons/container/123.png",
+    title: "Chemical",
+  },
+  {
+    img: "/icons/container/129.png",
+    title: "Pharmaceutical",
+  },
+  {
+    img: "/icons/container/130.png",
+    title: "Textiles",
+  },
+  {
+    img: "/icons/container/131.png",
+    title: "Electronics",
+  },
+  {
+    img: "/icons/container/132.png",
+    title: "Food & Beverage",
+  },
+  {
+    img: "/icons/container/133.png",
+    title: "Steel & Metals",
+  },
+  {
+    img: "/icons/container/142.png",
+    title: "Renewable Energy",
+  },
+  {
+    img: "/icons/container/143.png",
+    title: "Aerospace",
+  },
+  {
+    img: "/icons/container/144.png",
+    title: "Marine",
+  },
+  {
+    img: "/icons/container/145.png",
+    title: "Defense",
+  },
+  {
+    img: "/icons/container/146.png",
+    title: "Telecommunications",
+  },
+  {
+    img: "/icons/container/147.png",
+    title: "Healthcare",
+  },
 ];
 
 export default function IndustryCarousel() {
-  const [emblaRef] = useEmblaCarousel({
-    loop: true,
-    align: "start",
-    slidesToScroll: 1,
-  });
-
   return (
     <div className="w-full">
-      <div className="embla" ref={emblaRef}>
-        <div className="embla__container">
-          {industryItems.map((item, index) => (
-            <div key={index} className="embla__slide flex-[0_0_auto] min-w-0">
-              <div className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 mx-2">
-                <div className="w-16 h-16 mb-3">
-                  <Image
-                    src={item.img}
-                    alt={item.title}
-                    width={64}
-                    height={64}
-                    className="w-full h-full object-contain"
-                  />
-                </div>
-                <h3 className="text-sm font-medium text-gray-800 text-center">
-                  {item.title}
-                </h3>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <SimpleCarousel items={industryItems} />
     </div>
   );
 }

@@ -551,44 +551,48 @@ const ItemizedTable: React.FC<ItemizedTableProps> = ({ control }) => {
                         name="temperature_control"
                         render={({ field: { value } }) => (
                             value && (
-                                <div className="ml-6">
+                                <div className="ml-2 sm:ml-6">
                                     <label className="text-sm font-medium">Required Temperature Range:</label>
-                                    <div className="flex items-center gap-2 mt-1">
-                                        <Controller
-                                            control={control}
-                                            name="temperature_min"
-                                            render={({ field, fieldState: { error } }) => (
-                                                <div>
-                                                    <Input
-                                                        type="number"
-                                                        className={`w-20 border-2 rounded ${error ? 'border-red-500' : 'border-gray-300'}`}
-                                                        placeholder="Min"
-                                                        {...field}
-                                                        onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                                                    />
-                                                    {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
-                                                </div>
-                                            )}
-                                        />
-                                        <span>°C</span>
-                                        <span>to</span>
-                                        <Controller
-                                            control={control}
-                                            name="temperature_max"
-                                            render={({ field, fieldState: { error } }) => (
-                                                <div>
-                                                    <Input
-                                                        type="number"
-                                                        className={`w-20 border-2 rounded ${error ? 'border-red-500' : 'border-gray-300'}`}
-                                                        placeholder="Max"
-                                                        {...field}
-                                                        onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
-                                                    />
-                                                    {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
-                                                </div>
-                                            )}
-                                        />
-                                        <span>°C</span>
+                                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 mt-1">
+                                        <div className="flex items-center gap-2">
+                                            <Controller
+                                                control={control}
+                                                name="temperature_min"
+                                                render={({ field, fieldState: { error } }) => (
+                                                    <div>
+                                                        <Input
+                                                            type="number"
+                                                            className={`w-full max-w-[80px] border-2 rounded ${error ? 'border-red-500' : 'border-gray-300'}`}
+                                                            placeholder="Min"
+                                                            {...field}
+                                                            onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                                        />
+                                                        {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                                    </div>
+                                                )}
+                                            />
+                                            <span className="text-sm">°C</span>
+                                        </div>
+                                        <span className="text-sm">to</span>
+                                        <div className="flex items-center gap-2">
+                                            <Controller
+                                                control={control}
+                                                name="temperature_max"
+                                                render={({ field, fieldState: { error } }) => (
+                                                    <div>
+                                                        <Input
+                                                            type="number"
+                                                            className={`w-full max-w-[80px] border-2 rounded ${error ? 'border-red-500' : 'border-gray-300'}`}
+                                                            placeholder="Max"
+                                                            {...field}
+                                                            onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                                        />
+                                                        {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                                    </div>
+                                                )}
+                                            />
+                                            <span className="text-sm">°C</span>
+                                        </div>
                                     </div>
                                 </div>
                             )

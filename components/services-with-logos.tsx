@@ -1,33 +1,32 @@
-import { Truck, Globe, Warehouse, Shield, Route, Box, Map } from "lucide-react";
+import { Truck, Globe, Warehouse, Shield, Route, Box, Map, Ship, Container, Wrench, Plane, Building2, Anchor, Package, Zap, DollarSign } from "lucide-react";
 import Link from "next/link";
 
 const services = [
-  { icon: Warehouse, label: "Ocean Freight", href: "/ocean-freight-forms" },
-  { icon: Truck, label: "Inland Freight", href: "/inland-services-forms" },
-  { icon: Shield, label: "Air Freight", href: "/air-freight-forms" },
+  { icon: Anchor, label: "Ship Agency", href: "/learn-more/ship-agency" },
+  { icon: Ship, label: "Ocean Freight (Chartering)", href: "/learn-more/ocean-freight" },
   {
-    icon: Route,
+    icon: Container,
     label: "Container Services",
-    href: "/container-services-forms",
+    href: "/learn-more/container",
   },
-  { icon: Box, label: "Ship Agency", href: "/ship-agency-forms" },
   {
-    icon: Map,
-    label: "Docking and Maintenance",
-    href: "/ship-maintenance-forms",
+    icon: Wrench,
+    label: "Docking and Maintenance", 
+    href: "/learn/dockingandmaintenance",
   },
+  { icon: Truck, label: "Inland Freight", href: "/learn-more/inland-freight" },
+  { icon: Plane, label: "Air Freight", href: "/learn-more/air-freight" },
   {
     icon: Globe,
     label: "International Trading",
-    href: "/international-trading-forms",
+    href: "/learn/international-trading",
   },
   {
-    icon: Globe,
-    label: "Buy/Rent Containers",
-    href: "/buy-rent-container-forms",
+    icon: Zap,
+    label: "Expand your Fleet",
+    href: "/learn/vessel",
   },
-  { icon: Globe, label: "Buy/Rent Vessels", href: "/buy-rent-vessels-forms" },
-  { icon: Globe, label: "Special Services", href: "/learn/special" },
+  { icon: DollarSign, label: "Invest", href: "/invest" },
 ];
 
 export default function ServicesWithLogo() {
@@ -38,10 +37,12 @@ export default function ServicesWithLogo() {
           <Link
             key={index}
             href={service.href}
-            className="flex items-center space-x-4 w-full hover:text-primary p-4 dark:hover:text-white rounded-lg"
+            className="flex flex-col items-center justify-center text-center space-y-3 w-full hover:text-primary p-4 dark:hover:text-white rounded-lg"
           >
-            <service.icon strokeWidth={1.3} className="w-8 h-8 text-primary" />
-            <span className="text-sm font-medium">{service.label}</span>
+            <div className="w-12 h-12 md:w-10 md:h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <service.icon strokeWidth={1.5} className="w-6 h-6 md:w-5 md:h-5 text-blue-600" />
+            </div>
+            <span className="text-base font-medium">{service.label}</span>
           </Link>
         ))}
       </div>

@@ -29,8 +29,10 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
     // Define your Zod schema (as before)
     const formSchema = z.object({
         routing: z.array(z.object({
-            from: z.string().min(1, { message: t("From") }),
-            to: z.string().min(1, { message: t("To") }),
+            fromCountry: z.string().min(1, { message: "From country is required" }),
+            fromPort: z.string().min(1, { message: "From port/area is required" }),
+            toCountry: z.string().min(1, { message: "To country is required" }),
+            toPort: z.string().min(1, { message: "To port/area is required" }),
         })),
         date: z.string().min(1, { message: t("Date") }).refine(value => {
             return !isNaN(Date.parse(value)); // Ensure valid date
@@ -132,8 +134,10 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
         resolver: zodResolver(formSchema),
         defaultValues: {
             routing: [{
-                from: '',
-                to: '',
+                fromCountry: '',
+                fromPort: '',
+                toCountry: '',
+                toPort: '',
             }],
             date: '',
             entry_mode: 'itemized',
@@ -241,7 +245,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
 
                 {/* Entry Mode Selection */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Cargo Entry Mode</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Cargo Entry Mode</h2>
                     <div className="flex gap-4">
                         <Button
                             type="button"
@@ -325,7 +329,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
 
                 {/* Additional Required Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Additional Required Services</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Additional Required Services</h2>
                     <div className="space-y-4">
                         {/* Service Checkboxes */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

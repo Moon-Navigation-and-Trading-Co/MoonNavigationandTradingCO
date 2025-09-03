@@ -13,6 +13,8 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { useTranslations } from 'next-intl';
 import { Plus, Upload, Trash2, Mail, Phone, Calendar, Minus } from 'lucide-react';
+import { SearchableCountrySelect } from './searchable-country-select';
+import { PhoneInput } from '@/components/phone-input';
 
 // Define the form schema
 const formSchema = z.object({
@@ -139,7 +141,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
         
         {/* Shipment Information */}
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Shipment Information</h2>
+          <h2 className="text-xl font-raleway font-medium mb-4">Shipment Information</h2>
           
           {/* Type of Clearance Required */}
           <div className="mb-6">
@@ -280,7 +282,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
 
         {/* Commodity Details */}
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Commodity Details</h2>
+          <h2 className="text-xl font-raleway font-medium mb-4">Commodity Details</h2>
           
           {/* Commodity */}
           <div className="mb-6">
@@ -355,7 +357,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
 
         {/* Shipment Mode */}
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Shipment Mode</h2>
+          <h2 className="text-xl font-raleway font-medium mb-4">Shipment Mode</h2>
           
           <FormControl>
             <Controller
@@ -739,28 +741,29 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
 
         {/* Origin and Destination */}
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Origin and Destination</h2>
+          <h2 className="text-xl font-raleway font-medium mb-4">Origin and Destination</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
-                Country of Origin:
-              </FormLabel>
-              <FormControl>
-                <Controller
-                  control={form.control}
-                  name="countryOfOrigin"
-                  render={({ field, fieldState: { error } }) => (
-                    <>
-                      <Input
-                        placeholder="[Insert Country]"
-                        className="max-w-[300px] border-2 rounded-xl"
-                        {...field}
-                      />
-                      {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                    </>
-                  )}
-                />
-              </FormControl>
+              <div className="flex items-center gap-4">
+                <h3 className="text-sm font-medium text-gray-700 whitespace-nowrap">Country of Origin</h3>
+                <FormControl className="flex-1">
+                  <Controller
+                    control={form.control}
+                    name="countryOfOrigin"
+                    render={({ field, fieldState: { error } }) => (
+                      <>
+                        <SearchableCountrySelect
+                          value={field.value}
+                          onValueChange={field.onChange}
+                          placeholder="Select country"
+                          className="w-full"
+                        />
+                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                      </>
+                    )}
+                  />
+                </FormControl>
+              </div>
             </div>
 
             <div>
@@ -789,7 +792,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
 
         {/* Supporting Files */}
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Supporting Files (Optional)</h2>
+          <h2 className="text-xl font-raleway font-medium mb-4">Supporting Files (Optional)</h2>
           <div className='w-full max-w-sm items-center gap-1.5 mt-1'>
             <FormItem>
               <FormLabel>
@@ -843,7 +846,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
 
         {/* Additional Required Services/Information */}
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Additional Required Services/Information</h2>
+          <h2 className="text-xl font-raleway font-medium mb-4">Additional Required Services/Information</h2>
           <FormItem>
             <FormLabel>Please specify any additional services or information required.</FormLabel>
             <FormControl>
@@ -868,7 +871,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
 
         {/* Company/Personal Details */}
         <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">{t('companyDetails')}</h2>
+          <h2 className="text-xl font-raleway font-medium mb-4">{t('companyDetails')}</h2>
 
           <div className='grid grid-cols-2 gap-5'>
             <div>
@@ -922,7 +925,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                 </FormControl>
               </FormItem>
             </div>
-            <div>
+            <div className="col-span-2">
               <FormItem>
                 <FormLabel>{t('countryOfOrigin')}</FormLabel>
                 <FormControl>
@@ -931,7 +934,12 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                     name="companyDetails.cityCountry"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input className="max-w-[300px] border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                        <SearchableCountrySelect
+                          value={field.value}
+                          onValueChange={field.onChange}
+                          placeholder="Select country"
+                          className="w-full max-w-[300px]"
+                        />
                         {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
@@ -965,7 +973,15 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                     name="companyDetails.phone"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input className="max-w-[300px] border-2 rounded-xl" placeholder="+123456789" {...field} />
+                        <PhoneInput
+                          value={field.value}
+                          onChange={(value) => field.onChange(value)}
+                          defaultCountry="EG"
+                          international
+                          countryCallingCodeEditable={false}
+                          placeholder="Enter phone number"
+                          className="max-w-[300px] border-2 rounded-xl"
+                        />
                         {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
@@ -1053,10 +1069,14 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                           name="companyDetails.additionalPhone"
                           render={({ field, fieldState: { error } }) => (
                             <>
-                              <Input 
-                                className="max-w-[300px] border-2 rounded-xl" 
-                                placeholder="+123456789" 
-                                {...field} 
+                              <PhoneInput
+                                value={field.value}
+                                onChange={(value) => field.onChange(value)}
+                                defaultCountry="EG"
+                                international
+                                countryCallingCodeEditable={false}
+                                placeholder="Enter additional phone number"
+                                className="max-w-[300px] border-2 rounded-xl"
                               />
                               {error && <p className="text-red-500">{error.message}</p>}
                             </>
@@ -1083,7 +1103,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           </div>
 
           <div className='mt-12'>
-            <h3 className='font-semibold text-lg mb-4'>Important Information</h3>
+            <h3 className='font-raleway font-medium text-lg mb-4'>Important Information</h3>
             <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
               <p>• For quote requests with long-term validity, please contact us.</p>
               <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>

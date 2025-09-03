@@ -18,7 +18,7 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
 
     return (
         <div className="bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-6">Consolidated Entry for Multiple Commodities</h2>
+            <h2 className="text-xl font-raleway font-medium mb-6">Consolidated Entry for Multiple Commodities</h2>
             
             <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <h3 className="text-xs font-medium text-blue-800 mb-3">If you are shipping a variety of commodities and prefer to summarize:</h3>
@@ -212,7 +212,7 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
 
             {/* Stackable Section */}
             <div className="mt-6">
-                <h3 className="text-lg font-semibold mb-4">Stackable:</h3>
+                <h3 className="text-lg font-raleway font-medium mb-4">Stackable:</h3>
                     <FormControl>
                         <Controller
                             control={control}
@@ -247,7 +247,7 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
 
             {/* Special Requirements Section */}
             <div className="mt-6">
-                <h3 className="text-lg font-semibold mb-4">Special Requirements (if applicable)</h3>
+                <h3 className="text-lg font-raleway font-medium mb-4">Special Requirements (if applicable)</h3>
 
                 {/* Temperature Control */}
                 <div className="mb-4">
@@ -269,42 +269,45 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
 
                 {/* Temperature Range */}
                 {temperatureControl && (
-                        <div className="mt-2 ml-6">
+                        <div className="mt-2 ml-2 sm:ml-6">
                         <FormItem>
                                 <FormLabel className="text-sm">Required Temperature Range:</FormLabel>
                             <FormControl>
-                                <Controller
-                                    control={control}
-                                    name="consolidated_data.temperature_min"
-                                        render={({ field: minField }) => (
-                                            <div className="flex items-center space-x-2">
-                                <Controller
-                                    control={control}
-                                    name="consolidated_data.temperature_max"
-                                                    render={({ field: maxField }) => (
-                                                        <>
-                                                            <Input
-                                                                type="number"
-                                                                className="w-24 border-2 border-blue-300 rounded-xl"
-                                                                placeholder="Min"
-                                                                {...minField}
-                                                                onChange={(e) => minField.onChange(parseFloat(e.target.value) || 0)}
-                                                            />
-                                                            <span className="text-sm">°C to</span>
-                                        <Input
-                                            type="number"
-                                                                className="w-24 border-2 border-blue-300 rounded-xl"
-                                                                placeholder="Max"
-                                                                {...maxField}
-                                                                onChange={(e) => maxField.onChange(parseFloat(e.target.value) || 0)}
-                                        />
-                                                            <span className="text-sm">°C</span>
-                                                        </>
-                                                    )}
+                                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+                                    <div className="flex items-center gap-2">
+                                        <Controller
+                                            control={control}
+                                            name="consolidated_data.temperature_min"
+                                            render={({ field: minField }) => (
+                                                <Input
+                                                    type="number"
+                                                    className="w-full max-w-[80px] border-2 border-blue-300 rounded-xl"
+                                                    placeholder="Min"
+                                                    {...minField}
+                                                    onChange={(e) => minField.onChange(parseFloat(e.target.value) || 0)}
                                                 />
-                                            </div>
-                                    )}
-                                />
+                                            )}
+                                        />
+                                        <span className="text-sm">°C</span>
+                                    </div>
+                                    <span className="text-sm">to</span>
+                                    <div className="flex items-center gap-2">
+                                        <Controller
+                                            control={control}
+                                            name="consolidated_data.temperature_max"
+                                            render={({ field: maxField }) => (
+                                                <Input
+                                                    type="number"
+                                                    className="w-full max-w-[80px] border-2 border-blue-300 rounded-xl"
+                                                    placeholder="Max"
+                                                    {...maxField}
+                                                    onChange={(e) => maxField.onChange(parseFloat(e.target.value) || 0)}
+                                                />
+                                            )}
+                                        />
+                                        <span className="text-sm">°C</span>
+                                    </div>
+                                </div>
                             </FormControl>
                         </FormItem>
                     </div>
@@ -318,7 +321,7 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
 
             {/* Dangerous Goods Section */}
             <div className="mt-6">
-                <h3 className="text-lg font-semibold mb-4">Is any part of the shipment dangerous?</h3>
+                <h3 className="text-lg font-raleway font-medium mb-4">Is any part of the shipment dangerous?</h3>
                     <FormControl>
                         <Controller
                             control={control}

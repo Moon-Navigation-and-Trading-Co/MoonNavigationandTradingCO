@@ -12,12 +12,16 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Form, FormItem, FormLabel, FormControl, FormField } from '@/components/ui/form';
 import { Trash2, Plus, Mail, Phone } from 'lucide-react';
+import { PhoneInput } from '@/components/phone-input';
+import { SearchableCountrySelect } from './searchable-country-select';
 
 // Schema for the form
 const tankersFormSchema = z.object({
   routing: z.array(z.object({
-    from: z.string().min(1, "From location is required"),
-    to: z.string().min(1, "To location is required")
+    fromCountry: z.string().min(1, "From country is required"),
+    fromPort: z.string().min(1, "From port/area is required"),
+    toCountry: z.string().min(1, "To country is required"),
+    toPort: z.string().min(1, "To port/area is required")
   })).min(1, "At least one route is required"),
   effectiveDate: z.string().min(1, "Effective date is required"),
   expiryDate: z.string().min(1, "Expiry date is required"),
@@ -64,7 +68,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
   const form = useForm<TankersFormData>({
     resolver: zodResolver(tankersFormSchema),
     defaultValues: {
-      routing: [{ from: '', to: '' }],
+      routing: [{ fromCountry: '', fromPort: '', toCountry: '', toPort: '' }],
       effectiveDate: '',
       expiryDate: '',
       cargoType: [],
@@ -116,52 +120,111 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
         
         {/* Routing Section */}
         <div className="">
-          <h1 className='text-xl font-semibold'>Routing</h1>
+          <h1 className='text-xl font-raleway font-medium'>Routing</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {routingFields.map((field, index) => (
-              <div key={field.id} className="grid md:grid-cols-3 gap-5">
-                <FormItem>
-                  <FormLabel>From</FormLabel>
-                  <FormControl>
-                    <Controller
-                      control={form.control}
-                      name={`routing.${index}.from`}
-                      render={({ field, fieldState: { error } }) => (
-                        <>
-                          <Input
-                            className="max-w-[300px] border-2 rounded-xl"
-                            placeholder="City, Country/Region"
-                            {...field}
-                          />
-                          {error && <p className="text-red-500">{error.message}</p>}
-                        </>
-                      )}
-                    />
-                  </FormControl>
-                </FormItem>
+              <div key={field.id} className="space-y-6">
+                {/* Country selection boxes first */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">From</h3>
+                    <FormItem>
+                      <FormLabel>Country</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.fromCountry`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <SearchableCountrySelect
+                                value={field.value}
+                                onValueChange={field.onChange}
+                                placeholder="Select country"
+                                className="w-full"
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">To</h3>
+                    <FormItem>
+                      <FormLabel>Country</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.toCountry`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <SearchableCountrySelect
+                                value={field.value}
+                                onValueChange={field.onChange}
+                                placeholder="Select country"
+                                className="w-full"
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+                </div>
 
-                <FormItem>
-                  <FormLabel>To</FormLabel>
-                  <FormControl>
-                    <Controller
-                      control={form.control}
-                      name={`routing.${index}.to`}
-                      render={({ field, fieldState: { error } }) => (
-                        <>
-                          <Input
-                            className="max-w-[300px] border-2 rounded-xl"
-                            placeholder="City, Country/Region"
-                            {...field}
-                          />
-                          {error && <p className="text-red-500">{error.message}</p>}
-                        </>
-                      )}
-                    />
-                  </FormControl>
-                </FormItem>
+                {/* From and To Port/Area sections below */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  {/* From */}
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">From</h3>
+                    <FormItem>
+                      <FormLabel>Port/Area</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.fromPort`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Input
+                                placeholder="e.g., Shanghai Port, Pudong"
+                                {...field}
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
 
-                {routingFields.length > 1 && (
-                  <div className="flex items-end">
+                  {/* To */}
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">To</h3>
+                    <FormItem>
+                      <FormLabel>Port/Area</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.toPort`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Input
+                                placeholder="e.g., Los Angeles Port, Long Beach"
+                                {...field}
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+                </div>
+
+                <div className="flex items-end">
+                  {routingFields.length > 1 && (
                     <Button
                       type="button"
                       variant="outline"
@@ -170,8 +233,8 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             ))}
             
@@ -179,7 +242,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => addRoutingField({ from: '', to: '' })}
+                onClick={() => addRoutingField({ fromCountry: '', fromPort: '', toCountry: '', toPort: '' })}
                 className="flex items-center gap-2"
               >
                 <Plus className="h-4 w-4" />
@@ -191,7 +254,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
 
         {/* Dates Section */}
         <div className="">
-          <h1 className='text-xl font-semibold'>Dates</h1>
+          <h1 className='text-xl font-raleway font-medium'>Dates</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <div className="grid md:grid-cols-2 gap-5">
               <FormItem>
@@ -239,7 +302,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
 
         {/* Cargo Details */}
         <div className="">
-          <h1 className='text-xl font-semibold'>Cargo Details</h1>
+          <h1 className='text-xl font-raleway font-medium'>Cargo Details</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {/* Type of Cargo */}
             <div>
@@ -421,7 +484,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
 
         {/* Vessel & Transport Specifications */}
         <div className="">
-          <h1 className='text-xl font-semibold'>Vessel & Transport Specifications</h1>
+          <h1 className='text-xl font-raleway font-medium'>Vessel & Transport Specifications</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {/* Preferred Tanker Type */}
             <div>
@@ -521,7 +584,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
 
         {/* Supporting Files */}
         <div className="">
-          <h1 className='text-xl font-semibold'>Supporting files (optional)</h1>
+          <h1 className='text-xl font-raleway font-medium'>Supporting files (optional)</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <div>
               <FormLabel>Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</FormLabel>
@@ -566,7 +629,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
 
         {/* Additional Information */}
         <div className="">
-          <h1 className='text-xl font-semibold'>Additional Information</h1>
+          <h1 className='text-xl font-raleway font-medium'>Additional Information</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <FormItem>
               <FormLabel>Please advise other relevant commercial terms</FormLabel>
@@ -592,7 +655,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
         <FormItem className='pb-4'>
           <FormControl>
             <div>
-              <h1 className='text-xl font-semibold mb-4'>Service Contract</h1>
+              <h1 className='text-xl font-raleway font-medium mb-4'>Service Contract</h1>
               <div className='flex gap-5 p-4 items-center'>
                 <FormItem>
                   <FormLabel>Service contract <span className='text-muted-foreground text-xs'>(Optional)</span></FormLabel>
@@ -617,7 +680,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
 
         {/* Safety, Compliance & Documentation */}
         <div className="">
-          <h1 className='text-xl font-semibold'>Safety, Compliance & Documentation</h1>
+          <h1 className='text-xl font-raleway font-medium'>Safety, Compliance & Documentation</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {/* Regulatory & Safety Compliance */}
             <div>
@@ -737,7 +800,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
         <FormItem className='pb-4'>
           <FormControl>
             <div>
-              <h1 className='text-xl font-semibold mb-4'>Additional Required Services</h1>
+              <h1 className='text-xl font-raleway font-medium mb-4'>Additional Required Services</h1>
               <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                 <div>
                   <FormLabel className="text-base font-medium">(Select any required services.)</FormLabel>
@@ -835,7 +898,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
 
         {/* Company Details */}
         <div className="company-details-card">
-          <h1 className='text-xl font-semibold my-6'>Company/Personal Details</h1>
+          <h1 className='text-xl font-raleway font-medium my-6'>Company/Personal Details</h1>
           
           <div className='grid grid-cols-1 md:grid-cols-2 gap-5 px-4'>
             <div>
@@ -889,26 +952,31 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
                 </FormControl>
               </FormItem>
             </div>
-            <div>
-              <FormItem>
-                <FormLabel>Country of Origin</FormLabel>
-                <FormControl>
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center gap-4">
+                <h3 className="text-sm font-medium text-gray-700 whitespace-nowrap">Country of Origin</h3>
+                <FormControl className="flex-1">
                   <Controller
                     control={form.control}
                     name="cityCountry"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                        <SearchableCountrySelect
+                          value={field.value}
+                          onValueChange={field.onChange}
+                          placeholder="Select country"
+                          className="w-full"
+                        />
                         {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
                   />
                 </FormControl>
-              </FormItem>
+              </div>
             </div>
             <div>
               <FormItem>
-                <FormLabel>Company Email</FormLabel>
+                <FormLabel>Company Email Address</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
@@ -932,7 +1000,15 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
                     name="phoneNumber"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input type="tel" className="w-full max-w-[300px] border-2 rounded-xl" placeholder="+123456789" {...field} />
+                        <PhoneInput
+                          value={field.value}
+                          onChange={(value) => field.onChange(value)}
+                          defaultCountry="EG"
+                          international
+                          countryCallingCodeEditable={false}
+                          placeholder="Enter phone number"
+                          className="w-full max-w-[300px] border-2 rounded-xl"
+                        />
                         {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
@@ -1050,7 +1126,7 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
           </div>
 
           <div className='mt-24'>
-            <h1 className='font-semibold text-xl mb-6'>Important Information</h1>
+            <h1 className='font-raleway font-medium text-xl mb-6'>Important Information</h1>
             <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
               <p>• For quote requests with long-term validity, please contact us.</p>
               <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>

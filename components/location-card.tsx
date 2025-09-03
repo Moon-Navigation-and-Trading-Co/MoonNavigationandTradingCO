@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Controller, useFieldArray, useFormContext } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { Button } from "./ui/button";
+import { SearchableCountrySelect } from "./searchable-country-select";
 
 const LocationCard = ({ control }: { control: any }) => {
     // Get Content
@@ -26,33 +27,57 @@ const LocationCard = ({ control }: { control: any }) => {
                 return (
                     <div key={field.id} className='pt-8 grid md:grid-cols-2 gap-5 p-4 rounded-3xl'>
 
-                        {/* From Field */}
-                        <FormItem>
-                            <FormLabel htmlFor="location.location" id="routing.from" >{t('loco')}</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={control}
-                                    name={`location.${index}.location`}
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input id="location.location" className="max-w-[300px]  border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
-                                />
-                            </FormControl>
-                        </FormItem>
+                        {/* Location Field */}
+                        <div className="space-y-3">
+                            <h3 className="text-sm font-medium text-gray-700">Location</h3>
+                            <FormItem>
+                                <FormLabel>Country</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={control}
+                                        name={`location.${index}.locationCountry`}
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <SearchableCountrySelect
+                                                    value={field.value}
+                                                    onValueChange={field.onChange}
+                                                    placeholder="Select country"
+                                                    className="max-w-[300px]"
+                                                />
+                                                {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                            <FormItem>
+                                <FormLabel>Port/Area</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={control}
+                                        name={`location.${index}.locationPort`}
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input className="max-w-[300px] border-2 rounded-xl" placeholder="e.g., Port of Alexandria" {...field} />
+                                                {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        </div>
 
-                        {/* To Field */}
+                        {/* Detailed Address Field */}
                         <FormItem>
-                            <FormLabel id="location.detailed">{t('detailed')}</FormLabel>
+                            <FormLabel>{t('detailed')}</FormLabel>
                             <FormControl>
                                 <Controller
                                     control={control}
                                     name={`location.${index}.detailed`}
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input id="location.detailed" className="max-w-[300px]  border-2 rounded-xl" placeholder="Address" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
+                                            <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Address" {...field} />
+                                            {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                         </>
                                     )}
                                 />

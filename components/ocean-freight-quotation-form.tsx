@@ -12,16 +12,48 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { useTranslations } from 'next-intl';
-import { Plus, Minus, Calculator, FileText, Package, Truck, Ship, Warehouse, Shield, Eye, Wrench, Route } from 'lucide-react';
+import { Plus, Minus, Calculator, FileText, Package, Truck, Ship, Warehouse, Shield, Eye, Wrench, Route, Mail, Phone } from 'lucide-react';
 import ItemizedTable from './itemized-table';
 import ConsolidatedForm from './consolidated-form';
 import FileUpload from './file-upload';
+import { PhoneInput } from '@/components/phone-input';
+import { SearchableCountrySelect } from './searchable-country-select';
+
+// Countries list for routing
+const countries = [
+  "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan",
+  "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
+  "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic",
+  "Democratic Republic of the Congo", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
+  "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia",
+  "Fiji", "Finland", "France",
+  "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
+  "Haiti", "Honduras", "Hungary",
+  "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast",
+  "Jamaica", "Japan", "Jordan",
+  "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan",
+  "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg",
+  "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar",
+  "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway",
+  "Oman",
+  "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal",
+  "Qatar",
+  "Romania", "Russia", "Rwanda",
+  "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria",
+  "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu",
+  "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan",
+  "Vanuatu", "Vatican City", "Venezuela", "Vietnam",
+  "Yemen",
+  "Zambia", "Zimbabwe"
+];
 
 // Define the form schema
 const formSchema = z.object({
   routing: z.array(z.object({
-    from: z.string().min(1, { message: "From location is required" }),
-    to: z.string().min(1, { message: "To location is required" }),
+    fromCountry: z.string().min(1, { message: "From country is required" }),
+    fromPort: z.string().min(1, { message: "From port/area is required" }),
+    toCountry: z.string().min(1, { message: "To country is required" }),
+    toPort: z.string().min(1, { message: "To port/area is required" }),
   })),
   entry_mode: z.enum(["itemized", "consolidated"], {
     required_error: "Please select an entry mode.",
@@ -100,6 +132,8 @@ const formSchema = z.object({
     additionalEmail: z.string().email({ message: "Valid email format" }).optional(),
     phone: z.string().min(1, { message: "Phone number is required" }),
     additionalPhone: z.string().optional(),
+    showAdditionalEmail: z.boolean().default(false),
+    showAdditionalPhone: z.boolean().default(false),
   }),
 });
 
@@ -112,7 +146,7 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      routing: [{ from: '', to: '' }],
+      routing: [{ fromCountry: '', fromPort: '', toCountry: '', toPort: '' }],
       entry_mode: 'itemized',
       itemized_data: [{
         commodity: '',
@@ -184,6 +218,8 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
         additionalEmail: '',
         phone: '',
         additionalPhone: '',
+        showAdditionalEmail: false,
+        showAdditionalPhone: false,
       },
     },
   });
@@ -204,61 +240,117 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
         {/* Route Selection */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Route className="h-5 w-5" />
-              {t('routing')}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>{t('routing')}</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {routingFields.map((field, index) => (
-              <div key={field.id} className="grid md:grid-cols-3 gap-4">
-                <FormItem>
-                  <FormLabel>{t('from')} ({t('city')}, {t('country')})</FormLabel>
-                  <FormControl>
-                    <Controller
-                      control={form.control}
-                      name={`routing.${index}.from`}
-                      render={({ field, fieldState: { error } }) => (
-                        <>
-                          <Input
-                            placeholder="e.g., Shanghai, China"
-                            {...field}
-                          />
-                          {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                        </>
-                      )}
-                    />
-                  </FormControl>
-                </FormItem>
+              <div key={field.id} className="space-y-6">
+                {/* Country selection boxes first */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">From</h3>
+                    <FormItem>
+                      <FormLabel>Country</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.fromCountry`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <SearchableCountrySelect
+                                value={field.value}
+                                onValueChange={field.onChange}
+                                placeholder="Select country"
+                                className="w-full"
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">To</h3>
+                    <FormItem>
+                      <FormLabel>Country</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.toCountry`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <SearchableCountrySelect
+                                value={field.value}
+                                onValueChange={field.onChange}
+                                placeholder="Select country"
+                                className="w-full"
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+                </div>
 
-                <FormItem>
-                  <FormLabel>{t('to')} ({t('city')}, {t('country')})</FormLabel>
-                  <FormControl>
-                    <Controller
-                      control={form.control}
-                      name={`routing.${index}.to`}
-                      render={({ field, fieldState: { error } }) => (
-                        <>
-                          <Input
-                            placeholder="e.g., Los Angeles, USA"
-                            {...field}
-                          />
-                          {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                        </>
-                      )}
-                    />
-                  </FormControl>
-                </FormItem>
+                {/* From and To Port/Area sections below */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  {/* From */}
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">From</h3>
+                    <FormItem>
+                      <FormLabel>Port/Area</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.fromPort`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Input
+                                placeholder="e.g., Shanghai Port, Pudong"
+                                {...field}
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+
+                  {/* To */}
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">To</h3>
+                    <FormItem>
+                      <FormLabel>Port/Area</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.toPort`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Input
+                                placeholder="e.g., Los Angeles Port, Long Beach"
+                                {...field}
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+                </div>
 
                 <div className="flex items-end">
                   {routingFields.length > 1 && (
-                                            <Button
-                          type="button"
-                          variant="destructive"
-                          onClick={() => removeRoute(index)}
-                        >
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      onClick={() => removeRoute(index)}
+                    >
                       <Minus className="h-4 w-4" />
                     </Button>
                   )}
@@ -269,26 +361,21 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
             <Button
               type="button"
               variant="outline"
-              onClick={() => appendRoute({ from: '', to: '' })}
+              onClick={() => appendRoute({ fromCountry: '', fromPort: '', toCountry: '', toPort: '' })}
               className="w-fit"
             >
               <Plus className="h-4 w-4 mr-2" />
               {t('addRoute')}
             </Button>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Cargo Details */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Package className="h-5 w-5" />
-              {t('cargo-details')}
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>{t('cargo-details')}</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {/* Cargo Entry Mode Selection */}
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
                               <Button
                   type="button"
                   variant={cargoMode === 'itemized' ? 'default' : 'outline'}
@@ -296,6 +383,7 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
                     setCargoMode('itemized');
                   form.setValue('entry_mode', 'itemized');
                   }}
+                  className="w-full sm:w-auto text-sm sm:text-base"
                 >
                 Itemized Entry by Commodity
                 </Button>
@@ -306,6 +394,7 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
                     setCargoMode('consolidated');
                   form.setValue('entry_mode', 'consolidated');
                   }}
+                  className="w-full sm:w-auto text-sm sm:text-base"
                 >
                 Consolidated Entry for Multiple Commodities
                 </Button>
@@ -317,8 +406,8 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
             ) : (
               <ConsolidatedForm control={form.control} />
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Supporting Files */}
         <FileUpload 
@@ -327,14 +416,9 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
                 />
 
         {/* Additional Information */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <FileText className="h-5 w-5" />
-              Additional Information
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>Additional Information</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <FormItem>
               <FormLabel>Additional Information</FormLabel>
               <FormControl>
@@ -354,18 +438,13 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
                 />
               </FormControl>
             </FormItem>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Dates */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calculator className="h-5 w-5" />
-              Dates
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>Dates</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <div className="grid md:grid-cols-3 gap-4">
               <FormItem>
                 <FormLabel>Effective Date</FormLabel>
@@ -415,18 +494,13 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
                 </FormControl>
               </FormItem>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Additional Services */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Truck className="h-5 w-5" />
-              Additional Services
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>Additional Services</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <div className="grid md:grid-cols-2 gap-4">
               <FormItem>
                 <FormControl>
@@ -608,19 +682,15 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
                 </FormControl>
               </FormItem>
             )}
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Company/Personal Details */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Ship className="h-5 w-5" />
-              Company/Personal Details
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid md:grid-cols-2 gap-4">
+        <div className="company-details-card">
+          <h1 className='text-xl font-raleway font-medium my-6'>Company/Personal Details</h1>
+          
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-5 px-4'>
+            <div>
               <FormItem>
                 <FormLabel>Company Name</FormLabel>
                 <FormControl>
@@ -629,30 +699,32 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
                     name="companyDetails.companyName"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input placeholder="Company name" {...field} />
-                        {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Company Name" {...field} />
+                        {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
                   />
                 </FormControl>
               </FormItem>
-
+            </div>
+            <div>
               <FormItem>
-                <FormLabel>Contact Person</FormLabel>
+                <FormLabel>Contact Person Name</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
                     name="companyDetails.contactPerson"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input placeholder="Contact person name" {...field} />
-                        {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Contact Name" {...field} />
+                        {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
                   />
                 </FormControl>
               </FormItem>
-
+            </div>
+            <div>
               <FormItem>
                 <FormLabel>Title</FormLabel>
                 <FormControl>
@@ -661,132 +733,204 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
                     name="companyDetails.title"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input placeholder="Mr, Ms, Dr, etc." {...field} />
-                        {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Mr, Ms.. etc." {...field} />
+                        {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
                   />
                 </FormControl>
               </FormItem>
-
-              <FormItem>
-                <FormLabel>City</FormLabel>
-                <FormControl>
+            </div>
+            <div className="col-span-1 md:col-span-2">
+              <div className="flex items-center gap-4">
+                <h3 className="text-sm font-medium text-gray-700 whitespace-nowrap">Country of Origin</h3>
+                <FormControl className="flex-1">
                   <Controller
                     control={form.control}
                     name="companyDetails.city"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input placeholder="City" {...field} />
-                        {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                        <SearchableCountrySelect
+                          value={field.value}
+                          onValueChange={field.onChange}
+                          placeholder="Select country"
+                          className="w-full"
+                        />
+                        {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
                   />
                 </FormControl>
-              </FormItem>
-
+              </div>
+            </div>
+            <div>
               <FormItem>
-                <FormLabel>Country/Region</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="companyDetails.country"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <Input placeholder="Country/Region" {...field} />
-                        {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-
-              <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>Company Email Address</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
                     name="companyDetails.email"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input type="email" placeholder="Email address" {...field} />
-                        {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                        <Input type="email" className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Email" {...field} />
+                        {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
                   />
                 </FormControl>
               </FormItem>
-
+            </div>
+            <div>
               <FormItem>
-                <FormLabel>Additional Email (Optional)</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="companyDetails.additionalEmail"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <Input type="email" placeholder="Additional email" {...field} />
-                        {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-
-              <FormItem>
-                <FormLabel>Phone</FormLabel>
+                <FormLabel>Phone Number</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
                     name="companyDetails.phone"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input placeholder="+123456789" {...field} />
-                        {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-
-              <FormItem>
-                <FormLabel>Additional Phone (Optional)</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="companyDetails.additionalPhone"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <Input placeholder="+123456789" {...field} />
-                        {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                        <PhoneInput
+                          value={field.value}
+                          onChange={(value) => field.onChange(value)}
+                          defaultCountry="EG"
+                          international
+                          countryCallingCodeEditable={false}
+                          placeholder="Enter phone number"
+                          className="w-full max-w-[300px] border-2 rounded-xl"
+                        />
+                        {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
                   />
                 </FormControl>
               </FormItem>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+
+          {/* Additional Contact Fields */}
+          <div className="px-4 mt-6">
+            <div className="space-y-4">
+              {/* Additional Email Section */}
+              <div className="space-y-3">
+                {!form.watch("companyDetails.showAdditionalEmail") && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => form.setValue("companyDetails.showAdditionalEmail", true)}
+                    className="w-fit"
+                  >
+                    <Mail className="h-4 w-4 mr-2" />
+                    Add Additional Email
+                  </Button>
+                )}
+                
+                {form.watch("companyDetails.showAdditionalEmail") && (
+                  <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                    <FormItem>
+                      <FormLabel>Add additional email address</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name="companyDetails.additionalEmail"
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Input 
+                                type="email"
+                                className="w-[300px] border-2 rounded-xl" 
+                                placeholder="Email" 
+                                {...field} 
+                              />
+                              {error && <p className="text-red-500">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                    
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      onClick={() => {
+                        form.setValue("companyDetails.showAdditionalEmail", false);
+                        form.setValue("companyDetails.additionalEmail", "");
+                      }}
+                      className="w-fit"
+                    >
+                      Remove Additional Email
+                    </Button>
+                  </div>
+                )}
+              </div>
+
+              {/* Additional Phone Section */}
+              <div className="space-y-3">
+                {!form.watch("companyDetails.showAdditionalPhone") && (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => form.setValue("companyDetails.showAdditionalPhone", true)}
+                    className="w-fit"
+                  >
+                    <Phone className="h-4 w-4 mr-2" />
+                    Add Additional Phone
+                  </Button>
+                )}
+                
+                {form.watch("companyDetails.showAdditionalPhone") && (
+                  <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                    <FormItem>
+                      <FormLabel>Add additional mobile number</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name="companyDetails.additionalPhone"
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Input 
+                                type="tel"
+                                className="w-[300px] border-2 rounded-xl" 
+                                placeholder="+123456789" 
+                                {...field} 
+                              />
+                              {error && <p className="text-red-500">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                    
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      onClick={() => {
+                        form.setValue("companyDetails.showAdditionalPhone", false);
+                        form.setValue("companyDetails.additionalPhone", "");
+                      }}
+                      className="w-fit"
+                    >
+                      Remove Additional Phone
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Important Notes */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Shield className="h-5 w-5" />
-              Important Notes
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>Important Notes</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <div className="space-y-3 text-sm text-gray-600">
               <p>• Do not include personal financial information such as credit card details or debit card details anywhere in your request.</p>
               <p>• When you submit your quote request, an automated confirmation email will be sent to you containing the details you entered in this form.</p>
               <p>• For quote requests with long-term validity, please contact us directly.</p>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
-        <Button type="submit" className="w-full md:w-auto">
-          Submit Quote Request
+        <Button type="submit" className="mt-4 w-[200px]">
+          Submit
         </Button>
       </form>
     </Form>

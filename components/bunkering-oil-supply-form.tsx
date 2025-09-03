@@ -161,7 +161,7 @@ const BunkeringOilSupplyForm: React.FC<{ onSubmit: (data: any) => void }> = ({ o
 
                 {/* Vessel Information */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Vessel Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Vessel Information</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -296,7 +296,7 @@ const BunkeringOilSupplyForm: React.FC<{ onSubmit: (data: any) => void }> = ({ o
 
                 {/* Service Required */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Service Required (Select One or More)</h3>
+                    <h3 className="text-xl font-raleway font-medium">Service Required (Select One or More)</h3>
                     
                     {/* Bunkering */}
                     <div className="space-y-4">
@@ -685,7 +685,7 @@ const BunkeringOilSupplyForm: React.FC<{ onSubmit: (data: any) => void }> = ({ o
 
                 {/* Additional Information */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Additional Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Additional Information</h3>
                     <FormItem>
                         <FormLabel>Special Requests / Notes</FormLabel>
                         <FormControl>

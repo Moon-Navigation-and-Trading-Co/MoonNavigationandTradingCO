@@ -186,7 +186,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Vessel Details */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Vessel Details</h3>
+                    <h3 className="text-xl font-raleway font-medium">Vessel Details</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -479,7 +479,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Cargo Details */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Cargo Details</h3>
+                    <h3 className="text-xl font-raleway font-medium">Cargo Details</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -657,7 +657,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Unit Carriage Details */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Unit Carriage Details</h3>
+                    <h3 className="text-xl font-raleway font-medium">Unit Carriage Details</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -724,7 +724,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Transit Information */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Transit Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Transit Information</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -872,7 +872,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Additional Required Services */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Additional Required Services (Optional)</h3>
+                    <h3 className="text-xl font-raleway font-medium">Additional Required Services (Optional)</h3>
                     
                     <div className="space-y-3">
                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -983,7 +983,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Additional Notes */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Additional Notes or Special Request</h3>
+                    <h3 className="text-xl font-raleway font-medium">Additional Notes or Special Request</h3>
                     <FormItem>
                         <FormLabel>Additional Notes</FormLabel>
                         <FormControl>

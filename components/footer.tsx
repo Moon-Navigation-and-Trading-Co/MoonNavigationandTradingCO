@@ -1,103 +1,109 @@
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, MessageCircle, Youtube, Twitter } from "lucide-react";
 import { ThemeSwitcher } from "./theme-switcher";
 import LocaleSwitcher from "./LocaleSwitcher";
-import { Redirect } from "next";
 
 export default function Footer() {
   return (
-    <footer className="bg-background pb-12 w-full flex justify-center ">
-      <div className=" px-5 w-full max-w-[1300px]">
-        <div className="flex flex-col md:flex-row justify-between gap-8 border-t border-gray-300 dark:border-secondary py-12">
-          <div className="flex flex-col gap-2 justify-center text-start col-span-2 md:max-w-[380px]">
-            <h2 className="text-xl font-bold  text-primary  w-full">
-              Moon Navigation and Trading Co.
-            </h2>
-            <p className="text-sm text-muted-foreground md:max-w-[400px]">
-              Your Strategic Premier Partner for Exceptional and Innovative
-              Maritime, Logistics, and Trading Solutions.
-            </p>
-            <p className="mt-4 text-muted-foreground text-end">
-              — Whenever, Wherever You Need to Trust.
-            </p>
-          </div>
-          <div className="flex w-full justify-between md:justify-around">
-            <div className="flex md:justify-center py-3 col-span-1">
-              <ul className="flex flex-col text-base gap-4 text-start w-[100px]">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/about-us"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    About Us
-                  </Link>
-                </li>
-
-                <li>
-                  <Link
-                    href="#"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Contact
-                  </Link>
-                </li>
-              </ul>
+    <footer className="bg-gradient-to-br from-gray-50 via-white to-blue-50/30 border-t border-gray-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 mb-12">
+          {/* Company Information */}
+          <div className="lg:col-span-1">
+            <div className="mb-6">
+              <h2 className="text-xl lg:text-2xl font-raleway font-medium text-gray-900 mb-4">
+                Moon Navigation and Trading Co.
+              </h2>
+              <p className="text-base text-gray-600 leading-relaxed mb-6 max-w-md">
+                Your Strategic Premier Partner for Exceptional and Innovative
+                Maritime, Logistics, and Trading Solutions.
+              </p>
+              <div className="flex items-center gap-2 text-gray-500">
+                <div className="w-1 h-1 bg-blue-500 rounded-full"></div>
+                <p className="text-sm font-raleway font-medium">
+                  Whenever, Wherever You Need to Trust.
+                </p>
+              </div>
             </div>
-            <div className="flex md:justify-center py-3 col-span-1">
-              <ul className="flex flex-col text-base gap-4 text-start w-[150px]">
-                <li>
-                  <Link
-                    href="#"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Our Partners
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Schedule a meeting
-                  </Link>
-                </li>
+          </div>
 
-                <li>
-                  <Link
-                    href="#"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Invest
-                  </Link>
-                </li>
-              </ul>
+          {/* Navigation Links */}
+          <div className="lg:col-span-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+              <div>
+                <ul className="space-y-4">
+                  <li>
+                    <Link
+                      href="#services"
+                      className="text-base text-gray-600 hover:text-blue-600 transition-colors duration-200 font-raleway font-medium"
+                    >
+                      Services
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/about-us"
+                      className="text-base text-gray-600 hover:text-blue-600 transition-colors duration-200 font-raleway font-medium"
+                    >
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/contact"
+                      className="text-base text-gray-600 hover:text-blue-600 transition-colors duration-200 font-raleway font-medium"
+                    >
+                      Contact
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <ul className="space-y-4">
+                  <li>
+                    <Link
+                      href="/partners"
+                      className="text-base text-gray-600 hover:text-blue-600 transition-colors duration-200 font-raleway font-medium"
+                    >
+                      Our Partners
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/schedule-meeting"
+                      className="text-base text-gray-600 hover:text-blue-600 transition-colors duration-200 font-raleway font-medium"
+                    >
+                      Schedule a Meeting
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/invest"
+                      className="text-base text-gray-600 hover:text-blue-600 transition-colors duration-200 font-raleway font-medium"
+                    >
+                      Invest
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-row justify-between gap-3 sm:justify-center items-center text-gray-600 text-sm md:text-xs">
-          <Link href="https://www.google.com">LinkedIn</Link>{" "}
-          <Link href="https://www.google.com">Facebook</Link>{" "}
-          <Link href="https://www.google.com">Instagram</Link>{" "}
-          <Link href="https://www.google.com">Telegram</Link>{" "}
-          <Link href="https://www.google.com">Youtube</Link>{" "}
-          <Link href="https://www.google.com">Twitter</Link>{" "}
-        </div>
-        <div className="mt-8 pt-8 flex flex-col sm:flex-row justify-center gap-3 border-t border-gray-300 dark:border-secondary text-center text-gray-500 text-sm">
-          <h1 className="text-center flex justify-center items-center">
-            © 2013 - {new Date().getFullYear()} Moon Navigation. All rights
-            reserved.
-          </h1>
-          <div className="flex items-center justify-center">
-            <ThemeSwitcher />
-            <LocaleSwitcher />
+
+
+
+        {/* Bottom Section */}
+        <div className="border-t border-gray-200 pt-8">
+          <div className="flex flex-col items-center gap-4">
+            <p className="text-gray-600 text-sm font-raleway font-medium text-center">
+              ©2025 Moon Navigation and Trading Co. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4">
+              <ThemeSwitcher />
+              <LocaleSwitcher />
+            </div>
           </div>
         </div>
       </div>

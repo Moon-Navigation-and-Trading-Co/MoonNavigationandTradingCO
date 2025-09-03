@@ -10,7 +10,7 @@ const RoutingCard = ({ control }: { control: any }) => {
 
     return (
         <div className="">
-            <h1 className='text-xl font-semibold'>{t('routing')}</h1>
+            <h1 className='text-xl font-medium font-raleway'>{t('routing')}</h1>
             <div className='pt-8 pb-10 grid md:grid-cols-3 gap-5 p-4 rounded-3xl'>
 
                 {/* From Field */}

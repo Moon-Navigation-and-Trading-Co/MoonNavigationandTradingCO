@@ -107,7 +107,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
                 
                 {/* Container Details Section */}
                 <div className="">
-                    <h1 className='text-xl font-semibold'>Container Details</h1>
+                    <h1 className='text-xl font-raleway font-medium'>Container Details</h1>
                     <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                         {/* Container Type and Number on same line */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -197,7 +197,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
 
                 {/* Dates Section */}
                 <div className="">
-                    <h1 className='text-xl font-semibold'>Dates</h1>
+                    <h1 className='text-xl font-raleway font-medium'>Dates</h1>
                     <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                         <FormItem>
                             <FormLabel>Pick-up Date</FormLabel>
@@ -223,7 +223,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
 
                 {/* Location Details */}
                 <div className="">
-                    <h1 className='text-xl font-semibold'>Location Details</h1>
+                    <h1 className='text-xl font-raleway font-medium'>Location Details</h1>
                     <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                         {/* Pick-up and Drop-off Locations on same line */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -293,7 +293,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
 
                 {/* Rental Terms */}
                 <div className="">
-                    <h1 className='text-xl font-semibold'>Rental Terms</h1>
+                    <h1 className='text-xl font-raleway font-medium'>Rental Terms</h1>
                     <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                         <FormItem>
                             <FormLabel>Rental Duration</FormLabel>
@@ -347,7 +347,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
                 <FormItem className='pb-4'>
                     <FormControl>
                         <div>
-                            <h1 className='text-xl font-semibold mb-4'>Budget & Additional Information</h1>
+                            <h1 className='text-xl font-raleway font-medium mb-4'>Budget & Additional Information</h1>
                             <div className='flex gap-5 p-4 items-center'>
                                 <FormItem>
                                     <FormLabel>Budget (USD) <span className='text-muted-foreground text-xs'>(Optional)</span></FormLabel>
@@ -381,7 +381,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
                 <FormItem className='pb-4'>
                     <FormControl>
                         <div>
-                            <h1 className='text-xl font-semibold mb-4'>Additional Information</h1>
+                            <h1 className='text-xl font-raleway font-medium mb-4'>Additional Information</h1>
                             <div className='flex gap-5 p-4 items-center'>
                                 <FormItem>
                                     <FormLabel>Additional requirements or specifications</FormLabel>
@@ -414,7 +414,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
 
                 {/* Important Information */}
                 <div className="">
-                    <h1 className='text-xl font-semibold'>Important Information</h1>
+                    <h1 className='text-xl font-raleway font-medium'>Important Information</h1>
                     <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                         <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
                             <p>• For quote requests with long-term validity, please contact us.</p>

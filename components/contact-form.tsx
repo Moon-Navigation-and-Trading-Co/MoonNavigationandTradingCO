@@ -15,6 +15,7 @@ import { toast } from "@/hooks/use-toast";
 import RequestQuoteButton from './RequestQuoteButton';
 import { Mail, Phone } from 'lucide-react';
 import { PhoneInput } from "@/components/phone-input";
+import { CountrySelect } from "@/components/country-select";
 
 // Zod schema for validation
 const schema = z.object({
@@ -24,6 +25,7 @@ const schema = z.object({
   companyName: z.string().optional(),
   email: z.string().email({ message: "Invalid email address" }),
   phone: z.string().min(1, { message: "Phone number is required" }),
+  countryOfOrigin: z.string().optional(),
   message: z.string().min(1, { message: "Message is required" }),
 });
 
@@ -36,6 +38,7 @@ const ContactForm: React.FC = () => {
     formState: { errors },
     reset,
     setValue,
+    watch,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
   });
@@ -93,7 +96,7 @@ const ContactForm: React.FC = () => {
     <div className="w-full h-full ">
       {submitted ? (
         <div className="w-full h-full flex items-center justify-center">
-          <p className="text-center text-primary py-10 font-semibold">
+          <p className="text-center text-primary py-10 font-raleway font-medium">
             Submission Successful, thank you!
           </p>
         </div>
@@ -101,7 +104,7 @@ const ContactForm: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="w-full font-raleway">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
             <div className="flex flex-col">
-              <label htmlFor="firstName" className="uppercase font-bold text-xs text-primary mb-2 tracking-wide">First Name</label>
+              <label htmlFor="firstName" className="font-raleway font-medium text-sm text-gray-700 mb-2">First Name</label>
               <Input
                 id="firstName"
                 {...register("firstName")}
@@ -110,7 +113,7 @@ const ContactForm: React.FC = () => {
               {errors.firstName && <span className="text-red-500 text-xs mt-1">{errors.firstName.message}</span>}
             </div>
             <div className="flex flex-col">
-              <label htmlFor="lastName" className="uppercase font-bold text-xs text-primary mb-2 tracking-wide">Last Name</label>
+              <label htmlFor="lastName" className="font-raleway font-medium text-sm text-gray-700 mb-2">Last Name</label>
               <Input
                 id="lastName"
                 {...register("lastName")}
@@ -119,7 +122,7 @@ const ContactForm: React.FC = () => {
               {errors.lastName && <span className="text-red-500 text-xs mt-1">{errors.lastName.message}</span>}
             </div>
             <div className="flex flex-col">
-              <label htmlFor="title" className="uppercase font-bold text-xs text-primary mb-2 tracking-wide">Title</label>
+              <label htmlFor="title" className="font-raleway font-medium text-sm text-gray-700 mb-2">Title</label>
               <Input
                 id="title"
                 {...register("title")}
@@ -127,7 +130,7 @@ const ContactForm: React.FC = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="companyName" className="uppercase font-bold text-xs text-primary mb-2 tracking-wide">Company Name</label>
+              <label htmlFor="companyName" className="font-raleway font-medium text-sm text-gray-700 mb-2">Company Name</label>
               <Input
                 id="companyName"
                 {...register("companyName")}
@@ -135,7 +138,7 @@ const ContactForm: React.FC = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="email" className="uppercase font-bold text-xs text-primary mb-2 tracking-wide">Company Email Address</label>
+              <label htmlFor="email" className="font-raleway font-medium text-sm text-gray-700 mb-2">Company Email Address</label>
               <Input
                 id="email"
                 type="email"
@@ -145,7 +148,7 @@ const ContactForm: React.FC = () => {
               {errors.email && <span className="text-red-500 text-xs mt-1">{errors.email.message}</span>}
             </div>
             <div className="flex flex-col">
-              <label htmlFor="phone" className="uppercase font-bold text-xs text-primary mb-2 tracking-wide">Phone Number</label>
+              <label htmlFor="phone" className="font-raleway font-medium text-sm text-gray-700 mb-2">Phone Number</label>
               <PhoneInput
                 id="phone"
                 value={phoneValue}
@@ -160,9 +163,18 @@ const ContactForm: React.FC = () => {
               />
               {errors.phone && <span className="text-red-500 text-xs mt-1">{errors.phone.message}</span>}
             </div>
+            <div className="flex items-center gap-4">
+              <h3 className="font-raleway font-medium text-sm text-gray-700 whitespace-nowrap">Country of Origin</h3>
+              <CountrySelect
+                value={watch("countryOfOrigin")}
+                onValueChange={(value) => setValue("countryOfOrigin", value)}
+                className="border border-[#E5EAF1] rounded-lg h-12 text-base focus:ring-2 focus:ring-[#283593] flex-1"
+                placeholder="Select your country"
+              />
+            </div>
           </div>
           <div className="flex flex-col mt-8">
-            <label htmlFor="message" className="uppercase font-bold text-xs text-primary mb-2 tracking-wide">Message</label>
+            <label htmlFor="message" className="font-raleway font-medium text-sm text-gray-700 mb-2">Message</label>
             <Textarea
               id="message"
               {...register("message")}
@@ -173,7 +185,7 @@ const ContactForm: React.FC = () => {
           <div className="flex justify-end mt-8">
             <RequestQuoteButton
               type="submit"
-              className="w-[200px] h-12 text-base font-bold font-raleway bg-[#232B50] hover:bg-[#283593] rounded-lg"
+              className="w-[200px] h-12 text-base font-raleway font-medium bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               Send Message
             </RequestQuoteButton>

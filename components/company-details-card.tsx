@@ -4,6 +4,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useTranslations } from "next-intl";
 import { Controller } from "react-hook-form";
 import AdditionalContactFields from './additional-contact-fields';
+import { PhoneInput } from '@/components/phone-input';
+import { SearchableCountrySelect } from './searchable-country-select';
 
 const CompanyDetailsCard = ({ control }: { control: any }) => {
     // Get Content
@@ -39,9 +41,9 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
 
     return (
         <div className="company-details-card">
-            <h1 className='text-xl font-semibold my-6'>{t('companyDetails')}</h1>
+            <h1 className='text-xl font-medium my-6 font-raleway'>{t('companyDetails')}</h1>
 
-            <div className='grid grid-cols-2 gap-5 px-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-5 px-4'>
                 <div>
                     <FormItem>
                         <FormLabel>{t('companyName')}</FormLabel>
@@ -51,7 +53,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                                 name="company_details.company_name"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Company Name" {...field} />
+                                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Company Name" {...field} />
                                         {error && <p className="text-red-500">{error.message}</p>}
                                     </>)}
                             />
@@ -67,7 +69,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                                 name="company_details.contact_person_name"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Contact Name" {...field} />
+                                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Contact Name" {...field} />
                                         {error && <p className="text-red-500">{error.message}</p>}
                                     </>)}
                             />
@@ -83,14 +85,14 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                                 name="company_details.title"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Mr, Ms.. etc." {...field} />
+                                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Mr, Ms.. etc." {...field} />
                                         {error && <p className="text-red-500">{error.message}</p>}
                                     </>)}
                             />
                         </FormControl>
                     </FormItem>
                 </div>
-                <div>
+                <div className="md:col-span-2">
                     <FormItem>
                         <FormLabel>{t('countryOfOrigin')}</FormLabel>
                         <FormControl>
@@ -99,18 +101,12 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                                 name="company_details.country_of_origin"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Select onValueChange={field.onChange} value={field.value}>
-                                            <SelectTrigger className="max-w-[300px] border-2 rounded-xl">
-                                                <SelectValue placeholder="Select a country" />
-                                            </SelectTrigger>
-                                            <SelectContent className="max-h-[300px]">
-                                                {countries.map((country) => (
-                                                    <SelectItem key={country} value={country}>
-                                                        {country}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
+                                        <SearchableCountrySelect
+                                          value={field.value}
+                                          onValueChange={field.onChange}
+                                          placeholder="Select country"
+                                          className="w-full max-w-[300px]"
+                                        />
                                         {error && <p className="text-red-500">{error.message}</p>}
                                     </>)}
                             />
@@ -126,7 +122,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                                 name="company_details.company_email"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="Email" {...field} />
+                                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Email" {...field} />
                                         {error && <p className="text-red-500">{error.message}</p>}
                                     </>)}
                             />
@@ -142,7 +138,15 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                                 name="company_details.phone_number"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="+123456789" {...field} />
+                                        <PhoneInput
+                                            value={field.value}
+                                            onChange={(value) => field.onChange(value)}
+                                            defaultCountry="EG"
+                                            international
+                                            countryCallingCodeEditable={false}
+                                            placeholder="Enter phone number"
+                                            className="w-full max-w-[300px] border-2 rounded-xl"
+                                        />
                                         {error && <p className="text-red-500">{error.message}</p>}
                                     </>)}
                             />
@@ -157,7 +161,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
             </div>
 
             <div className='mt-24'>
-                <h1 className='font-semibold text-xl mb-6'>Important Information</h1>
+                <h1 className='font-medium text-xl mb-6 font-raleway'>Important Information</h1>
                 <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
                     <p>• For quote requests with long-term validity, please contact us.</p>
                     <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>

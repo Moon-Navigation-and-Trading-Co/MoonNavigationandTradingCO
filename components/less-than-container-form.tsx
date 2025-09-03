@@ -14,7 +14,6 @@ import CompanyDetailsCard from './company-details-card';
 import PickupDeliveryCard from './pickup-delivery-card';
 import { useTranslations } from 'next-intl';
 import DatesCard from './dates-card';
-import { userInfo } from 'os';
 import { Plus, Minus } from 'lucide-react';
 
 // Commodity Details List Component
@@ -56,7 +55,7 @@ const CommodityDetailsList = ({ control }: { control: any }) => {
             {fields.map((field, index) => (
                 <div key={field.id} className="border border-gray-200 rounded-lg p-6 bg-gray-50">
                     <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-lg font-semibold">Commodity {index + 1}</h3>
+                        <h3 className="text-lg font-raleway font-medium">Commodity {index + 1}</h3>
                         {fields.length > 1 && (
                             <Button
                                 type="button"
@@ -354,15 +353,15 @@ const CommodityDetailsList = ({ control }: { control: any }) => {
 
             {/* Totals */}
             <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                <h3 className="font-semibold text-blue-800 mb-2">Totals</h3>
+                <h3 className="font-raleway font-medium text-blue-800 mb-2">Totals</h3>
                 <div className="grid grid-cols-2 gap-4">
                     <div>
                         <span className="font-medium">Total Volume:</span>
-                        <span className="ml-2 text-lg font-bold">{totalVolume.toFixed(2)} CBM</span>
+                        <span className="ml-2 text-lg font-raleway font-medium">{totalVolume.toFixed(2)} CBM</span>
                     </div>
                     <div>
                         <span className="font-medium">Total Weight:</span>
-                        <span className="ml-2 text-lg font-bold">{totalWeight.toFixed(2)} kg</span>
+                        <span className="ml-2 text-lg font-raleway font-medium">{totalWeight.toFixed(2)} kg</span>
                     </div>
                 </div>
             </div>
@@ -389,8 +388,10 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
     // Define your Zod schema
     const formSchema = z.object({
         routing: z.array(z.object({
-            from: z.string().min(1, { message: t("From") }),
-            to: z.string().min(1, { message: t("To") }),
+            fromCountry: z.string().min(1, { message: "From country is required" }),
+            fromPort: z.string().min(1, { message: "From port/area is required" }),
+            toCountry: z.string().min(1, { message: "To country is required" }),
+            toPort: z.string().min(1, { message: "To port/area is required" }),
             pick_up: z.boolean().optional(),
             delivery: z.boolean().optional(),
             location_information: z.string().optional()
@@ -447,8 +448,10 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
         resolver: zodResolver(formSchema),
         defaultValues: {
             routing: [{
-                from: '',
-                to: '',
+                fromCountry: '',
+                fromPort: '',
+                toCountry: '',
+                toPort: '',
                 pick_up: false,
                 delivery: false,
                 location_information: ''
@@ -509,8 +512,12 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
     };
 
 
-    const handleError = (errors: any) => {
-        console.error("Validation errors:", errors);
+    const handleError = (errors: unknown) => {
+        // Log validation errors for debugging
+        if (process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
+            console.error("Validation errors:", errors);
+        }
     };
 
     return (
@@ -521,14 +528,14 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
                 {/* Commodity Details */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-6">Commodity Details</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-6">Commodity Details</h2>
                     
                     <CommodityDetailsList control={form.control} />
                 </div>
 
                 {/* Supporting Files */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Supporting files (Optional)</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Supporting files (Optional)</h2>
                     <p className="text-sm text-gray-600 mb-4">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
                     
                     <div className="space-y-4">
@@ -582,7 +589,7 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
                 {/* Validity */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Validity (optional)</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Validity (optional)</h2>
                     <FormItem>
                         <FormLabel>Expires within</FormLabel>
                         <FormControl>
@@ -610,7 +617,7 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
                 {/* Recommended Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Recommended services</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Recommended services</h2>
                     <div className="space-y-3">
                         <FormItem>
                             <FormControl>
@@ -658,7 +665,7 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
                 {/* Additional Required Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Additional Required Services</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Additional Required Services</h2>
                     <p className="text-sm text-gray-600 mb-6">(Please check any additional services you may require.)</p>
                     
                     <div className="space-y-4">

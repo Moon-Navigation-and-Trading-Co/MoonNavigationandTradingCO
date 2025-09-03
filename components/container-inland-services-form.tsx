@@ -1,22 +1,20 @@
 "use client"
-import React from 'react';
-import { Controller, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import React, { useState } from 'react';
+import { useForm, Controller, useFieldArray } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from './ui/checkbox';
 import { Textarea } from "@/components/ui/textarea";
-import RoutingCard from './routing-card-variant-2';
-import ContainerCard from './container-details-card';
-import CompanyDetailsCard from './company-details-card';
-import ContainerDetailsTable from './container-details-table';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Plus, Upload, Trash2, Mail, Phone, Calendar, Minus } from 'lucide-react';
+import CompanyDetailsCardVariant1 from './company-details-card-variant-1';
+import RoutingCardVariant2 from './routing-card-variant-2';
 import DatesCard from './dates-card';
+import ContainerDetailsTable from './container-details-table';
 import { useTranslations } from 'next-intl';
-useTranslations
-
-
 
 // 1. Define a type-safe form handler using z.infer
 const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
@@ -27,8 +25,10 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
     // Define your Zod schema (as before)
     const formSchema = z.object({
         routing: z.array(z.object({
-            from: z.string().min(1, { message: t("From") }),
-            to: z.string().min(1, { message: t("To") }),
+            fromCountry: z.string().min(1, { message: "From country is required" }),
+            fromPort: z.string().min(1, { message: "From port/area is required" }),
+            toCountry: z.string().min(1, { message: "To country is required" }),
+            toPort: z.string().min(1, { message: "To port/area is required" }),
         })),
         container_details: z.array(z.object({
             container_type: z.string().min(1, { message: "Container type is required" }),
@@ -80,8 +80,10 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
         resolver: zodResolver(formSchema),
         defaultValues: {
             routing: [{
-                from: '',
-                to: '',
+                fromCountry: '',
+                fromPort: '',
+                toCountry: '',
+                toPort: '',
             }],
             container_details: [{
                 container_type: '',
@@ -139,14 +141,14 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Routing Section */}
-                <RoutingCard control={form.control} />
+                <RoutingCardVariant2 control={form.control} />
 
                 {/* Container Details Table */}
                 <ContainerDetailsTable control={form.control} />
 
                 {/* Supporting Files */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Supporting files (Optional)</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Supporting files (Optional)</h2>
                     <p className="text-sm text-gray-600 mb-4">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
                     
                     <div className="space-y-4">
@@ -200,7 +202,7 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
 
                 {/* Additional Information */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Additional Information</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Additional Information</h2>
                     <FormItem>
                         <FormControl>
                             <Controller
@@ -223,7 +225,7 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
 
                 {/* Dates */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Dates</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Dates</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormItem>
                             <FormLabel>Effective Date</FormLabel>
@@ -269,7 +271,7 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
 
                 {/* Service Contract */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Service Contract</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Service Contract</h2>
                     <FormItem>
                         <FormLabel>Service contract <span className="text-gray-500 text-sm">(Optional)</span></FormLabel>
                         <FormControl>
@@ -293,7 +295,7 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
 
                 {/* Additional Required Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Additional Required Services</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Additional Required Services</h2>
                     
                     <div className="space-y-4">
                         <FormItem>
@@ -455,7 +457,7 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                 </div>
 
                 {/* Company Details */}
-                <CompanyDetailsCard control={form.control} />
+                <CompanyDetailsCardVariant1 control={form.control} />
 
                 <Button type="submit" className="mt-4 w-[200px]">
                     Submit

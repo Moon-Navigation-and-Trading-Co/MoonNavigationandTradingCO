@@ -15,7 +15,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
     return (
         <div className="flex flex-col w-full h-full">
-            <h1 className="text-xl font-semibold ">{t('commodities')}</h1>
+            <h1 className="text-xl font-medium font-raleway">{t('commodities')}</h1>
             <p className="text-sm px-3 py-5 text-gray-500">** Allowed criteria on commodity for this quote request</p>
             <p className="text-sm px-3 pb-3 text-gray-500">We accept stackable cargo only. Non-stackable cargo is not accepted for LCL quotes. <Link className=" underline" href={'/#contact'}>Contact us</Link> to know more</p>
             <p className="text-sm px-3 text-gray-500">
@@ -33,7 +33,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
 
                 {/* Cargo Details { length, weight, height, width } */}
-                <div className="grid gap-5 grid-cols-2 px-4 pt-8 pb-6 col-span-2 md:col-span-1">
+                <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 px-4 pt-8 pb-6 col-span-2 md:col-span-1">
                     <div>
                         <FormItem>
                             <FormLabel id="commodities.type_of_commodity">{t('type')}</FormLabel>
@@ -43,7 +43,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     name="commodities.type_of_commodity"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input id="commodities.type_of_commodity" className="max-w-[200px]  border-2 rounded-xl" placeholder="Type" {...field} />
+                                            <Input id="commodities.type_of_commodity" className="w-full max-w-[200px] border-2 rounded-xl" placeholder="Type" {...field} />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>
                                     )}
@@ -63,7 +63,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <Input
-                                                className="max-w-[200px] border-2 rounded-xl"
+                                                className="w-full max-w-[280px] border-2 rounded-xl"
                                                 type="number"
                                                 placeholder="(Max 60m³)"
                                                 {...field}
@@ -89,7 +89,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <Input
-                                                className="max-w-[200px] border-2 rounded-xl"
+                                                className="w-full max-w-[280px] border-2 rounded-xl"
                                                 type="number"
                                                 placeholder="(Max 20,000Kg)"
                                                 {...field}

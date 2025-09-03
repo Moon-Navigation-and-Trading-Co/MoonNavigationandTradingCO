@@ -229,11 +229,9 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-10">
         {/* Basic Information */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl font-bold text-primary">HANDLING, STEVEDORING AND STORAGE</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>HANDLING, STEVEDORING AND STORAGE</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {/* Import/Export Selection */}
             <div className="flex gap-4">
               <div className="flex items-center space-x-2">
@@ -244,7 +242,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   {...form.register('importExport')}
                   className="w-4 h-4 text-primary"
                 />
-                <Label htmlFor="import" className="text-lg font-semibold">Import</Label>
+                <Label htmlFor="import" className="text-lg font-raleway font-medium">Import</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <input
@@ -254,14 +252,14 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   {...form.register('importExport')}
                   className="w-4 h-4 text-primary"
                 />
-                <Label htmlFor="export" className="text-lg font-semibold">Export</Label>
+                <Label htmlFor="export" className="text-lg font-raleway font-medium">Export</Label>
               </div>
             </div>
 
             {/* Port/Airport and Location */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormItem>
-                <FormLabel className="text-lg font-semibold">Port / Airport:</FormLabel>
+                <FormLabel className="text-lg font-raleway font-medium">Port / Airport:</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
@@ -280,7 +278,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 </FormControl>
               </FormItem>
               <FormItem>
-                <FormLabel className="text-lg font-semibold">Location:</FormLabel>
+                <FormLabel className="text-lg font-raleway font-medium">Location:</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
@@ -299,32 +297,32 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 </FormControl>
               </FormItem>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Entry Mode Selection */}
         <Card>
-          <CardHeader>
-            <CardTitle className="text-xl font-semibold">Cargo Entry Mode</CardTitle>
-          </CardHeader>
           <CardContent>
-            <div className="flex gap-4">
-              <Button
-                type="button"
-                variant={entryMode === 'itemized' ? 'default' : 'outline'}
-                onClick={() => handleModeChange('itemized')}
-                className="flex-1"
-              >
-                Itemized Entry by Commodity
-              </Button>
-              <Button
-                type="button"
-                variant={entryMode === 'consolidated' ? 'default' : 'outline'}
-                onClick={() => handleModeChange('consolidated')}
-                className="flex-1"
-              >
-                Consolidated Entry for Multiple Commodities
-              </Button>
+            <h1 className='text-xl font-raleway font-medium'>Cargo Entry Mode</h1>
+            <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
+              <div className="flex gap-4">
+                <Button
+                  type="button"
+                  variant={entryMode === 'itemized' ? 'default' : 'outline'}
+                  onClick={() => handleModeChange('itemized')}
+                  className="flex-1"
+                >
+                  Itemized Entry by Commodity
+                </Button>
+                <Button
+                  type="button"
+                  variant={entryMode === 'consolidated' ? 'default' : 'outline'}
+                  onClick={() => handleModeChange('consolidated')}
+                  className="flex-1"
+                >
+                  Consolidated Entry for Multiple Commodities
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -335,11 +333,9 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
             <ItemizedTable control={form.control} />
             
             {/* Additional Information */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-xl font-bold">Additional Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+            <div className="">
+              <h1 className='text-xl font-raleway font-medium'>Additional Information</h1>
+              <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                 <FormItem>
                   <FormLabel className="text-lg font-semibold">Additional Information:</FormLabel>
                   <FormControl>
@@ -380,8 +376,8 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                     />
                   </FormControl>
                 </FormItem>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Supporting Files Section - Optional for Itemized */}
             <FileUpload 

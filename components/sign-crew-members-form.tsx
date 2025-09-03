@@ -153,8 +153,12 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
         onSubmit(values);
     };
 
-    const handleError = (errors: any) => {
-        console.error("Validation errors:", errors);
+    const handleError = (errors: unknown) => {
+        // Log validation errors for debugging
+        if (process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
+            console.error("Validation errors:", errors);
+        }
     };
 
     return (
@@ -165,7 +169,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Sign On/Off Selection */}
                 <div className="space-y-4">
-                    <h2 className="text-lg font-semibold">Sign On/Off Crew Members</h2>
+                    <h2 className="text-lg font-raleway font-medium">Sign On/Off Crew Members</h2>
                     
                     <div className="flex gap-6">
                         <div className="flex items-center space-x-2">
@@ -207,7 +211,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                 {/* Sign On Section */}
                 {watchSignOn && (
                     <div className="space-y-6">
-                        <h3 className="text-lg font-semibold text-blue-600">Sign On Crew Members</h3>
+                        <h3 className="text-lg font-raleway font-medium text-blue-600">Sign On Crew Members</h3>
                         
                         <Table className="border rounded-lg">
                                 <TableHeader>
@@ -374,7 +378,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                 {/* Sign Off Section */}
                 {watchSignOff && (
                     <div className="space-y-6">
-                        <h3 className="text-lg font-semibold text-blue-600">Sign Off Crew Members</h3>
+                        <h3 className="text-lg font-raleway font-medium text-blue-600">Sign Off Crew Members</h3>
                         
                         <Table className="border rounded-lg">
                                 <TableHeader>
@@ -540,7 +544,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Additional Information Section */}
                 <div className="space-y-6">
-                    <h3 className="text-lg font-semibold">Additional Information</h3>
+                    <h3 className="text-lg font-raleway font-medium">Additional Information</h3>
                     
                     <div className="space-y-4">
                         <div className="space-y-2">

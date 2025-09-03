@@ -103,8 +103,12 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
     };
 
 
-    const handleError = (errors: any) => {
-        console.error("Validation errors:", errors);
+    const handleError = (errors: unknown) => {
+        // Log validation errors for debugging
+        if (process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
+            console.error("Validation errors:", errors);
+        }
     };
 
     return (
@@ -113,41 +117,44 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
                 {/* Vessel Details */}
                 <div className="">
-                    <h1 className='text-xl font-semibold'>{tt('vessel')}</h1>
-                    <div className='pt-8 grid gap-5 p-4 '>
+                    <h1 className='text-xl font-raleway font-medium'>{tt('vessel')}</h1>
+                    <div className='pt-8 flex flex-col gap-5 p-4'>
 
-                        {/* Port Name Field */}
-                        <FormItem>
-                            <FormLabel htmlFor="port.name" id="port.name" >{tt('port-name')}</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="port.name"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input id="port.name" className="max-w-[300px]  border-2 rounded-xl" placeholder="Port Name" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
-                                />
-                            </FormControl>
-                        </FormItem>
+                        {/* Port Name and Vessel Name Fields - Vertical Layout */}
+                        <div className="space-y-4">
+                            {/* Port Name Field */}
+                            <FormItem>
+                                <FormLabel htmlFor="port.name" id="port.name" >{tt('port-name')}</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="port.name"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input id="port.name" className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Port Name" {...field} />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>)}
+                                    />
+                                </FormControl>
+                            </FormItem>
 
-                        {/* Vessel Name Field */}
-                        <FormItem>
-                            <FormLabel id="vessel.name">{tt('vessel-name')}</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="vessel.name"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input id="vessel.name" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Name" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
+                            {/* Vessel Name Field */}
+                            <FormItem>
+                                <FormLabel id="vessel.name">{tt('vessel-name')}</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.name"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input id="vessel.name" className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Vessel Name" {...field} />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        </div>
 
                         {/* IMO Field */}
                         <FormItem>
@@ -159,7 +166,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <Input
-                                                className="max-w-[300px] border-2 rounded-xl no-spinner"
+                                                className="w-full max-w-[300px] border-2 rounded-xl no-spinner"
                                                 type="number"
                                                 placeholder="IMO Number"
                                                 {...field}
@@ -182,7 +189,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                                     name="vessel.flag"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Flag" {...field} />
+                                            <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Flag" {...field} />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>)}
                                 />
@@ -198,48 +205,51 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                                     name="vessel.port_of_crew_change"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Port Name" {...field} />
+                                            <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Port Name" {...field} />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>)}
                                 />
                             </FormControl>
                         </FormItem>
 
-                        {/* ETA Field */}
-                        <FormItem>
-                            <FormLabel>ETA (Estimated Time of Arrival): (DD/MM/YYYY)</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="vessel.eta"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input className="max-w-[300px] border-2 rounded-xl" type="date" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
-                                />
-                            </FormControl>
-                        </FormItem>
+                        {/* ETA and ETD Fields - Vertical Layout */}
+                        <div className="space-y-4">
+                            {/* ETA Field */}
+                            <FormItem>
+                                <FormLabel>ETA (Estimated Time of Arrival): (DD/MM/YYYY)</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.eta"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input className="w-full max-w-[300px] border-2 rounded-xl" type="date" {...field} />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>)}
+                                    />
+                                </FormControl>
+                            </FormItem>
 
-                        {/* ETD Field */}
-                        <FormItem>
-                            <FormLabel>ETD (Estimated Time of Departure): (DD/MM/YYYY)</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="vessel.etd"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input className="max-w-[300px] border-2 rounded-xl" type="date" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
-                                />
-                            </FormControl>
-                        </FormItem>
+                            {/* ETD Field */}
+                            <FormItem>
+                                <FormLabel>ETD (Estimated Time of Departure): (DD/MM/YYYY)</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.etd"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input className="w-full max-w-[300px] border-2 rounded-xl" type="date" {...field} />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>)}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        </div>
 
                         {/* Vessel Location Radio Buttons - Moved after ETD */}
                         <div className="pt-5">
-                            <h3 className="text-lg font-semibold mb-3">Vessel Location</h3>
+                            <h3 className="text-lg font-raleway font-medium mb-3">Vessel Location</h3>
                             <FormItem>
                                 <FormControl>
                                     <Controller
@@ -287,7 +297,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                                     name="vessel.airport_pickup"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Please insert airport/seaport pickup name" {...field} />
+                                            <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Please insert airport/seaport pickup name" {...field} />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>)}
                                 />
@@ -299,7 +309,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
                 {/* Spare Parts Details Table */}
                 <div className="space-y-6">
-                    <h3 className="text-lg font-semibold">Spare Parts Details (Attach list if necessary.)</h3>
+                    <h3 className="text-lg font-raleway font-medium">Spare Parts Details (Attach list if necessary.)</h3>
                     
                     {/* Mobile Swipe Indicator */}
                     <div className="md:hidden flex items-center justify-center gap-2 text-sm text-blue-600 bg-blue-50 p-2 rounded-lg border border-blue-200">
@@ -672,7 +682,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
                 {/* Additional Information Section */}
                 <div className="space-y-6">
-                    <h3 className="text-lg font-semibold">Additional Information</h3>
+                    <h3 className="text-lg font-raleway font-medium">Additional Information</h3>
                     
                     <div className="space-y-4">
                         <div className="space-y-2">

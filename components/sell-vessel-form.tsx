@@ -93,7 +93,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                 {/* <RoutingCard control={form.control} /> */}
                 {/* Vessel Details Section */}
                 <div>
-                    <h2 className='text-lg mb-2 font-semibold'>{tt('vesselDetails')}</h2>
+                    <h2 className='text-lg mb-2 font-raleway font-medium'>{tt('vesselDetails')}</h2>
                     
                     {/* Vessel Type and Size */}
                     <FormItem>
@@ -187,7 +187,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
 
                     {/* Pick-up and Drop-off Locations Section */}
                     <div className="mt-6">
-                        <h3 className="text-lg font-semibold mb-4">Pick-up and Drop-off Locations</h3>
+                        <h3 className="text-lg font-raleway font-medium mb-4">Pick-up and Drop-off Locations</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <FormItem>
                                 <FormLabel>Pick up location</FormLabel>
@@ -360,7 +360,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
 
 
                 <div className='mt-24'>
-                    <h1 className='font-semibold text-xl mb-6'>Important Information</h1>
+                    <h1 className='font-raleway font-medium text-xl mb-6'>Important Information</h1>
                     <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
                         <p>• For quote requests with long-term validity, please contact us.</p>
                         <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>

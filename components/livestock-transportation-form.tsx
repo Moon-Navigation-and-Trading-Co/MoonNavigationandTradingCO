@@ -12,12 +12,16 @@ import { Textarea } from './ui/textarea';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { useTranslations } from 'next-intl';
 import { Plus, Upload, Trash2, Mail, Phone } from 'lucide-react';
+import { PhoneInput } from '@/components/phone-input';
+import { SearchableCountrySelect } from './searchable-country-select';
 
 // Define the form schema
 const formSchema = z.object({
   routing: z.array(z.object({
-    from: z.string().min(1, { message: "From location is required" }),
-    to: z.string().min(1, { message: "To location is required" }),
+    fromCountry: z.string().min(1, { message: "From country is required" }),
+    fromPort: z.string().min(1, { message: "From port/area is required" }),
+    toCountry: z.string().min(1, { message: "To country is required" }),
+    toPort: z.string().min(1, { message: "To port/area is required" }),
   })),
   dates: z.object({
     effectiveDate: z.string().min(1, { message: "Effective date is required" }),
@@ -80,7 +84,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      routing: [{ from: '', to: '' }],
+      routing: [{ fromCountry: '', fromPort: '', toCountry: '', toPort: '' }],
       dates: {
         effectiveDate: '',
         expiryDate: '',
@@ -169,8 +173,12 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
     }
   };
 
-  const handleError = (errors: any) => {
-    console.error("Validation errors:", errors);
+  const handleError = (errors: unknown) => {
+    // Log validation errors for debugging
+    if (process.env.NODE_ENV === 'development') {
+      // eslint-disable-next-line no-console
+      console.error("Validation errors:", errors);
+    }
   };
 
   const calculateTotalWeight = (quantity: number, weightPerAnimal: number) => {
@@ -186,49 +194,108 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
         
         {/* Routing Section */}
         <div className="">
-          <h1 className='text-xl font-semibold'>{t('routing')}</h1>
+          <h1 className='text-xl font-raleway font-medium'>{t('routing')}</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {routingFields.map((field, index) => (
-              <div key={field.id} className="grid md:grid-cols-3 gap-5">
-                <FormItem>
-                  <FormLabel>{t('from')}</FormLabel>
-                  <FormControl>
-                    <Controller
-                      control={form.control}
-                      name={`routing.${index}.from`}
-                      render={({ field, fieldState: { error } }) => (
-                        <>
-                          <Input
-                            className="max-w-[300px] border-2 rounded-xl"
-                            placeholder="City, Country/Region"
-                            {...field}
-                          />
-                          {error && <p className="text-red-500">{error.message}</p>}
-                        </>
-                      )}
-                    />
-                  </FormControl>
-                </FormItem>
+              <div key={field.id} className="space-y-6">
+                {/* Country selection boxes first */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">From</h3>
+                    <FormItem>
+                      <FormLabel>Country</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.fromCountry`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <SearchableCountrySelect
+                                value={field.value}
+                                onValueChange={field.onChange}
+                                placeholder="Select country"
+                                className="w-full"
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">To</h3>
+                    <FormItem>
+                      <FormLabel>Country</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.toCountry`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <SearchableCountrySelect
+                                value={field.value}
+                                onValueChange={field.onChange}
+                                placeholder="Select country"
+                                className="w-full"
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+                </div>
 
-                <FormItem>
-                  <FormLabel>{t('to')}</FormLabel>
-                  <FormControl>
-                    <Controller
-                      control={form.control}
-                      name={`routing.${index}.to`}
-                      render={({ field, fieldState: { error } }) => (
-                        <>
-                          <Input
-                            className="max-w-[300px] border-2 rounded-xl"
-                            placeholder="City, Country/Region"
-                            {...field}
-                          />
-                          {error && <p className="text-red-500">{error.message}</p>}
-                        </>
-                      )}
-                    />
-                  </FormControl>
-                </FormItem>
+                {/* From and To Port/Area sections below */}
+                <div className="grid md:grid-cols-2 gap-4">
+                  {/* From */}
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">From</h3>
+                    <FormItem>
+                      <FormLabel>Port/Area</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.fromPort`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Input
+                                placeholder="e.g., Shanghai Port, Pudong"
+                                {...field}
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+
+                  {/* To */}
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-gray-700">To</h3>
+                    <FormItem>
+                      <FormLabel>Port/Area</FormLabel>
+                      <FormControl>
+                        <Controller
+                          control={form.control}
+                          name={`routing.${index}.toPort`}
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Input
+                                placeholder="e.g., Los Angeles Port, Long Beach"
+                                {...field}
+                              />
+                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                            </>
+                          )}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  </div>
+                </div>
 
                 <div className="flex items-end">
                   {routingFields.length > 1 && (
@@ -247,7 +314,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
             <Button
               type="button"
               className="mt-4 max-w-[200px] bg-primary text-sm text-white rounded-lg"
-              onClick={() => appendRoute({ from: '', to: '' })}
+              onClick={() => appendRoute({ fromCountry: '', fromPort: '', toCountry: '', toPort: '' })}
             >
               {t('addRoute')}
             </Button>
@@ -256,7 +323,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Dates Section */}
         <div className="">
-          <h1 className='text-xl font-semibold'>{t('dates')}</h1>
+          <h1 className='text-xl font-raleway font-medium'>{t('dates')}</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <div className="grid md:grid-cols-2 gap-5">
               <FormItem>
@@ -304,13 +371,13 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Livestock Details Table */}
         <div className="">
-          <h1 className='text-xl font-semibold'>Livestock Details</h1>
+          <h1 className='text-xl font-raleway font-medium'>Livestock Details</h1>
           <div className='pt-8 pb-10 p-4 rounded-3xl'>
             <div className="mb-4 flex justify-between items-center">
               <div className="text-sm text-gray-600">
                 Total Rows: {livestockFields.length}
               </div>
-              <div className="text-sm font-semibold text-gray-800">
+              <div className="text-sm font-raleway font-medium text-gray-800">
                 Total Weight of All Livestock: {(() => {
                   const totalWeight = livestockFields.reduce((sum, _, index) => {
                     const quantity = form.watch(`livestockDetails.${index}.quantity`) || 0;
@@ -325,12 +392,12 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
               <table className="w-full border-collapse border border-gray-300 rounded-lg">
                 <thead>
                   <tr className="bg-gray-50">
-                    <th className="border border-gray-300 p-3 text-left">Row #</th>
-                    <th className="border border-gray-300 p-3 text-left">Type of Livestock</th>
-                    <th className="border border-gray-300 p-3 text-left">Quantity</th>
-                    <th className="border border-gray-300 p-3 text-left">Weight per Animal (kg)</th>
-                    <th className="border border-gray-300 p-3 text-left">Total Weight (kg)</th>
-                    <th className="border border-gray-300 p-3 text-center">Actions</th>
+                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Row #</th>
+                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Type of Livestock</th>
+                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Quantity</th>
+                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Weight per Animal (kg)</th>
+                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Total Weight (kg)</th>
+                    <th className="border border-gray-300 p-3 text-center font-raleway font-medium">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -434,7 +501,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Special Handling Requirements */}
         <div className="">
-          <h1 className='text-xl font-semibold mb-4'>Special Handling Requirements</h1>
+          <h1 className='text-xl font-raleway font-medium mb-4'>Special Handling Requirements</h1>
           <div className='px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-10'>
             <FormItem>
               <FormLabel>Special Handling Requirements (e.g., temperature control, specific crates, etc.)</FormLabel>
@@ -458,7 +525,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Supporting Files */}
         <div className="">
-          <h1 className='text-xl font-semibold mb-4'>Supporting Files (Optional)</h1>
+          <h1 className='text-xl font-raleway font-medium mb-4'>Supporting Files (Optional)</h1>
           <div className='px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-10'>
             <FormItem>
               <FormLabel>
@@ -833,9 +900,9 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Company Details */}
         <div className="company-details-card">
-          <h1 className='text-xl font-semibold my-6'>{t('companyDetails')}</h1>
+          <h1 className='text-xl font-raleway font-medium my-6'>{t('companyDetails')}</h1>
 
-          <div className='grid grid-cols-2 gap-5 px-4'>
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-5 px-4'>
             <div>
               <FormItem>
                 <FormLabel>{t('companyName')}</FormLabel>
@@ -845,7 +912,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                     name="companyDetails.companyName"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Company Name" {...field} />
+                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Company Name" {...field} />
                         {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
@@ -862,7 +929,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                     name="companyDetails.contactPerson"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Contact Name" {...field} />
+                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Contact Name" {...field} />
                         {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
@@ -879,7 +946,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                     name="companyDetails.title"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Mr, Ms.. etc." {...field} />
+                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Mr, Ms.. etc." {...field} />
                         {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
@@ -887,7 +954,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                 </FormControl>
               </FormItem>
             </div>
-            <div>
+            <div className="col-span-1 md:col-span-2">
               <FormItem>
                 <FormLabel>{t('countryOfOrigin')}</FormLabel>
                 <FormControl>
@@ -896,7 +963,12 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                     name="companyDetails.cityCountry"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input className="max-w-[300px] border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                        <SearchableCountrySelect
+                          value={field.value}
+                          onValueChange={field.onChange}
+                          placeholder="Select country"
+                          className="w-full max-w-[300px]"
+                        />
                         {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
@@ -930,7 +1002,15 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                     name="companyDetails.phone"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Input className="max-w-[300px] border-2 rounded-xl" placeholder="+123456789" {...field} />
+                        <PhoneInput
+                          value={field.value}
+                          onChange={(value) => field.onChange(value)}
+                          defaultCountry="EG"
+                          international
+                          countryCallingCodeEditable={false}
+                          placeholder="Enter phone number"
+                          className="w-full max-w-[300px] border-2 rounded-xl"
+                        />
                         {error && <p className="text-red-500">{error.message}</p>}
                       </>
                     )}
@@ -1018,10 +1098,14 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                           name="companyDetails.additionalPhone"
                           render={({ field, fieldState: { error } }) => (
                             <>
-                              <Input 
-                                className="max-w-[300px] border-2 rounded-xl" 
-                                placeholder="+123456789" 
-                                {...field} 
+                              <PhoneInput
+                                value={field.value}
+                                onChange={(value) => field.onChange(value)}
+                                defaultCountry="EG"
+                                international
+                                countryCallingCodeEditable={false}
+                                placeholder="Enter additional phone number"
+                                className="max-w-[300px] border-2 rounded-xl"
                               />
                               {error && <p className="text-red-500">{error.message}</p>}
                             </>
@@ -1059,7 +1143,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Submit Button */}
         <div className="text-center">
-          <Button type="submit" className="bg-primary text-white px-8 py-3 rounded-xl">
+          <Button type="submit" className="mt-4 w-[200px]">
             Submit
           </Button>
         </div>

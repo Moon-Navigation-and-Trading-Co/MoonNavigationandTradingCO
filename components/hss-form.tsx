@@ -23,7 +23,8 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Define your Zod schema (as before)
     const formSchema = z.object({
         location: z.array(z.object({
-            location: z.string().min(1, { message: t("Location") }),
+            locationCountry: z.string().min(1, { message: "Country is required" }),
+            locationPort: z.string().min(1, { message: "Port/Area is required" }),
             detailed: z.string().min(1, { message: t("Detailed") }),
         })),
 
@@ -89,7 +90,8 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
         resolver: zodResolver(formSchema),
         defaultValues: {
             location: [{
-                location: '',
+                locationCountry: '',
+                locationPort: '',
                 detailed: '',
             }],
 
@@ -167,7 +169,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
 
                 {/* Additional Information */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Additional Information</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Additional Information</h2>
                     <FormItem>
                         <FormControl>
                             <Controller
@@ -190,7 +192,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
 
                 {/* Supporting Files */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Supporting files (Optional)</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Supporting files (Optional)</h2>
                     <p className="text-sm text-gray-600 mb-4">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
                     
                     <div className="space-y-4">
@@ -244,7 +246,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
 
                 {/* Container Handling & Stevedoring Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Container Handling & Stevedoring Services</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Container Handling & Stevedoring Services</h2>
                     
                     <div className="space-y-4">
                         <FormItem>
@@ -331,7 +333,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                             </FormControl>
                         </FormItem>
 
-                        <h3 className="text-lg font-semibold mt-6 mb-3">Container Reception & Delivery</h3>
+                        <h3 className="text-lg font-raleway font-medium mt-6 mb-3">Container Reception & Delivery</h3>
 
                         <FormItem>
                             <FormControl>
@@ -375,7 +377,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                             </FormControl>
                         </FormItem>
 
-                        <h3 className="text-lg font-semibold mt-6 mb-3">Container Storage & Warehousing</h3>
+                        <h3 className="text-lg font-raleway font-medium mt-6 mb-3">Container Storage & Warehousing</h3>
 
                         <FormItem>
                             <FormControl>
@@ -443,7 +445,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
 
                 {/* Additional Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Additional Services</h2>
+                    <h2 className="text-xl font-raleway font-medium mb-4">Additional Services</h2>
                     
                     <div className="space-y-4">
                         <FormItem>
