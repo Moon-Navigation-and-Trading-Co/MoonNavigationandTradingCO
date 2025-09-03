@@ -15,13 +15,13 @@ export default function CustomsClearanceFormsPage() {
   return (
     <div className='flex flex-col w-full'>
       <div className='mt-20 flex flex-col gap-5 px-4'>
-        <h1 className='text-3xl font-bold'>Customs Clearance</h1>
+        <h1 className='text-3xl font-raleway font-medium'>Customs Clearance</h1>
         <p className=''>Professional customs clearance services for your import/export needs</p>
       </div>
       
       <div className="w-full mt-16 mx-auto flex flex-col my-10">
         <div className="pb-10 px-4">
-          <h1 className="text-3xl font-semibold mb-8 text-center">Customs Clearance Service</h1>
+          <h1 className="text-3xl font-raleway font-medium mb-8 text-center">Customs Clearance Service</h1>
           <h1 className="text-center">Professional customs clearance and documentation services</h1>
         </div>
 
@@ -36,7 +36,7 @@ export default function CustomsClearanceFormsPage() {
         
         <div className="p-1 rounded-3xl rounded-t-sm bg-blue-100 dark:bg-accent">
           <div className="bg-background dark:bg-secondary rounded-3xl py-6 px-4 sm:px-6 shadow-sm">
-            <h3 className="text-3xl font-semibold mb-10 text-center">
+            <h3 className="text-3xl font-raleway font-medium mb-10 text-center">
               Customs Clearance Quotation Form
             </h3>
             <CustomsClearanceForm onSubmit={handleSubmit} />

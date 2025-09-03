@@ -49,16 +49,25 @@ const Page: React.FC = () => {
   }
 
   const submitForm = async (formData: any, formType: any) => {
+    // eslint-disable-next-line no-console
+    console.log("=== SUBMIT FORM START ===");
+    // eslint-disable-next-line no-console
+    console.log("Form type:", formType);
+    // eslint-disable-next-line no-console
+    console.log("Form data received:", formData);
+    
     // Flatten the formData before inserting into Supabase
     let flattenedData;
 
     if (formType === "request_for_pda") {
+      // eslint-disable-next-line no-console
+      console.log("Processing request_for_pda form...");
       flattenedData = {
         user_id: user?.id || null,
         port_name: formData.port.name,
         vessel_name: formData.vessel.name,
         vessel_imo: formData.vessel.imo,
-        eta: formData.vessel.eta,
+        eta: formData.vessel.eta_expected_date,
         vessel_type: formData.vessel.type,
         flag: formData.vessel.flag,
         ship_gross_tonnage: formData.vessel.ship_gross_tonnage,
@@ -68,11 +77,21 @@ const Page: React.FC = () => {
         vessel_length: formData.vessel.length,
         call_for_commercial: formData.vessel.call_for_commercial,
         call_for_maintenance: formData.vessel.call_for_maintenance,
+        call_for_other: formData.vessel.call_for_other,
+        other_purpose_details: formData.vessel.other_purpose_details,
         total_discharged_cargo: formData.vessel.total_discharged_cargo,
+        discharged_cargo_type: formData.vessel.discharged_cargo_type,
+        discharged_dangerous_cargo: formData.vessel.discharged_dangerous_cargo,
+        total_days_needed_for_discharging: formData.vessel.total_days_needed_for_discharging,
         total_loaded_cargo: formData.vessel.total_loaded_cargo,
-        total_expected_berthing_days:
-          formData.vessel.total_expected_berthing_days,
+        loaded_cargo_type: formData.vessel.loaded_cargo_type,
+        loaded_dangerous_cargo: formData.vessel.loaded_dangerous_cargo,
+        total_days_needed_for_loading: formData.vessel.total_days_needed_for_loading,
+        total_expected_berthing_days: formData.vessel.total_expected_berthing_days,
         total_waiting_anchor: formData.vessel.total_expected_anchor_days,
+        services: formData.services,
+        additional_information: formData.additional_information,
+        supporting_files: formData.supporting_files,
         company_name: formData.company_details.company_name,
         contact_person_name: formData.company_details.contact_person_name,
         title: formData.company_details.title,
@@ -80,9 +99,10 @@ const Page: React.FC = () => {
         company_email: formData.company_details.company_email,
         additional_email: formData.company_details.additional_email,
         phone_number: formData.company_details.phone_number,
-        additional_phone_number:
-          formData.company_details.additional_phone_number,
+        additional_phone_number: formData.company_details.additional_phone_number,
       };
+      // eslint-disable-next-line no-console
+      console.log("Flattened data for request_for_pda:", flattenedData);
     } else if (formType === "sign_crew_members") {
       flattenedData = {
         user_id: user?.id || null,
@@ -232,28 +252,39 @@ const Page: React.FC = () => {
       };
     }
 
+    // eslint-disable-next-line no-console
     console.log(flattenedData);
 
     // Send email notification FIRST
     try {
+        // eslint-disable-next-line no-console
+        console.log("Attempting to send email...");
         await sendFormEmail(formData, formType);
+        // eslint-disable-next-line no-console
         console.log('Email sent successfully');
     } catch (emailError) {
+        // eslint-disable-next-line no-console
         console.error('Email sending failed:', emailError);
         // Continue with form submission even if email fails
     }
 
+    // eslint-disable-next-line no-console
+    console.log("Attempting to insert into database...");
     const { data, error } = await supabase
       .from(formType) // Your Supabase table
       .insert([flattenedData]); // Insert the flattened data
 
     if (error) {
+      // eslint-disable-next-line no-console
+      console.error("Database error:", error);
       toast({
         title: "Error",
         description: "Database insert failed, but email was sent",
         variant: "destructive",
       });
     } else {
+      // eslint-disable-next-line no-console
+      console.log("Database insert successful:", data);
       //green toast
       toast({
         title: "Success",
@@ -261,6 +292,8 @@ const Page: React.FC = () => {
       });
       router.push("/ship-agency-forms");
     }
+    // eslint-disable-next-line no-console
+    console.log("=== SUBMIT FORM END ===");
   };
 
   const tabData = [
@@ -353,7 +386,7 @@ const Page: React.FC = () => {
   return (
     <div className="flex flex-col w-full">
       <div className="mt-20 flex flex-col gap-5 px-4">
-        <h1 className="text-3xl font-bold">Ship Agency Services</h1>
+        <h1 className="text-3xl font-raleway font-medium">Ship Agency Services</h1>
         <p className="text-muted-foreground">
           All our ship agency services are exclusively available at all Egyptian ports.*
         </p>

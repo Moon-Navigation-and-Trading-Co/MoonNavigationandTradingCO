@@ -124,7 +124,7 @@ const Page: React.FC = () => {
     return (
         <div className='flex flex-col w-full'>
             <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('special-services')}</h1>
+                <h1 className='text-3xl font-raleway font-medium'>{t('special-services')}</h1>
                 <p className=''>{t('special-services')}</p>
             </div>
             <FormTabs tabData={tabData} />

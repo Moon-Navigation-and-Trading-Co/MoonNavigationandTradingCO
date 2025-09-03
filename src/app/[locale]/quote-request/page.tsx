@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ArrowRight, FileText, Clock, CheckCircle, Phone, Mail } from "lucide-react";
 
 type ServiceItem = {
   name: string;
@@ -76,125 +77,222 @@ export default function QuoteRequestPage() {
   };
 
   return (
-    <div className="relative min-h-screen w-full">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/container-1.jpg"
-          alt="Shipping port with containers and cranes at sunset"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-black/30" />
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+      {/* Header Section */}
+      <div className="bg-white shadow-sm border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-end">
+            <div className="flex items-center space-x-6">
+              <div className="hidden md:flex items-center space-x-4 text-sm text-gray-600">
+                <div className="flex items-center space-x-2">
+                  <Clock className="w-4 h-4 text-blue-600" />
+                  <span>24h Response</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 text-blue-600" />
+                  <span>100% Customized</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Content */}
-      <div className="relative z-20 min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8">
-        <div className="bg-white/95 backdrop-blur-md rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl w-full shadow-2xl border border-white/20">
-          <div className="text-center mb-6 sm:mb-8 lg:mb-12">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-raleway font-normal text-black mb-3 sm:mb-4 lg:mb-6 leading-tight">
-              Request a Quote
-            </h1>
-            <p className="text-xs sm:text-sm lg:text-base text-gray-600 font-raleway font-light leading-relaxed max-w-lg mx-auto">
-              Effortlessly select your service to begin your journey with Moon
-              Navigation and Trading Co.
+      {/* Main Content */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+        <div className="flex justify-center items-center min-h-[60vh]">
+          {/* Form */}
+          <div className="w-full max-w-2xl">
+            <div className="relative bg-white rounded-3xl shadow-xl border border-gray-100 p-8 lg:p-12 overflow-hidden">
+              {/* Background Image */}
+              <div className="absolute inset-0 opacity-5">
+                <Image
+                  src="/container-1.jpg"
+                  alt="Background pattern"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="relative z-10">
+              {/* Header */}
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
+                  <FileText className="w-4 h-4" />
+                  Quick Quote Request
+                </div>
+                
+                <h1 className="text-3xl lg:text-4xl font-raleway font-light text-gray-900 mb-4 leading-tight">
+                  Get Your 
+                  <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent font-medium"> Custom Quote</span>
+                </h1>
+                
+                <p className="text-lg text-gray-600 leading-relaxed max-w-lg mx-auto">
+                  Select your service below and we will provide you with a detailed, customized quotation within 24 hours.
+                </p>
+              </div>
+
+              {/* Service Selection */}
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-semibold text-gray-700">
+                    Select Service Category
+                  </label>
+                  <Select
+                    onValueChange={setSelectedService}
+                    value={selectedService}
+                  >
+                    <SelectTrigger className="w-full bg-gray-50 text-gray-700 border-2 border-gray-200 hover:border-blue-400 focus:border-blue-500 rounded-xl h-14 text-base font-medium shadow-sm hover:shadow-md transition-all duration-200">
+                      <SelectValue placeholder="Choose the service you need a quote for" />
+                    </SelectTrigger>
+                    <SelectContent className="max-h-80 overflow-y-auto bg-white border border-gray-200 rounded-xl shadow-2xl">
+                      {allServices.map((item, index) => {
+                        if ('category' in item) {
+                          const isExpanded = expandedCategories.has(item.category);
+                          return (
+                            <div key={item.category} className="border-b border-gray-100 last:border-b-0">
+                              <button
+                                type="button"
+                                onClick={() => toggleCategory(item.category)}
+                                className="w-full px-4 py-3 text-sm font-semibold bg-gray-50 text-gray-900 hover:bg-gray-100 flex items-center justify-between transition-all duration-200"
+                              >
+                                <span className="text-left flex items-center">
+                                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                  {item.category}
+                                </span>
+                                <svg
+                                  className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}
+                                  fill="none"
+                                  stroke="currentColor"
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                              </button>
+                              {isExpanded && (
+                                <div className="border-l-2 border-blue-200 ml-4 bg-blue-50/50">
+                                  {item.services.map((service, serviceIndex) => (
+                                    <SelectItem 
+                                      key={service.value} 
+                                      value={service.value} 
+                                      className="ml-4 py-3 hover:bg-blue-100 transition-colors duration-150"
+                                    >
+                                      <span className="flex items-center">
+                                        <span className="w-1.5 h-1.5 bg-blue-400 rounded-full mr-3"></span>
+                                        {service.name}
+                                      </span>
+                                    </SelectItem>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        } else {
+                          return (
+                            <SelectItem 
+                              key={item.value} 
+                              value={item.value} 
+                              className="py-3 hover:bg-gray-50 transition-colors duration-150"
+                            >
+                              <span className="flex items-center">
+                                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                                {item.name}
+                              </span>
+                            </SelectItem>
+                          );
+                        }
+                      })}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Proceed Button */}
+                <Button
+                  onClick={handleProceed}
+                  disabled={!selectedService}
+                  className={`w-full h-14 text-base font-semibold rounded-xl transition-all duration-300 ${
+                    selectedService
+                      ? "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                      : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    {selectedService ? (
+                      <>
+                        Proceed to Quote Form
+                        <ArrowRight className="w-5 h-5" />
+                      </>
+                    ) : (
+                      "Select a service to continue"
+                    )}
+                  </span>
+                </Button>
+              </div>
+
+              {/* Contact Info */}
+              <div className="mt-8 pt-8 border-t border-gray-100">
+                <div className="text-center">
+                  <p className="text-sm text-gray-600 mb-4">
+                    Need immediate assistance?
+                  </p>
+                  <div className="flex justify-center">
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+                    >
+                      <Phone className="w-4 h-4" />
+                      Contact Us
+                    </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* How It Works Section */}
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-raleway font-medium text-gray-900 mb-4">
+            How It Works
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Our streamlined process ensures you get accurate, customized quotes quickly and efficiently
+          </p>
+        </div>
+
+        <div className="flex justify-center items-center">
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span className="text-2xl font-bold text-blue-600">1</span>
+            </div>
+            <h3 className="text-xl font-raleway font-medium text-gray-900 mb-3">Select Your Service</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Choose from our comprehensive range of maritime and logistics services
             </p>
           </div>
-
-          <div className="flex flex-col items-center space-y-4 sm:space-y-6 lg:space-y-8">
-            <div className="w-full max-w-xs sm:max-w-sm">
-              <Select
-                onValueChange={setSelectedService}
-                value={selectedService}
-              >
-                <SelectTrigger className="w-full bg-white text-gray-700 border-2 border-gray-300 hover:border-blue-400 focus:border-blue-500 rounded-lg flex items-center justify-between h-10 sm:h-12 text-sm font-medium shadow-sm hover:shadow-md transition-all duration-200 group">
-                  <SelectValue placeholder="Select the service for which you need a quotation" className="text-gray-500 whitespace-nowrap truncate" />
-                </SelectTrigger>
-                <SelectContent className="max-h-48 sm:max-h-64 overflow-y-auto bg-white/95 dark:bg-[#181c20] backdrop-blur-sm border border-gray-200 rounded-lg shadow-2xl" side="bottom" align="center">
-                  {allServices.map((item, index) => {
-                    if ('category' in item) {
-                      // This is a category with services
-                      const isExpanded = expandedCategories.has(item.category);
-                      return (
-                        <div key={item.category} className="border-b border-gray-100 last:border-b-0">
-                          <button
-                            type="button"
-                            onClick={() => toggleCategory(item.category)}
-                            className="w-full px-3 py-2 sm:px-4 sm:py-2.5 text-xs sm:text-sm font-semibold bg-[#23272b] text-white hover:bg-[#181c20] flex items-center justify-between transition-all duration-200 group"
-                          >
-                            <span className="text-left flex items-center">
-                              <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2 opacity-60 group-hover:opacity-100 transition-opacity"></span>
-                              {item.category}
-                            </span>
-                            <svg
-                              className="w-4 h-4 text-gray-200 group-hover:text-blue-400 transition-all duration-300"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                            >
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                            </svg>
-                          </button>
-                          {isExpanded && (
-                            <div className="border-l-2 border-blue-200 ml-3 sm:ml-4 bg-blue-50/30">
-                              {item.services.map((service, serviceIndex) => (
-                                <SelectItem 
-                                  key={service.value} 
-                                  value={service.value} 
-                                  className="ml-3 sm:ml-4 text-xs sm:text-sm py-2 hover:bg-blue-100/50 transition-colors duration-150 relative"
-                                >
-                                  <span className="flex items-center">
-                                    <span className="w-1 h-1 bg-blue-400 rounded-full mr-2 opacity-70"></span>
-                                    {service.name}
-                                  </span>
-                                </SelectItem>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    } else {
-                      // This is an individual service
-                      return (
-                        <SelectItem 
-                          key={item.value} 
-                          value={item.value} 
-                          className="text-xs sm:text-sm py-2 hover:bg-blue-50 transition-colors duration-150 relative"
-                        >
-                          <span className="flex items-center">
-                            <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-2 opacity-70"></span>
-                            {item.name}
-                          </span>
-                        </SelectItem>
-                      );
-                    }
-                  })}
-                </SelectContent>
-              </Select>
+          
+          <div className="text-center">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span className="text-2xl font-bold text-blue-600">2</span>
             </div>
-
-            <button
-              onClick={handleProceed}
-              disabled={!selectedService}
-              className={`w-auto px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-medium text-xs transition-all duration-200 shadow-md hover:shadow-lg text-center whitespace-nowrap ${
-                selectedService
-                  ? "bg-[#011f4b] hover:bg-[#022c6a] text-white cursor-pointer transform hover:scale-105 active:scale-95"
-                  : "bg-white text-black border-2 border-gray-300 cursor-not-allowed opacity-60"
-              }`}
-            >
-              Proceed to the quotation form
-            </button>
+            <h3 className="text-xl font-raleway font-medium text-gray-900 mb-3">Fill Detailed Form</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Provide specific requirements and project details for accurate pricing
+            </p>
           </div>
-
-          <div className="text-center mt-6 sm:mt-8 lg:mt-12 text-xs sm:text-sm">
-            <span className="text-black">Need assistance? </span>
-            <Link
-              href="/contact"
-              className="text-[#011f4b] hover:text-[#022c6a] underline transition-colors"
-            >
-              Contact us
-            </Link>
+          
+          <div className="text-center">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <span className="text-2xl font-bold text-blue-600">3</span>
+            </div>
+            <h3 className="text-xl font-raleway font-medium text-gray-900 mb-3">Receive Custom Quote</h3>
+            <p className="text-gray-600 leading-relaxed">
+              Get your detailed, customized quotation delivered to your email within 24 hours
+            </p>
+            </div>
           </div>
         </div>
       </div>
