@@ -1,39 +1,40 @@
 import nodemailer from 'nodemailer';
 
-// Create transporter for Gmail
+import { generateFormEmailTemplate, convertFormDataToFields } from "@/utils/email/template-generator";
+// Create transporter for CloudSmartly email server
 const createTransporter = () => {
     return nodemailer.createTransport({
-        service: 'gmail',
+        host: process.env.SMTP_HOST || 'webmail.cloudsmartly.com',
+        port: parseInt(process.env.SMTP_PORT || '465'),
+        secure: true, // SSL for port 465
         auth: {
-            user: process.env.GMAIL_USER, // Your Gmail address
-            pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password (not regular password)
+            user: process.env.SMTP_USER || 'quotation@moon-navigation.com',
+            pass: process.env.SMTP_PASSWORD,
         },
     });
 };
 
-// Create HTML email template
-const createEmailTemplate = (firstName: string, formId: string, contactNumber: string, formtype: string) => {
-    return `
-        <div style="width: 100%; height: 100%; color: black; background-color: white; display: flex; justify-content: center; align-items: start; padding: 2rem;">
-            <div style="display: flex; flex-direction: column; gap: 2rem; padding: 1rem; text-align: center; border-radius: 0.5rem; border: 1px solid #d1d5db;">
-                <h1 style="color: #0d9488; font-size: 1.875rem; font-weight: bold;">
-                    Form Submitted Successfully!
-                </h1>
+        // Create email content using the new template generator
+        const formData = {
+            firstName,
+            formId,
+            contactNumber,
+            formtype
+        };
 
-                <div style="width: 100%; display: flex; flex-direction: column; gap: 0.1rem; text-align: left; font-weight: 400;">
-                    <p>Form id: ${formId}</p>
-                    <p>Form: ${formtype}</p>
-                    <p>Name: ${firstName}</p>
-                    <p>Contact Number: ${contactNumber}</p>
-                </div>
+        const fields = convertFormDataToFields(formData, {
+            firstName: "Name",
+            formId: "Form ID",
+            contactNumber: "Contact Number",
+            formtype: "Form Type"
+        });
 
-                <p style="color: #6b7280; font-weight: 600;">
-                    We will contact you as soon as possible!
-                </p>
-            </div>
-        </div>
-    `;
-};
+        const emailContent = generateFormEmailTemplate({
+            title: "Form Submitted Successfully!",
+            formType: formtype,
+            fields,
+            additionalInfo: "We will contact you as soon as possible!"
+        });};
 
 export async function POST(req: Request) {
     try {
@@ -46,10 +47,10 @@ export async function POST(req: Request) {
 
         // Send the email with dynamic props
         const mailOptions = {
-            from: process.env.GMAIL_USER, // Your Gmail address
-            to: ['Mariiamhamdyy1@gmail.com', 'Farida.ashraf@hotmail.co.uk'], // Keep this static or pass dynamically if needed
+            from: process.env.SMTP_USER || 'quotation@moon-navigation.com',
+            to: ['quotation@moon-navigation.com', 'quotes@moon-navigation.com'], // Keep this static or pass dynamically if needed
             subject: 'Moon Navigation Form Submission',
-            html: createEmailTemplate(firstName, formId, contactNumber, formtype),
+            html: emailContent,
         };
 
         const info = await transporter.sendMail(mailOptions);
