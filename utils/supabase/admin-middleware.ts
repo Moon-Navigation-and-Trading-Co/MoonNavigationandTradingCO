@@ -1,0 +1,63 @@
+import { createServerClient } from "@supabase/ssr";
+import { type NextRequest, NextResponse } from "next/server";
+
+export const checkAdminAccess = async (request: NextRequest) => {
+  try {
+    let response = NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    });
+
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return request.cookies.getAll();
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value }) =>
+              request.cookies.set(name, value),
+            );
+            response = NextResponse.next({
+              request,
+            });
+            cookiesToSet.forEach(({ name, value, options }) =>
+              response.cookies.set(name, value, options),
+            );
+          },
+        },
+      },
+    );
+
+    // Check if user is authenticated
+    const { data: { user }, error: userError } = await supabase.auth.getUser();
+    
+    if (userError || !user) {
+      return NextResponse.redirect(new URL("/sign-in", request.url));
+    }
+
+    // Check if user has admin role
+    const { data: userProfile, error: profileError } = await supabase
+      .from('users')
+      .select('role, is_active')
+      .eq('id', user.id)
+      .single();
+
+    if (profileError || !userProfile) {
+      return NextResponse.redirect(new URL("/sign-in", request.url));
+    }
+
+    // Check if user is active and has admin role
+    if (!userProfile.is_active || !['admin', 'super_admin'].includes(userProfile.role)) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+
+    return response;
+  } catch (e) {
+    console.error('Admin middleware error:', e);
+    return NextResponse.redirect(new URL("/sign-in", request.url));
+  }
+}; 
