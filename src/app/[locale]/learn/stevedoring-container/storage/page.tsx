@@ -1,103 +1,207 @@
+"use client"
+
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function ContainerStoragePage() {
     return (
-        <div className="w-full max-w-7xl mx-auto flex flex-col items-center justify-center"
-        style={{ fontFamily: "Raleway, sans-serif" }}>
-            {/* Storage & Warehousing Services Section */}
-            <div className="w-full max-w-7xl mx-auto mt-20">
-                <h2 className="text-2xl md:text-3xl text-primary mb-2 text-left md:text-left">
-                    Our Secure Storage and Warehousing Services
-                </h2>
-                <p className="text-muted-foreground text-left mb-8 text-sm md:text-base max-w-7xl mx-auto">
-                    We provide short-term and long-term storage solutions to meet diverse cargo requirements, including:
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-                    {/* 1. Container Yard & Open Storage (Text left, image right) */}
-                    <div className="flex flex-col justify-center">
-                        <h3 className="text-lg md:text-xl mb-3">
-                            1. Container Yard and Open Storage
-                        </h3>
-                        <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
-                            <li>
-                                <span className="">Port and Empty Container Storage</span> – Secure area for both import/export cargo.
-                            </li>
-                            <li>
-                                <span className="">Bonded Warehousing</span> – Duty-free storage for transshipment and customs-cleared locations.
-                            </li>
-                            <li>
-                                <span className="">Reefer Plug-in Points</span> – Temperature storage for perishable goods with constant temperature monitoring.
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="w-full rounded-xl overflow-hidden shadow flex items-center">
-                        <img
-                            src="/w-hss-1.jpg"
-                            alt="Container yard with reach stacker and containers"
-                            className="object-cover w-full h-40 md:h-56"
-                        />
+        <main className="flex flex-col items-center w-full">
+            {/* What is Container Storage Section */}
+            <section className="px-4 sm:px-6 lg:px-8 mt-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* Left: Content */}
+                        <div className="space-y-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                <span>Warehousing Solutions</span>
+                            </div>
+                            
+                            <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                                What is Container Storage?
+                            </h2>
+                            
+                            <p className="text-base text-gray-600 leading-relaxed">
+                                Container storage involves placing containers in secure yards or warehouses, allowing for inventory management, flexible supply chain planning, monitoring, and protection against loss or damage.
+                            </p>
+                            
+                            <p className="text-base text-gray-600 leading-relaxed">
+                                At Moon Navigation and Trading Co., we provide comprehensive storage solutions that ensure your cargo remains safe, secure, and easily accessible while optimizing your supply chain operations.
+                            </p>
+                        </div>
+                        
+                        {/* Right: Empty space (no image) */}
+                        <div className="hidden lg:block">
+                            {/* Empty right column to maintain layout */}
+                        </div>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20">
-                    {/* 2. Specialized Warehousing Solutions (Image left, text right) */}
-                    <div className="w-full rounded-xl overflow-hidden shadow flex items-center order-2 md:order-1">
-                        <img
-                            src="/w-hss-2.jpg"
-                            alt="Warehouse interior with racking and worker"
-                            className="object-cover w-full h-40 md:h-56"
-                        />
-                    </div>
-                    <div className="flex flex-col justify-center order-1 md:order-2">
-                        <h3 className="text-lg md:text-xl mb-3">
-                            2. Specialized Warehousing Solutions
-                        </h3>
-                        <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
-                            <li>
-                                <span className="">Temperature-Controlled Warehouses</span> – Ideal for pharmaceuticals, perishables, and sensitive goods.
-                            </li>
-                            <li>
-                                <span className="">Hazardous Goods Storage</span> – Secure and compliant storage for flammables and dangerous materials.
-                            </li>
-                            <li>
-                                <span className="">Breakbulk and Heavy Lift Cargo Storage</span> – Custom storage areas for oversized shipments.
-                            </li>
-                        </ul>
+            </section>
+
+            {/* Services Overview Header */}
+            <section className="px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="space-y-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                            <span>Warehousing Solutions</span>
+                        </div>
+                        
+                        <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                            Secure Storage and Warehousing Services (Warehousing Solutions)
+                        </h2>
+                        
+                        <div className="space-y-4">
+                            <p className="text-base text-gray-600 leading-relaxed">
+                                We provide short-term and long-term storage solutions to meet diverse cargo requirements, including:
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {/* 3. Inventory & Cargo Management */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-20">
-                {/* Left: Description */}
-                <div>
-                    <h3 className="text-lg md:text-xl  mb-3">
-                        3. Inventory and Cargo Management
-                    </h3>
-                    <ul className="list-disc list-inside text-sm md:text-base text-foreground space-y-2 pl-2 mb-4">
-                        <li>
-                            <span className="">Systematic Inventory Tracking</span> – Efficient cargo handling and stock management.
-                        </li>
-                        <li>
-                            <span className="">Packing and Consolidation Services</span> – Repacking, cutting, and cargo preparation for final shipment.
-                        </li>
-                        <li>
-                            <span className="">Customized Storage Plans</span> – Flexible solutions tailored to client needs.
-                        </li>
-                    </ul>
-                </div>
-                {/* Right: Image */}
-                <div>
-                    <div className="w-full rounded-xl overflow-hidden shadow">
-                        <img
-                            src="/w-hss-3.jpg"
-                            alt="Warehouse inventory management with worker and racking"
-                            className="object-cover w-full h-40 md:h-56"
-                        />
+            </section>
+
+            {/* Container Yard & Open Storage Section */}
+            <section className="px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="order-2 lg:order-1 space-y-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                <span>Container Yard</span>
+                            </div>
+                            
+                            <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                                Container Yard and Open Storage
+                            </h2>
+                            
+                            <div className="space-y-4">
+                                <ul className="space-y-3 text-base text-gray-600">
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <span><span className="font-medium">Full and Empty Container Storage:</span> Secure areas for both import/export cargo.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <span><span className="font-medium">Bonded Warehousing:</span> Duty-free storage for transshipment and customs clearance facilitation.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <span><span className="font-medium">Reefer Plug-In Points:</span> Refrigerated storage for perishable goods with constant temperature monitoring.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="order-1 lg:order-2 relative">
+                            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                                <Image
+                                    src="/w-hss-1.jpg"
+                                    alt="Container yard with reach stacker and containers"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            {/* Specialized Warehousing Solutions Section */}
+            <section className="px-4 sm:px-6 lg:px-8 py-20">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="order-1 lg:order-1 relative">
+                            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                                <Image
+                                    src="/w-hss-2.jpg"
+                                    alt="Warehouse interior with racking and worker"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="order-2 lg:order-2 space-y-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                <span>Specialized Solutions</span>
+                            </div>
+                            
+                            <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                                Specialized Warehousing Solutions
+                            </h2>
+                            
+                            <div className="space-y-4">
+                                <ul className="space-y-3 text-base text-gray-600">
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <span><span className="font-medium">Temperature-Controlled Warehouses:</span> Ideal for pharmaceuticals, perishables, and sensitive goods.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <span><span className="font-medium">Hazardous Goods Storage:</span> Secure and compliant storage for flammable and dangerous materials.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <span><span className="font-medium">Breakbulk and Heavy Lift Cargo Storage:</span> Custom storage areas for oversized shipments.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Inventory & Cargo Management Section */}
+            <section className="px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="order-2 lg:order-1 space-y-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                <span>Inventory Management</span>
+                            </div>
+                            
+                            <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                                Inventory and Cargo Management
+                            </h2>
+                            
+                            <div className="space-y-4">
+                                <ul className="space-y-3 text-base text-gray-600">
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <span><span className="font-medium">Systematic Inventory Tracking:</span> Efficient cargo handling and stock management.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <span><span className="font-medium">Packing and Consolidation Services:</span> Repacking, crating, and cargo preparation for final shipment.</span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
+                                        <span><span className="font-medium">Customized Storage Plans:</span> Flexible solutions tailored to client needs.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="order-1 lg:order-2 relative">
+                            <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                                <Image
+                                    src="/w-hss-3.jpg"
+                                    alt="Warehouse inventory management with worker and racking"
+                                    fill
+                                    className="object-cover"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <GetQuoteComponent topic="Container Storage" link="/container-services-forms" />
-            <FAQSearch category="container-handling-stevedoring-storage" /> 
-        </div>
-    )
+            <FAQSearch category="container-handling-stevedoring-storage" />
+        </main>
+    );
 }

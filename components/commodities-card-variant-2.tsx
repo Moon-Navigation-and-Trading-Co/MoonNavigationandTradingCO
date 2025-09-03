@@ -21,7 +21,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
     return (
         <div className="flex flex-col w-full h-full">
-            <h1 className="text-xl font-semibold">{t('commodities')}</h1>
+            <h1 className="text-xl font-medium font-raleway">{t('commodities')}</h1>
 
             {fields.map((field, index) => {
                 const Watchdangerous = watch(`commodities.${index}.dangerous`);
@@ -127,7 +127,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                         </FormItem>
                                     </>
                                 )}
-                                <h1 className="-mb-7 mt-4 text-lg font-semibold">{t("unit-of-measure")}</h1>
+                                <h1 className="-mb-7 mt-4 text-lg font-medium font-raleway">{t("unit-of-measure")}</h1>
 
                             </div>
 
@@ -142,7 +142,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Input
-                                                        className="max-w-[200px] border-2 rounded-xl"
+                                                        className="w-full max-w-[280px] border-2 rounded-xl"
                                                         type="number"
                                                         placeholder="Length in cm"
                                                         {...field}
@@ -165,7 +165,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Input
-                                                        className="max-w-[200px] border-2 rounded-xl"
+                                                        className="w-full max-w-[280px] border-2 rounded-xl"
                                                         type="number"
                                                         placeholder="Width in cm"
                                                         {...field}
@@ -189,7 +189,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Input
-                                                        className="max-w-[200px] border-2 rounded-xl"
+                                                        className="w-full max-w-[280px] border-2 rounded-xl"
                                                         type="number"
                                                         placeholder="Height in cm"
                                                         {...field}
@@ -212,7 +212,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Input
-                                                        className="max-w-[200px] border-2 rounded-xl"
+                                                        className="w-full max-w-[280px] border-2 rounded-xl"
                                                         type="number"
                                                         placeholder="Weight in kg"
                                                         {...field}

@@ -7,8 +7,10 @@ import { Label } from "@/components/ui/label";
 export default async function ResetPassword({
   searchParams,
 }: {
-  searchParams: Message;
+  searchParams: Promise<Message> | undefined;
 }) {
+  const message = searchParams ? await searchParams : { message: "" };
+  
   return (
     <div className="flex justify-center py-16">
       <form className="flex flex-col w-full max-w-7xl p-4 gap-2 [&>input]:mb-4">
@@ -33,7 +35,7 @@ export default async function ResetPassword({
         <SubmitButton formAction={resetPasswordAction}>
           Reset password
         </SubmitButton>
-        <FormMessage message={searchParams} />
+        <FormMessage message={message} />
       </form>
     </div>
   );

@@ -7,7 +7,7 @@ import { Label } from "./ui/label";
 import { Checkbox } from "./ui/checkbox";
 import { Textarea } from "./ui/textarea";
 
-const PDAdetails = ({ control }: { control: any }) => {
+const PDAdetails = ({ control, formState }: { control: any; formState?: any }) => {
     // Get Content
     const t = useTranslations('Inland-forms')
 
@@ -98,22 +98,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                     </FormControl>
                 </FormItem>
 
-                {/* ETA field */}
-                <FormItem>
-                    <FormLabel htmlFor="vessel.eta">{t('vessel-eta')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={control}
-                            name="vessel.eta"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input className="max-w-[180px]  border-2 rounded-xl" type="date" {...field} />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
+
 
                 {/* Type field */}
                 <FormItem>
@@ -202,14 +187,14 @@ const PDAdetails = ({ control }: { control: any }) => {
 
                 {/* Draft field */}
                 <FormItem>
-                    <FormLabel id="vessel.draft">{t('vessel-draft')}</FormLabel>
+                    <FormLabel id="vessel.draft">Draft in meters</FormLabel>
                     <FormControl>
                         <Controller
                             control={control}
                             name="vessel.draft"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.draft" className="max-w-[300px]  border-2 rounded-xl" placeholder="Draft" {...field} />
+                                    <Input id="vessel.draft" className="max-w-[300px]  border-2 rounded-xl" placeholder="Draft in meters" {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -219,7 +204,7 @@ const PDAdetails = ({ control }: { control: any }) => {
 
                 {/* Length field */}
                 <FormItem>
-                    <FormLabel id="vessel.length">{t('vessel-length')}</FormLabel>
+                    <FormLabel id="vessel.length">Length in meters</FormLabel>
                     <FormControl>
                         <Controller
                             control={control}
@@ -229,7 +214,7 @@ const PDAdetails = ({ control }: { control: any }) => {
                                     <Input
                                         className="max-w-[300px] border-2 rounded-xl"
                                         type="number"
-                                        placeholder="Length in m"
+                                        placeholder="Length in meters"
                                         {...field}
                                         value={field.value || ''}
                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}
@@ -398,6 +383,30 @@ const PDAdetails = ({ control }: { control: any }) => {
                         </FormControl>
                         <FormLabel className="font-normal">Dangerous cargo</FormLabel>
                     </FormItem>
+
+                    {/* Total Days Needed for Discharging */}
+                    <FormItem>
+                        <FormLabel>Total Days Needed for Discharging</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="vessel.total_days_needed_for_discharging"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            type="number"
+                                            placeholder="Enter number of days"
+                                            {...field}
+                                            value={field.value || ''}
+                                            onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                        />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>
+                                )}
+                            />
+                        </FormControl>
+                    </FormItem>
                 </div>
 
                 {/* Total Loaded Cargo section */}
@@ -467,7 +476,53 @@ const PDAdetails = ({ control }: { control: any }) => {
                     </FormItem>
                 </div>
 
-                {/* Total expected Berthing Days */}
+                {/* Total Days Needed for Loading */}
+                <FormItem>
+                    <FormLabel>Total Days Needed for Loading</FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={control}
+                            name="vessel.total_days_needed_for_loading"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input
+                                        className="max-w-[300px] border-2 rounded-xl"
+                                        type="number"
+                                        placeholder="Enter number of days"
+                                        {...field}
+                                        value={field.value || ''}
+                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
+                            )}
+                        />
+                    </FormControl>
+                </FormItem>
+
+                {/* ETA (Expected Date of Arrival) */}
+                <FormItem>
+                    <FormLabel>ETA (Expected Date of Arrival)</FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={control}
+                            name="vessel.eta_expected_date"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input 
+                                        className="max-w-[300px] border-2 rounded-xl" 
+                                        type="date" 
+                                        placeholder="Select date"
+                                        {...field} 
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
+                            )}
+                        />
+                    </FormControl>
+                </FormItem>
+
+                {/* Total Expected Berthing Days */}
                 <FormItem>
                     <FormLabel id="vessel.total_expected_berthing_days">{t('total-expected-berthing-days')}</FormLabel>
                     <FormControl>
@@ -540,6 +595,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Marine Gas Oil (MGO)</FormLabel>
                         </FormItem>
+                        {bunkeringMgo && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.bunkering.mgo_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -556,6 +620,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Very Low Sulfur Fuel Oil (VLSFO)</FormLabel>
                         </FormItem>
+                        {bunkeringVlsfo && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.bunkering.vlsfo_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -572,6 +645,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Heavy Fuel Oil (HFO)</FormLabel>
                         </FormItem>
+                        {bunkeringHfo && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.bunkering.hfo_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -635,6 +717,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Fresh & Dry Provisions</FormLabel>
                         </FormItem>
+                        {chandleryFreshDry && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.chandlery.fresh_dry_provisions_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -651,6 +742,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Spare Parts & Tools</FormLabel>
                         </FormItem>
+                        {chandlerySpareParts && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.chandlery.spare_parts_tools_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -667,6 +767,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Deck & Engine Stores</FormLabel>
                         </FormItem>
+                        {chandleryDeckEngine && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.chandlery.deck_engine_stores_details')} 
+                                />
+                            </div>
+                        )}
 
                         {(chandleryFreshDry || chandlerySpareParts || chandleryDeckEngine) && (
                             <div className="mt-2">
@@ -700,6 +809,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Crew Change Assistance</FormLabel>
                         </FormItem>
+                        {crewChange && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.crew.crew_change_assistance_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -716,6 +834,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Transport & Accommodation</FormLabel>
                         </FormItem>
+                        {crewTransport && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.crew.transport_accommodation_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -732,6 +859,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Medical Assistance</FormLabel>
                         </FormItem>
+                        {crewMedical && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.crew.medical_assistance_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -795,6 +931,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Stevedoring</FormLabel>
                         </FormItem>
+                        {cargoStevedoring && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.cargo.stevedoring_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -811,6 +956,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Cargo Surveys</FormLabel>
                         </FormItem>
+                        {cargoSurveys && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.cargo.cargo_surveys_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -827,6 +981,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Lashing & Securing</FormLabel>
                         </FormItem>
+                        {cargoLashing && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.cargo.lashing_securing_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -890,6 +1053,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Waste Disposal & Sludge Removal</FormLabel>
                         </FormItem>
+                        {otherWaste && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.other.waste_disposal_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -906,6 +1078,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                             </FormControl>
                             <FormLabel className="font-normal">Fresh Water Supply</FormLabel>
                         </FormItem>
+                        {otherWater && (
+                            <div className="ml-6 mt-2">
+                                <Textarea 
+                                    className="max-w-[400px] border-2 rounded-xl min-h-[80px] resize-none" 
+                                    placeholder="Please provide the required details" 
+                                    {...control.register('services.other.fresh_water_details')} 
+                                />
+                            </div>
+                        )}
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -949,6 +1130,15 @@ const PDAdetails = ({ control }: { control: any }) => {
                         )}
                     </div>
                 </div>
+                
+                {/* Service Selection Error */}
+                {formState?.errors?.services && (
+                    <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <p className="text-red-600 text-sm font-medium">
+                            {formState.errors.services.message}
+                        </p>
+                    </div>
+                )}
             </div>
 
             {/* Additional Information */}
@@ -965,6 +1155,34 @@ const PDAdetails = ({ control }: { control: any }) => {
                                     <Textarea className="max-w-[600px] border-2 rounded-xl min-h-[100px]" placeholder="Special requests or notes..." {...field} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>)}
+                        />
+                    </FormControl>
+                </FormItem>
+            </div>
+
+            {/* Supporting Files */}
+            <div className="space-y-4 p-4">
+                <h3 className="text-xl font-semibold">Supporting Files (Optional)</h3>
+                <p className="text-sm text-muted-foreground">Attach any relevant documents (Charter Party, Voyage Order, etc.)</p>
+                <p className="text-sm text-muted-foreground">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
+                <FormItem>
+                    <FormLabel>Upload Files</FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={control}
+                            name="supporting_files"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input 
+                                        className="max-w-[400px] border-2 rounded-xl" 
+                                        type="file" 
+                                        multiple 
+                                        accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx" 
+                                        {...field} 
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
+                            )}
                         />
                     </FormControl>
                 </FormItem>

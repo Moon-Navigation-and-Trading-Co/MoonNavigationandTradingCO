@@ -118,7 +118,7 @@
         "contactPersonName": "Contact Person Name",
         "title": "Title",
         "countryOfOrigin": "Country of Origin",
-        "companyEmail": "Company Email",
+        "companyEmail": "Company Email Address",
         "phoneNumber": "Phone Number",
         "containerType": "Container Type",
         "containerNo": "Number of Containers",
@@ -198,6 +198,55 @@
         "additionalEmail": "Additional Email",
         "additionalPhoneNumber": "Additional Number",
         "Remove": "Remove",
+        "ocean-freight-quotation": "Ocean Freight Quotation",
+        "itemized-entry": "Itemized Entry",
+        "consolidated-entry": "Consolidated Entry",
+        "cargo-details": "Cargo Details",
+        "commodity": "Commodity",
+        "packaging-type": "Packaging Type",
+        "stackable": "Stackable",
+        "quantity": "Quantity",
+        "length": "Length",
+        "width": "Width",
+        "height": "Height",
+        "weight": "Weight",
+        "dangerous-goods": "Dangerous Goods",
+        "un-number": "UN Number",
+        "un-class": "UN Class",
+        "remarks": "Remarks",
+        "commodity-types": "Commodity Types",
+        "total-quantity": "Total Quantity",
+        "total-weight": "Total Weight",
+        "total-volume": "Total Volume",
+        "packing-list": "Packing List",
+        "special-instructions": "Special Instructions",
+        "supporting-files": "Supporting Files",
+        "additional-information": "Additional Information",
+        "effective-date": "Effective Date",
+        "expiry-date": "Expiry Date",
+        "service-contract-number": "Service Contract Number",
+        "additional-services": "Additional Services",
+        "port-handling": "Port Handling & Stevedoring",
+        "crane-heavy-lift": "Crane / Heavy Lift",
+        "customs-clearance": "Customs Clearance",
+        "storage-warehousing": "Storage & Warehousing",
+        "inland-freight": "Inland Freight",
+        "inspection-quality-control": "Inspection & Quality Control",
+        "escort-permits": "Escort / Permits",
+        "engineering-support": "Engineering Support",
+        "other": "Other",
+        "company-details": "Company/Personal Details",
+        "contact-person": "Contact Person",
+        "city": "City",
+        "country": "Country/Region",
+        "additional-email": "Additional Email",
+        "additional-phone": "Additional Phone",
+        "important-notes": "Important Notes",
+        "add-item": "Add Item",
+        "add-route": "Add Route",
+        "totals": "Totals",
+        "total-gross-weight": "Total Gross Weight",
+        "total-gross-cbm": "Total Gross CBM",
         "addCargo": "Add Additional Cargo Details",
         "ready-to-load": "Ready to Load",
         "value-added-service": "Value Added Service",
@@ -229,6 +278,7 @@
         "rental-duration": "Rental Duration",
         "used": "Used Container",
         "used-v": "Used Vessel",
+        "AdditionalEmail": "Valid additional email is required",
         "break-bulk": "Break Bulk",
         "value-added-service": "Value Added Service",
         "containerType": "Container Type",
@@ -1008,7 +1058,7 @@
     },
     "learn-air-freight-special-cargo": {
         "hero": {
-            "title": "Our Air Freight Services for Special Cargo-At Moon Navigation and Trading Co.",
+            "title": "Our Air Freight Services for Special Cargo",
             "perishable": {
                 "title": "Perishable & Temperature-Controlled Cargo",
                 "description1": "We offer specialized air freight solutions tailored for temperature-sensitive shipments, ensuring the integrity of your cargo its journey. Our services cater to a variety critical needs, including Pharmaceuticals & Medical Equipment, Fresh Produce, Seafood, and Flowers, as well as Chemicals & Hazardous Goods Requiring Temperature Control.",
@@ -1756,6 +1806,10 @@
         "hero": {
             "title": "Customs Clearance Services",
             "subtitle": "What is Customs Clearance?",
+            "description": ""
+        },
+        "what-is": {
+            "title": "What is Customs Clearance?",
             "description": "Customs clearance is a component of international trade, ensuring that all goods comply with regulatory requirements for import or export. At Moon Navigation and Co., we offer professional customs clearance services designed to facilitate the smooth movement of your shipments through customs minimizing unnecessary delays or complications. Our experienced team expertly navigates the intricate regulatory landscape, streamlining the clearance process to ensure that your goods reach their destination efficiently and without hassle."
         },
         "critical-role": {
@@ -1911,5 +1965,44 @@
         "standard-breakbulk-title": "Standard Breakbulk",
         "standard-breakbulk-description": "Cargo like lumber, steel, or other materials that are packed and transported without containers.",
         "button": "Request a Quote"
+    },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "searchPlaceholder": "Search FAQs...",
+        "noResults": "No FAQs found matching your search.",
+        "categories": {
+            "customs-clearance": "Customs Clearance",
+            "ro-ro-shipping": "RoRo Shipping",
+            "container-services": "Container Services",
+            "ocean-freight": "Ocean Freight",
+            "air-freight": "Air Freight",
+            "inland-freight": "Inland Freight",
+            "ship-agency": "Ship Agency",
+            "other-services": "Other Services"
+        },
+        "questions": {
+            "customs-clearance": [
+                {
+                    "question": "What documents are required for customs clearance?",
+                    "answer": "Required documents typically include commercial invoice, packing list, bill of lading, certificate of origin, and any specific permits for restricted goods."
+                },
+                {
+                    "question": "How long does customs clearance take?",
+                    "answer": "Clearance time varies by country and cargo type, typically ranging from 1-5 business days for standard shipments."
+                },
+                {
+                    "question": "What are the common customs duties and taxes?",
+                    "answer": "Common charges include import duties, value-added tax (VAT), excise taxes, and processing fees, which vary by country and product type."
+                },
+                {
+                    "question": "Can you help with duty optimization?",
+                    "answer": "Yes, we specialize in identifying duty exemptions, preferential tariff programs, and Free Trade Agreement benefits to minimize costs."
+                },
+                {
+                    "question": "What about special cargo clearance?",
+                    "answer": "We handle temperature-controlled, perishable, high-value, and restricted goods with specialized permits and compliance procedures."
+                }
+            ]
+        }
     }
 }

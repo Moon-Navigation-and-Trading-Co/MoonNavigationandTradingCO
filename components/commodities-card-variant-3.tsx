@@ -16,7 +16,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
 
     return (
         <div className="flex flex-col w-full h-full">
-            <h1 className="text-xl font-semibold">{t('cargo-details')}</h1>
+            <h1 className="text-xl font-medium font-raleway">{t('cargo-details')}</h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Checkboxes */}
@@ -34,7 +34,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <Input
-                                                className="w-[300px] border-2 rounded-xl"
+                                                className="w-full max-w-[300px] border-2 rounded-xl"
                                                 placeholder="Type the Commoditiy"
                                                 {...field}
                                                 value={typeof field.value === 'string' ? field.value : ''}
@@ -79,7 +79,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                         render={({ field, fieldState: { error } }) => (
                                             <>
                                                 <Input
-                                                    className="w-[300px] border-2 rounded-xl"
+                                                    className="w-full max-w-[300px] border-2 rounded-xl"
                                                     placeholder="Please insert details"
                                                     {...field}
                                                     value={typeof field.value === 'string' ? field.value : ''}
@@ -92,14 +92,14 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                             </FormItem>
                         </>
                     )}
-                    <h1 className="-mb-7 mt-4 text-lg font-semibold">{t("unit-of-measure")}</h1>
+                    <h1 className="-mb-7 mt-4 text-lg font-medium font-raleway">{t("unit-of-measure")}</h1>
 
                 </div>
 
                 {/* Cargo Details { length, weight, height, width } */}
 
 
-                <div className="grid gap-5 grid-cols-2 px-4 pb-6 col-span-2 md:col-span-1">
+                <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 px-4 pb-6 col-span-2 md:col-span-1">
                     <div>
                         <FormLabel htmlFor="length">{t('length')}</FormLabel>
                         <FormControl>
@@ -109,7 +109,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                 render={({ field, fieldState: { error } }) => (
                                     <>
                                         <Input
-                                            className="max-w-[200px] border-2 rounded-xl"
+                                            className="w-full max-w-[280px] border-2 rounded-xl"
                                             type="number"
                                             placeholder="Length in cm"
                                             {...field}
@@ -132,7 +132,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                 render={({ field, fieldState: { error } }) => (
                                     <>
                                         <Input
-                                            className="max-w-[200px] border-2 rounded-xl"
+                                            className="w-full max-w-[280px] border-2 rounded-xl"
                                             type="number"
                                             placeholder="Width in cm"
                                             {...field}
@@ -156,7 +156,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                 render={({ field, fieldState: { error } }) => (
                                     <>
                                         <Input
-                                            className="max-w-[200px] border-2 rounded-xl"
+                                            className="w-full max-w-[280px] border-2 rounded-xl"
                                             type="number"
                                             placeholder="Height in cm"
                                             {...field}
@@ -179,7 +179,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                 render={({ field, fieldState: { error } }) => (
                                     <>
                                         <Input
-                                            className="max-w-[200px] border-2 rounded-xl"
+                                            className="w-full max-w-[280px] border-2 rounded-xl"
                                             type="number"
                                             placeholder="Weight in kg"
                                             {...field}
@@ -195,7 +195,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                 </div>
 
                 {/* Upload File */}
-                <div className="grid px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-6 col-span-2">
+                <div className="grid px-4 w-full items-center gap-1.5 mt-1 mb-6 col-span-2">
                     <FormLabel htmlFor="docs">
                         {t('file')} <span className="text-sm text-gray-500">({t('optional')})</span>
                     </FormLabel>
@@ -206,7 +206,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                             render={({ field, fieldState: { error } }) => (
                                 <>
                                     <Input
-                                        className="max-w-[240px] border-2 rounded-xl"
+                                        className="w-full max-w-[240px] border-2 rounded-xl"
                                         id="docs"
                                         type="file"
                                         {...field}
@@ -221,7 +221,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                 </div>
 
                 {/* Additional Info */}
-                <div className="px-4 w-full max-w-sm items-center gap-1.5 mt-1 col-span-2 mb-10">
+                <div className="px-4 w-full items-center gap-1.5 mt-1 col-span-2 mb-10">
                     <FormLabel htmlFor="commodities-message">
                         {t('additionalInformation')} <span className="text-sm text-gray-500">({t('optional')})</span>
                     </FormLabel>
@@ -232,7 +232,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                             render={({ field, fieldState: { error } }) => (
                                 <>
                                     <Textarea
-                                        className="max-w-[300px] border-2 rounded-xl"
+                                        className="w-full max-w-[300px] border-2 rounded-xl"
                                         id="commodities-message"
                                         placeholder="Add any additional information"
                                         {...field}

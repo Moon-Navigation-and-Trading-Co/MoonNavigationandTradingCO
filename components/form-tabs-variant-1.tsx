@@ -2,6 +2,8 @@
 
 import { useState, ReactNode } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ChevronDown } from "lucide-react"
 
 interface TabData {
     id: string
@@ -12,9 +14,10 @@ interface TabData {
 
 interface FormTabsProps {
     tabData: TabData[]
+    formTitle?: string
 }
 
-export default function FormTabs({ tabData }: FormTabsProps) {
+export default function FormTabs({ tabData, formTitle }: FormTabsProps) {
     const [activeTab, setActiveTab] = useState(tabData[0].id)
 
     const activeTabData = tabData.find((tab) => tab.id === activeTab) || tabData[0]
@@ -30,20 +33,42 @@ export default function FormTabs({ tabData }: FormTabsProps) {
                     transition={{ duration: 0.2 }}
                     className="pb-10 px-4"
                 >
-                    <h1 className="text-3xl font-semibold mb-8">{activeTabData.title}</h1>
-                    <h1>{activeTabData.description}</h1>
+                    <h1 className="text-3xl font-raleway font-medium mb-8 text-center">{activeTabData.title}</h1>
+                    <h1 className="text-center font-raleway font-medium">{activeTabData.description}</h1>
                 </motion.div>
             </AnimatePresence>
 
-            <div className="relative bg-secondary rounded-t-3xl overflow-hidden">
+            {/* Mobile Dropdown */}
+            <div className="md:hidden mb-6">
+                <Select value={activeTab} onValueChange={setActiveTab}>
+                    <SelectTrigger className="w-full bg-white border-2 border-blue-200 rounded-2xl py-4 px-6 text-left font-['Raleway'] font-light shadow-lg shadow-blue-100 hover:shadow-xl hover:shadow-blue-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        <SelectValue placeholder="Select a service" className="text-gray-700" />
+                        <ChevronDown className="h-5 w-5 ml-auto text-blue-500 transition-transform duration-200" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white border-2 border-blue-200 rounded-2xl shadow-2xl shadow-blue-200/50 mt-2">
+                        {tabData.map((tab) => (
+                            <SelectItem 
+                                key={tab.id} 
+                                value={tab.id}
+                                className="font-['Raleway'] font-light py-4 px-6 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 focus:text-blue-700 transition-colors duration-200 first:rounded-t-2xl last:rounded-b-2xl"
+                            >
+                                {tab.title}
+                            </SelectItem>
+                        ))}
+                    </SelectContent>
+                </Select>
+            </div>
+
+            {/* Desktop Tabs */}
+            <div className="hidden md:block relative bg-secondary rounded-t-3xl overflow-hidden">
                 <div className="flex relative z-10">
                     {tabData.map((tab, index) => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-xl font-medium transition-colors focus:outline-none ${activeTab === tab.id
+                            className={`flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-xl font-light transition-colors focus:outline-none font-['Raleway'] text-center flex items-center justify-center ${activeTab === tab.id
                                 ? "text-primary"
-                                : "text-foreground bg-secondary hover:bg-green-50 dark:hover:bg-[#171b21]"
+                                : "text-foreground bg-secondary hover:bg-blue-50 dark:hover:bg-[#171b21]"
                                 } ${index === 0 ? "rounded-tl-2xl" : ""} ${index === tabData.length - 1 ? "rounded-tr-2xl" : ""
                                 }`}
                         >
@@ -52,7 +77,7 @@ export default function FormTabs({ tabData }: FormTabsProps) {
                     ))}
                 </div>
                 <motion.div
-                    className="absolute top-0 h-full bg-green-100 dark:bg-accent rounded-t-2xl"
+                    className="absolute top-0 h-full bg-blue-100 dark:bg-accent rounded-t-2xl"
                     initial={false}
                     animate={{
                         left: `${(tabData.findIndex((tab) => tab.id === activeTab) / tabData.length) * 100}%`,
@@ -61,7 +86,7 @@ export default function FormTabs({ tabData }: FormTabsProps) {
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
             </div>
-            <div className="p-1 rounded-3xl rounded-t-sm bg-green-100 dark:bg-accent">
+            <div className="p-1 rounded-3xl rounded-t-sm bg-blue-100 dark:bg-accent">
                 <div className="bg-background dark:bg-secondary rounded-3xl py-6 px-4 sm:px-6 shadow-sm">
                     <AnimatePresence mode="wait">
                         <motion.div
@@ -71,7 +96,11 @@ export default function FormTabs({ tabData }: FormTabsProps) {
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.2 }}
                         >
-                            <h3 className="text-3xl font-semibold mb-10">Form details</h3>
+                            <h3 className="text-3xl font-medium mb-10 text-center font-['Raleway']">
+                                {activeTabData.id === 'investor' 
+                                    ? `${activeTabData.title} Form` 
+                                    : `${activeTabData.title} Quotation Form`}
+                            </h3>
                             {activeTabData.content}
                         </motion.div>
                     </AnimatePresence>

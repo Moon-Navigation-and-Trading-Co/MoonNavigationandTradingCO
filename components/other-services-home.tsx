@@ -10,7 +10,7 @@ const services = [
     href: "/learn/international-trading",
   },
   { name: "Ship Management", href: "/learn/ship-management" },
-  { name: "Docking and Maintenance", href: "/learn/docking" },
+  { name: "Docking and Maintenance", href: "/learn/dockingandmaintenance" },
   { name: "Buy/Rent Containers", href: "/buy-rent-container-forms" },
   { name: "Buy/Rent Vessels", href: "/buy-rent-vessels-forms" },
   {

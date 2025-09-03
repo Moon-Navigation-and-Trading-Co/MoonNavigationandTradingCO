@@ -2,7 +2,7 @@ import { FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Controller } from "react-hook-form";
 import { useTranslations } from "next-intl";
-import { Checkbox } from "./ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 
 const PortCard = ({ control }: { control: any }) => {
     // Get Content
@@ -71,51 +71,110 @@ const PortCard = ({ control }: { control: any }) => {
                     </FormControl>
                 </FormItem>
 
-                {/* checkbox fields */}
-                <div className="flex flex-col gap-3 pt-5">
-                    <div className="flex gap-5 w-full items-center">
-                        <Controller
-                            control={control}
-                            name="vessel.anchor"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Checkbox
-                                        checked={field.value}
-                                        onCheckedChange={field.onChange}
-                                        id="anchor"
-                                    />
-                                    <label
-                                        htmlFor="anchor"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        {t('at-anchor')}
-                                    </label>
-                                </>
-                            )}
-                        />
-                    </div>
-                    <div className="flex gap-5 w-full items-center">
-                        <Controller
-                            control={control}
-                            name="vessel.berth"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Checkbox
-                                        checked={field.value}
-                                        onCheckedChange={field.onChange}
-                                        id="berth"
-                                    />
-                                    <label
-                                        htmlFor="berth"
-                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        {t('at-berth')}
-                                    </label>
-                                </>
-                            )}
-                        />
-                    </div>
+                {/* Vessel Location Radio Buttons */}
+                <div className="pt-5">
+                    <h3 className="text-lg font-semibold mb-3">Vessel Location</h3>
+                    <FormItem>
+                        <FormControl>
+                            <Controller
+                                control={control}
+                                name="vessel.location"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <RadioGroup
+                                            onValueChange={field.onChange}
+                                            value={field.value}
+                                            className="flex flex-col space-y-1"
+                                        >
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="at_anchor" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">At Anchor</FormLabel>
+                                            </FormItem>
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="at_berth" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">At Berth</FormLabel>
+                                            </FormItem>
+                                            <FormItem className="flex items-center space-x-3 space-y-0">
+                                                <FormControl>
+                                                    <RadioGroupItem value="suez_canal_passage" />
+                                                </FormControl>
+                                                <FormLabel className="font-normal">During Suez Canal Passage</FormLabel>
+                                            </FormItem>
+                                        </RadioGroup>
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>)}
+                            />
+                        </FormControl>
+                    </FormItem>
                 </div>
+
+                {/* Flag Field */}
+                <FormItem>
+                    <FormLabel>Flag</FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={control}
+                            name="vessel.flag"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Flag" {...field} />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>)}
+                        />
+                    </FormControl>
+                </FormItem>
+
+                {/* Port of Crew Change Field */}
+                <FormItem>
+                    <FormLabel>Port of Crew Change</FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={control}
+                            name="vessel.port_of_crew_change"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Port of Crew Change" {...field} />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>)}
+                        />
+                    </FormControl>
+                </FormItem>
+
+                {/* ETA Field */}
+                <FormItem>
+                    <FormLabel>ETA (Estimated Time of Arrival): (DD/MM/YYYY)</FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={control}
+                            name="vessel.eta"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input className="max-w-[300px] border-2 rounded-xl" type="date" {...field} />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>)}
+                        />
+                    </FormControl>
+                </FormItem>
+
+                {/* ETD Field */}
+                <FormItem>
+                    <FormLabel>ETD (Estimated Time of Departure): (DD/MM/YYYY)</FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={control}
+                            name="vessel.etd"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Input className="max-w-[300px] border-2 rounded-xl" type="date" {...field} />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>)}
+                        />
+                    </FormControl>
+                </FormItem>
 
             </div>
         </div>

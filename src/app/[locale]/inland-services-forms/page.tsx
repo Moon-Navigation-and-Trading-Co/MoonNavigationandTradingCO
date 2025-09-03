@@ -10,6 +10,7 @@ import { redirect } from 'next/navigation';
 import { useRouter } from 'next/navigation'
 import Spinner from '@/components/spinner';
 import { sendFormEmail } from '@/utils/email-helper';
+import FAQSearch from '@/components/faq';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -33,7 +34,7 @@ const Page: React.FC = () => {
         };
 
         fetchUser();
-    }, [router, supabase]); // Only run once when the component mounts
+    }, [supabase.auth]); // Include supabase.auth in dependency array
 
 
     if (isLoading) {
@@ -157,11 +158,12 @@ const Page: React.FC = () => {
 
     return (
         <div className='flex flex-col w-full'>
-            {/* <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('inland')}</h1>
+            <div className='mt-20 flex flex-col gap-5 px-4'>
+                <h1 className='text-3xl font-raleway font-medium'>{t('inland')}</h1>
                 <p className=''>{t('inland-p')}</p>
-            </div> */}
+            </div>
             <FormTabs tabData={tabData} />
+            <FAQSearch category="inland-freight" />
         </div>
     );
 };

@@ -8,8 +8,9 @@ import SignOutButtonVariant from "./sign-out-button-variant-1";
 import { motion, AnimatePresence } from "framer-motion";
 import LocaleSwitcher from "./LocaleSwitcher";
 import { Separator } from "./ui/separator";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Menu, Ship } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useIsRTL, getRTLTextAlign, getRTLFlexDirection, getRTLJustifyContent } from "@/utils/rtl-utils";
 
 // 1. Import Accordion, AccordionItem, AccordionTrigger, AccordionContent
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "./ui/accordion";
@@ -65,7 +66,7 @@ const serviceColumns = [
             href: "/learn-more/inland-freight", 
             isDropdown: false
           },
-          { name: "Air Freight", href: "/learn-more/air-freight", isDropdown: false },
+          { name: "Air Freight", href: "/learn/air-freight", isDropdown: false },
         ],
       },
       {
@@ -85,7 +86,7 @@ const serviceColumns = [
         title: "Ship Agency and Operational Services",
         description: "Efficient management and support for vessels at port and at sea ensuring smooth operations in all Egyptian ports.",
         items: [
-          { name: "Request for a PDA", href: "/ship-agency-forms" },
+          { name: "Request for a PDA", href: "/learn/pda" },
           { name: "Sign On/Off Crew Members", href: "/learn/crew" },
           { name: "Suez Canal Transit Passage", href: "/learn/suez-canal-transit-passage" },
           { name: "Transit Spare Parts", href: "/learn/spare-parts" },
@@ -118,7 +119,7 @@ const serviceColumns = [
         description: "Seamless coordination for custom clearance and handling.",
         items: [
           { name: "Customs Clearance Solutions", href: "/learn/customs-clearance" },
-          { name: "Handling, Stevedoring & Storage Services", href: "/learn/stevedoring-container" },
+          { name: "Handling, Stevedoring & Storage Services", href: "/learn/handling-stevedoring-storage/learn-more" },
         ],
       },
       {
@@ -187,6 +188,11 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
         },
     ];
 
+    const isRTL = useIsRTL();
+    const textAlignClass = getRTLTextAlign('left');
+    const flexDirectionClass = getRTLFlexDirection('row');
+    const justifyClass = getRTLJustifyContent('between');
+
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
     const handleDesktopHover = (itemName: string) => setOpenDesktopDropdown(itemName);
     const handleServiceDropdownToggle = (serviceName: string, event: React.MouseEvent) => {
@@ -196,133 +202,156 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
     };
 
     return (
-        <nav className="w-full flex justify-center md:px-2 text-foreground md:top-4 max-w-7xl h-16 fixed border-0 top-0 z-[999]">
-            <div className="w-full md:border-t-2 border-b flex justify-between rounded-b-2xl md:rounded-2xl md:shadow-lg shadow-current items-center py-3 px-4 sm:px-5 text-sm bg-secondary">
-                <div className="flex w-fit gap-5 items-center leading-5 text-foreground text-base">
-                    <Link href={"/"}>Moon Navigation and Trading Co.</Link>
+        <nav className="w-full flex justify-center px-4 sm:px-6 lg:px-8 text-foreground fixed top-0 z-[999] bg-white/80 backdrop-blur-md border-b border-gray-100">
+            <div className="w-full max-w-7xl h-16 flex items-center justify-between">
+                {/* Logo/Brand */}
+                <div className="flex items-center">
+                    <Link href="/" className="group">
+                        <span className="text-lg font-raleway font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-200">
+                            Moon Navigation and Trading Co.
+                        </span>
+                    </Link>
                 </div>
 
-                <div className="hidden h-12 md:flex items-center font-[500]">
+                {/* Desktop Navigation */}
+                <div className="hidden lg:flex items-center gap-8">
                     {navItems.map((item, index) => (
-                        <React.Fragment key={index}>
-                            <div className="relative text-left" onMouseEnter={() => handleDesktopHover(item.name)} onMouseLeave={() => setOpenDesktopDropdown(null)}>
-                                <button className={`hover:text-muted-foreground gap-2 focus:outline-none flex items-center text-foreground`}>
-                                    {item.name}
-                                    <ChevronDown width={15} />
-                                </button>
-                                <AnimatePresence>
-                                    {openDesktopDropdown === item.name && (
-                                        <motion.div 
-                                            className={`absolute left-0 mt-6 border rounded-md shadow-lg bg-background border-border ${item.name === "Services" ? "w-[90vw] xl:w-[900px] -left-[calc(45vw-0.9rem)] xl:-left-[450px]" : "w-56"}`} 
-                                            initial={{ opacity: 0, y: -15 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -15 }} transition={{ duration: 0.3 }} 
-                                            ref={dropdownRef}
-                                        >
-                                            {item.name === "Services" ? (
-                                                <div className="grid grid-cols-3 gap-x-10 p-6">
-                                                    {serviceColumns.map((column, colIdx) => (
-                                                        <div key={colIdx} className="flex flex-col space-y-6">
-                                                            {column.sections.map((section) => (
-                                                                <div key={section.title}>
-                                                                    <h3 className="font-raleway font-medium text-xs text-foreground mb-2">{section.title}</h3>
-                                                                    {section.description && (
-                                                                        <p className="font-raleway font-light text-[11px] leading-snug text-muted-foreground mb-3">{section.description}</p>
-                                                                    )}
-                                                                    <div className="space-y-2.5">
-                                                                        {section.items.map((service, idx) => (
-                                                                            <ServiceLink 
-                                                                                key={idx} 
-                                                                                service={service} 
-                                                                                isOpen={openServiceDropdown === service.name}
-                                                                                onToggle={(e) => handleServiceDropdownToggle(service.name, e)}
-                                                                            />
-                                                                        ))}
-                                                                    </div>
+                        <div key={index} className="relative" onMouseEnter={() => handleDesktopHover(item.name)} onMouseLeave={() => setOpenDesktopDropdown(null)}>
+                            <button className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200 font-raleway font-medium group">
+                                {item.name}
+                                <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
+                            </button>
+                            <AnimatePresence>
+                                {openDesktopDropdown === item.name && (
+                                    <motion.div 
+                                        className={`absolute ${isRTL ? 'right-0' : 'left-0'} mt-2 border border-gray-200 rounded-2xl shadow-xl bg-white/95 backdrop-blur-sm ${item.name === "Services" ? "w-[90vw] xl:w-[900px] -left-[calc(45vw-2rem)] xl:-left-[450px]" : "w-64"}`} 
+                                        initial={{ opacity: 0, y: -10, scale: 0.95 }} 
+                                        animate={{ opacity: 1, y: 0, scale: 1 }} 
+                                        exit={{ opacity: 0, y: -10, scale: 0.95 }} 
+                                        transition={{ duration: 0.2 }} 
+                                        ref={dropdownRef}
+                                    >
+                                        {item.name === "Services" ? (
+                                            <div className="grid grid-cols-3 gap-x-8 p-8">
+                                                {serviceColumns.map((column, colIdx) => (
+                                                    <div key={colIdx} className="flex flex-col space-y-8">
+                                                        {column.sections.map((section) => (
+                                                            <div key={section.title}>
+                                                                <h3 className="font-raleway font-semibold text-sm text-gray-900 mb-3">{section.title}</h3>
+                                                                {section.description && (
+                                                                    <p className="font-raleway font-light text-xs leading-relaxed text-gray-600 mb-4">{section.description}</p>
+                                                                )}
+                                                                <div className="space-y-3">
+                                                                    {section.items.map((service, idx) => (
+                                                                        <ServiceLink 
+                                                                            key={idx} 
+                                                                            service={service} 
+                                                                            isOpen={openServiceDropdown === service.name}
+                                                                            onToggle={(e) => handleServiceDropdownToggle(service.name, e)}
+                                                                        />
+                                                                    ))}
                                                                 </div>
-                                                            ))}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            ) : (
-                                                <div className="py-1">
-                                                    {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
-                                                        <div key={dropdownIndex} className="relative">
-                                                            <Link
-                                                                href={dropdownItem.href}
-                                                                className="block px-4 py-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-                                                            >
-                                                                {dropdownItem.name}
-                                                            </Link>
-                                                            {dropdownIndex !== item.dropdownItems.length - 1 && <Separator className="w-3/4 mx-auto" />}
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                            {index < navItems.length - 1 && <span className="px-3 text-muted-foreground">|</span>}
-                        </React.Fragment>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        ) : (
+                                            <div className="py-2">
+                                                {item.dropdownItems?.map((dropdownItem, dropdownIndex) => (
+                                                    <div key={dropdownIndex}>
+                                                        <Link
+                                                            href={dropdownItem.href}
+                                                            className="block px-4 py-3 text-sm text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-colors duration-200 font-raleway font-medium"
+                                                        >
+                                                            {dropdownItem.name}
+                                                        </Link>
+                                                        {dropdownIndex !== item.dropdownItems.length - 1 && <Separator className="mx-4" />}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
                     ))}
                 </div>
 
-                <div className="hidden md:flex items-center gap-3">
-                    <div className="flex items-center gap-3">
+                {/* Right Side Actions */}
+                <div className="flex items-center gap-4">
+                    {/* Language Switcher */}
+                    <div className="hidden md:flex">
                         <LocaleSwitcher />
-                        <Button className="p-0 ml-2 h-[32px] bg-transparent hover:bg-transparent text-primary hover:text-primary/80 transition-colors">
-                            <Link className="font-light flex items-center w-full h-full" href={"/investor-form"}>
-                                Invest
-                            </Link>
-                        </Button>
                     </div>
+                    
+                    {/* Invest Button */}
+                    <Button className="hidden md:flex bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-4 py-2 rounded-xl font-raleway font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        <Link href="/investor-form" className="flex items-center gap-2">
+                            <span>Invest</span>
+                        </Link>
+                    </Button>
+                    
+                    {/* Sign In Button */}
                     {!user && (
-                        <Button
-                            className="bg-[#F3F5F9] text-[#23294d] border border-[#E0E3EB] hover:bg-[#e0e3eb] hover:border-[#c5c9d6] rounded-full px-4 py-1.5 font-bold text-sm shadow-none transition-colors"
-                            style={{ boxShadow: "none", minWidth: 0, height: "34px" }}
-                        >
-                            <Link href={"/sign-in"} className="w-full h-full flex items-center justify-center" style={{ fontWeight: 700, letterSpacing: 0.5 }}>
+                        <Button className="hidden md:flex bg-[#011f4b] text-white border border-[#011f4b] hover:bg-[#022c6a] hover:border-[#022c6a] rounded-xl px-3 py-1.5 font-raleway font-semibold transition-all duration-200 shadow-sm hover:shadow-md text-sm">
+                            <Link href="/sign-in" className="flex items-center">
                                 SIGN IN
                             </Link>
                         </Button>
                     )}
                     {user && <SignOutButton />}
-                </div>
-
-                <div className="md:hidden flex items-center gap-2">
-                    <div className="flex items-center">
-                        <LocaleSwitcher />
-                    </div>
-                    <button className={`px-2 py-1 ${isMobileMenuOpen ? "pointer-events-none" : "pointer-events-auto"}`} onClick={toggleMobileMenu}>
-                        <Menu strokeWidth="1" className="text-foreground" />
+                    
+                    {/* Mobile Menu Button */}
+                    <button className="lg:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors duration-200" onClick={toggleMobileMenu}>
+                        <Menu className="w-6 h-6 text-gray-700" />
                     </button>
                 </div>
             </div>
 
+            {/* Mobile Menu */}
             <AnimatePresence>
                 {isMobileMenuOpen && (
-                    <motion.div ref={dropdownMobileRef} className="fixed z-[999] px-2 mt-2 flex justify-end top-16 right-0 w-[280px] bg-transparent" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.3, ease: "easeInOut" }}>
-                        <div className="flex flex-col w-full gap-2 rounded-3xl bg-background border border-border px-5 py-4 max-w-[280px] shadow-xl text-sm font-normal">
+                    <motion.div 
+                        ref={dropdownMobileRef} 
+                        className="fixed z-[999] top-16 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-xl" 
+                        initial={{ opacity: 0, y: -20 }} 
+                        animate={{ opacity: 1, y: 0 }} 
+                        exit={{ opacity: 0, y: -20 }} 
+                        transition={{ duration: 0.3 }}
+                    >
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                             <Accordion type="single" collapsible className="w-full">
                                 {navItems.map((item, index) => (
-                                    <AccordionItem key={index} value={item.name}>
-                                        <AccordionTrigger className="flex items-center justify-between w-full text-foreground">{item.name}</AccordionTrigger>
-                                        <AccordionContent className="flex">
-                                            <Separator orientation="vertical" className="h-auto w-0.5 rounded-full bg-primary mt-2" />
+                                    <AccordionItem key={index} value={item.name} className="border-b border-gray-100">
+                                        <AccordionTrigger className="flex items-center justify-between w-full text-gray-900 font-raleway font-medium py-4 hover:text-blue-600 transition-colors text-sm">
+                                            {item.name}
+                                        </AccordionTrigger>
+                                        <AccordionContent className="pb-4">
                                             {item.name === "Services" ? (
-                                                <Accordion type="single" collapsible className="w-full pl-2">
+                                                <Accordion type="single" collapsible className="w-full">
                                                     {serviceColumns.flatMap(c => c.sections).map((section, sectionIdx) => (
-                                                        <AccordionItem key={sectionIdx} value={section.title}>
-                                                            <AccordionTrigger className="text-sm font-raleway font-medium">{section.title}</AccordionTrigger>
+                                                        <AccordionItem key={sectionIdx} value={section.title} className="border-none">
+                                                            <AccordionTrigger className="text-sm font-raleway font-medium text-gray-700 py-2">
+                                                                {section.title}
+                                                            </AccordionTrigger>
                                                             <AccordionContent className="ml-4">
                                                                 {section.items.map((service, serviceIdx) => (
                                                                     <div key={serviceIdx} className="py-1">
                                                                         {'isDropdown' in service && service.isDropdown && service.dropdownItems ? (
                                                                             <Accordion type="single" collapsible className="w-full">
-                                                                                <AccordionItem value={service.name}>
-                                                                                    <AccordionTrigger className="text-sm font-raleway font-medium">{service.name}</AccordionTrigger>
+                                                                                <AccordionItem value={service.name} className="border-none">
+                                                                                    <AccordionTrigger className="text-sm font-raleway font-medium text-gray-600 py-1">
+                                                                                        {service.name}
+                                                                                    </AccordionTrigger>
                                                                                     <AccordionContent className="ml-4 space-y-2 pt-2">
                                                                                         {service.dropdownItems.map((subItem: { name: string; href: string }, subIdx: number) => (
-                                                                                            <Link key={subIdx} href={subItem.href} className="block text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMobileMenu}>
+                                                                                            <Link 
+                                                                                                key={subIdx} 
+                                                                                                href={subItem.href} 
+                                                                                                className="block text-sm text-gray-500 hover:text-blue-600 transition-colors py-1" 
+                                                                                                onClick={toggleMobileMenu}
+                                                                                            >
                                                                                                 {subItem.name}
                                                                                             </Link>
                                                                                         ))}
@@ -330,7 +359,11 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                                                 </AccordionItem>
                                                                             </Accordion>
                                                                         ) : (
-                                                                            <Link href={service.href} className="block text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMobileMenu}>
+                                                                            <Link 
+                                                                                href={service.href} 
+                                                                                className="block text-sm text-gray-500 hover:text-blue-600 transition-colors py-1" 
+                                                                                onClick={toggleMobileMenu}
+                                                                            >
                                                                                 {service.name}
                                                                             </Link>
                                                                         )}
@@ -341,9 +374,14 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                                     ))}
                                                 </Accordion>
                                             ) : (
-                                                <div className="flex flex-col ml-2 mt-2 space-y-2">
+                                                <div className="flex flex-col space-y-2">
                                                     {item.dropdownItems?.map((dropdownItem, idx) => (
-                                                        <Link key={idx} href={dropdownItem.href} className="block text-sm text-muted-foreground hover:text-foreground transition-colors" onClick={toggleMobileMenu}>
+                                                        <Link 
+                                                            key={idx} 
+                                                            href={dropdownItem.href} 
+                                                            className="block text-sm text-gray-500 hover:text-blue-600 transition-colors py-2" 
+                                                            onClick={toggleMobileMenu}
+                                                        >
                                                             {dropdownItem.name}
                                                         </Link>
                                                     ))}
@@ -353,15 +391,27 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                     </AccordionItem>
                                 ))}
                             </Accordion>
-                            <Link href={"/investor-form"} className="font-semibold text-primary hover:text-primary/80 transition-colors" onClick={toggleMobileMenu}>
-                                Invest
-                            </Link>
-                            {!user && (
-                                <Link className="bg-foreground text-background hover:bg-foreground/90 rounded-full px-6 py-2 font-medium text-sm text-center transition-colors" href={"/sign-up"} onClick={toggleMobileMenu}>
-                                    SIGN IN
+                            
+                            {/* Mobile Actions */}
+                            <div className="flex flex-col gap-3 mt-6 pt-6 border-t border-gray-100">
+                                <Link 
+                                    href="/investor-form" 
+                                    className="font-raleway font-semibold text-blue-600 hover:text-blue-700 transition-colors py-2" 
+                                    onClick={toggleMobileMenu}
+                                >
+                                    Invest
                                 </Link>
-                            )}
-                            {user && <SignOutButtonVariant />}
+                                {!user && (
+                                    <Link 
+                                        className="bg-[#011f4b] text-white hover:bg-[#022c6a] rounded-xl px-3 py-2 font-raleway font-semibold text-center transition-colors text-sm" 
+                                        href="/sign-in" 
+                                        onClick={toggleMobileMenu}
+                                    >
+                                        SIGN IN
+                                    </Link>
+                                )}
+                                {user && <SignOutButtonVariant />}
+                            </div>
                         </div>
                     </motion.div>
                 )}
@@ -371,7 +421,7 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
 };
 
 function ServiceLink({ service, isOpen, onToggle }: { service: ServiceItem; isOpen: boolean; onToggle: (event: React.MouseEvent) => void; }) {
-  const linkClasses = "flex items-center text-xs font-raleway font-regular transition-colors hover:text-foreground/80";
+  const linkClasses = "flex items-center text-sm font-raleway font-medium transition-colors hover:text-blue-600";
   
   if (!service.isDropdown) {
     return (
@@ -387,21 +437,26 @@ function ServiceLink({ service, isOpen, onToggle }: { service: ServiceItem; isOp
           <Link href={service.href} className={linkClasses}>
               {service.name}
           </Link>
-          <button onClick={onToggle} className="ml-1.5 text-muted-foreground hover:text-foreground">
-              <ChevronDown className={`h-3 w-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+          <button onClick={onToggle} className="ml-2 text-gray-400 hover:text-blue-600 transition-colors">
+              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
           </button>
       </div>
       <AnimatePresence>
         {isOpen && service.dropdownItems && (
           <motion.div 
-            className="pl-4 mt-2"
+            className="pl-4 mt-3"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
           >
-            <div className="flex flex-col space-y-2 border-l border-muted-foreground/20 pl-3">
+            <div className="flex flex-col space-y-2 border-l-2 border-blue-200 pl-4">
               {service.dropdownItems.map((item, index) => (
-                <Link key={index} href={item.href} className="text-xs font-raleway font-light text-muted-foreground hover:text-foreground transition-colors">
+                <Link 
+                  key={index} 
+                  href={item.href} 
+                  className="text-sm font-raleway font-medium text-gray-600 hover:text-blue-600 transition-colors"
+                >
                   {item.name}
                 </Link>
               ))}

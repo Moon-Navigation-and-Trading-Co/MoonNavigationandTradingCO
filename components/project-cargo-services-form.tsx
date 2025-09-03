@@ -112,8 +112,12 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
     };
 
 
-    const handleError = (errors: any) => {
-        console.error("Validation errors:", errors);
+    const handleError = (errors: unknown) => {
+        // Log validation errors for debugging
+        if (process.env.NODE_ENV === 'development') {
+            // eslint-disable-next-line no-console
+            console.error("Validation errors:", errors);
+        }
     };
 
     return (
@@ -132,7 +136,7 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 <FormItem className='pb-4'>
                     <FormControl>
                         <div>
-                            <h1 className='text-xl font-semibold mb-4'>{t("Service-contract")}</h1>
+                            <h1 className='text-xl font-raleway font-medium mb-4'>{t("Service-contract")}</h1>
                             <div className='flex gap-5 p-4 items-center'>
                                 <FormItem>
                                     <FormLabel>{t('Service-contract')} <span className='text-muted-foreground text-xs'>({t("Optional")})</span></FormLabel>
@@ -163,7 +167,7 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 <FormItem className='pb-4'>
                     <FormControl>
                         <div>
-                            <h1 className='text-xl font-semibold mb-4'>Value Added Service</h1>
+                            <h1 className='text-xl font-raleway font-medium mb-4'>Value Added Service</h1>
                             <div className='flex gap-5 p-4 items-center'>
                                 <FormItem>
                                     <FormLabel>{t('request')}</FormLabel>

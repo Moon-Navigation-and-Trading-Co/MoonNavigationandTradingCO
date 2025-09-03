@@ -11,7 +11,7 @@ export default function AllServicesPage() {
         <div>
                            {/* Services Section */}
                            <section id="services">
-                    <div className="flex flex-col gap-8 bg-[#E2F1E7 px-2 py-5 rounded-2xl ">
+                    <div className="flex flex-col gap-8 bg-[#E2F1E7] px-2 py-5 rounded-2xl">
                         {/* Transportation Services */}
                         <CarouselAnimation/>
                         <TransportationServices />

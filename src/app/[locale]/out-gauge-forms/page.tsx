@@ -32,7 +32,7 @@ const Page: React.FC = () => {
         };
 
         fetchUser();
-    }, [router, supabase]); // Only run once when the component mounts
+    }, [supabase.auth]); // Include supabase.auth in dependency array
 
     if (isLoading) {
         return <div className='w-full h-[400px] flex items-center justify-center rounded-3xl'>
@@ -112,7 +112,7 @@ const Page: React.FC = () => {
     return (
         <div className='flex flex-col w-full'>
             <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('out-gauge')}</h1>
+                <h1 className='text-3xl font-raleway font-medium'>{t('out-gauge')}</h1>
                 <p className=''>{t('out-gauge-p')}</p>
             </div>
             <FormTabs tabData={tabData} />

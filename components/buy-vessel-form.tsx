@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import CompanyDetailsCard from './company-details-card-variant-1';
 import { useTranslations } from 'next-intl';
-import DatesCard from './dates-card-variant-4';
+
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Textarea } from './ui/textarea';
 
@@ -34,7 +34,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
         detailed_location: z.string().optional(),
         required_specification: z.string().min(1, { message: t("Required") }),
         budget: z.number().optional(),
-        additional_information: z.string().optional(),
+        additional_services: z.string().optional(),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("CompanyName") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
@@ -61,7 +61,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
             detailed_location: '',
             required_specification: '',
             budget: 0,
-            additional_information: '',
+            additional_services: '',
             company_details: {
                 company_name: '',
                 contact_person_name: '',
@@ -86,9 +86,8 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Routing Section */}
                 {/* <RoutingCard control={form.control} /> */}
-                <h1 className='text-2xl font-semibold'>{tt('buy-vessel')}</h1>
                 <FormItem>
-                    <h2 className='text-lg mb-2 font-semibold'>{tt('vesselDetails')}</h2>
+                    <h2 className='text-lg mb-2 font-raleway font-medium'>{tt('vesselDetails')}</h2>
                     <FormLabel>{t('vesselTypeandSize')}</FormLabel>
                     <FormControl>
                         <Controller
@@ -98,7 +97,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                                 <>
                                     <Input
                                         className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Type a container"
+                                        placeholder="Type a vessel"
                                         {...field}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
@@ -108,28 +107,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                     </FormControl>
                 </FormItem>
 
-                <FormItem>
-                    <FormLabel>{t('vesselNo')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="container.number"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        type="number"
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="No. of Vessels"
-                                        {...field}
-                                        value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
+
 
 
                 {/* Container Condition */}
@@ -164,52 +142,69 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                     <FormMessage />
                 </FormItem>
 
-                {/* Dates Section */}
-                <DatesCard control={form.control} />
+                {/* Delivery Date, Pick up location, and Detailed Location on same line */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <FormItem>
+                        <FormLabel>Delivery Date</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="date"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input
+                                            type="date"
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            placeholder="dd/mm/yyyy"
+                                            {...field}
+                                        />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>
+                                )}
+                            />
+                        </FormControl>
+                    </FormItem>
 
+                    <FormItem>
+                        <FormLabel>Pick Up Location</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="pick_up_location"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            placeholder="City, Country/Region"
+                                            {...field}
+                                        />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>
+                                )}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-                {/* Pick up location */}
-                <FormItem>
-                    <FormLabel>{tt('pick-up-loco')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`pick_up_location`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="City, Country/Region"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
-
-                {/* Detailed Location */}
-
-                <FormItem>
-                    <FormLabel>{tt('detailed-location')}  <span className="text-sm text-gray-500">({tt('optional')})</span></FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`detailed_location`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Address"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
+                    <FormItem>
+                        <FormLabel>Detailed Location (Optional)</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="detailed_location"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            placeholder="Address"
+                                            {...field}
+                                        />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>
+                                )}
+                            />
+                        </FormControl>
+                    </FormItem>
+                </div>
 
                 {/* Required Specification */}
                 <FormItem>
@@ -222,7 +217,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                             render={({ field, fieldState: { error } }) => (
                                 <>
                                     <Textarea
-                                        className="max-w-[300px] border-2 rounded-xl"
+                                        className="min-h-[150px] max-w-[800px] border-2 rounded-xl"
                                         id="required_specification"
                                         placeholder="Add any additional information"
                                         {...field}
@@ -236,8 +231,8 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
 
 
                 <FormItem>
-                    <FormLabel>{tt('budget')} <span className="text-sm text-gray-500">({tt('optional')})</span></FormLabel>
-                    <p className='text-sm text-muted-foreground'>{tt("budget-p")}</p>
+                    <FormLabel>Budget (USD) <span className="text-sm text-gray-500">(optional)</span></FormLabel>
+                    <p className='text-sm text-muted-foreground'>Share your budget in USD for purchasing the vessel, which can help determine the most suitable options.</p>
                     <FormControl>
                         <Controller
                             control={form.control}
@@ -247,10 +242,33 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                                     <Input
                                         type="number"
                                         className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Budget"
+                                        placeholder="Budget in USD"
                                         {...field}
                                         value={field.value || ''}
                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
+                            )}
+                        />
+                    </FormControl>
+                </FormItem>
+
+                {/* Additional Service or Amenities */}
+                <FormItem>
+                    <FormLabel>Additional Service or Amenities</FormLabel>
+                    <p className='text-sm text-muted-foreground'>If you require any additional services or amenities, such as crew management, insurance, specific equipment, or technical support be sure to mention them.</p>
+                    <FormControl>
+                        <Controller
+                            control={form.control}
+                            name="additional_services"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Textarea
+                                        className="min-h-[150px] max-w-[800px] border-2 rounded-xl"
+                                        placeholder="Enter any additional services or amenities required..."
+                                        {...field}
+                                        value={typeof field.value === 'string' ? field.value : ''}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -267,34 +285,10 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <div>
-                    <FormLabel htmlFor="additional_information">
-                        {tt('addServ')}
-                    </FormLabel>
-                    <p className='text-sm text-muted-foreground mb-2'>{tt('addServ-p')}</p>
 
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="additional_information"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Textarea
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        id="additional_information"
-                                        placeholder="Add any additional information"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-
-                </div>
 
                 <div className='mt-24'>
-                    <h1 className='font-semibold text-xl mb-6'>Important Information</h1>
+                    <h1 className='font-raleway font-medium text-xl mb-6'>Important Information</h1>
                     <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
                         <p>• For quote requests with long-term validity, please contact us.</p>
                         <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>

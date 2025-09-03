@@ -1,116 +1,137 @@
 "use client";
 
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
+import { useRef, useEffect, useState } from "react";
 
 const tankersIndustries = [
   {
-    img: "/industries-oil-gas.jpg",
-    title: "Oil & Gas",
-    description: "Transportation of crude, refined petroleum, and natural gas with precision and safety.",
-  },
-  {
-    img: "/industries-chemical.jpg",
-    title: "Chemical Manufacturing",
-    description: "Providing safe and reliable transport for bulk chemicals and hazardous chemicals.",
-  },
-  {
-    img: "/industries-agriculture.jpg",
     title: "Agriculture & Food Industry",
-    description: "Bulk liquid transportation solutions for edible and agricultural oils.",
+    img: "/industries-agriculture.jpg",
+    description: "Providing bulk transport solutions for edible oils and biofuels."
   },
   {
-    img: "/industries-industrial.jpg",
-    title: "Industrial & Energy Sectors",
-    description: "Supplying essential fuels and raw materials to support operational needs.",
+    title: "Oil & Gas",
+    img: "/industries-oil-gas.jpg", 
+    description: "Transporting crude oil, refined petroleum, and natural gas with precision and safety."
   },
+  {
+    title: "Chemical Manufacturing",
+    img: "/industries-chemical.jpg",
+    description: "Ensuring the safe movement of hazardous and non-hazardous chemicals."
+  },
+  {
+    title: "Industrial & Energy Sectors",
+    img: "/industries-industrial.jpg",
+    description: "Shipping essential fuels and raw materials to support operational needs."
+  }
 ];
 
-function ArrowGroup(props: { onPrev: () => void; onNext: () => void }) {
-  return (
-    <div className="absolute flex flex-row gap-2 right-0 -bottom-10 pr-4 z-20">
-      <button
-        className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-2xl text-gray-400 hover:bg-gray-100 transition"
-        onClick={props.onPrev}
-        aria-label="Previous"
-        type="button"
-      >
-        &#8592;
-      </button>
-      <button
-        className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-2xl text-gray-400 hover:bg-gray-100 transition"
-        onClick={props.onNext}
-        aria-label="Next"
-        type="button"
-      >
-        &#8594;
-      </button>
-    </div>
-  );
-}
-
 export default function TankersIndustryCarousel() {
-  const sliderRef = React.useRef<Slider | null>(null);
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 600,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    arrows: false,
-    cssEase: 'linear',
-    swipeToSlide: true,
-    centerMode: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2 },
-      },
-      {
-        breakpoint: 640,
-        settings: { slidesToShow: 1 },
-      },
-    ],
+  const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkScrollable = () => {
+      if (scrollContainerRef.current) {
+        const container = scrollContainerRef.current;
+        setShowScrollIndicator(container.scrollWidth > container.clientWidth);
+      }
+    };
+
+    checkScrollable();
+    window.addEventListener('resize', checkScrollable);
+    return () => window.removeEventListener('resize', checkScrollable);
+  }, []);
+
+  const handleScrollClick = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const scrollAmount = container.clientWidth * 0.8;
+      container.scrollBy({
+        left: direction === 'right' ? scrollAmount : -scrollAmount,
+        behavior: 'smooth'
+      });
+    }
   };
 
   return (
-    <div className="relative w-full max-w-7xl mx-auto pt-2">
-      <Slider ref={sliderRef} {...settings}>
-        {tankersIndustries.map((item, idx) => (
-          <div key={idx} className="px-2">
-            <div className="overflow-hidden rounded-[2rem] w-full aspect-[4/3] bg-[#f7f7fa] relative">
-              <Image
-                src={item.img}
-                alt={item.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 25vw"
-              />
+    <div className="relative">
+      <div 
+        ref={scrollContainerRef}
+        className="overflow-x-auto scrollbar-hide"
+      >
+        <div className="flex gap-8 min-w-max md:grid md:grid-cols-2 lg:grid-cols-4 md:min-w-0 md:gap-8">
+          {tankersIndustries.map((item, index) => (
+            <div key={index} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 w-80 flex-shrink-0 md:w-auto">
+              <div className="h-48 relative">
+                <Image 
+                  src={item.img} 
+                  alt={item.title} 
+                  fill 
+                  className="object-cover group-hover:scale-105 transition-transform duration-300" 
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="font-medium text-base mb-3 text-gray-900">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.description}</p>
+              </div>
             </div>
-            <div className="mt-4 text-center">
-              <span
-                className="block text-lg md:text-xl text-primary mb-1"
-                style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile Scroll Indicators */}
+      {showScrollIndicator && (
+        <>
+          {/* Left Arrow */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-full md:hidden">
+            <div className="bg-gradient-to-r from-white via-white to-transparent w-full h-full flex items-center justify-start pl-2">
+              <button
+                onClick={() => handleScrollClick('left')}
+                className="group bg-blue-500/20 backdrop-blur-sm rounded-full p-2 border border-blue-200/50 hover:bg-blue-500/30 hover:border-blue-300/50 transition-all duration-200"
               >
-                {item.title}
-              </span>
-              <span
-                className="block text-xs md:text-sm text-foreground"
-                style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 300 }}
-              >
-                {item.description}
-              </span>
+                <svg
+                  className="w-5 h-5 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 19l-7-7 7-7"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
-        ))}
-      </Slider>
-      <ArrowGroup
-        onPrev={() => sliderRef.current?.slickPrev()}
-        onNext={() => sliderRef.current?.slickNext()}
-      />
+
+          {/* Right Arrow */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-full md:hidden">
+            <div className="bg-gradient-to-l from-white via-white to-transparent w-full h-full flex items-center justify-end pr-2">
+              <button
+                onClick={() => handleScrollClick('right')}
+                className="group bg-blue-500/20 backdrop-blur-sm rounded-full p-2 border border-blue-200/50 hover:bg-blue-500/30 hover:border-blue-300/50 transition-all duration-200"
+              >
+                <svg
+                  className="w-5 h-5 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-200"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  strokeWidth="2.5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 } 

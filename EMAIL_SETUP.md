@@ -31,28 +31,42 @@ All the following forms now send email notifications:
 Add these to your `.env.local` file and Vercel environment variables:
 
 ```bash
-# Gmail Configuration
-GMAIL_USER=your-email@gmail.com
-GMAIL_APP_PASSWORD=your-gmail-app-password
+# CloudSmartly Email Server SMTP Configuration
+SMTP_HOST=webmail.cloudsmartly.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=quotation@moon-navigation.com
+SMTP_PASSWORD=your-email-password
 
 # Supabase Configuration (already configured)
 NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 ```
 
-## Gmail App Password Setup
+## Email Server Setup
 
-1. Go to your Google Account settings
-2. Enable 2-Factor Authentication if not already enabled
-3. Go to Security → App passwords
-4. Generate a new app password for "Mail"
-5. Use this password in `GMAIL_APP_PASSWORD`
+1. **Incoming Server (IMAP)**:
+   - Server: webmail.cloudsmartly.com
+   - Security: SSL
+   - Port: 993
+   - IMAP path prefix: Optional
+
+2. **Outgoing Server (SMTP)**:
+   - Server: webmail.cloudsmartly.com
+   - Security: SSL
+   - Port: 465
+   - Authentication: Required
+
+3. **Configuration Notes**:
+   - Use SSL encryption for both incoming and outgoing
+   - Ensure your email credentials are correct
+   - The application uses SMTP for sending emails only
 
 ## Email Recipients
 
 By default, emails are sent to:
-- `Mariiamhamdyy1@gmail.com`
-- `Farida.ashraf@hotmail.co.uk`
+- `quotation@moon-navigation.com`
+- `quotes@moon-navigation.com`
 
 You can customize recipients by passing a `recipientEmails` array to the `sendFormEmail` function.
 
@@ -105,9 +119,10 @@ For true Supabase SMTP integration:
 
 ### Email not sending
 1. Check environment variables are set correctly
-2. Verify Gmail app password is correct
+2. Verify CloudSmartly email credentials are correct
 3. Check browser console for errors
-4. Ensure Gmail account has "Less secure app access" enabled or use app password
+4. Ensure SSL settings are properly configured (port 465 with secure: true)
+5. Verify the email account has SMTP access enabled
 
 ### Form submission fails
 1. Check Supabase connection

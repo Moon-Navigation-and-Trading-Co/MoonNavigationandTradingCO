@@ -1,7 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import FormTabs from '@/components/form-tabs';
+import FormTabs from '@/components/form-tabs-variant-1';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
@@ -34,7 +34,7 @@ const Page: React.FC = () => {
         };
 
         fetchUser();
-    }, [router, supabase]); // Only run once when the component mounts
+    }, [supabase.auth]); // Include supabase.auth in dependency array
 
 
     if (isLoading) {
@@ -99,8 +99,9 @@ const Page: React.FC = () => {
 
     const tabData = [
         {
-            id: "international",
-            title: "Investor Form",
+            id: "investor",
+            title: "Investor Interest Submission",
+            description: "Submit your investment inquiry and connect with our investment opportunities team.",
             content:
                 <>
                     <InvestorForm onSubmit={submitForm} />
@@ -111,12 +112,6 @@ const Page: React.FC = () => {
 
     return (
         <div className='flex flex-col w-full'>
-
-            <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('inv-form')}</h1>
-                <p className=''>{t('inv-form-p')}</p>
-            </div>
-
             <FormTabs tabData={tabData} />
             <FAQSearch category="investment-opportunities" />
         </div>

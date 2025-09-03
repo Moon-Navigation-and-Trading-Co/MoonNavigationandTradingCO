@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { useTranslations } from "next-intl";
 import { Controller } from "react-hook-form";
 import AdditionalContactFields from './additional-contact-fields';
+import { SearchableCountrySelect } from './searchable-country-select';
 
 const CompanyDetailsCard = ({ control }: { control: any }) => {
     // Get Content
@@ -10,7 +11,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
 
     return (
         <div className="company-details-card">
-            <h1 className='text-xl font-semibold my-6'>{t('companyDetails')}</h1>
+            <h1 className='text-xl font-medium my-6 font-raleway'>{t('companyDetails')}</h1>
 
             <div className='grid grid-cols-2 gap-5 px-4'>
                 <div>
@@ -61,7 +62,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                         </FormControl>
                     </FormItem>
                 </div>
-                <div>
+                <div className="col-span-2">
                     <FormItem>
                         <FormLabel>{t('countryOfOrigin')}</FormLabel>
                         <FormControl>
@@ -70,7 +71,12 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                                 name="company_details.country_of_origin"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Input className=" max-w-[300px] border-2 rounded-xl" placeholder="City, Country/Region" {...field} />
+                                        <SearchableCountrySelect
+                          value={field.value}
+                          onValueChange={field.onChange}
+                          placeholder="Select country"
+                          className="w-full max-w-[300px]"
+                        />
                                         {error && <p className="text-red-500">{error.message}</p>}
                                     </>)}
                             />

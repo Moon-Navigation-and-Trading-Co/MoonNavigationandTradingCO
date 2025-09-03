@@ -1,7 +1,9 @@
-"use client"
+"use client";
+
+import { generateQuotationNumber } from "@/utils/quotation/generator";
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import FormTabs from '@/components/form-tabs';
+import FormTabs from '@/components/form-tabs-variant-1';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast"
 import { redirect } from 'next/navigation';
@@ -34,7 +36,7 @@ const Page: React.FC = () => {
         };
 
         fetchUser();
-    }, [router, supabase]); // Only run once when the component mounts
+    }, [supabase.auth]); // Include supabase.auth in dependency array
 
 
     if (isLoading) {
@@ -72,7 +74,8 @@ const Page: React.FC = () => {
             title: formData.company_details.title,
             country_of_origin: formData.company_details.country_of_origin,
             company_email: formData.company_details.company_email,
-            phone_number: formData.company_details.phone_number
+            phone_number: formData.company_details.phone_number,
+            quotation_number: await generateQuotationNumber("international_trading")
         };
 
 
@@ -114,22 +117,15 @@ const Page: React.FC = () => {
 
     const tabData = [
         {
-            id: "international",
-            title: "International Trading",
-            content:
-                <>
-                    <InternationalTradingForm onSubmit={submitForm} />
-                </>
+            id: "international-trading",
+            title: "International Trading Services",
+            description: "Complete international trading and logistics services",
+            content: <InternationalTradingForm onSubmit={submitForm} />
         }
     ]
 
-
     return (
         <div className='flex flex-col w-full'>
-            <div className='mt-20 flex flex-col gap-5 px-4'>
-                <h1 className='text-3xl font-bold'>{t('international')}</h1>
-                <p className=''>{t('international-p')}</p>
-            </div>
             <FormTabs tabData={tabData} />
             <FAQSearch category="international-trading" />
         </div>

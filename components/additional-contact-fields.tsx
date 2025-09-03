@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Controller } from "react-hook-form";
 import RequestQuoteButton from './RequestQuoteButton';
 import { Mail, Phone } from 'lucide-react';
+import { PhoneInput } from '@/components/phone-input';
 
 interface AdditionalContactFieldsProps {
   control: any;
@@ -91,10 +92,14 @@ const AdditionalContactFields: React.FC<AdditionalContactFieldsProps> = ({
                   name="company_details.additional_phone_number"
                   render={({ field, fieldState: { error } }) => (
                     <>
-                      <Input 
-                        className="max-w-[300px] border-2 rounded-xl" 
-                        placeholder="+123456789" 
-                        {...field} 
+                      <PhoneInput
+                        value={field.value}
+                        onChange={(value) => field.onChange(value)}
+                        defaultCountry="EG"
+                        international
+                        countryCallingCodeEditable={false}
+                        placeholder="Enter additional phone number"
+                        className="max-w-[300px] border-2 rounded-xl"
                       />
                       {error && <p className="text-red-500">{error.message}</p>}
                     </>

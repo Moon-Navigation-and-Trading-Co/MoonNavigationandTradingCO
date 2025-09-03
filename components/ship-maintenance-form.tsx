@@ -162,14 +162,11 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-                {/* Header */}
-                <div className="space-y-4">
-                    <h2 className="text-2xl font-bold">Docking and Maintenance</h2>
-                </div>
+
 
                 {/* Vessel Information */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Vessel Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Vessel Information</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -326,7 +323,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Required Service */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Required Service</h3>
+                    <h3 className="text-xl font-raleway font-medium">Required Service</h3>
                     <p className="text-sm text-muted-foreground">(Please check all that apply and provide related details.)</p>
                     
                     <div className="space-y-6">
@@ -518,7 +515,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Dry Docking / Afloat Repairs */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Dry Docking / Afloat Repairs</h3>
+                    <h3 className="text-xl font-raleway font-medium">Dry Docking / Afloat Repairs</h3>
                     
                     <div className="space-y-3">
                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -536,7 +533,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                             </FormControl>
                             <FormLabel className="font-normal">Dry Docking</FormLabel>
                         </FormItem>
-                        <p className="text-sm text-muted-foreground ml-6">Note: Docking may be performed via floating dock depending on the vessel's specifications and dock availability.</p>
+                        <p className="text-sm text-muted-foreground ml-6">Note: Docking may be performed via floating dock depending on the vessel&apos;s specifications and dock availability.</p>
 
                         <FormItem className="flex items-center space-x-3 space-y-0">
                             <FormControl>
@@ -710,7 +707,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Mechanical / Technical Services */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Mechanical / Technical Services</h3>
+                    <h3 className="text-xl font-raleway font-medium">Mechanical / Technical Services</h3>
                     
                     <div className="space-y-3">
                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -869,7 +866,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Declare the Requested Services in Details */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Declare the Requested Services in Details</h3>
+                    <h3 className="text-xl font-raleway font-medium">Declare the Requested Services in Details</h3>
                     <p className="text-sm text-muted-foreground">Please declare a detailed description of the services you require, including the nature of the work, any known issues, specific technical tasks, urgency, and special instructions.</p>
                     <FormItem>
                         <FormLabel>Detailed Description *</FormLabel>
@@ -889,7 +886,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Supporting files */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Supporting files (Optional)</h3>
+                    <h3 className="text-xl font-raleway font-medium">Supporting files (Optional)</h3>
                     <p className="text-sm text-muted-foreground">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
                     <FormItem>
                         <FormLabel>Upload Files</FormLabel>
@@ -909,7 +906,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
                 {/* Additional Information */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Additional Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Additional Information</h3>
                     <FormItem>
                         <FormLabel>Special Requests / Notes</FormLabel>
                         <FormControl>
@@ -929,15 +926,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                {/* Important Information */}
-                <div className="space-y-4 p-4 bg-muted rounded-lg">
-                    <h3 className="text-lg font-semibold">Important Information</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• For quote requests with long-term validity, please contact us.</li>
-                        <li>• Please do not enter personal or financial information, such as credit card details or debit card details, anywhere in your request.</li>
-                        <li>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</li>
-                    </ul>
-                </div>
+
 
                 <Button type="submit" className="mt-8 w-[200px]">
                     Submit

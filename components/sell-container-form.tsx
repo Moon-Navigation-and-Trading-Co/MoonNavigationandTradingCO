@@ -6,19 +6,36 @@ import { number, z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import CompanyDetailsCard from './company-details-card-variant-1';
 import { useTranslations } from 'next-intl';
 import DatesCard from './dates-card-variant-3';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Textarea } from './ui/textarea';
 
-
-
 // 1. Define a type-safe form handler using z.infer
 const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
+
+    // Standard container types and sizes (14 most commonly used)
+    const containerTypes = [
+        "20' Dry Container",
+        "40' Dry Container", 
+        "40' High Cube Dry Container",
+        "20' Reefer Container",
+        "40' Reefer Container",
+        "40' High Cube Reefer Container",
+        "20' Open Top Container",
+        "40' Open Top Container",
+        "40' High Cube Open Top Container",
+        "20' Flat Rack Container",
+        "40' Flat Rack Container",
+        "20' Tank Container",
+        "40' Tank Container",
+        "40' Platform Container"
+    ];
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
@@ -33,6 +50,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
         pick_up_location: z.string().min(1, { message: t("Required") }),
         drop_off_location: z.string().min(1, { message: t("Required") }),
         rental_duration: z.number().min(1, { message: t("Required") }),
+        duration_unit: z.enum(["days", "weeks", "months"]),
         detailed_location: z.string().optional(),
         budget: z.number().optional(),
         additional_information: z.string().optional(),
@@ -62,6 +80,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
             drop_off_location: '',
             detailed_location: '',
             rental_duration: 0,
+            duration_unit: 'days',
             budget: 0,
             additional_information: '',
             company_details: {
@@ -73,7 +92,6 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
                 additional_email: '',
                 phone_number: '',
                 additional_phone_number: ''
-
             }
         }
     });
@@ -86,245 +104,325 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-                {/* Routing Section */}
-                {/* <RoutingCard control={form.control} /> */}
-                <h1 className='text-2xl font-semibold'>{tt('buy-container')}</h1>
-                <FormItem>
-                    <h2 className='text-lg mb-2 font-semibold'>{tt('containerDetails')}</h2>
-                    <FormLabel>{t('containerTypeandSize')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`container.type`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Type a container"
-                                        {...field}
+                
+                {/* Container Details Section */}
+                <div className="">
+                    <h1 className='text-xl font-raleway font-medium'>Container Details</h1>
+                    <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
+                        {/* Container Type and Number on same line */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <FormItem>
+                                <FormLabel>Container Type and Size</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name={`container.type`}
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Select onValueChange={field.onChange} value={field.value}>
+                                                    <SelectTrigger className="w-full max-w-[300px] border-2 rounded-xl">
+                                                        <SelectValue placeholder="Select container type" />
+                                                    </SelectTrigger>
+                                                    <SelectContent className="max-h-[300px]">
+                                                        {containerTypes.map((type) => (
+                                                            <SelectItem key={type} value={type}>
+                                                                {type}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>
+                                        )}
                                     />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
+                                </FormControl>
+                            </FormItem>
 
-                <FormItem>
-                    <FormLabel>{t('containerNo')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="container.number"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        type="number"
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="No. of Containers"
-                                        {...field}
-                                        value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                            <FormItem>
+                                <FormLabel>Number of Containers</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="container.number"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input
+                                                    type="number"
+                                                    className="w-full max-w-[300px] border-2 rounded-xl"
+                                                    placeholder="No. of Containers"
+                                                    {...field}
+                                                    value={field.value || ''}
+                                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>
+                                        )}
                                     />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
+                                </FormControl>
+                            </FormItem>
+                        </div>
 
-
-                {/* Container Condition */}
-                <FormItem className="space-y-3">
-                    <FormLabel className='text-lg'>{t('containerCondition')}</FormLabel>
-                    <Controller
-                        control={form.control}
-                        name="container.condition" // Use the correct form field name
-                        defaultValue="new" // Set a default value
-                        render={({ field, fieldState: { error } }) => (
-                            <RadioGroup
-                                onValueChange={field.onChange} // Update form state
-                                value={field.value} // The selected value
-                                className="flex flex-col space-y-1"
-                            >
-                                {/* sea Transportation Method */}
-                                <div className="flex items-center space-x-3">
-                                    <RadioGroupItem value="new" />
-                                    <FormLabel className="font-normal">{t("new")}</FormLabel>
-                                </div>
-
-                                <div className="flex items-center space-x-3">
-                                    <RadioGroupItem value="one-trip" />
-                                    <FormLabel className="font-normal">{t("one-trip")}</FormLabel>
-                                </div>
-
-                                {/* ULD Transportation Method */}
-                                <div className="flex items-center space-x-3">
-                                    <RadioGroupItem value="used" />
-                                    <FormLabel className="font-normal">{t("used")}</FormLabel>
-                                </div>
-
-
-                            </RadioGroup>
-                        )}
-                    />
-                    <FormMessage />
-                </FormItem>
-
-                {/* Rental Duration */}
-                <FormItem>
-                    <FormLabel>{t('rental-duration')} </FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="rental_duration"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        type="number"
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Rental Duration"
-                                        {...field}
-                                        value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
+                        {/* Container Condition */}
+                        <FormItem className="space-y-3">
+                            <FormLabel className='text-base font-medium'>Container Condition</FormLabel>
+                            <Controller
+                                control={form.control}
+                                name="container.condition"
+                                defaultValue="new"
+                                render={({ field, fieldState: { error } }) => (
+                                    <RadioGroup
+                                        onValueChange={field.onChange}
+                                        value={field.value}
+                                        className="flex flex-col space-y-1"
+                                    >
+                                        <div className="flex items-center space-x-3">
+                                            <RadioGroupItem value="new" />
+                                            <FormLabel className="font-normal">New</FormLabel>
+                                        </div>
+                                        <div className="flex items-center space-x-3">
+                                            <RadioGroupItem value="one-trip" />
+                                            <FormLabel className="font-normal">One Trip</FormLabel>
+                                        </div>
+                                        <div className="flex items-center space-x-3">
+                                            <RadioGroupItem value="used" />
+                                            <FormLabel className="font-normal">Used</FormLabel>
+                                        </div>
+                                    </RadioGroup>
+                                )}
+                            />
+                            <FormMessage />
+                        </FormItem>
+                    </div>
+                </div>
 
                 {/* Dates Section */}
-                <DatesCard control={form.control} />
+                <div className="">
+                    <h1 className='text-xl font-raleway font-medium'>Dates</h1>
+                    <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
+                        <FormItem>
+                            <FormLabel>Pick-up Date</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="date"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input
+                                                type="date"
+                                                className="w-full max-w-[300px] border-2 rounded-xl"
+                                                {...field}
+                                            />
+                                            {error && <p className="text-red-500">{error.message}</p>}
+                                        </>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+                    </div>
+                </div>
 
-                {/* Pick up location */}
-                <FormItem>
-                    <FormLabel>{tt('pick-up-loco')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`pick_up_location`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="City, Country/Region"
-                                        {...field}
+                {/* Location Details */}
+                <div className="">
+                    <h1 className='text-xl font-raleway font-medium'>Location Details</h1>
+                    <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
+                        {/* Pick-up and Drop-off Locations on same line */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <FormItem>
+                                <FormLabel>Pick-up Location</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name={`pick_up_location`}
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input
+                                                    className="w-full max-w-[300px] border-2 rounded-xl"
+                                                    placeholder="City, Country/Region"
+                                                    {...field}
+                                                />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>
+                                        )}
                                     />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
+                                </FormControl>
+                            </FormItem>
+
+                            <FormItem>
+                                <FormLabel>Drop-off Location</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name={`drop_off_location`}
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input
+                                                    className="w-full max-w-[300px] border-2 rounded-xl"
+                                                    placeholder="City, Country/Region"
+                                                    {...field}
+                                                />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        </div>
+
+                        <FormItem>
+                            <FormLabel>Detailed Location Information <span className='text-muted-foreground text-xs'>(Optional)</span></FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="detailed_location"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Textarea
+                                                className="w-full max-w-[300px] border-2 rounded-xl"
+                                                placeholder="Provide specific address or location details..."
+                                                {...field}
+                                                value={typeof field.value === 'string' ? field.value : ''}
+                                            />
+                                            {error && <p className="text-red-500">{error.message}</p>}
+                                        </>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+                    </div>
+                </div>
+
+                {/* Rental Terms */}
+                <div className="">
+                    <h1 className='text-xl font-raleway font-medium'>Rental Terms</h1>
+                    <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
+                        <FormItem>
+                            <FormLabel>Rental Duration</FormLabel>
+                            <div className="flex gap-2 items-start">
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="rental_duration"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <div className="flex flex-col">
+                                                <Input
+                                                    type="number"
+                                                    className="w-[200px] border-2 rounded-xl"
+                                                    placeholder="Enter duration"
+                                                    {...field}
+                                                    value={field.value || ''}
+                                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                />
+                                                {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                            </div>
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="duration_unit"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <div className="flex flex-col">
+                                                <Select onValueChange={field.onChange} value={field.value}>
+                                                    <SelectTrigger className="w-[120px] border-2 rounded-xl">
+                                                        <SelectValue placeholder="Unit" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="days">Days</SelectItem>
+                                                        <SelectItem value="weeks">Weeks</SelectItem>
+                                                        <SelectItem value="months">Months</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                                {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                            </div>
+                                        )}
+                                    />
+                                </FormControl>
+                            </div>
+                        </FormItem>
+                    </div>
+                </div>
+
+                {/* Budget & Additional Information */}
+                <FormItem className='pb-4'>
+                    <FormControl>
+                        <div>
+                            <h1 className='text-xl font-raleway font-medium mb-4'>Budget & Additional Information</h1>
+                            <div className='flex gap-5 p-4 items-center'>
+                                <FormItem>
+                                    <FormLabel>Budget (USD) <span className='text-muted-foreground text-xs'>(Optional)</span></FormLabel>
+                                    <p className='text-sm text-muted-foreground'>Please specify your budget range in USD for renting the container(s).</p>
+                                    <FormControl>
+                                        <Controller
+                                            control={form.control}
+                                            name="budget"
+                                            render={({ field, fieldState: { error } }) => (
+                                                <>
+                                                    <Input
+                                                        type="number"
+                                                        className="w-full max-w-[300px] border-2 rounded-xl"
+                                                        placeholder="Budget in USD"
+                                                        {...field}
+                                                        value={field.value || ''}
+                                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                    />
+                                                    {error && <p className="text-red-500">{error.message}</p>}
+                                                </>
+                                            )}
+                                        />
+                                    </FormControl>
+                                </FormItem>
+                            </div>
+                        </div>
                     </FormControl>
                 </FormItem>
 
-                <FormItem>
-                    <FormLabel>{tt('drop-off-loco')}</FormLabel>
+                {/* Additional Information */}
+                <FormItem className='pb-4'>
                     <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`drop_off_location`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="City, Country/Region"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
+                        <div>
+                            <h1 className='text-xl font-raleway font-medium mb-4'>Additional Information</h1>
+                            <div className='flex gap-5 p-4 items-center'>
+                                <FormItem>
+                                    <FormLabel>Additional requirements or specifications</FormLabel>
+                                    <FormControl>
+                                        <Controller
+                                            control={form.control}
+                                            name="additional_information"
+                                            render={({ field, fieldState: { error } }) => (
+                                                <>
+                                                    <Textarea
+                                                        className="w-full max-w-[1200px] border-2 rounded-xl"
+                                                        placeholder="Please provide any additional information about your container rental requirements..."
+                                                        rows={6}
+                                                        {...field}
+                                                        value={typeof field.value === 'string' ? field.value : ''}
+                                                    />
+                                                    {error && <p className="text-red-500">{error.message}</p>}
+                                                </>
+                                            )}
+                                        />
+                                    </FormControl>
+                                </FormItem>
+                            </div>
+                        </div>
                     </FormControl>
                 </FormItem>
-
-                <FormItem>
-                    <FormLabel>{tt('detailed-location')}  <span className="text-sm text-gray-500">({tt('optional')})</span></FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`detailed_location`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Address"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
-
-                <FormItem>
-                    <FormLabel>{tt('budget')} <span className="text-sm text-gray-500">({tt('optional')})</span></FormLabel>
-                    <p className='text-sm text-muted-foreground'>{tt("budget-p")}</p>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="budget"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        type="number"
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Budget"
-                                        {...field}
-                                        value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
-
-
-
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <div>
-                    <FormLabel htmlFor="additional_information">
-                        {tt('additionalInformation')}
-                    </FormLabel>
-                    <p className='text-sm text-muted-foreground mb-2'>(such as specific handling requirements or any special permits needed for the container)</p>
-
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="additional_information"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Textarea
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        id="additional_information"
-                                        placeholder="Add any additional information"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </div>
-
-
-                <div className='mt-24'>
-                    <h1 className='font-semibold text-xl mb-6'>Important Information</h1>
-                    <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
-                        <p>• For quote requests with long-term validity, please contact us.</p>
-                        <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>
-                        <p>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</p>
+                {/* Important Information */}
+                <div className="">
+                    <h1 className='text-xl font-raleway font-medium'>Important Information</h1>
+                    <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
+                        <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
+                            <p>• For quote requests with long-term validity, please contact us.</p>
+                            <p>• Please do not enter personal or financial information, such as credit card details or debit card details, anywhere in your request.</p>
+                            <p>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</p>
+                        </div>
                     </div>
                 </div>
-
-
 
                 <Button type="submit" className="mt-4 w-[200px]">
                     Submit

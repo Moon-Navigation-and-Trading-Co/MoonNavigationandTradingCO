@@ -12,6 +12,7 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Checkbox } from './ui/checkbox';
 import RequestQuoteButton from './RequestQuoteButton';
 import { Mail, Phone } from 'lucide-react';
+import { SearchableCountrySelect } from './searchable-country-select';
 
 // 1. Define a type-safe form handler using z.infer
 const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
@@ -41,7 +42,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
         investor_type_other: z.string().optional(),
         investment_range: z.string().min(1, { message: t("Required") }),
         average_check_size: z.string().optional(),
-        preferred_investment_type: z.string().min(1, { message: t("Required") }),
+        preferred_investment_type: z.array(z.string()).min(1, { message: t("Required") }),
         preferred_investment_type_other: z.string().optional(),
 
         // Area of Interest
@@ -79,7 +80,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
             investor_type_other: '',
             investment_range: '',
             average_check_size: '',
-            preferred_investment_type: '',
+            preferred_investment_type: [],
             preferred_investment_type_other: '',
             areas_of_interest: [],
             areas_of_interest_other: '',
@@ -112,7 +113,6 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Header */}
                 <div className="space-y-4">
-                    <h2 className="text-2xl font-bold">Investment Inquiry Form</h2>
                     <p className="text-muted-foreground">
                         Thank you for your interest in investing in Moon Navigation and Trading Co. Please complete the form below and our team will get in touch.
                     </p>
@@ -120,199 +120,218 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Personal / Company Information */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Personal / Company Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Personal / Company Information</h3>
                     
-                    <FormItem>
-                        <FormLabel>Full Name *</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="full_name"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Full Name" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
+                    {/* First Row: Full Name, Company Name */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <FormLabel className="text-sm font-medium mb-2 block">Full Name *</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="full_name"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input className="w-full max-w-[280px] h-10 border-2 rounded-xl" placeholder="Insert Full Name" {...field} />
+                                            {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                        </>)}
+                                />
+                            </FormControl>
+                        </div>
 
-                    <FormItem>
-                        <FormLabel>Company Name (if applicable)</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="company_name"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Company Name" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
-
-                    <FormItem>
-                        <FormLabel>Position / Title *</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="position_title"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Job Title" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
-
-                    <FormItem>
-                        <FormLabel>Nationality *</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="nationality"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Country" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
-
-                    <FormItem>
-                        <FormLabel>Email Address *</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="email"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Email Address" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
-
-                    {/* Additional Email */}
-                    <div className="space-y-3">
-                        {!showAdditionalEmail && (
-                            <RequestQuoteButton
-                                variant="outline"
-                                onClick={() => setShowAdditionalEmail(true)}
-                                className="w-fit"
-                            >
-                                <Mail className="h-4 w-4 mr-2" />
-                                Add Additional Email
-                            </RequestQuoteButton>
-                        )}
-                        
-                        {showAdditionalEmail && (
-                            <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
-                                <FormItem>
-                                    <FormLabel>Additional Email Address</FormLabel>
-                                    <FormControl>
-                                        <Controller
-                                            control={form.control}
-                                            name="additional_email"
-                                            render={({ field, fieldState: { error } }) => (
-                                                <>
-                                                    <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Email Address" {...field} />
-                                                    {error && <p className="text-red-500">{error.message}</p>}
-                                                </>)}
-                                        />
-                                    </FormControl>
-                                </FormItem>
-                                
-                                <RequestQuoteButton
-                                    variant="secondary"
-                                    onClick={() => setShowAdditionalEmail(false)}
-                                    className="w-fit"
-                                >
-                                    Remove Additional Email
-                                </RequestQuoteButton>
-                            </div>
-                        )}
+                        <div>
+                            <FormLabel className="text-sm font-medium mb-2 block">Company Name (if applicable)</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="company_name"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input className="w-full max-w-[280px] h-10 border-2 rounded-xl" placeholder="Insert Company Name" {...field} />
+                                            {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                        </>)}
+                                />
+                            </FormControl>
+                        </div>
                     </div>
 
-                    <FormItem>
-                        <FormLabel>Phone Number *</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="phone_number"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Number" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
+                    {/* Second Row: Position/Title, Nationality */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <FormLabel className="text-sm font-medium mb-2 block">Position / Title *</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="position_title"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input className="w-full max-w-[280px] h-10 border-2 rounded-xl" placeholder="Insert Job Title" {...field} />
+                                            {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                        </>)}
+                                />
+                            </FormControl>
+                        </div>
 
-                    {/* Additional Phone */}
-                    <div className="space-y-3">
-                        {!showAdditionalPhone && (
-                            <RequestQuoteButton
-                                variant="outline"
-                                onClick={() => setShowAdditionalPhone(true)}
-                                className="w-fit"
-                            >
-                                <Phone className="h-4 w-4 mr-2" />
-                                Add Additional Phone
-                            </RequestQuoteButton>
-                        )}
-                        
-                        {showAdditionalPhone && (
-                            <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
-                                <FormItem>
-                                    <FormLabel>Additional Phone Number</FormLabel>
-                                    <FormControl>
-                                        <Controller
-                                            control={form.control}
-                                            name="additional_phone_number"
-                                            render={({ field, fieldState: { error } }) => (
-                                                <>
-                                                    <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Number" {...field} />
-                                                    {error && <p className="text-red-500">{error.message}</p>}
-                                                </>)}
-                                        />
-                                    </FormControl>
-                                </FormItem>
-                                
-                                <RequestQuoteButton
-                                    variant="secondary"
-                                    onClick={() => setShowAdditionalPhone(false)}
-                                    className="w-fit"
-                                >
-                                    Remove Additional Phone
-                                </RequestQuoteButton>
-                            </div>
-                        )}
+                        <div>
+                            <FormLabel className="text-sm font-medium mb-2 block">Nationality *</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="nationality"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <SearchableCountrySelect
+                                              value={field.value}
+                                              onValueChange={field.onChange}
+                                              placeholder="Select country"
+                                              className="w-full max-w-[280px]"
+                                            />
+                                            {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                        </>)}
+                                />
+                            </FormControl>
+                        </div>
                     </div>
 
-                    <FormItem>
-                        <FormLabel>City & Country of Residence *</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="city_country_residence"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert Location" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
+                    {/* Third Row: Email Address, Phone Number */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <FormLabel className="text-sm font-medium mb-2 block">Email Address *</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="email"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input className="w-full max-w-[280px] h-10 border-2 rounded-xl" placeholder="Insert Email Address" {...field} />
+                                            {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                        </>)}
+                                />
+                            </FormControl>
+                            
+                            {/* Add Additional Email Button - Under Email Field */}
+                            <div className="mt-2">
+                                {!showAdditionalEmail && (
+                                    <RequestQuoteButton
+                                        variant="outline"
+                                        onClick={() => setShowAdditionalEmail(true)}
+                                        className="w-fit text-sm"
+                                    >
+                                        <Mail className="h-4 w-4 mr-2" />
+                                        Add Additional Email
+                                    </RequestQuoteButton>
+                                )}
+                            </div>
+                        </div>
+
+                        <div>
+                            <FormLabel className="text-sm font-medium mb-2 block">Phone Number *</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="phone_number"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input className="w-full max-w-[280px] h-10 border-2 rounded-xl" placeholder="Insert Number" {...field} />
+                                            {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                        </>)}
+                                />
+                            </FormControl>
+                            
+                            {/* Add Additional Phone Button - Under Phone Field */}
+                            <div className="mt-2">
+                                {!showAdditionalPhone && (
+                                    <RequestQuoteButton
+                                        variant="outline"
+                                        onClick={() => setShowAdditionalPhone(true)}
+                                        className="w-fit text-sm"
+                                    >
+                                        <Phone className="h-4 w-4 mr-2" />
+                                        Add Additional Phone
+                                    </RequestQuoteButton>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Additional Email Expanded Section */}
+                    {showAdditionalEmail && (
+                        <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <FormItem>
+                                <FormLabel>Additional Email Address</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="additional_email"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input className="max-w-[280px] border-2 rounded-xl" placeholder="Insert Email Address" {...field} />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>)}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                            
+                            <RequestQuoteButton
+                                variant="secondary"
+                                onClick={() => setShowAdditionalEmail(false)}
+                                className="w-fit"
+                            >
+                                Remove Additional Email
+                            </RequestQuoteButton>
+                        </div>
+                    )}
+
+                    {/* Fourth Row: City & Country of Residence */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <FormLabel className="text-sm font-medium mb-2 block">City & Country of Residence *</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="city_country_residence"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input className="w-full max-w-[280px] h-10 border-2 rounded-xl" placeholder="Insert Location" {...field} />
+                                            {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
+                                        </>)}
+                                />
+                            </FormControl>
+                        </div>
+                    </div>
+
+                    {/* Additional Phone Expanded Section */}
+                    {showAdditionalPhone && (
+                        <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <FormItem>
+                                <FormLabel>Additional Phone Number</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="additional_phone_number"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input className="max-w-[280px] border-2 rounded-xl" placeholder="Insert Number" {...field} />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>)}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                            
+                            <RequestQuoteButton
+                                variant="secondary"
+                                onClick={() => setShowAdditionalPhone(false)}
+                                className="w-fit"
+                            >
+                                Remove Additional Phone
+                            </RequestQuoteButton>
+                        </div>
+                    )}
                 </div>
 
                 {/* Investment Interest */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Investment Interest</h3>
+                    <h3 className="text-xl font-raleway font-medium">Investment Interest</h3>
                     
                     <FormItem className="space-y-3">
                         <FormLabel>Type of Investor *</FormLabel>
@@ -459,47 +478,88 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                                 name="preferred_investment_type"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <RadioGroup
-                                            onValueChange={field.onChange}
-                                            value={field.value}
-                                            className="flex flex-col space-y-1"
-                                        >
+                                        <div className="flex flex-col space-y-2">
                                             <FormItem className="flex items-center space-x-3 space-y-0">
                                                 <FormControl>
-                                                    <RadioGroupItem value="equity" />
+                                                    <Checkbox
+                                                        checked={field.value?.includes("equity")}
+                                                        onCheckedChange={(checked) => {
+                                                            if (checked) {
+                                                                field.onChange([...field.value, "equity"]);
+                                                            } else {
+                                                                field.onChange(field.value?.filter((value: string) => value !== "equity"));
+                                                            }
+                                                        }}
+                                                    />
                                                 </FormControl>
                                                 <FormLabel className="font-normal">Equity</FormLabel>
                                             </FormItem>
 
                                             <FormItem className="flex items-center space-x-3 space-y-0">
                                                 <FormControl>
-                                                    <RadioGroupItem value="partnership" />
+                                                    <Checkbox
+                                                        checked={field.value?.includes("partnership")}
+                                                        onCheckedChange={(checked) => {
+                                                            if (checked) {
+                                                                field.onChange([...field.value, "partnership"]);
+                                                            } else {
+                                                                field.onChange(field.value?.filter((value: string) => value !== "partnership"));
+                                                            }
+                                                        }}
+                                                    />
                                                 </FormControl>
                                                 <FormLabel className="font-normal">Partnership</FormLabel>
                                             </FormItem>
 
                                             <FormItem className="flex items-center space-x-3 space-y-0">
                                                 <FormControl>
-                                                    <RadioGroupItem value="project_based" />
+                                                    <Checkbox
+                                                        checked={field.value?.includes("project_based")}
+                                                        onCheckedChange={(checked) => {
+                                                            if (checked) {
+                                                                field.onChange([...field.value, "project_based"]);
+                                                            } else {
+                                                                field.onChange(field.value?.filter((value: string) => value !== "project_based"));
+                                                            }
+                                                        }}
+                                                    />
                                                 </FormControl>
                                                 <FormLabel className="font-normal">Project-Based</FormLabel>
                                             </FormItem>
 
                                             <FormItem className="flex items-center space-x-3 space-y-0">
                                                 <FormControl>
-                                                    <RadioGroupItem value="undecided" />
+                                                    <Checkbox
+                                                        checked={field.value?.includes("undecided")}
+                                                        onCheckedChange={(checked) => {
+                                                            if (checked) {
+                                                                field.onChange([...field.value, "undecided"]);
+                                                            } else {
+                                                                field.onChange(field.value?.filter((value: string) => value !== "undecided"));
+                                                            }
+                                                        }}
+                                                    />
                                                 </FormControl>
                                                 <FormLabel className="font-normal">Undecided / Seeking Advice</FormLabel>
                                             </FormItem>
 
                                             <FormItem className="flex items-center space-x-3 space-y-0">
                                                 <FormControl>
-                                                    <RadioGroupItem value="other" />
+                                                    <Checkbox
+                                                        checked={field.value?.includes("other")}
+                                                        onCheckedChange={(checked) => {
+                                                            if (checked) {
+                                                                field.onChange([...field.value, "other"]);
+                                                            } else {
+                                                                field.onChange(field.value?.filter((value: string) => value !== "other"));
+                                                            }
+                                                        }}
+                                                    />
                                                 </FormControl>
                                                 <FormLabel className="font-normal">Other (Specify)</FormLabel>
                                             </FormItem>
-                                        </RadioGroup>
-                                        {field.value === 'other' && (
+                                        </div>
+                                        {field.value?.includes('other') && (
                                             <Input 
                                                 className="max-w-[400px] border-2 rounded-xl mt-2" 
                                                 placeholder="Please specify" 
@@ -515,7 +575,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Area of Interest */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Area of Interest</h3>
+                    <h3 className="text-xl font-raleway font-medium">Area of Interest</h3>
                     <p className="text-muted-foreground">(Which sectors or services are you most interested in?)</p>
                     
                     <FormItem className="space-y-3">
@@ -577,7 +637,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Preferred Interest Rate */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Preferred Interest Rate (for Financial Investment Structures) (Optional)</h3>
+                    <h3 className="text-xl font-raleway font-medium">Preferred Interest Rate (for Financial Investment Structures) (Optional)</h3>
                     <p className="text-muted-foreground">Please indicate your preference regarding the investment return structure:</p>
                     
                     <FormItem className="space-y-3">
@@ -625,7 +685,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Background & Intent */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Background & Intent</h3>
+                    <h3 className="text-xl font-raleway font-medium">Background & Intent</h3>
                     
                     <FormItem>
                         <FormLabel>Brief Background or LinkedIn Profile (Optional)</FormLabel>
@@ -635,7 +695,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                                 name="background_linkedin"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" placeholder="Insert or Link" {...field} />
+                                        <Textarea className="w-full max-w-[600px] min-h-[120px] border-2 rounded-xl" placeholder="Please provide your background information or LinkedIn profile link" {...field} />
                                         {error && <p className="text-red-500">{error.message}</p>}
                                     </>)}
                             />
@@ -700,7 +760,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
                 {/* Additional Notes */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Additional Notes or Inquiries</h3>
+                    <h3 className="text-xl font-raleway font-medium">Additional Notes or Inquiries</h3>
                     <p className="text-muted-foreground">Please include any specific comments, questions, or areas of clarification you would like us to address:</p>
                     
                     <FormItem>

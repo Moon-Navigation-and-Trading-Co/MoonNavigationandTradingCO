@@ -46,7 +46,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Input
-                                                        className="w-[300px] border-2 rounded-xl"
+                                                        className="w-full max-w-[300px] border-2 rounded-xl"
                                                         placeholder="Type the Commoditiy"
                                                         {...field}
                                                     />
@@ -91,7 +91,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                                 render={({ field, fieldState: { error } }) => (
                                                     <>
                                                         <Input
-                                                            className="w-[300px] border-2 rounded-xl"
+                                                            className="w-full max-w-[300px] border-2 rounded-xl"
                                                             placeholder="Please insert details"
                                                             {...field}
                                                             value={typeof field.value === 'string' ? field.value : ''}
@@ -111,7 +111,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                         {/* Cargo Details { length, weight, height, width } */}
 
 
-                        <div className="grid gap-5 grid-cols-1 px-4 pb-6 col-span-2 md:col-span-1">
+                        <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 px-4 pb-6 col-span-2 md:col-span-1">
                             <div>
                                 <FormLabel htmlFor="length">{t('length')}</FormLabel>
                                 <FormControl>
@@ -121,7 +121,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                         render={({ field, fieldState: { error } }) => (
                                             <>
                                                 <Input
-                                                    className="max-w-[200px] border-2 rounded-xl"
+                                                    className="w-full max-w-[280px] border-2 rounded-xl"
                                                     type="number"
                                                     placeholder="Length in cm"
                                                     {...field}
@@ -144,7 +144,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                         render={({ field, fieldState: { error } }) => (
                                             <>
                                                 <Input
-                                                    className="max-w-[200px] border-2 rounded-xl"
+                                                    className="w-full max-w-[280px] border-2 rounded-xl"
                                                     type="number"
                                                     placeholder="Width in cm"
                                                     {...field}
@@ -168,7 +168,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                         render={({ field, fieldState: { error } }) => (
                                             <>
                                                 <Input
-                                                    className="max-w-[200px] border-2 rounded-xl"
+                                                    className="w-full max-w-[280px] border-2 rounded-xl"
                                                     type="number"
                                                     placeholder="Height in cm"
                                                     {...field}
@@ -192,7 +192,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Input
-                                                        className="max-w-[200px] border-2 rounded-xl"
+                                                        className="w-full max-w-[280px] border-2 rounded-xl"
                                                         type="number"
                                                         placeholder="Weight"
                                                         {...field}
@@ -228,7 +228,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                         </div>
 
                         {/* Upload File */}
-                        <div className="grid px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-6 col-span-2">
+                        <div className="grid px-4 w-full items-center gap-1.5 mt-1 mb-6 col-span-2">
                             <FormLabel htmlFor="docs">
                                 {t('file')} <span className="text-sm text-gray-500">({t('optional')})</span>
                             </FormLabel>
@@ -239,7 +239,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <Input
-                                                className="max-w-[240px] border-2 rounded-xl"
+                                                className="w-full max-w-[240px] border-2 rounded-xl"
                                                 id="docs"
                                                 type="file"
                                                 {...field}
@@ -298,7 +298,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                         render={({ field, fieldState: { error } }) => (
                             <>
                                 <Textarea
-                                    className="max-w-[300px] border-2 rounded-xl"
+                                    className="w-full max-w-[300px] border-2 rounded-xl"
                                     id="additional_information"
                                     placeholder="Add any additional information"
                                     {...field}

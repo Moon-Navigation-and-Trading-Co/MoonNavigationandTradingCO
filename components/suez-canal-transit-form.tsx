@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 
@@ -39,6 +40,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
             commodity: z.string().min(1, { message: t("Required") }),
             quantity: z.number().min(0, { message: t("Required") }),
             total_cargo: z.string().min(1, { message: t("Required") }),
+            cargo_unit: z.string().min(1, { message: t("Required") }),
             gas_free_ammonia: z.string().min(1, { message: t("Required") }),
             military_navy_cargo: z.string().min(1, { message: t("Required") }),
             additional_details: z.string().optional(),
@@ -68,7 +70,6 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
             other_details: z.string().optional(),
         }),
         additional_notes: z.string().optional(),
-        supporting_files: z.string().optional(),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("Required") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
@@ -107,6 +108,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
                 commodity: '',
                 quantity: 0,
                 total_cargo: '',
+                cargo_unit: '',
                 gas_free_ammonia: '',
                 military_navy_cargo: '',
                 additional_details: '',
@@ -162,7 +164,6 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Header */}
                 <div className="space-y-4">
-                    <h2 className="text-2xl font-bold">Suez Canal Transit Quotation Request</h2>
                 </div>
 
                 {/* Date */}
@@ -185,7 +186,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Vessel Details */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Vessel Details</h3>
+                    <h3 className="text-xl font-raleway font-medium">Vessel Details</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -478,7 +479,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Cargo Details */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Cargo Details</h3>
+                    <h3 className="text-xl font-raleway font-medium">Cargo Details</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -520,17 +521,38 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                         <FormItem>
                             <FormLabel>Total Cargo (Barrels or Metric Tons) *</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="cargo.total_cargo"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input className="max-w-[300px] border-2 rounded-xl" placeholder="Insert Total" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
-                                />
-                            </FormControl>
+                            <div className="flex gap-2">
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="cargo.total_cargo"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Input className="max-w-[200px] border-2 rounded-xl" placeholder="Insert Total" {...field} />
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>)}
+                                    />
+                                </FormControl>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="cargo.cargo_unit"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Select onValueChange={field.onChange} value={field.value}>
+                                                    <SelectTrigger className="w-[120px] border-2 rounded-xl">
+                                                        <SelectValue placeholder="Unit" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="barrels">Barrels</SelectItem>
+                                                        <SelectItem value="metric_tons">Metric Tons</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                                {error && <p className="text-red-500">{error.message}</p>}
+                                            </>)}
+                                    />
+                                </FormControl>
+                            </div>
                         </FormItem>
                     </div>
 
@@ -635,7 +657,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Unit Carriage Details */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Unit Carriage Details</h3>
+                    <h3 className="text-xl font-raleway font-medium">Unit Carriage Details</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -702,7 +724,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Transit Information */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Transit Information</h3>
+                    <h3 className="text-xl font-raleway font-medium">Transit Information</h3>
                     
                     <div className="grid md:grid-cols-2 gap-4">
                         <FormItem>
@@ -713,7 +735,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
                                     name="transit.eta"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Input className="max-w-[300px] border-2 rounded-xl" type="datetime-local" {...field} />
+                                            <Input className="max-w-[300px] border-2 rounded-xl" type="time" {...field} />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>)}
                                 />
@@ -737,13 +759,13 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
                                                     <FormControl>
                                                         <RadioGroupItem value="northbound" />
                                                     </FormControl>
-                                                    <FormLabel className="font-normal">Northbound</FormLabel>
+                                                    <FormLabel className="font-normal">Northbound (Port Said → Suez)</FormLabel>
                                                 </FormItem>
                                                 <FormItem className="flex items-center space-x-3 space-y-0">
                                                     <FormControl>
                                                         <RadioGroupItem value="southbound" />
                                                     </FormControl>
-                                                    <FormLabel className="font-normal">Southbound</FormLabel>
+                                                    <FormLabel className="font-normal">Southbound (Suez → Port Said)</FormLabel>
                                                 </FormItem>
                                             </RadioGroup>
                                             {error && <p className="text-red-500">{error.message}</p>}
@@ -850,7 +872,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Additional Required Services */}
                 <div className="space-y-6">
-                    <h3 className="text-xl font-semibold">Additional Required Services (Optional)</h3>
+                    <h3 className="text-xl font-raleway font-medium">Additional Required Services (Optional)</h3>
                     
                     <div className="space-y-3">
                         <FormItem className="flex items-center space-x-3 space-y-0">
@@ -961,7 +983,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
 
                 {/* Additional Notes */}
                 <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Additional Notes or Special Request</h3>
+                    <h3 className="text-xl font-raleway font-medium">Additional Notes or Special Request</h3>
                     <FormItem>
                         <FormLabel>Additional Notes</FormLabel>
                         <FormControl>
@@ -978,38 +1000,12 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onS
                     </FormItem>
                 </div>
 
-                {/* Supporting files */}
-                <div className="space-y-4">
-                    <h3 className="text-xl font-semibold">Supporting files (Optional)</h3>
-                    <p className="text-sm text-muted-foreground">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-                    <FormItem>
-                        <FormLabel>Upload Files</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="supporting_files"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" type="file" multiple accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
-                </div>
+
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                {/* Important Information */}
-                <div className="space-y-4 p-4 bg-muted rounded-lg">
-                    <h3 className="text-lg font-semibold">Important Information</h3>
-                    <ul className="space-y-2 text-sm text-muted-foreground">
-                        <li>• For quote requests with long-term validity, please contact us.</li>
-                        <li>• Please do not enter personal or financial information, such as credit card details, or debit card details, anywhere in your request.</li>
-                        <li>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</li>
-                    </ul>
-                </div>
+
 
                 <Button type="submit" className="mt-8 w-[200px]">
                     Submit

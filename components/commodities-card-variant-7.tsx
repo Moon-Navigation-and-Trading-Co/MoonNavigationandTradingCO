@@ -121,7 +121,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                         render={({ field, fieldState: { error } }) => (
                                             <>
                                                 <Input
-                                                    className="max-w-[200px] border-2 rounded-xl"
+                                                    className="w-full max-w-[280px] border-2 rounded-xl"
                                                     type="number"
                                                     placeholder="Length in cm"
                                                     {...field}
@@ -144,7 +144,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                         render={({ field, fieldState: { error } }) => (
                                             <>
                                                 <Input
-                                                    className="max-w-[200px] border-2 rounded-xl"
+                                                    className="w-full max-w-[280px] border-2 rounded-xl"
                                                     type="number"
                                                     placeholder="Width in cm"
                                                     {...field}
@@ -168,7 +168,7 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                         render={({ field, fieldState: { error } }) => (
                                             <>
                                                 <Input
-                                                    className="max-w-[200px] border-2 rounded-xl"
+                                                    className="w-full max-w-[280px] border-2 rounded-xl"
                                                     type="number"
                                                     placeholder="Height in cm"
                                                     {...field}
@@ -191,14 +191,14 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                             name={`commodities.${index}.weight`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
-                                                    <Input
-                                                        className="max-w-[200px] border-2 rounded-xl"
-                                                        type="number"
-                                                        placeholder="Weight"
-                                                        {...field}
-                                                        value={field.value || ''}
-                                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                                                    />
+                                                                                                    <Input
+                                                    className="w-full max-w-[280px] border-2 rounded-xl"
+                                                    type="number"
+                                                    placeholder="Weight"
+                                                    {...field}
+                                                    value={field.value || ''}
+                                                    onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                />
                                                     {error && <p className="text-red-500">{error.message}</p>}
                                                 </>
                                             )}

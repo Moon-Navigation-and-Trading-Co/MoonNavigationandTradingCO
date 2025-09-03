@@ -25,27 +25,26 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
     // Define your Zod schema (as before)
     const formSchema = z.object({
         routing: z.object({
-            from: z.string().min(1, { message: t("From") }),
-            to: z.string().min(1, { message: t("To") }),
+            origin_type: z.enum(["egypt", "other"]),
+            origin_other: z.string().optional(),
+            destination: z.string().min(1, { message: t("Required") }),
             incoterm: z.string().min(1, { message: t("Incoterm") }),
         }),
         transportation: z.object({
             method: z.enum(["sea", "land", "air"], {
                 required_error: "You need to select a transportation method.",
             }),
-            details: z.string().min(1, { message: t("Required") }),
         }),
         commodities: z.object({
             type: z.string().min(1, { message: t("Type") }),
             quantity: z.number().min(1, { message: t("Quantity") }),
-            length: z.number().min(1, { message: t("Length") }),
-            width: z.number().min(1, { message: t("Width") }),
-            height: z.number().min(1, { message: t("Height") }),
-            weight: z.number().min(1, { message: t("Weight") }),
-            file: z.string().optional().refine(value => {
-                return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
-            }, { message: t("File") }),
-            additional_information: z.string().optional(),
+            supporting_files: z.array(z.instanceof(File)).optional(),
+            additional_commodities: z.array(z.object({
+                type: z.string().optional(),
+                quantity: z.number().optional(),
+                supporting_files: z.array(z.instanceof(File)).optional(),
+            })).optional(),
+            additional_requirements: z.string().optional(),
         }),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("CompanyName") }),
@@ -81,36 +80,11 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
-                <FormItem className='mx-4 pb-8 '>
-                    <FormLabel htmlFor="routing.incoterm" >{tt('incoterm')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="routing.incoterm"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Select onValueChange={field.onChange} value={field.value}>
-                                        <SelectTrigger className="max-w-[300px] border-2 rounded-xl">
-                                            <SelectValue placeholder="Select Incoterm" />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                            <SelectItem value="EXW">EXW – Ex Works</SelectItem>
-                                            <SelectItem value="FOB">FOB – Free on Board</SelectItem>
-                                            <SelectItem value="CFR">CFR – Cost and Freight</SelectItem>
-                                            <SelectItem value="CIF">CIF – Cost, Insurance and Freight</SelectItem>
-                                        </SelectContent>
-                                    </Select>
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>)}
-                        />
-                    </FormControl>
-                </FormItem>
+                {/* Shipping Method Section */}
+                <TransportationMethodCard control={form.control} />
 
                 {/* Commodities Section */}
                 <CommoditiesCard control={form.control} />
-
-
-                <TransportationMethodCard control={form.control} />
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />

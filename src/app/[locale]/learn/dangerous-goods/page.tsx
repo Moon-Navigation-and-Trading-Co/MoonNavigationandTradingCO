@@ -12,10 +12,46 @@ import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
+import { Award } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
+import FormTabs from "@/components/form-tabs";
+import DangerousGoodsLearnMore from "./learn-more/page";
 
 export default function DangerousCargoInfo() {
     const t = useTranslations("learn-dangerous-cargo")
     const [selectedClass, setSelectedClass] = useState(0)
+    const router = useRouter();
+    const pathname = usePathname();
+
+    // Determine active tab from path
+    let activeTab = "overview";
+    if (pathname.endsWith("/learn-more")) activeTab = "our-solutions";
+
+    const tabData = [
+        {
+            id: "overview",
+            title: "Dangerous Goods Container Shipments",
+            content: renderOverview(),
+        },
+        {
+            id: "our-solutions",
+            title: "Our Solutions",
+            content: <DangerousGoodsLearnMore />,
+        },
+    ];
+
+    // Tab to path mapping
+    const tabToPath = {
+        overview: "/learn/dangerous-goods",
+        "our-solutions": "/learn/dangerous-goods/learn-more",
+    };
+
+    function handleTabChange(tabId: string) {
+        const key = tabId as keyof typeof tabToPath;
+        if (key !== activeTab) {
+            router.push(tabToPath[key]);
+        }
+    }
 
     // Create an array of dangerous cargo classes for the accordion
     const dangerousClasses = [
@@ -69,43 +105,25 @@ export default function DangerousCargoInfo() {
     function renderOverview() {
         return (
             <>
-                {/* Image banner at the top */}
-                <div className="w-full flex justify-center mb-8 mt-10">
-                    <div className="w-full max-w-7xl">
-                        <Image
-                            src="/dangerous-cargo-banner.jpg"
-                            alt="Dangerous Cargo Banner"
-                            width={1200}
-                            height={350}
-                            className="rounded-[60px] object-cover w-full h-[220px] sm:h-[350px]"
-                            priority
-                        />
-                    </div>
-                </div>
-                {/* Two-column content below the image */}
-                <div className="w-full flex flex-col md:flex-row items-start justify-center gap-8 mb-12 max-w-7xl mx-auto">
-                    {/* Left column: title and button */}
-                    <div className="flex-1 flex flex-col items-center md:items-start w-full">
-                        <h1 className="mb-10 text-4xl font-regular text-left md:text-left w-full" style={{ fontFamily: 'Raleway, sans-serif' }}>Dangerous Goods<br />Container Shipments</h1>
-                        <Link href="/ocean-freight-forms">
-                            <RequestQuoteButton>Request a Quote</RequestQuoteButton>
-                        </Link>
-                    </div>
-                    {/* Right column: heading and description */}
-                    <div className="flex-1  rounded-2xl  p-6 font-light">
-                        <p className="text-muted-foreground mb-2 text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Dangerous Goods is the substances that pose a risk to health, safety, property, or the environment during transport.
-                            These are classified under international regulatory frameworks such as: <br />
+                {/* Content Section */}
+                <div className="w-full max-w-7xl mx-auto px-4 md:px-8 mt-16">
+                    <div className="flex flex-col md:flex-row items-start justify-center gap-8 mb-12">
+                        {/* Right column: heading and description */}
+                        <div className="flex-1 rounded-2xl p-6 font-light">
+                            <p className="text-muted-foreground mb-2 text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                Dangerous Goods is the substances that pose a risk to health, safety, property, or the environment during transport.
+                                These are classified under international regulatory frameworks such as: <br />
 
-                            IMDG Code (International Maritime Dangerous Goods)<br />
+                                IMDG Code (International Maritime Dangerous Goods)<br />
 
-                            ADR (European Agreement concerning the International Carriage of Dangerous Goods by Road)<br />
+                                ADR (European Agreement concerning the International Carriage of Dangerous Goods by Road)<br />
 
-                            IATA (International Air Transport Association – for air shipments)</p>
-                        <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            Shipping hazardous materials demands precision, strict adherence to international regulations, and specialized
-                            logistics capabilities. At Moon Navigation and Trading Co., we offer expert handling of Dangerous Goods (DG)
-                            container shipments, ensuring your cargo is transported securely, compliantly, and efficiently across global routes.</p>
+                                IATA (International Air Transport Association – for air shipments)</p>
+                            <p className="text-muted-foreground text-sm md:text-base" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                                Shipping hazardous materials demands precision, strict adherence to international regulations, and specialized
+                                logistics capabilities. At Moon Navigation and Trading Co., we offer expert handling of Dangerous Goods (DG)
+                                container shipments, ensuring your cargo is transported securely, compliantly, and efficiently across global routes.</p>
+                        </div>
                     </div>
                 </div>
             </>
@@ -117,7 +135,7 @@ export default function DangerousCargoInfo() {
             <>
                 <CardTitle className="text-3xl font-bold mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Types of Dangerous Cargo We Handle: </CardTitle>
                 <div className="w-full flex justify-center items-center h-[60px] mt-10">
-                        <img src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" className="max-w-2xl w-full " />
+                        <Image src="/dangerous-imo-strip.png" alt="IMO Class Hazard Labels" width={800} height={200} className="max-w-2xl w-full" />
                     </div>
                 {/* Accordion/classes section below */}
                 <Card className="w-full mt-10 mb-20 max-w-7xl mx-auto p-0 sm:p-5">
@@ -199,11 +217,12 @@ export default function DangerousCargoInfo() {
                                 plans.</p>
                         </div>
                         <div className="flex-1 flex justify-center">
-                            <img
+                            <Image
                                 src="/risk-assessment.jpg"
                                 alt="Risk Assessment"
+                                width={600}
+                                height={400}
                                 className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
-                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -225,11 +244,12 @@ export default function DangerousCargoInfo() {
                             </p>
                         </div>
                         <div className="flex-1 flex justify-center">
-                            <img
+                            <Image
                                 src="/packaging-labeling.jpg"
                                 alt="Packaging and Labeling"
+                                width={600}
+                                height={400}
                                 className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
-                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -251,11 +271,12 @@ export default function DangerousCargoInfo() {
                             </ul>
                         </div>
                         <div className="flex-1 flex justify-center">
-                            <img
+                            <Image
                                 src="/special-equipment.jpg"
                                 alt="Special Equipment"
+                                width={600}
+                                height={400}
                                 className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
-                                loading="lazy"
                             />
                         </div>
                     </div>
@@ -277,52 +298,88 @@ export default function DangerousCargoInfo() {
                                 <RequestQuoteButton> <Link href={"/learn/dangerous-goods/learn-more"}>Learn more about our dangerous container shipment solutions</Link></RequestQuoteButton>
                         </div>
                         <div className="flex-1 flex justify-center">
-                            <img
+                            <Image
                                 src="/safety-protocols.jpg"
                                 alt="Safety and Emergency Protocols"
+                                width={600}
+                                height={400}
                                 className="rounded-3xl object-cover w-full max-w-7xl h-[220px] sm:h-[260px]"
-                                loading="lazy"
                             />
                         </div>
                     </div>
                 </div>
-                <section className="w-full max-w-7xl mx-auto my-20">
-                  <ReasonsGridUniversal
-                    title="Reasons to Choose Moon Navigation and Trading Co. For Your International Trade"
-                    layout="3-3"
-                    reasons={[
-                      {
-                        icon: <img src="/icons/container/57.png" className="mb-8 h-20 w-20 object-contain"/>,
-                        title: "Certified team with deep expertise in hazardous cargo handling.",
-                        description: "",
-                      },
-                      {
-                        icon: <img src="/icons/container/58.png" className="mb-8 h-20 w-20 object-contain"/>,
-                        title: "Full compliance with IMDG, ADR, and IATA standards.",
-                        description: "",
-                      },
-                      {
-                        icon: <img src="/icons/container/59.png" className="mb-8 h-20 w-20 object-contain"/>,
-                        title: "Wide range of DG container options and equipment.",
-                        description: "",
-                      },
-                      {
-                        icon: <img src="/icons/container/60.png" className="mb-8 h-20 w-20 object-contain"/>,
-                        title: "End-to-end operational support and coordination.",
-                        description: "",
-                      },
-                      {
-                        icon: <img src="/icons/container/61.png" className="mb-8 h-20 w-20 object-contain"/>,
-                        title: "Commitment to safety, reliability, and regulatory excellence.",
-                        description: "",
-                      },
-                      {
-                        icon: <img src="/icons/container/62.png" className="mb-8 h-20 w-20 object-contain"/>,
-                        title: "Transparent documentation, routing, and pricing process",
-                        description: "",
-                      },
-                    ]}
-                  />
+                <section className="px-4 sm:px-6 lg:px-8 my-20">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium mb-6">
+                                <Award className="w-4 h-4" />
+                                <span>Dangerous Cargo Container Shipment</span>
+                            </div>
+                            <h2 className="text-3xl lg:text-4xl font-light text-gray-900 mb-6">
+                                Reasons to Choose Moon Navigation and Trading Co. for Your Dangerous Container Shipments
+                            </h2>
+                            <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                                Certified team with deep expertise in hazardous cargo handling and full compliance with international standards.
+                            </p>
+                        </div>
+
+                        {/* Benefits Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                    <Image src="/icons/container/57.png" alt="Certified Team Icon" width={48} height={48} className="w-12 h-12" />
+                                </div>
+                                <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                    Certified team with deep expertise in hazardous cargo handling.
+                                </h3>
+                            </div>
+
+                            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                    <Image src="/icons/container/58.png" alt="Compliance Standards Icon" width={48} height={48} className="w-12 h-12" />
+                                </div>
+                                <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                    Full compliance with IMDG, ADR, and IATA standards.
+                                </h3>
+                            </div>
+
+                            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                    <Image src="/icons/container/59.png" alt="Container Options Icon" width={48} height={48} className="w-12 h-12" />
+                                </div>
+                                <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                    Wide range of DG container options and equipment.
+                                </h3>
+                            </div>
+
+                            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                    <Image src="/icons/container/60.png" alt="Operational Support Icon" width={48} height={48} className="w-12 h-12" />
+                                </div>
+                                <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                    End-to-end operational support and coordination.
+                                </h3>
+                            </div>
+
+                            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                    <Image src="/icons/container/61.png" alt="Safety Commitment Icon" width={48} height={48} className="w-12 h-12" />
+                                </div>
+                                <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                    Commitment to safety, reliability, and regulatory excellence.
+                                </h3>
+                            </div>
+
+                            <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                                <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                    <Image src="/icons/container/62.png" alt="Transparent Process Icon" width={48} height={48} className="w-12 h-12" />
+                                </div>
+                                <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                    Transparent documentation, routing, and pricing process
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
                 </section>
                 <GetQuoteComponent topic="Dangerous Goods Transport" link="/container-services-forms" />
                 <FAQSearch category="dangerous-goods" />
@@ -331,26 +388,9 @@ export default function DangerousCargoInfo() {
     }
 
     return (
-        <>
-            <Head>
-                <title>Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co.</title>
-                <meta
-                    name="description"
-                    content="Learn about dangerous cargo shipping, IMDG Code, IATA DGR, ADR, and how Moon Navigation and Trading Co. ensures safe, compliant transport of hazardous materials worldwide."
-                />
-                <meta
-                    name="keywords"
-                    content="dangerous cargo, hazardous materials, IMDG Code, IATA DGR, ADR, shipping, transport, Moon Navigation and Trading Co., packaging, labeling, risk assessment, special equipment, safety protocols"
-                />
-                <meta property="og:title" content="Dangerous Cargo Shipping and Handling | Moon Navigation and Trading Co." />
-                <meta property="og:description" content="Expert handling and transport of dangerous cargo and hazardous materials. Learn about our process, compliance, and safety standards." />
-                <meta property="og:image" content="/dangerous-cargo-banner.jpg" />
-                <meta property="og:type" content="website" />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href="https://www.moonnavigation.com/learn/dangerous" />
-            </Head>
-            {renderOverview()}
-            {renderServices()}
-        </>
+        <div className="w-full">
+            <FormTabs tabData={tabData} activeTab={activeTab} setActiveTab={handleTabChange} />
+            {activeTab === "overview" && renderServices()}
+        </div>
     );
 }

@@ -14,6 +14,11 @@ export const usersTable = pgTable("users", {
     name: text("name").notNull(), // Name field
     phone: text("phone").notNull(), // Phone field
     email: text("email").notNull().unique(), // Email field, must be unique
+    
+    // Admin fields
+    role: text("role").default("user").notNull(), // 'user', 'admin', 'super_admin'
+    is_active: boolean("is_active").default(true).notNull(), // Account status
+    permissions: jsonb("permissions"), // JSON object for granular permissions
 });
 
 // Air Services
@@ -587,6 +592,35 @@ export const special_services = pgTable("special_services", {
 
 })
 
+// Bunkering Oil Supply
+export const bunkering_oil_supply = pgTable("bunkering_oil_supply", {
+    id: uuid().primaryKey().defaultRandom(),
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    user_id: uuid().notNull().references(() => usersTable.id),
+
+    vessel_name: text("vessel_name").notNull(),
+    vessel_imo: text("vessel_imo").notNull(),
+    port_name: text("port_name").notNull(),
+    flag: text("flag").notNull(),
+    eta: text("eta").notNull(),
+    etd: text("etd").notNull(),
+    location: text("location").notNull(),
+    expected_delivery_date: text("expected_delivery_date").notNull(),
+    bunkering_services: text("bunkering_services").notNull(),
+    lubricant_oil_services: text("lubricant_oil_services").notNull(),
+    ship_chandlery_services: text("ship_chandlery_services").notNull(),
+    additional_information: text("additional_information"),
+
+    company_name: text("company_name").notNull(),
+    contact_person_name: text("contact_person_name").notNull(),
+    title: text("title").notNull(),
+    country_of_origin: text("country_of_origin").notNull(),
+    company_email: text("company_email").notNull(),
+    additional_email: text("additional_email"),
+    phone_number: text("phone_number").notNull(),
+    additional_phone_number: text("additional_phone_number"),
+});
+
 export const international_trading = pgTable("international_trading", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
@@ -1021,4 +1055,13 @@ export const tankersQuotationTable = pgTable("tankers_quotation", {
     additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
     additional_phone: text("additional_phone"),
+});
+
+// Quotation Numbers Tracking Table
+export const quotationNumbersTable = pgTable("quotation_numbers", {
+    id: uuid().primaryKey().defaultRandom(),
+    form_type: text("form_type").notNull().unique(),
+    current_count: numeric("current_count").notNull().default("0"),
+    last_updated: timestamp("last_updated", { withTimezone: true }).defaultNow(),
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
 });

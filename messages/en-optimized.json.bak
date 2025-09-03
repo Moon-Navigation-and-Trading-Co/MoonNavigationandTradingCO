@@ -1,0 +1,41 @@
+{
+  "LocaleSwitcher": {
+    "label": "Change Language",
+    "locale": "{locale, select, ar {Ar} en {En} other {Unknown}}"
+  },
+  "forms": {
+    "air": "Air Freight",
+    "ocean": "Ocean Freight",
+    "project-cargo": "Project Cargo",
+    "roll-on-off": "Roll On/Off (RoRo) Ships",
+    "dangerous-cargo": "Dangerous Cargo",
+    "heavy-lift": "Heavy Lift",
+    "breakbulk": "Break Bulk",
+    "tankers": "Tankers",
+    "livestock": "Livestock Transportation"
+  },
+  "ocean-freight": {
+    "ocean": "Ocean Freight",
+    "project-p": "Project cargo in ocean freight refers to the transportation of large, heavy, high-value, or complex pieces of equipment and materials.",
+    "roll-p": "In ocean freight, a Roll-on Roll-off (RoRo) ship is a specialized type of vessel used to transport cargo that can be driven on and off the ship.",
+    "dangerous-p": "In ocean freight, dangerous cargo refers to goods that pose a risk to the safety, health, or property of people, vessels, or the environment.",
+    "heavy-p": "In ocean freight, heavy lift refers to the transportation of cargo that requires specialized handling due to its dimensions or weight.",
+    "breakbulk-p": "At Moon Navigation And Trading Co, we specialize in the transportation of breakbulk Cargo, perfect for large, heavy, or oversized items."
+  },
+  "common": {
+    "button": "Get Quote",
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "requestQuote": "Request a Quote",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "required": "Required",
+    "optional": "Optional"
+  }
+} 

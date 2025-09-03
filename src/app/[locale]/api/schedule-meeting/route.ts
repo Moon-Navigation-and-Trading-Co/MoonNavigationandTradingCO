@@ -1,13 +1,17 @@
-import nodemailer from 'nodemailer';
+import * as nodemailer from 'nodemailer';
 import { format } from 'date-fns';
+import { generateFormEmailTemplate, convertFormDataToFields } from "@/utils/email/template-generator";
+import { generateQuotationNumber } from "@/utils/quotation/generator";
 
-// Create transporter for Gmail
+// Create transporter for CloudSmartly email server
 const createTransporter = () => {
     return nodemailer.createTransport({
-        service: 'gmail',
+        host: process.env.SMTP_HOST || 'webmail.cloudsmartly.com',
+        port: parseInt(process.env.SMTP_PORT || '465'),
+        secure: true, // SSL for port 465
         auth: {
-            user: process.env.GMAIL_USER, // Your Gmail address
-            pass: process.env.GMAIL_APP_PASSWORD, // Gmail App Password (not regular password)
+            user: process.env.SMTP_USER || 'quotation@moon-navigation.com',
+            pass: process.env.SMTP_PASSWORD,
         },
     });
 };
@@ -16,63 +20,85 @@ export async function POST(req: Request) {
     try {
         const body = await req.json();
         const { 
-            company, 
-            contact, 
+            company_name, 
+            contact_person_name, 
             title, 
-            email, 
-            additionalEmail, 
-            phone, 
-            additionalPhone, 
-            time1, 
-            time2, 
-            service, 
-            preferredDate1, 
-            preferredDate2 
+            company_email, 
+            additional_email, 
+            phone_number, 
+            additional_phone_number, 
+            preferred_time_1, 
+            preferred_time_2, 
+            service_of_interest: services, 
+            service_other,
+            preferred_date_1, 
+            preferred_date_2,
+            meeting_preference,
+            message
         } = body;
 
-        // Format dates for email
-        const formatDate = (date: Date) => {
+        
+        // Generate quotation number
+        const quotationNumber = await generateQuotationNumber("schedule_meeting");
+// Format dates for email
+        const formatDate = (date: string) => {
             if (!date) return 'Not specified';
             return format(new Date(date), 'PPP');
         };
 
-        // Create email content
-        const emailContent = `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-                <h2 style="color: #3B4B8C;">New Meeting Request - Moon Navigation and Trading Co.</h2>
-                
-                <h3 style="color: #3B4B8C;">Personal Information</h3>
-                <p><strong>Company Name:</strong> ${company}</p>
-                <p><strong>Contact Person:</strong> ${contact}</p>
-                <p><strong>Title:</strong> ${title}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                ${additionalEmail ? `<p><strong>Additional Email:</strong> ${additionalEmail}</p>` : ''}
-                <p><strong>Phone:</strong> ${phone}</p>
-                ${additionalPhone ? `<p><strong>Additional Phone:</strong> ${additionalPhone}</p>` : ''}
-                
-                <h3 style="color: #3B4B8C;">Appointment Details</h3>
-                <p><strong>Preferred Date 1:</strong> ${formatDate(preferredDate1)}</p>
-                <p><strong>Preferred Date 2:</strong> ${formatDate(preferredDate2)}</p>
-                <p><strong>Preferred Time 1:</strong> ${time1 || 'Not specified'}</p>
-                <p><strong>Preferred Time 2:</strong> ${time2 || 'Not specified'}</p>
-                <p><strong>Service of Interest:</strong> ${service}</p>
-                
-                <hr style="margin: 20px 0; border: 1px solid #eee;">
-                <p style="color: #666; font-size: 14px;">
-                    This meeting request was submitted through the Moon Navigation and Trading Co. website.
-                    Please respond to the client at: ${email}
-                </p>
-            </div>
-        `;
+        // Create email content using the new template generator
+        const formData = {
+            company_name,
+            contact_person_name,
+            title,
+            company_email,
+            additional_email,
+            phone_number,
+            additional_phone_number,
+            preferred_date_1,
+            preferred_date_2,
+            preferred_time_1,
+            preferred_time_2,
+            service_of_interest: services,
+            service_other,
+            meeting_preference,
+            message
+        };
+
+        const fields = convertFormDataToFields(formData, {
+            company_name: 'Company Name',
+            contact_person_name: 'Contact Person',
+            title: 'Title',
+            company_email: 'Company Email Address',
+            additional_email: 'Additional Email',
+            phone_number: 'Phone Number',
+            additional_phone_number: 'Additional Phone',
+            preferred_date_1: 'Preferred Date 1',
+            preferred_date_2: 'Preferred Date 2',
+            preferred_time_1: 'Preferred Time 1',
+            preferred_time_2: 'Preferred Time 2',
+            service_of_interest: 'Service of Interest',
+            service_other: 'Other Service Details',
+            meeting_preference: 'Meeting Preference',
+            message: 'Message'
+        });
+
+        const emailContent = generateFormEmailTemplate({
+            title: 'New Meeting Request - Moon Navigation and Trading Co.',
+            quotationNumber,
+            formType: 'Schedule Meeting',
+            fields,
+            additionalInfo: 'Please respond to the client at the provided email address.'
+        });
 
         // Create transporter
         const transporter = createTransporter();
 
         // Send the email
         const mailOptions = {
-            from: process.env.GMAIL_USER, // Your Gmail address
-            to: ['Mariiamhamdyy1@gmail.com', 'Farida.ashraf@hotmail.co.uk'],
-            subject: `New Meeting Request - ${company}`,
+            from: process.env.SMTP_USER || 'quotation@moon-navigation.com',
+            to: ['quotation@moon-navigation.com', 'quotes@moon-navigation.com'],
+            subject: `New Meeting Request - ${company_name}`,
             html: emailContent,
         };
 
@@ -83,4 +109,4 @@ export async function POST(req: Request) {
         console.error('Email error:', error);
         return new Response(JSON.stringify({ error: error.message }), { status: 500 });
     }
-} 
+}

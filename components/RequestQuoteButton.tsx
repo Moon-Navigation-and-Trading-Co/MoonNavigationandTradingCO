@@ -22,9 +22,9 @@ const RequestQuoteButton: React.FC<RequestQuoteButtonProps> = ({
   };
 
   const variantClasses = {
-    primary: "bg-[#011f4b] text-white hover:bg-[#022c6a]",
-    secondary: "bg-gray-200 text-gray-800 hover:bg-gray-300",
-    outline: "border-2 border-[#011f4b] text-[#011f4b] hover:bg-[#011f4b] hover:text-white"
+    primary: "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-md hover:shadow-lg transition-all duration-300",
+    secondary: "bg-blue-50 text-blue-700 hover:bg-blue-100",
+    outline: "border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
   };
 
   return (
