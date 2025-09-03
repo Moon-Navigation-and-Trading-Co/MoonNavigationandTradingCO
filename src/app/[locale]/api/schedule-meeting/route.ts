@@ -65,24 +65,7 @@ export async function POST(req: Request) {
             message
         };
 
-        const fields = convertFormDataToFields(formData, {
-            company_name: 'Company Name',
-            contact_person_name: 'Contact Person',
-            title: 'Title',
-            company_email: 'Company Email Address',
-            additional_email: 'Additional Email',
-            phone_number: 'Phone Number',
-            additional_phone_number: 'Additional Phone',
-            preferred_date_1: 'Preferred Date 1',
-            preferred_date_2: 'Preferred Date 2',
-            preferred_time_1: 'Preferred Time 1',
-            preferred_time_2: 'Preferred Time 2',
-            service_of_interest: 'Service of Interest',
-            service_other: 'Other Service Details',
-            meeting_preference: 'Meeting Preference',
-            message: 'Message'
-        });
-
+        const fields = convertFormDataToFields(formData);
         const emailContent = generateFormEmailTemplate({
             title: 'New Meeting Request - Moon Navigation and Trading Co.',
             quotationNumber,
