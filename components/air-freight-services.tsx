@@ -119,8 +119,10 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
         resolver: zodResolver(formSchema),
         defaultValues: {
             routing: [{
-                from: '',
-                to: '',
+                fromCountry: '',
+                fromPort: '',
+                toCountry: '',
+                toPort: '',
                 services_mode_from: 'cy',
                 services_mode_to: 'cy'
             }],
