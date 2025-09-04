@@ -64,7 +64,14 @@ export default function InlandFreightInfo() {
         <main className="flex flex-col items-center w-full max-w-7xl place-self-center" style={{ fontFamily: 'Raleway, sans-serif' }}>
             {/* Hero Section */}
             <div className="w-full h-[400px] relative rounded-3xl overflow-hidden mt-10">
-                <Image src="/icons/inland/inland.jpg" alt={t("title")} fill className="object-cover" />
+                <Image 
+                    src="/icons/inland/inland.jpg" 
+                    alt={t("title")} 
+                    fill 
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                />
                 <div className="absolute inset-0 bg-black/50" />
             </div>
 
