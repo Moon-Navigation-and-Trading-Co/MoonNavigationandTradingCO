@@ -13,6 +13,7 @@ const createFormEmailTemplate = (formData: any, formType: string) => {
     additionalInfo: "We will contact you as soon as possible!"
   });
 };
+
 // Create confirmation email template for form submitters
 const createConfirmationEmailTemplate = (formData: any, formType: string, referenceNumber: string) => {
   const getCustomerName = (): string => {
@@ -41,6 +42,36 @@ const extractCustomerEmail = (formData: any): string | null => {
   if (formData.email) return formData.email;
   if (formData.companyEmail) return formData.companyEmail;
   return null;
+};
+
+// Determine sender email based on form type
+const getSenderEmail = (formType: string): string => {
+  // Contact forms and schedule meeting use contact@moon-navigation.com
+  const contactForms = ['contact', 'schedule_meeting', 'schedule-meeting'];
+  
+  if (contactForms.some(form => formType.toLowerCase().includes(form))) {
+    return process.env.CONTACT_SMTP_USER || 'contact@moon-navigation.com';
+  }
+  
+  // All other forms (quotations) use quotation@moon-navigation.com
+  return process.env.SMTP_USER || 'quotation@moon-navigation.com';
+};
+
+// Determine recipient emails based on form type
+const getRecipientEmails = (formType: string, customRecipients?: string[]): string[] => {
+  if (customRecipients && customRecipients.length > 0) {
+    return customRecipients;
+  }
+  
+  // Contact forms and schedule meeting go to contact@moon-navigation.com only
+  const contactForms = ['contact', 'schedule_meeting', 'schedule-meeting'];
+  
+  if (contactForms.some(form => formType.toLowerCase().includes(form))) {
+    return ['contact@moon-navigation.com'];
+  }
+  
+  // All other forms go to quotation emails
+  return ['quotation@moon-navigation.com', 'quotes@moon-navigation.com'];
 };
 
 export async function POST(req: Request) {
@@ -79,10 +110,14 @@ export async function POST(req: Request) {
     // Generate reference number
     const referenceNumber = `MN-${Date.now().toString().slice(-8)}-${Math.random().toString(36).substr(2, 4).toUpperCase()}`;
 
+    // Determine sender and recipient emails based on form type
+    const senderEmail = getSenderEmail(formType);
+    const recipientEmailsList = getRecipientEmails(formType, recipientEmails);
+
     // Send notification email to company
     const notificationMailOptions = {
-      from: process.env.SMTP_USER || 'quotation@moon-navigation.com',
-      to: recipientEmails || ['quotation@moon-navigation.com', 'quotes@moon-navigation.com'],
+      from: senderEmail,
+      to: recipientEmailsList,
       subject: `New Form Submission - ${formType.replace(/_/g, ' ').replace(/([A-Z])/g, ' $1').trim().replace(/\b\w/g, (l: string) => l.toUpperCase())} - Ref: ${referenceNumber}`,
       html: createFormEmailTemplate(formData, formType),
     };
@@ -93,7 +128,7 @@ export async function POST(req: Request) {
     const customerEmail = extractCustomerEmail(formData);
     if (customerEmail) {
       const confirmationMailOptions = {
-        from: process.env.SMTP_USER || 'quotation@moon-navigation.com',
+        from: senderEmail,
         to: customerEmail,
         subject: `Thank You - Form Submission Confirmed - Ref: ${referenceNumber}`,
         html: createConfirmationEmailTemplate(formData, formType, referenceNumber),
@@ -111,7 +146,9 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify({ 
       success: true, 
       referenceNumber,
-      confirmationEmailSent: !!customerEmail
+      confirmationEmailSent: !!customerEmail,
+      senderEmail,
+      recipientEmails: recipientEmailsList
     }), { status: 200 });
 
   } catch (error: any) {
@@ -120,4 +157,4 @@ export async function POST(req: Request) {
       error: 'Failed to send email' 
     }), { status: 500 });
   }
-} 
+}

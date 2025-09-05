@@ -1,7 +1,6 @@
-import * as nodemailer from 'nodemailer';
-import { format } from 'date-fns';
-import { generateFormEmailTemplate, convertFormDataToFields } from "@/utils/email/template-generator";
-import { generateQuotationNumber } from "@/utils/quotation/generator";
+import nodemailer from 'nodemailer';
+import { generateQuotationNumber } from '@/utils/quotation/generator';
+import { generateFormEmailTemplate, convertFormDataToFields } from '@/utils/email/template-generator';
 
 // Create transporter for CloudSmartly email server
 const createTransporter = () => {
@@ -10,6 +9,8 @@ const createTransporter = () => {
         port: parseInt(process.env.SMTP_PORT || '465'),
         secure: true, // SSL for port 465
         auth: {
+            // Use the main SMTP user for authentication (quotation@moon-navigation.com)
+            // This is the account that has SMTP access
             user: process.env.SMTP_USER || 'quotation@moon-navigation.com',
             pass: process.env.SMTP_PASSWORD,
         },
@@ -29,25 +30,16 @@ export async function POST(req: Request) {
             additional_phone_number, 
             preferred_time_1, 
             preferred_time_2, 
-            service_of_interest: services, 
-            service_other,
-            preferred_date_1, 
-            preferred_date_2,
-            meeting_preference,
-            message
+            preferred_time_3, 
+            meeting_type, 
+            additional_notes 
         } = body;
 
-        
-        // Generate quotation number
-        const quotationNumber = await generateQuotationNumber("schedule_meeting");
-// Format dates for email
-        const formatDate = (date: string) => {
-            if (!date) return 'Not specified';
-            return format(new Date(date), 'PPP');
-        };
+        // Generate quotation number for schedule meeting
+        const quotationNumber = await generateQuotationNumber('schedule_meeting');
 
-        // Create email content using the new template generator
-        const formData = {
+        // Convert form data to fields for email template
+        const fields = convertFormDataToFields({
             company_name,
             contact_person_name,
             title,
@@ -55,17 +47,14 @@ export async function POST(req: Request) {
             additional_email,
             phone_number,
             additional_phone_number,
-            preferred_date_1,
-            preferred_date_2,
             preferred_time_1,
             preferred_time_2,
-            service_of_interest: services,
-            service_other,
-            meeting_preference,
-            message
-        };
+            preferred_time_3,
+            meeting_type,
+            additional_notes
+        });
 
-        const fields = convertFormDataToFields(formData);
+        // Generate email content
         const emailContent = generateFormEmailTemplate({
             title: 'New Meeting Request - Moon Navigation and Trading Co.',
             quotationNumber,
@@ -79,8 +68,9 @@ export async function POST(req: Request) {
 
         // Send the email
         const mailOptions = {
-            from: process.env.SMTP_USER || 'quotation@moon-navigation.com',
-            to: ['quotation@moon-navigation.com', 'quotes@moon-navigation.com'],
+            // Send FROM contact@moon-navigation.com but authenticate with quotation@moon-navigation.com
+            from: process.env.CONTACT_SMTP_USER || 'contact@moon-navigation.com',
+            to: ['contact@moon-navigation.com'],
             subject: `New Meeting Request - ${company_name}`,
             html: emailContent,
         };
