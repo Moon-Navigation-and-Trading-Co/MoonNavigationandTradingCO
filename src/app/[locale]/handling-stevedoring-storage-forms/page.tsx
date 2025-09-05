@@ -125,7 +125,7 @@ export default function HandlingStevedoringStorageFormsPage() {
   const tabData = [
     {
       id: "handling-stevedoring-storage",
-      title: "Handling, Stevedoring and Storage Services",
+      title: "Handling, Stevedoring and Storage",
       description: "Comprehensive port operations and warehousing solutions",
       content:
         <>

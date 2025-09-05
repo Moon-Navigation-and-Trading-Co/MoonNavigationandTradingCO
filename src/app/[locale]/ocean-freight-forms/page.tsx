@@ -49,16 +49,15 @@ const Page: React.FC = () => {
             expiry_date: formData.expiryDate,
             service_contract_number: formData.serviceContractNumber,
             additional_services: formData.additionalServices,
-            company_name: formData.companyDetails.companyName,
-            contact_person_name: formData.companyDetails.contactPerson,
+            company_name: formData.companyDetails.company_name,
+            contact_person_name: formData.companyDetails.contact_person_name,
             title: formData.companyDetails.title,
-            city: formData.companyDetails.city,
-            country_of_origin: formData.companyDetails.country,
-            company_email: formData.companyDetails.email,
-            additional_email: formData.companyDetails.additionalEmail,
-            phone_number: formData.companyDetails.phone,
-            additional_phone_number: formData.companyDetails.additionalPhone,
-            form_type: formType, // Add form type to distinguish between different forms
+            country_of_origin: formData.companyDetails.country_of_origin,
+            company_email: formData.companyDetails.company_email,
+            additional_email: formData.companyDetails.additional_email,
+            phone_number: formData.companyDetails.phone_number,
+            additional_phone_number: formData.companyDetails.additional_phone_number,
+            form_type: formType,
             quotation_number: await generateQuotationNumber(formType)
         };
 
