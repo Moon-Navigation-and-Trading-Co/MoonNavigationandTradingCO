@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Plus, Upload, Trash2, Mail, Phone, Calendar, Minus } from 'lucide-react';
-import CompanyDetailsCardVariant1 from './company-details-card-variant-1';
+import CompanyDetailsCard from './company-details-card';
 import RoutingCardVariant2 from './routing-card-variant-2';
 import DatesCard from './dates-card';
 import ContainerDetailsTable from './container-details-table';
@@ -457,7 +457,7 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                 </div>
 
                 {/* Company Details */}
-                <CompanyDetailsCardVariant1 control={form.control} />
+                <CompanyDetailsCard control={form.control} />
 
                 <Button type="submit" className="mt-4 w-[200px]">
                     Submit

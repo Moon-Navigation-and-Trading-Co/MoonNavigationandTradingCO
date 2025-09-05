@@ -18,6 +18,7 @@ import ConsolidatedForm from './consolidated-form';
 import FileUpload from './file-upload';
 import { PhoneInput } from '@/components/phone-input';
 import { SearchableCountrySelect } from './searchable-country-select';
+import CompanyDetailsCard from './company-details-card';
 
 // Countries list for routing
 const countries = [
@@ -123,15 +124,14 @@ const formSchema = z.object({
     otherDetails: z.string().optional(),
   }),
   companyDetails: z.object({
-    companyName: z.string().min(1, { message: "Company name is required" }),
-    contactPerson: z.string().min(1, { message: "Contact person is required" }),
+    company_name: z.string().min(1, { message: "Company name is required" }),
+    contact_person_name: z.string().min(1, { message: "Contact person is required" }),
     title: z.string().min(1, { message: "Title is required" }),
-    city: z.string().min(1, { message: "City is required" }),
-    country: z.string().min(1, { message: "Country is required" }),
-    email: z.string().email({ message: "Valid email is required" }),
-    additionalEmail: z.string().email({ message: "Valid email format" }).optional(),
-    phone: z.string().min(1, { message: "Phone number is required" }),
-    additionalPhone: z.string().optional(),
+    country_of_origin: z.string().min(1, { message: "Country is required" }),
+    company_email: z.string().email({ message: "Valid email is required" }),
+    additional_email: z.string().email({ message: "Valid email format" }).optional(),
+    phone_number: z.string().min(1, { message: "Phone number is required" }),
+    additional_phone_number: z.string().optional(),
     showAdditionalEmail: z.boolean().default(false),
     showAdditionalPhone: z.boolean().default(false),
   }),
@@ -209,15 +209,14 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
         otherDetails: '',
       },
       companyDetails: {
-        companyName: '',
-        contactPerson: '',
+        company_name: '',
+        contact_person_name: '',
         title: '',
-        city: '',
-        country: '',
-        email: '',
-        additionalEmail: '',
-        phone: '',
-        additionalPhone: '',
+        country_of_origin: '',
+        company_email: '',
+        additional_email: '',
+        phone_number: '',
+        additional_phone_number: '',
         showAdditionalEmail: false,
         showAdditionalPhone: false,
       },
@@ -686,248 +685,7 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
         </div>
 
         {/* Company/Personal Details */}
-        <div className="company-details-card">
-          <h1 className='text-xl font-raleway font-medium my-6'>Company/Personal Details</h1>
-          
-          <div className='grid grid-cols-1 md:grid-cols-2 gap-5 px-4'>
-            <div>
-              <FormItem>
-                <FormLabel>Company Name</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="companyDetails.companyName"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Company Name" {...field} />
-                        {error && <p className="text-red-500">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-            </div>
-            <div>
-              <FormItem>
-                <FormLabel>Contact Person Name</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="companyDetails.contactPerson"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Contact Name" {...field} />
-                        {error && <p className="text-red-500">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-            </div>
-            <div>
-              <FormItem>
-                <FormLabel>Title</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="companyDetails.title"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Mr, Ms.. etc." {...field} />
-                        {error && <p className="text-red-500">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-            </div>
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center gap-4">
-                <h3 className="text-sm font-medium text-gray-700 whitespace-nowrap">Country of Origin</h3>
-                <FormControl className="flex-1">
-                  <Controller
-                    control={form.control}
-                    name="companyDetails.city"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <SearchableCountrySelect
-                          value={field.value}
-                          onValueChange={field.onChange}
-                          placeholder="Select country"
-                          className="w-full"
-                        />
-                        {error && <p className="text-red-500">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </div>
-            </div>
-            <div>
-              <FormItem>
-                <FormLabel>Company Email Address</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="companyDetails.email"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <Input type="email" className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Email" {...field} />
-                        {error && <p className="text-red-500">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-            </div>
-            <div>
-              <FormItem>
-                <FormLabel>Phone Number</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="companyDetails.phone"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <PhoneInput
-                          value={field.value}
-                          onChange={(value) => field.onChange(value)}
-                          defaultCountry="EG"
-                          international
-                          countryCallingCodeEditable={false}
-                          placeholder="Enter phone number"
-                          className="w-full max-w-[300px] border-2 rounded-xl"
-                        />
-                        {error && <p className="text-red-500">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-            </div>
-          </div>
-
-          {/* Additional Contact Fields */}
-          <div className="px-4 mt-6">
-            <div className="space-y-4">
-              {/* Additional Email Section */}
-              <div className="space-y-3">
-                {!form.watch("companyDetails.showAdditionalEmail") && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => form.setValue("companyDetails.showAdditionalEmail", true)}
-                    className="w-fit"
-                  >
-                    <Mail className="h-4 w-4 mr-2" />
-                    Add Additional Email
-                  </Button>
-                )}
-                
-                {form.watch("companyDetails.showAdditionalEmail") && (
-                  <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
-                    <FormItem>
-                      <FormLabel>Add additional email address</FormLabel>
-                      <FormControl>
-                        <Controller
-                          control={form.control}
-                          name="companyDetails.additionalEmail"
-                          render={({ field, fieldState: { error } }) => (
-                            <>
-                              <Input 
-                                type="email"
-                                className="w-[300px] border-2 rounded-xl" 
-                                placeholder="Email" 
-                                {...field} 
-                              />
-                              {error && <p className="text-red-500">{error.message}</p>}
-                            </>
-                          )}
-                        />
-                      </FormControl>
-                    </FormItem>
-                    
-                    <Button
-                      type="button"
-                      variant="secondary"
-                      onClick={() => {
-                        form.setValue("companyDetails.showAdditionalEmail", false);
-                        form.setValue("companyDetails.additionalEmail", "");
-                      }}
-                      className="w-fit"
-                    >
-                      Remove Additional Email
-                    </Button>
-                  </div>
-                )}
-              </div>
-
-              {/* Additional Phone Section */}
-              <div className="space-y-3">
-                {!form.watch("companyDetails.showAdditionalPhone") && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => form.setValue("companyDetails.showAdditionalPhone", true)}
-                    className="w-fit"
-                  >
-                    <Phone className="h-4 w-4 mr-2" />
-                    Add Additional Phone
-                  </Button>
-                )}
-                
-                {form.watch("companyDetails.showAdditionalPhone") && (
-                  <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
-                    <FormItem>
-                      <FormLabel>Add additional mobile number</FormLabel>
-                      <FormControl>
-                        <Controller
-                          control={form.control}
-                          name="companyDetails.additionalPhone"
-                          render={({ field, fieldState: { error } }) => (
-                            <>
-                              <Input 
-                                type="tel"
-                                className="w-[300px] border-2 rounded-xl" 
-                                placeholder="+123456789" 
-                                {...field} 
-                              />
-                              {error && <p className="text-red-500">{error.message}</p>}
-                            </>
-                          )}
-                        />
-                      </FormControl>
-                    </FormItem>
-                    
-                    <Button
-                      type="button"
-                      variant="secondary"
-                      onClick={() => {
-                        form.setValue("companyDetails.showAdditionalPhone", false);
-                        form.setValue("companyDetails.additionalPhone", "");
-                      }}
-                      className="w-fit"
-                    >
-                      Remove Additional Phone
-                    </Button>
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Important Notes */}
-        <div className="">
-          <h1 className='text-xl font-raleway font-medium'>Important Notes</h1>
-          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
-            <div className="space-y-3 text-sm text-gray-600">
-              <p>• Do not include personal financial information such as credit card details or debit card details anywhere in your request.</p>
-              <p>• When you submit your quote request, an automated confirmation email will be sent to you containing the details you entered in this form.</p>
-              <p>• For quote requests with long-term validity, please contact us directly.</p>
-            </div>
-          </div>
-        </div>
+        <CompanyDetailsCard control={form.control} />
 
         <Button type="submit" className="mt-4 w-[200px]">
           Submit

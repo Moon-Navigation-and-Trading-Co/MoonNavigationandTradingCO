@@ -76,43 +76,48 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                         </FormControl>
                     </FormItem>
                 </div>
-                <div>
-                    <FormItem>
-                        <FormLabel>{t('title')}</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={control}
-                                name="company_details.title"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Mr, Ms.. etc." {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
+                
+                {/* Title and Country of Origin in the same row */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:col-span-2">
+                    <div>
+                        <FormItem>
+                            <FormLabel>{t('title')}</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={control}
+                                    name="company_details.title"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Mr, Ms.. etc." {...field} />
+                                            {error && <p className="text-red-500">{error.message}</p>}
+                                        </>)}
+                                />
+                            </FormControl>
+                        </FormItem>
+                    </div>
+                    <div>
+                        <FormItem>
+                            <FormLabel className="block mb-2">{t('countryOfOrigin')}</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={control}
+                                    name="company_details.country_of_origin"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <SearchableCountrySelect
+                                              value={field.value}
+                                              onValueChange={field.onChange}
+                                              placeholder="Select country"
+                                              className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"
+                                            />
+                                            {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                        </>)}
+                                />
+                            </FormControl>
+                        </FormItem>
+                    </div>
                 </div>
-                <div className="md:col-span-2">
-                    <FormItem>
-                        <FormLabel>{t('countryOfOrigin')}</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={control}
-                                name="company_details.country_of_origin"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <SearchableCountrySelect
-                                          value={field.value}
-                                          onValueChange={field.onChange}
-                                          placeholder="Select country"
-                                          className="w-full max-w-[300px]"
-                                        />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
-                </div>
+
                 <div>
                     <FormItem>
                         <FormLabel>{t('companyEmail')}</FormLabel>

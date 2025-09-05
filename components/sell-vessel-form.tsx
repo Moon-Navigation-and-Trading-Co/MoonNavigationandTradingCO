@@ -6,13 +6,11 @@ import { number, z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import CompanyDetailsCard from './company-details-card-variant-1';
 import { useTranslations } from 'next-intl';
-
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Textarea } from './ui/textarea';
+import CompanyDetailsCard from './company-details-card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
-
 
 
 // 1. Define a type-safe form handler using z.infer
@@ -353,20 +351,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                         />
                     </FormControl>
                 </div>
-
-                {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
-
-
-
-                <div className='mt-24'>
-                    <h1 className='font-raleway font-medium text-xl mb-6'>Important Information</h1>
-                    <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
-                        <p>• For quote requests with long-term validity, please contact us.</p>
-                        <p>• Please do not enter personal or financial information, such as credit card details, or debit card details anywhere in your request.</p>
-                        <p>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</p>
-                    </div>
-                </div>
 
                 <Button type="submit" className="mt-4 w-[200px]">
                     Submit

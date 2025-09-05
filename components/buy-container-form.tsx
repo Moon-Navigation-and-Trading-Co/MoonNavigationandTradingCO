@@ -7,11 +7,11 @@ import { Form, FormItem, FormLabel, FormControl, FormMessage } from "@/component
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import CompanyDetailsCard from './company-details-card-variant-1';
 import { useTranslations } from 'next-intl';
 import DatesCard from './dates-card-variant-3';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Textarea } from './ui/textarea';
+import CompanyDetailsCard from './company-details-card';
 
 // 1. Define a type-safe form handler using z.infer
 const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
@@ -302,21 +302,7 @@ const BuyContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmi
                         </div>
                     </FormControl>
                 </FormItem>
-
-                {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
-
-                {/* Important Information */}
-                <div className="">
-                    <h1 className='text-xl font-raleway font-medium'>Important Information</h1>
-                    <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
-                        <div className='flex flex-col gap-3 text-sm text-muted-foreground'>
-                            <p>• For quote requests with long-term validity, please contact us.</p>
-                            <p>• Please do not enter personal or financial information, such as credit card details or debit card details, anywhere in your request.</p>
-                            <p>• Please note that when you submit your quote request, an automated confirmation e-mail will be sent to you containing the details you entered in this form.</p>
-                        </div>
-                    </div>
-                </div>
 
                 <Button type="submit" className="mt-4 w-[200px]">
                     Submit
