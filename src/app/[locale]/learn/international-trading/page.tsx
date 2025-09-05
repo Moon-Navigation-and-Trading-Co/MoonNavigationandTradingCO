@@ -237,172 +237,148 @@ export default function InternationalTrading() {
                         </p>
                     </div>
 
-                    <div className="flex flex-col gap-24">
+                    <div className="space-y-24">
                         {/* Freight Services */}
-                        <div className="flex flex-col md:flex-row items-center gap-8">
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h2 className="text-lg md:text-xl mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="space-y-6">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                    <span>Freight Services</span>
+                                </div>
+                                
+                                <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
                                     1. Comprehensive Freight Services
                                 </h2>
-                                <div className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    We provide end-to-end freight solutions including ocean freight, air freight, breakbulk, and container services (FCL/LCL). Our global network ensures competitive rates and reliable delivery across all major trade routes.
-                                </div>
+                                
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    We offer a comprehensive range of ocean freight services, including breakbulk, FCL, LCL, tailored to the size and nature of your goods, alongside reliable air freight solutions that guarantee swift transportation for urgent shipments, ensuring timely and efficient delivery while reducing shipping costs.
+                                </p>
                             </div>
-                            <div className="flex-shrink-0 w-full md:w-[400px]">
-                                <Image
-                                    src="/international-3.jpg"
-                                    alt="Freight Services"
-                                    width={400}
-                                    height={280}
-                                    className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-                                />
+
+                            <div className="relative">
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                                    <Image src="/international-3.jpg" alt="Freight Services" fill className="object-cover" />
+                                </div>
                             </div>
                         </div>
 
                         {/* Expert Customs Clearance */}
-                        <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h2 className="text-lg md:text-xl mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    2. Expert Customs Clearance
-                                </h2>
-                                <div className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Our customs experts handle all documentation, compliance requirements, and regulatory procedures. We ensure smooth clearance processes while minimizing delays and avoiding costly penalties.
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="order-2 lg:order-1 relative">
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                                    <Image src="/international-4.jpg" alt="Customs Clearance" fill className="object-cover" />
                                 </div>
                             </div>
-                            <div className="flex-shrink-0 w-full md:w-[400px]">
-                                <Image
-                                    src="/international-4.jpg"
-                                    alt="Customs Clearance"
-                                    width={400}
-                                    height={280}
-                                    className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-                                />
+
+                            <div className="order-1 lg:order-2 space-y-6">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                    <span>Customs Clearance</span>
+                                </div>
+                                
+                                <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                                    2. Expert Customs Clearance
+                                </h2>
+                                
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    Navigating international trade can be complex, but our experienced team simplifies the process, ensuring compliance with local regulations and efficient customs clearance.
+                                </p>
                             </div>
                         </div>
 
                         {/* Global Network */}
-                        <div className="flex flex-col md:flex-row items-center gap-8">
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h2 className="text-lg md:text-xl mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="space-y-6">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                    <span>Global Network</span>
+                                </div>
+                                
+                                <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
                                     3. Global Network & Partnerships
                                 </h2>
-                                <div className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Our extensive network of partners, agents, and carriers spans across continents, providing seamless service delivery and competitive rates. We maintain strong relationships with major shipping lines, airlines, and logistics providers.
-                                </div>
+                                
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    With years of industry experience, we have forged strong connections with key stakeholders worldwide. This extensive network allows us to offer competitive rates and seamless service, enhancing your trading experience.
+                                </p>
                             </div>
-                            <div className="flex-shrink-0 w-full md:w-[400px]">
-                                <Image
-                                    src="/international-5.jpg"
-                                    alt="Global Network"
-                                    width={400}
-                                    height={280}
-                                    className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-                                />
+
+                            <div className="relative">
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                                    <Image src="/international-5.jpg" alt="Global Network" fill className="object-cover" />
+                                </div>
                             </div>
                         </div>
 
                         {/* Strategic Storage and Warehousing */}
-                        <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h2 className="text-lg md:text-xl mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    4. Strategic Storage & Warehousing
-                                </h2>
-                                <div className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    We offer secure storage facilities in strategic locations worldwide. Our warehousing services include inventory management, order fulfillment, and distribution support to optimize your supply chain operations.
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="order-2 lg:order-1 relative">
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                                    <Image src="/international-6.jpg" alt="Strategic Storage and Warehousing" fill className="object-cover" />
                                 </div>
                             </div>
-                            <div className="flex-shrink-0 w-full md:w-[400px]">
-                                <Image
-                                    src="/international-6.jpg"
-                                    alt="Strategic Storage and Warehousing"
-                                    width={400}
-                                    height={280}
-                                    className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-                                />
+
+                            <div className="order-1 lg:order-2 space-y-6">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                    <span>Storage & Warehousing</span>
+                                </div>
+                                
+                                <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                                    4. Strategic Storage & Warehousing
+                                </h2>
+                                
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    We understand the importance of secure warehousing solutions in international trade. Our strategic storage options ensure your goods are safely housed until they are ready for final delivery.
+                                </p>
                             </div>
                         </div>
 
                         {/* Consultancy Services */}
-                        <div className="flex flex-col md:flex-row items-center gap-8">
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h2 className="text-lg md:text-xl mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="space-y-6">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                    <span>Consultancy</span>
+                                </div>
+                                
+                                <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
                                     5. Trade Consultancy Services
                                 </h2>
-                                <div className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Our expert consultants provide strategic advice on trade routes, cost optimization, supply chain design, and market entry strategies. We help you make informed decisions to maximize your international trade success.
-                                </div>
+                                
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    Our expert advice on trade routes, cost optimization, and supply chain efficiency equips your business with the insights needed to gain a competitive edge in international trade.
+                                </p>
                             </div>
-                            <div className="flex-shrink-0 w-full md:w-[400px]">
-                                <Image
-                                    src="/international-7.jpg"
-                                    alt="Consultancy Services"
-                                    width={400}
-                                    height={280}
-                                    className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-                                />
+
+                            <div className="relative">
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                                    <Image src="/international-7.jpg" alt="Consultancy Services" fill className="object-cover" />
+                                </div>
                             </div>
                         </div>
 
                         {/* Safe Handling of Dangerous Cargo */}
-                        <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h2 className="text-lg md:text-xl mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
+                        <div className="grid lg:grid-cols-2 gap-16 items-center">
+                            <div className="order-2 lg:order-1 relative">
+                                <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+                                    <Image src="/international-8.jpg" alt="Safe Handling of Dangerous Cargo" fill className="object-cover" />
+                                </div>
+                            </div>
+
+                            <div className="order-1 lg:order-2 space-y-6">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                    <span>Dangerous Cargo</span>
+                                </div>
+                                
+                                <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
                                     6. Safe Handling of Dangerous Cargo
                                 </h2>
-                                <div className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    We specialize in the safe transportation of hazardous materials with full compliance to international safety standards. Our certified team ensures proper classification, packaging, and handling of dangerous goods.
-                                </div>
-                            </div>
-                            <div className="flex-shrink-0 w-full md:w-[400px]">
-                                <Image
-                                    src="/international-8.jpg"
-                                    alt="Safe Handling of Dangerous Cargo"
-                                    width={400}
-                                    height={280}
-                                    className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Financial Services */}
-                        <div className="flex flex-col md:flex-row items-center gap-8">
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h2 className="text-lg md:text-xl mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    7. Financial Services & Currency Management
-                                </h2>
-                                <div className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    We provide comprehensive financial services including trade finance, currency exchange, payment processing, and risk management solutions. Our financial expertise helps optimize your cash flow and minimize currency risks.
-                                </div>
-                            </div>
-                            <div className="flex-shrink-0 w-full md:w-[400px]">
-                                <Image
-                                    src="/international-9.jpg"
-                                    alt="Financial Services"
-                                    width={400}
-                                    height={280}
-                                    className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Technology Solutions */}
-                        <div className="flex flex-col md:flex-row-reverse items-center gap-8">
-                            <div className="flex-1 flex flex-col justify-center">
-                                <h2 className="text-lg md:text-xl mb-2 text-primary" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    8. Technology & Tracking Solutions
-                                </h2>
-                                <div className="text-sm md:text-base text-muted-foreground mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                                    Our advanced tracking systems provide real-time visibility of your shipments. We offer digital documentation, automated reporting, and integrated logistics platforms to streamline your operations and enhance transparency.
-                                </div>
-                            </div>
-                            <div className="flex-shrink-0 w-full md:w-[400px]">
-                                <Image
-                                    src="/international-10.jpg"
-                                    alt="Technology Solutions"
-                                    width={400}
-                                    height={280}
-                                    className="rounded-2xl w-full h-[280px] object-cover object-center shadow-md"
-                                />
+                                
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    We specialize in the transportation of hazardous materials, and prioritize safety and compliance with international regulations, ensuring your dangerous cargo is handled with the utmost care.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -426,7 +402,7 @@ export default function InternationalTrading() {
                     </div>
 
                     {/* Benefits Grid */}
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid sm:grid-cols-2 gap-8">
                         <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
                             <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
                                 <Image src="/icons/container/57.png" alt="Expert Trade Knowledge" width={48} height={48} className="w-12 h-12" />

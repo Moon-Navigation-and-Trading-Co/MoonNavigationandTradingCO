@@ -132,21 +132,39 @@ export default function DockingAndMaintenance() {
             </section>
 
             {/* Content Section */}
-            <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
-                    <div>
-                        <h2 className="text-xl font-semibold text-primary mb-2">
-                            What is Docking and Maintenance?
-                        </h2>
-                        <p className="text-muted-foreground mb-4">
-                            Docking is the process of bringing a ship into a dock for inspection, repairs, or maintenance. This includes dry docking, where the vessel is removed from the water to examine hulls and undertake repairs that would be hard to access in normal shipping and port operations.
-                        </p>
-                        <p className="text-muted-foreground mb-4">
-                            While maintenance involves the regular upkeep and repair of vessels to guarantee safety, efficiency, and compliance with maritime regulations. This encompasses scheduled work such as engine and hull inspections, painting, cleaning, and replacement or repair of worn-out components. All of which are crucial to maintaining safe operations and compliance.
-                        </p>
-                        <p className="text-muted-foreground">
-                            At Moon Navigation and Trading Co., we uphold the highest safety standards throughout our docking and maintenance services. Our experienced team ensures that every vessel receives the best possible attention for effective results. We prevent accidents, extend the operating period of the fleet through our dedication to superior service and reliability.
-                        </p>
+            <section className="px-4 sm:px-6 lg:px-8 mt-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* Left: Content */}
+                        <div className="space-y-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                <span>Docking and Maintenance</span>
+                            </div>
+                            
+                            <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                                What is Docking and Maintenance?
+                            </h2>
+                            
+                            <div className="space-y-4">
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    Docking is the process of bringing a ship into a dock for inspection, repairs, or maintenance. This includes dry docking, where the vessel is removed from the water to examine hulls and undertake repairs that would be hard to access in normal shipping and port operations.
+                                </p>
+                                
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    While maintenance involves the regular upkeep and repair of vessels to guarantee safety, efficiency, and compliance with maritime regulations. This encompasses scheduled work such as engine and hull inspections, painting, cleaning, and replacement or repair of worn-out components. All of which are crucial to maintaining safe operations and compliance.
+                                </p>
+                                
+                                <p className="text-base text-gray-600 leading-relaxed">
+                                    At Moon Navigation and Trading Co., we uphold the highest safety standards throughout our docking and maintenance services. Our experienced team ensures that every vessel receives the best possible attention for effective results. We prevent accidents, extend the operating period of the fleet through our dedication to superior service and reliability.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        {/* Right: Empty space (no image) */}
+                        <div className="hidden lg:block">
+                            {/* Empty right column to maintain layout */}
+                        </div>
                     </div>
                 </div>
             </section>
@@ -466,12 +484,89 @@ export default function DockingAndMaintenance() {
             </section>
 
             {/* Reasons to Choose Section */}
-            <ReasonsGridUniversal
-                title="Reasons to Choose Moon Navigation and Trading Co. for Your Docking and Maintenance"
-                subheading="Expert technical team with tailored maintenance solutions and integrated services for comprehensive vessel care."
-                reasons={reasonsToChoose}
-                layout="3-2"
-            />
+            <section className="px-4 sm:px-6 lg:px-8 py-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-16">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium mb-6">
+                            <Award className="w-4 h-4" />
+                            <span>Docking and Maintenance Benefits</span>
+                        </div>
+                        <h2 className="text-3xl lg:text-4xl font-light text-gray-900 mb-6">
+                            Reasons to Choose Moon Navigation and Trading Co. for Your Docking and Maintenance
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                            Expert technical team with tailored maintenance solutions and integrated services for comprehensive vessel care.
+                        </p>
+                    </div>
+
+                    {/* Benefits Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                        {/* First Row: 3 items */}
+                        <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                            <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                <Image src="/icons/other services/49.png" alt="Expert Technical Team" width={48} height={48} className="w-12 h-12" />
+                            </div>
+                            <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                Expert Technical Team
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                Our certified engineers and marine technicians deliver high-quality maintenance and repair services aligned with international standards.
+                            </p>
+                        </div>
+
+                        <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                            <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                <Image src="/icons/other services/50.png" alt="Tailored Maintenance Solutions" width={48} height={48} className="w-12 h-12" />
+                            </div>
+                            <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                Tailored Maintenance Solutions
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                Customized service plans based on vessel condition and voyage schedule to ensure optimal performance and cost-efficiency.
+                            </p>
+                        </div>
+
+                        <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                            <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                <Image src="/icons/other services/51.png" alt="Integrated Services" width={48} height={48} className="w-12 h-12" />
+                            </div>
+                            <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                Integrated Services
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                From ship agency support to spare parts logistics, we handle everything needed during your vessel's stay in port.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Second Row: 2 items */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                            <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                <Image src="/icons/other services/52.png" alt="24/7 Availability" width={48} height={48} className="w-12 h-12" />
+                            </div>
+                            <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                24/7 Availability
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                We offer around-the-clock support to minimize delays and keep your vessel on schedule.
+                            </p>
+                        </div>
+
+                        <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
+                            <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                                <Image src="/icons/other services/53.png" alt="Reliable & Transparent" width={48} height={48} className="w-12 h-12" />
+                            </div>
+                            <h3 className="text-xl font-medium text-gray-900 mb-4">
+                                Reliable & Transparent
+                            </h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                Clear communication, detailed reporting, and transparent pricing throughout the entire maintenance process.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Quote Section */}
             <section className="w-full max-w-7xl mx-auto px-4 md:px-8">

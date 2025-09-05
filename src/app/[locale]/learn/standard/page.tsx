@@ -111,6 +111,36 @@ export default function DangerousCargoInfo() {
             </div>
           </div>
         </section>
+
+        {/* What is Standard Dry Container Section */}
+        <section className="px-4 sm:px-6 lg:px-8 mt-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Left: Content */}
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                  <span>Standard Dry Container</span>
+                </div>
+                
+                <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                  What is Standard Dry Container Shipment?
+                </h2>
+                
+                <p className="text-base text-gray-600 leading-relaxed">
+                  A Standard Dry Container is a fully enclosed, weatherproof container commonly used for transporting a wide variety of cargo. It offers strong protection from external elements and is the most widely used container type in global trade.
+                </p>
+                
+                <p className="text-base text-gray-600 leading-relaxed">
+                  At Moon Navigation and Trading Co., we offer reliable Standard Dry Container (FCL) services tailored to meet your cargo needs. Ideal for transporting general goods that do not require temperature control, our dry container solutions ensure safe, secure, and seamless delivery from origin to destination.
+                </p>
+              </div>
+
+              {/* Right: Empty space for consistency */}
+              <div className="hidden lg:block"></div>
+            </div>
+          </div>
+        </section>
       </>
     );
   }
