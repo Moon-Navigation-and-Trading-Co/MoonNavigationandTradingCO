@@ -230,7 +230,6 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-10">
         {/* Basic Information */}
         <div className="">
-          <h1 className='text-xl font-raleway font-medium'>HANDLING, STEVEDORING AND STORAGE</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {/* Import/Export Selection */}
             <div className="flex gap-4">
@@ -242,7 +241,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   {...form.register('importExport')}
                   className="w-4 h-4 text-primary"
                 />
-                <Label htmlFor="import" className="text-lg font-raleway font-medium">Import</Label>
+                <Label htmlFor="import" className="text-base font-raleway font-medium">Import</Label>
               </div>
               <div className="flex items-center space-x-2">
                 <input
@@ -252,14 +251,14 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   {...form.register('importExport')}
                   className="w-4 h-4 text-primary"
                 />
-                <Label htmlFor="export" className="text-lg font-raleway font-medium">Export</Label>
+                <Label htmlFor="export" className="text-base font-raleway font-medium">Export</Label>
               </div>
             </div>
 
             {/* Port/Airport and Location */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <FormItem>
-                <FormLabel className="text-lg font-raleway font-medium">Port / Airport:</FormLabel>
+                <FormLabel className="text-sm font-raleway font-medium">Port / Airport:</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
@@ -278,7 +277,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 </FormControl>
               </FormItem>
               <FormItem>
-                <FormLabel className="text-lg font-raleway font-medium">Location:</FormLabel>
+                <FormLabel className="text-sm font-raleway font-medium">Location:</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
@@ -303,7 +302,6 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
         {/* Entry Mode Selection */}
         <Card>
           <CardContent>
-            <h1 className='text-xl font-raleway font-medium'>Cargo Entry Mode</h1>
             <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
               <div className="flex gap-4">
                 <Button
@@ -320,7 +318,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   onClick={() => handleModeChange('consolidated')}
                   className="flex-1"
                 >
-                  Consolidated Entry for Multiple Commodities
+                  Consolidated Entry
                 </Button>
               </div>
             </div>

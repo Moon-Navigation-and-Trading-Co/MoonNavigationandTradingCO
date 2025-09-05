@@ -29,9 +29,8 @@ const LocationCard = ({ control }: { control: any }) => {
 
                         {/* Location Field */}
                         <div className="space-y-3">
-                            <h3 className="text-sm font-medium text-gray-700">Location</h3>
                             <FormItem>
-                                <FormLabel>Country</FormLabel>
+                                <FormLabel className="block mb-2">Country</FormLabel>
                                 <FormControl>
                                     <Controller
                                         control={control}
@@ -42,7 +41,7 @@ const LocationCard = ({ control }: { control: any }) => {
                                                     value={field.value}
                                                     onValueChange={field.onChange}
                                                     placeholder="Select country"
-                                                    className="max-w-[300px]"
+                                                    className="max-w-[300px] !border-2 !rounded-xl !border-gray-200"
                                                 />
                                                 {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                             </>
@@ -51,7 +50,7 @@ const LocationCard = ({ control }: { control: any }) => {
                                 </FormControl>
                             </FormItem>
                             <FormItem>
-                                <FormLabel>Port/Area</FormLabel>
+                                <FormLabel className="block mb-2">Port/Area</FormLabel>
                                 <FormControl>
                                     <Controller
                                         control={control}
@@ -69,7 +68,7 @@ const LocationCard = ({ control }: { control: any }) => {
 
                         {/* Detailed Address Field */}
                         <FormItem>
-                            <FormLabel>{t('detailed')}</FormLabel>
+                            <FormLabel className="block mb-2">{t('detailed')}</FormLabel>
                             <FormControl>
                                 <Controller
                                     control={control}

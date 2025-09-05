@@ -7,7 +7,7 @@ import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
-import RoutingCard from './routing-card-variant-3';
+import RoutingCard3 from './routing-card-3';
 import RecommendedServicesCard from './recommended-card';
 import CommoditiesCard from './commodities-card-variant-4';
 import CompanyDetailsCard from './company-details-card';
@@ -390,11 +390,12 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
         routing: z.array(z.object({
             fromCountry: z.string().min(1, { message: "From country is required" }),
             fromPort: z.string().min(1, { message: "From port/area is required" }),
+            pickupRequired: z.boolean().optional(),
+            pickupLocation: z.string().optional(),
             toCountry: z.string().min(1, { message: "To country is required" }),
             toPort: z.string().min(1, { message: "To port/area is required" }),
-            pick_up: z.boolean().optional(),
-            delivery: z.boolean().optional(),
-            location_information: z.string().optional()
+            deliveryRequired: z.boolean().optional(),
+            deliveryLocation: z.string().optional(),
         })),
         commodity_details: z.array(z.object({
             commodity: z.string().min(1, { message: "Commodity is required" }),
@@ -450,11 +451,12 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
             routing: [{
                 fromCountry: '',
                 fromPort: '',
+                pickupRequired: false,
+                pickupLocation: '',
                 toCountry: '',
                 toPort: '',
-                pick_up: false,
-                delivery: false,
-                location_information: ''
+                deliveryRequired: false,
+                deliveryLocation: '',
             }],
             commodity_details: [{
                 commodity: '',
@@ -523,8 +525,8 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit, handleError)} className="space-y-8">
-                {/* Routing Section */}
-                <RoutingCard control={form.control} />
+                {/* Routing Section - Using RoutingCard3 */}
+                <RoutingCard3 control={form.control} />
 
                 {/* Commodity Details */}
                 <div className="bg-white rounded-lg shadow-md p-6">

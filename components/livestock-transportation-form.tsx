@@ -15,6 +15,7 @@ import { Plus, Upload, Trash2, Mail, Phone } from 'lucide-react';
 import { PhoneInput } from '@/components/phone-input';
 import { SearchableCountrySelect } from './searchable-country-select';
 import CompanyDetailsCard from './company-details-card';
+import RoutingCard0 from './routing-card-0';
 
 // Define the form schema
 const formSchema = z.object({
@@ -132,10 +133,6 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
   });
 
   // Field arrays
-  const { fields: routingFields, append: appendRoute, remove: removeRoute } = useFieldArray({
-    control: form.control,
-    name: "routing",
-  });
 
   const { fields: livestockFields, append: appendLivestock, remove: removeLivestock } = useFieldArray({
     control: form.control,
@@ -194,133 +191,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
       <form onSubmit={form.handleSubmit(handleSubmit, handleError)} className="space-y-8">
         
         {/* Routing Section */}
-        <div className="">
-          <h1 className='text-xl font-raleway font-medium'>{t('routing')}</h1>
-          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
-            {routingFields.map((field, index) => (
-              <div key={field.id} className="space-y-6">
-                {/* Country selection boxes first */}
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-gray-700">From</h3>
-                    <FormItem>
-                      <FormLabel>Country</FormLabel>
-                      <FormControl>
-                        <Controller
-                          control={form.control}
-                          name={`routing.${index}.fromCountry`}
-                          render={({ field, fieldState: { error } }) => (
-                            <>
-                              <SearchableCountrySelect
-                                value={field.value}
-                                onValueChange={field.onChange}
-                                placeholder="Select country"
-                                className="w-full"
-                              />
-                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                            </>
-                          )}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  </div>
-                  <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-gray-700">To</h3>
-                    <FormItem>
-                      <FormLabel>Country</FormLabel>
-                      <FormControl>
-                        <Controller
-                          control={form.control}
-                          name={`routing.${index}.toCountry`}
-                          render={({ field, fieldState: { error } }) => (
-                            <>
-                              <SearchableCountrySelect
-                                value={field.value}
-                                onValueChange={field.onChange}
-                                placeholder="Select country"
-                                className="w-full"
-                              />
-                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                            </>
-                          )}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  </div>
-                </div>
-
-                {/* From and To Port/Area sections below */}
-                <div className="grid md:grid-cols-2 gap-4">
-                  {/* From */}
-                  <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-gray-700">From</h3>
-                    <FormItem>
-                      <FormLabel>Port/Area</FormLabel>
-                      <FormControl>
-                        <Controller
-                          control={form.control}
-                          name={`routing.${index}.fromPort`}
-                          render={({ field, fieldState: { error } }) => (
-                            <>
-                              <Input
-                                placeholder="e.g., Shanghai Port, Pudong"
-                                {...field}
-                              />
-                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                            </>
-                          )}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  </div>
-
-                  {/* To */}
-                  <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-gray-700">To</h3>
-                    <FormItem>
-                      <FormLabel>Port/Area</FormLabel>
-                      <FormControl>
-                        <Controller
-                          control={form.control}
-                          name={`routing.${index}.toPort`}
-                          render={({ field, fieldState: { error } }) => (
-                            <>
-                              <Input
-                                placeholder="e.g., Los Angeles Port, Long Beach"
-                                {...field}
-                              />
-                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                            </>
-                          )}
-                        />
-                      </FormControl>
-                    </FormItem>
-                  </div>
-                </div>
-
-                <div className="flex items-end">
-                  {routingFields.length > 1 && (
-                    <Button
-                      type="button"
-                      className="rounded-md flex items-center justify-center bg-red-500 mb-[6px] hover:bg-red-600"
-                      onClick={() => removeRoute(index)}
-                    >
-                      {t("Remove")}
-                    </Button>
-                  )}
-                </div>
-              </div>
-            ))}
-
-            <Button
-              type="button"
-              className="mt-4 max-w-[200px] bg-primary text-sm text-white rounded-lg"
-              onClick={() => appendRoute({ fromCountry: '', fromPort: '', toCountry: '', toPort: '' })}
-            >
-              {t('addRoute')}
-            </Button>
-          </div>
-        </div>
+        <RoutingCard0 control={form.control} />
 
         {/* Dates Section */}
         <div className="">

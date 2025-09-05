@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Textarea } from './ui/textarea';
-import RoutingCard from './routing-card-variant-2';
+import RoutingCard0 from './routing-card-0';
 import CommoditiesCard from './commodities-card-variant-8';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
@@ -238,7 +238,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Routing Section */}
-                <RoutingCard control={form.control} />
+                <RoutingCard0 control={form.control} />
 
                 {/* Dates Section */}
                 <DatesCard control={form.control} />

@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Textarea } from './ui/textarea';
-import RoutingCard from './routing-card-variant-1';
+import RoutingCard1 from './routing-card-1';
 import TransportationMethodCard from './transportation-method-card';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
@@ -22,13 +22,15 @@ import FileUpload from './file-upload';
 // Define the form schema
 const formSchema = z.object({
     routing: z.array(z.object({
-        from: z.string().min(1, { message: "From is required" }),
-        to: z.string().min(1, { message: "To is required" }),
-        services_mode_from: z.enum(["cy", "sd"], {
-            required_error: "You need to select a type.",
+        fromCountry: z.string().min(1, { message: "From country is required" }),
+        fromPort: z.string().min(1, { message: "From port/area is required" }),
+        fromServicesMode: z.enum(["cy", "sd"], {
+            required_error: "From services mode is required",
         }),
-        services_mode_to: z.enum(["cy", "sd"], {
-            required_error: "You need to select a type.",
+        toCountry: z.string().min(1, { message: "To country is required" }),
+        toPort: z.string().min(1, { message: "To port/area is required" }),
+        toServicesMode: z.enum(["cy", "sd"], {
+            required_error: "To services mode is required",
         }),
     })),
     ready_to_load: z.string().min(1, { message: "Date is required" }),
@@ -121,10 +123,10 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
             routing: [{
                 fromCountry: '',
                 fromPort: '',
+                fromServicesMode: 'cy',
                 toCountry: '',
                 toPort: '',
-                services_mode_from: 'cy',
-                services_mode_to: 'cy'
+                toServicesMode: 'cy'
             }],
             ready_to_load: '',
             transportation: {
@@ -214,7 +216,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Routing Section */}
-                <RoutingCard control={form.control} />
+                <RoutingCard1 control={form.control} />
 
                 {/* Ready to Load Section */}
                 <DatesCard control={form.control} />

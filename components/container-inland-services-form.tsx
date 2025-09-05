@@ -11,7 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Plus, Upload, Trash2, Mail, Phone, Calendar, Minus } from 'lucide-react';
 import CompanyDetailsCard from './company-details-card';
-import RoutingCardVariant2 from './routing-card-variant-2';
+import RoutingCard0 from './routing-card-0';
 import DatesCard from './dates-card';
 import ContainerDetailsTable from './container-details-table';
 import { useTranslations } from 'next-intl';
@@ -141,7 +141,7 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Routing Section */}
-                <RoutingCardVariant2 control={form.control} />
+                <RoutingCard0 control={form.control} />
 
                 {/* Container Details Table */}
                 <ContainerDetailsTable control={form.control} />

@@ -745,26 +745,26 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           <h2 className="text-xl font-raleway font-medium mb-4">Origin and Destination</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <div className="flex items-center gap-4">
-                <h3 className="text-sm font-medium text-gray-700 whitespace-nowrap">Country of Origin</h3>
-                <FormControl className="flex-1">
-                  <Controller
-                    control={form.control}
-                    name="countryOfOrigin"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <SearchableCountrySelect
-                          value={field.value}
-                          onValueChange={field.onChange}
-                          placeholder="Select country"
-                          className="w-full"
-                        />
-                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </div>
+              <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
+                Country of Origin
+              </FormLabel>
+              <FormControl>
+                <Controller
+                  control={form.control}
+                  name="countryOfOrigin"
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <SearchableCountrySelect
+                        value={field.value}
+                        onValueChange={field.onChange}
+                        placeholder="Select country"
+                        className="w-[300px] !border-2 !rounded-xl !border-gray-200"
+                      />
+                      {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                    </>
+                  )}
+                />
+              </FormControl>
             </div>
 
             <div>
@@ -778,8 +778,8 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Input
-                        placeholder="[Insert Destination]"
-                        className="max-w-[300px] border-2 rounded-xl"
+                        className="w-[300px] border-2 rounded-xl"
+                        placeholder="Enter final destination"
                         {...field}
                       />
                       {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
