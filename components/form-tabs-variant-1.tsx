@@ -34,14 +34,14 @@ export default function FormTabs({ tabData, formTitle }: FormTabsProps) {
                     className="pb-10 px-4"
                 >
                     <h1 className="text-3xl font-raleway font-medium mb-8 text-center">{activeTabData.title}</h1>
-                    <h1 className="text-center font-raleway font-medium">{activeTabData.description}</h1>
+                    <p className="text-lg text-center font-raleway font-light text-gray-600">{activeTabData.description}</p>
                 </motion.div>
             </AnimatePresence>
 
             {/* Mobile Dropdown */}
             <div className="md:hidden mb-6">
                 <Select value={activeTab} onValueChange={setActiveTab}>
-                    <SelectTrigger className="w-full bg-white border-2 border-blue-200 rounded-2xl py-4 px-6 text-left font-['Raleway'] font-light shadow-lg shadow-blue-100 hover:shadow-xl hover:shadow-blue-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    <SelectTrigger className="w-full bg-white border-2 border-blue-200 rounded-2xl py-4 px-6 text-left font-raleway font-light shadow-lg shadow-blue-100 hover:shadow-xl hover:shadow-blue-200 transition-all duration-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                         <SelectValue placeholder="Select a service" className="text-gray-700" />
                         <ChevronDown className="h-5 w-5 ml-auto text-blue-500 transition-transform duration-200" />
                     </SelectTrigger>
@@ -50,7 +50,7 @@ export default function FormTabs({ tabData, formTitle }: FormTabsProps) {
                             <SelectItem 
                                 key={tab.id} 
                                 value={tab.id}
-                                className="font-['Raleway'] font-light py-4 px-6 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 focus:text-blue-700 transition-colors duration-200 first:rounded-t-2xl last:rounded-b-2xl"
+                                className="font-raleway font-light py-4 px-6 cursor-pointer hover:bg-blue-50 focus:bg-blue-100 focus:text-blue-700 transition-colors duration-200 first:rounded-t-2xl last:rounded-b-2xl"
                             >
                                 {tab.title}
                             </SelectItem>
@@ -66,7 +66,7 @@ export default function FormTabs({ tabData, formTitle }: FormTabsProps) {
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-xl font-light transition-colors focus:outline-none font-['Raleway'] text-center flex items-center justify-center ${activeTab === tab.id
+                            className={`flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-xl font-light transition-colors focus:outline-none font-raleway text-center flex items-center justify-center ${activeTab === tab.id
                                 ? "text-primary"
                                 : "text-foreground bg-secondary hover:bg-blue-50 dark:hover:bg-[#171b21]"
                                 } ${index === 0 ? "rounded-tl-2xl" : ""} ${index === tabData.length - 1 ? "rounded-tr-2xl" : ""
@@ -96,7 +96,7 @@ export default function FormTabs({ tabData, formTitle }: FormTabsProps) {
                             exit={{ opacity: 0, y: -20 }}
                             transition={{ duration: 0.2 }}
                         >
-                            <h3 className="text-3xl font-medium mb-10 text-center font-['Raleway']">
+                            <h3 className="text-3xl font-medium mb-10 text-center font-raleway">
                                 {activeTabData.id === 'investor' 
                                     ? `${activeTabData.title} Form` 
                                     : `${activeTabData.title} Quotation Form`}
