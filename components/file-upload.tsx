@@ -13,12 +13,17 @@ interface FileUploadProps {
 
 const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) => {
     const [cargoPictureChecked, setCargoPictureChecked] = useState(false);
+    const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const { setValue } = useFormContext();
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            setValue('supporting_files', Array.from(e.target.files));
+            const files = Array.from(e.target.files);
+            setSelectedFiles(files);
+            // Convert files to a string representation for the form
+            const fileNames = files.map(file => file.name).join(', ');
+            setValue('supportingFiles', fileNames);
         }
     };
 
@@ -36,7 +41,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
                 <FormControl>
                     <Controller
                         control={control}
-                        name="supporting_files"
+                        name="supportingFiles"
                         render={({ fieldState: { error } }) => (
                             <div className="space-y-4">
                                 {/* File Upload Input */}
@@ -49,7 +54,12 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
                                     >
                                         Choose files
                                     </Button>
-                                    <span className="text-gray-500">No file chosen</span>
+                                    <span className="text-gray-500">
+                                        {selectedFiles.length > 0 
+                                            ? `${selectedFiles.length} file(s) selected` 
+                                            : "No file chosen"
+                                        }
+                                    </span>
                                 </div>
 
                                 {/* Hidden file input */}
@@ -61,6 +71,23 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
                                     onChange={handleFileChange}
                                     className="hidden"
                                 />
+
+                                {/* Selected files list */}
+                                {selectedFiles.length > 0 && (
+                                    <div className="mt-2">
+                                        <p className="text-sm font-medium text-gray-700 mb-2">Selected files:</p>
+                                        <ul className="text-sm text-gray-600 space-y-1">
+                                            {selectedFiles.map((file, index) => (
+                                                <li key={index} className="flex items-center justify-between">
+                                                    <span>{file.name}</span>
+                                                    <span className="text-xs text-gray-500">
+                                                        {(file.size / 1024 / 1024).toFixed(2)} MB
+                                                    </span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
 
                                 {/* File Constraints */}
                                 <p className="text-sm text-gray-500">
@@ -95,4 +122,4 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
     );
 };
 
-export default FileUpload; 
+export default FileUpload;
