@@ -21,7 +21,7 @@ export default function Login() {
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       {/* Sign In Form Section */}
-    <div className="w-full flex items-center justify-end px-4 pr-8 min-h-screen">
+    <div className="w-full flex items-center justify-start px-4 pl-8 min-h-screen">
       <div className="w-full max-w-5xl flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
         {/* Left Side - Welcome */}
         <div className="w-full lg:w-1/2 flex flex-col items-start justify-center">

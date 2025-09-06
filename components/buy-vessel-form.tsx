@@ -6,11 +6,9 @@ import { number, z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";import { Button } from "@/components/ui/button";
 import { useTranslations } from 'next-intl';
-import CompanyDetailsCard from './company-details-card';
-
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Textarea } from './ui/textarea';
-
+import CompanyDetailsCard from './company-details-card';
 
 
 // 1. Define a type-safe form handler using z.infer
