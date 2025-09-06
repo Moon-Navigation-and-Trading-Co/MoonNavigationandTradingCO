@@ -17,7 +17,7 @@ const ProjectCargoIndustryCarousel = dynamic(() => import("@/components/project-
 
 //seo
 
-function overview() {
+function Overview() {
   const t = useTranslations("learn-project-cargo");
   return (
     <>
@@ -751,7 +751,7 @@ function overview() {
   );
 }
 
-function services() {
+function Services() {
   const t = useTranslations("learn-project-cargo");
   return (
     <div className="space-y-32">
@@ -763,8 +763,8 @@ function services() {
 export default function ProjectCargoPage() {
   return (
     <main className="flex-1 flex flex-col gap-20 sm:gap-28 md:gap-36" style={{ fontFamily: 'Raleway, sans-serif' }}>
-      {overview()}
-      {services()}
+      <Overview />
+      <Services />
     </main>
   );
 }
