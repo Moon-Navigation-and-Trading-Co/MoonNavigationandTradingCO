@@ -24,17 +24,19 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            const files = Array.from(e.target.files);
-            const newTotalSize = files.reduce((total, file) => total + file.size, 0);
+            const newFiles = Array.from(e.target.files);
+            const currentTotalSize = selectedFiles.reduce((total, file) => total + file.size, 0);
+            const newFilesSize = newFiles.reduce((total, file) => total + file.size, 0);
+            const combinedTotalSize = currentTotalSize + newFilesSize;
             
             // Check if total size exceeds limit
-            if (newTotalSize > MAX_SIZE_BYTES) {
-                setError(`Total file size exceeds ${MAX_SIZE_MB}MB limit. Current total: ${(newTotalSize / 1024 / 1024).toFixed(2)}MB`);
+            if (combinedTotalSize > MAX_SIZE_BYTES) {
+                setError(`Total file size would exceed ${MAX_SIZE_MB}MB limit. Current: ${(currentTotalSize / 1024 / 1024).toFixed(2)}MB, Adding: ${(newFilesSize / 1024 / 1024).toFixed(2)}MB`);
                 return;
             }
 
             // Check individual file size (optional - you can remove this if you want)
-            const oversizedFiles = files.filter(file => file.size > MAX_SIZE_BYTES);
+            const oversizedFiles = newFiles.filter(file => file.size > MAX_SIZE_BYTES);
             if (oversizedFiles.length > 0) {
                 setError(`Some files exceed ${MAX_SIZE_MB}MB limit. Please select smaller files.`);
                 return;
@@ -43,11 +45,13 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
             // Clear any previous errors
             setError('');
             
-            setSelectedFiles(files);
-            setTotalSize(newTotalSize);
+            // Add new files to existing selection
+            const updatedFiles = [...selectedFiles, ...newFiles];
+            setSelectedFiles(updatedFiles);
+            setTotalSize(combinedTotalSize);
             
             // Convert files to a string representation for the form
-            const fileNames = files.map(file => file.name).join(', ');
+            const fileNames = updatedFiles.map(file => file.name).join(', ');
             setValue('supportingFiles', fileNames);
         }
     };
@@ -63,6 +67,13 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
         // Update form value
         const fileNames = newFiles.map(file => file.name).join(', ');
         setValue('supportingFiles', fileNames);
+    };
+
+    const clearAllFiles = () => {
+        setSelectedFiles([]);
+        setTotalSize(0);
+        setError('');
+        setValue('supportingFiles', '');
     };
 
     const openFileDialog = () => {
@@ -97,6 +108,16 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
                                     >
                                         Choose files
                                     </Button>
+                                    {selectedFiles.length > 0 && (
+                                        <Button
+                                            type="button"
+                                            variant="outline"
+                                            onClick={clearAllFiles}
+                                            className="px-4 py-2 text-red-600 hover:text-red-700"
+                                        >
+                                            Clear all
+                                        </Button>
+                                    )}
                                     <span className="text-gray-500">
                                         {selectedFiles.length > 0 
                                             ? `${selectedFiles.length} file(s) selected (${formatFileSize(totalSize)}MB)` 
@@ -130,7 +151,6 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
                                                         <Button
                                                             type="button"
                                                             variant="ghost"
-                                                            
                                                             onClick={() => removeFile(index)}
                                                             className="text-red-500 hover:text-red-700 p-1 h-auto"
                                                         >
