@@ -32,7 +32,7 @@ const sparePartSchema = z.object({
 });
 
 // 1. Define a type-safe form handler using z.infer
-const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
@@ -731,10 +731,14 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className="mt-4 w-[200px]">
-                    Submit
-                </Button>
-            </form>
+                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center gap-2">
+                        <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                        <span>Submitting...</span>
+                      </div>
+                    ) : "Submit"}
+                </Button>            </form>
         </Form>
     );
 };

@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import Spinner from "@/components/spinner";import React from 'react';
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from 'zod';
@@ -17,7 +17,7 @@ import { Separator } from '@radix-ui/react-dropdown-menu';
 
 
 // 1. Define a type-safe form handler using z.infer
-const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
 
@@ -276,28 +276,15 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className="mt-4 w-[200px]">
-                    Submit
-                </Button>
-                
-                {/* Debug button */}
-                <Button 
-                    type="button" 
-                    onClick={() => {
-                        // eslint-disable-next-line no-console
-                        console.log("Debug: Form values:", form.getValues());
-                        // eslint-disable-next-line no-console
-                        console.log("Debug: Form errors:", form.formState.errors);
-                        // eslint-disable-next-line no-console
-                        console.log("Debug: Form is valid:", form.formState.isValid);
-                    }}
-                    className="mt-4 w-[200px] ml-4"
-                    variant="outline"
-                >
-                    Debug Form
-                </Button>
-            </form>
-        </Form>
+                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center gap-2">
+                        <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                        <span>Submitting...</span>
+                      </div>
+                    ) : "Submit"}
+                </Button>                
+            </form>        </Form>
     );
 };
 
