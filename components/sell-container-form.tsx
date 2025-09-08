@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { number, z } from 'zod';
@@ -18,6 +18,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     // Standard container types and sizes (14 most commonly used)
     const containerTypes = [
@@ -97,8 +98,14 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
     });
 
     // 2. Type-safe submit handler
-    const handleSubmit = (values: any) => {
-        onSubmit(values);
+    const handleSubmit = async (values: any) => {
+        setIsSubmitting(true);
+        try {
+            console.log(values);
+            await onSubmit(values);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
