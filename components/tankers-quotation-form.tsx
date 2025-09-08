@@ -221,7 +221,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     name="quantity_unit"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select onValueChange={field.onChange} value={field.value || ""}>
                           <SelectTrigger className="w-[300px] border-2 rounded-xl">
                             <SelectValue placeholder="Select unit" />
                           </SelectTrigger>
@@ -246,7 +246,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 name="temperature_requirement"
                 render={({ field }) => (
                   <RadioGroup 
-                    value={field.value} 
+                    value={field.value || ""} 
                     onValueChange={field.onChange} 
                     className="mt-3 space-y-2"
                   >
@@ -349,7 +349,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   name="charter_type"
                   render={({ field, fieldState: { error } }) => (
                     <>
-                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <Select onValueChange={field.onChange} value={field.value || ""}>
                         <SelectTrigger className="w-[300px] border-2 rounded-xl">
                           <SelectValue placeholder="Select charter type" />
                         </SelectTrigger>
@@ -580,7 +580,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 control={form.control}
                 name="marine_insurance"
                 render={({ field }) => (
-                  <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="mt-3 space-y-2">
+                  <RadioGroup onValueChange={field.onChange} value={field.value || ""} className="mt-3 space-y-2">
                     <div className="flex items-center space-x-2">
                       <RadioGroupItem value="yes" id="insurance_yes" />
                       <label htmlFor="insurance_yes" className="text-sm font-medium">Yes</label>

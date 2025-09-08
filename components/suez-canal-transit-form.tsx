@@ -381,7 +381,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                                     <>
                                         <RadioGroup
                                             onValueChange={field.onChange}
-                                            value={field.value}
+                                            value={field.value || ""}
                                             className="flex flex-col space-y-1"
                                         >
                                             <FormItem className="flex items-center space-x-3 space-y-0">
@@ -437,7 +437,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                                     <>
                                         <RadioGroup
                                             onValueChange={field.onChange}
-                                            value={field.value}
+                                            value={field.value || ""}
                                             className="flex flex-col space-y-1"
                                         >
                                             <FormItem className="flex items-center space-x-3 space-y-0">
@@ -539,7 +539,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                                         name="cargo.cargo_unit"
                                         render={({ field, fieldState: { error } }) => (
                                             <>
-                                                <Select onValueChange={field.onChange} value={field.value}>
+                                                <Select onValueChange={field.onChange} value={field.value || ""}>
                                                     <SelectTrigger className="w-[120px] border-2 rounded-xl">
                                                         <SelectValue placeholder="Unit" />
                                                     </SelectTrigger>
@@ -567,7 +567,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                                     <>
                                         <RadioGroup
                                             onValueChange={field.onChange}
-                                            value={field.value}
+                                            value={field.value || ""}
                                             className="flex flex-col space-y-1"
                                         >
                                             <FormItem className="flex items-center space-x-3 space-y-0">
@@ -600,7 +600,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                                     <>
                                         <RadioGroup
                                             onValueChange={field.onChange}
-                                            value={field.value}
+                                            value={field.value || ""}
                                             className="flex flex-col space-y-1"
                                         >
                                             <FormItem className="flex items-center space-x-3 space-y-0">
@@ -752,7 +752,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                                         <>
                                             <RadioGroup
                                                 onValueChange={field.onChange}
-                                                value={field.value}
+                                                value={field.value || ""}
                                                 className="flex flex-col space-y-1"
                                             >
                                                 <FormItem className="flex items-center space-x-3 space-y-0">
@@ -784,7 +784,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                                         <>
                                             <RadioGroup
                                                 onValueChange={field.onChange}
-                                                value={field.value}
+                                                value={field.value || ""}
                                                 className="flex flex-col space-y-1"
                                             >
                                                 <FormItem className="flex items-center space-x-3 space-y-0">
@@ -831,7 +831,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                                         <>
                                             <RadioGroup
                                                 onValueChange={field.onChange}
-                                                value={field.value}
+                                                value={field.value || ""}
                                                 className="flex flex-col space-y-1"
                                             >
                                                 <FormItem className="flex items-center space-x-3 space-y-0">

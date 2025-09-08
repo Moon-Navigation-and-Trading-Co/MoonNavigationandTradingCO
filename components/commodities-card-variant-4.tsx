@@ -116,7 +116,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                 render={({ field, fieldState: { error } }) => (
                                     <RadioGroup
                                         onValueChange={field.onChange}
-                                        value={field.value}
+                                        value={field.value || ""}
                                         className="flex flex-col"
                                     >
                                         {/* Container yard (CY) */}
@@ -155,7 +155,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                             render={({ field, fieldState: { error } }) => (
                                 <RadioGroup
                                     onValueChange={field.onChange}
-                                    value={field.value}
+                                    value={field.value || ""}
                                     className="space-y-2 grid grid-cols-2"
                                 >
                                     {/* Container yard (CY) */}

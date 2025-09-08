@@ -188,7 +188,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <SearchableCountrySelect
-                                              value={field.value}
+                                              value={field.value || ""}
                                               onValueChange={field.onChange}
                                               placeholder="Select country"
                                               className="w-full max-w-[280px]"
@@ -350,7 +350,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                                     <>
                                         <RadioGroup
                                             onValueChange={field.onChange}
-                                            value={field.value}
+                                            value={field.value || ""}
                                             className="flex flex-col space-y-1"
                                         >
                                             <FormItem className="flex items-center space-x-3 space-y-0">
@@ -418,7 +418,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                                     <>
                                         <RadioGroup
                                             onValueChange={field.onChange}
-                                            value={field.value}
+                                            value={field.value || ""}
                                             className="flex flex-col space-y-1"
                                         >
                                             <FormItem className="flex items-center space-x-3 space-y-0">
@@ -656,7 +656,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                                     <>
                                         <RadioGroup
                                             onValueChange={field.onChange}
-                                            value={field.value}
+                                            value={field.value || ""}
                                             className="flex flex-col space-y-1"
                                         >
                                             <FormItem className="flex items-center space-x-3 space-y-0">
@@ -734,7 +734,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                                     <>
                                         <RadioGroup
                                             onValueChange={field.onChange}
-                                            value={field.value}
+                                            value={field.value || ""}
                                             className="flex flex-col space-y-1"
                                         >
                                             <FormItem className="flex items-center space-x-3 space-y-0">

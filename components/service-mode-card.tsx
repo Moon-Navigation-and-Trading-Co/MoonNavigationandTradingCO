@@ -22,7 +22,7 @@ const ServiceModeCard = ({ control }: { control: any }) => {
                             render={({ field, fieldState: { error } }) => (
                                 <RadioGroup
                                     onValueChange={field.onChange}
-                                    value={field.value}
+                                    value={field.value || ""}
                                     className="flex flex-col space-y-1"
                                 >
                                     {/* Container yard (CY) */}

@@ -167,7 +167,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                 render={({ field, fieldState: { error } }) => (
                   <RadioGroup
                     onValueChange={field.onChange}
-                    defaultValue={field.value}
+                    value={field.value || ""}
                     className="flex flex-col space-y-2"
                   >
                     <div className="flex items-center space-x-2">
@@ -416,7 +416,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
               render={({ field, fieldState: { error } }) => (
                 <RadioGroup
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  value={field.value || ""}
                   className="flex flex-col space-y-2"
                 >
                   <div className="flex items-center space-x-2">
@@ -450,7 +450,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                     render={({ field, fieldState: { error } }) => (
                       <RadioGroup
                         onValueChange={field.onChange}
-                        defaultValue={field.value}
+                        value={field.value || ""}
                         className="flex flex-col space-y-2"
                       >
                         <div className="flex items-center space-x-2">
@@ -483,7 +483,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                         control={form.control}
                         name="container_size"
                         render={({ field, fieldState: { error } }) => (
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <Select onValueChange={field.onChange} value={field.value || ""}>
                             <SelectTrigger className="max-w-[300px] border-2 rounded-xl">
                               <SelectValue placeholder="Select container type" />
                             </SelectTrigger>
@@ -581,7 +581,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                         control={form.control}
                         name="weight_unit"
                         render={({ field }) => (
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <Select onValueChange={field.onChange} value={field.value || ""}>
                             <SelectTrigger className="w-20 border-2 rounded-xl">
                               <SelectValue />
                             </SelectTrigger>
@@ -698,7 +698,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                       control={form.control}
                       name="weight_unit"
                       render={({ field }) => (
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select onValueChange={field.onChange} value={field.value || ""}>
                           <SelectTrigger className="w-20 border-2 rounded-xl">
                             <SelectValue />
                           </SelectTrigger>
@@ -746,7 +746,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                       control={form.control}
                       name="weight_unit"
                       render={({ field }) => (
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <Select onValueChange={field.onChange} value={field.value || ""}>
                           <SelectTrigger className="w-20 border-2 rounded-xl">
                             <SelectValue />
                           </SelectTrigger>
@@ -804,7 +804,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <SearchableCountrySelect
-                        value={field.value}
+                        value={field.value || ""}
                         onValueChange={field.onChange}
                         placeholder="Select country"
                         className="w-[300px] !border-2 !rounded-xl !border-gray-200"

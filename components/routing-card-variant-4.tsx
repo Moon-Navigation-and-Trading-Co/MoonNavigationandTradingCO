@@ -37,7 +37,7 @@ const RoutingCard = ({ control }: { control: any }) => {
                                         <>
                                             <RadioGroup
                                                 onValueChange={field.onChange}
-                                                value={field.value}
+                                                value={field.value || ""}
                                                 className="flex flex-col space-y-2"
                                             >
                                                 <FormItem className="flex items-center space-x-3 space-y-0">
@@ -73,7 +73,7 @@ const RoutingCard = ({ control }: { control: any }) => {
                                                 name="routing.origin_other"
                                                 render={({ field, fieldState: { error } }) => (
                                                     <>
-                                                        <Select onValueChange={field.onChange} value={field.value}>
+                                                        <Select onValueChange={field.onChange} value={field.value || ""}>
                                                             <SelectTrigger className="w-full border-2 rounded-xl">
                                                                 <SelectValue placeholder="Select country" />
                                                             </SelectTrigger>
@@ -186,7 +186,7 @@ const RoutingCard = ({ control }: { control: any }) => {
                                     name="routing.incoterm"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
-                                            <Select onValueChange={field.onChange} value={field.value}>
+                                            <Select onValueChange={field.onChange} value={field.value || ""}>
                                                 <SelectTrigger className="w-full border-2 rounded-xl">
                                                     <SelectValue placeholder="Select Incoterm" />
                                                 </SelectTrigger>

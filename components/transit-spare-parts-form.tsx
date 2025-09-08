@@ -259,7 +259,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                             <>
                                                 <RadioGroup
                                                     onValueChange={field.onChange}
-                                                    value={field.value}
+                                                    value={field.value || ""}
                                                     className="flex flex-col space-y-1"
                                                 >
                                                     <FormItem className="flex items-center space-x-3 space-y-0">
@@ -394,7 +394,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                                 name={`spare_parts.${index}.input_method`}
                                                 render={({ field }) => (
                                                     <RadioGroup
-                                                        value={field.value}
+                                                        value={field.value || ""}
                                                         onValueChange={field.onChange}
                                                         className="flex space-x-4"
                                                     >
@@ -530,7 +530,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                             name={`spare_parts.${index}.dimension_unit`}
                                             render={({ field }) => (
                                                 <RadioGroup
-                                                    value={field.value}
+                                                    value={field.value || ""}
                                                     onValueChange={(value) => {
                                                         field.onChange(value);
                                                         // Recalculate CBM when unit changes
@@ -562,7 +562,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                                 name={`spare_parts.${index}.packing_type`}
                                                 render={({ field }) => (
                                                     <RadioGroup
-                                                        value={field.value}
+                                                        value={field.value || ""}
                                                         onValueChange={field.onChange}
                                                         className="flex flex-col space-y-1"
                                                     >
@@ -606,7 +606,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                             name={`spare_parts.${index}.urgency`}
                                             render={({ field }) => (
                                                 <RadioGroup
-                                                    value={field.value}
+                                                    value={field.value || ""}
                                                     onValueChange={field.onChange}
                                                     className="flex flex-col space-y-1"
                                                 >

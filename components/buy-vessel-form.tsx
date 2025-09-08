@@ -124,7 +124,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                         render={({ field, fieldState: { error } }) => (
                             <RadioGroup
                                 onValueChange={field.onChange} // Update form state
-                                value={field.value} // The selected value
+                                value={field.value || ""} // The selected value
                                 className="flex flex-col space-y-1"
                             >
                                 {/* sea Transportation Method */}

@@ -193,7 +193,7 @@ export default function AnalyticsTracker({
       document.removeEventListener('visibilitychange', handleVisibilityChange);
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-  }, [trackUserBehavior, apiEndpoint]);
+  }, [trackUserBehavior, apiEndpoint, sessionId]);
 
   // This component doesn't render anything visible
   return null;
