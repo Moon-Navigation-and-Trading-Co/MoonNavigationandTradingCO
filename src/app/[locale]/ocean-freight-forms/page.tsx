@@ -177,7 +177,7 @@ const Page: React.FC = () => {
                 <TankersQuotationForm onSubmit={(formData: any) => submitForm(formData, "tankers_quotation")} />
             )
         }
-    ], [t, submitForm]);
+    ], [submitForm]);
 
     if (isLoading) {
         return <div className='w-full h-[400px] flex items-center justify-center rounded-3xl'>

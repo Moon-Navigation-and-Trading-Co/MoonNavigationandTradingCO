@@ -146,7 +146,7 @@ export default function ScheduleMeeting() {
                                                     <Input 
                                                         className="max-w-[400px] border-2 rounded-xl" 
                                                         placeholder="Company Name"
-                                                        {...field}
+                                                        {...field} value={field.value || ""}
                                                     />
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                 </>
@@ -166,7 +166,7 @@ export default function ScheduleMeeting() {
                                                     <Input 
                                                         className="max-w-[400px] border-2 rounded-xl" 
                                                         placeholder="Contact Person Name"
-                                                        {...field}
+                                                        {...field} value={field.value || ""}
                                                     />
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                 </>
@@ -186,7 +186,7 @@ export default function ScheduleMeeting() {
                                                     <Input 
                                                         className="max-w-[400px] border-2 rounded-xl" 
                                                         placeholder="Mr, Ms, etc."
-                                                        {...field}
+                                                        {...field} value={field.value || ""}
                                                     />
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                 </>
@@ -207,7 +207,7 @@ export default function ScheduleMeeting() {
                                                         type="email"
                                                         className="max-w-[400px] border-2 rounded-xl" 
                                                         placeholder="Email"
-                                                        {...field}
+                                                        {...field} value={field.value || ""}
                                                     />
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                 </>
@@ -225,7 +225,7 @@ export default function ScheduleMeeting() {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <PhoneInput
-                                                        value={field.value}
+                                                        value={field.value || ''}
                                                         onChange={(value) => field.onChange(value)}
                                                         defaultCountry="EG"
                                                         international
@@ -269,7 +269,7 @@ export default function ScheduleMeeting() {
                                                                 type="email"
                                                                 className="max-w-[400px] border-2 rounded-xl" 
                                                                 placeholder="Additional Email"
-                                                                {...field}
+                                                                {...field} value={field.value || ""}
                                                             />
                                                             {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                         </>
@@ -321,7 +321,7 @@ export default function ScheduleMeeting() {
                                                                 type="tel"
                                                                 className="max-w-[400px] border-2 rounded-xl" 
                                                                 placeholder="Additional Phone"
-                                                                {...field}
+                                                                {...field} value={field.value || ""}
                                                             />
                                                             {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                         </>
@@ -362,7 +362,7 @@ export default function ScheduleMeeting() {
                                                     <Input 
                                                         type="date"
                                                         className="max-w-[400px] border-2 rounded-xl" 
-                                                        {...field}
+                                                        {...field} value={field.value || ""}
                                                     />
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                 </>
@@ -382,7 +382,7 @@ export default function ScheduleMeeting() {
                                                     <Input 
                                                         type="date"
                                                         className="max-w-[400px] border-2 rounded-xl" 
-                                                        {...field}
+                                                        {...field} value={field.value || ""}
                                                     />
                                                     {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                 </>
@@ -399,7 +399,7 @@ export default function ScheduleMeeting() {
                                             name="preferred_time_1"
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
-                                                    <Select onValueChange={field.onChange} value={field.value}>
+                                                    <Select onValueChange={field.onChange} value={field.value || ''}>
                                                         <SelectTrigger className="max-w-[400px] border-2 rounded-xl">
                                                             <SelectValue placeholder="Select time" />
                                                         </SelectTrigger>
@@ -491,7 +491,7 @@ export default function ScheduleMeeting() {
                                             name="preferred_time_2"
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
-                                                    <Select onValueChange={field.onChange} value={field.value}>
+                                                    <Select onValueChange={field.onChange} value={field.value || ''}>
                                                         <SelectTrigger className="max-w-[400px] border-2 rounded-xl">
                                                             <SelectValue placeholder="Select time" />
                                                         </SelectTrigger>
@@ -639,7 +639,7 @@ export default function ScheduleMeeting() {
                                                         <Input 
                                                             className="max-w-[400px] border-2 rounded-xl" 
                                                             placeholder="Please specify"
-                                                            {...field}
+                                                            {...field} value={field.value || ""}
                                                         />
                                                         {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                                     </>
@@ -661,7 +661,7 @@ export default function ScheduleMeeting() {
                                                 <>
                                                     <RadioGroup
                                                         onValueChange={field.onChange}
-                                                        value={field.value}
+                                                        value={field.value || ''}
                                                         className="flex flex-col space-y-2"
                                                     >
                                                         <div className="flex items-center space-x-2">
@@ -697,7 +697,7 @@ export default function ScheduleMeeting() {
                                                 <Textarea 
                                                     className="min-h-[100px] border-2 rounded-xl" 
                                                     placeholder="Please share any specific details or requests..."
-                                                    {...field}
+                                                    {...field} value={field.value || ""}
                                                 />
                                                 {error && <p className="text-red-500 text-sm">{error.message}</p>}
                                             </>
