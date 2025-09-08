@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -75,8 +75,25 @@ export default function AnalyticsPage() {
     countries: []
   });
 
+  // Helper function to get country flags
+  const getCountryFlag = useCallback((country: string) => {
+    const flags: { [key: string]: string } = {
+      'United States': '🇺🇸',
+      'United Kingdom': '🇬🇧',
+      'Germany': '🇩🇪',
+      'Canada': '🇨🇦',
+      'Australia': '🇦🇺',
+      'France': '🇫🇷',
+      'Japan': '🇯🇵',
+      'Italy': '🇮🇹',
+      'Spain': '🇪🇸',
+      'Netherlands': '🇳🇱'
+    };
+    return flags[country] || '🌍';
+  }, []);
+
   // Fetch real analytics data from API
-  const fetchAnalyticsData = async () => {
+  const fetchAnalyticsData = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await fetch('/en/api/analytics/track');
@@ -123,29 +140,12 @@ export default function AnalyticsPage() {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  // Helper function to get country flags
-  const getCountryFlag = (country: string) => {
-    const flags: { [key: string]: string } = {
-      'United States': '🇺🇸',
-      'United Kingdom': '🇬🇧',
-      'Germany': '🇩🇪',
-      'Canada': '🇨🇦',
-      'Australia': '🇦🇺',
-      'France': '🇫🇷',
-      'Japan': '🇯🇵',
-      'Italy': '🇮🇹',
-      'Spain': '🇪🇸',
-      'Netherlands': '🇳🇱'
-    };
-    return flags[country] || '🌍';
-  };
+  }, [getCountryFlag]);
 
   // Fetch data on component mount and when timeRange changes
   useEffect(() => {
     fetchAnalyticsData();
-  }, [timeRange]);
+  }, [timeRange, fetchAnalyticsData]);
 
   // Auto-refresh data every 30 seconds
   useEffect(() => {
@@ -154,7 +154,7 @@ export default function AnalyticsPage() {
     }, 30000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [fetchAnalyticsData]);
 
   const handleRefresh = () => {
     fetchAnalyticsData();

@@ -8,7 +8,7 @@ import { createClient } from '@/utils/supabase/client';
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from 'next/navigation';
 import { sendFormEmail } from '@/utils/email-helper';
-import { generateQuotationNumber } from "@/utils/quotation/generator";
+import { generate_quotation_number } from "@/utils/quotation/generator";
 import Spinner from '@/components/spinner';
 
 export default function CustomsClearanceFormsPage() {
@@ -129,7 +129,7 @@ export default function CustomsClearanceFormsPage() {
         additional_email: formData.companyDetails?.additional_email,
         phone_number: formData.companyDetails?.phone_number,
         additional_phone_number: formData.companyDetails?.additional_phone_number,
-        quotation_number: await generateQuotationNumber("customs_clearance")
+        quotation_number: await generate_quotation_number("customs_clearance")
       };
 
       console.log("Customs Clearance Form Data:", flattenedData);
