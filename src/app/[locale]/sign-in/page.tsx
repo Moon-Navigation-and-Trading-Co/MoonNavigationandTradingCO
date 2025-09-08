@@ -1,5 +1,5 @@
 "use client";
-import { signInAction } from "@/src/app/actions";
+import { sign_in_action } from "@/src/app/actions";
 import { FormMessage, Message } from "@/components/form-message";
 import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
@@ -52,7 +52,7 @@ export default function Login() {
         {/* Right Side - Form */}
         <div className="w-full lg:w-1/2 flex flex-col items-start justify-center">
           <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
-            <form className="w-full flex flex-col gap-6" action={signInAction}>
+            <form className="w-full flex flex-col gap-6" action={sign_in_action}>
               <div className="flex flex-col gap-1 w-full">
                 <Label htmlFor="email" className="text-sm font-semibold text-gray-700 mb-2">
                   Email Address

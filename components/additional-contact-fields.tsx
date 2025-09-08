@@ -11,15 +11,21 @@ import { PhoneInput } from '@/components/phone-input';
 interface AdditionalContactFieldsProps {
   control: any;
   className?: string;
+  fieldPrefix?: string; // Add fieldPrefix prop
 }
 
 const AdditionalContactFields: React.FC<AdditionalContactFieldsProps> = ({ 
   control, 
-  className = "" 
+  className = "",
+  fieldPrefix = "company_details" // Default to company_details for backward compatibility
 }) => {
   const t = useTranslations('Inland-forms');
   const [showAdditionalEmail, setShowAdditionalEmail] = useState(false);
   const [showAdditionalPhone, setShowAdditionalPhone] = useState(false);
+
+  // Build field names based on prefix
+  const additionalEmailField = fieldPrefix ? `${fieldPrefix}.additional_email` : 'additional_email';
+  const additionalPhoneField = fieldPrefix ? `${fieldPrefix}.additional_phone_number` : 'additional_phone';
 
   return (
     <div className={`space-y-4 ${className}`}>
@@ -43,7 +49,8 @@ const AdditionalContactFields: React.FC<AdditionalContactFieldsProps> = ({
               <FormControl>
                 <Controller
                   control={control}
-                  name="company_details.additional_email"
+                  name={additionalEmailField}
+                  defaultValue="" // Add default value to prevent uncontrolled to controlled warning
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Input 
@@ -89,11 +96,12 @@ const AdditionalContactFields: React.FC<AdditionalContactFieldsProps> = ({
               <FormControl>
                 <Controller
                   control={control}
-                  name="company_details.additional_phone_number"
+                  name={additionalPhoneField}
+                  defaultValue="" // Add default value to prevent uncontrolled to controlled warning
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <PhoneInput
-                        value={field.value}
+                        value={field.value || ""} // Ensure value is never undefined
                         onChange={(value) => field.onChange(value)}
                         defaultCountry="EG"
                         international

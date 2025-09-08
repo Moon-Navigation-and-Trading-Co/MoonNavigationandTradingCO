@@ -24,16 +24,16 @@ import FileUpload from './file-upload';
 const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [entryMode, setEntryMode] = useState<'itemized' | 'consolidated'>('itemized');
+    const [is_submitting, set_is_submitting] = useState(false);
+    const [entry_mode, set_entry_mode] = useState<'itemized' | 'consolidated'>('itemized');
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
         routing: z.array(z.object({
-            fromCountry: z.string().min(1, { message: "From country is required" }),
-            fromPort: z.string().min(1, { message: "From port/area is required" }),
-            toCountry: z.string().min(1, { message: "To country is required" }),
-            toPort: z.string().min(1, { message: "To port/area is required" }),
+            from_country: z.string().min(1, { message: "From country is required" }),
+            from_port: z.string().min(1, { message: "From port/area is required" }),
+            to_country: z.string().min(1, { message: "To country is required" }),
+            to_port: z.string().min(1, { message: "To port/area is required" }),
         })),
         date: z.string().min(1, { message: t("Date") }).refine(value => {
             return !isNaN(Date.parse(value)); // Ensure valid date
@@ -135,10 +135,10 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
         resolver: zodResolver(formSchema),
         defaultValues: {
             routing: [{
-                fromCountry: '',
-                fromPort: '',
-                toCountry: '',
-                toPort: '',
+                from_country: '',
+                from_port: '',
+                to_country: '',
+                to_port: '',
             }],
             date: '',
             entry_mode: 'itemized',
@@ -227,17 +227,17 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-        setIsSubmitting(true);
+        set_is_submitting(true);
         try {
             console.log(values);
             await onSubmit(values);
         } finally {
-            setIsSubmitting(false);
+            set_is_submitting(false);
         }
     };
 
     const handleModeChange = (mode: 'itemized' | 'consolidated') => {
-        setEntryMode(mode);
+        set_entry_mode(mode);
         form.setValue('entry_mode', mode);
     };
 
@@ -256,7 +256,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                     <div className="flex gap-4">
                         <Button
                             type="button"
-                            variant={entryMode === 'itemized' ? 'default' : 'outline'}
+                            variant={entry_mode === 'itemized' ? 'default' : 'outline'}
                             onClick={() => handleModeChange('itemized')}
                             className="flex-1"
                         >
@@ -264,7 +264,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                         </Button>
                         <Button
                             type="button"
-                            variant={entryMode === 'consolidated' ? 'default' : 'outline'}
+                            variant={entry_mode === 'consolidated' ? 'default' : 'outline'}
                             onClick={() => handleModeChange('consolidated')}
                             className="flex-1"
                         >
@@ -274,14 +274,14 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 </div>
 
                 {/* Cargo Entry Section */}
-                {entryMode === 'itemized' ? (
+                {entry_mode === 'itemized' ? (
                     <ItemizedTable control={form.control} />
                 ) : (
                     <ConsolidatedForm control={form.control} />
                 )}
 
                 {/* Additional Details - Only for Itemized Entry */}
-                {entryMode === 'itemized' && (
+                {entry_mode === 'itemized' && (
                     <div className="bg-white rounded-lg shadow-md p-6">
                         <FormItem>
                             <FormLabel>Additional Details (Optional)</FormLabel>
@@ -308,7 +308,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 {/* Supporting Files Section */}
                 <FileUpload 
                     control={form.control} 
-                    isRequired={entryMode === 'consolidated'}
+                    isRequired={entry_mode === 'consolidated'}
                 />
 
                 {/* Commercial Terms */}
@@ -519,8 +519,8 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
-                    {isSubmitting ? (
+                <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+                    {is_submitting ? (
                         <div className="flex items-center justify-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>

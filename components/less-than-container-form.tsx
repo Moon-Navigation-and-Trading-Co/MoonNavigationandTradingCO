@@ -384,19 +384,19 @@ const CommodityDetailsList = ({ control }: { control: any }) => {
 const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [is_submitting, set_is_submitting] = useState(false);
 
     // Define your Zod schema
     const formSchema = z.object({
         routing: z.array(z.object({
-            fromCountry: z.string().min(1, { message: "From country is required" }),
-            fromPort: z.string().min(1, { message: "From port/area is required" }),
-            pickupRequired: z.boolean().optional(),
-            pickupLocation: z.string().optional(),
-            toCountry: z.string().min(1, { message: "To country is required" }),
-            toPort: z.string().min(1, { message: "To port/area is required" }),
-            deliveryRequired: z.boolean().optional(),
-            deliveryLocation: z.string().optional(),
+            from_country: z.string().min(1, { message: "From country is required" }),
+            from_port: z.string().min(1, { message: "From port/area is required" }),
+            pickup_required: z.boolean().optional(),
+            pickup_location: z.string().optional(),
+            to_country: z.string().min(1, { message: "To country is required" }),
+            to_port: z.string().min(1, { message: "To port/area is required" }),
+            delivery_required: z.boolean().optional(),
+            delivery_location: z.string().optional(),
         })),
         commodity_details: z.array(z.object({
             commodity: z.string().min(1, { message: "Commodity is required" }),
@@ -450,14 +450,14 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
         resolver: zodResolver(formSchema),
         defaultValues: {
             routing: [{
-                fromCountry: '',
-                fromPort: '',
-                pickupRequired: false,
-                pickupLocation: '',
-                toCountry: '',
-                toPort: '',
-                deliveryRequired: false,
-                deliveryLocation: '',
+                from_country: '',
+                from_port: '',
+                pickup_required: false,
+                pickup_location: '',
+                to_country: '',
+                to_port: '',
+                delivery_required: false,
+                delivery_location: '',
             }],
             commodity_details: [{
                 commodity: '',
@@ -510,12 +510,12 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-        setIsSubmitting(true);
+        set_is_submitting(true);
         try {
             console.log("Form submitted successfully:", values);
             await onSubmit(values);
         } finally {
-            setIsSubmitting(false);
+            set_is_submitting(false);
         }
     };
 
@@ -922,8 +922,8 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
-                    {isSubmitting ? (
+                <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+                    {is_submitting ? (
                         <div className="flex items-center justify-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>

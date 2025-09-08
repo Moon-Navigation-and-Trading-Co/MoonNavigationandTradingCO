@@ -162,7 +162,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
 
             {/* Additional Contact Fields */}
             <div className="px-4 mt-6">
-                <AdditionalContactFields control={control} />
+                <AdditionalContactFields control={control} fieldPrefix="company_details" />
             </div>
 
             <div className='mt-24'>

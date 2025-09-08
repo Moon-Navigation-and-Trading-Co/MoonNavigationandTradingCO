@@ -1,6 +1,6 @@
 "use client";
 
-import { forgotPasswordAction } from "@/src/app/actions";
+import { forgot_password_action } from "@/src/app/actions";
 import { FormMessage, Message } from "@/components/form-message";
 import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
@@ -52,7 +52,7 @@ export default function ForgotPassword() {
           {/* Right Side - Form */}
           <div className="w-full lg:w-1/2 flex flex-col items-start justify-center">
             <div className="w-full max-w-md bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
-              <form className="w-full flex flex-col gap-6" action={forgotPasswordAction}>
+              <form className="w-full flex flex-col gap-6" action={forgot_password_action}>
                 <div className="flex flex-col gap-1 w-full">
                   <Label htmlFor="email" className="text-sm font-semibold text-gray-700 mb-2">
                     Email Address
@@ -67,7 +67,7 @@ export default function ForgotPassword() {
                 </div>
 
                 <SubmitButton 
-                  formAction={forgotPasswordAction}
+                  formAction={forgot_password_action}
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg h-12 text-base w-full mt-4 transition-all duration-300 transform hover:scale-[1.02] shadow-lg"
                 >
                   Send Reset Link

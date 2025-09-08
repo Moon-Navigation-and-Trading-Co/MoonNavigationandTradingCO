@@ -20,44 +20,44 @@ import RoutingCard0 from './routing-card-0';
 // Complete form schema definition
 const tankersFormSchema = z.object({
   routing: z.array(z.object({
-    fromCountry: z.string().min(1, { message: "From country is required" }),
-    fromPort: z.string().min(1, { message: "From port/area is required" }),
-    toCountry: z.string().min(1, { message: "To country is required" }),
-    toPort: z.string().min(1, { message: "To port/area is required" }),
-})).min(1, "At least one route is required"),
-  effectiveDate: z.string().min(1, "Effective date is required"),
-  expiryDate: z.string().min(1, "Expiry date is required"),
-  cargoType: z.array(z.string()).min(1, "At least one cargo type is required"),
-  otherCargoType: z.string().optional(),
-  totalQuantity: z.number().min(0, "Quantity must be positive"),
-  quantityUnit: z.string().min(1, "Unit is required"),
-  temperatureRequirement: z.string(),
-  temperatureRange: z.string().optional(),
+    from_country: z.string().min(1, { message: "From country is required" }),
+    from_port: z.string().min(1, { message: "From port/area is required" }),
+    to_country: z.string().min(1, { message: "To country is required" }),
+    to_port: z.string().min(1, { message: "To port/area is required" }),
+  })).min(1, "At least one route is required"),
+  effective_date: z.string().min(1, "Effective date is required"),
+  expiry_date: z.string().min(1, "Expiry date is required"),
+  cargo_type: z.array(z.string()).min(1, "At least one cargo type is required"),
+  other_cargo_type: z.string().optional(),
+  total_quantity: z.number().min(0, "Quantity must be positive"),
+  quantity_unit: z.string().min(1, "Unit is required"),
+  temperature_requirement: z.string(),
+  temperature_range: z.string().optional(),
   flashpoint: z.string().optional(),
-  tankerType: z.array(z.string()).min(1, "At least one tanker type is required"),
-  charterType: z.string().min(1, "Charter type is required"),
-  cargoHandling: z.array(z.string()).optional(),
-  supportingFiles: z.array(z.any()).optional(),
-  cargoLiftingPoints: z.boolean().default(false),
-  additionalInformation: z.string().optional(),
-  serviceContract: z.string().optional(),
-  safetyCompliance: z.array(z.string()).optional(),
-  otherSafetyCompliance: z.string().optional(),
-  marineInsurance: z.string().min(1, "Marine insurance requirement is required"),
-  insuranceDetails: z.string().optional(),
-  additionalServices: z.array(z.string()).optional(),
-  otherAdditionalService: z.string().optional(),
-  additionalRequirements: z.string().optional(),
-  companyName: z.string().min(1, "Company name is required"),
-  contactPersonName: z.string().min(1, "Contact person name is required"),
+  tanker_type: z.array(z.string()).min(1, "At least one tanker type is required"),
+  charter_type: z.string().min(1, "Charter type is required"),
+  cargo_handling: z.array(z.string()).optional(),
+  supporting_files: z.array(z.any()).optional(),
+  cargo_lifting_points: z.boolean().default(false),
+  additional_information: z.string().optional(),
+  service_contract: z.string().optional(),
+  safety_compliance: z.array(z.string()).optional(),
+  other_safety_compliance: z.string().optional(),
+  marine_insurance: z.string().min(1, "Marine insurance requirement is required"),
+  insurance_details: z.string().optional(),
+  additional_services: z.array(z.string()).optional(),
+  other_additional_service: z.string().optional(),
+  additional_requirements: z.string().optional(),
+  company_name: z.string().min(1, "Company name is required"),
+  contact_person_name: z.string().min(1, "Contact person name is required"),
   title: z.string().min(1, "Title is required"),
-  cityCountry: z.string().min(1, "City/Country is required"),
-  companyEmail: z.string().email("Valid email is required"),
-  phoneNumber: z.string().min(1, "Phone number is required"),
-  showAdditionalEmail: z.boolean().default(false),
-  additionalEmail: z.string().optional(),
-  showAdditionalPhone: z.boolean().default(false),
-  additionalPhone: z.string().optional()
+  city_country: z.string().min(1, "City/Country is required"),
+  company_email: z.string().email("Valid email is required"),
+  phone_number: z.string().min(1, "Phone number is required"),
+  show_additional_email: z.boolean().default(false),
+  additional_email: z.string().optional(),
+  show_additional_phone: z.boolean().default(false),
+  additional_phone: z.string().optional()
 });
 
 type TankersFormData = z.infer<typeof tankersFormSchema>;
@@ -71,40 +71,40 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
   const form = useForm<TankersFormData>({
     resolver: zodResolver(tankersFormSchema),
     defaultValues: {
-      routing: [{ fromCountry: '', fromPort: '', toCountry: '', toPort: '' }],
-      effectiveDate: '',
-      expiryDate: '',
-      cargoType: [],
-      otherCargoType: '',
-      totalQuantity: 0,
-      quantityUnit: '',
-      temperatureRequirement: 'standard',
-      temperatureRange: '',
+      routing: [{ from_country: '', from_port: '', to_country: '', to_port: '' }],
+      effective_date: '',
+      expiry_date: '',
+      cargo_type: [],
+      other_cargo_type: '',
+      total_quantity: 0,
+      quantity_unit: '',
+      temperature_requirement: 'standard',
+      temperature_range: '',
       flashpoint: '',
-      tankerType: [],
-      charterType: '',
-      cargoHandling: [],
-      supportingFiles: [],
-      cargoLiftingPoints: false,
-      additionalInformation: '',
-      serviceContract: '',
-      safetyCompliance: [],
-      otherSafetyCompliance: '',
-      marineInsurance: '',
-      insuranceDetails: '',
-      additionalServices: [],
-      otherAdditionalService: '',
-      additionalRequirements: '',
-      companyName: '',
-      contactPersonName: '',
+      tanker_type: [],
+      charter_type: '',
+      cargo_handling: [],
+      supporting_files: [],
+      cargo_lifting_points: false,
+      additional_information: '',
+      service_contract: '',
+      safety_compliance: [],
+      other_safety_compliance: '',
+      marine_insurance: '',
+      insurance_details: '',
+      additional_services: [],
+      other_additional_service: '',
+      additional_requirements: '',
+      company_name: '',
+      contact_person_name: '',
       title: '',
-      cityCountry: '',
-      companyEmail: '',
-      phoneNumber: '',
-      showAdditionalEmail: false,
-      additionalEmail: '',
-      showAdditionalPhone: false,
-      additionalPhone: ''
+      city_country: '',
+      company_email: '',
+      phone_number: '',
+      show_additional_email: false,
+      additional_email: '',
+      show_additional_phone: false,
+      additional_phone: ''
     }
   });
 
@@ -132,7 +132,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   <div key={cargo} className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="cargoType"
+                      name="cargo_type"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value?.includes(cargo)}
@@ -156,7 +156,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="cargoType"
+                      name="cargo_type"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value?.includes('Other')}
@@ -173,10 +173,10 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     />
                     <label className="text-sm">Other (Please specify)</label>
                   </div>
-                  {form.watch('cargoType')?.includes('Other') && (
+                  {form.watch('cargo_type')?.includes('Other') && (
                     <Controller
                       control={form.control}
-                      name="otherCargoType"
+                      name="other_cargo_type"
                       render={({ field }) => (
                         <Input
                           placeholder="Specify other cargo type"
@@ -197,7 +197,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="totalQuantity"
+                    name="total_quantity"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input
@@ -218,7 +218,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="quantityUnit"
+                    name="quantity_unit"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -243,7 +243,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               <FormLabel className="text-base font-medium">Temperature Requirements:</FormLabel>
               <Controller
                 control={form.control}
-                name="temperatureRequirement"
+                name="temperature_requirement"
                 render={({ field }) => (
                   <RadioGroup 
                     value={field.value} 
@@ -262,13 +262,13 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 )}
               />
               
-              {form.watch('temperatureRequirement') === 'temperature_controlled' && (
+              {form.watch('temperature_requirement') === 'temperature_controlled' && (
                 <FormItem className="mt-3">
                   <FormLabel>Specify Range</FormLabel>
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="temperatureRange"
+                      name="temperature_range"
                       render={({ field }) => (
                         <Input
                           placeholder="e.g., -20°C to +5°C"
@@ -319,7 +319,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   <div key={tanker} className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="tankerType"
+                      name="tanker_type"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value?.includes(tanker)}
@@ -346,7 +346,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="charterType"
+                  name="charter_type"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
@@ -379,7 +379,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   <div key={requirement} className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="cargoHandling"
+                      name="cargo_handling"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value?.includes(requirement)}
@@ -411,7 +411,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="supportingFiles"
+                  name="supporting_files"
                   render={({ field }) => (
                     <Input
                       type="file"
@@ -431,7 +431,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
             <div className="flex items-center space-x-2">
               <Controller
                 control={form.control}
-                name="cargoLiftingPoints"
+                name="cargo_lifting_points"
                 render={({ field }) => (
                   <Checkbox
                     checked={field.value}
@@ -456,7 +456,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="additionalInformation"
+                  name="additional_information"
                   render={({ field }) => (
                     <Textarea
                       placeholder="Please provide any additional details about loading/discharging rates and Incoterms..."
@@ -482,7 +482,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="serviceContract"
+                      name="service_contract"
                       render={({ field }) => (
                         <Input
                           className="w-[300px] border-2 rounded-xl"
@@ -515,7 +515,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   <div key={compliance} className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="safetyCompliance"
+                      name="safety_compliance"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value?.includes(compliance)}
@@ -539,7 +539,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="safetyCompliance"
+                      name="safety_compliance"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value?.includes('Other')}
@@ -556,10 +556,10 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     />
                     <label className="text-sm">Other (Specify)</label>
                   </div>
-                  {form.watch('safetyCompliance')?.includes('Other') && (
+                  {form.watch('safety_compliance')?.includes('Other') && (
                     <Controller
                       control={form.control}
-                      name="otherSafetyCompliance"
+                      name="other_safety_compliance"
                       render={({ field }) => (
                         <Input
                           placeholder="Specify other compliance"
@@ -578,7 +578,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               <FormLabel className="text-base font-medium">Do You Require Marine Insurance?</FormLabel>
               <Controller
                 control={form.control}
-                name="marineInsurance"
+                name="marine_insurance"
                 render={({ field }) => (
                   <RadioGroup onValueChange={field.onChange} defaultValue={field.value} className="mt-3 space-y-2">
                     <div className="flex items-center space-x-2">
@@ -593,13 +593,13 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 )}
               />
               
-              {form.watch('marineInsurance') === 'yes' && (
+              {form.watch('marine_insurance') === 'yes' && (
                 <FormItem className="mt-3">
                   <FormLabel>If yes, specify coverage type & value:</FormLabel>
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="insuranceDetails"
+                      name="insurance_details"
                       render={({ field }) => (
                         <Textarea
                           placeholder="Please specify the coverage type and value required"
@@ -636,7 +636,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                       <div key={service} className="flex items-center space-x-2">
                         <Controller
                           control={form.control}
-                          name="additionalServices"
+                          name="additional_services"
                           render={({ field }) => (
                             <Checkbox
                               checked={field.value?.includes(service)}
@@ -660,7 +660,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                       <div className="flex items-center space-x-2">
                         <Controller
                           control={form.control}
-                          name="additionalServices"
+                          name="additional_services"
                           render={({ field }) => (
                             <Checkbox
                               checked={field.value?.includes('Other')}
@@ -677,10 +677,10 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                         />
                         <label className="text-sm">Other (Specify)</label>
                       </div>
-                      {form.watch('additionalServices')?.includes('Other') && (
+                      {form.watch('additional_services')?.includes('Other') && (
                         <Controller
                           control={form.control}
-                          name="otherAdditionalService"
+                          name="other_additional_service"
                           render={({ field }) => (
                             <Input
                               placeholder="Specify other service"
@@ -699,7 +699,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="additionalRequirements"
+                      name="additional_requirements"
                       render={({ field }) => (
                         <Textarea
                           placeholder="Please describe any additional requirements..."

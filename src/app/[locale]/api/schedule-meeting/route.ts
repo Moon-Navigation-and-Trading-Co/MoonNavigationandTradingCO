@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
-import { generateQuotationNumber } from '@/utils/quotation/generator';
-import { generateFormEmailTemplate, convertFormDataToFields } from '@/utils/email/template-generator';
+import { generate_quotation_number } from '@/utils/quotation/generator';
+import { generate_form_email_template, convert_form_data_to_fields } from '@/utils/email/template-generator';
 
 // Create transporter for CloudSmartly email server
 const createTransporter = () => {
@@ -36,10 +36,10 @@ export async function POST(req: Request) {
         } = body;
 
         // Generate quotation number for schedule meeting
-        const quotationNumber = await generateQuotationNumber('schedule_meeting');
+        const quotationNumber = await generate_quotation_number('schedule_meeting');
 
         // Convert form data to fields for email template
-        const fields = convertFormDataToFields({
+        const fields = convert_form_data_to_fields({
             company_name,
             contact_person_name,
             title,
@@ -55,7 +55,7 @@ export async function POST(req: Request) {
         });
 
         // Generate email content
-        const emailContent = generateFormEmailTemplate({
+        const emailContent = generate_form_email_template({
             title: 'New Meeting Request - Moon Navigation and Trading Co.',
             quotationNumber,
             formType: 'Schedule Meeting',

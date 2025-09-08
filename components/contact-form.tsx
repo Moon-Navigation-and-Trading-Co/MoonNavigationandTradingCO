@@ -19,13 +19,13 @@ import { CountrySelect } from "@/components/country-select";
 
 // Zod schema for validation
 const schema = z.object({
-  firstName: z.string().min(1, { message: "First name is required" }),
-  lastName: z.string().min(1, { message: "Last name is required" }),
+  first_name: z.string().min(1, { message: "First name is required" }),
+  last_name: z.string().min(1, { message: "Last name is required" }),
   title: z.string().optional(),
-  companyName: z.string().optional(),
+  company_name: z.string().optional(),
   email: z.string().email({ message: "Invalid email address" }),
   phone: z.string().min(1, { message: "Phone number is required" }),
-  countryOfOrigin: z.string().optional(),
+  country_of_origin: z.string().optional(),
   message: z.string().min(1, { message: "Message is required" }),
 });
 
@@ -41,18 +41,28 @@ const ContactForm: React.FC = () => {
     watch,
   } = useForm<FormData>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      first_name: '',
+      last_name: '',
+      title: '',
+      company_name: '',
+      email: '',
+      phone: '',
+      country_of_origin: '',
+      message: '',
+    },
   });
   const t = useTranslations("Contact");
   const [loading, setLoading] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [showAdditionalEmail, setShowAdditionalEmail] = useState(false);
-  const [showAdditionalPhone, setShowAdditionalPhone] = useState(false);
-  const [phoneValue, setPhoneValue] = useState("");
+  const [submitted, set_submitted] = useState(false);
+  const [error, set_error] = useState<string | null>(null);
+  const [show_additional_email, set_show_additional_email] = useState(false);
+  const [show_additional_phone, set_show_additional_phone] = useState(false);
+  const [phone_value, set_phone_value] = useState("");
 
   const onSubmit = async (data: FormData) => {
     setLoading(true);
-    setError(null);
+    set_error(null);
     try {
       const supabase = createClient(); // Initialize the Supabase client
 
@@ -87,7 +97,7 @@ const ContactForm: React.FC = () => {
       }
     } catch (err) {
       console.error("Error inserting data:", err);
-      setError("Failed to submit the form. Please try again.");
+      set_error("Failed to submit the form. Please try again.");
       setLoading(false);
     }
   };
@@ -107,19 +117,19 @@ const ContactForm: React.FC = () => {
               <label htmlFor="firstName" className="font-raleway font-medium text-sm text-gray-700 mb-2">First Name</label>
               <Input
                 id="firstName"
-                {...register("firstName")}
+                {...register("first_name")}
                 className="border border-[#E5EAF1] rounded-lg h-12  text-base focus:ring-2 focus:ring-[#283593]"
               />
-              {errors.firstName && <span className="text-red-500 text-xs mt-1">{errors.firstName.message}</span>}
+              {errors.first_name && <span className="text-red-500 text-xs mt-1">{errors.first_name.message}</span>}
             </div>
             <div className="flex flex-col">
               <label htmlFor="lastName" className="font-raleway font-medium text-sm text-gray-700 mb-2">Last Name</label>
               <Input
                 id="lastName"
-                {...register("lastName")}
+                {...register("last_name")}
                 className="border border-[#E5EAF1] rounded-lg h-12  text-base focus:ring-2 focus:ring-[#283593]"
               />
-              {errors.lastName && <span className="text-red-500 text-xs mt-1">{errors.lastName.message}</span>}
+              {errors.last_name && <span className="text-red-500 text-xs mt-1">{errors.last_name.message}</span>}
             </div>
             <div className="flex flex-col">
               <label htmlFor="title" className="font-raleway font-medium text-sm text-gray-700 mb-2">Title</label>
@@ -130,11 +140,12 @@ const ContactForm: React.FC = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="companyName" className="font-raleway font-medium text-sm text-gray-700 mb-2">Company Name</label>
+              <label htmlFor="company_name" className="font-raleway font-medium text-sm text-gray-700 mb-2">Company Name</label>
               <Input
-                id="companyName"
-                {...register("companyName")}
-                className="border border-[#E5EAF1] rounded-lg h-12  text-base focus:ring-2 focus:ring-[#283593]"
+                id="company_name"
+                {...register("company_name")}
+                placeholder="Enter company name"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div className="flex flex-col">
@@ -151,9 +162,9 @@ const ContactForm: React.FC = () => {
               <label htmlFor="phone" className="font-raleway font-medium text-sm text-gray-700 mb-2">Phone Number</label>
               <PhoneInput
                 id="phone"
-                value={phoneValue}
+                value={phone_value}
                 onChange={(value) => {
-                  setPhoneValue(value as string);
+                  set_phone_value(value as string);
                   setValue("phone", value as string);
                 }}
                 className="border border-[#E5EAF1] rounded-lg h-12  text-base focus:ring-2 focus:ring-[#283593]"
@@ -166,8 +177,8 @@ const ContactForm: React.FC = () => {
             <div className="flex items-center gap-4">
               <h3 className="font-raleway font-medium text-sm text-gray-700 whitespace-nowrap">Country of Origin</h3>
               <CountrySelect
-                value={watch("countryOfOrigin")}
-                onValueChange={(value) => setValue("countryOfOrigin", value)}
+                value={watch("country_of_origin")}
+                onValueChange={(value) => setValue("country_of_origin", value)}
                 className="border border-[#E5EAF1] rounded-lg h-12 text-base focus:ring-2 focus:ring-[#283593] flex-1"
                 placeholder="Select your country"
               />

@@ -46,7 +46,7 @@ function renderFieldValue(field: FormField): string {
 /**
  * Generates a professional HTML email template that matches the website design
  */
-export function generateFormEmailTemplate(options: EmailTemplateOptions): string {
+export function generate_form_email_template(options: EmailTemplateOptions): string {
   const { title, quotationNumber, formType, fields, additionalInfo } = options;
   
   // Filter out empty fields
@@ -253,7 +253,7 @@ export function generateFormEmailTemplate(options: EmailTemplateOptions): string
 /**
  * Converts form data to a standardized field format
  */
-export function convertFormDataToFields(formData: Record<string, any>): FormField[] {
+export function convert_form_data_to_fields(formData: Record<string, any>): FormField[] {
   const fields: FormField[] = [];
   
   for (const [key, value] of Object.entries(formData)) {
@@ -292,7 +292,7 @@ export function convertFormDataToFields(formData: Record<string, any>): FormFiel
 /**
  * Gets a display name for form types
  */
-export function getFormTypeDisplayName(formType: string): string {
+export function get_form_type_display_name(formType: string): string {
   return formType
     .replace(/_/g, ' ')
     .replace(/([A-Z])/g, ' $1')

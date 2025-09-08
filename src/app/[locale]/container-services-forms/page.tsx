@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { sendFormEmail } from '@/utils/email-helper';
 import { createClient } from '@/utils/supabase/client';
-import { generateQuotationNumber } from "@/utils/quotation/generator";
+import { generate_quotation_number } from "@/utils/quotation/generator";
 import Spinner from '@/components/spinner';
 import FAQSearch from "@/components/faq";
 
@@ -68,7 +68,7 @@ const Page: React.FC = () => {
           additional_email: formData.companyDetails?.additional_email,
           phone_number: formData.companyDetails?.phone_number,
           additional_phone_number: formData.companyDetails?.additional_phone_number,
-          quotation_number: await generateQuotationNumber(formType)
+          quotation_number: await generate_quotation_number(formType)
         };
       } else if (formType === "container_services") {
         flattenedData = {
@@ -91,7 +91,7 @@ const Page: React.FC = () => {
           additional_email: formData.companyDetails?.additional_email,
           phone_number: formData.companyDetails?.phone_number,
           additional_phone_number: formData.companyDetails?.additional_phone_number,
-          quotation_number: await generateQuotationNumber(formType)
+          quotation_number: await generate_quotation_number(formType)
         };
       } else if (formType === "handling_stevedoring_storage") {
         flattenedData = {
@@ -136,7 +136,7 @@ const Page: React.FC = () => {
           company_email: formData.company_details?.company_email,
           additional_email: formData.company_details?.additional_email,
           phone_number: formData.company_details?.phone_number,
-          quotation_number: await generateQuotationNumber(formType),
+          quotation_number: await generate_quotation_number(formType),
           additional_phone_number: formData.company_details?.additional_phone_number,
         };
       } else if (formType === "container_inland_services") {
@@ -160,7 +160,7 @@ const Page: React.FC = () => {
           additional_email: formData.companyDetails?.additional_email,
           phone_number: formData.companyDetails?.phone_number,
           additional_phone_number: formData.companyDetails?.additional_phone_number,
-          quotation_number: await generateQuotationNumber(formType)
+          quotation_number: await generate_quotation_number(formType)
         };
       }
 

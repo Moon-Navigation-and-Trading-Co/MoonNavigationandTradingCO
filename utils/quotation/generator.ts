@@ -31,7 +31,7 @@ const FORM_ABBREVIATIONS: Record<string, string> = {
  * Format: [ABBREVIATION]11900[INCREMENTAL_NUMBER]
  * Example: OF11900, OF11901, OF11902, etc.
  */
-export async function generateQuotationNumber(formType: string): Promise<string> {
+export async function generate_quotation_number(formType: string): Promise<string> {
   const supabase = createClient();
   
   // Get abbreviation for the form type
@@ -48,58 +48,50 @@ export async function generateQuotationNumber(formType: string): Promise<string>
     let currentCount = 0; // Start from 0 so first number is 11900
     
     if (countError) {
-      // If quotation_numbers table doesn't exist or has no data, fallback to counting existing records
-      console.log(`Quotation numbers table not available, using fallback for ${formType}`);
+      // If no record exists, create one
+      const { error: insertError } = await supabase
+        .from('quotation_numbers')
+        .insert({
+          form_type: formType,
+          current_count: 0
+        });
       
-      // Get count from the actual form table
-      const { count, error: countError2 } = await supabase
-        .from(formType)
-        .select('*', { count: 'exact', head: true });
-      
-      if (countError2) {
-        console.warn(`Could not count existing records for ${formType}, starting from 0`);
-        currentCount = 0;
-      } else {
-        currentCount = count || 0;
+      if (insertError) {
+        console.error('Error creating quotation count record:', insertError);
       }
-    } else if (countData) {
-      currentCount = countData.current_count;
+    } else {
+      currentCount = countData?.current_count || 0;
     }
     
     // Increment the count
     const newCount = currentCount + 1;
     
-    // Generate the quotation number
-    const quotationNumber = `${abbreviation}${11900 + newCount}`;
+    // Update the count in the database
+    const { error: updateError } = await supabase
+      .from('quotation_numbers')
+      .update({ current_count: newCount })
+      .eq('form_type', formType);
     
-    // Try to update the quotation_numbers table (if it exists)
-    try {
-      await supabase
-        .from('quotation_numbers')
-        .upsert({
-          form_type: formType,
-          current_count: newCount,
-          last_updated: new Date().toISOString()
-        });
-    } catch (updateError) {
-      // If updating fails (table doesn't exist), that's okay - we'll just use the generated number
-      console.log(`Could not update quotation_numbers table for ${formType}, but number generated successfully`);
+    if (updateError) {
+      console.error('Error updating quotation count:', updateError);
     }
     
-    return quotationNumber;
+    // Generate the quotation number
+    const quotationNumber = `${abbreviation}11900${newCount.toString().padStart(2, '0')}`;
     
+    return quotationNumber;
   } catch (error) {
     console.error('Error generating quotation number:', error);
     // Fallback: generate a timestamp-based number
     const timestamp = Date.now().toString().slice(-6);
-    return `${abbreviation}${11900}${timestamp}`;
+    return `${abbreviation}11900${timestamp}`;
   }
 }
 
 /**
  * Gets the current count for a form type (for display purposes)
  */
-export async function getCurrentQuotationCount(formType: string): Promise<number> {
+export async function get_current_quotation_count(formType: string): Promise<number> {
   const supabase = createClient();
   
   try {

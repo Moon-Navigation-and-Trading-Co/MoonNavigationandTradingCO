@@ -17,15 +17,21 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ 
 
     // Get Errors
     const t = useTranslations('Inland-errors');
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [is_submitting, set_is_submitting] = useState(false);
 
     // Define your Zod schema - Updated to match RoutingCard0 structure
     const formSchema = z.object({
         routing: z.array(z.object({
-            fromCountry: z.string().min(1, { message: "From country is required" }),
-            fromPort: z.string().min(1, { message: "From port/area is required" }),
-            toCountry: z.string().min(1, { message: "To country is required" }),
-            toPort: z.string().min(1, { message: "To port/area is required" }),
+            from_country: z.string().min(1, { message: "From country is required" }),
+            from_port: z.string().min(1, { message: "From port/area is required" }),
+            from_services_mode: z.enum(["cy", "sd"], {
+                required_error: "From services mode is required",
+            }),
+            to_country: z.string().min(1, { message: "To country is required" }),
+            to_port: z.string().min(1, { message: "To port/area is required" }),
+            to_services_mode: z.enum(["cy", "sd"], {
+                required_error: "To services mode is required",
+            }),
         })),
         date: z.string().min(1, { message: t("Date") }).refine(value => {
             return !isNaN(Date.parse(value)); // Ensure valid date
@@ -60,7 +66,7 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ 
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            routing: [{ fromCountry: '', fromPort: '', toCountry: '', toPort: '' }],
+            routing: [{ from_country: '', from_port: '', to_country: '', to_port: '' }],
             date: '',
             commodities: [{
                 temperature: false,
@@ -71,10 +77,10 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ 
                 height: 0,
                 weight: 0,
                 file: '',
-                additional_information: ''
+                additional_information: '',
             }],
             vad: {
-                inland_container: false
+                inland_container: false,
             },
             company_details: {
                 company_name: '',
@@ -82,18 +88,18 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ 
                 title: '',
                 country_of_origin: '',
                 company_email: '',
-                phone_number: ''
+                phone_number: '',
             }
         }
     });
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-        setIsSubmitting(true);
+        set_is_submitting(true);
         try {
             await onSubmit(values);
         } finally {
-            setIsSubmitting(false);
+            set_is_submitting(false);
         }
     };
 
@@ -136,8 +142,8 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
-                    {isSubmitting ? (
+                <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+                    {is_submitting ? (
                         <div className="flex items-center justify-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>

@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { signUpAction } from "@/src/app/actions"
+import { sign_up_action } from "@/src/app/actions"
 import { FormMessage, Message } from "@/components/form-message"
 import { SubmitButton } from "@/components/submit-button"
 import { Input } from "@/components/ui/input"
@@ -78,7 +78,7 @@ export default function Signup() {
           {/* Right Side - Form */}
           <div className="w-full lg:w-1/2 flex flex-col items-start justify-center">
             <div className="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
-              <form className="w-full flex flex-col gap-6" action={signUpAction}>
+              <form className="w-full flex flex-col gap-6" action={sign_up_action}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4">
                   <div className="flex flex-col">
                     <Label htmlFor="firstname" className="text-sm font-raleway font-medium text-gray-700 mb-2">First Name</Label>
@@ -169,7 +169,7 @@ export default function Signup() {
 
                 <SubmitButton
                   className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-lg h-12 text-base w-full mt-4 transition-all duration-300 transform hover:scale-[1.02] shadow-lg"
-                  formAction={signUpAction}
+                  formAction={sign_up_action}
                   pendingText="Creating account..."
                 >
                   Create Account

@@ -18,7 +18,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [is_submitting, set_is_submitting] = useState(false);
 
     // Standard container types and sizes (14 most commonly used)
     const containerTypes = [
@@ -99,12 +99,12 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-        setIsSubmitting(true);
+        set_is_submitting(true);
         try {
             console.log(values);
             await onSubmit(values);
         } finally {
-            setIsSubmitting(false);
+            set_is_submitting(false);
         }
     };
 
@@ -417,8 +417,8 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
                 </FormItem>
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
-                    {isSubmitting ? (
+                <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+                    {is_submitting ? (
                         <div className="flex items-center justify-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>

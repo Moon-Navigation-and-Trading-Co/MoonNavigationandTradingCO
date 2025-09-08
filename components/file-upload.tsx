@@ -48,7 +48,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
             
             // Convert files to a string representation for the form
             const fileNames = files.map(file => file.name).join(', ');
-            setValue('supportingFiles', fileNames);
+            setValue('supporting_files', fileNames);
         }
     };
 
@@ -62,7 +62,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
         
         // Update form value
         const fileNames = newFiles.map(file => file.name).join(', ');
-        setValue('supportingFiles', fileNames);
+        setValue('supporting_files', fileNames);
     };
 
     const openFileDialog = () => {
@@ -84,7 +84,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
                 <FormControl>
                     <Controller
                         control={control}
-                        name="supportingFiles"
+                        name="supporting_files"
                         render={({ fieldState: { error: fieldError } }) => (
                             <div className="space-y-4">
                                 {/* File Upload Input */}

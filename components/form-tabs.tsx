@@ -28,7 +28,7 @@ interface FormTabsProps {
 
 const FormTabs: React.FC<FormTabsProps> = ({ tabData, activeTab: controlledActiveTab, setActiveTab: controlledSetActiveTab }) => {
     const [internalActiveTab, internalSetActiveTab] = useState(tabData[0]?.id || "overview");
-    const [showScrollIndicator, setShowScrollIndicator] = useState(false);
+    const [show_scroll_indicator, set_show_scroll_indicator] = useState(false);
     const tabsContainerRef = useRef<HTMLDivElement>(null);
     const activeTab = controlledActiveTab ?? internalActiveTab;
     const setActiveTab = controlledSetActiveTab ?? internalSetActiveTab;
@@ -39,7 +39,7 @@ const FormTabs: React.FC<FormTabsProps> = ({ tabData, activeTab: controlledActiv
             if (tabsContainerRef.current) {
                 const container = tabsContainerRef.current;
                 const isScrollable = container.scrollWidth > container.clientWidth;
-                setShowScrollIndicator(isScrollable);
+                set_show_scroll_indicator(isScrollable);
             }
         };
 
@@ -67,7 +67,7 @@ const FormTabs: React.FC<FormTabsProps> = ({ tabData, activeTab: controlledActiv
                 </div>
                 
                 {/* Mobile Scroll Indicator */}
-                {showScrollIndicator && (
+                {show_scroll_indicator && (
                     <div className="absolute right-0 top-0 bottom-0 flex items-center md:hidden">
                         <div className="bg-gradient-to-l from-white via-white to-transparent w-12 h-full flex items-center justify-center">
                             <button 
