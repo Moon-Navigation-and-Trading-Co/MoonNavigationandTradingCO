@@ -112,7 +112,16 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSubmit }) => {
+// Fix the component props interface
+interface OceanFreightQuotationFormProps {
+  onSubmit: (data: FormData) => void;
+  isSubmitting?: boolean;
+}
+
+const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({ 
+  onSubmit, 
+  isSubmitting = false 
+}) => {
   const t = useTranslations('Inland-forms');
   const [cargoMode, setCargoMode] = useState<'itemized' | 'consolidated'>('itemized');
 
@@ -527,10 +536,14 @@ const OceanFreightQuotationForm: React.FC<{ onSubmit: (data: FormData) => void }
         {/* Company/Personal Details */}
         <CompanyDetailsCard control={form.control} />
 
-        <Button type="submit" className="mt-4 w-[200px]">
-          Submit
-        </Button>
-      </form>
+        <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+          {isSubmitting ? (
+            <div className="flex items-center justify-center gap-2">
+              <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+              <span>Submitting...</span>
+            </div>
+          ) : "Submit"}
+        </Button>      </form>
     </Form>
   );
 };

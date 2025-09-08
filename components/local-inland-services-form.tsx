@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from 'zod';
@@ -17,6 +17,7 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ 
 
     // Get Errors
     const t = useTranslations('Inland-errors');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     // Define your Zod schema - Updated to match RoutingCard0 structure
     const formSchema = z.object({
@@ -87,8 +88,13 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ 
     });
 
     // 2. Type-safe submit handler
-    const handleSubmit = (values: any) => {
-        onSubmit(values);
+    const handleSubmit = async (values: any) => {
+        setIsSubmitting(true);
+        try {
+            await onSubmit(values);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -130,10 +136,14 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className="mt-4 w-[200px]">
-                    Submit
-                </Button>
-            </form>
+                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+                    {isSubmitting ? (
+                        <div className="flex items-center justify-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                            <span>Submitting...</span>
+                        </div>
+                    ) : "Submit"}
+                </Button>            </form>
         </Form>
     );
 };
