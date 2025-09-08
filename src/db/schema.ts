@@ -60,6 +60,7 @@ export const airFreightServicesTable = pgTable("air_freight_services", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),              // Company phone number
+    quotation_number: text("quotation_number"),
 
 });
 
@@ -88,6 +89,7 @@ export const localInlandServicesTable = pgTable("local_inland_services", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),              // Company phone number
+    quotation_number: text("quotation_number"),
 });
 
 // Inland Services
@@ -115,6 +117,7 @@ export const InternationalInlandServicesTable = pgTable("international_inland_se
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),              // Company phone number
+    quotation_number: text("quotation_number"),
 });
 
 // Inland Services
@@ -144,6 +147,7 @@ export const containerInlandServicesTable = pgTable("container_inland_services",
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),              // Company phone number
+    quotation_number: text("quotation_number"),
 
 });
 
@@ -158,6 +162,7 @@ export const contactRequestsTable = pgTable("ContactRequests", {
     email: text("email").notNull(), // Email of the contact
     number: text("number").notNull(), // Phone number of the contact
     message: text("message").notNull(), // Message from the contact
+    quotation_number: text("quotation_number"),
 });
 
 // Container Services
@@ -193,6 +198,7 @@ export const lessThanContainerLoad = pgTable("less_than_container_load", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),              // Company phone number
+    quotation_number: text("quotation_number"),
 
 });
 
@@ -230,6 +236,7 @@ export const standardContainer = pgTable("standard_container", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),              // Company phone number
+    quotation_number: text("quotation_number"),
 
 });
 
@@ -270,6 +277,7 @@ export const oversizedContainer = pgTable("oversized_container", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),              // Company phone number
+    quotation_number: text("quotation_number"),
 
 });
 
@@ -332,6 +340,7 @@ export const buy_container = pgTable("buy_container", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 })
 
 export const rent_container = pgTable("rent_container", {
@@ -372,6 +381,7 @@ export const rent_container = pgTable("rent_container", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -414,6 +424,7 @@ export const buy_vessel = pgTable("buy_vessel", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -457,45 +468,117 @@ export const rent_vessel = pgTable("rent_vessel", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
 export const request_for_pda = pgTable("request_for_pda", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+    id: uuid().primaryKey().defaultRandom(),
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    user_id: uuid().notNull().references(() => usersTable.id),
 
-    //port details
+    // Port details
     port_name: text("port_name").notNull(),
 
-    // vessel details
+    // Vessel details
     vessel_name: text("vessel_name").notNull(),
     vessel_imo: numeric("vessel_imo").notNull(),
     vessel_type: text("vessel_type").notNull(),
-    flag: text("flag"),
-    vessel_length: numeric("vessel_length").notNull(),
-    eta: date("eta").notNull(),
+    vessel_flag: text("vessel_flag"),
     ship_gross_tonnage: text("ship_gross_tonnage").notNull(),
     ship_net_tonnage: text("ship_net_tonnage").notNull(),
-    ship_dead_weight: text("ship_dead_weight").notNull(),
-    ship_draft: text("ship_draft").notNull(),
+    deadweight: text("deadweight").notNull(),
+    draft: text("draft").notNull(),
+    vessel_length: numeric("vessel_length").notNull(),
+
+    // Call for purposes
     call_for_commercial: boolean("call_for_commercial").default(false),
-    call_for_maintenane: boolean("call_for_maintenance").default(false),
+    call_for_maintenance: boolean("call_for_maintenance").default(false),
+    call_for_other: boolean("call_for_other").default(false),
+    other_purpose_details: text("other_purpose_details"),
+
+    // Discharged cargo details
     total_discharged_cargo: numeric("total_discharged_cargo").notNull(),
+    discharged_cargo_type: text("discharged_cargo_type"),
+    discharged_dangerous_cargo: boolean("discharged_dangerous_cargo").default(false),
+    total_days_needed_for_discharging: numeric("total_days_needed_for_discharging").notNull(),
+
+    // Loaded cargo details
     total_loaded_cargo: numeric("total_loaded_cargo").notNull(),
+    loaded_cargo_type: text("loaded_cargo_type"),
+    loaded_dangerous_cargo: boolean("loaded_dangerous_cargo").default(false),
+    total_days_needed_for_loading: numeric("total_days_needed_for_loading").notNull(),
+
+    // Timing details
+    eta_expected_date: text("eta_expected_date"),
     total_expected_berthing_days: numeric("total_expected_berthing_days").notNull(),
-    total_waiting_anchor: numeric("total_waiting_anchor").notNull(),
+    total_expected_anchor_days: numeric("total_expected_anchor_days").notNull(),
+
+    // Bunkering services
+    bunkering_mgo: boolean("bunkering_mgo").default(false),
+    bunkering_mgo_details: text("bunkering_mgo_details"),
+    bunkering_vlsfo: boolean("bunkering_vlsfo").default(false),
+    bunkering_vlsfo_details: text("bunkering_vlsfo_details"),
+    bunkering_hfo: boolean("bunkering_hfo").default(false),
+    bunkering_hfo_details: text("bunkering_hfo_details"),
+    bunkering_other: boolean("bunkering_other").default(false),
+    bunkering_other_details: text("bunkering_other_details"),
+    bunkering_details: text("bunkering_details"),
+
+    // Chandlery services
+    chandlery_fresh_dry_provisions: boolean("chandlery_fresh_dry_provisions").default(false),
+    chandlery_fresh_dry_provisions_details: text("chandlery_fresh_dry_provisions_details"),
+    chandlery_spare_parts_tools: boolean("chandlery_spare_parts_tools").default(false),
+    chandlery_spare_parts_tools_details: text("chandlery_spare_parts_tools_details"),
+    chandlery_deck_engine_stores: boolean("chandlery_deck_engine_stores").default(false),
+    chandlery_deck_engine_stores_details: text("chandlery_deck_engine_stores_details"),
+    chandlery_details: text("chandlery_details"),
+
+    // Crew services
+    crew_change_assistance: boolean("crew_change_assistance").default(false),
+    crew_change_assistance_details: text("crew_change_assistance_details"),
+    crew_transport_accommodation: boolean("crew_transport_accommodation").default(false),
+    crew_transport_accommodation_details: text("crew_transport_accommodation_details"),
+    crew_medical_assistance: boolean("crew_medical_assistance").default(false),
+    crew_medical_assistance_details: text("crew_medical_assistance_details"),
+    crew_other: boolean("crew_other").default(false),
+    crew_other_details: text("crew_other_details"),
+    crew_details: text("crew_details"),
+
+    // Cargo services
+    cargo_stevedoring: boolean("cargo_stevedoring").default(false),
+    cargo_stevedoring_details: text("cargo_stevedoring_details"),
+    cargo_surveys: boolean("cargo_surveys").default(false),
+    cargo_surveys_details: text("cargo_surveys_details"),
+    cargo_lashing_securing: boolean("cargo_lashing_securing").default(false),
+    cargo_lashing_securing_details: text("cargo_lashing_securing_details"),
+    cargo_other: boolean("cargo_other").default(false),
+    cargo_other_details: text("cargo_other_details"),
+    cargo_details: text("cargo_details"),
+
+    // Other services
+    other_waste_disposal: boolean("other_waste_disposal").default(false),
+    other_waste_disposal_details: text("other_waste_disposal_details"),
+    other_fresh_water: boolean("other_fresh_water").default(false),
+    other_fresh_water_details: text("other_fresh_water_details"),
+    other_services_other: boolean("other_services_other").default(false),
+    other_services_other_details: text("other_services_other_details"),
+    other_services_details: text("other_services_details"),
+
+    // Additional information
+    additional_information: text("additional_information"),
+    supporting_files: text("supporting_files"),
 
     // Company details
-    company_name: text("company_name").notNull(),              // Company name
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
+    company_name: text("company_name").notNull(),
+    contact_person_name: text("contact_person_name").notNull(),
+    title: text("title").notNull(),
+    country_of_origin: text("country_of_origin").notNull(),
+    company_email: text("company_email").notNull(),
+    additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
-
+    quotation_number: text("quotation_number"),
 })
 
 export const sign_crew_members = pgTable("sign_crew_members", {
@@ -535,6 +618,7 @@ export const sign_crew_members = pgTable("sign_crew_members", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -562,6 +646,7 @@ export const transit_spare_parts = pgTable("transfer_spare_parts", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -589,6 +674,7 @@ export const special_services = pgTable("special_services", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -619,6 +705,7 @@ export const bunkering_oil_supply = pgTable("bunkering_oil_supply", {
     additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 });
 
 export const international_trading = pgTable("international_trading", {
@@ -653,6 +740,7 @@ export const international_trading = pgTable("international_trading", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 
 })
@@ -674,6 +762,7 @@ export const ship_maintenance = pgTable("ship_maintenance", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 // Ship Management
@@ -694,6 +783,7 @@ export const ship_management = pgTable("ship_management", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -737,6 +827,7 @@ export const project_cargo_services = pgTable("project_cargo_services", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -771,6 +862,7 @@ export const roll_on_off = pgTable("roll_on_off", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -805,6 +897,7 @@ export const heavy_lift = pgTable("heavy_lift", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -839,6 +932,7 @@ export const dangerous_cargo_services = pgTable("dangerous_cargo_services", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 })
 
 // Inverstor Form
@@ -860,6 +954,7 @@ export const investor_form = pgTable("investor_form", {
     average_check_size: numeric("average_check_size").notNull(),
     accredited: text("accredited").notNull(),
     qualified: text("qualified").notNull(),
+    quotation_number: text("quotation_number"),
 
 })
 
@@ -897,6 +992,7 @@ export const OutofGauge = pgTable("out_of_gauge", {
     additional_email: text("additional_email"),      // Additional email address
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),              // Company phone number
+    quotation_number: text("quotation_number"),
 
 });
 
@@ -913,13 +1009,14 @@ export const suezCanalTransitTable = pgTable("suez_canal_transit", {
     additional_services: jsonb("additional_services").notNull(),
     additional_notes: text("additional_notes"),
     company_details: jsonb("company_details").notNull(),
+    quotation_number: text("quotation_number"),
 });
 
 // Ocean Freight Quotations
 export const oceanFreightQuotationsTable = pgTable("ocean_freight_quotations", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
+    id: uuid().primaryKey().defaultRandom(),
+    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    user_id: uuid().notNull().references(() => usersTable.id),
 
     // Form type
     form_type: text("form_type").notNull(),
@@ -927,10 +1024,10 @@ export const oceanFreightQuotationsTable = pgTable("ocean_freight_quotations", {
     // Routing details
     routing: jsonb("routing").notNull(),
 
-    // Cargo mode and details
-    cargo_mode: text("cargo_mode").notNull(), // 'itemized' or 'consolidated'
-    itemized_cargo: jsonb("itemized_cargo"), // JSON array for itemized cargo
-    consolidated_cargo: jsonb("consolidated_cargo"), // JSON object for consolidated cargo
+    // Entry mode and cargo details
+    entry_mode: text("entry_mode").notNull(), // "itemized" or "consolidated"
+    itemized_data: jsonb("itemized_data"), // JSON array for itemized cargo
+    consolidated_data: jsonb("consolidated_data"), // JSON object for consolidated cargo
 
     // Supporting files
     supporting_files: text("supporting_files"),
@@ -946,16 +1043,9 @@ export const oceanFreightQuotationsTable = pgTable("ocean_freight_quotations", {
     // Additional services
     additional_services: jsonb("additional_services").notNull(),
 
-    // Company details
-    company_name: text("company_name").notNull(),
-    contact_person: text("contact_person").notNull(),
-    title: text("title").notNull(),
-    city: text("city").notNull(),
-    country: text("country").notNull(),
-    email: text("email").notNull(),
-    additional_email: text("additional_email"),
-    phone: text("phone").notNull(),
-    additional_phone: text("additional_phone"),
+    // Company details (nested structure)
+    company_details: jsonb("company_details").notNull(),
+    quotation_number: text("quotation_number"),
 
 });
 
@@ -1006,6 +1096,7 @@ export const livestockTransportationTable = pgTable("livestock_transportation", 
     additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
     additional_phone: text("additional_phone"),
+    quotation_number: text("quotation_number"),
 });
 
 // Tankers Quotation
@@ -1055,6 +1146,7 @@ export const tankersQuotationTable = pgTable("tankers_quotation", {
     additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
     additional_phone: text("additional_phone"),
+    quotation_number: text("quotation_number"),
 });
 
 // Quotation Numbers Tracking Table

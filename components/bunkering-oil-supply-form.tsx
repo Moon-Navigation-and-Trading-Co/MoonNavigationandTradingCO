@@ -12,7 +12,7 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 
-const BunkeringOilSupplyForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const BunkeringOilSupplyForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
 
@@ -735,10 +735,14 @@ const BunkeringOilSupplyForm: React.FC<{ onSubmit: (data: any) => void }> = ({ o
 
 
 
-                <Button type="submit" className="mt-8 w-[200px]">
-                    Submit
-                </Button>
-            </form>
+                <Button type="submit" className={`mt-8 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+                    {isSubmitting ? (
+                      <div className="flex items-center justify-center gap-2">
+                        <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                        <span>Submitting...</span>
+                      </div>
+                    ) : "Submit"}
+                </Button>            </form>
         </Form>
     );
 };
