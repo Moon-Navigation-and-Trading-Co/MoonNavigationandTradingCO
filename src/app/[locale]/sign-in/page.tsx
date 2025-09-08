@@ -111,7 +111,7 @@ export default function Login() {
 
             <div className="w-full flex justify-center mt-8 pt-6 border-t border-gray-100">
               <p className="text-center text-sm text-gray-600">
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <Link 
                   className="font-semibold text-blue-600 hover:text-blue-700 transition-colors" 
                   href="/sign-up"

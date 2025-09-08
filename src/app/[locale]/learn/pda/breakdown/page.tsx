@@ -164,7 +164,7 @@ export default function PDABreakdownPage() {
                     <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
                       <h3 className="text-base font-medium text-gray-900 mb-1">Crew Immigration Fees</h3>
-                      <p className="text-gray-600">Costs associated with processing crew members' entry and exit at the port, ensuring compliance with immigration regulations.</p>
+                      <p className="text-gray-600">Costs associated with processing crew members&apos; entry and exit at the port, ensuring compliance with immigration regulations.</p>
                     </div>
                   </div>
                   
@@ -221,7 +221,7 @@ export default function PDABreakdownPage() {
                     <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
                       <h3 className="text-base font-medium text-gray-900 mb-1">Loading and Unloading Fees</h3>
-                      <p className="text-gray-600">Cover labor and the necessary equipment to load and unload, ensuring smooth transition during the ship's presence.</p>
+                      <p className="text-gray-600">Cover labor and the necessary equipment to load and unload, ensuring smooth transition during the ship&apos;s presence.</p>
                     </div>
                   </div>
                   
@@ -243,7 +243,7 @@ export default function PDABreakdownPage() {
                 </div>
                 
                 <p className="text-base text-gray-600 leading-relaxed">
-                  By efficiently managing these expenses, we ensure all cargo is handled and unloaded efficiently and safely, minimizing delays and supporting your supply chain's reliability.
+                  By efficiently managing these expenses, we ensure all cargo is handled and unloaded efficiently and safely, minimizing delays and supporting your supply chain&apos;s reliability.
                 </p>
               </div>
             </div>
@@ -402,13 +402,13 @@ export default function PDABreakdownPage() {
                     <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
                       <h3 className="text-base font-medium text-gray-900 mb-1">Firefighting and Emergency Response Fees</h3>
-                      <p className="text-gray-600">Charges for emergency support at the port, ensuring vessels' safety in critical situations.</p>
+                      <p className="text-gray-600">Charges for emergency support at the port, ensuring vessels&apos; safety in critical situations.</p>
                     </div>
                   </div>
                 </div>
                 
                 <p className="text-base text-gray-600 leading-relaxed">
-                  By effectively coordinating these services, we ensure that our clients' vessels comply with maritime security and emergency protocols. Trusting us reduces overall risk to all maritime activities.
+                  By effectively coordinating these services, we ensure that our clients&apos; vessels comply with maritime security and emergency protocols. Trusting us reduces overall risk to all maritime activities.
                 </p>
               </div>
             </div>
@@ -444,7 +444,7 @@ export default function PDABreakdownPage() {
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                  We offer comprehensive financial and administrative support to ensure smooth operations during a vessel's port stay.
+                  We offer comprehensive financial and administrative support to ensure smooth operations during a vessel&apos;s port stay.
                 </p>
                 
                 <div className="space-y-4">
@@ -452,7 +452,7 @@ export default function PDABreakdownPage() {
                     <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
                     <div>
                       <h3 className="text-base font-medium text-gray-900 mb-1">Our Ship Agency Fees</h3>
-                      <p className="text-gray-600">Cover the charges for our professionals' ship agency services, providing expert guidance and management throughout the process.</p>
+                      <p className="text-gray-600">Cover the charges for our professionals&apos; ship agency services, providing expert guidance and management throughout the process.</p>
                     </div>
                   </div>
                   

@@ -54,7 +54,7 @@ function overview() {
                 <span className="text-blue-300">and Passage Services</span>
               </h1>
               <h2 className="font-light text-white text-sm md:text-base lg:text-lg max-w-3xl leading-relaxed">
-                Expert navigation services ensuring swift, safe, and cost-effective transit through one of the world's most strategic maritime corridors
+                Expert navigation services ensuring swift, safe, and cost-effective transit through one of the world&apos;s most strategic maritime corridors
               </h2>
             </div>
 
@@ -123,7 +123,7 @@ function overview() {
               </p>
               
               <p className="text-base text-gray-600 leading-relaxed">
-                From initial coordination with the Suez Canal Authority (SCA) to post-passage clearance, our experienced team manages every aspect of the process. We handle all the logistics and paperwork, ensuring your vessel's journey is seamless and free of delays or complications. With our 24/7 operational support, we guarantee smooth, timely transit, allowing you to focus on your business while we ensure a hassle-free canal passage.
+                From initial coordination with the Suez Canal Authority (SCA) to post-passage clearance, our experienced team manages every aspect of the process. We handle all the logistics and paperwork, ensuring your vessel&apos;s journey is seamless and free of delays or complications. With our 24/7 operational support, we guarantee smooth, timely transit, allowing you to focus on your business while we ensure a hassle-free canal passage.
               </p>
             </div>
             
@@ -230,7 +230,7 @@ function services() {
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
-                    <span><span className="font-medium">Monitoring and Assistance:</span> We monitor your vessel's passage continuously, offering assistance with any operational or technical needs that arise.</span>
+                    <span><span className="font-medium">Monitoring and Assistance:</span> We monitor your vessel&apos;s passage continuously, offering assistance with any operational or technical needs that arise.</span>
                   </li>
                   <li className="flex items-start gap-3">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></div>
@@ -302,7 +302,7 @@ function services() {
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                  In addition to managing your Suez Canal passage, Moon Navigation and Trading Co. offers a suite of comprehensive agency services. We further streamline your vessel's journey, whether before, during, or after transit, to provide tailored solutions for all your legal, logistical, and documentation needs.
+                  In addition to managing your Suez Canal passage, Moon Navigation and Trading Co. offers a suite of comprehensive agency services. We further streamline your vessel&apos;s journey, whether before, during, or after transit, to provide tailored solutions for all your legal, logistical, and documentation needs.
                 </p>
                 
                 <h3 className="text-xl font-medium text-gray-900">Our Agency Services Include:</h3>
@@ -361,7 +361,7 @@ function services() {
               Reasons to Choose Moon Navigation and Trading Co. for Your Suez Canal Passage Needs
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Partnering with Moon Navigation and Trading Co. means more than just Suez Canal passage — it means becoming part of a comprehensive maritime solution that prioritizes your vessel's success.
+              Partnering with Moon Navigation and Trading Co. means more than just Suez Canal passage — it means becoming part of a comprehensive maritime solution that prioritizes your vessel&apos;s success.
             </p>
           </div>
 
@@ -388,7 +388,7 @@ function services() {
                 All-Inclusive Service
               </h3>
               <p className="text-gray-600 leading-relaxed">
-                From Suez Canal passage coordination to full agency services, we manage all aspects of your vessel's journey to ensure a seamless and efficient experience.
+                From Suez Canal passage coordination to full agency services, we manage all aspects of your vessel&apos;s journey to ensure a seamless and efficient experience.
               </p>
             </div>
 

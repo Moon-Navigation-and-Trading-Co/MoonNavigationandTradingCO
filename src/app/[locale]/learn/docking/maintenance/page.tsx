@@ -61,7 +61,7 @@ export default function MaintenancePage() {
                             
                             <div className="space-y-4">
                                 <p className="text-base text-gray-600 leading-relaxed">
-                                    At Moon Navigation and Trading Co., we deliver dependable vessel maintenance services to ensure ships operate at peak performance while maintaining full compliance with international safety and environmental standards. From preventive care to urgent repairs, our expert teams provide comprehensive support tailored to your vessel's operational requirements.
+                                    At Moon Navigation and Trading Co., we deliver dependable vessel maintenance services to ensure ships operate at peak performance while maintaining full compliance with international safety and environmental standards. From preventive care to urgent repairs, our expert teams provide comprehensive support tailored to your vessel&apos;s operational requirements.
                                 </p>
                                 
                                 <p className="text-base text-gray-600 leading-relaxed">
@@ -165,7 +165,7 @@ export default function MaintenancePage() {
                             </h2>
                             
                             <p className="text-base text-gray-600 leading-relaxed">
-                                We maintain and troubleshoot your vessel's electrical and automation infrastructure for safe and efficient operation. Our services include:
+                                We maintain and troubleshoot your vessel&apos;s electrical and automation infrastructure for safe and efficient operation. Our services include:
                             </p>
                             
                             <ul className="list-disc pl-6 space-y-2 text-gray-600">
@@ -279,7 +279,7 @@ export default function MaintenancePage() {
                             </h2>
                             
                             <p className="text-base text-gray-600 leading-relaxed">
-                                Your crew's safety is non-negotiable—we ensure all life-saving appliances and firefighting equipment are fully operational. Our services include:
+                                Your crew&apos;s safety is non-negotiable—we ensure all life-saving appliances and firefighting equipment are fully operational. Our services include:
                             </p>
                             
                             <ul className="list-disc pl-6 space-y-2 text-gray-600">

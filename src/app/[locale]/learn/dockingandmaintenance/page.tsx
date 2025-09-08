@@ -534,7 +534,7 @@ export default function DockingAndMaintenance() {
                                 Integrated Services
                             </h3>
                             <p className="text-gray-600 leading-relaxed">
-                                From ship agency support to spare parts logistics, we handle everything needed during your vessel's stay in port.
+                                From ship agency support to spare parts logistics, we handle everything needed during your vessel&apos;s stay in port.
                             </p>
                         </div>
                     </div>

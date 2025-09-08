@@ -196,7 +196,7 @@ export default function ContainerPurchases() {
                             At Moon Navigation and Trading Co., we pride ourselves on providing durable and reliable container solutions. Our containers are expertly designed to withstand harsh weather conditions, ensuring the safety of your cargo.
                         </p>
                         <p className="text-foreground text-sm md:text-base mb-2">
-                            With a wide variety of customization options, including standard dry containers and specialized units in different sizes and types as customers, we're ready to meet the diverse needs of our clients. We offer flexible sizes from 8 ft to 40 ft (and custom) and materials and leases to specifications.
+                            With a wide variety of customization options, including standard dry containers and specialized units in different sizes and types as customers, we&apos;re ready to meet the diverse needs of our clients. We offer flexible sizes from 8 ft to 40 ft (and custom) and materials and leases to specifications.
                         </p>
                         <p className="text-foreground text-sm md:text-base">
                             Committed to affordability, we provide pricing for both purchase and rental options, delivering cost-effective solutions that fit your budget. Trust us to be your partner in shipping and storage needs.
@@ -295,7 +295,7 @@ export default function ContainerPurchases() {
                             Flexible Purchase & Rental Plans
                         </h2>
                         <p className="text-base md:text-lg mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>
-                            At Moon Navigation and Trading Co., we understand that different projects demand different timelines. That's why we offer:
+                            At Moon Navigation and Trading Co., we understand that different projects demand different timelines. That&apos;s why we offer:
                         </p>
                         <ul className="list-disc pl-6 mb-4 text-base md:text-lg" style={{ fontFamily: 'Raleway, sans-serif' }}>
                             <li>Short-Term & Long-Term Rentals</li>

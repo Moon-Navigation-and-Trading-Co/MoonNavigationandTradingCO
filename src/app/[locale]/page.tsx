@@ -353,7 +353,7 @@ export default function Index() {
                                         We are a distinguished leader in maritime, logistics, and services since 2010. With a commitment to excellence, we have become trusted partner for clients across various industries, delivering tailor-made solutions that seamlessly integrate efficiency, reliability, and innovation.
                                     </p>
                                     <p className="text-lg text-gray-600 leading-relaxed">
-                                        Operating from the heart of Egypt, we serve as a cornerstone of global commerce, providing unparalleled expertise in shipping, planning, and international trade. Our comprehensive services are designed to meet the complex demands of today's dynamic business landscape.
+                                        Operating from the heart of Egypt, we serve as a cornerstone of global commerce, providing unparalleled expertise in shipping, planning, and international trade. Our comprehensive services are designed to meet the complex demands of today&apos;s dynamic business landscape.
                                     </p>
                                 </div>
 
@@ -760,7 +760,7 @@ export default function Index() {
                                     <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 lg:p-10">
                                         <div className="mb-8">
                                             <h3 className="text-2xl font-raleway font-medium text-gray-900 mb-2">Send us a Message</h3>
-                                            <p className="text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+                                            <p className="text-gray-600">Fill out the form below and we&apos;ll get back to you as soon as possible.</p>
                                         </div>
                                         <ContactForm />
                                     </div>

@@ -146,7 +146,7 @@ function services(setActiveTab: (tabId: string) => void){
               
               <div className="space-y-6">
                 <p className="text-base text-gray-600 leading-relaxed">
-                  We facilitate the comprehensive review of crew members' documents to ensure full compliance with exit formalities and smooth disembarkation processes. Our sign-off procedures are designed to handle all aspects of crew departure with precision and efficiency.
+                  We facilitate the comprehensive review of crew members&apos; documents to ensure full compliance with exit formalities and smooth disembarkation processes. Our sign-off procedures are designed to handle all aspects of crew departure with precision and efficiency.
                 </p>
                 
                 <p className="text-base text-gray-600 leading-relaxed">

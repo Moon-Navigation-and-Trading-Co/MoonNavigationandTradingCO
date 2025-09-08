@@ -36,7 +36,7 @@ function overview(){
               </p>
               
               <p className="text-base text-gray-600 leading-relaxed">
-                We understand the critical nature of these services in maintaining vessel performance and crew welfare. Our comprehensive approach ensures that every aspect of your vessel's operational needs is met with the highest standards of quality and efficiency.
+                We understand the critical nature of these services in maintaining vessel performance and crew welfare. Our comprehensive approach ensures that every aspect of your vessel&apos;s operational needs is met with the highest standards of quality and efficiency.
               </p>
             </div>
             
@@ -180,7 +180,7 @@ function services(setActiveTab: (tabId: string) => void){
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                  We offer extensive ship chandlery services dedicated to serving your vessel's every requirement with onboard supplies and equipment for smooth operations. Our global network enables seamless sourcing of top-tier products, including fresh provisions, deck and engine consumables, cleaning agents, and safety equipment.
+                  We offer extensive ship chandlery services dedicated to serving your vessel&apos;s every requirement with onboard supplies and equipment for smooth operations. Our global network enables seamless sourcing of top-tier products, including fresh provisions, deck and engine consumables, cleaning agents, and safety equipment.
                 </p>
                 <p className="text-base text-gray-600 leading-relaxed">
                   We take pride in providing high-quality food and beverages, technical stores, safety equipment, bonded items, and cleaning materials, all tailored to your specific needs. Our experienced team understands the unique challenges of the maritime industry, so you can trust that your supplies will always be delivered efficiently and in compliance with the highest standards.
@@ -227,7 +227,7 @@ function services(setActiveTab: (tabId: string) => void){
               Your Reliable Partner in Maritime Support
             </h3>
             <p className="text-lg text-gray-600 leading-relaxed">
-              With Moon Navigation and Trading Co., you can count on reliable, timely and cost-effective bunkering solutions and support, and fully customizable solutions to your vessel's needs, ensuring uninterrupted service and operational efficiency—wherever and whenever you need to trust.
+              With Moon Navigation and Trading Co., you can count on reliable, timely and cost-effective bunkering solutions and support, and fully customizable solutions to your vessel&apos;s needs, ensuring uninterrupted service and operational efficiency—wherever and whenever you need to trust.
             </p>
           </div>
         </div>

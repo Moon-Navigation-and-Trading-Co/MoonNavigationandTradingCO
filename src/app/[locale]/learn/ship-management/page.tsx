@@ -593,7 +593,7 @@ export default function ShipManagement() {
                 </h2>
                 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  We manage your vessel's fuel and supply needs with precision and reliability.
+                  We manage your vessel&apos;s fuel and supply needs with precision and reliability.
                 </p>
                 
                 <div className="space-y-4">
@@ -862,7 +862,7 @@ export default function ShipManagement() {
                 </h2>
                 
                 <p className="text-lg text-gray-600 leading-relaxed">
-                  We manage your vessel's repairs and upgrades from start to finish.
+                  We manage your vessel&apos;s repairs and upgrades from start to finish.
                 </p>
                 
                 <div className="space-y-4">
@@ -1133,7 +1133,7 @@ export default function ShipManagement() {
               Reasons to Choose Moon Navigation and Trading Co. for Your Ship Management Needs:
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Partnering with Moon Navigation and Trading Co. means more than just ship management — it means becoming part of a comprehensive maritime solution that prioritizes your vessel's success.
+              Partnering with Moon Navigation and Trading Co. means more than just ship management — it means becoming part of a comprehensive maritime solution that prioritizes your vessel&apos;s success.
             </p>
           </div>
 
