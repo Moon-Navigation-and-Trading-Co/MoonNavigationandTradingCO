@@ -323,7 +323,7 @@ export default async function ContentManagementPage() {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <Image className="h-5 w-5" />
+                <Image className="h-5 w-5" aria-label="Media library icon" />
                 <span>Media Library</span>
               </CardTitle>
             </CardHeader>
@@ -333,7 +333,7 @@ export default async function ContentManagementPage() {
                   mediaFilesData.map((file) => (
                     <div key={file.id} className="aspect-square bg-gray-100 rounded-lg flex items-center justify-center">
                       <div className="text-center">
-                        <Image className="h-8 w-8 text-gray-400 mx-auto mb-2" />
+                        <Image className="h-8 w-8 text-gray-400 mx-auto mb-2" aria-label="File icon" />
                         <p className="text-xs text-gray-600 truncate">{file.name}</p>
                       </div>
                     </div>

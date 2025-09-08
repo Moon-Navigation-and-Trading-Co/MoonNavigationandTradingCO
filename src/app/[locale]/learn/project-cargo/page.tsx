@@ -697,7 +697,7 @@ function Overview() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                <img src="/icons/9.png" alt="Dedicated Project Cargo Team" className="w-12 h-12 object-contain" />
+                <Image src="/icons/9.png" alt="Dedicated Project Cargo Team" width={48} height={48} className="w-12 h-12 object-contain" />
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">
                 Dedicated Project Cargo Team
@@ -709,7 +709,7 @@ function Overview() {
 
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                <img src="/icons/10.png" alt="Specialized Equipment & Vessels" className="w-12 h-12 object-contain" />
+                <Image src="/icons/10.png" alt="Specialized Equipment & Vessels" width={48} height={48} className="w-12 h-12 object-contain" />
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">
                 Specialized Equipment & Vessels
@@ -721,7 +721,7 @@ function Overview() {
 
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                <img src="/icons/11.png" alt="Global Reach & Local Expertise" className="w-12 h-12 object-contain" />
+                <Image src="/icons/11.png" alt="Global Reach & Local Expertise" width={48} height={48} className="w-12 h-12 object-contain" />
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">
                 Global Reach & Local Expertise
@@ -733,7 +733,7 @@ function Overview() {
 
             <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 text-center">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
-                <img src="/icons/8.png" alt="Risk Management & Compliance" className="w-12 h-12 object-contain" />
+                <Image src="/icons/8.png" alt="Risk Management & Compliance" width={48} height={48} className="w-12 h-12 object-contain" />
               </div>
               <h3 className="text-xl font-medium text-gray-900 mb-4">
                 Risk Management & Compliance

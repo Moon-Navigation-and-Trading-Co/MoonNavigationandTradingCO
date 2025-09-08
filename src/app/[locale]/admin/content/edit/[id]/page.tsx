@@ -179,7 +179,7 @@ export default function ContentEditorPage() {
                 {content.image && (
                   <div className="mt-6">
                     <div className="aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
-                      <Image className="h-12 w-12 text-gray-400" />
+                      <Image className="h-12 w-12 text-gray-400" aria-label="Image preview placeholder" />
                       <span className="text-sm text-gray-500 ml-2">Image Preview</span>
                     </div>
                   </div>
