@@ -421,7 +421,7 @@ export default function AboutUs() {
                 From local transport to freight services, we ensure that your goods arrive safely and punctually. Our ocean freight capabilities accommodate a wide range of cargo types, including project cargo, dangerous goods, heavy lift, break bulk, and containers in both standard and nonstandard sizes, along with inland container transport and storage solutions, establishing ourselves as a versatile choice for effectively transporting any shipment without compromising quality or timeliness, whether across borders or overseas.
               </p>
               <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">
-                Our integrated sea-air solutions further enhance our logistics offerings, allowing for efficient and timely delivery of your shipments in today's dynamic market.
+                Our integrated sea-air solutions further enhance our logistics offerings, allowing for efficient and timely delivery of your shipments in today&apos;s dynamic market.
               </p>
               <Link href="/efficient-transportation">
                 <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
@@ -1012,7 +1012,7 @@ export default function AboutUs() {
                 
                 <div className="text-center">
                   <p className="text-sm text-blue-600 italic font-medium">
-                    "Whenever and wherever you need to trust"
+                    &ldquo;Whenever and wherever you need to trust&rdquo;
                   </p>
                 </div>
               </div>

@@ -97,7 +97,7 @@ export default function ContactPage() {
             <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 lg:p-10">
               <div className="mb-8">
                 <h3 className="text-2xl font-raleway font-medium text-gray-900 mb-2">Send us a Message</h3>
-                <p className="text-gray-600">Fill out the form below and we'll get back to you as soon as possible.</p>
+                <p className="text-gray-600">Fill out the form below and we&apos;ll get back to you as soon as possible.</p>
               </div>
               <ContactForm />
             </div>

@@ -55,7 +55,7 @@ export default function CustomsClearanceLearnMore() {
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
                   <div>
                     <span className="font-medium text-black">Cost-Effective Solutions—</span>
-                    <span className="text-gray-600">Providing tailored clearance solutions for each client's needs.</span>
+                    <span className="text-gray-600">Providing tailored clearance solutions for each client&apos;s needs.</span>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">

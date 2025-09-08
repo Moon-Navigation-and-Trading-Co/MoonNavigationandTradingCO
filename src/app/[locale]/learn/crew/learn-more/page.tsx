@@ -95,7 +95,7 @@ export default function CrewLearnMorePage() {
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                  We facilitate the comprehensive review of crew members' documents to ensure full compliance with exit formalities and smooth disembarkation processes. Our sign-off procedures are designed to handle all aspects of crew departure with precision and efficiency.
+                  We facilitate the comprehensive review of crew members&apos; documents to ensure full compliance with exit formalities and smooth disembarkation processes. Our sign-off procedures are designed to handle all aspects of crew departure with precision and efficiency.
                 </p>
                 <p className="text-base text-gray-600 leading-relaxed">
                   Our sign-off process includes exit visa assistance, medical assessments, travel arrangements, and final documentation. We work closely with customs authorities, immigration services, and port officials to ensure an efficient and hassle-free transition for outgoing crew members.

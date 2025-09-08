@@ -83,7 +83,7 @@ export default function PDAProcessPage() {
                 </p>
                 
                 <p className="text-base text-gray-600 leading-relaxed">
-                  This ensures you always receive the most fluid, accurate Port Disbursement Assessment—enabling you to make informed decisions and maintain full financial control throughout your vessel's stay.
+                  This ensures you always receive the most fluid, accurate Port Disbursement Assessment—enabling you to make informed decisions and maintain full financial control throughout your vessel&apos;s stay.
                 </p>
                 
                 <p className="text-base text-gray-600 leading-relaxed">

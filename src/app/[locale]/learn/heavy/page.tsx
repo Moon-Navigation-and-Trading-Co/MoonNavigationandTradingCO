@@ -192,7 +192,7 @@ export default function HeavyLiftCargoInfo() {
                             <div className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100">
                                 <h3 className="text-lg font-light text-gray-900 mb-3" style={{ fontFamily: 'Raleway, sans-serif' }}>Custom Routing</h3>
                                 <p className="text-sm text-gray-600 leading-relaxed">
-                                    We develop tailored routing solutions that account for the ship's capacity and port infrastructure, ensuring seamless transport of heavy lift cargo.
+                                    We develop tailored routing solutions that account for the ship&apos;s capacity and port infrastructure, ensuring seamless transport of heavy lift cargo.
                             </p>
                         </div>
                             
@@ -410,7 +410,7 @@ export default function HeavyLiftCargoInfo() {
                             </div>
                             <h3 className="text-xl font-light text-gray-900 mb-4" style={{ fontFamily: 'Raleway, sans-serif' }}>Used in Large-Scale Industrial Projects</h3>
                             <p className="text-gray-600 leading-relaxed">
-                                Heavy lift cargo is commonly used in sectors such as oil and gas, energy, mining, and infrastructure, where Moon Navigation and Trading Co.'s expertise provides optimal logistics solutions.
+                                Heavy lift cargo is commonly used in sectors such as oil and gas, energy, mining, and infrastructure, where Moon Navigation and Trading Co.&apos;s expertise provides optimal logistics solutions.
                             </p>
                         </div>
                     </div>

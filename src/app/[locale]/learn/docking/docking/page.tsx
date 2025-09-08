@@ -262,7 +262,7 @@ function services() {
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                  For vessels that don't require full dry docking, we offer wet docking (afloat repairs) to reduce operational disruption and cost. Our services include:
+                  For vessels that don&apos;t require full dry docking, we offer wet docking (afloat repairs) to reduce operational disruption and cost. Our services include:
                 </p>
                 <ul className="space-y-2 text-base text-gray-600">
                   <li className="flex items-start gap-2">

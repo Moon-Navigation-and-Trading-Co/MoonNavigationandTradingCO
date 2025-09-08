@@ -290,7 +290,7 @@ export default function InvestPage() {
               <h4 className="text-lg md:text-xl font-medium text-gray-900">Equity Investment</h4>
             </div>
             <p className="text-gray-600 mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
-              Gain long-term ownership and participate in the company's overall growth and profitability.
+              Gain long-term ownership and participate in the company&apos;s overall growth and profitability.
             </p>
             <ul className="space-y-3">
               {['Company shares with capital appreciation', 'Annual dividends based on financial performance', 'Strategic participation and advisory involvement (for major shareholders)'].map((item, index) => (

@@ -311,7 +311,7 @@ export default function VesselPage() {
                   </tr>
                   <tr className="border-t border-gray-200">
                     <td className="py-3 px-4 font-medium border-r">Maintenance Responsibility</td>
-                    <td className="py-3 px-4 border-r">Owner's responsibility</td>
+                    <td className="py-3 px-4 border-r">Owner&apos;s responsibility</td>
                     <td className="py-3 px-4 border-r">Often included in charter terms</td>
                   </tr>
                 </tbody>

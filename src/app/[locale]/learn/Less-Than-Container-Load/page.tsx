@@ -55,7 +55,7 @@ export default function ShippingMethodsInfo() {
                 Less Than Container<br />Load
               </h1>
               <h2 className="font-light text-white text-sm md:text-base lg:text-lg max-w-3xl leading-relaxed">
-                Cost-effective shipping for smaller shipments that don't fill an entire container, enabling businesses to pay only for the space they use
+                Cost-effective shipping for smaller shipments that don&apos;t fill an entire container, enabling businesses to pay only for the space they use
               </h2>
             </div>
 

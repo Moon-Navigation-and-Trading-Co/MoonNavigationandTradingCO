@@ -30,7 +30,7 @@ export default function ForgotPassword() {
                 Forgot Your Password?
               </h2>
               <p className="text-lg text-gray-600 leading-relaxed">
-                Enter your email address below and we'll send you a secure link to reset your password and regain access to your account.
+                Enter your email address below and we&apos;ll send you a secure link to reset your password and regain access to your account.
               </p>
               <div className="flex items-center gap-4 pt-4">
                 <div className="flex items-center gap-2">

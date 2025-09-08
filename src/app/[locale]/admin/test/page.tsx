@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, XCircle, AlertCircle } from "lucide-react";
+import Link from "next/link";
 
 export default async function AdminTestPage() {
   const supabase = await createClient();
@@ -141,16 +142,16 @@ export default async function AdminTestPage() {
       {/* Navigation */}
       <div className="flex space-x-4">
         <Button asChild>
-          <a href="/admin">Go to Dashboard</a>
+          <Link href="/admin">Go to Dashboard</Link>
         </Button>
         <Button variant="outline" asChild>
-          <a href="/admin/users">User Management</a>
+          <Link href="/admin/users">User Management</Link>
         </Button>
         <Button variant="outline" asChild>
-          <a href="/admin/submissions">Form Submissions</a>
+          <Link href="/admin/submissions">Form Submissions</Link>
         </Button>
         <Button variant="outline" asChild>
-          <a href="/admin/analytics">Analytics</a>
+          <Link href="/admin/analytics">Analytics</Link>
         </Button>
       </div>
 
@@ -166,7 +167,7 @@ export default async function AdminTestPage() {
             <p>🔧 Common fixes:</p>
             <ul className="list-disc list-inside ml-4 space-y-1">
               <li>Run database migrations: <code>npx supabase db push</code></li>
-              <li>Update user role: <code>UPDATE users SET role = 'super_admin' WHERE email = 'your-email@example.com';</code></li>
+              <li>Update user role: <code>UPDATE users SET role = &apos;super_admin&apos; WHERE email = &apos;your-email@example.com&apos;;</code></li>
               <li>Check environment variables in <code>.env.local</code></li>
               <li>Verify Supabase connection settings</li>
             </ul>
