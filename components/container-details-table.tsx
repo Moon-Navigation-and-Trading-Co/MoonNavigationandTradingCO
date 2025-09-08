@@ -118,7 +118,7 @@ const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ control }
                                                 name={`container_details.${index}.container_type`}
                                                 render={({ field, fieldState: { error } }) => (
                                                     <div>
-                                                        <Select onValueChange={field.onChange} value={field.value}>
+                                                        <Select onValueChange={field.onChange} value={field.value || ""}>
                                                             <SelectTrigger className="w-full border border-gray-200 rounded-md text-sm">
                                                                 <SelectValue placeholder="Select container type" />
                                                             </SelectTrigger>

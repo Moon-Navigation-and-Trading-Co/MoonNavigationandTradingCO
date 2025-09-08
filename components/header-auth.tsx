@@ -1,4 +1,4 @@
-import { signOutAction } from "@/src/app/actions";
+import { sign_out_action } from "@/src/app/actions";
 import { hasEnvVars } from "@/utils/supabase/check-env-vars";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
@@ -48,7 +48,7 @@ export default async function AuthButton() {
   return user ? (
     <div className="flex items-center gap-4">
       Hey, {user.email}!
-      <form action={signOutAction}>
+      <form action={sign_out_action}>
         <Button type="submit" variant={"outline"}>
           Sign out
         </Button>

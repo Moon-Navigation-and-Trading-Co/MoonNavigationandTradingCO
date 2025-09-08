@@ -65,7 +65,7 @@ export default function RoutingCard3({ control }: RoutingCard3Props) {
                       render={({ field, fieldState: { error } }) => (
                         <>
                           <SearchableCountrySelect
-                            value={field.value}
+                            value={field.value || ""}
                             onValueChange={field.onChange}
                             placeholder="Select country"
                             className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"
@@ -168,7 +168,7 @@ export default function RoutingCard3({ control }: RoutingCard3Props) {
                       render={({ field, fieldState: { error } }) => (
                         <>
                           <SearchableCountrySelect
-                            value={field.value}
+                            value={field.value || ""}
                             onValueChange={field.onChange}
                             placeholder="Select country"
                             className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"

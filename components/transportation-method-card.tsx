@@ -25,7 +25,7 @@ const TransportationMethodCard = ({ control }: { control: any }) => {
             render={({ field, fieldState: { error } }) => (
               <RadioGroup
                 onValueChange={field.onChange} // Update form state
-                value={field.value} // The selected value
+                value={field.value || ""} // The selected value
                 className="flex flex-col space-y-1"
               >
                 {/* Standard Transportation Method */}

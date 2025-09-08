@@ -38,7 +38,7 @@ const LocationCard = ({ control }: { control: any }) => {
                                         render={({ field, fieldState: { error } }) => (
                                             <>
                                                 <SearchableCountrySelect
-                                                    value={field.value}
+                                                    value={field.value || ""}
                                                     onValueChange={field.onChange}
                                                     placeholder="Select country"
                                                     className="max-w-[300px] !border-2 !rounded-xl !border-gray-200"

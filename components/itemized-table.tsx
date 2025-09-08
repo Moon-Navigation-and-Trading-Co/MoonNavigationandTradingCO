@@ -149,7 +149,7 @@ const ItemizedTable: React.FC<ItemizedTableProps> = ({ control }) => {
                                             name={`itemized_data.${index}.packaging_type`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <div>
-                                                    <Select onValueChange={field.onChange} value={field.value}>
+                                                    <Select onValueChange={field.onChange} value={field.value || ""}>
                                                         <SelectTrigger className={`w-full border-2 rounded ${error ? 'border-red-500' : 'border-gray-300'}`}>
                                                             <SelectValue placeholder="Select type" />
                                                         </SelectTrigger>
@@ -256,7 +256,7 @@ const ItemizedTable: React.FC<ItemizedTableProps> = ({ control }) => {
                                                     <Select onValueChange={(value) => {
                                                         field.onChange(value);
                                                         calculateRowValues(index);
-                                                    }} value={field.value}>
+                                                    }} value={field.value || ""}>
                                                         <SelectTrigger className="w-20 border-2 rounded text-xs sm:text-sm">
                                                             <SelectValue />
                                                         </SelectTrigger>
@@ -300,7 +300,7 @@ const ItemizedTable: React.FC<ItemizedTableProps> = ({ control }) => {
                                                     <Select onValueChange={(value) => {
                                                         field.onChange(value);
                                                         calculateRowValues(index);
-                                                    }} value={field.value}>
+                                                    }} value={field.value || ""}>
                                                         <SelectTrigger className="w-20 border-2 rounded text-xs sm:text-sm">
                                                             <SelectValue />
                                                         </SelectTrigger>
@@ -344,7 +344,7 @@ const ItemizedTable: React.FC<ItemizedTableProps> = ({ control }) => {
                                                     <Select onValueChange={(value) => {
                                                         field.onChange(value);
                                                         calculateRowValues(index);
-                                                    }} value={field.value}>
+                                                    }} value={field.value || ""}>
                                                         <SelectTrigger className="w-20 border-2 rounded text-xs sm:text-sm">
                                                             <SelectValue />
                                                         </SelectTrigger>

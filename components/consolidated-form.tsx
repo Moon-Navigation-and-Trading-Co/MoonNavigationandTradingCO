@@ -171,7 +171,7 @@ const ConsolidatedForm: React.FC<ConsolidatedFormProps> = ({ control }) => {
                             name="consolidated_data.packaging_type"
                             render={({ field, fieldState: { error } }) => (
                                 <div>
-                                    <Select onValueChange={field.onChange} value={field.value}>
+                                    <Select onValueChange={field.onChange} value={field.value || ""}>
                                         <SelectTrigger className={`w-full border-2 rounded-xl ${error ? 'border-red-500' : 'border-gray-300'}`}>
                                             <SelectValue placeholder="Select packaging type" />
                                         </SelectTrigger>

@@ -105,7 +105,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <SearchableCountrySelect
-                                              value={field.value}
+                                              value={field.value || ""}
                                               onValueChange={field.onChange}
                                               placeholder="Select country"
                                               className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"
@@ -144,7 +144,7 @@ const CompanyDetailsCard = ({ control }: { control: any }) => {
                                 render={({ field, fieldState: { error } }) => (
                                     <>
                                         <PhoneInput
-                                            value={field.value}
+                                            value={field.value || ""}
                                             onChange={(value) => field.onChange(value)}
                                             defaultCountry="EG"
                                             international

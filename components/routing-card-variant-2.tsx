@@ -71,7 +71,7 @@ const RoutingCard = ({ control }: { control: any }) => {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <SearchableCountrySelect
-                                                        value={field.value}
+                                                        value={field.value || ""}
                                                         onValueChange={field.onChange}
                                                         placeholder="Select country"
                                                         className="max-w-[300px]"
@@ -117,7 +117,7 @@ const RoutingCard = ({ control }: { control: any }) => {
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <SearchableCountrySelect
-                                                        value={field.value}
+                                                        value={field.value || ""}
                                                         onValueChange={field.onChange}
                                                         placeholder="Select country"
                                                         className="max-w-[300px]"

@@ -158,7 +158,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                             control={control}
                                             name={`cargo_specifications.${index}.container_type`}
                                             render={({ field }) => (
-                                                <Select onValueChange={field.onChange} value={field.value}>
+                                                <Select onValueChange={field.onChange} value={field.value || ""}>
                                                     <SelectTrigger className="w-full border border-gray-200 rounded-md text-sm">
                                                         <SelectValue placeholder="Select type" />
                                                     </SelectTrigger>
@@ -238,7 +238,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                 render={({ field }) => (
                                                     <Select 
                                                         onValueChange={field.onChange} 
-                                                        value={field.value}
+                                                        value={field.value || ""}
                                                         disabled={onlyCm || isStandard}
                                                     >
                                                         <SelectTrigger className={`w-20 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100' : ''}`}>
@@ -279,7 +279,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                 render={({ field }) => (
                                                     <Select 
                                                         onValueChange={field.onChange} 
-                                                        value={field.value}
+                                                        value={field.value || ""}
                                                         disabled={onlyCm || isStandard}
                                                     >
                                                         <SelectTrigger className={`w-20 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100' : ''}`}>
@@ -320,7 +320,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                 render={({ field }) => (
                                                     <Select 
                                                         onValueChange={field.onChange} 
-                                                        value={field.value}
+                                                        value={field.value || ""}
                                                         disabled={onlyCm || isStandard}
                                                     >
                                                         <SelectTrigger className={`w-20 border border-gray-200 rounded-md text-sm ${isStandard ? 'bg-gray-100' : ''}`}>
@@ -359,7 +359,7 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                                                 control={control}
                                                 name={`cargo_specifications.${index}.weight_unit`}
                                                 render={({ field }) => (
-                                                    <Select onValueChange={field.onChange} value={field.value}>
+                                                    <Select onValueChange={field.onChange} value={field.value || ""}>
                                                         <SelectTrigger className={`w-16 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}>
                                                             <SelectValue />
                                                         </SelectTrigger>

@@ -603,7 +603,7 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                                         <select
                                             className="max-w-[200px] border-2 rounded-xl p-2"
                                             onChange={field.onChange}
-                                            value={field.value}
+                                            value={field.value || ""}
                                         >
                                             <option value="30">30 days</option>
                                             <option value="60">60 days</option>

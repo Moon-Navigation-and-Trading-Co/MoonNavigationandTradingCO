@@ -145,7 +145,7 @@ export default function GetQuoteComponent({ topic, link = "/ocean-freight-forms"
             </p>
           </div>
           <div className="text-gray-500 italic text-sm lg:text-base lg:text-right">
-            "Whenever and wherever you need to trust."
+            &ldquo;Whenever and wherever you need to trust.&rdquo;
           </div>
         </div>
       </div>

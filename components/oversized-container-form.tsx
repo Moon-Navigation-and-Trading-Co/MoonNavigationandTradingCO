@@ -149,7 +149,7 @@ const OversizedContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ o
                             render={({ field, fieldState: { error } }) => (
                                 <RadioGroup
                                     onValueChange={field.onChange}
-                                    value={field.value}
+                                    value={field.value || ""}
                                     className="flex flex-col space-y-1"
                                 >
                                     {/* Container yard (CY) */}

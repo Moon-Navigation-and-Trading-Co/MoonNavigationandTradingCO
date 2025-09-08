@@ -263,7 +263,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                                     control={form.control}
                                                     name={`crew.sign_on_members.${index}.nationality`}
                                                     render={({ field }) => (
-                                                        <Select onValueChange={field.onChange} value={field.value}>
+                                                        <Select onValueChange={field.onChange} value={field.value || ""}>
                                                             <SelectTrigger className="w-full">
                                                                 <SelectValue placeholder="Select nationality" />
                                                             </SelectTrigger>
@@ -284,7 +284,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                                     name={`crew.sign_on_members.${index}.airport_pickup`}
                                                     render={({ field }) => (
                                                         <RadioGroup
-                                                            value={field.value}
+                                                            value={field.value || ""}
                                                             onValueChange={field.onChange}
                                                             className="flex space-x-4"
                                                         >
@@ -430,7 +430,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                                     control={form.control}
                                                     name={`crew.sign_off_members.${index}.nationality`}
                                                     render={({ field }) => (
-                                                        <Select onValueChange={field.onChange} value={field.value}>
+                                                        <Select onValueChange={field.onChange} value={field.value || ""}>
                                                             <SelectTrigger className="w-full">
                                                                 <SelectValue placeholder="Select nationality" />
                                                             </SelectTrigger>
@@ -451,7 +451,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                                                     name={`crew.sign_off_members.${index}.airport_pickup`}
                                                     render={({ field }) => (
                                                         <RadioGroup
-                                                            value={field.value}
+                                                            value={field.value || ""}
                                                             onValueChange={field.onChange}
                                                             className="flex space-x-4"
                                                         >

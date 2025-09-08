@@ -144,7 +144,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                                         name="duration_unit"
                                         render={({ field, fieldState: { error } }) => (
                                             <>
-                                                <Select onValueChange={field.onChange} value={field.value}>
+                                                <Select onValueChange={field.onChange} value={field.value || ""}>
                                                     <SelectTrigger className="w-[120px]">
                                                         <SelectValue placeholder="Unit" />
                                                     </SelectTrigger>

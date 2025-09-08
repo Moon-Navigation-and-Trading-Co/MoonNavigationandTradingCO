@@ -119,7 +119,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
                                         name={`container.type`}
                                         render={({ field, fieldState: { error } }) => (
                                             <>
-                                                <Select onValueChange={field.onChange} value={field.value}>
+                                                <Select onValueChange={field.onChange} value={field.value || ""}>
                                                     <SelectTrigger className="w-full max-w-[300px] border-2 rounded-xl">
                                                         <SelectValue placeholder="Select container type" />
                                                     </SelectTrigger>
@@ -172,7 +172,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
                                 render={({ field, fieldState: { error } }) => (
                                     <RadioGroup
                                         onValueChange={field.onChange}
-                                        value={field.value}
+                                        value={field.value || ""}
                                         className="flex flex-col space-y-1"
                                     >
                                         <div className="flex items-center space-x-3">
@@ -323,7 +323,7 @@ const SellContainerForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubm
                                         name="duration_unit"
                                         render={({ field, fieldState: { error } }) => (
                                             <div className="flex flex-col">
-                                                <Select onValueChange={field.onChange} value={field.value}>
+                                                <Select onValueChange={field.onChange} value={field.value || ""}>
                                                     <SelectTrigger className="w-[120px] border-2 rounded-xl">
                                                         <SelectValue placeholder="Unit" />
                                                     </SelectTrigger>
