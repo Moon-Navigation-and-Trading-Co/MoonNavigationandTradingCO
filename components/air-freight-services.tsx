@@ -116,6 +116,7 @@ const formSchema = z.object({
 const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     const t = useTranslations('Inland-errors');
     const [entryMode, setEntryMode] = useState<'itemized' | 'consolidated'>('itemized');
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -202,9 +203,14 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
         }
     });
 
-    const handleSubmit = (values: any) => {
-        console.log(values);
-        onSubmit(values);
+    const handleSubmit = async (values: any) => {
+        setIsSubmitting(true);
+        try {
+            console.log(values);
+            await onSubmit(values);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleModeChange = (mode: 'itemized' | 'consolidated') => {
@@ -472,10 +478,14 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className="mt-4 w-[200px]">
-                    Submit
-                </Button>
-            </form>
+                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+                    {isSubmitting ? (
+                        <div className="flex items-center justify-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                            <span>Submitting...</span>
+                        </div>
+                    ) : "Submit"}
+                </Button>            </form>
         </Form>
     );
 };

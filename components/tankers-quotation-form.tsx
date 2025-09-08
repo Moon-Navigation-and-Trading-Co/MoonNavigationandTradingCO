@@ -64,9 +64,10 @@ type TankersFormData = z.infer<typeof tankersFormSchema>;
 
 interface TankersQuotationFormProps {
   onSubmit: (data: TankersFormData) => void;
+  isSubmitting?: boolean; // Add this line
 }
 
-export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormProps) {
+export default function TankersQuotationForm({ onSubmit, isSubmitting = false }: TankersQuotationFormProps) {
   const form = useForm<TankersFormData>({
     resolver: zodResolver(tankersFormSchema),
     defaultValues: {
@@ -719,10 +720,14 @@ export default function TankersQuotationForm({ onSubmit }: TankersQuotationFormP
         <CompanyDetailsCard control={form.control} />
 
         {/* Submit Button */}
-        <Button type="submit" className="mt-4 w-[200px]">
-          Submit
-        </Button>
-      </form>
+        <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+          {isSubmitting ? (
+            <div className="flex items-center justify-center gap-2">
+              <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+              <span>Submitting...</span>
+            </div>
+          ) : "Submit"}
+        </Button>      </form>
     </Form>
   );
 } 

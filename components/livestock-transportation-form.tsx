@@ -82,6 +82,7 @@ interface LivestockTransportationFormProps {
 export default function LivestockTransportationForm({ onSubmit }: LivestockTransportationFormProps) {
   const t = useTranslations('Inland-forms');
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -158,16 +159,21 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
     setUploadedFiles(uploadedFiles.filter((_, i) => i !== index));
   };
 
-  const handleSubmit = (values: FormData) => {
-    const formDataWithFiles = {
-      ...values,
-      uploadedFiles
-    };
-    
-    if (onSubmit) {
-      onSubmit(formDataWithFiles);
-    } else {
-      console.log('Form data:', formDataWithFiles);
+  const handleSubmit = async (values: FormData) => {
+    setIsSubmitting(true);
+    try {
+      const formDataWithFiles = {
+        ...values,
+        uploadedFiles
+      };
+      
+      if (onSubmit) {
+        await onSubmit(formDataWithFiles);
+      } else {
+        console.log('Form data:', formDataWithFiles);
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -774,10 +780,14 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Submit Button */}
         <div className="text-center">
-          <Button type="submit" className="mt-4 w-[200px]">
-            Submit
-          </Button>
-        </div>
+          <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+            {isSubmitting ? (
+              <div className="flex items-center justify-center gap-2">
+                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                <span>Submitting...</span>
+              </div>
+            ) : "Submit"}
+          </Button>        </div>
       </form>
     </Form>
   );

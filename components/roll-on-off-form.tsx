@@ -14,17 +14,23 @@ import { useTranslations } from 'next-intl';
 import DatesCard from './dates-card';
 import { userInfo } from 'os';
 import { Textarea } from './ui/textarea';
+import { useState } from 'react';
 
 interface RollOnOffFormProps {
     onSubmit: (data: any) => void;
     dangerous_bool?: boolean | null;
-    breakbulk_bool?: boolean | null; // Optional prop that can be boolean or null
+    breakbulk_bool?: boolean | null;
 }
 
-// 1. Define a type-safe form handler using z.infer
-const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool = false, breakbulk_bool = false }) => {
+// Fix the component declaration
+const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ 
+    onSubmit, 
+    dangerous_bool = false, 
+    breakbulk_bool = false
+}) => {
     // Get Content
     const t = useTranslations('Inland-errors')
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
@@ -114,9 +120,14 @@ const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool 
     });
 
     // 2. Type-safe submit handler
-    const handleSubmit = (values: any) => {
-        console.log("Form submitted successfully:", values);
-        onSubmit(values);
+    const handleSubmit = async (values: any) => {
+        setIsSubmitting(true);
+        try {
+            console.log("Form submitted successfully:", values);
+            await onSubmit(values);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
 
@@ -204,10 +215,14 @@ const RollOnOffForm: React.FC<RollOnOffFormProps> = ({ onSubmit, dangerous_bool 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className="mt-4 w-[200px]">
-                    Submit
-                </Button>
-            </form>
+                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+                    {isSubmitting ? (
+                        <div className="flex items-center justify-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                            <span>Submitting...</span>
+                        </div>
+                    ) : "Submit"}
+                </Button>            </form>
         </Form>
     );
 };
