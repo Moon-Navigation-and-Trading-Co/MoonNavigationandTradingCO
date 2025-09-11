@@ -9,13 +9,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { z } from 'zod';
 
 // Routing schema definition
-export const routingSchema = z.object({
+export const routingCard0Schema = z.object({
   routing: z.array(z.object({
-    fromCountry: z.string().min(1, { message: "From country is required" }),
-    fromPort: z.string().min(1, { message: "From port/area is required" }),
-    toCountry: z.string().min(1, { message: "To country is required" }),
-    toPort: z.string().min(1, { message: "To port/area is required" }),
-  }))
+    from_country: z.string().min(1, { message: "From country is required" }),
+    from_port: z.string().min(1, { message: "From port/area is required" }),
+    to_country: z.string().min(1, { message: "To country is required" }),
+    to_port: z.string().min(1, { message: "To port/area is required" }),
+  })),
 });
 
 const RoutingCard0 = ({ control }: { control: any }) => {
@@ -43,7 +43,7 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.fromCountry`}
+                                            name={`routing.${index}.from_country`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <SearchableCountrySelect
@@ -52,7 +52,7 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                                         placeholder="Select country"
                                                         className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"
                                                     />
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -63,15 +63,15 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.fromPort`}
+                                            name={`routing.${index}.from_port`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
-                                                    <Input 
-                                                        className="w-full max-w-[300px] border-2 rounded-xl" 
-                                                        placeholder="Enter port or area" 
-                                                        {...field} 
+                                                    <Input
+                                                        {...field}
+                                                        placeholder="Enter port/area"
+                                                        className={`mt-2 ${error ? 'border-red-500' : ''}`}
                                                     />
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -89,7 +89,7 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.toCountry`}
+                                            name={`routing.${index}.to_country`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <SearchableCountrySelect
@@ -98,7 +98,7 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                                         placeholder="Select country"
                                                         className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"
                                                     />
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -109,15 +109,15 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.toPort`}
+                                            name={`routing.${index}.to_port`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
-                                                    <Input 
-                                                        className="w-full max-w-[300px] border-2 rounded-xl" 
-                                                        placeholder="Enter port or area" 
-                                                        {...field} 
+                                                    <Input
+                                                        {...field}
+                                                        placeholder="Enter port/area"
+                                                        className={`mt-2 ${error ? 'border-red-500' : ''}`}
                                                     />
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -148,10 +148,10 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                     type="button"
                     className="mt-4 max-w-[200px] bg-primary text-sm text-white rounded-lg"
                     onClick={() => append({ 
-                        fromCountry: '', 
-                        fromPort: '', 
-                        toCountry: '', 
-                        toPort: ''
+                        from_country: '', 
+                        from_port: '', 
+                        to_country: '', 
+                        to_port: ''
                     })}
                 >
                     <Plus className="h-4 w-4 mr-2" />

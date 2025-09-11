@@ -51,8 +51,13 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
             setTotalSize(combinedTotalSize);
             
             // Convert files to a string representation for the form
+<<<<<<< HEAD
             const fileNames = updatedFiles.map(file => file.name).join(', ');
             setValue('supportingFiles', fileNames);
+=======
+            const fileNames = files.map(file => file.name).join(', ');
+            setValue('supporting_files', fileNames);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
         }
     };
 
@@ -66,7 +71,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
         
         // Update form value
         const fileNames = newFiles.map(file => file.name).join(', ');
-        setValue('supportingFiles', fileNames);
+        setValue('supporting_files', fileNames);
     };
 
     const clearAllFiles = () => {
@@ -95,7 +100,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
                 <FormControl>
                     <Controller
                         control={control}
-                        name="supportingFiles"
+                        name="supporting_files"
                         render={({ fieldState: { error: fieldError } }) => (
                             <div className="space-y-4">
                                 {/* File Upload Input */}

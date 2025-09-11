@@ -11,14 +11,14 @@ import { z } from 'zod';
 // Routing schema definition with Services mode
 export const routingSchemaWithServices = z.object({
   routing: z.array(z.object({
-    fromCountry: z.string().min(1, { message: "From country is required" }),
-    fromPort: z.string().min(1, { message: "From port/area is required" }),
-    fromServicesMode: z.enum(["cy", "sd"], {
+    from_country: z.string().min(1, { message: "From country is required" }),
+    from_port: z.string().min(1, { message: "From port/area is required" }),
+    from_services_mode: z.enum(["cy", "sd"], {
       required_error: "From services mode is required",
     }),
-    toCountry: z.string().min(1, { message: "To country is required" }),
-    toPort: z.string().min(1, { message: "To port/area is required" }),
-    toServicesMode: z.enum(["cy", "sd"], {
+    to_country: z.string().min(1, { message: "To country is required" }),
+    to_port: z.string().min(1, { message: "To port/area is required" }),
+    to_services_mode: z.enum(["cy", "sd"], {
       required_error: "To services mode is required",
     }),
   }))
@@ -49,7 +49,7 @@ const RoutingCard1 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.fromCountry`}
+                                            name={`routing.${index}.from_country`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <SearchableCountrySelect
@@ -58,7 +58,7 @@ const RoutingCard1 = ({ control }: { control: any }) => {
                                                         placeholder="Select country"
                                                         className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"
                                                     />
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -69,15 +69,15 @@ const RoutingCard1 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.fromPort`}
+                                            name={`routing.${index}.from_port`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
-                                                    <Input 
-                                                        className="w-full max-w-[300px] border-2 rounded-xl" 
-                                                        placeholder="Enter port or area" 
-                                                        {...field} 
+                                                    <Input
+                                                        {...field}
+                                                        placeholder="Enter port/area"
+                                                        className={`mt-2 ${error ? 'border-red-500' : ''}`}
                                                     />
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -88,19 +88,19 @@ const RoutingCard1 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.fromServicesMode`}
+                                            name={`routing.${index}.from_services_mode`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Select onValueChange={field.onChange} value={field.value || ""}>
                                                         <SelectTrigger className="w-full max-w-[300px] border-2 rounded-xl">
-                                                            <SelectValue placeholder="Select mode" />
+                                                            <SelectValue placeholder="Select services mode" />
                                                         </SelectTrigger>
                                                         <SelectContent>
-                                                            <SelectItem value="cy">Container yard (CY)</SelectItem>
-                                                            <SelectItem value="sd">Store door (SD)</SelectItem>
+                                                            <SelectItem value="cy">CY (Container Yard)</SelectItem>
+                                                            <SelectItem value="sd">SD (Store Door)</SelectItem>
                                                         </SelectContent>
                                                     </Select>
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -118,7 +118,7 @@ const RoutingCard1 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.toCountry`}
+                                            name={`routing.${index}.to_country`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <SearchableCountrySelect
@@ -127,7 +127,7 @@ const RoutingCard1 = ({ control }: { control: any }) => {
                                                         placeholder="Select country"
                                                         className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"
                                                     />
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -138,15 +138,15 @@ const RoutingCard1 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.toPort`}
+                                            name={`routing.${index}.to_port`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
-                                                    <Input 
-                                                        className="w-full max-w-[300px] border-2 rounded-xl" 
-                                                        placeholder="Enter port or area" 
-                                                        {...field} 
+                                                    <Input
+                                                        {...field}
+                                                        placeholder="Enter port/area"
+                                                        className={`mt-2 ${error ? 'border-red-500' : ''}`}
                                                     />
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -157,19 +157,19 @@ const RoutingCard1 = ({ control }: { control: any }) => {
                                     <FormControl>
                                         <Controller
                                             control={control}
-                                            name={`routing.${index}.toServicesMode`}
+                                            name={`routing.${index}.to_services_mode`}
                                             render={({ field, fieldState: { error } }) => (
                                                 <>
                                                     <Select onValueChange={field.onChange} value={field.value || ""}>
                                                         <SelectTrigger className="w-full max-w-[300px] border-2 rounded-xl">
-                                                            <SelectValue placeholder="Select mode" />
+                                                            <SelectValue placeholder="Select services mode" />
                                                         </SelectTrigger>
                                                         <SelectContent>
-                                                            <SelectItem value="cy">Container yard (CY)</SelectItem>
-                                                            <SelectItem value="sd">Store door (SD)</SelectItem>
+                                                            <SelectItem value="cy">CY (Container Yard)</SelectItem>
+                                                            <SelectItem value="sd">SD (Store Door)</SelectItem>
                                                         </SelectContent>
                                                     </Select>
-                                                    {error && <p className="text-red-500 mt-1">{error.message}</p>}
+                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                                 </>
                                             )}
                                         />
@@ -200,12 +200,12 @@ const RoutingCard1 = ({ control }: { control: any }) => {
                     type="button"
                     className="mt-4 max-w-[200px] bg-primary text-sm text-white rounded-lg"
                     onClick={() => append({ 
-                        fromCountry: '', 
-                        fromPort: '', 
-                        fromServicesMode: 'cy',
-                        toCountry: '', 
-                        toPort: '', 
-                        toServicesMode: 'cy'
+                        from_country: '', 
+                        from_port: '', 
+                        from_services_mode: 'cy',
+                        to_country: '', 
+                        to_port: '', 
+                        to_services_mode: 'cy'
                     })}
                 >
                     <Plus className="h-4 w-4 mr-2" />
