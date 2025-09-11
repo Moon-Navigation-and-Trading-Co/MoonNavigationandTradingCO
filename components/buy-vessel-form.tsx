@@ -17,7 +17,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
     const [is_submitting, set_is_submitting] = useState(false);
-    // Define your Zod schema (as before)
+    const [is_submitting, set_is_submitting] = useState(false);    // Define your Zod schema (as before)
     const formSchema = z.object({
         container: z.object({
             type: z.string().min(1, { message: t("Type") }),
@@ -75,12 +75,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-    const [is_submitting, set_is_submitting] = useState(false);        try {
-            console.log(values);
-            await onSubmit(values);
-        } finally {
-    const [is_submitting, set_is_submitting] = useState(false);        }
-    };
+    const [is_submitting, set_is_submitting] = useState(false);    };
 
     return (
         <Form {...form}>
@@ -278,8 +273,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                     </FormControl>
                 </FormItem>
             <CompanyDetailsCard control={form.control} />
-    const [is_submitting, set_is_submitting] = useState(false);                        <div className="flex items-center justify-center gap-2">
-                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+    const [is_submitting, set_is_submitting] = useState(false);                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}

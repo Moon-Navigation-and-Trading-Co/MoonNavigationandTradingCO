@@ -25,7 +25,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
     // Get Content
     const t = useTranslations('Inland-errors')
     const [is_submitting, set_is_submitting] = useState(false);
-    // Define your Zod schema (as before)
+    const [is_submitting, set_is_submitting] = useState(false);    // Define your Zod schema (as before)
     const formSchema = z.object({
         routing: z.array(z.object({
             from_country: z.string().min(1, { message: "From country is required" }),
@@ -225,12 +225,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-    const [is_submitting, set_is_submitting] = useState(false);        try {
-            console.log(values);
-            await onSubmit(values);
-        } finally {
-    const [is_submitting, set_is_submitting] = useState(false);        }
-    };
+    const [is_submitting, set_is_submitting] = useState(false);    };
 
     const handleModeChange = (mode: 'itemized' | 'consolidated') => {
         set_entry_mode(mode);
@@ -515,8 +510,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-    const [is_submitting, set_is_submitting] = useState(false);                        <div className="flex items-center justify-center gap-2">
-                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+    const [is_submitting, set_is_submitting] = useState(false);                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}

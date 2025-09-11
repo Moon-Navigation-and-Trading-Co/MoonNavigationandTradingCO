@@ -76,8 +76,7 @@ interface CustomsClearanceFormProps {
 
 export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormProps) {
   const t = useTranslations('Inland-forms');
-    const [is_submitting, set_is_submitting] = useState(false);
-  const form = useForm<FormData>({
+    const [is_submitting, set_is_submitting] = useState(false);  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       import_export: 'import',
@@ -116,14 +115,12 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
     },
   });
 
-    const [is_submitting, set_is_submitting] = useState(false);    try {
-      if (onSubmit) {
+    const [is_submitting, set_is_submitting] = useState(false);      if (onSubmit) {
         await onSubmit(values);
       }
       console.log("Customs Clearance Form Data:", values);
     } finally {
-    const [is_submitting, set_is_submitting] = useState(false);    }
-  };
+    const [is_submitting, set_is_submitting] = useState(false);  };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
@@ -911,8 +908,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
         <CompanyDetailsCard control={form.control} />
         {/* Submit Button */}
         <div className="text-center">
-    const [is_submitting, set_is_submitting] = useState(false);              <div className="flex items-center justify-center gap-2">
-                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+    const [is_submitting, set_is_submitting] = useState(false);                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>
               </div>
             ) : "Submit"}

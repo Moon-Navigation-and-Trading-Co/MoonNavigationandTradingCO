@@ -81,8 +81,7 @@ interface LivestockTransportationFormProps {
 
 export default function LivestockTransportationForm({ onSubmit }: LivestockTransportationFormProps) {
   const t = useTranslations('Inland-forms');
-    const [is_submitting, set_is_submitting] = useState(false);
-  const form = useForm<FormData>({
+    const [is_submitting, set_is_submitting] = useState(false);  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       routing: [{ from_country: '', from_port: '', to_country: '', to_port: '' }],
@@ -158,16 +157,14 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
   };
 
   const handleSubmit = async (values: FormData) => {
-    const [is_submitting, set_is_submitting] = useState(false);      };
-      
+    const [is_submitting, set_is_submitting] = useState(false);      
       if (onSubmit) {
         await onSubmit(formDataWithFiles);
       } else {
         console.log('Form data:', formDataWithFiles);
       }
     } finally {
-    const [is_submitting, set_is_submitting] = useState(false);    }
-  };
+    const [is_submitting, set_is_submitting] = useState(false);  };
 
   const handleError = (errors: unknown) => {
     // Log validation errors for debugging
@@ -772,8 +769,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Submit Button */}
         <div className="text-center">
-    const [is_submitting, set_is_submitting] = useState(false);              <div className="flex items-center justify-center gap-2">
-                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+    const [is_submitting, set_is_submitting] = useState(false);                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>
               </div>
             ) : "Submit"}

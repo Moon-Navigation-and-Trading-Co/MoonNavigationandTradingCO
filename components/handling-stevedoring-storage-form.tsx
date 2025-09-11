@@ -127,8 +127,7 @@ interface Props {
 }
 
 export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
-    const [is_submitting, set_is_submitting] = useState(false);
-  const form = useForm<FormData>({
+    const [is_submitting, set_is_submitting] = useState(false);  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       import_export: 'import',
@@ -213,12 +212,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
   });
 
   const handleSubmit = async (values: FormData) => {
-    const [is_submitting, set_is_submitting] = useState(false);    try {
-      console.log(values);
-      await onSubmit(values);
-    } finally {
-    const [is_submitting, set_is_submitting] = useState(false);    }
-  };
+    const [is_submitting, set_is_submitting] = useState(false);  };
 
   const handleModeChange = (mode: 'itemized' | 'consolidated') => {
     set_entry_mode(mode);
@@ -892,8 +886,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
 
         {/* Submit Button */}
         <div className="flex justify-start">
-    const [is_submitting, set_is_submitting] = useState(false);              <div className="flex items-center justify-center gap-2">
-                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+    const [is_submitting, set_is_submitting] = useState(false);                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>
               </div>
             ) : "Submit"}

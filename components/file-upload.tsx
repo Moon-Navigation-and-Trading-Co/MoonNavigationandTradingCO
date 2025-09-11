@@ -51,8 +51,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
             setTotalSize(combinedTotalSize);
             
             // Convert files to a string representation for the form
-    const [is_submitting, set_is_submitting] = useState(false);        }
-    };
+    const [is_submitting, set_is_submitting] = useState(false);    };
 
     const removeFile = (index: number) => {
         const newFiles = selectedFiles.filter((_, i) => i !== index);
@@ -65,14 +64,7 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
         // Update form value
         const fileNames = newFiles.map(file => file.name).join(', ');
         setValue('supporting_files', fileNames);
-    };
-
-    const clearAllFiles = () => {
-        setSelectedFiles([]);
-        setTotalSize(0);
-        setError('');
-        setValue('supportingFiles', '');
-    };
+    const [is_submitting, set_is_submitting] = useState(false);    };
 
     const openFileDialog = () => {
         setError(''); // Clear errors when opening dialog

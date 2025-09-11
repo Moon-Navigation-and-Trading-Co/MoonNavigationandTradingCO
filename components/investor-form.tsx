@@ -22,7 +22,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
     
     // State for additional contact fields
     const [is_submitting, set_is_submitting] = useState(false);
-    // Define your Zod schema
+    const [is_submitting, set_is_submitting] = useState(false);    // Define your Zod schema
     const formSchema = z.object({
         // Personal / Company Information
         full_name: z.string().min(1, { message: t("Required") }),
@@ -93,12 +93,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-    const [is_submitting, set_is_submitting] = useState(false);        try {
-            console.log(values);
-            await onSubmit(values);
-        } finally {
-    const [is_submitting, set_is_submitting] = useState(false);        }
-    };
+    const [is_submitting, set_is_submitting] = useState(false);    };
 
     const areasOfInterest = [
         "Maritime Logistics",
@@ -790,8 +785,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                     </ul>
                 </div>
 
-    const [is_submitting, set_is_submitting] = useState(false);                        <div className="flex items-center justify-center gap-2">
-                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+    const [is_submitting, set_is_submitting] = useState(false);                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
