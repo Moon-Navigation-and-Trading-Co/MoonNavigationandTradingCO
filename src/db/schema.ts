@@ -157,15 +157,8 @@ export const container_inland_services_table = pgTable("container_inland_service
     company_email: text("company_email").notNull(),
     additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
-<<<<<<< HEAD
-    additional_phone_number: text("additional_phone_number"),              // Company phone number
-    quotation_number: text("quotation_number"),
-
-=======
     additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-});
+    quotation_number: text("quotation_number"),});
 //Contact Requests
 export const contact_requests_table = pgTable("contact_requests", {
     id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
@@ -287,21 +280,8 @@ export const oversized_container = pgTable("oversized_container", {
     company_name: text("company_name").notNull(),              // Company name
     contact_person_name: text("contact_person_name").notNull(), // Contact person name
     title: text("title").notNull(),                            // Contact person title
-<<<<<<< HEAD
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
-    phone_number: text("phone_number").notNull(),
-    additional_phone_number: text("additional_phone_number"),              // Company phone number
-    quotation_number: text("quotation_number"),
-
-});
-
-=======
-    quotation_number: text("quotation_number"),
-});// Handling, Stevedoring & Storage Services - Updated to match current form
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-export const hss = pgTable("handling_stevedoring_storage", {
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),export const hss = pgTable("handling_stevedoring_storage", {
     id: uuid().primaryKey().defaultRandom(),
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
     user_id: uuid().notNull().references(() => users_table.id),
@@ -418,24 +398,8 @@ export const rent_container = pgTable("rent_container", {
 
     // Company details
     company_name: text("company_name").notNull(),              // Company name
-<<<<<<< HEAD
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
-    phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
-
-})
-
-=======
-    quotation_number: text("quotation_number"),
-});
-// Buy Vessel - Updated to match current form
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-export const buy_vessel = pgTable("buy_vessel", {
+    quotation_number: text("quotation_number"),export const buy_vessel = pgTable("buy_vessel", {
     id: uuid().primaryKey().defaultRandom(),
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
     user_id: uuid().notNull().references(() => users_table.id),
@@ -469,14 +433,8 @@ export const buy_vessel = pgTable("buy_vessel", {
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
     quotation_number: text("quotation_number"),
-<<<<<<< HEAD
-
-})
-
-=======
-});
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-export const rent_vessel = pgTable("rent_vessel", {
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),export const rent_vessel = pgTable("rent_vessel", {
     id: uuid().primaryKey().defaultRandom(),
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
     user_id: uuid().notNull().references(() => users_table.id),
@@ -511,21 +469,14 @@ export const rent_vessel = pgTable("rent_vessel", {
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
     quotation_number: text("quotation_number"),
-<<<<<<< HEAD
-
-=======
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-})
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),})
 
 export const request_for_pda = pgTable("request_for_pda", {
     id: uuid().primaryKey().defaultRandom(),
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
-<<<<<<< HEAD
-    user_id: uuid().notNull().references(() => usersTable.id),
-=======
-    user_id: uuid().notNull().references(() => users_table.id),
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
     // Port details
     port_name: text("port_name").notNull(),
 
@@ -559,107 +510,20 @@ export const request_for_pda = pgTable("request_for_pda", {
     total_days_needed_for_loading: numeric("total_days_needed_for_loading").notNull(),
 
     // Timing details
-<<<<<<< HEAD
-    eta_expected_date: text("eta_expected_date"),
-=======
-    eta_expected_date: date("eta_expected_date"),
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-    total_expected_berthing_days: numeric("total_expected_berthing_days").notNull(),
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),    total_expected_berthing_days: numeric("total_expected_berthing_days").notNull(),
     total_expected_anchor_days: numeric("total_expected_anchor_days").notNull(),
 
     // Bunkering services
     bunkering_mgo: boolean("bunkering_mgo").default(false),
     bunkering_mgo_details: text("bunkering_mgo_details"),
-<<<<<<< HEAD
-    bunkering_vlsfo: boolean("bunkering_vlsfo").default(false),
-    bunkering_vlsfo_details: text("bunkering_vlsfo_details"),
-    bunkering_hfo: boolean("bunkering_hfo").default(false),
-    bunkering_hfo_details: text("bunkering_hfo_details"),
-    bunkering_other: boolean("bunkering_other").default(false),
-    bunkering_other_details: text("bunkering_other_details"),
-    bunkering_details: text("bunkering_details"),
-=======
-    bunkering_hfo: boolean("bunkering_hfo").default(false),
-    bunkering_hfo_details: text("bunkering_hfo_details"),
-    bunkering_lsfo: boolean("bunkering_lsfo").default(false),
-    bunkering_lsfo_details: text("bunkering_lsfo_details"),
-    bunkering_other: boolean("bunkering_other").default(false),
-    bunkering_other_details: text("bunkering_other_details"),
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
     // Chandlery services
     chandlery_fresh_dry_provisions: boolean("chandlery_fresh_dry_provisions").default(false),
     chandlery_fresh_dry_provisions_details: text("chandlery_fresh_dry_provisions_details"),
-<<<<<<< HEAD
-    chandlery_spare_parts_tools: boolean("chandlery_spare_parts_tools").default(false),
-    chandlery_spare_parts_tools_details: text("chandlery_spare_parts_tools_details"),
-    chandlery_deck_engine_stores: boolean("chandlery_deck_engine_stores").default(false),
-    chandlery_deck_engine_stores_details: text("chandlery_deck_engine_stores_details"),
-    chandlery_details: text("chandlery_details"),
-
-    // Crew services
-    crew_change_assistance: boolean("crew_change_assistance").default(false),
-    crew_change_assistance_details: text("crew_change_assistance_details"),
-    crew_transport_accommodation: boolean("crew_transport_accommodation").default(false),
-    crew_transport_accommodation_details: text("crew_transport_accommodation_details"),
-    crew_medical_assistance: boolean("crew_medical_assistance").default(false),
-    crew_medical_assistance_details: text("crew_medical_assistance_details"),
-    crew_other: boolean("crew_other").default(false),
-    crew_other_details: text("crew_other_details"),
-    crew_details: text("crew_details"),
-
-    // Cargo services
-    cargo_stevedoring: boolean("cargo_stevedoring").default(false),
-    cargo_stevedoring_details: text("cargo_stevedoring_details"),
-    cargo_surveys: boolean("cargo_surveys").default(false),
-    cargo_surveys_details: text("cargo_surveys_details"),
-    cargo_lashing_securing: boolean("cargo_lashing_securing").default(false),
-    cargo_lashing_securing_details: text("cargo_lashing_securing_details"),
-    cargo_other: boolean("cargo_other").default(false),
-    cargo_other_details: text("cargo_other_details"),
-    cargo_details: text("cargo_details"),
-
-    // Other services
-    other_waste_disposal: boolean("other_waste_disposal").default(false),
-    other_waste_disposal_details: text("other_waste_disposal_details"),
-    other_fresh_water: boolean("other_fresh_water").default(false),
-    other_fresh_water_details: text("other_fresh_water_details"),
-    other_services_other: boolean("other_services_other").default(false),
-    other_services_other_details: text("other_services_other_details"),
-    other_services_details: text("other_services_details"),
-=======
-    chandlery_technical_supplies: boolean("chandlery_technical_supplies").default(false),
-    chandlery_technical_supplies_details: text("chandlery_technical_supplies_details"),
-    chandlery_other: boolean("chandlery_other").default(false),
-    chandlery_other_details: text("chandlery_other_details"),
-
-    // Crew services
-    crew_services_crew_changes: boolean("crew_services_crew_changes").default(false),
-    crew_services_crew_changes_details: text("crew_services_crew_changes_details"),
-    crew_services_medical_services: boolean("crew_services_medical_services").default(false),
-    crew_services_medical_services_details: text("crew_services_medical_services_details"),
-    crew_services_other: boolean("crew_services_other").default(false),
-    crew_services_other_details: text("crew_services_other_details"),
-
-    // Cargo handling services
-    cargo_handling_stevedoring: boolean("cargo_handling_stevedoring").default(false),
-    cargo_handling_stevedoring_details: text("cargo_handling_stevedoring_details"),
-    cargo_handling_storage: boolean("cargo_handling_storage").default(false),
-    cargo_handling_storage_details: text("cargo_handling_storage_details"),
-    cargo_handling_other: boolean("cargo_handling_other").default(false),
-    cargo_handling_other_details: text("cargo_handling_other_details"),
-
-    // Other services
-    other_services_customs_clearance: boolean("other_services_customs_clearance").default(false),
-    other_services_customs_clearance_details: text("other_services_customs_clearance_details"),
-    other_services_immigration: boolean("other_services_immigration").default(false),
-    other_services_immigration_details: text("other_services_immigration_details"),
-    other_services_port_clearance: boolean("other_services_port_clearance").default(false),
-    other_services_port_clearance_details: text("other_services_port_clearance_details"),
-    other_services_other: boolean("other_services_other").default(false),
-    other_services_other_details: text("other_services_other_details"),
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
     // Additional information
     additional_information: text("additional_information"),
     supporting_files: text("supporting_files"),
@@ -674,13 +538,8 @@ export const request_for_pda = pgTable("request_for_pda", {
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
     quotation_number: text("quotation_number"),
-<<<<<<< HEAD
-})
-
-=======
-});
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-export const sign_crew_members = pgTable("sign_crew_members", {
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),export const sign_crew_members = pgTable("sign_crew_members", {
     id: uuid().primaryKey().defaultRandom(),
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
     user_id: uuid().notNull().references(() => users_table.id),
@@ -751,40 +610,8 @@ export const sign_crew_members = pgTable("sign_crew_members", {
     
     // Company details
 
-<<<<<<< HEAD
-    // Port Details
-    port_name: text("port_name").notNull(),
-    at_anchor: boolean("at_anchor").default(false),
-    at_berth: boolean("at_berth").default(false),
-    special_request: text("special_request"),
-
-    // Company Details
-    company_name: text("company_name").notNull(),              // Company name
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
-    phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
-
-})
-
-export const special_services = pgTable("special_services", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
-
-=======
-    quotation_number: text("quotation_number"),
-});export const special_services = pgTable("special_services", {
-    id: uuid().primaryKey().defaultRandom(),
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    user_id: uuid().notNull().references(() => users_table.id),
-    
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-    // Vessel details
+    quotation_number: text("quotation_number"),    // Vessel details
     vessel_name: text("vessel_name").notNull(),
     vessel_imo: text("vessel_imo").notNull(),
     port_name: text("port_name").notNull(),
@@ -807,11 +634,8 @@ export const special_services = pgTable("special_services", {
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
     quotation_number: text("quotation_number"),
-<<<<<<< HEAD
-=======
-});
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 // Bunkering Oil Supply - Updated to match current form
 export const bunkering_oil_supply = pgTable("bunkering_oil_supply", {
     id: uuid().primaryKey().defaultRandom(),
@@ -871,79 +695,8 @@ export const international_trading = pgTable("international_trading", {
     // Shipping method
     shipping_method: text("shipping_method").notNull(),
     shipping_details: text("shipping_details").notNull(),
-<<<<<<< HEAD
-
-    // Company Details
-    company_name: text("company_name").notNull(),              // Company name
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
-    phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
     quotation_number: text("quotation_number"),
-
-
-})
-
-export const ship_maintenance = pgTable("ship_maintenance", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
-
-    // Request
-    request: text("request").notNull(),
-
-    // Company Details
-    company_name: text("company_name").notNull(),              // Company name
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
-    phone_number: text("phone_number").notNull(),
-    additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
-
-})
-// Ship Management
-export const ship_management = pgTable("ship_management", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
-
-    // Request
-    request: text("request").notNull(),
-
-    // Company Details
-    company_name: text("company_name").notNull(),              // Company name
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
-    phone_number: text("phone_number").notNull(),
-    additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
-
-})
-
-=======
-    
-    // Company details
-    company_name: text("company_name").notNull(),
-    contact_person_name: text("contact_person_name").notNull(),
-    title: text("title").notNull(),
-    country_of_origin: text("country_of_origin").notNull(),
-    company_email: text("company_email").notNull(),
-    additional_email: text("additional_email"),
-    phone_number: text("phone_number").notNull(),
-    additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
-});
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
 // Ocean Freight
 export const project_cargo_services = pgTable("project_cargo_services", {
     id: uuid().primaryKey().defaultRandom(),
@@ -973,11 +726,8 @@ export const project_cargo_services = pgTable("project_cargo_services", {
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
     quotation_number: text("quotation_number"),
-<<<<<<< HEAD
-=======
-});
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 export const ship_maintenance = pgTable("ship_maintenance", {
     id: uuid().primaryKey().defaultRandom(),
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
@@ -1010,11 +760,8 @@ export const ship_maintenance = pgTable("ship_maintenance", {
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
     quotation_number: text("quotation_number"),
-<<<<<<< HEAD
-=======
-});
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),
 // Customs Clearance Solutions - New table to match current form
 export const customs_clearance = pgTable("customs_clearance", {
     id: uuid().primaryKey().defaultRandom(),
@@ -1059,23 +806,8 @@ export const customs_clearance = pgTable("customs_clearance", {
     company_email: text("company_email").notNull(),
     additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
-<<<<<<< HEAD
     additional_phone_number: text("additional_phone_number"),
     quotation_number: text("quotation_number"),
-
-})
-
-// Ocean Freight
-export const dangerous_cargo_services = pgTable("dangerous_cargo_services", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
-=======
-    additional_phone: text("additional_phone"),
-    quotation_number: text("quotation_number"),
-});
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
 // Roll On/Off - Updated to match current form
 export const roll_on_off = pgTable("roll_on_off", {
     id: uuid().primaryKey().defaultRandom(),
@@ -1091,72 +823,14 @@ export const roll_on_off = pgTable("roll_on_off", {
     // Dates
     effective_date: date("effective_date").notNull(),
     expiry_date: date("expiry_date").notNull(),
-<<<<<<< HEAD
-
-    // Service Contract
-    service_contract: numeric("service_contract"),
-
-    // VAD
-    value_added_service: text("value_added_service"), // Value-added inland container service   
-
-    // Company Details
-    company_name: text("company_name").notNull(),              // Company name
-    contact_person_name: text("contact_person_name").notNull(), // Contact person name
-    title: text("title").notNull(),                            // Contact person title
-    country_of_origin: text("country_of_origin").notNull(),    // Country of origin
-    company_email: text("company_email").notNull(),            // Company email address
-    additional_email: text("additional_email"),      // Additional email address
-    phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
-})
-
-// Inverstor Form
-
-export const investor_form = pgTable("investor_form", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
-
-    first_name: text("first_name").notNull(),
-    last_name: text("last_name").notNull(),
-=======
-    
-    // Service contract
-    service_contract: text("service_contract"),
-    
-    // Value-added service
-    value_added_service: text("value_added_service"),
-    
-    // Company details
-    company_name: text("company_name").notNull(),
-    contact_person_name: text("contact_person_name").notNull(),
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-    title: text("title").notNull(),
+    quotation_number: text("quotation_number"),    title: text("title").notNull(),
     country_of_origin: text("country_of_origin").notNull(),
     company_email: text("company_email").notNull(),
     additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
-<<<<<<< HEAD
-    additional_phone_number: text("additional_phone_number").notNull(),
-    check_size: text("check_size").notNull(),
-    average_check_size: numeric("average_check_size").notNull(),
-    accredited: text("accredited").notNull(),
-    qualified: text("qualified").notNull(),
-    quotation_number: text("quotation_number"),
-
-})
-
-export const OutofGauge = pgTable("out_of_gauge", {
-    id: uuid().primaryKey().defaultRandom(), // Unique random ID for each entry in the table
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(), // Timestamp with timezone
-    user_id: uuid().notNull().references(() => usersTable.id), // References user.id
-=======
     additional_phone_number: text("additional_phone_number"),
     quotation_number: text("quotation_number"),
-});
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
 // Heavy Lift - Updated to match current form
 export const heavy_lift = pgTable("heavy_lift", {
     id: uuid().primaryKey().defaultRandom(),
@@ -1187,15 +861,8 @@ export const heavy_lift = pgTable("heavy_lift", {
     company_email: text("company_email").notNull(),
     additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
-<<<<<<< HEAD
-    additional_phone_number: text("additional_phone_number"),              // Company phone number
-    quotation_number: text("quotation_number"),
-
-=======
     additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-});
+    quotation_number: text("quotation_number"),});
 
 // Investor Form
 export const investor_form = pgTable("investor_form", {
@@ -1237,87 +904,15 @@ export const investor_form = pgTable("investor_form", {
     
     // Additional Notes
     additional_notes: text("additional_notes"),
-<<<<<<< HEAD
-    company_details: jsonb("company_details").notNull(),
-    quotation_number: text("quotation_number"),
-});
-
-// Ocean Freight Quotations
-export const oceanFreightQuotationsTable = pgTable("ocean_freight_quotations", {
-    id: uuid().primaryKey().defaultRandom(),
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    user_id: uuid().notNull().references(() => usersTable.id),
-
-    // Form type
-    form_type: text("form_type").notNull(),
-
-    // Routing details
-    routing: jsonb("routing").notNull(),
-
-    // Entry mode and cargo details
-    entry_mode: text("entry_mode").notNull(), // "itemized" or "consolidated"
-    itemized_data: jsonb("itemized_data"), // JSON array for itemized cargo
-    consolidated_data: jsonb("consolidated_data"), // JSON object for consolidated cargo
-
-    // Supporting files
-    supporting_files: text("supporting_files"),
-
-=======
-    quotation_number: text("quotation_number"),
-});
-
-// Out of Gauge - Updated to match current form
-export const out_of_gauge = pgTable("out_of_gauge", {
-    id: uuid().primaryKey().defaultRandom(),
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    user_id: uuid().notNull().references(() => users_table.id),
-    
-    // Routing details
-    routing: jsonb("routing").notNull(),
-    
-    // Commodity details
-    commodities: jsonb("commodities").notNull(),
-    
-    // File upload
-    file: text("file"),
-    
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-    // Additional information
+    additional_phone_number: text("additional_phone_number"),
+    quotation_number: text("quotation_number"),    // Additional information
     additional_information: text("additional_information"),
     
     // Dates
     effective_date: date("effective_date").notNull(),
     expiry_date: date("expiry_date").notNull(),
-<<<<<<< HEAD
-    service_contract_number: text("service_contract_number"),
-
-    // Additional services
-    additional_services: jsonb("additional_services").notNull(),
-
-    // Company details (nested structure)
-    company_details: jsonb("company_details").notNull(),
-    quotation_number: text("quotation_number"),
-
-=======
-    
-    // Service contract
-    service_contract: text("service_contract"),
-    
-    // Value-added services
-    value_added_services: text("value_added_services"),
-    
-    // Company details
-    company_name: text("company_name").notNull(),
-    contact_person_name: text("contact_person_name").notNull(),
-    title: text("title").notNull(),
-    country_of_origin: text("country_of_origin").notNull(),
-    company_email: text("company_email").notNull(),
-    additional_email: text("additional_email"),
-    phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-});
+    quotation_number: text("quotation_number"),});
 
 // Livestock Transportation
 export const livestock_transportation_table = pgTable("livestock_transportation", {
@@ -1407,121 +1002,8 @@ export const tankers_quotation_table = pgTable("tankers_quotation", {
     phone_number: text("phone_number").notNull(),
     additional_phone: text("additional_phone"),
     quotation_number: text("quotation_number"),
-<<<<<<< HEAD
-=======
-});
-
-// Suez Canal Transit - New table to match current form
-export const suez_canal_transit = pgTable("suez_canal_transit", {
-    id: uuid().primaryKey().defaultRandom(),
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    user_id: uuid().notNull().references(() => users_table.id),
-    
-    // Date
-    date: text("date").notNull(),
-    
-    // Vessel details
-    vessel: jsonb("vessel").notNull(), // Contains name, imo, flag, type, grt, scgt, nrt, scnt, loa, beam, draft, dwt, status, floating_units, passed_canal_before, last_passage_date
-    
-    // Cargo details
-    cargo: jsonb("cargo").notNull(), // Contains commodity, quantity, total_cargo, cargo_unit, gas_free_ammonia, military_navy_cargo, additional_details, manifest
-    
-    // Unit carriage details
-    unit_carriage: jsonb("unit_carriage").default({}), // Contains large_units, unit_size, floating_units_carried, container_tiers
-    
-    // Transit details
-    transit: jsonb("transit").notNull(), // Contains eta, direction, round_trip, origin_destination, gulf_caribbean, destination_port
-    
-    // Additional services
-    additional_services: jsonb("additional_services").default({}), // Contains tug_assistance, crew_change, bunkering, freshwater, spare_parts, other, other_details
-    
-    // Additional information
-    additional_notes: text("additional_notes"),
-    supporting_files: jsonb("supporting_files").default([]),
-    
-    // Company details
-    company_name: text("company_name").notNull(),
-    contact_person_name: text("contact_person_name").notNull(),
-    title: text("title").notNull(),
-    country_of_origin: text("country_of_origin").notNull(),
-    company_email: text("company_email").notNull(),
-    additional_email: text("additional_email"),
-    phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
-});
-
-// Ship Management - New table to match current form
-export const ship_management = pgTable("ship_management", {
-    id: uuid().primaryKey().defaultRandom(),
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    user_id: uuid().notNull().references(() => users_table.id),
-    
-    // Vessel details
-    vessel: jsonb("vessel").notNull(), // Contains name, imo, flag, type, grt, nrt, loa, dwt, current_port, owner_company
-    
-    // Services
-    services: jsonb("services").notNull(), // Contains all service checkboxes and other_details
-    
-    // Vessel condition
-    vessel_condition: jsonb("vessel_condition").notNull(), // Contains is_operational, current_condition
-    
-    // Contract duration
-    contract_duration: jsonb("contract_duration").notNull(), // Contains duration_type, start_date
-    
-    // Additional information
-    additional_information: text("additional_information"),
-    supporting_files: jsonb("supporting_files").default({}), // Contains file uploads and requirements
-    
-    // Company details
-    company_name: text("company_name").notNull(),
-    contact_person_name: text("contact_person_name").notNull(),
-    title: text("title").notNull(),
-    country_of_origin: text("country_of_origin").notNull(),
-    company_email: text("company_email").notNull(),
-    additional_email: text("additional_email"),
-    phone_number: text("phone_number").notNull(),
-    additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
-});
-
-// Sell Container - New table to match current form
-export const sell_container = pgTable("sell_container", {
-    id: uuid().primaryKey().defaultRandom(),
-    created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    user_id: uuid().notNull().references(() => users_table.id),
-    
-    // Container details
-    container_type: text("container_type").notNull(),
-    container_number: numeric("container_number").notNull(),
-    container_condition: text("container_condition").notNull(), // new, one-trip, used
-    
-    // Date and location
-    date: date("date").notNull(),
-    pick_up_location: text("pick_up_location").notNull(),
-    drop_off_location: text("drop_off_location").notNull(),
-    detailed_location: text("detailed_location"),
-    
-    // Rental details
-    rental_duration: numeric("rental_duration").notNull(),
-    duration_unit: text("duration_unit").notNull(), // days, weeks, months
-    
-    // Budget and additional info
-    budget: numeric("budget"),
-    additional_information: text("additional_information"),
-    
-    // Company details
-    company_name: text("company_name").notNull(),
-    contact_person_name: text("contact_person_name").notNull(),
-    title: text("title").notNull(),
-    country_of_origin: text("country_of_origin").notNull(),
-    company_email: text("company_email").notNull(),
-    additional_email: text("additional_email"),
-    phone_number: text("phone_number").notNull(),
-    additional_phone_number: text("additional_phone_number"),
-    quotation_number: text("quotation_number"),
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-});
+    quotation_number: text("quotation_number"),});
 
 // Sell Vessel - New table to match current form
 export const sell_vessel = pgTable("sell_vessel", {

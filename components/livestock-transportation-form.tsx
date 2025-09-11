@@ -81,14 +81,7 @@ interface LivestockTransportationFormProps {
 
 export default function LivestockTransportationForm({ onSubmit }: LivestockTransportationFormProps) {
   const t = useTranslations('Inland-forms');
-<<<<<<< HEAD
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-=======
-  const [uploaded_files, set_uploaded_files] = useState<File[]>([]);
-  const [is_submitting, set_is_submitting] = useState(false);
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
+    const [is_submitting, set_is_submitting] = useState(false);
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -165,20 +158,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
   };
 
   const handleSubmit = async (values: FormData) => {
-<<<<<<< HEAD
-    setIsSubmitting(true);
-    try {
-      const formDataWithFiles = {
-        ...values,
-        uploadedFiles
-=======
-    set_is_submitting(true);
-    try {
-      const formDataWithFiles = {
-        ...values,
-        uploaded_files
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-      };
+    const [is_submitting, set_is_submitting] = useState(false);      };
       
       if (onSubmit) {
         await onSubmit(formDataWithFiles);
@@ -186,12 +166,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
         console.log('Form data:', formDataWithFiles);
       }
     } finally {
-<<<<<<< HEAD
-      setIsSubmitting(false);
-=======
-      set_is_submitting(false);
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-    }
+    const [is_submitting, set_is_submitting] = useState(false);    }
   };
 
   const handleError = (errors: unknown) => {
@@ -797,14 +772,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Submit Button */}
         <div className="text-center">
-<<<<<<< HEAD
-          <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
-            {isSubmitting ? (
-=======
-          <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
-            {is_submitting ? (
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-              <div className="flex items-center justify-center gap-2">
+    const [is_submitting, set_is_submitting] = useState(false);              <div className="flex items-center justify-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>
               </div>

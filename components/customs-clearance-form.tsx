@@ -76,14 +76,7 @@ interface CustomsClearanceFormProps {
 
 export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormProps) {
   const t = useTranslations('Inland-forms');
-<<<<<<< HEAD
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-=======
-  const [uploaded_files, set_uploaded_files] = useState<File[]>([]);
-  const [is_submitting, set_is_submitting] = useState(false);
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
+    const [is_submitting, set_is_submitting] = useState(false);
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -123,35 +116,13 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
     },
   });
 
-<<<<<<< HEAD
-  const watchClearanceType = form.watch("clearanceType");
-  const watchShipmentMode = form.watch("shipmentMode");
-  const watchContainerType = form.watch("containerType");
-  const watchIsDangerous = form.watch("isDangerous");
-
-  const handleSubmit = async (values: FormData) => {
-    setIsSubmitting(true);
-=======
-  const watchClearanceType = form.watch("import_export");
-  const watchShipmentMode = form.watch("shipment_mode");
-  const watchContainerType = form.watch("container_type");
-  const watchIsDangerous = form.watch("is_dangerous");
-
-  const handleSubmit = async (values: FormData) => {
-    set_is_submitting(true);
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-    try {
+    const [is_submitting, set_is_submitting] = useState(false);    try {
       if (onSubmit) {
         await onSubmit(values);
       }
       console.log("Customs Clearance Form Data:", values);
     } finally {
-<<<<<<< HEAD
-      setIsSubmitting(false);
-=======
-      set_is_submitting(false);
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-    }
+    const [is_submitting, set_is_submitting] = useState(false);    }
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -940,14 +911,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
         <CompanyDetailsCard control={form.control} />
         {/* Submit Button */}
         <div className="text-center">
-<<<<<<< HEAD
-          <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
-            {isSubmitting ? (
-=======
-          <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
-            {is_submitting ? (
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-              <div className="flex items-center justify-center gap-2">
+    const [is_submitting, set_is_submitting] = useState(false);              <div className="flex items-center justify-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>
               </div>

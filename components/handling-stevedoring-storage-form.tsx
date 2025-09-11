@@ -127,14 +127,7 @@ interface Props {
 }
 
 export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
-<<<<<<< HEAD
-  const [entryMode, setEntryMode] = useState<'itemized' | 'consolidated'>('itemized');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-=======
-  const [entry_mode, set_entry_mode] = useState<'itemized' | 'consolidated'>('itemized');
-  const [is_submitting, set_is_submitting] = useState(false);
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-
+    const [is_submitting, set_is_submitting] = useState(false);
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -220,21 +213,11 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
   });
 
   const handleSubmit = async (values: FormData) => {
-<<<<<<< HEAD
-    setIsSubmitting(true);
-=======
-    set_is_submitting(true);
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-    try {
+    const [is_submitting, set_is_submitting] = useState(false);    try {
       console.log(values);
       await onSubmit(values);
     } finally {
-<<<<<<< HEAD
-      setIsSubmitting(false);
-=======
-      set_is_submitting(false);
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-    }
+    const [is_submitting, set_is_submitting] = useState(false);    }
   };
 
   const handleModeChange = (mode: 'itemized' | 'consolidated') => {
@@ -909,14 +892,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
 
         {/* Submit Button */}
         <div className="flex justify-start">
-<<<<<<< HEAD
-          <Button type="submit" className={`mt-8 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
-            {isSubmitting ? (
-=======
-          <Button type="submit" className={`mt-8 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
-            {is_submitting ? (
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-              <div className="flex items-center justify-center gap-2">
+    const [is_submitting, set_is_submitting] = useState(false);              <div className="flex items-center justify-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>
               </div>

@@ -213,12 +213,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
         }
     });
 
-<<<<<<< HEAD
-    const handleSubmit = async (values: any) => {
-=======
-    const handleSubmit = async (values: FormData) => {
->>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
-        setIsSubmitting(true);
+    const [is_submitting, set_is_submitting] = useState(false);        setIsSubmitting(true);
         try {
             console.log(values);
             await onSubmit(values);
