@@ -1,6 +1,6 @@
 "use client";
 
-import { generateQuotationNumber } from "@/utils/quotation/generator";
+import { generate_quotation_number } from "@/utils/quotation/generator";
 import React, { useEffect, useState, useMemo, useCallback, Suspense } from 'react';
 import { useTranslations } from 'next-intl';
 import { createClient } from '@/utils/supabase/client';
@@ -58,7 +58,7 @@ const Page: React.FC = () => {
             phone_number: formData.companyDetails.phone_number,
             additional_phone_number: formData.companyDetails.additional_phone_number,
             form_type: formType,
-            quotation_number: await generateQuotationNumber(formType)
+            quotation_number: await generate_quotation_number(formType)
         };
 
         try {

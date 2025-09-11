@@ -1,6 +1,6 @@
 "use client";
 
-import { generateQuotationNumber } from "@/utils/quotation/generator";
+import { generate_quotation_number } from "@/utils/quotation/generator";
 
 import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
@@ -87,7 +87,7 @@ export default function HandlingStevedoringStorageFormsPage() {
       company_email: formData.company_details?.company_email,
       additional_email: formData.company_details?.additional_email,
       phone_number: formData.company_details?.phone_number,
-      quotation_number: await generateQuotationNumber("handling_stevedoring_storage"),
+      quotation_number: await generate_quotation_number("handling_stevedoring_storage"),
       additional_phone_number: formData.company_details?.additional_phone_number,
     };
 
