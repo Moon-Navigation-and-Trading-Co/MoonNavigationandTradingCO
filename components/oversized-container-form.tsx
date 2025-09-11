@@ -20,7 +20,11 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 const OversizedContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
+<<<<<<< HEAD
     const [isSubmitting, setIsSubmitting] = useState(false);
+=======
+    const [is_submitting, set_is_submitting] = useState(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
@@ -131,12 +135,20 @@ const OversizedContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ o
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
+<<<<<<< HEAD
         setIsSubmitting(true);
+=======
+        set_is_submitting(true);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
         try {
             console.log(values);
             await onSubmit(values);
         } finally {
+<<<<<<< HEAD
             setIsSubmitting(false);
+=======
+            set_is_submitting(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
         }
     };
 
@@ -234,8 +246,13 @@ const OversizedContainerCard: React.FC<{ onSubmit: (data: any) => void }> = ({ o
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
+<<<<<<< HEAD
                 <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
                     {isSubmitting ? (
+=======
+                <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+                    {is_submitting ? (
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
                         <div className="flex items-center justify-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>

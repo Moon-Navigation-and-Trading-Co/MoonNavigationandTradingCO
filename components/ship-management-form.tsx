@@ -14,7 +14,11 @@ import { useTranslations } from 'next-intl';
 
 const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     const t = useTranslations('Inland-errors')
+<<<<<<< HEAD
     const [isSubmitting, setIsSubmitting] = useState(false);
+=======
+    const [is_submitting, set_is_submitting] = useState(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
 
     const formSchema = z.object({
         vessel: z.object({
@@ -132,11 +136,19 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
     });
 
     const handleSubmit = async (values: any) => {
+<<<<<<< HEAD
         setIsSubmitting(true);
         try {
             await onSubmit(values);
         } finally {
             setIsSubmitting(false);
+=======
+        set_is_submitting(true);
+        try {
+            await onSubmit(values);
+        } finally {
+            set_is_submitting(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
         }
     };
 
@@ -761,8 +773,13 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
 
 
 
+<<<<<<< HEAD
                 <Button type="submit" className={`mt-8 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
                     {isSubmitting ? (
+=======
+                <Button type="submit" className={`mt-8 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+                    {is_submitting ? (
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
                         <div className="flex items-center justify-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
