@@ -21,15 +21,19 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
+<<<<<<< HEAD
     const [isSubmitting, setIsSubmitting] = useState(false);
+=======
+    const [is_submitting, set_is_submitting] = useState(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
 
     // Define your Zod schema (as before)
     const formSchema = z.object({
         routing: z.array(z.object({
-            fromCountry: z.string().min(1, { message: "From country is required" }),
-            fromPort: z.string().min(1, { message: "From port/area is required" }),
-            toCountry: z.string().min(1, { message: "To country is required" }),
-            toPort: z.string().min(1, { message: "To port/area is required" }),
+            from_country: z.string().min(1, { message: "From country is required" }),
+            from_port: z.string().min(1, { message: "From port/area is required" }),
+            to_country: z.string().min(1, { message: "To country is required" }),
+            to_port: z.string().min(1, { message: "To port/area is required" }),
         })),
         container_details: z.array(z.object({
             container_type: z.string().min(1, { message: "Container type is required" }),
@@ -81,10 +85,10 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
         resolver: zodResolver(formSchema),
         defaultValues: {
             routing: [{
-                fromCountry: '',
-                fromPort: '',
-                toCountry: '',
-                toPort: '',
+                from_country: '',
+                from_port: '',
+                to_country: '',
+                to_port: '',
             }],
             container_details: [{
                 container_type: '',
@@ -134,12 +138,20 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
+<<<<<<< HEAD
         setIsSubmitting(true);
+=======
+        set_is_submitting(true);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
         try {
             console.log(values)
             await onSubmit(values);
         } finally {
+<<<<<<< HEAD
             setIsSubmitting(false);
+=======
+            set_is_submitting(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
         }
     };
 
@@ -465,8 +477,13 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
+<<<<<<< HEAD
                 <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
                     {isSubmitting ? (
+=======
+                <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+                    {is_submitting ? (
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
                         <div className="flex items-center justify-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>

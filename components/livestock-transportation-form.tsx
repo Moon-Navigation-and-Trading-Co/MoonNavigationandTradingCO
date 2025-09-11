@@ -20,44 +20,44 @@ import RoutingCard0 from './routing-card-0';
 // Define the form schema
 const formSchema = z.object({
   routing: z.array(z.object({
-    fromCountry: z.string().min(1, { message: "From country is required" }),
-    fromPort: z.string().min(1, { message: "From port/area is required" }),
-    toCountry: z.string().min(1, { message: "To country is required" }),
-    toPort: z.string().min(1, { message: "To port/area is required" }),
+    from_country: z.string().min(1, { message: "From country is required" }),
+    from_port: z.string().min(1, { message: "From port/area is required" }),
+    to_country: z.string().min(1, { message: "To country is required" }),
+    to_port: z.string().min(1, { message: "To port/area is required" }),
   })),
   dates: z.object({
-    effectiveDate: z.string().min(1, { message: "Effective date is required" }),
-    expiryDate: z.string().min(1, { message: "Expiry date is required" }),
+    effective_date: z.string().min(1, { message: "Effective date is required" }),
+    expiry_date: z.string().min(1, { message: "Expiry date is required" }),
   }),
-  livestockDetails: z.array(z.object({
+  livestock_details: z.array(z.object({
     type: z.string().min(1, { message: "Type of livestock is required" }),
     quantity: z.number().min(1, { message: "Quantity must be at least 1" }),
-    weightPerAnimal: z.number().min(0.1, { message: "Weight per animal is required" }),
+    weight_per_animal: z.number().min(0.1, { message: "Weight per animal is required" }),
   })),
-  specialHandling: z.string().optional(),
-  additionalInformation: z.string().optional(),
-  serviceContract: z.string().optional(),
-  transportModes: z.object({
-    oceanFreight: z.boolean().default(false),
-    landTransportation: z.boolean().default(false),
-    airFreight: z.boolean().default(false),
+  special_handling: z.string().optional(),
+  additional_information: z.string().optional(),
+  service_contract: z.string().optional(),
+  transport_modes: z.object({
+    ocean_freight: z.boolean().default(false),
+    land_transportation: z.boolean().default(false),
+    air_freight: z.boolean().default(false),
   }),
-  additionalServices: z.object({
-    portHandling: z.boolean().default(false),
-    customsClearance: z.boolean().default(false),
-    storageWarehousing: z.boolean().default(false),
-    inlandFreight: z.boolean().default(false),
-    inspectionQuality: z.boolean().default(false),
-    escortPermits: z.boolean().default(false),
+  additional_services: z.object({
+    port_handling: z.boolean().default(false),
+    customs_clearance: z.boolean().default(false),
+    storage_warehousing: z.boolean().default(false),
+    inland_freight: z.boolean().default(false),
+    inspection_quality: z.boolean().default(false),
+    escort_permits: z.boolean().default(false),
     other: z.boolean().default(false),
-    otherSpecify: z.string().optional(),
-    additionalRequirements: z.string().optional(),
+    other_specify: z.string().optional(),
+    additional_requirements: z.string().optional(),
   }),
   insurance: z.object({
     required: z.enum(["yes", "no"]).optional(),
-    coverageDetails: z.string().optional(),
+    coverage_details: z.string().optional(),
   }),
-  companyDetails: z.object({
+  company_details: z.object({
     company_name: z.string().min(1, { message: "Company name is required" }),
     contact_person_name: z.string().min(1, { message: "Contact person is required" }),
     title: z.string().min(1, { message: "Title is required" }),
@@ -67,10 +67,10 @@ const formSchema = z.object({
     phone_number: z.string().min(1, { message: "Phone number is required" }),
     additional_phone_number: z.string().optional(),
   }),
-  supportingFiles: z.array(z.any()).optional(),
-  cargoLiftingPoints: z.boolean().optional(),
-  showAdditionalEmail: z.boolean().default(false),
-  showAdditionalPhone: z.boolean().default(false),
+  supporting_files: z.array(z.any()).optional(),
+  cargo_lifting_points: z.boolean().optional(),
+  show_additional_email: z.boolean().default(false),
+  show_additional_phone: z.boolean().default(false),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -81,42 +81,47 @@ interface LivestockTransportationFormProps {
 
 export default function LivestockTransportationForm({ onSubmit }: LivestockTransportationFormProps) {
   const t = useTranslations('Inland-forms');
+<<<<<<< HEAD
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+=======
+  const [uploaded_files, set_uploaded_files] = useState<File[]>([]);
+  const [is_submitting, set_is_submitting] = useState(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      routing: [{ fromCountry: '', fromPort: '', toCountry: '', toPort: '' }],
+      routing: [{ from_country: '', from_port: '', to_country: '', to_port: '' }],
       dates: {
-        effectiveDate: '',
-        expiryDate: '',
+        effective_date: '',
+        expiry_date: '',
       },
-      livestockDetails: [{ type: '', quantity: 1, weightPerAnimal: 0 }],
-      specialHandling: '',
-      additionalInformation: '',
-      serviceContract: '',
-      transportModes: {
-        oceanFreight: false,
-        landTransportation: false,
-        airFreight: false,
+      livestock_details: [{ type: '', quantity: 1, weight_per_animal: 0 }],
+      special_handling: '',
+      additional_information: '',
+      service_contract: '',
+      transport_modes: {
+        ocean_freight: false,
+        land_transportation: false,
+        air_freight: false,
       },
-      additionalServices: {
-        portHandling: false,
-        customsClearance: false,
-        storageWarehousing: false,
-        inlandFreight: false,
-        inspectionQuality: false,
-        escortPermits: false,
+      additional_services: {
+        port_handling: false,
+        customs_clearance: false,
+        storage_warehousing: false,
+        inland_freight: false,
+        inspection_quality: false,
+        escort_permits: false,
         other: false,
-        otherSpecify: '',
-        additionalRequirements: '',
+        other_specify: '',
+        additional_requirements: '',
       },
       insurance: {
         required: undefined,
-        coverageDetails: '',
+        coverage_details: '',
       },
-      companyDetails: {
+      company_details: {
         company_name: '',
         contact_person_name: '',
         title: '',
@@ -126,10 +131,10 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
         phone_number: '',
         additional_phone_number: '',
       },
-      supportingFiles: [],
-      cargoLiftingPoints: false,
-      showAdditionalEmail: false,
-      showAdditionalPhone: false,
+      supporting_files: [],
+      cargo_lifting_points: false,
+      show_additional_email: false,
+      show_additional_phone: false,
     },
   });
 
@@ -137,7 +142,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
   const { fields: livestockFields, append: appendLivestock, remove: removeLivestock } = useFieldArray({
     control: form.control,
-    name: "livestockDetails",
+    name: "livestock_details",
   });
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -152,19 +157,27 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
       return file.size <= maxSize && validTypes.includes(file.type);
     });
     
-    setUploadedFiles([...uploadedFiles, ...validFiles]);
+    set_uploaded_files([...uploaded_files, ...validFiles]);
   };
 
   const removeFile = (index: number) => {
-    setUploadedFiles(uploadedFiles.filter((_, i) => i !== index));
+    set_uploaded_files(uploaded_files.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async (values: FormData) => {
+<<<<<<< HEAD
     setIsSubmitting(true);
     try {
       const formDataWithFiles = {
         ...values,
         uploadedFiles
+=======
+    set_is_submitting(true);
+    try {
+      const formDataWithFiles = {
+        ...values,
+        uploaded_files
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
       };
       
       if (onSubmit) {
@@ -173,7 +186,11 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
         console.log('Form data:', formDataWithFiles);
       }
     } finally {
+<<<<<<< HEAD
       setIsSubmitting(false);
+=======
+      set_is_submitting(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
     }
   };
 
@@ -209,7 +226,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="dates.effectiveDate"
+                    name="dates.effective_date"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input
@@ -229,7 +246,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="dates.expiryDate"
+                    name="dates.expiry_date"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input
@@ -258,8 +275,8 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
               <div className="text-sm font-raleway font-medium text-gray-800">
                 Total Weight of All Livestock: {(() => {
                   const totalWeight = livestockFields.reduce((sum, _, index) => {
-                    const quantity = form.watch(`livestockDetails.${index}.quantity`) || 0;
-                    const weight = form.watch(`livestockDetails.${index}.weightPerAnimal`) || 0;
+                    const quantity = form.watch(`livestock_details.${index}.quantity`) || 0;
+                    const weight = form.watch(`livestock_details.${index}.weight_per_animal`) || 0;
                     return sum + (quantity * weight);
                   }, 0);
                   return totalWeight > 0 ? `${totalWeight.toFixed(1)} kg` : '0 kg';
@@ -287,7 +304,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                       <td className="border border-gray-300 p-3">
                         <Controller
                           control={form.control}
-                          name={`livestockDetails.${index}.type`}
+                          name={`livestock_details.${index}.type`}
                           render={({ field, fieldState: { error } }) => (
                             <>
                               <Input
@@ -303,7 +320,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                       <td className="border border-gray-300 p-3">
                         <Controller
                           control={form.control}
-                          name={`livestockDetails.${index}.quantity`}
+                          name={`livestock_details.${index}.quantity`}
                           render={({ field, fieldState: { error } }) => (
                             <>
                               <Input
@@ -322,7 +339,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                       <td className="border border-gray-300 p-3">
                         <Controller
                           control={form.control}
-                          name={`livestockDetails.${index}.weightPerAnimal`}
+                          name={`livestock_details.${index}.weight_per_animal`}
                           render={({ field, fieldState: { error } }) => (
                             <>
                               <Input
@@ -342,8 +359,8 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                       <td className="border border-gray-300 p-3">
                         <div className="font-semibold text-center">
                           {(() => {
-                            const quantity = form.watch(`livestockDetails.${index}.quantity`) || 0;
-                            const weight = form.watch(`livestockDetails.${index}.weightPerAnimal`) || 0;
+                            const quantity = form.watch(`livestock_details.${index}.quantity`) || 0;
+                            const weight = form.watch(`livestock_details.${index}.weight_per_animal`) || 0;
                             const total = calculateTotalWeight(quantity, weight);
                             return total > 0 ? total.toFixed(1) : '-';
                           })()}
@@ -369,7 +386,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
             <Button
               type="button"
               className="mt-4 max-w-[200px] bg-primary text-sm text-white rounded-lg"
-              onClick={() => appendLivestock({ type: '', quantity: 1, weightPerAnimal: 0 })}
+              onClick={() => appendLivestock({ type: '', quantity: 1, weight_per_animal: 0 })}
             >
               <Plus className="h-4 w-4 mr-2" />
               Add Row
@@ -386,7 +403,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="specialHandling"
+                  name="special_handling"
                   render={({ field }) => (
                     <Textarea
                       className="max-w-[400px] border-2 rounded-xl"
@@ -412,7 +429,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="supportingFiles"
+                  name="supporting_files"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Input
@@ -437,16 +454,16 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
             <div className="mt-4">
               <Controller
                 control={form.control}
-                name="cargoLiftingPoints"
+                name="cargo_lifting_points"
                 render={({ field }) => (
                   <div className="flex gap-2 items-center">
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
-                      id="cargoLiftingPoints"
+                      id="cargo_lifting_points"
                     />
                     <label
-                      htmlFor="cargoLiftingPoints"
+                      htmlFor="cargo_lifting_points"
                       className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
                       I wish to upload cargo picture with lifting points
@@ -456,11 +473,11 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
               />
             </div>
 
-            {uploadedFiles.length > 0 && (
+            {uploaded_files.length > 0 && (
               <div className="mt-4">
                 <h4 className="font-medium mb-2">Uploaded Files:</h4>
                 <ul className="space-y-2">
-                  {uploadedFiles.map((file, index) => (
+                  {uploaded_files.map((file, index) => (
                     <li key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded-xl">
                       <span className="text-sm">{file.name}</span>
                       <Button
@@ -487,7 +504,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="additionalInformation"
+                  name="additional_information"
                   render={({ field }) => (
                     <Textarea
                       className="max-w-[400px] border-2 rounded-xl"
@@ -513,7 +530,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="serviceContract"
+                      name="service_contract"
                       render={({ field }) => (
                         <Input
                           className="w-[300px] border-2 rounded-xl"
@@ -542,7 +559,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="transportModes.oceanFreight"
+                      name="transport_modes.ocean_freight"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -555,7 +572,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="transportModes.landTransportation"
+                      name="transport_modes.land_transportation"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -568,7 +585,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="transportModes.airFreight"
+                      name="transport_modes.air_freight"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -594,7 +611,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="additionalServices.portHandling"
+                      name="additional_services.port_handling"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -607,7 +624,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="additionalServices.customsClearance"
+                      name="additional_services.customs_clearance"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -620,7 +637,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="additionalServices.storageWarehousing"
+                      name="additional_services.storage_warehousing"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -633,7 +650,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="additionalServices.inlandFreight"
+                      name="additional_services.inland_freight"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -646,7 +663,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="additionalServices.inspectionQuality"
+                      name="additional_services.inspection_quality"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -659,7 +676,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="additionalServices.escortPermits"
+                      name="additional_services.escort_permits"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -674,7 +691,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <div className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="additionalServices.other"
+                      name="additional_services.other"
                       render={({ field }) => (
                         <Checkbox
                           checked={field.value}
@@ -684,10 +701,10 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                     />
                     <FormLabel>Other (Specify):</FormLabel>
                   </div>
-                  {form.watch("additionalServices.other") && (
+                  {form.watch("additional_services.other") && (
                     <Controller
                       control={form.control}
-                      name="additionalServices.otherSpecify"
+                      name="additional_services.other_specify"
                       render={({ field }) => (
                         <Input
                           placeholder="Please specify other services..."
@@ -705,7 +722,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="additionalServices.additionalRequirements"
+                      name="additional_services.additional_requirements"
                       render={({ field }) => (
                         <Textarea
                           placeholder="Describe any additional requirements..."
@@ -757,7 +774,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                       <FormControl>
                         <Controller
                           control={form.control}
-                          name="insurance.coverageDetails"
+                          name="insurance.coverage_details"
                           render={({ field }) => (
                             <Textarea
                               placeholder="Describe coverage type and value requirements..."
@@ -780,8 +797,13 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
 
         {/* Submit Button */}
         <div className="text-center">
+<<<<<<< HEAD
           <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
             {isSubmitting ? (
+=======
+          <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+            {is_submitting ? (
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
               <div className="flex items-center justify-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>

@@ -24,10 +24,10 @@ import RoutingCard0 from './routing-card-0';
 // Complete form schema definition
 const formSchema = z.object({
   routing: z.array(z.object({
-    fromCountry: z.string().min(1, { message: "From country is required" }),
-    fromPort: z.string().min(1, { message: "From port/area is required" }),
-    toCountry: z.string().min(1, { message: "To country is required" }),
-    toPort: z.string().min(1, { message: "To port/area is required" }),
+    from_country: z.string().min(1, { message: "From country is required" }),
+    from_port: z.string().min(1, { message: "From port/area is required" }),
+    to_country: z.string().min(1, { message: "To country is required" }),
+    to_port: z.string().min(1, { message: "To port/area is required" }),
   })),
   entry_mode: z.enum(["itemized", "consolidated"], {
     required_error: "Please select an entry mode.",
@@ -79,35 +79,33 @@ const formSchema = z.object({
     temperature_max: z.number().optional(),
     special_handling: z.string().optional(),
   }).optional(),
-  supportingFiles: z.string().optional(),
-  additionalInformation: z.string().optional(),
-  effectiveDate: z.string().min(1, { message: "Effective date is required" }),
-  expiryDate: z.string().min(1, { message: "Expiry date is required" }),
-  serviceContractNumber: z.string().optional(),
-  additionalServices: z.object({
-    portHandling: z.boolean().default(false),
-    craneHeavyLift: z.boolean().default(false),
-    customsClearance: z.boolean().default(false),
-    storageWarehousing: z.boolean().default(false),
-    inlandFreight: z.boolean().default(false),
-    inspectionQualityControl: z.boolean().default(false),
-    escortPermits: z.boolean().default(false),
-    engineeringSupport: z.boolean().default(false),
+  supporting_files: z.string().optional(),
+  additional_information: z.string().optional(),
+  effective_date: z.string().min(1, { message: "Effective date is required" }),
+  expiry_date: z.string().min(1, { message: "Expiry date is required" }),
+  service_contract_number: z.string().optional(),
+  additional_services: z.object({
+    port_handling: z.boolean().default(false),
+    crane_heavy_lift: z.boolean().default(false),
+    customs_clearance: z.boolean().default(false),
+    storage_warehousing: z.boolean().default(false),
+    inland_freight: z.boolean().default(false),
+    inspection_quality_control: z.boolean().default(false),
+    escort_permits: z.boolean().default(false),
+    engineering_support: z.boolean().default(false),
     other: z.boolean().default(false),
-    otherDetails: z.string().optional(),
+    other_details: z.string().optional(),
   }),
-  companyDetails: z.object({
+  company_details: z.object({
     company_name: z.string().min(1, { message: "Company name is required" }),
-    contact_person_name: z.string().min(1, { message: "Contact person is required" }),
+    contact_person_name: z.string().min(1, { message: "Contact person name is required" }),
     title: z.string().min(1, { message: "Title is required" }),
-    country_of_origin: z.string().min(1, { message: "Country is required" }),
+    country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
     company_email: z.string().email({ message: "Valid email is required" }),
-    additional_email: z.string().email({ message: "Valid email format" }).optional(),
+    additional_email: z.string().email().optional().or(z.literal('')),
     phone_number: z.string().min(1, { message: "Phone number is required" }),
     additional_phone_number: z.string().optional(),
-    showAdditionalEmail: z.boolean().default(false),
-    showAdditionalPhone: z.boolean().default(false),
-  }),
+  })
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -128,13 +126,18 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      routing: [{ fromCountry: '', fromPort: '', toCountry: '', toPort: '' }],
+      routing: [{
+        from_country: '',
+        from_port: '',
+        to_country: '',
+        to_port: '',
+      }],
       entry_mode: 'itemized',
       itemized_data: [{
         commodity: '',
         packaging_type: 'pallets',
         packaging_type_other: '',
-        stackable: true,
+        stackable: false,
         quantity: 1,
         length: 0,
         length_unit: 'cm',
@@ -151,12 +154,12 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
         class: '',
         remarks: '',
         temperature_control: false,
-        temperature_min: 0,
-        temperature_max: 0,
+        temperature_min: undefined,
+        temperature_max: undefined,
       }],
       consolidated_data: {
         commodity_types: '',
-        total_quantity: 1,
+        total_quantity: 0,
         total_weight: 0,
         weight_unit: 'kg',
         total_volume: 0,
@@ -167,30 +170,30 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
         special_instructions: '',
         packaging_type: 'pallets',
         packaging_type_other: '',
-        stackable: true,
+        stackable: false,
         temperature_control: false,
-        temperature_min: 0,
-        temperature_max: 0,
+        temperature_min: undefined,
+        temperature_max: undefined,
         special_handling: '',
       },
-      supportingFiles: '',
-      additionalInformation: '',
-      effectiveDate: '',
-      expiryDate: '',
-      serviceContractNumber: '',
-      additionalServices: {
-        portHandling: false,
-        craneHeavyLift: false,
-        customsClearance: false,
-        storageWarehousing: false,
-        inlandFreight: false,
-        inspectionQualityControl: false,
-        escortPermits: false,
-        engineeringSupport: false,
+      supporting_files: '',
+      additional_information: '',
+      effective_date: '',
+      expiry_date: '',
+      service_contract_number: '',
+      additional_services: {
+        port_handling: false,
+        crane_heavy_lift: false,
+        customs_clearance: false,
+        storage_warehousing: false,
+        inland_freight: false,
+        inspection_quality_control: false,
+        escort_permits: false,
+        engineering_support: false,
         other: false,
-        otherDetails: '',
+        other_details: '',
       },
-      companyDetails: {
+      company_details: {
         company_name: '',
         contact_person_name: '',
         title: '',
@@ -199,10 +202,8 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
         additional_email: '',
         phone_number: '',
         additional_phone_number: '',
-        showAdditionalEmail: false,
-        showAdditionalPhone: false,
-      },
-    },
+      }
+    }
   });
 
 
@@ -272,7 +273,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="additionalInformation"
+                  name="additional_information"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Textarea
@@ -299,7 +300,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="effectiveDate"
+                    name="effective_date"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input type="date" {...field} />
@@ -315,7 +316,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="expiryDate"
+                    name="expiry_date"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input type="date" {...field} />
@@ -331,7 +332,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="serviceContractNumber"
+                    name="service_contract_number"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input placeholder="Contract number if applicable" {...field} />
@@ -354,7 +355,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="additionalServices.portHandling"
+                    name="additional_services.port_handling"
                     render={({ field }) => (
                       <div className="flex items-center space-x-2">
                         <Checkbox
@@ -372,7 +373,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="additionalServices.craneHeavyLift"
+                    name="additional_services.crane_heavy_lift"
                     render={({ field }) => (
                       <div className="flex items-center space-x-2">
                         <Checkbox
@@ -390,7 +391,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="additionalServices.customsClearance"
+                    name="additional_services.customs_clearance"
                     render={({ field }) => (
                       <div className="flex items-center space-x-2">
                         <Checkbox
@@ -408,7 +409,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="additionalServices.storageWarehousing"
+                    name="additional_services.storage_warehousing"
                     render={({ field }) => (
                       <div className="flex items-center space-x-2">
                         <Checkbox
@@ -426,7 +427,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="additionalServices.inlandFreight"
+                    name="additional_services.inland_freight"
                     render={({ field }) => (
                       <div className="flex items-center space-x-2">
                         <Checkbox
@@ -444,7 +445,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="additionalServices.inspectionQualityControl"
+                    name="additional_services.inspection_quality_control"
                     render={({ field }) => (
                       <div className="flex items-center space-x-2">
                         <Checkbox
@@ -462,7 +463,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="additionalServices.escortPermits"
+                    name="additional_services.escort_permits"
                     render={({ field }) => (
                       <div className="flex items-center space-x-2">
                         <Checkbox
@@ -480,7 +481,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="additionalServices.engineeringSupport"
+                    name="additional_services.engineering_support"
                     render={({ field }) => (
                       <div className="flex items-center space-x-2">
                         <Checkbox
@@ -499,7 +500,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="additionalServices.other"
+                  name="additional_services.other"
                   render={({ field }) => (
                     <div className="flex items-center space-x-2">
                       <Checkbox
@@ -513,12 +514,12 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
               </FormControl>
             </FormItem>
 
-            {form.watch('additionalServices.other') && (
+            {form.watch('additional_services.other') && (
               <FormItem className="mt-2">
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="additionalServices.otherDetails"
+                    name="additional_services.other_details"
                     render={({ field }) => (
                       <Textarea
                         placeholder="Please specify other services required"

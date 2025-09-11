@@ -19,49 +19,53 @@ import CompanyDetailsCard from './company-details-card';
 
 // Define the form schema
 const formSchema = z.object({
-  clearanceType: z.enum(["import", "export", "transit", "re-export"], {
-    required_error: "Please select a clearance type"
+  // Basic Information
+  import_export: z.enum(["import", "export"], {
+    required_error: "Please select import or export"
   }),
-  portAirport: z.string().optional(),
-  originPort: z.string().optional(),
-  destinationPort: z.string().optional(),
-  expectedDate: z.string().min(1, { message: "Expected date is required" }),
+  port_airport: z.string().min(1, { message: "Port/Airport is required" }),
+  location: z.string().min(1, { message: "Location is required" }),
+  expected_date: z.string().min(1, { message: "Expected date is required" }),
+  
+  // Commodity Details
   commodity: z.string().min(1, { message: "Commodity is required" }),
-  isDangerous: z.boolean().default(false),
-  unNumberClass: z.string().optional(),
-  shipmentMode: z.enum(["sea", "air", "inland"], {
+  commodity_description: z.string().min(1, { message: "Commodity description is required" }),
+  hs_code: z.string().min(1, { message: "HS Code is required" }),
+  is_dangerous: z.boolean().default(false),
+  un_number_class: z.string().optional(),
+  shipment_mode: z.enum(["sea", "air", "inland"], {
     required_error: "Please select shipment mode"
   }),
-  containerType: z.enum([
+  container_type: z.enum([
     "fcl", "lcl", "non-containerized"
   ]).optional(),
-  containerSize: z.enum([
+  container_size: z.enum([
     "20-dry", "40-dry", "40-high-cube-dry", "20-reefer", "40-reefer", 
     "40-high-cube-reefer", "20-tank", "40-tank", "20-open-top", 
     "40-open-top", "20-high-cube-open-top", "40-high-cube-open-top", 
     "20-flat-rack", "40-flat-rack"
   ]).optional(),
-  numberOfContainers: z.number().min(1, { message: "Number of containers is required" }),
-  totalWeight: z.number().min(0.1, { message: "Total weight is required" }),
-  weightUnit: z.enum(["kg", "ton"]).default("kg"),
-  totalVolume: z.number().optional(),
-  numberOfTrucks: z.number().optional(),
-  countryOfOrigin: z.string().min(1, { message: "Country of origin is required" }),
-  finalDestination: z.string().min(1, { message: "Final destination is required" }),
-  supportingFiles: z.array(z.any()).optional(),
-  additionalServices: z.string().optional(),
-  companyDetails: z.object({
-    companyName: z.string().min(1, { message: "Company name is required" }),
-    contactPerson: z.string().min(1, { message: "Contact person is required" }),
+  number_of_containers: z.number().min(1, { message: "Number of containers is required" }),
+  total_weight: z.number().min(0.1, { message: "Total weight is required" }),
+  weight_unit: z.enum(["kg", "ton"]).default("kg"),
+  total_volume: z.number().optional(),
+  number_of_trucks: z.number().optional(),
+  country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
+  final_destination: z.string().min(1, { message: "Final destination is required" }),
+  supporting_files: z.array(z.any()).optional(),
+  additional_services: z.string().optional(),
+  company_details: z.object({
+    company_name: z.string().min(1, { message: "Company name is required" }),
+    contact_person: z.string().min(1, { message: "Contact person is required" }),
     title: z.string().min(1, { message: "Title is required" }),
-    cityCountry: z.string().min(1, { message: "City, Country is required" }),
+    city_country: z.string().min(1, { message: "City/Country is required" }),
     email: z.string().email({ message: "Valid email is required" }),
-    additionalEmail: z.string().email({ message: "Valid email format" }).optional(),
+    additional_email: z.string().email({ message: "Valid email format" }).optional(),
     phone: z.string().min(1, { message: "Phone number is required" }),
-    additionalPhone: z.string().optional(),
+    additional_phone: z.string().optional(),
   }),
-  showAdditionalEmail: z.boolean().default(false),
-  showAdditionalPhone: z.boolean().default(false),
+  show_additional_email: z.boolean().default(false),
+  show_additional_phone: z.boolean().default(false),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -72,47 +76,54 @@ interface CustomsClearanceFormProps {
 
 export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormProps) {
   const t = useTranslations('Inland-forms');
+<<<<<<< HEAD
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+=======
+  const [uploaded_files, set_uploaded_files] = useState<File[]>([]);
+  const [is_submitting, set_is_submitting] = useState(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      clearanceType: "import",
-      portAirport: '',
-      originPort: '',
-      destinationPort: '',
-      expectedDate: '',
+      import_export: 'import',
+      port_airport: '',
+      location: '',
+      expected_date: '',
       commodity: '',
-      isDangerous: false,
-      unNumberClass: '',
-      shipmentMode: "sea",
-      containerType: "fcl",
-      containerSize: "20-dry",
-      numberOfContainers: 1,
-      totalWeight: 0,
-      weightUnit: "kg",
-      totalVolume: 0,
-      numberOfTrucks: 1,
-      countryOfOrigin: '',
-      finalDestination: '',
-      supportingFiles: [],
-      additionalServices: '',
-      companyDetails: {
-        companyName: '',
-        contactPerson: '',
+      commodity_description: '',
+      hs_code: '',
+      is_dangerous: false,
+      un_number_class: '',
+      shipment_mode: 'sea',
+      container_type: "fcl",
+      container_size: '20-dry',
+      number_of_containers: 1,
+      total_weight: 0,
+      weight_unit: 'kg',
+      total_volume: 0,
+      number_of_trucks: 0,
+      country_of_origin: '',
+      final_destination: '',
+      supporting_files: [],
+      additional_services: '',
+      company_details: {
+        company_name: '',
+        contact_person: '',
         title: '',
-        cityCountry: '',
+        city_country: '',
         email: '',
-        additionalEmail: '',
+        additional_email: '',
         phone: '',
-        additionalPhone: '',
+        additional_phone: '',
       },
-      showAdditionalEmail: false,
-      showAdditionalPhone: false,
-    }
+      show_additional_email: false,
+      show_additional_phone: false,
+    },
   });
 
+<<<<<<< HEAD
   const watchClearanceType = form.watch("clearanceType");
   const watchShipmentMode = form.watch("shipmentMode");
   const watchContainerType = form.watch("containerType");
@@ -120,26 +131,39 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
 
   const handleSubmit = async (values: FormData) => {
     setIsSubmitting(true);
+=======
+  const watchClearanceType = form.watch("import_export");
+  const watchShipmentMode = form.watch("shipment_mode");
+  const watchContainerType = form.watch("container_type");
+  const watchIsDangerous = form.watch("is_dangerous");
+
+  const handleSubmit = async (values: FormData) => {
+    set_is_submitting(true);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
     try {
       if (onSubmit) {
         await onSubmit(values);
       }
       console.log("Customs Clearance Form Data:", values);
     } finally {
+<<<<<<< HEAD
       setIsSubmitting(false);
+=======
+      set_is_submitting(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
     }
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
-    setUploadedFiles(prev => [...prev, ...files]);
-    form.setValue("supportingFiles", [...(form.getValues("supportingFiles") || []), ...files]);
+    set_uploaded_files(prev => [...prev, ...files]);
+    form.setValue("supporting_files", [...(form.getValues("supporting_files") || []), ...files]);
   };
 
   const removeFile = (index: number) => {
-    const newFiles = uploadedFiles.filter((_, i) => i !== index);
-    setUploadedFiles(newFiles);
-    form.setValue("supportingFiles", newFiles);
+    const newFiles = uploaded_files.filter((_, i) => i !== index);
+    set_uploaded_files(newFiles);
+    form.setValue("supporting_files", newFiles);
   };
 
   return (
@@ -158,7 +182,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
             <FormControl>
               <Controller
                 control={form.control}
-                name="clearanceType"
+                name="import_export"
                 render={({ field, fieldState: { error } }) => (
                   <RadioGroup
                     onValueChange={field.onChange}
@@ -173,14 +197,6 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                       <RadioGroupItem value="export" id="export" />
                       <label htmlFor="export" className="text-sm font-medium">Export</label>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="transit" id="transit" />
-                      <label htmlFor="transit" className="text-sm font-medium">Transit</label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="re-export" id="re-export" />
-                      <label htmlFor="re-export" className="text-sm font-medium">Re-Export</label>
-                    </div>
                   </RadioGroup>
                 )}
               />
@@ -188,7 +204,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           </div>
 
           {/* Port/Airport - Show only if NOT transit */}
-          {watchClearanceType !== "transit" && (
+          {watchClearanceType !== "export" && (
             <div className="mb-6">
               <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
                 Port / Airport:
@@ -196,7 +212,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="portAirport"
+                  name="port_airport"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Input
@@ -213,7 +229,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           )}
 
           {/* Transit Locations - Show only if transit is selected */}
-          {watchClearanceType === "transit" && (
+          {watchClearanceType === "export" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
                 <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
@@ -222,7 +238,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="originPort"
+                    name="location"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input
@@ -243,7 +259,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="destinationPort"
+                    name="final_destination"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input
@@ -268,7 +284,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
             <FormControl>
               <Controller
                 control={form.control}
-                name="expectedDate"
+                name="expected_date"
                 render={({ field, fieldState: { error } }) => (
                   <>
                     <div className="relative max-w-[300px]">
@@ -314,20 +330,66 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
             </FormControl>
           </div>
 
+          {/* Commodity Description - ADD THIS MISSING FIELD */}
+          <div className="mb-6">
+            <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
+              Commodity Description:
+            </FormLabel>
+            <FormControl>
+              <Controller
+                control={form.control}
+                name="commodity_description"
+                render={({ field, fieldState: { error } }) => (
+                  <>
+                    <Input
+                      placeholder="Enter commodity description"
+                      className="max-w-[300px] border-2 rounded-xl"
+                      {...field}
+                    />
+                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                  </>
+                )}
+              />
+            </FormControl>
+          </div>
+
+          {/* HS Code - ADD THIS MISSING FIELD */}
+          <div className="mb-6">
+            <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
+              HS Code:
+            </FormLabel>
+            <FormControl>
+              <Controller
+                control={form.control}
+                name="hs_code"
+                render={({ field, fieldState: { error } }) => (
+                  <>
+                    <Input
+                      placeholder="Enter HS Code"
+                      className="max-w-[300px] border-2 rounded-xl"
+                      {...field}
+                    />
+                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                  </>
+                )}
+              />
+            </FormControl>
+          </div>
+
           {/* Dangerous Cargo */}
           <div className="mb-6">
             <FormControl>
               <Controller
                 control={form.control}
-                name="isDangerous"
+                name="is_dangerous"
                 render={({ field }) => (
                   <div className="flex items-center space-x-2">
                     <Checkbox
                       checked={field.value}
                       onCheckedChange={field.onChange}
-                      id="isDangerous"
+                      id="is_dangerous" // CHANGE FROM "isDangerous"
                     />
-                    <label htmlFor="isDangerous" className="text-sm font-medium">
+                    <label htmlFor="is_dangerous" className="text-sm font-medium"> {/* CHANGE FROM "isDangerous" */}
                       This cargo is considered dangerous.
                     </label>
                   </div>
@@ -345,7 +407,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="unNumberClass"
+                  name="un_number_class"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Input
@@ -369,7 +431,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           <FormControl>
             <Controller
               control={form.control}
-              name="shipmentMode"
+              name="shipment_mode"
               render={({ field, fieldState: { error } }) => (
                 <RadioGroup
                   onValueChange={field.onChange}
@@ -403,7 +465,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="containerType"
+                    name="container_type"
                     render={({ field, fieldState: { error } }) => (
                       <RadioGroup
                         onValueChange={field.onChange}
@@ -438,7 +500,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                     <FormControl>
                       <Controller
                         control={form.control}
-                        name="containerSize"
+                        name="container_size"
                         render={({ field, fieldState: { error } }) => (
                           <Select onValueChange={field.onChange} value={field.value || ""}>
                             <SelectTrigger className="max-w-[300px] border-2 rounded-xl">
@@ -473,7 +535,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                     <FormControl>
                       <Controller
                         control={form.control}
-                        name="numberOfContainers"
+                        name="number_of_containers"
                         render={({ field, fieldState: { error } }) => (
                           <>
                             <div className="flex items-center space-x-2 max-w-[200px]">
@@ -518,7 +580,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                     <FormControl>
                       <Controller
                         control={form.control}
-                        name="totalWeight"
+                        name="total_weight"
                         render={({ field, fieldState: { error } }) => (
                           <>
                             <Input
@@ -536,7 +598,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                     <FormControl>
                       <Controller
                         control={form.control}
-                        name="weightUnit"
+                        name="weight_unit"
                         render={({ field }) => (
                           <Select onValueChange={field.onChange} value={field.value || ""}>
                             <SelectTrigger className="w-20 border-2 rounded-xl">
@@ -562,7 +624,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                     <FormControl>
                       <Controller
                         control={form.control}
-                        name="totalVolume"
+                        name="total_volume"
                         render={({ field, fieldState: { error } }) => (
                           <>
                             <Input
@@ -594,7 +656,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="numberOfTrucks"
+                    name="number_of_trucks"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <div className="flex items-center space-x-2 max-w-[200px]">
@@ -635,7 +697,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="totalWeight"
+                      name="total_weight"
                       render={({ field, fieldState: { error } }) => (
                         <>
                           <Input
@@ -653,7 +715,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="weightUnit"
+                      name="weight_unit"
                       render={({ field }) => (
                         <Select onValueChange={field.onChange} value={field.value || ""}>
                           <SelectTrigger className="w-20 border-2 rounded-xl">
@@ -683,7 +745,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="totalWeight"
+                      name="total_weight"
                       render={({ field, fieldState: { error } }) => (
                         <>
                           <Input
@@ -701,7 +763,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="weightUnit"
+                      name="weight_unit"
                       render={({ field }) => (
                         <Select onValueChange={field.onChange} value={field.value || ""}>
                           <SelectTrigger className="w-20 border-2 rounded-xl">
@@ -725,7 +787,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="totalVolume"
+                    name="total_volume"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input
@@ -757,7 +819,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="countryOfOrigin"
+                  name="country_of_origin"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <SearchableCountrySelect
@@ -780,7 +842,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="finalDestination"
+                  name="final_destination"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Input
@@ -808,7 +870,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="supportingFiles"
+                  name="supporting_files"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Input
@@ -829,11 +891,11 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
               <p className="px-2 text-xs text-gray-500">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
             </FormItem>
 
-            {uploadedFiles.length > 0 && (
+            {uploaded_files.length > 0 && (
               <div className="mt-4">
                 <h4 className="font-medium mb-2">Uploaded Files:</h4>
                 <ul className="space-y-2">
-                  {uploadedFiles.map((file, index) => (
+                  {uploaded_files.map((file, index) => (
                     <li key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded-xl">
                       <span className="text-sm">{file.name}</span>
                       <Button
@@ -859,7 +921,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
             <FormControl>
               <Controller
                 control={form.control}
-                name="additionalServices"
+                name="additional_services"
                 render={({ field, fieldState: { error } }) => (
                   <>
                     <Textarea
@@ -878,8 +940,13 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
         <CompanyDetailsCard control={form.control} />
         {/* Submit Button */}
         <div className="text-center">
+<<<<<<< HEAD
           <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
             {isSubmitting ? (
+=======
+          <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+            {is_submitting ? (
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
               <div className="flex items-center justify-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>

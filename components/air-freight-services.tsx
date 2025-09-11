@@ -22,14 +22,14 @@ import FileUpload from './file-upload';
 // Define the form schema
 const formSchema = z.object({
     routing: z.array(z.object({
-        fromCountry: z.string().min(1, { message: "From country is required" }),
-        fromPort: z.string().min(1, { message: "From port/area is required" }),
-        fromServicesMode: z.enum(["cy", "sd"], {
+        from_country: z.string().min(1, { message: "From country is required" }),
+        from_port: z.string().min(1, { message: "From port/area is required" }),
+        from_services_mode: z.enum(["cy", "sd"], {
             required_error: "From services mode is required",
         }),
-        toCountry: z.string().min(1, { message: "To country is required" }),
-        toPort: z.string().min(1, { message: "To port/area is required" }),
-        toServicesMode: z.enum(["cy", "sd"], {
+        to_country: z.string().min(1, { message: "To country is required" }),
+        to_port: z.string().min(1, { message: "To port/area is required" }),
+        to_services_mode: z.enum(["cy", "sd"], {
             required_error: "To services mode is required",
         }),
     })),
@@ -42,32 +42,33 @@ const formSchema = z.object({
     entry_mode: z.enum(["itemized", "consolidated"], {
         required_error: "Please select an entry mode.",
     }),
-            itemized_data: z.array(z.object({
-            commodity: z.string().min(1, { message: "Commodity is required" }),
-            packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
-                required_error: "Packaging type is required",
-            }),
-            packaging_type_other: z.string().optional(),
-            stackable: z.boolean(),
-            quantity: z.number().min(1, { message: "Quantity is required" }),
-            length: z.number().min(1, { message: "Length is required" }),
-            length_unit: z.enum(["cm", "m"], { required_error: "Length unit is required" }),
-            width: z.number().min(1, { message: "Width is required" }),
-            width_unit: z.enum(["cm", "m"], { required_error: "Width unit is required" }),
-            height: z.number().min(1, { message: "Height is required" }),
-            height_unit: z.enum(["cm", "m"], { required_error: "Height unit is required" }),
-            weight: z.number().min(1, { message: "Weight is required" }),
-            cbm: z.number(),
-            gross_cbm: z.number(),
-            gross_weight: z.number(),
-            dangerous_goods: z.boolean(),
-            un_number: z.string().optional(),
-            class: z.string().optional(),
-            remarks: z.string().optional(),
-            temperature_control: z.boolean(),
-            temperature_min: z.number().optional(),
-            temperature_max: z.number().optional(),
-        })).optional(),
+    itemized_data: z.array(z.object({
+        commodity: z.string().min(1, { message: "Commodity is required" }),
+        packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
+            required_error: "Packaging type is required",
+        }),
+        packaging_type_other: z.string().optional(),
+        stackable: z.boolean(),
+        quantity: z.number().min(1, { message: "Quantity is required" }),
+        length: z.number().min(1, { message: "Length is required" }),
+        length_unit: z.enum(["cm", "m"], { required_error: "Length unit is required" }),
+        width: z.number().min(1, { message: "Width is required" }),
+        width_unit: z.enum(["cm", "m"], { required_error: "Width unit is required" }),
+        height: z.number().min(1, { message: "Height is required" }),
+        height_unit: z.enum(["cm", "m"], { required_error: "Height unit is required" }),
+        weight: z.number().min(1, { message: "Weight is required" }),
+        cbm: z.number(),
+        gross_cbm: z.number(),
+        gross_weight: z.number(),
+        dangerous_goods: z.boolean(),
+        un_number: z.string().optional(),
+        class: z.string().optional(),
+        remarks: z.string().optional(),
+        temperature_control: z.boolean(),
+        temperature_min: z.number().optional(),
+        temperature_max: z.number().optional(),
+    })).optional(),
+    
     consolidated_data: z.object({
         commodity_types: z.string().min(1, { message: "Commodity types are required" }),
         total_quantity: z.number().min(1, { message: "Total quantity is required" }),
@@ -86,48 +87,56 @@ const formSchema = z.object({
         temperature_max: z.number().optional(),
         special_handling: z.string().optional(),
     }).optional(),
-    supporting_files: z.array(z.any()).optional(),
-    additional_details: z.string().optional(),
-    commercial_terms: z.string().optional(),
-    recommended: z.object({
-        import: z.boolean().optional(),
-        export: z.boolean().optional()
+    
+    supporting_files: z.string().optional(),
+    additional_information: z.string().optional(),
+    effective_date: z.string().min(1, { message: "Effective date is required" }),
+    expiry_date: z.string().min(1, { message: "Expiry date is required" }),
+    service_contract_number: z.string().optional(),
+    
+    additional_services: z.object({
+        port_handling: z.boolean().default(false),
+        crane_heavy_lift: z.boolean().default(false),
+        customs_clearance: z.boolean().default(false),
+        storage_warehousing: z.boolean().default(false),
+        inland_freight: z.boolean().default(false),
+        inspection_quality_control: z.boolean().default(false),
+        escort_permits: z.boolean().default(false),
+        engineering_support: z.boolean().default(false),
+        other: z.boolean().default(false),
+        other_details: z.string().optional(),
     }),
-    value_added_service: z.object({
-        service: z.string().optional(),
-    }),
-    door_to_door: z.enum(["yes", "no"]).optional(),
-    insurance: z.enum(["yes", "no"]).optional(),
-    special_handling_required: z.enum(["yes", "no"]).optional(),
-    special_handling_details: z.string().optional(),
-    service_contract: z.string().optional(),
+    
     company_details: z.object({
         company_name: z.string().min(1, { message: "Company name is required" }),
         contact_person_name: z.string().min(1, { message: "Contact person name is required" }),
         title: z.string().min(1, { message: "Title is required" }),
         country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
         company_email: z.string().email({ message: "Valid email is required" }),
-        phone_number: z.string().min(1, { message: "Phone number is required" }),
         additional_email: z.string().email().optional().or(z.literal('')),
+        phone_number: z.string().min(1, { message: "Phone number is required" }),
         additional_phone_number: z.string().optional(),
     })
 });
 
-const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+// Add the missing type definition
+type FormData = z.infer<typeof formSchema>;
+
+const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSubmit }) => {
     const t = useTranslations('Inland-errors');
     const [entryMode, setEntryMode] = useState<'itemized' | 'consolidated'>('itemized');
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const form = useForm({
+    const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             routing: [{
-                fromCountry: '',
-                fromPort: '',
-                fromServicesMode: 'cy',
-                toCountry: '',
-                toPort: '',
-                toServicesMode: 'cy'
+                from_country: '',
+                from_port: '',
+                from_services_mode: 'cy',
+                to_country: '',
+                to_port: '',
+                to_services_mode: 'cy'
             }],
             ready_to_load: '',
             transportation: {
@@ -155,8 +164,8 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                 class: '',
                 remarks: '',
                 temperature_control: false,
-                temperature_min: 0,
-                temperature_max: 0,
+                temperature_min: undefined,
+                temperature_max: undefined,
             }],
             consolidated_data: {
                 commodity_types: '',
@@ -168,28 +177,29 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                 class: '',
                 special_instructions: '',
                 packaging_type: 'pallets',
-                packaging_type_other: '',
                 stackable: false,
                 temperature_control: false,
-                temperature_min: 0,
-                temperature_max: 0,
+                temperature_min: undefined,
+                temperature_max: undefined,
                 special_handling: '',
             },
-            supporting_files: [],
-            additional_details: '',
-            commercial_terms: '',
-            recommended: {
-                import: false,
-                export: false,
+            supporting_files: '',
+            additional_information: '',
+            effective_date: '',
+            expiry_date: '',
+            service_contract_number: '',
+            additional_services: {
+                port_handling: false,
+                crane_heavy_lift: false,
+                customs_clearance: false,
+                storage_warehousing: false,
+                inland_freight: false,
+                inspection_quality_control: false,
+                escort_permits: false,
+                engineering_support: false,
+                other: false,
+                other_details: '',
             },
-            value_added_service: {
-                service: ''
-            },
-            door_to_door: 'no',
-            insurance: 'no',
-                    special_handling_required: 'no',
-        special_handling_details: '',
-        service_contract: '',
             company_details: {
                 company_name: '',
                 contact_person_name: '',
@@ -198,12 +208,16 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                 company_email: '',
                 additional_email: '',
                 phone_number: '',
-                additional_phone_number: ''
+                additional_phone_number: '',
             }
         }
     });
 
+<<<<<<< HEAD
     const handleSubmit = async (values: any) => {
+=======
+    const handleSubmit = async (values: FormData) => {
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
         setIsSubmitting(true);
         try {
             console.log(values);
@@ -268,7 +282,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                             <FormControl>
                                 <Controller
                                     control={form.control}
-                                    name="additional_details"
+                                    name="additional_information"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <Textarea
@@ -298,15 +312,15 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                         <FormControl>
                             <Controller
                                 control={form.control}
-                                name="commercial_terms"
+                                name="service_contract_number"
                                 render={({ field, fieldState: { error } }) => (
                                     <>
-                                        <Textarea
-                                            className="min-h-[100px] border-2 rounded-xl"
-                                            placeholder="Loading/discharging rates, Incoterms, etc."
+                                        <Input
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            placeholder="Enter service contract number"
                                             {...field}
                                         />
-                                        {error && <p className="text-red-500">{error.message}</p>}
+                                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                     </>
                                 )}
                             />
@@ -323,26 +337,26 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     <FormControl>
                         <Controller
                             control={form.control}
-                            name="door_to_door"
+                            name="additional_services.port_handling"
                             render={({ field }) => (
                                 <div className="flex items-center space-x-4">
                                     <div className="flex items-center space-x-2">
                                         <Checkbox
-                                            checked={field.value === 'yes'}
-                                            onCheckedChange={(checked) => field.onChange(checked ? 'yes' : 'no')}
-                                            id="door_to_door_yes"
+                                            checked={field.value}
+                                            onCheckedChange={(checked) => field.onChange(checked)}
+                                            id="port_handling_yes"
                                         />
-                                        <label htmlFor="door_to_door_yes" className="text-sm font-medium">
+                                        <label htmlFor="port_handling_yes" className="text-sm font-medium">
                                             Yes
                                         </label>
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <Checkbox
-                                            checked={field.value === 'no'}
-                                            onCheckedChange={(checked) => field.onChange(checked ? 'no' : 'yes')}
-                                            id="door_to_door_no"
+                                            checked={!field.value}
+                                            onCheckedChange={(checked) => field.onChange(!checked)}
+                                            id="port_handling_no"
                                         />
-                                        <label htmlFor="door_to_door_no" className="text-sm font-medium">
+                                        <label htmlFor="port_handling_no" className="text-sm font-medium">
                                             No
                                         </label>
                                     </div>
@@ -358,26 +372,26 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     <FormControl>
                         <Controller
                             control={form.control}
-                            name="insurance"
+                            name="additional_services.customs_clearance"
                             render={({ field }) => (
                                 <div className="flex items-center space-x-4">
                                     <div className="flex items-center space-x-2">
                                         <Checkbox
-                                            checked={field.value === 'yes'}
-                                            onCheckedChange={(checked) => field.onChange(checked ? 'yes' : 'no')}
-                                            id="insurance_yes"
+                                            checked={field.value}
+                                            onCheckedChange={(checked) => field.onChange(checked)}
+                                            id="customs_clearance_yes"
                                         />
-                                        <label htmlFor="insurance_yes" className="text-sm font-medium">
+                                        <label htmlFor="customs_clearance_yes" className="text-sm font-medium">
                                             Yes
                                         </label>
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <Checkbox
-                                            checked={field.value === 'no'}
-                                            onCheckedChange={(checked) => field.onChange(checked ? 'no' : 'yes')}
-                                            id="insurance_no"
+                                            checked={!field.value}
+                                            onCheckedChange={(checked) => field.onChange(!checked)}
+                                            id="customs_clearance_no"
                                         />
-                                        <label htmlFor="insurance_no" className="text-sm font-medium">
+                                        <label htmlFor="customs_clearance_no" className="text-sm font-medium">
                                             No
                                         </label>
                                     </div>
@@ -393,26 +407,26 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     <FormControl>
                         <Controller
                             control={form.control}
-                            name="special_handling_required"
+                            name="additional_services.inland_freight"
                             render={({ field }) => (
                                 <div className="flex items-center space-x-4">
                                     <div className="flex items-center space-x-2">
                                         <Checkbox
-                                            checked={field.value === 'yes'}
-                                            onCheckedChange={(checked) => field.onChange(checked ? 'yes' : 'no')}
-                                            id="special_handling_yes"
+                                            checked={field.value}
+                                            onCheckedChange={(checked) => field.onChange(checked)}
+                                            id="inland_freight_yes"
                                         />
-                                        <label htmlFor="special_handling_yes" className="text-sm font-medium">
+                                        <label htmlFor="inland_freight_yes" className="text-sm font-medium">
                                             Yes
                                         </label>
                                     </div>
                                     <div className="flex items-center space-x-2">
                                         <Checkbox
-                                            checked={field.value === 'no'}
-                                            onCheckedChange={(checked) => field.onChange(checked ? 'no' : 'yes')}
-                                            id="special_handling_no"
+                                            checked={!field.value}
+                                            onCheckedChange={(checked) => field.onChange(!checked)}
+                                            id="inland_freight_no"
                                         />
-                                        <label htmlFor="special_handling_no" className="text-sm font-medium">
+                                        <label htmlFor="inland_freight_no" className="text-sm font-medium">
                                             No
                                         </label>
                                     </div>
@@ -424,16 +438,16 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     {/* Conditional Details Section */}
                     <Controller
                         control={form.control}
-                        name="special_handling_required"
+                        name="additional_services.inland_freight"
                         render={({ field: { value } }) => (
                             <div>
-                                {value === 'yes' && (
+                                {value && (
                                     <div className="mt-4 p-4 border border-blue-200 bg-blue-50 rounded-lg">
                                         <h3 className="font-medium text-blue-800 mb-3">Please provide the required details</h3>
                                         <FormControl>
                                             <Controller
                                                 control={form.control}
-                                                name="special_handling_details"
+                                                name="additional_services.other_details"
                                                 render={({ field, fieldState: { error } }) => (
                                                     <>
                                                         <Textarea
@@ -459,13 +473,30 @@ const AirFreightForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     <FormControl>
                         <Controller
                             control={form.control}
-                            name="service_contract"
+                            name="effective_date"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <FormLabel>Service Contract <span className="text-muted-foreground text-xs">(Optional)</span></FormLabel>
+                                    <FormLabel>Effective Date <span className="text-muted-foreground text-xs">(Required)</span></FormLabel>
                                     <Input
                                         className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Enter service contract number"
+                                        type="date"
+                                        {...field}
+                                    />
+                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                                </>
+                            )}
+                        />
+                    </FormControl>
+                    <FormControl className="mt-4">
+                        <Controller
+                            control={form.control}
+                            name="expiry_date"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <FormLabel>Expiry Date <span className="text-muted-foreground text-xs">(Required)</span></FormLabel>
+                                    <Input
+                                        className="max-w-[300px] border-2 rounded-xl"
+                                        type="date"
                                         {...field}
                                     />
                                     {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}

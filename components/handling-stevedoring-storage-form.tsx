@@ -20,17 +20,14 @@ import FileUpload from './file-upload';
 
 // Define the form schema
 const formSchema = z.object({
-  // Basic Information
-  importExport: z.enum(['import', 'export']),
-  portAirport: z.string().min(1, { message: "Port/Airport is required" }),
+  import_export: z.enum(['import', 'export']),
+  port_airport: z.string().min(1, { message: "Port/Airport is required" }),
   location: z.string().min(1, { message: "Location is required" }),
   
-  // Entry Mode
   entry_mode: z.enum(["itemized", "consolidated"], {
     required_error: "Please select an entry mode.",
   }),
   
-  // Itemized Entry (same as air freight)
   itemized_data: z.array(z.object({
     commodity: z.string().min(1, { message: "Commodity is required" }),
     packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
@@ -58,7 +55,6 @@ const formSchema = z.object({
     temperature_max: z.number().optional(),
   })).optional(),
   
-  // Consolidated Entry (same as air freight)
   consolidated_data: z.object({
     commodity_types: z.string().min(1, { message: "Commodity types are required" }),
     total_quantity: z.number().min(1, { message: "Total quantity is required" }),
@@ -78,30 +74,26 @@ const formSchema = z.object({
     special_handling: z.string().optional(),
   }).optional(),
   
-  // Additional Information
-  additionalInfo: z.string().optional(),
-  commercialTerms: z.string().optional(),
+  additional_info: z.string().optional(),
+  commercial_terms: z.string().optional(),
   
-  // Dates
-  effectiveDate: z.string().min(1, { message: "Effective date is required" }),
-  expiryDate: z.string().min(1, { message: "Expiry date is required" }),
-  serviceContract: z.string().optional(),
+  effective_date: z.string().min(1, { message: "Effective date is required" }),
+  expiry_date: z.string().min(1, { message: "Expiry date is required" }),
+  service_contract: z.string().optional(),
   
-  // Required Services
-  handlingStevedoring: z.boolean(),
-  loadingCargo: z.boolean(),
-  dischargingCargo: z.boolean(),
-  lashingCargo: z.boolean(),
-  unlashingCargo: z.boolean(),
-  portHandlingStevedoring: z.boolean(),
-  cargoReceptionDelivery: z.boolean(),
-  receptionBeforeShipment: z.boolean(),
-  receptionAfterDischarge: z.boolean(),
-  storageWarehousing: z.boolean(),
-  temporaryStorage: z.boolean(),
-  handlingRequirements: z.string().optional(),
+  handling_stevedoring: z.boolean(),
+  loading_cargo: z.boolean(),
+  discharging_cargo: z.boolean(),
+  lashing_cargo: z.boolean(),
+  unlashing_cargo: z.boolean(),
+  port_handling_stevedoring: z.boolean(),
+  cargo_reception_delivery: z.boolean(),
+  reception_before_shipment: z.boolean(),
+  reception_after_discharge: z.boolean(),
+  storage_warehousing: z.boolean(),
+  temporary_storage: z.boolean(),
+  handling_requirements: z.string().optional(),
   
-  // Additional Services
   additional_services: z.object({
     crane_heavy_lift: z.boolean(),
     customs_clearance: z.boolean(),
@@ -114,10 +106,8 @@ const formSchema = z.object({
     additional_requirements: z.string().optional(),
   }),
   
-  // Supporting Files
   supporting_files: z.array(z.any()).optional(),
   
-  // Company Details (standard pattern)
   company_details: z.object({
     company_name: z.string().min(1, { message: "Company name is required" }),
     contact_person_name: z.string().min(1, { message: "Contact person name is required" }),
@@ -137,13 +127,21 @@ interface Props {
 }
 
 export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
+<<<<<<< HEAD
   const [entryMode, setEntryMode] = useState<'itemized' | 'consolidated'>('itemized');
   const [isSubmitting, setIsSubmitting] = useState(false);
+=======
+  const [entry_mode, set_entry_mode] = useState<'itemized' | 'consolidated'>('itemized');
+  const [is_submitting, set_is_submitting] = useState(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      importExport: 'import',
+      import_export: 'import',
+      port_airport: '',
+      location: '',
+      
       entry_mode: 'itemized',
       itemized_data: [{
         commodity: '',
@@ -180,17 +178,17 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
         temperature_control: false,
         special_handling: '',
       },
-      handlingStevedoring: false,
-      loadingCargo: false,
-      dischargingCargo: false,
-      lashingCargo: false,
-      unlashingCargo: false,
-      portHandlingStevedoring: false,
-      cargoReceptionDelivery: false,
-      receptionBeforeShipment: false,
-      receptionAfterDischarge: false,
-      storageWarehousing: false,
-      temporaryStorage: false,
+      handling_stevedoring: false,
+      loading_cargo: false,
+      discharging_cargo: false,
+      lashing_cargo: false,
+      unlashing_cargo: false,
+      port_handling_stevedoring: false,
+      cargo_reception_delivery: false,
+      reception_before_shipment: false,
+      reception_after_discharge: false,
+      storage_warehousing: false,
+      temporary_storage: false,
       additional_services: {
         crane_heavy_lift: false,
         customs_clearance: false,
@@ -213,21 +211,34 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
         phone_number: '',
         additional_phone_number: '',
       },
+      additional_info: '',
+      commercial_terms: '',
+      effective_date: '',
+      expiry_date: '',
+      service_contract: '',
     }
   });
 
   const handleSubmit = async (values: FormData) => {
+<<<<<<< HEAD
     setIsSubmitting(true);
+=======
+    set_is_submitting(true);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
     try {
       console.log(values);
       await onSubmit(values);
     } finally {
+<<<<<<< HEAD
       setIsSubmitting(false);
+=======
+      set_is_submitting(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
     }
   };
 
   const handleModeChange = (mode: 'itemized' | 'consolidated') => {
-    setEntryMode(mode);
+    set_entry_mode(mode);
     form.setValue('entry_mode', mode);
   };
 
@@ -244,7 +255,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   type="radio"
                   id="import"
                   value="import"
-                  {...form.register('importExport')}
+                  {...form.register('import_export')}
                   className="w-4 h-4 text-primary"
                 />
                 <Label htmlFor="import" className="text-base font-raleway font-medium">Import</Label>
@@ -254,7 +265,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   type="radio"
                   id="export"
                   value="export"
-                  {...form.register('importExport')}
+                  {...form.register('import_export')}
                   className="w-4 h-4 text-primary"
                 />
                 <Label htmlFor="export" className="text-base font-raleway font-medium">Export</Label>
@@ -268,7 +279,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="portAirport"
+                    name="port_airport"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input
@@ -312,7 +323,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
               <div className="flex gap-4">
                 <Button
                   type="button"
-                  variant={entryMode === 'itemized' ? 'default' : 'outline'}
+                  variant={entry_mode === 'itemized' ? 'default' : 'outline'}
                   onClick={() => handleModeChange('itemized')}
                   className="flex-1"
                 >
@@ -320,7 +331,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 </Button>
                 <Button
                   type="button"
-                  variant={entryMode === 'consolidated' ? 'default' : 'outline'}
+                  variant={entry_mode === 'consolidated' ? 'default' : 'outline'}
                   onClick={() => handleModeChange('consolidated')}
                   className="flex-1"
                 >
@@ -332,7 +343,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
         </Card>
 
         {/* Cargo Entry Section */}
-        {entryMode === 'itemized' ? (
+        {entry_mode === 'itemized' ? (
           <>
             <ItemizedTable control={form.control} />
             
@@ -345,7 +356,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="additionalInfo"
+                      name="additional_info"
                       render={({ field, fieldState: { error } }) => (
                         <>
                           <Textarea
@@ -365,7 +376,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="commercialTerms"
+                      name="commercial_terms"
                       render={({ field, fieldState: { error } }) => (
                         <>
                           <Textarea
@@ -410,7 +421,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="additionalInfo"
+                      name="additional_info"
                       render={({ field, fieldState: { error } }) => (
                         <>
                           <Textarea
@@ -430,7 +441,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   <FormControl>
                     <Controller
                       control={form.control}
-                      name="commercialTerms"
+                      name="commercial_terms"
                       render={({ field, fieldState: { error } }) => (
                         <>
                           <Textarea
@@ -462,7 +473,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="effectiveDate"
+                    name="effective_date"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input
@@ -481,7 +492,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <FormControl>
                   <Controller
                     control={form.control}
-                    name="expiryDate"
+                    name="expiry_date"
                     render={({ field, fieldState: { error } }) => (
                       <>
                         <Input
@@ -501,7 +512,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="serviceContract"
+                  name="service_contract"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Input
@@ -531,7 +542,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="handlingStevedoring"
+                    name="handling_stevedoring"
                     render={({ field }) => (
                       <Checkbox
                         id="handlingStevedoring"
@@ -545,7 +556,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="loadingCargo"
+                    name="loading_cargo"
                     render={({ field }) => (
                       <Checkbox
                         id="loadingCargo"
@@ -559,7 +570,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="dischargingCargo"
+                    name="discharging_cargo"
                     render={({ field }) => (
                       <Checkbox
                         id="dischargingCargo"
@@ -573,7 +584,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="lashingCargo"
+                    name="lashing_cargo"
                     render={({ field }) => (
                       <Checkbox
                         id="lashingCargo"
@@ -587,7 +598,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="unlashingCargo"
+                    name="unlashing_cargo"
                     render={({ field }) => (
                       <Checkbox
                         id="unlashingCargo"
@@ -601,7 +612,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="portHandlingStevedoring"
+                    name="port_handling_stevedoring"
                     render={({ field }) => (
                       <Checkbox
                         id="portHandlingStevedoring"
@@ -624,7 +635,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="cargoReceptionDelivery"
+                    name="cargo_reception_delivery"
                     render={({ field }) => (
                       <Checkbox
                         id="cargoReceptionDelivery"
@@ -638,7 +649,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="receptionBeforeShipment"
+                    name="reception_before_shipment"
                     render={({ field }) => (
                       <Checkbox
                         id="receptionBeforeShipment"
@@ -652,7 +663,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="receptionAfterDischarge"
+                    name="reception_after_discharge"
                     render={({ field }) => (
                       <Checkbox
                         id="receptionAfterDischarge"
@@ -675,7 +686,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="storageWarehousing"
+                    name="storage_warehousing"
                     render={({ field }) => (
                       <Checkbox
                         id="storageWarehousing"
@@ -689,7 +700,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 <div className="flex items-center space-x-2">
                   <Controller
                     control={form.control}
-                    name="temporaryStorage"
+                    name="temporary_storage"
                     render={({ field }) => (
                       <Checkbox
                         id="temporaryStorage"
@@ -708,7 +719,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="handlingRequirements"
+                  name="handling_requirements"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Textarea
@@ -898,8 +909,13 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
 
         {/* Submit Button */}
         <div className="flex justify-start">
+<<<<<<< HEAD
           <Button type="submit" className={`mt-8 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
             {isSubmitting ? (
+=======
+          <Button type="submit" className={`mt-8 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+            {is_submitting ? (
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
               <div className="flex items-center justify-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>

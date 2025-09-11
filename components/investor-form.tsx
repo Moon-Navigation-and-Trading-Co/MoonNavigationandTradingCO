@@ -21,9 +21,15 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
     const tt = useTranslations('Inland-forms')
     
     // State for additional contact fields
+<<<<<<< HEAD
     const [showAdditionalEmail, setShowAdditionalEmail] = useState(false);
     const [showAdditionalPhone, setShowAdditionalPhone] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
+=======
+    const [is_submitting, set_is_submitting] = useState(false);
+    const [show_additional_email, set_show_additional_email] = useState(false);
+    const [show_additional_phone, set_show_additional_phone] = useState(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
 
     // Define your Zod schema
     const formSchema = z.object({
@@ -96,12 +102,20 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
+<<<<<<< HEAD
         setIsSubmitting(true);
+=======
+        set_is_submitting(true);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
         try {
             console.log(values);
             await onSubmit(values);
         } finally {
+<<<<<<< HEAD
             setIsSubmitting(false);
+=======
+            set_is_submitting(false);
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
         }
     };
 
@@ -218,10 +232,10 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                             
                             {/* Add Additional Email Button - Under Email Field */}
                             <div className="mt-2">
-                                {!showAdditionalEmail && (
+                                {!show_additional_email && (
                                     <RequestQuoteButton
                                         variant="outline"
-                                        onClick={() => setShowAdditionalEmail(true)}
+                                        onClick={() => set_show_additional_email(true)}
                                         className="w-fit text-sm"
                                     >
                                         <Mail className="h-4 w-4 mr-2" />
@@ -247,10 +261,10 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                             
                             {/* Add Additional Phone Button - Under Phone Field */}
                             <div className="mt-2">
-                                {!showAdditionalPhone && (
+                                {!show_additional_phone && (
                                     <RequestQuoteButton
                                         variant="outline"
-                                        onClick={() => setShowAdditionalPhone(true)}
+                                        onClick={() => set_show_additional_phone(true)}
                                         className="w-fit text-sm"
                                     >
                                         <Phone className="h-4 w-4 mr-2" />
@@ -262,7 +276,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                     </div>
 
                     {/* Additional Email Expanded Section */}
-                    {showAdditionalEmail && (
+                    {show_additional_email && (
                         <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
                             <FormItem>
                                 <FormLabel>Additional Email Address</FormLabel>
@@ -281,7 +295,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                             
                             <RequestQuoteButton
                                 variant="secondary"
-                                onClick={() => setShowAdditionalEmail(false)}
+                                onClick={() => set_show_additional_email(false)}
                                 className="w-fit"
                             >
                                 Remove Additional Email
@@ -308,7 +322,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                     </div>
 
                     {/* Additional Phone Expanded Section */}
-                    {showAdditionalPhone && (
+                    {show_additional_phone && (
                         <div className="space-y-3 p-4 border border-gray-200 rounded-lg bg-gray-50">
                             <FormItem>
                                 <FormLabel>Additional Phone Number</FormLabel>
@@ -327,7 +341,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                             
                             <RequestQuoteButton
                                 variant="secondary"
-                                onClick={() => setShowAdditionalPhone(false)}
+                                onClick={() => set_show_additional_phone(false)}
                                 className="w-fit"
                             >
                                 Remove Additional Phone
@@ -795,8 +809,13 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                     </ul>
                 </div>
 
+<<<<<<< HEAD
                 <Button type="submit" className={`mt-8 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
                     {isSubmitting ? (
+=======
+                <Button type="submit" className={`mt-8 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+                    {is_submitting ? (
+>>>>>>> 05a2ef0da3174e92adbd6eacec14ae4f2819bab7
                         <div className="flex items-center justify-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
