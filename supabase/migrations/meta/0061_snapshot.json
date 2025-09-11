@@ -100,6 +100,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -237,6 +243,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -382,6 +394,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -513,6 +531,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -662,6 +686,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -736,6 +766,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -835,6 +871,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -966,6 +1008,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -1094,6 +1142,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -1195,6 +1249,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -1368,6 +1428,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -1484,6 +1550,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -1635,6 +1707,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -1803,6 +1881,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -1917,6 +2001,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -2084,6 +2174,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -2227,6 +2323,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -2407,6 +2509,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -2559,6 +2667,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -2708,6 +2822,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -2907,6 +3027,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -3035,6 +3161,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -3133,6 +3265,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -3228,6 +3366,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -3433,6 +3577,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -3560,6 +3710,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -3703,6 +3859,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -3795,6 +3957,12 @@
           "type": "jsonb",
           "primaryKey": false,
           "notNull": true
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -3960,6 +4128,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},
@@ -4087,6 +4261,12 @@
         },
         "additional_phone_number": {
           "name": "additional_phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "quotation_number": {
+          "name": "quotation_number",
           "type": "text",
           "primaryKey": false,
           "notNull": false
