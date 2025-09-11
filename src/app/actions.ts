@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-export const signUpAction = async (formData: FormData) => {
+export const sign_up_action = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
   const passwordReconfirm = formData.get("passwordReconfirm")?.toString();
@@ -67,7 +67,7 @@ export const signUpAction = async (formData: FormData) => {
   }
 };
 
-export const signInAction = async (formData: FormData) => {
+export const sign_in_action = async (formData: FormData) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const supabase = await createClient();
@@ -81,18 +81,12 @@ export const signInAction = async (formData: FormData) => {
   return redirect("/");
 };
 
-export const forgotPasswordAction = async (formData: FormData) => {
-  const email = formData.get("email")?.toString();
-  const callbackUrl = formData.get("callbackUrl")?.toString();
+export const forgot_password_action = async (formData: FormData) => {
+  const email = formData.get("email") as string;
   const supabase = await createClient();
-  const origin = (await headers()).get("origin") || process.env.NEXT_PUBLIC_SITE_URL;
-
-  if (!email) {
-    return encodedRedirect("error", "/forgot-password", "Email is required");
-  }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${origin}/protected/reset-password`,
+    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/reset-password`,
   });
 
   if (error) {
@@ -111,27 +105,15 @@ export const forgotPasswordAction = async (formData: FormData) => {
   );
 };
 
-export const resetPasswordAction = async (formData: FormData) => {
-  const supabase = await createClient();
-
+export const reset_password_action = async (formData: FormData) => {
   const password = formData.get("password") as string;
-  const confirmPassword = formData.get("confirmPassword") as string;
+  const passwordReconfirm = formData.get("passwordReconfirm") as string;
 
-  if (!password || !confirmPassword) {
-    return encodedRedirect(
-      "error",
-      "/protected/reset-password",
-      "Password and confirm password are required",
-    );
+  if (password !== passwordReconfirm) {
+    return redirect("/forgot-password?error=Passwords do not match");
   }
 
-  if (password !== confirmPassword) {
-    return encodedRedirect(
-      "error",
-      "/protected/reset-password",
-      "Passwords do not match",
-    );
-  }
+  const supabase = await createClient();
 
   const { error } = await supabase.auth.updateUser({
     password: password,
@@ -148,8 +130,8 @@ export const resetPasswordAction = async (formData: FormData) => {
   return encodedRedirect("success", "/protected/reset-password", "Password updated");
 };
 
-export const signOutAction = async () => {
+export const sign_out_action = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  return redirect("/sign-in");
+  redirect("/");
 };
