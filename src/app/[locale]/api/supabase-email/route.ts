@@ -1,14 +1,14 @@
 import nodemailer from 'nodemailer';
 
-import { generateFormEmailTemplate, convertFormDataToFields, getFormTypeDisplayName } from "@/utils/email/template-generator";
+import { generate_form_email_template, convert_form_data_to_fields, get_form_type_display_name } from "@/utils/email/template-generator";
 
 // Create HTML email template for form submissions using the new generator
 const createFormEmailTemplate = (formData: any, formType: string) => {
-  const fields = convertFormDataToFields(formData);
+  const fields = convert_form_data_to_fields(formData);
   
-  return generateFormEmailTemplate({
+  return generate_form_email_template({
     title: `New ${formType.replace(/_/g, " ").replace(/([A-Z])/g, " $1").trim().replace(/\b\w/g, (l: string) => l.toUpperCase())} Request - Moon Navigation and Trading Co.`,
-    formType: getFormTypeDisplayName(formType),
+    formType: get_form_type_display_name(formType),
     fields,
     additionalInfo: "We will contact you as soon as possible!"
   });

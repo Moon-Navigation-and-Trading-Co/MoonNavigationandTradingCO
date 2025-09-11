@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-import { generateFormEmailTemplate, convertFormDataToFields } from "@/utils/email/template-generator";
+import { generate_form_email_template, convert_form_data_to_fields } from "@/utils/email/template-generator";
 
 // Create transporter for CloudSmartly email server
 const createTransporter = () => {
@@ -32,9 +32,9 @@ export async function POST(req: Request) {
             formtype
         };
 
-        const fields = convertFormDataToFields(formData);
+        const fields = convert_form_data_to_fields(formData);
 
-        const emailContent = generateFormEmailTemplate({
+        const emailContent = generate_form_email_template({
             title: "Form Submitted Successfully!",
             formType: formtype,
             fields,
