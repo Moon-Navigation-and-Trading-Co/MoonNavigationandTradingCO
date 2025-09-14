@@ -15,7 +15,6 @@ import { useTranslations } from 'next-intl';
 const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     const t = useTranslations('Inland-errors')
     const [is_submitting, set_is_submitting] = useState(false);
-    const [is_submitting, set_is_submitting] = useState(false);    const formSchema = z.object({
         vessel: z.object({
             name: z.string().min(1, { message: t("Required") }),
             imo: z.string().min(1, { message: t("Required") }),
