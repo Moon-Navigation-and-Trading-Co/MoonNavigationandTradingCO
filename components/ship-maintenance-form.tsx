@@ -15,6 +15,8 @@ import { useTranslations } from 'next-intl';
 const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     const t = useTranslations('Inland-errors')
     const [is_submitting, set_is_submitting] = useState(false);
+
+    const formSchema = z.object({
         vessel: z.object({
             name: z.string().min(1, { message: t("Required") }),
             imo: z.string().min(1, { message: t("Required") }),
@@ -155,7 +157,13 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
     const watchedMaintenanceAtCurrentLocation = useWatch({ control: form.control, name: "required_services.maintenance_at_current_location" });
 
     const handleSubmit = async (values: any) => {
-    const [is_submitting, set_is_submitting] = useState(false);    };
+        set_is_submitting(true);
+        try {
+            await onSubmit(values);
+        } finally {
+            set_is_submitting(false);
+        }
+    };
 
     return (
         <Form {...form}>
@@ -926,7 +934,10 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
 
 
 
-    const [is_submitting, set_is_submitting] = useState(false);                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                <Button type="submit" className={`mt-8 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+                    {is_submitting ? (
+                        <div className="flex items-center justify-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
