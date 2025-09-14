@@ -81,7 +81,9 @@ interface LivestockTransportationFormProps {
 
 export default function LivestockTransportationForm({ onSubmit }: LivestockTransportationFormProps) {
   const t = useTranslations('Inland-forms');
-    const [is_submitting, set_is_submitting] = useState(false);  const form = useForm<FormData>({
+    const [is_submitting, set_is_submitting] = useState(false);
+  
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       routing: [{ from_country: '', from_port: '', to_country: '', to_port: '' }],

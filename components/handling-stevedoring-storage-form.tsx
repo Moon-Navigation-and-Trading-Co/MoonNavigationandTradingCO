@@ -127,7 +127,9 @@ interface Props {
 }
 
 export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
-    const [is_submitting, set_is_submitting] = useState(false);  const form = useForm<FormData>({
+    const [is_submitting, set_is_submitting] = useState(false);
+  
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       import_export: 'import',

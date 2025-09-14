@@ -76,7 +76,9 @@ interface CustomsClearanceFormProps {
 
 export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormProps) {
   const t = useTranslations('Inland-forms');
-    const [is_submitting, set_is_submitting] = useState(false);  const form = useForm<FormData>({
+    const [is_submitting, set_is_submitting] = useState(false);
+  
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       import_export: 'import',
