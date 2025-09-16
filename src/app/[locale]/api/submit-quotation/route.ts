@@ -119,15 +119,17 @@ export async function POST(request: Request) {
 
       // Send admin notification email
       const transporter = nodemailer.createTransport({
-        service: 'gmail',
+        host: process.env.SMTP_HOST || 'webmail.cloudsmartly.com',
+        port: parseInt(process.env.SMTP_PORT || '465'),
+        secure: process.env.SMTP_SECURE === 'true',
         auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASSWORD,
         },
       });
 
       await transporter.sendMail({
-        from: process.env.EMAIL_USER,
+        from: process.env.SMTP_USER,
         to: 'quotation@moon-navigation.com',
         subject: `New ${formType.replace(/_/g, " ").replace(/([A-Z])/g, " $1").trim().replace(/\b\w/g, (l: string) => l.toUpperCase())} Request - ${quotationNumber}`,
         html: adminEmailTemplate,
@@ -137,7 +139,7 @@ export async function POST(request: Request) {
       const customerEmail = formData.company_details?.company_email || formData.email || formData.companyEmail;
       if (customerEmail) {
         await transporter.sendMail({
-          from: process.env.EMAIL_USER,
+          from: process.env.SMTP_USER,
           to: customerEmail,
           subject: `Thank You for Your ${formType.replace(/_/g, " ").replace(/([A-Z])/g, " $1").trim().replace(/\b\w/g, (l: string) => l.toUpperCase())} Request - ${quotationNumber}`,
           html: confirmationEmailTemplate,
