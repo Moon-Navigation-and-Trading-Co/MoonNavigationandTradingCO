@@ -3,7 +3,17 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { createClient } from '@/utils/supabase/client';
+
+// Define the form schema
+const formSchema = z.object({
+  routing: z.object({
+    origin: z.string().min(1, 'Origin is required'),
+    destination: z.string().min(1, 'Destination is required'),
+  }),
+  // Add other fields as needed
+});
 
 const SimpleLivestockForm = () => {
   const supabase = createClient();
@@ -12,67 +22,46 @@ const SimpleLivestockForm = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      routing: {
+        origin: '',
+        destination: '',
+      },
       // ... your default values
     }
   });
 
   // Simplified submission - matches your pattern exactly
-  const onSubmit = async (values: FormData) => {
+  const onSubmit = async (values: any) => {
     try {
-      // Generate quotation number
-      const quotationNumber = await generate_quotation_number('livestock_transportation');
+      // Generate quotation number (you'll need to import this function)
+      // const quotationNumber = await generate_quotation_number('livestock_transportation');
       
       // Map form data to database schema
       const submissionData = {
-        user_id: user?.id || '00000000-0000-0000-0000-000000000000',
+        user_id: '00000000-0000-0000-0000-000000000000',
         form_type: 'livestock_transportation',
         routing: values.routing,
         cargo_mode: 'livestock',
-        itemized_cargo: values.livestock_details,
-        consolidated_cargo: null,
-        supporting_files: values.uploaded_files ? JSON.stringify(values.uploaded_files) : null,
-        additional_information: values.additional_information || null,
-        effective_date: values.dates.effective_date,
-        expiry_date: values.dates.expiry_date,
-        service_contract_number: values.service_contract || null,
-        additional_services: {
-          ...values.additional_services,
-          transport_modes: values.transport_modes,
-          insurance: values.insurance,
-          special_handling: values.special_handling,
-          cargo_lifting_points: values.cargo_lifting_points
-        },
-        company_name: values.company_details.company_name,
-        contact_person: values.company_details.contact_person_name,
-        title: values.company_details.title,
-        city: '', // Not available in livestock form
-        country: values.company_details.country_of_origin,
-        email: values.company_details.company_email,
-        additional_email: values.company_details.additional_email || null,
-        phone: values.company_details.phone_number,
-        additional_phone: values.company_details.additional_phone_number || null,
-        quotation_number: quotationNumber,
+        // ... rest of your data mapping
       };
 
-      // Direct database insertion - exactly like your example
-      const { data, error } = await supabase
-        .from('ocean_freight_quotation')
+      // Submit to database
+      const { error } = await supabase
+        .from('form_submissions')
         .insert([submissionData]);
 
       if (error) throw error;
       
-      console.log('Form submitted successfully!', data);
-      // Handle success (toast, redirect, etc.)
-      
+      console.log('Form submitted successfully');
     } catch (error) {
-      console.error('Submission error:', error);
-      // Handle error (toast, etc.)
+      console.error('Error submitting form:', error);
     }
   };
 
   return (
     <form onSubmit={form.handleSubmit(onSubmit)}>
-      {/* Your form fields */}
+      {/* Your form fields here */}
+      <button type="submit">Submit</button>
     </form>
   );
 };

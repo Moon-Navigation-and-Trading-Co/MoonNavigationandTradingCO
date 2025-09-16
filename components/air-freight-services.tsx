@@ -14,10 +14,9 @@ import TransportationMethodCard from './transportation-method-card';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import RecommendedServicesCard from './recommended-card';
-import DatesCard from './dates-card-variant-1.tsx';
+import DatesCard from './dates-card-variant-1';
 import ItemizedTable from './itemized-table';
 import ConsolidatedForm from './consolidated-form';
-import FileUpload from './file-upload';
 
 // Define the form schema
 const formSchema = z.object({
@@ -213,7 +212,9 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
         }
     });
 
-    const [is_submitting, set_is_submitting] = useState(false);        try {
+    const handleSubmit = async (values: FormData) => {
+        setIsSubmitting(true);
+        try {
             console.log(values);
             await onSubmit(values);
         } finally {
@@ -294,10 +295,31 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                 )}
 
                 {/* Supporting Files Section */}
-                <FileUpload 
-                    control={form.control} 
-                    isRequired={entryMode === 'consolidated'}
-                />
+                <div className="bg-white rounded-lg shadow-md p-6">
+                    <h2 className="text-xl font-semibold mb-4">Supporting Files</h2>
+                    <FormItem>
+                        <FormLabel>Upload Files {entryMode === 'consolidated' && <span className="text-red-500">*</span>}</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="supporting_files"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input
+                                            type="file"
+                                            multiple
+                                            accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            {...field}
+                                        />
+                                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                                    </>
+                                )}
+                            />
+                        </FormControl>
+                        <p className="text-xs text-gray-500 mt-1">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
+                    </FormItem>
+                </div>
 
                 {/* Commercial Terms */}
                 <div className="bg-white rounded-lg shadow-md p-6">
@@ -510,7 +532,8 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
-                </Button>            </form>
+                </Button>
+            </form>
         </Form>
     );
 };
