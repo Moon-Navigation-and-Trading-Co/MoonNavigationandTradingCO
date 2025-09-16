@@ -28,75 +28,70 @@ const FileUpload: React.FC<FileUploadProps> = ({ control, isRequired = false }) 
             const currentTotalSize = selectedFiles.reduce((total, file) => total + file.size, 0);
             const newFilesSize = newFiles.reduce((total, file) => total + file.size, 0);
             const combinedTotalSize = currentTotalSize + newFilesSize;
-            
-            // Check if total size exceeds limit
+
             if (combinedTotalSize > MAX_SIZE_BYTES) {
-                setError(`Total file size would exceed ${MAX_SIZE_MB}MB limit. Current: ${(currentTotalSize / 1024 / 1024).toFixed(2)}MB, Adding: ${(newFilesSize / 1024 / 1024).toFixed(2)}MB`);
+                setError(`Total file size cannot exceed ${MAX_SIZE_MB}MB`);
                 return;
             }
 
-            // Check individual file size (optional - you can remove this if you want)
-            const oversizedFiles = newFiles.filter(file => file.size > MAX_SIZE_BYTES);
-            if (oversizedFiles.length > 0) {
-                setError(`Some files exceed ${MAX_SIZE_MB}MB limit. Please select smaller files.`);
-                return;
-            }
-
-            // Clear any previous errors
-            setError('');
-            
-            // Add new files to existing selection
             const updatedFiles = [...selectedFiles, ...newFiles];
             setSelectedFiles(updatedFiles);
             setTotalSize(combinedTotalSize);
-            
-            // Convert files to a string representation for the form
-    const [is_submitting, set_is_submitting] = useState(false);    };
+            setError('');
 
-    const removeFile = (index: number) => {
-        const newFiles = selectedFiles.filter((_, i) => i !== index);
-        const newTotalSize = newFiles.reduce((total, file) => total + file.size, 0);
-        
-        setSelectedFiles(newFiles);
-        setTotalSize(newTotalSize);
-        setError('');
-        
-        // Update form value
-        const fileNames = newFiles.map(file => file.name).join(', ');
-        setValue('supporting_files', fileNames);
-    const [is_submitting, set_is_submitting] = useState(false);    };
-
-    const openFileDialog = () => {
-        setError(''); // Clear errors when opening dialog
-        fileInputRef.current?.click();
+            // Update form value
+            setValue('supporting_files', updatedFiles);
+        }
     };
 
-    const formatFileSize = (bytes: number) => {
-        return (bytes / 1024 / 1024).toFixed(2);
+    const removeFile = (index: number) => {
+        const updatedFiles = selectedFiles.filter((_, i) => i !== index);
+        const newTotalSize = updatedFiles.reduce((total, file) => total + file.size, 0);
+        
+        setSelectedFiles(updatedFiles);
+        setTotalSize(newTotalSize);
+        setError('');
+
+        // Update form value
+        setValue('supporting_files', updatedFiles);
+    };
+
+    const clearAllFiles = () => {
+        setSelectedFiles([]);
+        setTotalSize(0);
+        setError('');
+
+        // Update form value
+        setValue('supporting_files', []);
+    };
+
+    const formatFileSize = (bytes: number): string => {
+        return (bytes / (1024 * 1024)).toFixed(2);
+    };
+
+    const triggerFileInput = () => {
+        fileInputRef.current?.click();
     };
 
     return (
         <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4">Supporting Files</h2>
             <FormItem>
-                <FormLabel className="text-xl font-semibold mb-4">
-                    Supporting Files {!isRequired && "(Optional)"}
-                </FormLabel>
-                
+                <FormLabel>Upload Files {isRequired && <span className="text-red-500">*</span>}</FormLabel>
                 <FormControl>
                     <Controller
                         control={control}
                         name="supporting_files"
-                        render={({ fieldState: { error: fieldError } }) => (
+                        render={({ field, fieldState: { error: fieldError } }) => (
                             <div className="space-y-4">
-                                {/* File Upload Input */}
-                                <div className="flex items-center gap-2">
+                                <div className="flex items-center gap-4">
                                     <Button
                                         type="button"
                                         variant="outline"
-                                        onClick={openFileDialog}
+                                        onClick={triggerFileInput}
                                         className="px-4 py-2"
                                     >
-                                        Choose files
+                                        Choose Files
                                     </Button>
                                     {selectedFiles.length > 0 && (
                                         <Button

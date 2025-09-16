@@ -12,7 +12,6 @@ import CommoditiesCard from './commodities-card-variant-3';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import DatesCard from './dates-card';
-import { userInfo } from 'os';
 import { Textarea } from './ui/textarea';
 
 
@@ -21,7 +20,7 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
     // Get Content
     const t = useTranslations('Inland-errors')
     const [is_submitting, set_is_submitting] = useState(false);
-    const [is_submitting, set_is_submitting] = useState(false);    // Define your Zod schema (as before)
+    // Define your Zod schema (as before)
     const formSchema = z.object({
         routing: z.array(z.object({
             from: z.string().min(1, { message: t("From") }),
@@ -106,7 +105,15 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-    const [is_submitting, set_is_submitting] = useState(false);    };
+        set_is_submitting(true);
+        try {
+            await onSubmit(values);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        } finally {
+            set_is_submitting(false);
+        }
+    };
 
 
     const handleError = (errors: unknown) => {
@@ -194,11 +201,15 @@ const ProjectCargoServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-    const [is_submitting, set_is_submitting] = useState(false);                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                <Button type="submit" disabled={is_submitting} className="w-full">
+                    {is_submitting ? (
+                        <div className="flex items-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
-                </Button>            </form>
+                </Button>
+            </form>
         </Form>
     );
 };

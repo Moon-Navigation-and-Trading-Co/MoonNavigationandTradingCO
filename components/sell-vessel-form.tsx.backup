@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { Controller, useForm, FormProvider } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { number, z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
@@ -12,17 +12,19 @@ import { Textarea } from './ui/textarea';
 import CompanyDetailsCard from './company-details-card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 
+
+// 1. Define a type-safe form handler using z.infer
 const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+    // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
     const [is_submitting, set_is_submitting] = useState(false);
-
     const formSchema = z.object({
         container: z.object({
             type: z.string().min(1, { message: t("Type") }),
         }),
         date: z.string().min(1, { message: t("Date") }).refine(value => {
-            return !isNaN(Date.parse(value));
+            return !isNaN(Date.parse(value)); // Ensure valid date
         }, { message: t("InvalidDate") }),
         pick_up_location: z.string().min(1, { message: t("Required") }),
         drop_off_location: z.string().min(1, { message: t("Required") }),
@@ -30,7 +32,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
         duration_unit: z.enum(["days", "weeks", "months"]),
         detailed_location: z.string().optional(),
         trading_area: z.string().optional(),
-        required_specification: z.string().optional(),
+        required_specification: z.string().min(1, { message: t("Required") }),
         budget: z.number().optional(),
         additional_information: z.string().optional(),
         company_details: z.object({
@@ -43,6 +45,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
             additional_phone_number: z.string().optional(),
         })
+        // Add more sections as needed
     });
 
     const form = useForm({
@@ -70,26 +73,25 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                 additional_email: '',
                 phone_number: '',
                 additional_phone_number: ''
+
             }
         }
     });
 
+    // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-        set_is_submitting(true);
-        try {
-            await onSubmit(values);
-        } finally {
-            set_is_submitting(false);
-        }
-    };
+    const [is_submitting, set_is_submitting] = useState(false);    };
 
     return (
-        <FormProvider {...form}>
-            <Form {...form}>
+        <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+                {/* Routing Section */}
+                {/* <RoutingCard control={form.control} /> */}
+                {/* Vessel Details Section */}
                 <div>
                     <h2 className='text-lg mb-2 font-raleway font-medium'>{tt('vesselDetails')}</h2>
                     
+                    {/* Vessel Type and Size */}
                     <FormItem>
                         <FormLabel>{t('vesselTypeandSize')}</FormLabel>
                         <FormControl>
@@ -110,6 +112,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                         </FormControl>
                     </FormItem>
 
+                    {/* Rental Duration and Delivery Date */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                         <FormItem>
                             <FormLabel>Rental Duration</FormLabel>
@@ -178,6 +181,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                         </FormItem>
                     </div>
 
+                    {/* Pick-up and Drop-off Locations Section */}
                     <div className="mt-6">
                         <h3 className="text-lg font-raleway font-medium mb-4">Pick-up and Drop-off Locations</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -224,6 +228,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     </div>
                 </div>
 
+                {/* Detailed Location */}
                 <FormItem>
                     <FormLabel>Detailed Location (optional)</FormLabel>
                     <FormControl>
@@ -244,6 +249,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     </FormControl>
                 </FormItem>
 
+                {/* Trading Area */}
                 <FormItem>
                     <FormLabel>Trading Area:</FormLabel>
                     <p className='text-sm text-muted-foreground'>Please insert the trading area of the operation during rental period</p>
@@ -265,6 +271,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     </FormControl>
                 </FormItem>
 
+                {/* Required Specification */}
                 <FormItem>
                     <FormLabel>Required Specification <span className="text-sm text-gray-500">(optional)</span></FormLabel>
                     <p className='text-sm text-muted-foreground'>Share your required specifications for renting the vessel.</p>
@@ -287,19 +294,20 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     </FormControl>
                 </FormItem>
 
+
                 <FormItem>
-                    <FormLabel>Budget (USD) <span className="text-sm text-gray-500">(optional)</span></FormLabel>
-                    <p className='text-sm text-muted-foreground'>Share your budget in USD for renting the vessel, which can help determine the most suitable options.</p>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="budget"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        type="number"
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Budget in USD"
+                                            <FormLabel>Budget (USD) <span className="text-sm text-gray-500">(optional)</span></FormLabel>
+                        <p className='text-sm text-muted-foreground'>Share your budget in USD for renting the vessel, which can help determine the most suitable options.</p>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="budget"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input
+                                            type="number"
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            placeholder="Budget in USD"
                                         {...field}
                                         value={field.value || ''}
                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}
@@ -311,6 +319,12 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                     </FormControl>
                 </FormItem>
 
+
+
+
+
+
+                {/* Additional Service or Amenities */}
                 <div>
                     <FormLabel htmlFor="additional_information">
                         Additional Service or Amenities
@@ -337,16 +351,12 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                 </div>
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
-                    {is_submitting ? (
-                        <div className="flex items-center justify-center gap-2">
-                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+    const [is_submitting, set_is_submitting] = useState(false);                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
                 </Button>            </form>
-            </Form>
-        </FormProvider>
+        </Form>
     );
 };
 

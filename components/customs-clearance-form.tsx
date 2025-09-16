@@ -76,7 +76,8 @@ interface CustomsClearanceFormProps {
 
 export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormProps) {
   const t = useTranslations('Inland-forms');
-    const [is_submitting, set_is_submitting] = useState(false);
+  const [is_submitting, set_is_submitting] = useState(false);
+  const [uploaded_files, set_uploaded_files] = useState<File[]>([]);
   
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -117,12 +118,19 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
     },
   });
 
-    const [is_submitting, set_is_submitting] = useState(false);      if (onSubmit) {
+  const handleSubmit = async (values: FormData) => {
+    set_is_submitting(true);
+    try {
+      if (onSubmit) {
         await onSubmit(values);
       }
       console.log("Customs Clearance Form Data:", values);
+    } catch (error) {
+      console.error('Error submitting form:', error);
     } finally {
-    const [is_submitting, set_is_submitting] = useState(false);  };
+      set_is_submitting(false);
+    }
+  };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(event.target.files || []);
@@ -174,7 +182,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           </div>
 
           {/* Port/Airport - Show only if NOT transit */}
-          {watchClearanceType !== "export" && (
+          {form.watch("import_export") !== "export" && (
             <div className="mb-6">
               <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
                 Port / Airport:
@@ -199,7 +207,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           )}
 
           {/* Transit Locations - Show only if transit is selected */}
-          {watchClearanceType === "export" && (
+          {form.watch("import_export") === "export" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
                 <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
@@ -369,7 +377,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           </div>
 
           {/* UN Number & Class - Show only if dangerous is checked */}
-          {watchIsDangerous && (
+          {form.watch("is_dangerous") && (
             <div>
               <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
                 UN Number & Class:
@@ -426,7 +434,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           </FormControl>
 
           {/* Sea-specific options */}
-          {watchShipmentMode === "sea" && (
+          {form.watch("shipment_mode") === "sea" && (
             <div className="space-y-6 mt-6">
               <div>
                 <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
@@ -461,7 +469,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
               </div>
 
               {/* FCL-specific options */}
-              {watchContainerType === "fcl" && (
+              {form.watch("container_type") === "fcl" && (
                 <div className="space-y-4">
                   <div>
                     <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
@@ -586,7 +594,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                 </div>
 
                 {/* Volume for LCL, or non-containerized */}
-                {(watchContainerType === "lcl" || watchContainerType === "non-containerized") && (
+                {(form.watch("container_type") === "lcl" || form.watch("container_type") === "non-containerized") && (
                   <div>
                     <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
                       Total Volume (CBM):
@@ -617,7 +625,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           )}
 
           {/* Inland-specific options */}
-          {watchShipmentMode === "inland" && (
+          {form.watch("shipment_mode") === "inland" && (
             <div className="space-y-4 mt-6">
               <div>
                 <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
@@ -705,7 +713,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           )}
 
           {/* Air-specific options */}
-          {watchShipmentMode === "air" && (
+          {form.watch("shipment_mode") === "air" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
               <div>
                 <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
@@ -908,14 +916,19 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           </FormItem>
         </div>
         <CompanyDetailsCard control={form.control} />
+        
         {/* Submit Button */}
         <div className="text-center">
-    const [is_submitting, set_is_submitting] = useState(false);                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+          <Button type="submit" disabled={is_submitting} className="w-full">
+            {is_submitting ? (
+              <div className="flex items-center gap-2">
+                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>
               </div>
             ) : "Submit"}
-          </Button>        </div>
+          </Button>
+        </div>
       </form>
     </Form>
   );
-} 
+}; 

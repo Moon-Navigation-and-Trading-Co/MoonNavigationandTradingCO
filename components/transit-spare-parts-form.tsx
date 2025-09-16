@@ -40,33 +40,37 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
     // Define your Zod schema (as before)
     const formSchema = z.object({
         port: z.object({
-            name: z.string().min(1, { message: t("CompanyName") }),
+            name: z.string().min(1, { message: t("Required") }),
         }),
         vessel: z.object({
-            name: z.string().min(1, { message: t("CompanyName") }),
-            imo: z.number().min(0, { message: t("CompanyName") }),
+            name: z.string().min(1, { message: t("Required") }),
+            imo: z.coerce.number().min(1, { message: t("Required") }),
+            type: z.string().min(1, { message: t("Required") }),
+            flag: z.string().min(1, { message: t("Required") }),
+            ship_gross_tonnage: z.string().min(1, { message: t("Required") }),
+            ship_net_tonnage: z.string().min(1, { message: t("Required") }),
+            deadweight: z.string().min(1, { message: t("Required") }),
+            draft: z.string().min(1, { message: t("Required") }),
+            length: z.coerce.number().min(1, { message: t("Required") }),
             location: z.enum(['at_anchor', 'at_berth', 'suez_canal_passage']).optional(),
-            flag: z.string().optional(),
             port_of_crew_change: z.string().optional(),
             eta: z.string().optional(),
             etd: z.string().optional(),
             airport_pickup: z.string().optional(),
             special_requests: z.string().optional(),
             supporting_files: z.any().optional(),
-            request: z.string().min(1, { message: t("CompanyName") }),
         }),
         spare_parts: z.array(sparePartSchema).optional(),
         company_details: z.object({
-            company_name: z.string().min(1, { message: t("CompanyName") }),
+            company_name: z.string().min(1, { message: t("Required") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
             title: z.string().min(1, { message: t("Title") }),
             country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
             company_email: z.string().email({ message: t("CompanyEmail") }),
-            additional_email: z.string().email({ message: t("CompanyEmail") }).optional(),
+            additional_email: z.string().email().optional().or(z.literal('')),
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
-            additional_phone_number: z.string().min(1, { message: t("PhoneNumber") }).optional(),
+            additional_phone_number: z.string().optional(),
         })
-        // Add more sections as needed
     });
 
     type FormData = z.infer<typeof formSchema>;

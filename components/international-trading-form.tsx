@@ -14,15 +14,12 @@ import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import TransportationMethodCard from '@/components/transportation-method-card-variant-1';
 
-
-
 // 1. Define a type-safe form handler using z.infer
 const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
     const [is_submitting, set_is_submitting] = useState(false);
-    const [is_submitting, set_is_submitting] = useState(false);    // Define your Zod schema (as before)
     const formSchema = z.object({
         routing: z.object({
             origin_type: z.enum(["egypt", "other"]),
@@ -64,18 +61,50 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
     const form = useForm<FormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-
-
+            routing: {
+                origin_type: "egypt",
+                origin_other: "",
+                destination: "",
+                incoterm: "",
+            },
+            transportation: {
+                method: "sea",
+            },
+            commodities: {
+                type: "",
+                quantity: 1,
+                supporting_files: [],
+                additional_commodities: [],
+                additional_requirements: "",
+            },
+            company_details: {
+                company_name: "",
+                contact_person_name: "",
+                title: "",
+                country_of_origin: "",
+                company_email: "",
+                additional_email: "",
+                phone_number: "",
+                additional_phone_number: "",
+            }
         }
     });
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-    const [is_submitting, set_is_submitting] = useState(false);    };
+        set_is_submitting(true);
+        try {
+            await onSubmit(values);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        } finally {
+            set_is_submitting(false);
+        }
+    };
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-">
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
@@ -87,13 +116,15 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
-                {/* <div className='mt-12 w-[200px]'> */}
-    const [is_submitting, set_is_submitting] = useState(false);                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                
+                <Button type="submit" disabled={is_submitting} className="w-full">
+                    {is_submitting ? (
+                        <div className="flex items-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
-                </Button>                {/* </div> */}
-
+                </Button>
             </form>
         </Form>
     );

@@ -1,5 +1,6 @@
 "use client"
-import Spinner from "@/components/spinner";import React from 'react';
+import Spinner from "@/components/spinner";
+import React from 'react';
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from 'zod';
@@ -12,7 +13,6 @@ import CommoditiesCard from './commodities-card-variant-3';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import PDAdetails from './pda-details-card';
-import { userInfo } from 'os';
 import { Separator } from '@radix-ui/react-dropdown-menu';
 
 
@@ -26,32 +26,32 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?
         port: z.object({
             name: z.string().min(1, { message: t("Required") }),
         }),
-                    vessel: z.object({
-                name: z.string().min(1, { message: t("Required") }),
-                imo: z.coerce.number().min(1, { message: t("Required") }),
-                type: z.string().min(1, { message: t("Required") }),
-                flag: z.string().min(1, { message: t("Required") }),
-                ship_gross_tonnage: z.string().min(1, { message: t("Required") }),
-                ship_net_tonnage: z.string().min(1, { message: t("Required") }),
-                deadweight: z.string().min(1, { message: t("Required") }),
-                draft: z.string().min(1, { message: t("Required") }),
-                length: z.coerce.number().min(1, { message: t("Required") }),
-            call_for_commercial: z.boolean().optional().default(false),
-            call_for_maintenance: z.boolean().optional().default(false),
-            call_for_other: z.boolean().optional().default(false),
-            other_purpose_details: z.string().optional(),
-                            total_discharged_cargo: z.coerce.number().min(1, { message: t("Required") }),
-                discharged_cargo_type: z.string().optional(),
-                discharged_dangerous_cargo: z.boolean().optional().default(false),
-                total_days_needed_for_discharging: z.coerce.number().min(1, { message: t("Required") }),
-                total_loaded_cargo: z.coerce.number().min(1, { message: t("Required") }),
-                loaded_cargo_type: z.string().optional(),
-                loaded_dangerous_cargo: z.boolean().optional().default(false),
-                total_days_needed_for_loading: z.coerce.number().min(1, { message: t("Required") }),
-                eta_expected_date: z.string().optional(),
-                total_expected_berthing_days: z.coerce.number().min(1, { message: t("Required") }),
-                total_expected_anchor_days: z.coerce.number().min(1, { message: t("Required") }),
+        vessel: z.object({
+            name: z.string().min(1, { message: t("Required") }),
+            imo: z.coerce.number().min(1, { message: t("Required") }),
+            type: z.string().min(1, { message: t("Required") }),
+            flag: z.string().min(1, { message: t("Required") }),
+            ship_gross_tonnage: z.string().min(1, { message: t("Required") }),
+            ship_net_tonnage: z.string().min(1, { message: t("Required") }),
+            deadweight: z.string().min(1, { message: t("Required") }),
+            draft: z.string().min(1, { message: t("Required") }),
+            length: z.coerce.number().min(1, { message: t("Required") }),
         }),
+        call_for_commercial: z.boolean().optional().default(false),
+        call_for_maintenance: z.boolean().optional().default(false),
+        call_for_other: z.boolean().optional().default(false),
+        other_purpose_details: z.string().optional(),
+        total_discharged_cargo: z.coerce.number().min(1, { message: t("Required") }),
+        discharged_cargo_type: z.string().optional(),
+        discharged_dangerous_cargo: z.boolean().optional().default(false),
+        total_days_needed_for_discharging: z.coerce.number().min(1, { message: t("Required") }),
+        total_loaded_cargo: z.coerce.number().min(1, { message: t("Required") }),
+        loaded_cargo_type: z.string().optional(),
+        loaded_dangerous_cargo: z.boolean().optional().default(false),
+        total_days_needed_for_loading: z.coerce.number().min(1, { message: t("Required") }),
+        eta_expected_date: z.string().optional(),
+        total_expected_berthing_days: z.coerce.number().min(1, { message: t("Required") }),
+        total_expected_anchor_days: z.coerce.number().min(1, { message: t("Required") }),
         services: z.object({
             bunkering: z.object({
                 mgo: z.boolean().default(false),

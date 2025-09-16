@@ -20,7 +20,6 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     // Get Content
     const t = useTranslations('Inland-errors')
     const [is_submitting, set_is_submitting] = useState(false);
-    const [is_submitting, set_is_submitting] = useState(false);    // Define your Zod schema (as before)
     const formSchema = z.object({
         location: z.array(z.object({
             locationCountry: z.string().min(1, { message: "Country is required" }),
@@ -155,7 +154,15 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-    const [is_submitting, set_is_submitting] = useState(false);    };
+        set_is_submitting(true);
+        try {
+            await onSubmit(values);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        } finally {
+            set_is_submitting(false);
+        }
+    };
 
     return (
         <Form {...form}>
@@ -608,11 +615,15 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-    const [is_submitting, set_is_submitting] = useState(false);                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                <Button type="submit" disabled={is_submitting} className="w-full">
+                    {is_submitting ? (
+                        <div className="flex items-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
-                </Button>            </form>
+                </Button>
+            </form>
         </Form>
     );
 };

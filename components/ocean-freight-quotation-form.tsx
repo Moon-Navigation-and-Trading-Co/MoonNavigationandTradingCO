@@ -15,7 +15,6 @@ import { useTranslations } from 'next-intl';
 import { Plus, Minus, Calculator, FileText, Package, Truck, Ship, Warehouse, Shield, Eye, Wrench, Route, Mail, Phone } from 'lucide-react';
 import ItemizedTable from './itemized-table';
 import ConsolidatedForm from './consolidated-form';
-import FileUpload from './file-upload';
 import { PhoneInput } from '@/components/phone-input';
 import { SearchableCountrySelect } from './searchable-country-select';
 import CompanyDetailsCard from './company-details-card';
@@ -206,9 +205,6 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
     }
   });
 
-
-
-
   const handleSubmit = (values: FormData) => {
     console.log("Form submitted:", values);
     onSubmit(values);
@@ -259,10 +255,31 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
         </div>
 
         {/* Supporting Files */}
-        <FileUpload 
-                  control={form.control}
-          isRequired={cargoMode === 'consolidated'}
-                />
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold mb-4">Supporting Files</h2>
+          <FormItem>
+            <FormLabel>Upload Files {cargoMode === 'consolidated' && <span className="text-red-500">*</span>}</FormLabel>
+            <FormControl>
+              <Controller
+                control={form.control}
+                name="supporting_files"
+                render={({ field, fieldState: { error } }) => (
+                  <>
+                    <Input
+                      type="file"
+                      multiple
+                      accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                      className="max-w-[300px] border-2 rounded-xl"
+                      {...field}
+                    />
+                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                  </>
+                )}
+              />
+            </FormControl>
+            <p className="text-xs text-gray-500 mt-1">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
+          </FormItem>
+        </div>
 
         {/* Additional Information */}
         <div className="">

@@ -461,17 +461,16 @@ const VesselRentalQuotationForm: React.FC<VesselRentalQuotationFormProps> = ({
           <div className="flex justify-end pt-6">
             <Button 
               type="submit" 
-              size="lg"
               disabled={is_submitting || isSubmitting}
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl"
             >
               {(is_submitting || isSubmitting) ? (
                 <>
                   <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                  Submitting...
+                  <span>Submitting...</span>
                 </>
               ) : (
-                'Submit Vessel Rental Quotation'
+                "Submit"
               )}
             </Button>
           </div>

@@ -21,7 +21,8 @@ const OutGaugeCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
     // Get Content
     const t = useTranslations('Inland-errors')
     const [is_submitting, set_is_submitting] = useState(false);
-    const [is_submitting, set_is_submitting] = useState(false);    // Define your Zod schema (as before)
+    
+    // Define your Zod schema (as before)
     const formSchema = z.object({
         routing: z.array(z.object({
             from: z.string().min(1, { message: t("From") }),
@@ -130,7 +131,15 @@ const OutGaugeCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-    const [is_submitting, set_is_submitting] = useState(false);    };
+        set_is_submitting(true);
+        try {
+            await onSubmit(values);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        } finally {
+            set_is_submitting(false);
+        }
+    };
 
     return (
         <Form {...form}>
@@ -138,65 +147,21 @@ const OutGaugeCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                 {/* Routing Section */}
                 <RoutingCard control={form.control} />
 
-
-
                 {/* Commodities Section */}
                 <CommoditiesCard control={form.control} />
-
-                {/* Dates */}
-                <DatesCard control={form.control} />
-
-                {/* Service Contract */}
-                <FormItem>
-                    <FormLabel>{t('service-contract')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="service_contract"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Insert additional services needed"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
-
-                {/* Value Added Service */}
-                <FormItem>
-                    <FormLabel>{t('value-added-service')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="vad.inland_container"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Insert additional services needed"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
-
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-    const [is_submitting, set_is_submitting] = useState(false);                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                <Button type="submit" disabled={is_submitting} className="w-full">
+                    {is_submitting ? (
+                        <div className="flex items-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
-                </Button>            </form>
+                </Button>
+            </form>
         </Form>
     );
 };
