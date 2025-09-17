@@ -113,7 +113,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
         additional_requirements: '',
       },
       insurance: {
-        required: undefined,
+        required: "no",
         coverage_details: '',
       },
       company_details: {

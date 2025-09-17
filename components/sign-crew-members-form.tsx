@@ -111,13 +111,13 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                     rank: '', 
                     nationality: '', 
                     airport_pickup: 'yes',
-                    hotel_accommodation: undefined 
+                    hotel_accommodation: 'no'
                 }],
                 sign_off_members: [],
                 special_requests_on: '',
                 special_requests_off: '',
                 special_instructions: '',
-                supporting_files: undefined,
+                supporting_files: [],
             },
         }
     });
@@ -143,7 +143,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                 rank: '', 
                 nationality: '', 
                 airport_pickup: 'yes',
-                hotel_accommodation: undefined 
+                hotel_accommodation: 'no'
             });
         }
     }, [watchSignOff, signOffFields.length, appendSignOff]);
@@ -345,7 +345,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                                     rank: '', 
                                     nationality: '', 
                                     airport_pickup: 'yes',
-                                    hotel_accommodation: undefined 
+                                    hotel_accommodation: 'no'
                                 })}
                                 className="flex items-center gap-2"
                             >
@@ -512,7 +512,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                                     rank: '', 
                                     nationality: '', 
                                     airport_pickup: 'yes',
-                                    hotel_accommodation: undefined 
+                                    hotel_accommodation: 'no'
                                 })}
                                 className="flex items-center gap-2"
                             >
@@ -597,7 +597,8 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                         <span>Submitting...</span>
                       </div>
                     ) : "Submit"}
-                </Button>            </form>
+                </Button>
+            </form>
         </Form>
     );
 };

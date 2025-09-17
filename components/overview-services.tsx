@@ -19,26 +19,22 @@ export default function OverviewServicesTabs({
     <div className="w-full max-w-7xl mx-auto mt-[50px]">
       <div className="flex border-b border-border mb-8">
         <button
-          className={
-            `${tabClasses} ${
-              selected === "overview"
-                ? "border-primary text-primary"
-                : "border-transparent text-foreground/70 hover:text-primary"
-            }`
-          }
+          className={`${tabClasses} ${
+            selected === "overview"
+              ? "border-primary text-primary"
+              : "border-transparent text-foreground/70 hover:text-primary"
+          }`}
           onClick={() => setSelected("overview")}
           type="button"
         >
           Overview
         </button>
         <button
-          className={
-            `${tabClasses} ${
-              selected === "services"
-                ? "border-primary text-primary"
-                : "border-transparent text-foreground/70 hover:text-primary"
-            }`
-          }
+          className={`${tabClasses} ${
+            selected === "services"
+              ? "border-primary text-primary"
+              : "border-transparent text-foreground/70 hover:text-primary"
+          }`}
           onClick={() => setSelected("services")}
           type="button"
         >

@@ -1014,7 +1014,8 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                         <span>Submitting...</span>
                       </div>
                     ) : "Submit"}
-                </Button>            </form>
+                </Button>
+            </form>
         </Form>
     );
 };

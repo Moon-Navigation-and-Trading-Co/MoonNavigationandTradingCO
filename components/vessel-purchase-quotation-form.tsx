@@ -66,7 +66,7 @@ const VesselPurchaseQuotationForm: React.FC<VesselPurchaseQuotationFormProps> = 
       pick_up_location: '',
       detailed_location: '',
       required_specifications: '',
-      budget: undefined,
+      budget: 0,
       additional_information: '',
       company_details: {
         company_name: '',

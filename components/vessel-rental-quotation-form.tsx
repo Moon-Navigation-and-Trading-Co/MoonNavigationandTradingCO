@@ -75,7 +75,7 @@ const VesselRentalQuotationForm: React.FC<VesselRentalQuotationFormProps> = ({
       detailed_location: '',
       trading_area: '',
       required_specifications: '',
-      budget: undefined,
+      budget: 0,
       additional_information: '',
       company_details: {
         company_name: '',

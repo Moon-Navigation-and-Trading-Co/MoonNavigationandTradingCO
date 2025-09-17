@@ -153,8 +153,8 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
         class: '',
         remarks: '',
         temperature_control: false,
-        temperature_min: undefined,
-        temperature_max: undefined,
+        temperature_min: 0,
+        temperature_max: 0,
       }],
       consolidated_data: {
         commodity_types: '',
@@ -171,8 +171,8 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
         packaging_type_other: '',
         stackable: false,
         temperature_control: false,
-        temperature_min: undefined,
-        temperature_max: undefined,
+        temperature_min: 0,
+        temperature_max: 0,
         special_handling: '',
       },
       supporting_files: '',
@@ -561,7 +561,8 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
               <span>Submitting...</span>
             </div>
           ) : "Submit"}
-        </Button>      </form>
+        </Button>
+      </form>
     </Form>
   );
 };

@@ -69,8 +69,7 @@ export default function FormTabs({ tabData, formTitle }: FormTabsProps) {
                             className={`flex-1 px-1 py-3 text-xs sm:text-sm rounded-t-xl font-light transition-colors focus:outline-none font-raleway text-center flex items-center justify-center ${activeTab === tab.id
                                 ? "text-primary"
                                 : "text-foreground bg-secondary hover:bg-blue-50 dark:hover:bg-[#171b21]"
-                                } ${index === 0 ? "rounded-tl-2xl" : ""} ${index === tabData.length - 1 ? "rounded-tr-2xl" : ""
-                                }`}
+                                } ${index === 0 ? "rounded-tl-2xl" : ""} ${index === tabData.length - 1 ? "rounded-tr-2xl" : ""}`}
                         >
                             {tab.title}
                         </button>

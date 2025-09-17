@@ -291,7 +291,8 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
-                </Button>            </form>
+                </Button>
+            </form>
             </Form>
         </FormProvider>
     );

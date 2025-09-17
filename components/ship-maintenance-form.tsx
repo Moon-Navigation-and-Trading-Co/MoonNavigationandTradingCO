@@ -941,7 +941,8 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                             <span>Submitting...</span>
                         </div>
                     ) : "Submit"}
-                </Button>            </form>
+                </Button>
+            </form>
         </Form>
     );
 };
