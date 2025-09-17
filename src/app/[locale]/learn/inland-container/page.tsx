@@ -168,7 +168,7 @@ export default function InlandContainerPage() {
           <div className="flex flex-wrap gap-4 justify-center mb-16">
             <button 
               onClick={() => scrollToSection("road")}
-              className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
+              className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
                 activeSection === "road" 
                   ? "bg-blue-600 text-white shadow-xl" 
                   : "bg-white text-gray-700 hover:bg-blue-50 border border-gray-200 hover:border-blue-300"
@@ -178,7 +178,7 @@ export default function InlandContainerPage() {
             </button>
             <button 
               onClick={() => scrollToSection("rail")}
-              className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
+              className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
                 activeSection === "rail" 
                   ? "bg-blue-600 text-white shadow-xl" 
                   : "bg-white text-gray-700 hover:bg-blue-50 border border-gray-200 hover:border-blue-300"
@@ -188,7 +188,7 @@ export default function InlandContainerPage() {
             </button>
             <button 
               onClick={() => scrollToSection("multimodal")}
-              className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
+              className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
                 activeSection === "multimodal" 
                   ? "bg-blue-600 text-white shadow-xl" 
                   : "bg-white text-gray-700 hover:bg-blue-50 border border-gray-200 hover:border-blue-300"
@@ -198,7 +198,7 @@ export default function InlandContainerPage() {
             </button>
             <button 
               onClick={() => scrollToSection("specialized")}
-              className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
+              className={`inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
                 activeSection === "specialized" 
                   ? "bg-blue-600 text-white shadow-xl" 
                   : "bg-white text-gray-700 hover:bg-blue-50 border border-gray-200 hover:border-blue-300"
