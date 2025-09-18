@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 import Spinner from '@/components/spinner';
 import { sendFormEmail } from '@/utils/email-helper';
 import FAQSearch from '@/components/faq';
+import { generate_quotation_number } from '@/utils/quotation/generator';
 
 const Page: React.FC = () => {
     const t = useTranslations('forms');
@@ -67,7 +68,8 @@ const Page: React.FC = () => {
                 company_email: formData.company_details.company_email,
                 additional_email: formData.company_details.additional_email,
                 phone_number: formData.company_details.phone_number,
-                additional_phone_number: formData.company_details.additional_phone_number
+                additional_phone_number: formData.company_details.additional_phone_number,
+                quotation_number: await generate_quotation_number(formType)
             };
         } else if (formType === "container_inland_services") {
 
@@ -84,13 +86,12 @@ const Page: React.FC = () => {
                 company_email: formData.company_details.company_email,
                 additional_email: formData.company_details.additional_email,
                 phone_number: formData.company_details.phone_number,
-                additional_phone_number: formData.company_details.additional_phone_number
+                additional_phone_number: formData.company_details.additional_phone_number,
+                quotation_number: await generate_quotation_number(formType)
             };
         } else {
             return console.log("form type is missing");
         }
-
-
 
         console.log(flattenedData)
 

@@ -23,7 +23,10 @@ const FORM_ABBREVIATIONS: Record<string, string> = {
   'ocean_freight_quotation': 'OFQ',
   'investor_form': 'IF',
   'schedule_meeting': 'SM',
-  'contact_form': 'CF'
+  'contact_form': 'CF',
+  'international_inland_services': 'IIS',
+  'local_inland_services': 'LIS',
+  'container_inland_services': 'CIS'
 };
 
 /**
@@ -43,24 +46,45 @@ export async function generate_quotation_number(formType: string): Promise<strin
       .from('quotation_numbers')
       .select('current_count')
       .eq('form_type', formType)
-      .single();
+      .maybeSingle();
     
-    let currentCount = 0; // Start from 0 so first number is 11900
+    // Check if we got an RLS error (401 Unauthorized)
+    if (countError && (countError.code === '42501' || countError.message?.includes('row-level security'))) {
+      console.warn('RLS policy blocks access to quotation_numbers table; falling back to timestamp.');
+      const timestamp = Date.now().toString().slice(-6);
+      return `${abbreviation}11900${timestamp}`;
+    }
     
-    if (countError) {
-      // If no record exists, create one
-      const { error: insertError } = await supabase
+    let currentCount = countData?.current_count ?? 0; // Start from 0 so first number is 11900
+    
+    if (!countData && !countError) {
+      // No row exists; create one via upsert
+      const { data: inserted, error: insertError } = await supabase
         .from('quotation_numbers')
-        .insert({
+        .upsert({
           form_type: formType,
           current_count: 0
-        });
-      
-      if (insertError) {
-        console.error('Error creating quotation count record:', insertError);
+        }, { onConflict: 'form_type' })
+        .select('current_count')
+        .single();
+        
+      // Check for RLS error on insert
+      if (insertError && (insertError.code === '42501' || insertError.message?.includes('row-level security'))) {
+        console.warn('RLS policy blocks insert to quotation_numbers table; falling back to timestamp.');
+        const timestamp = Date.now().toString().slice(-6);
+        return `${abbreviation}11900${timestamp}`;
       }
-    } else {
-      currentCount = countData?.current_count || 0;
+        
+      if (insertError) {
+        console.warn('Quotation counter upsert failed; falling back to timestamp.', {
+          code: insertError?.code,
+          message: insertError?.message,
+          details: insertError?.details
+        });
+        const timestamp = Date.now().toString().slice(-6);
+        return `${abbreviation}11900${timestamp}`;
+      }
+      currentCount = inserted?.current_count ?? 0;
     }
     
     // Increment the count
@@ -70,10 +94,25 @@ export async function generate_quotation_number(formType: string): Promise<strin
     const { error: updateError } = await supabase
       .from('quotation_numbers')
       .update({ current_count: newCount })
-      .eq('form_type', formType);
+      .eq('form_type', formType)
+      .select('current_count')
+      .single();
+    
+    // Check for RLS error on update
+    if (updateError && (updateError.code === '42501' || updateError.message?.includes('row-level security'))) {
+      console.warn('RLS policy blocks update to quotation_numbers table; falling back to timestamp.');
+      const timestamp = Date.now().toString().slice(-6);
+      return `${abbreviation}11900${timestamp}`;
+    }
     
     if (updateError) {
-      console.error('Error updating quotation count:', updateError);
+      console.warn('Quotation counter update failed; falling back to timestamp.', {
+        code: updateError?.code,
+        message: updateError?.message,
+        details: updateError?.details
+      });
+      const timestamp = Date.now().toString().slice(-6);
+      return `${abbreviation}11900${timestamp}`;
     }
     
     // Generate the quotation number
