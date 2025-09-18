@@ -121,14 +121,14 @@ export default function CustomsClearanceFormsPage() {
         cargo_other_document: formData.cargoOtherDocument,
         cargo_other_document_description: formData.cargoOtherDocumentDescription,
         supporting_files: formData.supportingFiles ? JSON.stringify(formData.supportingFiles) : null,
-        company_name: formData.companyDetails?.company_name,
-        contact_person_name: formData.companyDetails?.contact_person_name,
-        title: formData.companyDetails?.title,
-        country_of_origin: formData.companyDetails?.country_of_origin,
-        company_email: formData.companyDetails?.company_email,
-        additional_email: formData.companyDetails?.additional_email,
-        phone_number: formData.companyDetails?.phone_number,
-        additional_phone_number: formData.companyDetails?.additional_phone_number,
+        company_name: formData.company_details?.company_name,
+        contact_person_name: formData.company_details?.contact_person_name,
+        title: formData.company_details?.title,
+        country_of_origin: formData.company_details?.country_of_origin,
+        company_email: formData.company_details?.company_email,
+        additional_email: formData.company_details?.additional_email,
+        phone_number: formData.company_details?.phone_number,
+        additional_phone_number: formData.company_details?.additional_phone_number,
         quotation_number: await generate_quotation_number("customs_clearance")
       };
 

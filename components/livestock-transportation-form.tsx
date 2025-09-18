@@ -1,47 +1,87 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { Controller, useForm, useFieldArray } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from 'zod';
-import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
+import { Form, FormItem, FormLabel, FormControl, FormMessage, FormDescription } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import { Textarea } from './ui/textarea';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { useTranslations } from 'next-intl';
-import { Plus, Upload, Trash2, Mail, Phone } from 'lucide-react';
+import { Plus, Upload, Trash2, Mail, Phone, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { PhoneInput } from '@/components/phone-input';
 import { SearchableCountrySelect } from './searchable-country-select';
 import CompanyDetailsCard from './company-details-card';
 import RoutingCard0 from './routing-card-0';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { toast } from '@/hooks/use-toast';
 
-// Define the form schema
+// Enhanced form schema with comprehensive validation (matching air freight standards)
 const formSchema = z.object({
   routing: z.array(z.object({
-    from_country: z.string().min(1, { message: "From country is required" }),
-    from_port: z.string().min(1, { message: "From port/area is required" }),
-    to_country: z.string().min(1, { message: "To country is required" }),
-    to_port: z.string().min(1, { message: "To port/area is required" }),
-  })),
+    from_country: z.string().min(1, { message: "Origin country is required for proper routing" }),
+    from_port: z.string().min(1, { message: "Origin port/area is required for accurate logistics planning" }),
+    to_country: z.string().min(1, { message: "Destination country is required for customs and regulations" }),
+    to_port: z.string().min(1, { message: "Destination port/area is required for final delivery" }),
+  })).min(1, { message: "At least one routing entry is required" }),
+  
   dates: z.object({
-    effective_date: z.string().min(1, { message: "Effective date is required" }),
-    expiry_date: z.string().min(1, { message: "Expiry date is required" }),
+    effective_date: z.string().min(1, { message: "Effective date is required for service planning" })
+      .refine((date) => {
+        const selectedDate = new Date(date);
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        return selectedDate >= today;
+      }, { message: "Effective date cannot be in the past" }),
+    expiry_date: z.string().min(1, { message: "Expiry date is required for contract validity" }),
+  }).refine((data) => {
+    if (data.effective_date && data.expiry_date) {
+      return new Date(data.expiry_date) > new Date(data.effective_date);
+    }
+    return true;
+  }, {
+    message: "Expiry date must be after effective date",
+    path: ["expiry_date"],
   }),
+
   livestock_details: z.array(z.object({
-    type: z.string().min(1, { message: "Type of livestock is required" }),
-    quantity: z.number().min(1, { message: "Quantity must be at least 1" }),
-    weight_per_animal: z.number().min(0.1, { message: "Weight per animal is required" }),
-  })),
-  special_handling: z.string().optional(),
-  additional_information: z.string().optional(),
-  service_contract: z.string().optional(),
+    type: z.string()
+      .min(1, { message: "Livestock type is required for proper handling arrangements" })
+      .max(100, { message: "Livestock type description too long (max 100 characters)" }),
+    quantity: z.number()
+      .min(1, { message: "Quantity must be at least 1 animal" })
+      .max(10000, { message: "Quantity seems unusually high, please verify" }),
+    weight_per_animal: z.number()
+      .min(0.1, { message: "Weight per animal must be at least 0.1 kg" })
+      .max(5000, { message: "Weight per animal seems unusually high, please verify" }),
+  })).min(1, { message: "At least one livestock entry is required" }),
+
+  special_handling: z.string()
+    .max(1000, { message: "Special handling description too long (max 1000 characters)" })
+    .optional(),
+
+  additional_information: z.string()
+    .max(2000, { message: "Additional information too long (max 2000 characters)" })
+    .optional(),
+
+  service_contract: z.string()
+    .max(50, { message: "Service contract number too long (max 50 characters)" })
+    .optional(),
+
   transport_modes: z.object({
     ocean_freight: z.boolean().default(false),
     land_transportation: z.boolean().default(false),
     air_freight: z.boolean().default(false),
+  }).refine((data) => {
+    return data.ocean_freight || data.land_transportation || data.air_freight;
+  }, {
+    message: "Please select at least one transport mode",
+    path: ["ocean_freight"],
   }),
+
   additional_services: z.object({
     port_handling: z.boolean().default(false),
     customs_clearance: z.boolean().default(false),
@@ -50,24 +90,67 @@ const formSchema = z.object({
     inspection_quality: z.boolean().default(false),
     escort_permits: z.boolean().default(false),
     other: z.boolean().default(false),
-    other_specify: z.string().optional(),
-    additional_requirements: z.string().optional(),
+    other_specify: z.string()
+      .max(200, { message: "Other services description too long (max 200 characters)" })
+      .optional(),
+    additional_requirements: z.string()
+      .max(1000, { message: "Additional requirements too long (max 1000 characters)" })
+      .optional(),
+  }).refine((data) => {
+    if (data.other && !data.other_specify?.trim()) {
+      return false;
+    }
+    return true;
+  }, {
+    message: "Please specify what other services you need",
+    path: ["other_specify"],
   }),
+
   insurance: z.object({
-    required: z.enum(["yes", "no"]).optional(),
-    coverage_details: z.string().optional(),
+    required: z.enum(["yes", "no"], { 
+      required_error: "Please specify if insurance is required" 
+    }).optional(),
+    coverage_details: z.string()
+      .max(500, { message: "Coverage details too long (max 500 characters)" })
+      .optional(),
+  }).refine((data) => {
+    if (data.required === "yes" && !data.coverage_details?.trim()) {
+      return false;
+    }
+    return true;
+  }, {
+    message: "Please provide coverage details when insurance is required",
+    path: ["coverage_details"],
   }),
+
   company_details: z.object({
-    company_name: z.string().min(1, { message: "Company name is required" }),
-    contact_person_name: z.string().min(1, { message: "Contact person is required" }),
-    title: z.string().min(1, { message: "Title is required" }),
-    country_of_origin: z.string().min(1, { message: "Country is required" }),
-    company_email: z.string().email({ message: "Valid email is required" }),
-    additional_email: z.string().email({ message: "Valid email format" }).optional(),
-    phone_number: z.string().min(1, { message: "Phone number is required" }),
-    additional_phone_number: z.string().optional(),
+    company_name: z.string()
+      .min(1, { message: "Company name is required for business identification" })
+      .max(200, { message: "Company name too long (max 200 characters)" }),
+    contact_person_name: z.string()
+      .min(1, { message: "Contact person name is required for communication" })
+      .max(100, { message: "Contact person name too long (max 100 characters)" }),
+    title: z.string()
+      .min(1, { message: "Job title is required for proper business correspondence" })
+      .max(100, { message: "Title too long (max 100 characters)" }),
+    country_of_origin: z.string()
+      .min(1, { message: "Country is required for regulatory compliance" }),
+    company_email: z.string()
+      .min(1, { message: "Company email is required for official communication" })
+      .email({ message: "Please enter a valid email address" }),
+    additional_email: z.string()
+      .email({ message: "Please enter a valid additional email address" })
+      .optional()
+      .or(z.literal("")),
+    phone_number: z.string()
+      .min(1, { message: "Phone number is required for urgent communication" })
+      .max(20, { message: "Phone number too long (max 20 characters)" }),
+    additional_phone_number: z.string()
+      .max(20, { message: "Additional phone number too long (max 20 characters)" })
+      .optional(),
   }),
-  supporting_files: z.array(z.any()).optional(),
+
+  supporting_files: z.any().optional(),
   cargo_lifting_points: z.boolean().optional(),
   show_additional_email: z.boolean().default(false),
   show_additional_phone: z.boolean().default(false),
@@ -77,15 +160,19 @@ type FormData = z.infer<typeof formSchema>;
 
 interface LivestockTransportationFormProps {
   onSubmit?: (formData: FormData) => void;
+  isSubmitting?: boolean;
 }
 
-export default function LivestockTransportationForm({ onSubmit }: LivestockTransportationFormProps) {
+export default function LivestockTransportationForm({ onSubmit, isSubmitting = false }: LivestockTransportationFormProps) {
   const t = useTranslations('Inland-forms');
   const [is_submitting, set_is_submitting] = useState(false);
-  const [uploaded_files, set_uploaded_files] = useState<File[]>([]);
-  
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
+    mode: 'onBlur', // Validate on blur for better UX
     defaultValues: {
       routing: [{ from_country: '', from_port: '', to_country: '', to_port: '' }],
       dates: {
@@ -113,7 +200,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
         additional_requirements: '',
       },
       insurance: {
-        required: "no",
+        required: undefined,
         coverage_details: '',
       },
       company_details: {
@@ -126,87 +213,152 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
         phone_number: '',
         additional_phone_number: '',
       },
-      supporting_files: [],
+      supporting_files: undefined,
       cargo_lifting_points: false,
       show_additional_email: false,
       show_additional_phone: false,
     },
   });
 
-  // Field arrays
-
   const { fields: livestockFields, append: appendLivestock, remove: removeLivestock } = useFieldArray({
     control: form.control,
     name: "livestock_details",
   });
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
-    const validFiles = files.filter(file => {
-      const maxSize = 20 * 1024 * 1024; // 20MB
-      const validTypes = ['application/pdf', 'image/jpeg', 'image/gif', 'image/png', 
-        'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'];
-      
-      return file.size <= maxSize && validTypes.includes(file.type);
-    });
+  // Enhanced error focusing function
+  const focusFirstError = useCallback(() => {
+    const errors = form.formState.errors;
+    const firstErrorField = Object.keys(errors)[0];
     
-    set_uploaded_files([...uploaded_files, ...validFiles]);
-  };
-
-  const removeFile = (index: number) => {
-    set_uploaded_files(uploaded_files.filter((_, i) => i !== index));
-  };
+    if (firstErrorField && formRef.current) {
+      // Handle nested field paths
+      let fieldName = firstErrorField;
+      if (firstErrorField.includes('.')) {
+        const parts = firstErrorField.split('.');
+        if (parts[0] === 'livestock_details' && parts[2]) {
+          fieldName = `livestock_details.0.${parts[2]}`;
+        } else if (parts[0] === 'dates') {
+          fieldName = `dates.${parts[1]}`;
+        } else if (parts[0] === 'company_details') {
+          fieldName = `company_details.${parts[1]}`;
+        }
+      }
+      
+      const firstErrorElement = formRef.current.querySelector(`[name="${fieldName}"]`) as HTMLElement;
+      if (firstErrorElement) {
+        firstErrorElement.focus();
+        firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, [form.formState.errors]);
 
   const handleSubmit = async (values: FormData) => {
+    setSubmitError(null);
+    setSubmitSuccess(false);
     set_is_submitting(true);
+    
     try {
-      const formDataWithFiles = {
-        ...values,
-        supporting_files: uploaded_files,
-      };
+      // Validate total weight doesn't exceed reasonable limits
+      const totalWeight = values.livestock_details.reduce(
+        (sum, item) => sum + (item.quantity * item.weight_per_animal), 0
+      );
+      
+      if (totalWeight > 50000) { // 50 tons
+        throw new Error("Total livestock weight exceeds reasonable shipping limits (50 tons). Please review your entries.");
+      }
+
       if (onSubmit) {
-        await onSubmit(formDataWithFiles);
+        await onSubmit(values);
+        setSubmitSuccess(true);
+        toast({
+          title: "Form Submitted Successfully",
+          description: "Your livestock transportation request has been submitted and will be processed shortly.",
+          variant: "default",
+        });
       } else {
-        console.log('Form data:', formDataWithFiles);
+        console.log('Form data:', values);
+        setSubmitSuccess(true);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred while submitting the form. Please try again.';
+      setSubmitError(errorMessage);
+      toast({
+        title: "Submission Error",
+        description: errorMessage,
+        variant: "destructive",
+      });
     } finally {
       set_is_submitting(false);
     }
   };
 
-  const handleError = (errors: unknown) => {
-    // Log validation errors for debugging
-    if (process.env.NODE_ENV === 'development') {
-      // eslint-disable-next-line no-console
-      console.error("Validation errors:", errors);
-    }
-  };
+  const handleError = useCallback((errors: any) => {
+    console.error("Form validation errors:", errors);
+    setSubmitError("Please correct the highlighted errors before submitting.");
+    
+    // Focus on first error field
+    setTimeout(focusFirstError, 100);
+    
+    // Show error toast
+    toast({
+      title: "Validation Errors",
+      description: "Please review and correct the highlighted fields.",
+      variant: "destructive",
+    });
+  }, [focusFirstError]);
 
-  const calculateTotalWeight = (quantity: number, weightPerAnimal: number) => {
+  const calculateTotalWeight = useCallback((quantity: number, weightPerAnimal: number) => {
     if (quantity > 0 && weightPerAnimal > 0) {
       return quantity * weightPerAnimal;
     }
     return 0;
-  };
+  }, []);
+
+  // Auto-save draft functionality (optional enhancement)
+  useEffect(() => {
+    const subscription = form.watch((data) => {
+      // Could save draft to localStorage here
+      localStorage.setItem('livestock_form_draft', JSON.stringify(data));
+    });
+    return () => subscription.unsubscribe();
+  }, [form]);
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit, handleError)} className="space-y-8">
-        
+      <form 
+        ref={formRef}
+        onSubmit={form.handleSubmit(handleSubmit, handleError)} 
+        className="space-y-8"
+        noValidate
+      >
+        {/* Error Alert */}
+        {submitError && (
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>{submitError}</AlertDescription>
+          </Alert>
+        )}
+
+        {/* Success Alert */}
+        {submitSuccess && (
+          <Alert className="border-green-200 bg-green-50 text-green-800">
+            <CheckCircle2 className="h-4 w-4 text-green-600" />
+            <AlertDescription>
+              Form submitted successfully! You will receive a confirmation email shortly.
+            </AlertDescription>
+          </Alert>
+        )}
+
         {/* Routing Section */}
         <RoutingCard0 control={form.control} />
 
-        {/* Dates Section */}
+        {/* Dates Section with Enhanced Validation */}
         <div className="">
           <h1 className='text-xl font-raleway font-medium'>{t('dates')}</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <div className="grid md:grid-cols-2 gap-5">
               <FormItem>
-                <FormLabel>Effective Date</FormLabel>
+                <FormLabel>Effective Date *</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
@@ -215,18 +367,25 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                       <>
                         <Input
                           type="date"
-                          className="max-w-[300px] border-2 rounded-xl"
+                          className={`max-w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
                           {...field}
+                          min={new Date().toISOString().split('T')[0]}
                         />
-                        {error && <p className="text-red-500">{error.message}</p>}
+                        {error && (
+                          <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                            <AlertCircle className="h-3 w-3" />
+                            {error.message}
+                          </p>
+                        )}
                       </>
                     )}
                   />
                 </FormControl>
+                <FormDescription>Select when you need the service to begin</FormDescription>
               </FormItem>
 
               <FormItem>
-                <FormLabel>Expiry Date</FormLabel>
+                <FormLabel>Expiry Date *</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
@@ -235,29 +394,36 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                       <>
                         <Input
                           type="date"
-                          className="max-w-[300px] border-2 rounded-xl"
+                          className={`max-w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
                           {...field}
+                          min={form.watch('dates.effective_date') || new Date().toISOString().split('T')[0]}
                         />
-                        {error && <p className="text-red-500">{error.message}</p>}
+                        {error && (
+                          <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                            <AlertCircle className="h-3 w-3" />
+                            {error.message}
+                          </p>
+                        )}
                       </>
                     )}
                   />
                 </FormControl>
+                <FormDescription>Select when the service agreement expires</FormDescription>
               </FormItem>
             </div>
           </div>
         </div>
 
-        {/* Livestock Details Table */}
+        {/* Enhanced Livestock Details Table */}
         <div className="">
-          <h1 className='text-xl font-raleway font-medium'>Livestock Details</h1>
+          <h1 className='text-xl font-raleway font-medium'>Livestock Details *</h1>
           <div className='pt-8 pb-10 p-4 rounded-3xl'>
             <div className="mb-4 flex justify-between items-center">
               <div className="text-sm text-gray-600">
                 Total Rows: {livestockFields.length}
               </div>
               <div className="text-sm font-raleway font-medium text-gray-800">
-                Total Weight of All Livestock: {(() => {
+                Total Weight: {(() => {
                   const totalWeight = livestockFields.reduce((sum, _, index) => {
                     const quantity = form.watch(`livestock_details.${index}.quantity`) || 0;
                     const weight = form.watch(`livestock_details.${index}.weight_per_animal`) || 0;
@@ -267,14 +433,23 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                 })()}
               </div>
             </div>
+            
+            {/* Display validation error for livestock_details array */}
+            {form.formState.errors.livestock_details?.message && (
+              <Alert variant="destructive" className="mb-4">
+                <AlertCircle className="h-4 w-4" />
+                <AlertDescription>{form.formState.errors.livestock_details.message}</AlertDescription>
+              </Alert>
+            )}
+
             <div className="overflow-x-auto">
               <table className="w-full border-collapse border border-gray-300 rounded-lg">
                 <thead>
                   <tr className="bg-gray-50">
                     <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Row #</th>
-                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Type of Livestock</th>
-                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Quantity</th>
-                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Weight per Animal (kg)</th>
+                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Type of Livestock *</th>
+                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Quantity *</th>
+                    <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Weight per Animal (kg) *</th>
                     <th className="border border-gray-300 p-3 text-left font-raleway font-medium">Total Weight (kg)</th>
                     <th className="border border-gray-300 p-3 text-center font-raleway font-medium">Actions</th>
                   </tr>
@@ -293,10 +468,16 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                             <>
                               <Input
                                 placeholder="e.g., Cattle, Sheep, Goats"
-                                className="border-2 rounded-xl"
+                                className={`border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
                                 {...field}
+                                maxLength={100}
                               />
-                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                              {error && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                                  <AlertCircle className="h-3 w-3" />
+                                  {error.message}
+                                </p>
+                              )}
                             </>
                           )}
                         />
@@ -310,12 +491,21 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                               <Input
                                 type="number"
                                 min="1"
-                                className="text-center border-2 rounded-xl"
+                                max="10000"
+                                className={`text-center border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
                                 placeholder="Quantity"
                                 {...field}
-                                onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
+                                onChange={(e) => {
+                                  const value = parseInt(e.target.value) || 0;
+                                  field.onChange(value > 0 ? value : 1);
+                                }}
                               />
-                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                              {error && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                                  <AlertCircle className="h-3 w-3" />
+                                  {error.message}
+                                </p>
+                              )}
                             </>
                           )}
                         />
@@ -328,14 +518,23 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                             <>
                               <Input
                                 type="number"
-                                min="0"
+                                min="0.1"
+                                max="5000"
                                 step="0.1"
                                 placeholder="Weight in kg"
-                                className="border-2 rounded-xl"
+                                className={`border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
                                 {...field}
-                                onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
+                                onChange={(e) => {
+                                  const value = parseFloat(e.target.value) || 0;
+                                  field.onChange(value);
+                                }}
                               />
-                              {error && <p className="text-red-500 text-sm">{error.message}</p>}
+                              {error && (
+                                <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
+                                  <AlertCircle className="h-3 w-3" />
+                                  {error.message}
+                                </p>
+                              )}
                             </>
                           )}
                         />
@@ -356,7 +555,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                             type="button"
                             variant="outline"
                             onClick={() => removeLivestock(index)}
-                            className="rounded-xl"
+                            className="rounded-xl text-red-600 hover:text-red-700 hover:bg-red-50"
                           >
                             <Trash2 className="h-4 w-4" />
                           </Button>
@@ -369,176 +568,30 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
             </div>
             <Button
               type="button"
-              className="mt-4 max-w-[200px] bg-primary text-sm text-white rounded-lg"
+              className="mt-4 max-w-[200px] bg-primary text-sm text-white rounded-lg hover:bg-primary/90"
               onClick={() => appendLivestock({ type: '', quantity: 1, weight_per_animal: 0 })}
             >
               <Plus className="h-4 w-4 mr-2" />
-              Add Row
+              Add Livestock Row
             </Button>
           </div>
         </div>
 
-        {/* Special Handling Requirements */}
-        <div className="">
-          <h1 className='text-xl font-raleway font-medium mb-4'>Special Handling Requirements</h1>
-          <div className='px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-10'>
-            <FormItem>
-              <FormLabel>Special Handling Requirements (e.g., temperature control, specific crates, etc.)</FormLabel>
-              <FormControl>
-                <Controller
-                  control={form.control}
-                  name="special_handling"
-                  render={({ field }) => (
-                    <Textarea
-                      className="max-w-[400px] border-2 rounded-xl"
-                      placeholder="Describe any special handling requirements for the livestock..."
-                      rows={4}
-                      {...field}
-                    />
-                  )}
-                />
-              </FormControl>
-            </FormItem>
-          </div>
-        </div>
-
-        {/* Supporting Files */}
-        <div className="">
-          <h1 className='text-xl font-raleway font-medium mb-4'>Supporting Files (Optional)</h1>
-          <div className='px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-10'>
-            <FormItem>
-              <FormLabel>
-                {t('file')} <span className="text-sm text-gray-500">({t('optional')})</span>
-              </FormLabel>
-              <FormControl>
-                <Controller
-                  control={form.control}
-                  name="supporting_files"
-                  render={({ field, fieldState: { error } }) => (
-                    <>
-                      <Input
-                        className="max-w-[240px] border-2 rounded-xl"
-                        type="file"
-                        multiple
-                        accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                        onChange={(e) => {
-                          handleFileUpload(e);
-                          field.onChange(e.target.files);
-                        }}
-                      />
-                      {error && <p className="text-red-500">{error.message}</p>}
-                    </>
-                  )}
-                />
-              </FormControl>
-              <p className="px-2 text-xs text-gray-500">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-            </FormItem>
-
-            {/* Cargo Picture with Lifting Points Checkbox */}
-            <div className="mt-4">
-              <Controller
-                control={form.control}
-                name="cargo_lifting_points"
-                render={({ field }) => (
-                  <div className="flex gap-2 items-center">
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                      id="cargo_lifting_points"
-                    />
-                    <label
-                      htmlFor="cargo_lifting_points"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      I wish to upload cargo picture with lifting points
-                    </label>
-                  </div>
-                )}
-              />
-            </div>
-
-            {uploaded_files.length > 0 && (
-              <div className="mt-4">
-                <h4 className="font-medium mb-2">Uploaded Files:</h4>
-                <ul className="space-y-2">
-                  {uploaded_files.map((file, index) => (
-                    <li key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded-xl">
-                      <span className="text-sm">{file.name}</span>
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        onClick={() => removeFile(index)}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Additional Information */}
-        <div className="">
-          <h1 className='text-xl font-semibold mb-4'>Additional Information</h1>
-          <div className='px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-10'>
-            <FormItem>
-              <FormLabel>Please advise other relevant commercial terms such as loading/discharging rates and Incoterms.</FormLabel>
-              <FormControl>
-                <Controller
-                  control={form.control}
-                  name="additional_information"
-                  render={({ field }) => (
-                    <Textarea
-                      className="max-w-[400px] border-2 rounded-xl"
-                      placeholder="Enter additional commercial terms and requirements..."
-                      rows={4}
-                      {...field}
-                    />
-                  )}
-                />
-              </FormControl>
-            </FormItem>
-          </div>
-        </div>
-
-        {/* Service Contract */}
+        {/* Transport Mode with Enhanced Validation */}
         <FormItem className='pb-4'>
           <FormControl>
             <div>
-              <h1 className='text-xl font-semibold mb-4'>Service Contract</h1>
-              <div className='flex gap-5 p-4 items-center'>
-                <FormItem>
-                  <FormLabel>Service Contract <span className='text-muted-foreground text-xs'>(Optional)</span></FormLabel>
-                  <FormControl>
-                    <Controller
-                      control={form.control}
-                      name="service_contract"
-                      render={({ field }) => (
-                        <Input
-                          className="w-[300px] border-2 rounded-xl"
-                          placeholder="Enter service contract number"
-                          {...field}
-                        />
-                      )}
-                    />
-                  </FormControl>
-                </FormItem>
-              </div>
-            </div>
-          </FormControl>
-        </FormItem>
-
-        {/* Transport Mode */}
-        <FormItem className='pb-4'>
-          <FormControl>
-            <div>
-              <h1 className='text-xl font-semibold mb-4'>Transport Mode</h1>
+              <h1 className='text-xl font-semibold mb-4'>Transport Mode *</h1>
               <div className='p-4'>
                 <FormLabel className="text-base font-medium mb-4 block">
-                  Preferred Mode of Transport (Check all that apply):
+                  Preferred Mode of Transport (Select at least one):
                 </FormLabel>
+                {form.formState.errors.transport_modes?.ocean_freight && (
+                  <Alert variant="destructive" className="mb-4">
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertDescription>{form.formState.errors.transport_modes.ocean_freight.message}</AlertDescription>
+                  </Alert>
+                )}
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2">
                     <Controller
@@ -585,7 +638,7 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
           </FormControl>
         </FormItem>
 
-        {/* Additional Required Services */}
+        {/* Enhanced Additional Services Section */}
         <FormItem className='pb-4'>
           <FormControl>
             <div>
@@ -689,12 +742,21 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                     <Controller
                       control={form.control}
                       name="additional_services.other_specify"
-                      render={({ field }) => (
-                        <Input
-                          placeholder="Please specify other services..."
-                          className="ml-6 border-2 rounded-xl max-w-[400px]"
-                          {...field}
-                        />
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Input
+                            placeholder="Please specify other services..."
+                            className={`ml-6 border-2 rounded-xl max-w-[400px] ${error ? 'border-red-500' : ''}`}
+                            maxLength={200}
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 ml-6 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                        </>
                       )}
                     />
                   )}
@@ -707,13 +769,25 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
                     <Controller
                       control={form.control}
                       name="additional_services.additional_requirements"
-                      render={({ field }) => (
-                        <Textarea
-                          placeholder="Describe any additional requirements..."
-                          className="max-w-[400px] border-2 rounded-xl"
-                          rows={3}
-                          {...field}
-                        />
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Textarea
+                            placeholder="Describe any additional requirements..."
+                            className={`max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                            rows={3}
+                            maxLength={1000}
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                          <p className="text-xs text-gray-500 mt-1">
+                            {field.value?.length || 0}/1000 characters
+                          </p>
+                        </>
                       )}
                     />
                   </FormControl>
@@ -723,49 +797,69 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
           </FormControl>
         </FormItem>
 
-        {/* Insurance & Liability Coverage */}
+        {/* Enhanced Insurance Section */}
         <FormItem className='pb-4'>
           <FormControl>
             <div>
               <h1 className='text-xl font-semibold mb-4'>Insurance & Liability Coverage</h1>
               <div className='p-4 space-y-4'>
-                <FormLabel className="text-base font-medium">Do you require transport insurance?</FormLabel>
+                <FormLabel className="text-base font-medium">Do you require transport insurance? *</FormLabel>
                 <Controller
                   control={form.control}
                   name="insurance.required"
-                  render={({ field }) => (
-                    <RadioGroup
-                      value={field.value || ""}
-                      onValueChange={field.onChange}
-                      className="mt-2"
-                    >
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="yes" />
-                        <FormLabel>Yes</FormLabel>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="no" />
-                        <FormLabel>No</FormLabel>
-                      </div>
-                    </RadioGroup>
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <RadioGroup
+                        value={field.value || ""}
+                        onValueChange={field.onChange}
+                        className="mt-2"
+                      >
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="yes" />
+                          <FormLabel>Yes</FormLabel>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="no" />
+                          <FormLabel>No</FormLabel>
+                        </div>
+                      </RadioGroup>
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
+                      )}
+                    </>
                   )}
                 />
                 
                 {form.watch("insurance.required") === 'yes' && (
                   <div className="mt-4">
                     <FormItem>
-                      <FormLabel>Please specify the coverage type and value:</FormLabel>
+                      <FormLabel>Please specify the coverage type and value: *</FormLabel>
                       <FormControl>
                         <Controller
                           control={form.control}
                           name="insurance.coverage_details"
-                          render={({ field }) => (
-                            <Textarea
-                              placeholder="Describe coverage type and value requirements..."
-                              className="max-w-[400px] border-2 rounded-xl"
-                              rows={3}
-                              {...field}
-                            />
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Textarea
+                                placeholder="Describe coverage type and value requirements..."
+                                className={`max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                rows={3}
+                                maxLength={500}
+                                {...field}
+                              />
+                              {error && (
+                                <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                  <AlertCircle className="h-3 w-3" />
+                                  {error.message}
+                                </p>
+                              )}
+                              <p className="text-xs text-gray-500 mt-1">
+                                {field.value?.length || 0}/500 characters
+                              </p>
+                            </>
                           )}
                         />
                       </FormControl>
@@ -777,18 +871,194 @@ export default function LivestockTransportationForm({ onSubmit }: LivestockTrans
           </FormControl>
         </FormItem>
 
+        {/* Enhanced Special Handling Section */}
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium mb-4'>Special Handling Requirements</h1>
+          <div className='px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-10'>
+            <FormItem>
+              <FormLabel>Special Handling Requirements (e.g., temperature control, specific crates, etc.)</FormLabel>
+              <FormControl>
+                <Controller
+                  control={form.control}
+                  name="special_handling"
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Textarea
+                        className={`max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                        placeholder="Describe any special handling requirements for the livestock..."
+                        rows={4}
+                        maxLength={1000}
+                        {...field}
+                      />
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
+                      )}
+                      <p className="text-xs text-gray-500 mt-1">
+                        {field.value?.length || 0}/1000 characters
+                      </p>
+                    </>
+                  )}
+                />
+              </FormControl>
+            </FormItem>
+          </div>
+        </div>
+
+        {/* Enhanced Supporting Files Section */}
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium mb-4'>Supporting Files (Optional)</h1>
+          <div className='px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-10'>
+            <FormItem>
+              <FormLabel>
+                {t('file')} <span className="text-sm text-gray-500">({t('optional')})</span>
+              </FormLabel>
+              <FormControl>
+                <Controller
+                  control={form.control}
+                  name="supporting_files"
+                  render={({ field: { onChange, ref }, fieldState: { error } }) => (
+                    <>
+                      <Input
+                        type="file"
+                        multiple
+                        accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                        className={`max-w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                        onChange={(e) => onChange(e.target.files)}
+                        ref={ref}
+                      />
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
+                      )}
+                    </>
+                  )}
+                />
+              </FormControl>
+              <p className="text-xs text-gray-500 mt-1">
+                Max size 20 MB per file. Supported: PDF, JPEG, GIF, PNG, Word, Excel, PowerPoint
+              </p>
+            </FormItem>
+
+            <div className="mt-4">
+              <Controller
+                control={form.control}
+                name="cargo_lifting_points"
+                render={({ field }) => (
+                  <div className="flex gap-2 items-center">
+                    <Checkbox
+                      checked={field.value}
+                      onCheckedChange={field.onChange}
+                      id="cargo_lifting_points"
+                    />
+                    <label
+                      htmlFor="cargo_lifting_points"
+                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                      I wish to upload cargo picture with lifting points
+                    </label>
+                  </div>
+                )}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Enhanced Additional Information Section */}
+        <div className="">
+          <h1 className='text-xl font-semibold mb-4'>Additional Information</h1>
+          <div className='px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-10'>
+            <FormItem>
+              <FormLabel>Please advise other relevant commercial terms such as loading/discharging rates and Incoterms.</FormLabel>
+              <FormControl>
+                <Controller
+                  control={form.control}
+                  name="additional_information"
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Textarea
+                        className={`max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                        placeholder="Enter additional commercial terms and requirements..."
+                        rows={4}
+                        maxLength={2000}
+                        {...field}
+                      />
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
+                      )}
+                      <p className="text-xs text-gray-500 mt-1">
+                        {field.value?.length || 0}/2000 characters
+                      </p>
+                    </>
+                  )}
+                />
+              </FormControl>
+            </FormItem>
+          </div>
+        </div>
+
+        {/* Enhanced Service Contract Section */}
+        <FormItem className='pb-4'>
+          <FormControl>
+            <div>
+              <h1 className='text-xl font-semibold mb-4'>Service Contract</h1>
+              <div className='flex gap-5 p-4 items-center'>
+                <FormItem>
+                  <FormLabel>Service Contract <span className='text-muted-foreground text-xs'>(Optional)</span></FormLabel>
+                  <FormControl>
+                    <Controller
+                      control={form.control}
+                      name="service_contract"
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Input
+                            className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                            placeholder="Enter service contract number"
+                            maxLength={50}
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                        </>
+                      )}
+                    />
+                  </FormControl>
+                </FormItem>
+              </div>
+            </div>
+          </FormControl>
+        </FormItem>
+
         <CompanyDetailsCard control={form.control} />
 
-        {/* Submit Button */}
+        {/* Enhanced Submit Button */}
         <div className="text-center">
-            <Button type="submit" disabled={is_submitting} className="w-full">
-                {is_submitting ? (
-                    <div className="flex items-center gap-2">
-                        <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
-                        <span>Submitting...</span>
-                    </div>
-                ) : "Submit"}
-            </Button>
+          <Button 
+            type="submit" 
+            className={`mt-4 w-[200px] ${(isSubmitting || is_submitting) ? "opacity-75 cursor-not-allowed" : ""}`} 
+            disabled={isSubmitting || is_submitting}
+          >
+            {(isSubmitting || is_submitting) ? (
+              <div className="flex items-center justify-center gap-2">
+                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                <span>Submitting...</span>
+              </div>
+            ) : "Submit Request"}
+          </Button>
+          <p className="text-xs text-gray-500 mt-2">
+            By submitting this form, you agree to our terms of service and privacy policy.
+          </p>
         </div>
       </form>
     </Form>

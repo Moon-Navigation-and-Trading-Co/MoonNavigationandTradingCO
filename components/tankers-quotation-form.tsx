@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -10,14 +10,16 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Form, FormItem, FormLabel, FormControl, FormField } from '@/components/ui/form';
-import { Trash2, Plus, Mail, Phone } from 'lucide-react';
+import { Form, FormItem, FormLabel, FormControl, FormField, FormMessage, FormDescription } from '@/components/ui/form';
+import { Trash2, Plus, Mail, Phone, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { PhoneInput } from '@/components/phone-input';
 import { SearchableCountrySelect } from './searchable-country-select';
 import CompanyDetailsCard from './company-details-card';
 import RoutingCard0 from './routing-card-0';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { toast } from '@/hooks/use-toast';
 
-// Complete form schema definition
+// Simple validation messages with enhanced error handling
 const tankersFormSchema = z.object({
   routing: z.array(z.object({
     from_country: z.string().min(1, { message: "From country is required" }),
@@ -25,37 +27,51 @@ const tankersFormSchema = z.object({
     to_country: z.string().min(1, { message: "To country is required" }),
     to_port: z.string().min(1, { message: "To port/area is required" }),
   })).min(1, "At least one route is required"),
+  
   effective_date: z.string().min(1, "Effective date is required"),
   expiry_date: z.string().min(1, "Expiry date is required"),
+  
   cargo_type: z.array(z.string()).min(1, "At least one cargo type is required"),
   other_cargo_type: z.string().optional(),
+  
   total_quantity: z.number().min(0, "Quantity must be positive"),
   quantity_unit: z.string().min(1, "Unit is required"),
-  temperature_requirement: z.string(),
+  
+  temperature_requirement: z.string().min(1, "Temperature requirement is required"),
   temperature_range: z.string().optional(),
   flashpoint: z.string().optional(),
+  
   tanker_type: z.array(z.string()).min(1, "At least one tanker type is required"),
   charter_type: z.string().min(1, "Charter type is required"),
+  
   cargo_handling: z.array(z.string()).optional(),
-  supporting_files: z.array(z.any()).optional(),
+  supporting_files: z.any().optional(),
   cargo_lifting_points: z.boolean().default(false),
+  
   additional_information: z.string().optional(),
   service_contract: z.string().optional(),
+  
   safety_compliance: z.array(z.string()).optional(),
   other_safety_compliance: z.string().optional(),
+  
   marine_insurance: z.string().min(1, "Marine insurance requirement is required"),
   insurance_details: z.string().optional(),
+  
   additional_services: z.array(z.string()).optional(),
   other_additional_service: z.string().optional(),
+  
   additional_requirements: z.string().optional(),
+  
   company_name: z.string().min(1, "Company name is required"),
   contact_person_name: z.string().min(1, "Contact person name is required"),
   title: z.string().min(1, "Title is required"),
   city_country: z.string().min(1, "City/Country is required"),
   company_email: z.string().email("Valid email is required"),
   phone_number: z.string().min(1, "Phone number is required"),
+  
   show_additional_email: z.boolean().default(false),
   additional_email: z.string().optional(),
+  
   show_additional_phone: z.boolean().default(false),
   additional_phone: z.string().optional()
 });
@@ -64,12 +80,17 @@ type TankersFormData = z.infer<typeof tankersFormSchema>;
 
 interface TankersQuotationFormProps {
   onSubmit: (data: TankersFormData) => void;
-  isSubmitting?: boolean; // Add this line
+  isSubmitting?: boolean;
 }
 
 export default function TankersQuotationForm({ onSubmit, isSubmitting = false }: TankersQuotationFormProps) {
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
+
   const form = useForm<TankersFormData>({
     resolver: zodResolver(tankersFormSchema),
+    mode: 'onBlur', // Validate on blur for better UX
     defaultValues: {
       routing: [{ from_country: '', from_port: '', to_country: '', to_port: '' }],
       effective_date: '',
@@ -78,19 +99,19 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
       other_cargo_type: '',
       total_quantity: 0,
       quantity_unit: '',
-      temperature_requirement: 'standard',
+      temperature_requirement: 'standard', // Set default value
       temperature_range: '',
       flashpoint: '',
       tanker_type: [],
       charter_type: '',
       cargo_handling: [],
-      supporting_files: [],
+      supporting_files: null, // Keep as null for file input
       cargo_lifting_points: false,
       additional_information: '',
       service_contract: '',
       safety_compliance: [],
       other_safety_compliance: '',
-      marine_insurance: '',
+      marine_insurance: '', // Set default empty string
       insurance_details: '',
       additional_services: [],
       other_additional_service: '',
@@ -108,14 +129,100 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
     }
   });
 
+  // Enhanced error focusing function
+  const focusFirstError = useCallback(() => {
+    const errors = form.formState.errors;
+    const firstErrorField = Object.keys(errors)[0];
+    
+    if (firstErrorField && formRef.current) {
+      // Handle nested field paths
+      let fieldName = firstErrorField;
+      if (firstErrorField.includes('.')) {
+        const parts = firstErrorField.split('.');
+        if (parts[0] === 'routing' && parts[2]) {
+          fieldName = `routing.0.${parts[2]}`;
+        }
+      }
+      
+      const firstErrorElement = formRef.current.querySelector(`[name="${fieldName}"]`) as HTMLElement;
+      if (firstErrorElement) {
+        firstErrorElement.focus();
+        firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, [form.formState.errors]);
 
-  const handleFormSubmit = (data: TankersFormData) => {
-    onSubmit(data);
+  const handleFormSubmit = async (data: TankersFormData) => {
+    setSubmitError(null);
+    setSubmitSuccess(false);
+    
+    try {
+      await onSubmit(data);
+      setSubmitSuccess(true);
+      toast({
+        title: "Form Submitted Successfully",
+        description: "Your tankers quotation request has been submitted and will be processed shortly.",
+        variant: "default",
+      });
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred while submitting the form. Please try again.';
+      setSubmitError(errorMessage);
+      toast({
+        title: "Submission Error",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    }
   };
 
+  const handleError = useCallback((errors: any) => {
+    // More explicit error checking
+    if (errors && typeof errors === 'object') {
+      const errorKeys = Object.keys(errors);
+      if (errorKeys.length > 0) {
+        console.error("Form validation errors:", errors);
+        setSubmitError("Please correct the highlighted errors before submitting.");
+        
+        // Focus on first error field
+        setTimeout(focusFirstError, 100);
+        
+        // Show error toast
+        toast({
+          title: "Validation Errors",
+          description: "Please review and correct the highlighted fields.",
+          variant: "destructive",
+        });
+      }
+    }
+    // If no errors, do nothing
+  }, [focusFirstError]);
+
+  // Fix all form fields to use ?? instead of || and ensure consistent values
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleFormSubmit)} className="space-y-8">
+      <form 
+        ref={formRef}
+        onSubmit={form.handleSubmit(handleFormSubmit, handleError)} 
+        className="space-y-8"
+        noValidate
+      >
+        {/* Error Alert */}
+        {submitError && (
+          <Alert variant="destructive">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>{submitError}</AlertDescription>
+          </Alert>
+        )}
+
+        {/* Success Alert */}
+        {submitSuccess && (
+          <Alert className="border-green-200 bg-green-50 text-green-800">
+            <CheckCircle2 className="h-4 w-4 text-green-600" />
+            <AlertDescription>
+              Form submitted successfully! You will receive a confirmation email shortly.
+            </AlertDescription>
+          </Alert>
+        )}
         
         {/* Routing Section */}
         <RoutingCard0 control={form.control} />
@@ -127,6 +234,12 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
             {/* Type of Cargo */}
             <div>
               <FormLabel className="text-base font-medium">Type of Cargo (Select one or more):</FormLabel>
+              {form.formState.errors.cargo_type?.message && (
+                <Alert variant="destructive" className="mt-2">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>{form.formState.errors.cargo_type.message}</AlertDescription>
+                </Alert>
+              )}
               <div className="mt-3 space-y-3">
                 {['Crude Oil', 'Refined Petroleum Products (Gasoline, Diesel, Jet Fuel, etc.)', 'Chemical Liquids (Hazardous/Non-Hazardous)', 'Liquefied Gases (LNG/LPG)'].map((cargo) => (
                   <div key={cargo} className="flex items-center space-x-2">
@@ -177,12 +290,20 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     <Controller
                       control={form.control}
                       name="other_cargo_type"
-                      render={({ field }) => (
-                        <Input
-                          placeholder="Specify other cargo type"
-                          className="w-[300px] border-2 rounded-xl ml-6"
-                          {...field}
-                        />
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Input
+                            placeholder="Specify other cargo type"
+                            className={`w-[300px] border-2 rounded-xl ml-6 ${error ? 'border-red-500' : ''}`}
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 ml-6 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                        </>
                       )}
                     />
                   )}
@@ -204,12 +325,17 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                           type="number"
                           min="0"
                           step="0.01"
-                          className="w-[300px] border-2 rounded-xl"
+                          className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
                           placeholder="Enter quantity"
                           {...field}
                           onChange={(e) => field.onChange(parseFloat(e.target.value) || 0)}
                         />
-                        {error && <p className="text-red-500">{error.message}</p>}
+                        {error && (
+                          <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                            <AlertCircle className="h-3 w-3" />
+                            {error.message}
+                          </p>
+                        )}
                       </>
                     )}
                   />
@@ -221,8 +347,8 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     name="quantity_unit"
                     render={({ field, fieldState: { error } }) => (
                       <>
-                        <Select onValueChange={field.onChange} value={field.value || ""}>
-                          <SelectTrigger className="w-[300px] border-2 rounded-xl">
+                        <Select onValueChange={field.onChange} value={field.value ?? ""}>
+                          <SelectTrigger className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}>
                             <SelectValue placeholder="Select unit" />
                           </SelectTrigger>
                           <SelectContent>
@@ -230,7 +356,12 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                             <SelectItem value="barrels">Barrels</SelectItem>
                           </SelectContent>
                         </Select>
-                        {error && <p className="text-red-500">{error.message}</p>}
+                        {error && (
+                          <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                            <AlertCircle className="h-3 w-3" />
+                            {error.message}
+                          </p>
+                        )}
                       </>
                     )}
                   />
@@ -244,21 +375,29 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               <Controller
                 control={form.control}
                 name="temperature_requirement"
-                render={({ field }) => (
-                  <RadioGroup 
-                    value={field.value || ""} 
-                    onValueChange={field.onChange} 
-                    className="mt-3 space-y-2"
-                  >
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="standard" id="temp_standard" />
-                      <label htmlFor="temp_standard" className="text-sm font-medium">Standard Temperature</label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="temperature_controlled" id="temp_controlled" />
-                      <label htmlFor="temp_controlled" className="text-sm font-medium">Temperature-Controlled</label>
-                    </div>
-                  </RadioGroup>
+                render={({ field, fieldState: { error } }) => (
+                  <>
+                    <RadioGroup 
+                      value={field.value ?? ""} 
+                      onValueChange={field.onChange} 
+                      className="mt-3 space-y-2"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="standard" id="temp_standard" />
+                        <label htmlFor="temp_standard" className="text-sm font-medium">Standard Temperature</label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="temperature_controlled" id="temp_controlled" />
+                        <label htmlFor="temp_controlled" className="text-sm font-medium">Temperature-Controlled</label>
+                      </div>
+                    </RadioGroup>
+                    {error && (
+                      <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                        <AlertCircle className="h-3 w-3" />
+                        {error.message}
+                      </p>
+                    )}
+                  </>
                 )}
               />
               
@@ -269,12 +408,20 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     <Controller
                       control={form.control}
                       name="temperature_range"
-                      render={({ field }) => (
-                        <Input
-                          placeholder="e.g., -20°C to +5°C"
-                          className="w-[300px] border-2 rounded-xl"
-                          {...field}
-                        />
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Input
+                            placeholder="e.g., -20°C to +5°C"
+                            className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                        </>
                       )}
                     />
                   </FormControl>
@@ -289,12 +436,20 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 <Controller
                   control={form.control}
                   name="flashpoint"
-                  render={({ field }) => (
-                    <Input
-                      placeholder="e.g., 60°C, N/A if not applicable"
-                      className="w-[300px] border-2 rounded-xl"
-                      {...field}
-                    />
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Input
+                        placeholder="e.g., 60°C, N/A if not applicable"
+                        className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                        {...field}
+                      />
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
+                      )}
+                    </>
                   )}
                 />
               </FormControl>
@@ -309,6 +464,12 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
             {/* Preferred Tanker Type */}
             <div>
               <FormLabel className="text-base font-medium">Preferred Tanker Type (Select one or more):</FormLabel>
+              {form.formState.errors.tanker_type?.message && (
+                <Alert variant="destructive" className="mt-2">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>{form.formState.errors.tanker_type.message}</AlertDescription>
+                </Alert>
+              )}
               <div className="mt-3 space-y-3">
                 {[
                   'Crude Oil Tanker (VLCC, Suezmax, Aframax, etc.)',
@@ -349,8 +510,8 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   name="charter_type"
                   render={({ field, fieldState: { error } }) => (
                     <>
-                      <Select onValueChange={field.onChange} value={field.value || ""}>
-                        <SelectTrigger className="w-[300px] border-2 rounded-xl">
+                      <Select onValueChange={field.onChange} value={field.value ?? ""}>
+                        <SelectTrigger className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}>
                           <SelectValue placeholder="Select charter type" />
                         </SelectTrigger>
                         <SelectContent>
@@ -359,7 +520,12 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                           <SelectItem value="spot_shipment">Spot Shipment</SelectItem>
                         </SelectContent>
                       </Select>
-                      {error && <p className="text-red-500">{error.message}</p>}
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
+                      )}
                     </>
                   )}
                 />
@@ -406,27 +572,34 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
         <div className="">
           <h1 className='text-xl font-raleway font-medium'>Supporting files (optional)</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
-            <div>
+            <FormItem>
               <FormLabel>Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</FormLabel>
               <FormControl>
                 <Controller
                   control={form.control}
                   name="supporting_files"
-                  render={({ field }) => (
-                    <Input
-                      type="file"
-                      multiple
-                      accept=".pdf,.jpeg,.jpg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                      className="w-[300px] border-2 rounded-xl"
-                      onChange={(e) => {
-                        const files = Array.from(e.target.files || []);
-                        field.onChange(files);
-                      }}
-                    />
+                  render={({ field: { onChange, ref }, fieldState: { error } }) => (
+                    <>
+                      <Input
+                        type="file"
+                        multiple
+                        accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                        className={`max-w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                        onChange={(e) => onChange(e.target.files || null)}
+                        ref={ref}
+                        value="" // Always controlled with empty string
+                      />
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
+                      )}
+                    </>
                   )}
                 />
               </FormControl>
-            </div>
+            </FormItem>
 
             <div className="flex items-center space-x-2">
               <Controller
@@ -457,13 +630,21 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 <Controller
                   control={form.control}
                   name="additional_information"
-                  render={({ field }) => (
-                    <Textarea
-                      placeholder="Please provide any additional details about loading/discharging rates and Incoterms..."
-                      className="w-[300px] border-2 rounded-xl"
-                      rows={4}
-                      {...field}
-                    />
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Textarea
+                        placeholder="Please provide any additional details about loading/discharging rates and Incoterms..."
+                        className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                        rows={4}
+                        {...field}
+                      />
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
+                      )}
+                    </>
                   )}
                 />
               </FormControl>
@@ -483,12 +664,20 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     <Controller
                       control={form.control}
                       name="service_contract"
-                      render={({ field }) => (
-                        <Input
-                          className="w-[300px] border-2 rounded-xl"
-                          placeholder="Service Contract No."
-                          {...field}
-                        />
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Input
+                            className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                            placeholder="Service Contract No."
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                        </>
                       )}
                     />
                   </FormControl>
@@ -560,12 +749,20 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     <Controller
                       control={form.control}
                       name="other_safety_compliance"
-                      render={({ field }) => (
-                        <Input
-                          placeholder="Specify other compliance"
-                          className="w-[300px] border-2 rounded-xl ml-6"
-                          {...field}
-                        />
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Input
+                            placeholder="Specify other compliance"
+                            className={`w-[300px] border-2 rounded-xl ml-6 ${error ? 'border-red-500' : ''}`}
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 ml-6 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                        </>
                       )}
                     />
                   )}
@@ -579,17 +776,25 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               <Controller
                 control={form.control}
                 name="marine_insurance"
-                render={({ field }) => (
-                  <RadioGroup onValueChange={field.onChange} value={field.value || ""} className="mt-3 space-y-2">
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="yes" id="insurance_yes" />
-                      <label htmlFor="insurance_yes" className="text-sm font-medium">Yes</label>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="no" id="insurance_no" />
-                      <label htmlFor="insurance_no" className="text-sm font-medium">No</label>
-                    </div>
-                  </RadioGroup>
+                render={({ field, fieldState: { error } }) => (
+                  <>
+                    <RadioGroup onValueChange={field.onChange} value={field.value ?? ""} className="mt-3 space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="yes" id="insurance_yes" />
+                        <label htmlFor="insurance_yes" className="text-sm font-medium">Yes</label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="no" id="insurance_no" />
+                        <label htmlFor="insurance_no" className="text-sm font-medium">No</label>
+                      </div>
+                    </RadioGroup>
+                    {error && (
+                      <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                        <AlertCircle className="h-3 w-3" />
+                        {error.message}
+                      </p>
+                    )}
+                  </>
                 )}
               />
               
@@ -600,13 +805,21 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     <Controller
                       control={form.control}
                       name="insurance_details"
-                      render={({ field }) => (
-                        <Textarea
-                          placeholder="Please specify the coverage type and value required"
-                          className="w-[300px] border-2 rounded-xl"
-                          rows={3}
-                          {...field}
-                        />
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Textarea
+                            placeholder="Please specify the coverage type and value required"
+                            className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                            rows={3}
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                        </>
                       )}
                     />
                   </FormControl>
@@ -681,12 +894,20 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                         <Controller
                           control={form.control}
                           name="other_additional_service"
-                          render={({ field }) => (
-                            <Input
-                              placeholder="Specify other service"
-                              className="w-[300px] border-2 rounded-xl ml-6"
-                              {...field}
-                            />
+                          render={({ field, fieldState: { error } }) => (
+                            <>
+                              <Input
+                                placeholder="Specify other service"
+                                className={`w-[300px] border-2 rounded-xl ml-6 ${error ? 'border-red-500' : ''}`}
+                                {...field}
+                              />
+                              {error && (
+                                <p className="text-red-500 text-sm mt-1 ml-6 flex items-center gap-1">
+                                  <AlertCircle className="h-3 w-3" />
+                                  {error.message}
+                                </p>
+                              )}
+                            </>
                           )}
                         />
                       )}
@@ -700,13 +921,21 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                     <Controller
                       control={form.control}
                       name="additional_requirements"
-                      render={({ field }) => (
-                        <Textarea
-                          placeholder="Please describe any additional requirements..."
-                          className="w-[300px] border-2 rounded-xl"
-                          rows={4}
-                          {...field}
-                        />
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Textarea
+                            placeholder="Please describe any additional requirements..."
+                            className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                            rows={4}
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                        </>
                       )}
                     />
                   </FormControl>
@@ -719,15 +948,24 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
         {/* Company Details */}
         <CompanyDetailsCard control={form.control} />
 
-        {/* Submit Button */}
-        <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
-          {isSubmitting ? (
-            <div className="flex items-center justify-center gap-2">
-              <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
-              <span>Submitting...</span>
-            </div>
-          ) : "Submit"}
-        </Button>
+        {/* Enhanced Submit Button */}
+        <div className="text-center">
+          <Button 
+            type="submit" 
+            className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} 
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <div className="flex items-center justify-center gap-2">
+                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                <span>Submitting...</span>
+              </div>
+            ) : "Submit Request"}
+          </Button>
+          <p className="text-xs text-gray-500 mt-2">
+            By submitting this form, you agree to our terms of service and privacy policy.
+          </p>
+        </div>
       </form>
     </Form>
   );

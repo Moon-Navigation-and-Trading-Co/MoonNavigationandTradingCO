@@ -106,7 +106,7 @@ const formSchema = z.object({
     additional_requirements: z.string().optional(),
   }),
   
-  supporting_files: z.array(z.any()).optional(),
+  supporting_files: z.array(z.string()).optional(), // Changed from z.array(z.any()) to z.array(z.string())
   
   company_details: z.object({
     company_name: z.string().min(1, { message: "Company name is required" }),
@@ -386,20 +386,66 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
             </div>
 
             {/* Supporting Files Section - Optional for Itemized */}
-            <FileUpload 
-              control={form.control} 
-              isRequired={false}
-            />
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-lg font-semibold mb-4">Supporting Files (Optional)</h3>
+              <FormItem>
+                <FormLabel>Upload supporting documents</FormLabel>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="supporting_files"
+                    render={({ field, fieldState: { error } }) => (
+                      <>
+                        <Input
+                          type="file"
+                          multiple
+                          accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                          className="max-w-[300px] border-2 rounded-xl"
+                          {...field}
+                        />
+                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                      </>
+                    )}
+                  />
+                </FormControl>
+                <p className="text-xs text-gray-500 mt-1">
+                  Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+                </p>
+              </FormItem>
+            </div>
           </>
         ) : (
           <>
             <ConsolidatedForm control={form.control} />
             
             {/* Supporting Files Section - Mandatory for Consolidated */}
-            <FileUpload 
-              control={form.control} 
-              isRequired={true}
-            />
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-lg font-semibold mb-4">Supporting Files (Required)</h3>
+              <FormItem>
+                <FormLabel>Upload supporting documents</FormLabel>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="supporting_files"
+                    render={({ field, fieldState: { error } }) => (
+                      <>
+                        <Input
+                          type="file"
+                          multiple
+                          accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                          className="max-w-[300px] border-2 rounded-xl"
+                          {...field}
+                        />
+                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                      </>
+                    )}
+                  />
+                </FormControl>
+                <p className="text-xs text-gray-500 mt-1">
+                  Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+                </p>
+              </FormItem>
+            </div>
             
             {/* Additional Information */}
             <Card>

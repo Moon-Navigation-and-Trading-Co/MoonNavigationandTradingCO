@@ -19,7 +19,53 @@ import ItemizedTable from './itemized-table';
 import ConsolidatedForm from './consolidated-form';
 
 // Define the form schema
-const formSchema = z.object({
+const itemizedEntrySchema = z.array(z.object({
+    commodity: z.string().min(1, { message: "Commodity is required" }),
+    packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
+        required_error: "Packaging type is required",
+    }),
+    packaging_type_other: z.string().optional(),
+    stackable: z.boolean(),
+    quantity: z.number().min(1, { message: "Quantity is required" }),
+    length: z.number().min(1, { message: "Length is required" }),
+    length_unit: z.enum(["cm", "m"], { required_error: "Length unit is required" }),
+    width: z.number().min(1, { message: "Width is required" }),
+    width_unit: z.enum(["cm", "m"], { required_error: "Width unit is required" }),
+    height: z.number().min(1, { message: "Height is required" }),
+    height_unit: z.enum(["cm", "m"], { required_error: "Height unit is required" }),
+    weight: z.number().min(1, { message: "Weight is required" }),
+    cbm: z.number(),
+    gross_cbm: z.number(),
+    gross_weight: z.number(),
+    dangerous_goods: z.boolean(),
+    un_number: z.string().optional(),
+    class: z.string().optional(),
+    remarks: z.string().optional(),
+    temperature_control: z.boolean(),
+    temperature_min: z.number().optional(),
+    temperature_max: z.number().optional(),
+})).min(1, { message: "At least one commodity is required" });
+
+const consolidatedEntrySchema = z.object({
+    commodity_types: z.string().min(1, { message: "Commodity types are required" }),
+    total_quantity: z.number().min(1, { message: "Total quantity is required" }),
+    total_weight: z.number().min(0, { message: "Total weight is required" }),
+    total_volume: z.number().min(0, { message: "Total volume is required" }),
+    dangerous_goods: z.boolean(),
+    un_number: z.string().optional(),
+    class: z.string().optional(),
+    special_instructions: z.string().optional(),
+    packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
+        required_error: "Packaging type is required",
+    }),
+    stackable: z.boolean(),
+    temperature_control: z.boolean(),
+    temperature_min: z.number().optional(),
+    temperature_max: z.number().optional(),
+    special_handling: z.string().optional(),
+}).strict();
+
+const baseSchema = z.object({
     routing: z.array(z.object({
         from_country: z.string().min(1, { message: "From country is required" }),
         from_port: z.string().min(1, { message: "From port/area is required" }),
@@ -38,61 +84,11 @@ const formSchema = z.object({
             required_error: "You need to select a transportation method.",
         }),
     }),
-    entry_mode: z.enum(["itemized", "consolidated"], {
-        required_error: "Please select an entry mode.",
-    }),
-    itemized_data: z.array(z.object({
-        commodity: z.string().min(1, { message: "Commodity is required" }),
-        packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
-            required_error: "Packaging type is required",
-        }),
-        packaging_type_other: z.string().optional(),
-        stackable: z.boolean(),
-        quantity: z.number().min(1, { message: "Quantity is required" }),
-        length: z.number().min(1, { message: "Length is required" }),
-        length_unit: z.enum(["cm", "m"], { required_error: "Length unit is required" }),
-        width: z.number().min(1, { message: "Width is required" }),
-        width_unit: z.enum(["cm", "m"], { required_error: "Width unit is required" }),
-        height: z.number().min(1, { message: "Height is required" }),
-        height_unit: z.enum(["cm", "m"], { required_error: "Height unit is required" }),
-        weight: z.number().min(1, { message: "Weight is required" }),
-        cbm: z.number(),
-        gross_cbm: z.number(),
-        gross_weight: z.number(),
-        dangerous_goods: z.boolean(),
-        un_number: z.string().optional(),
-        class: z.string().optional(),
-        remarks: z.string().optional(),
-        temperature_control: z.boolean(),
-        temperature_min: z.number().optional(),
-        temperature_max: z.number().optional(),
-    })).optional(),
-    
-    consolidated_data: z.object({
-        commodity_types: z.string().min(1, { message: "Commodity types are required" }),
-        total_quantity: z.number().min(1, { message: "Total quantity is required" }),
-        total_weight: z.number().min(1, { message: "Total weight is required" }),
-        total_volume: z.number().min(1, { message: "Total volume is required" }),
-        dangerous_goods: z.boolean(),
-        un_number: z.string().optional(),
-        class: z.string().optional(),
-        special_instructions: z.string().optional(),
-        packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
-            required_error: "Packaging type is required",
-        }),
-        stackable: z.boolean(),
-        temperature_control: z.boolean(),
-        temperature_min: z.number().optional(),
-        temperature_max: z.number().optional(),
-        special_handling: z.string().optional(),
-    }).optional(),
-    
-    supporting_files: z.string().optional(),
+    supporting_files: z.array(z.string()).optional(),
     additional_information: z.string().optional(),
     effective_date: z.string().min(1, { message: "Effective date is required" }),
     expiry_date: z.string().min(1, { message: "Expiry date is required" }),
     service_contract_number: z.string().optional(),
-    
     additional_services: z.object({
         port_handling: z.boolean().default(false),
         crane_heavy_lift: z.boolean().default(false),
@@ -105,7 +101,6 @@ const formSchema = z.object({
         other: z.boolean().default(false),
         other_details: z.string().optional(),
     }),
-    
     company_details: z.object({
         company_name: z.string().min(1, { message: "Company name is required" }),
         contact_person_name: z.string().min(1, { message: "Contact person name is required" }),
@@ -115,8 +110,21 @@ const formSchema = z.object({
         additional_email: z.string().email().optional().or(z.literal('')),
         phone_number: z.string().min(1, { message: "Phone number is required" }),
         additional_phone_number: z.string().optional(),
-    })
-});
+    }),
+}).strict();
+
+const formSchema = z.discriminatedUnion('entry_mode', [
+    baseSchema.extend({
+        entry_mode: z.literal('itemized'),
+        itemized_data: itemizedEntrySchema,
+        consolidated_data: z.undefined().optional(),
+    }).strict(),
+    baseSchema.extend({
+        entry_mode: z.literal('consolidated'),
+        consolidated_data: consolidatedEntrySchema,
+        itemized_data: z.undefined().optional(),
+    }).strict(),
+]);
 
 // Add the missing type definition
 type FormData = z.infer<typeof formSchema>;
@@ -128,6 +136,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
 
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
+        shouldUnregister: true,
         defaultValues: {
             routing: [{
                 from_country: '',
@@ -166,23 +175,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                 temperature_min: 0,
                 temperature_max: 0,
             }],
-            consolidated_data: {
-                commodity_types: '',
-                total_quantity: 0,
-                total_weight: 0,
-                total_volume: 0,
-                dangerous_goods: false,
-                un_number: '',
-                class: '',
-                special_instructions: '',
-                packaging_type: 'pallets',
-                stackable: false,
-                temperature_control: false,
-                temperature_min: 0,
-                temperature_max: 0,
-                special_handling: '',
-            },
-            supporting_files: '',
+            supporting_files: [],
             additional_information: '',
             effective_date: '',
             expiry_date: '',
@@ -225,11 +218,72 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
     const handleModeChange = (mode: 'itemized' | 'consolidated') => {
         setEntryMode(mode);
         form.setValue('entry_mode', mode);
+        if (mode === 'itemized') {
+            // Ensure itemized_data exists so inputs are controlled
+            if (!form.getValues('itemized_data')) {
+                form.setValue('itemized_data', [{
+                    commodity: '',
+                    packaging_type: 'pallets',
+                    packaging_type_other: '',
+                    stackable: false,
+                    quantity: 1,
+                    length: 0,
+                    length_unit: 'cm',
+                    width: 0,
+                    width_unit: 'cm',
+                    height: 0,
+                    height_unit: 'cm',
+                    weight: 0,
+                    cbm: 0,
+                    gross_cbm: 0,
+                    gross_weight: 0,
+                    dangerous_goods: false,
+                    un_number: '',
+                    class: '',
+                    remarks: '',
+                    temperature_control: false,
+                    temperature_min: 0,
+                    temperature_max: 0,
+                }]);
+            }
+            form.clearErrors('consolidated_data');
+            form.unregister('consolidated_data');
+        } else {
+            // Ensure consolidated_data exists so inputs are controlled
+            if (!form.getValues('consolidated_data')) {
+                form.setValue('consolidated_data', {
+                    commodity_types: '',
+                    total_quantity: 0,
+                    total_weight: 0,
+                    total_volume: 0,
+                    dangerous_goods: false,
+                    un_number: '',
+                    class: '',
+                    special_instructions: '',
+                    packaging_type: 'pallets',
+                    stackable: false,
+                    temperature_control: false,
+                    temperature_min: 0,
+                    temperature_max: 0,
+                    special_handling: '',
+                } as any);
+            }
+            form.clearErrors('itemized_data');
+            form.unregister('itemized_data');
+        }
     };
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(handleSubmit, (errors) => {
+                    console.error('Validation errors:', errors);
+                    const first = Object.keys(errors)[0] as any;
+                    if (first) {
+                        // Focus the first errored field
+                        // @ts-ignore
+                        form.setFocus(first);
+                    }
+                })} className="space-y-8">
                 {/* Routing Section */}
                 <RoutingCard1 control={form.control} />
 
@@ -303,14 +357,15 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                             <Controller
                                 control={form.control}
                                 name="supporting_files"
-                                render={({ field, fieldState: { error } }) => (
+                                render={({ field: { onChange, ref }, fieldState: { error } }) => (
                                     <>
                                         <Input
                                             type="file"
                                             multiple
                                             accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                                             className="max-w-[300px] border-2 rounded-xl"
-                                            {...field}
+                                            onChange={(e) => onChange(e.target.files)}
+                                            ref={ref}
                                         />
                                         {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                     </>
@@ -467,7 +522,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                                                 render={({ field, fieldState: { error } }) => (
                                                     <>
                                                         <Textarea
-                                                            className="min-h-[100px] border-2 rounded-xl"
+                                                            className="min-h[100px] border-2 rounded-xl"
                                                             placeholder="Describe special handling requirements..."
                                                             {...field}
                                                         />

@@ -67,7 +67,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
             other_mechanical_details: z.string().optional(),
         }),
         requested_services_details: z.string().min(1, { message: t("Required") }),
-        supporting_files: z.string().optional(),
+        supporting_files: z.array(z.string()).optional(),
         additional_information: z.string().optional(),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("Required") }),
@@ -134,7 +134,7 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                 other_mechanical_details: '',
             },
             requested_services_details: '',
-            supporting_files: '',
+            supporting_files: [],
             additional_information: '',
             company_details: {
                 company_name: '',

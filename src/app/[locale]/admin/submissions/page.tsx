@@ -61,7 +61,7 @@ export default async function SubmissionsPage() {
     supabase.from('suez_canal_form').select('*').order('created_at', { ascending: false }).limit(10),
     supabase.from('out_gauge_form').select('*').order('created_at', { ascending: false }).limit(10),
     supabase.from('investor_form').select('*').order('created_at', { ascending: false }).limit(10),
-    supabase.from('ocean_freight_forms').select('*').order('created_at', { ascending: false }).limit(10)
+    supabase.from('ocean_freight_quotation').select('*').order('created_at', { ascending: false }).limit(10)
   ]);
 
   const getServiceTypeBadge = (type: string): "default" | "secondary" | "outline" | "destructive" => {

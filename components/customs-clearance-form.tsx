@@ -52,7 +52,7 @@ const formSchema = z.object({
   number_of_trucks: z.number().optional(),
   country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
   final_destination: z.string().min(1, { message: "Final destination is required" }),
-  supporting_files: z.array(z.any()).optional(),
+  supporting_files: z.array(z.string()).optional(),
   additional_services: z.string().optional(),
   company_details: z.object({
     company_name: z.string().min(1, { message: "Company name is required" }),
@@ -77,7 +77,6 @@ interface CustomsClearanceFormProps {
 export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormProps) {
   const t = useTranslations('Inland-forms');
   const [is_submitting, set_is_submitting] = useState(false);
-  const [uploaded_files, set_uploaded_files] = useState<File[]>([]);
   
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -130,18 +129,6 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
     } finally {
       set_is_submitting(false);
     }
-  };
-
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(event.target.files || []);
-    set_uploaded_files(prev => [...prev, ...files]);
-    form.setValue("supporting_files", [...(form.getValues("supporting_files") || []), ...files]);
-  };
-
-  const removeFile = (index: number) => {
-    const newFiles = uploaded_files.filter((_, i) => i !== index);
-    set_uploaded_files(newFiles);
-    form.setValue("supporting_files", newFiles);
   };
 
   return (
@@ -840,55 +827,30 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
         {/* Supporting Files */}
         <div className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-xl font-raleway font-medium mb-4">Supporting Files (Optional)</h2>
-          <div className='w-full max-w-sm items-center gap-1.5 mt-1'>
-            <FormItem>
-              <FormLabel>
-                {t('file')} <span className="text-sm text-gray-500">({t('optional')})</span>
-              </FormLabel>
-              <FormControl>
-                <Controller
-                  control={form.control}
-                  name="supporting_files"
-                  render={({ field, fieldState: { error } }) => (
-                    <>
-                      <Input
-                        className="max-w-[240px] border-2 rounded-xl"
-                        type="file"
-                        multiple
-                        accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                        onChange={(e) => {
-                          handleFileUpload(e);
-                          field.onChange(e.target.files);
-                        }}
-                      />
-                      {error && <p className="text-red-500">{error.message}</p>}
-                    </>
-                  )}
-                />
-              </FormControl>
-              <p className="px-2 text-xs text-gray-500">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-            </FormItem>
-
-            {uploaded_files.length > 0 && (
-              <div className="mt-4">
-                <h4 className="font-medium mb-2">Uploaded Files:</h4>
-                <ul className="space-y-2">
-                  {uploaded_files.map((file, index) => (
-                    <li key={index} className="flex items-center justify-between bg-gray-50 p-2 rounded-xl">
-                      <span className="text-sm">{file.name}</span>
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        onClick={() => removeFile(index)}
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+          <FormItem>
+            <FormLabel>
+              {t('file')} <span className="text-sm text-gray-500">({t('optional')})</span>
+            </FormLabel>
+            <FormControl>
+              <Controller
+                control={form.control}
+                name="supporting_files"
+                render={({ field, fieldState: { error } }) => (
+                  <>
+                    <Input
+                      type="file"
+                      multiple
+                      accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                      className="max-w-[300px] border-2 rounded-xl"
+                      {...field}
+                    />
+                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                  </>
+                )}
+              />
+            </FormControl>
+            <p className="text-xs text-gray-500 mt-1">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
+          </FormItem>
         </div>
 
         {/* Additional Required Services/Information */}

@@ -46,26 +46,21 @@ const Page: React.FC = () => {
     }
 
     const submitForm = async (formData: any) => {
+        console.log("=== AIR FREIGHT SUBMIT START ===");
+        console.log("Form data received:", formData);
+        
         // Flatten the formData before inserting into Supabase
         let flattenedData;
-        console.log("AAAA")
 
         flattenedData = {
             user_id: user?.id || null,
-
             routing: formData.routing,
-
             ready_to_load: formData.ready_to_load,
-
             transportation_method: formData.transportation.transportation_method,
-
-            commodities: formData.commodities,
-
-            import_service: formData.recommended.import,
-            export_service: formData.recommended.export,
-
-            value_added_service: formData.value_added_service.service,
-
+            commodities: formData?.itemized_data ?? formData?.consolidated_data ?? null,
+            import_service: !!(formData?.recommended?.import),
+            export_service: !!(formData?.recommended?.export),
+            value_added_service: formData?.value_added_service?.service ?? null,
             company_name: formData.company_details.company_name,
             contact_person_name: formData.company_details.contact_person_name,
             title: formData.company_details.title,
@@ -74,12 +69,10 @@ const Page: React.FC = () => {
             additional_email: formData.company_details.additional_email,
             phone_number: formData.company_details.phone_number,
             additional_phone_number: formData.company_details.additional_phone_number,
-            quotation_number: await generate_quotation_number("air_freight_services")
+            quotation_number: await generate_quotation_number("air_freight")
         };
 
-
-
-        console.log(flattenedData)
+        console.log("Flattened data:", flattenedData);
 
         // Send email notification FIRST
         try {
@@ -95,22 +88,23 @@ const Page: React.FC = () => {
             .insert([flattenedData]);  // Insert the flattened data
 
         if (error) {
-            console.log(flattenedData)
-            console.log(error)
+            console.log("Database error:", error);
+            console.log("Flattened data that failed:", flattenedData);
             toast({
                 title: "Error",
                 description: "Database insert failed, but email was sent",
                 variant: "destructive"
-            })
+            });
         } else {
-            //green toast
+            // Success feedback
             toast({
                 title: "Success",
                 description: "Form Added Successfully",
-            })
-            router.push('/air-freight-forms')
-
+            });
+            router.push('/air-freight-forms');
         }
+
+        console.log("=== AIR FREIGHT SUBMIT END ===");
     };
 
 

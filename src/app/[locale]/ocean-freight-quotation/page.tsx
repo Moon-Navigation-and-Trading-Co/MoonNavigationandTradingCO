@@ -57,15 +57,15 @@ const OceanFreightQuotationPage: React.FC = () => {
                 expiry_date: formData.expiryDate,
                 service_contract_number: formData.serviceContractNumber,
                 additional_services: JSON.stringify(formData.additionalServices),
-                company_name: formData.companyDetails.companyName,
-                contact_person: formData.companyDetails.contactPerson,
-                title: formData.companyDetails.title,
-                city: formData.companyDetails.city,
-                country: formData.companyDetails.country,
-                email: formData.companyDetails.email,
-                additional_email: formData.companyDetails.additionalEmail,
-                phone: formData.companyDetails.phone,
-                additional_phone: formData.companyDetails.additionalPhone,
+                company_name: formData.company_details.company_name,
+                contact_person: formData.company_details.contact_person_name,
+                title: formData.company_details.title,
+                city: formData.company_details.country_of_origin,
+                country: formData.company_details.country_of_origin,
+                email: formData.company_details.company_email,
+                additional_email: formData.company_details.additional_email,
+                phone: formData.company_details.phone_number,
+                additional_phone: formData.company_details.additional_phone_number,
                 created_at: new Date().toISOString(),
             };
 
@@ -86,7 +86,7 @@ const OceanFreightQuotationPage: React.FC = () => {
 
             // Send email notification
             try {
-                await sendFormEmail(formData, 'ocean_freight_quotation', [formData.companyDetails.email]);
+                await sendFormEmail(formData, 'ocean_freight_quotation', [formData.company_details.company_email]);
             } catch (emailError) {
                 console.error('Email error:', emailError);
             }

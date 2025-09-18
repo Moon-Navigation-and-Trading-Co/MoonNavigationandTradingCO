@@ -117,7 +117,7 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?
             path: ["services"]
         }),
         additional_information: z.string().optional(),
-        supporting_files: z.string().optional(),
+        supporting_files: z.array(z.string()).optional(),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("Required") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
@@ -217,7 +217,7 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?
                 },
             },
             additional_information: '',
-            supporting_files: '',
+            supporting_files: [],
             company_details: {
                 company_name: '',
                 contact_person_name: '',
@@ -284,7 +284,8 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?
                       </div>
                     ) : "Submit"}
                 </Button>                
-            </form>        </Form>
+            </form>
+        </Form>
     );
 };
 

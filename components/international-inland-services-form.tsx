@@ -86,7 +86,7 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
             temperature_max: z.number().optional(),
             special_handling: z.string().optional(),
         }).optional(),
-        supporting_files: z.array(z.any()).optional(),
+        supporting_files: z.array(z.string()).optional(),
         additional_details: z.string().optional(),
         commercial_terms: z.string().optional(),
         commodities: z.array(z.object({
@@ -319,18 +319,15 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                                             type="file"
                                             multiple
                                             accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                            className="max-w-md"
-                                            onChange={(e) => {
-                                                const files = Array.from(e.target.files || []);
-                                                field.onChange(files);
-                                            }}
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            {...field}
                                         />
                                         {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                     </>
                                 )}
                             />
                         </FormControl>
-                        <p className="text-sm text-gray-500 mt-2">
+                        <p className="text-xs text-gray-500 mt-1">
                             Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
                         </p>
                     </FormItem>

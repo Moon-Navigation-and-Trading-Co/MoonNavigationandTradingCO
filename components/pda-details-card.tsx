@@ -88,8 +88,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                         placeholder="IMO Number"
                                         {...field}
                                         value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
-
+                                        onChange={(e) => field.onChange(e.target.value)}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -217,7 +216,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                         placeholder="Length in meters"
                                         {...field}
                                         value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                        onChange={(e) => field.onChange(e.target.value)}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>

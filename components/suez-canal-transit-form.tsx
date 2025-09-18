@@ -70,6 +70,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
             other_details: z.string().optional(),
         }),
         additional_notes: z.string().optional(),
+        supporting_files: z.array(z.string()).optional(),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("Required") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
@@ -138,7 +139,7 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                 other_details: '',
             },
             additional_notes: '',
-            supporting_files: '',
+            supporting_files: [],
             company_details: {
                 company_name: '',
                 contact_person_name: '',
