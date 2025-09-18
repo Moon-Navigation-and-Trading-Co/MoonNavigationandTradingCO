@@ -48,7 +48,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                             name="port.name"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="port.name" className="max-w-[300px]  border-2 rounded-xl" placeholder="Port Name" {...field} />
+                                    <Input id="port.name" className="max-w-[300px]  border-2 rounded-xl" placeholder="Port Name" value={field.value ?? ''} onChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>)}
                         />
@@ -64,7 +64,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                             name="vessel.name"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.name" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Name" {...field} />
+                                    <Input id="vessel.name" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Name" value={field.value ?? ''} onChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -86,9 +86,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                         type="number"
                                         id="vessel.imo"
                                         placeholder="IMO Number"
-                                        {...field}
-                                        value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.value)}
+                                        value={field.value?.toString() || '0'}
+                                        onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                        onBlur={field.onBlur}
+                                        ref={field.ref}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -108,7 +109,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                             name="vessel.type"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.type" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Type" {...field} />
+                                    <Input id="vessel.type" className="max-w-[300px]  border-2 rounded-xl" placeholder="Vessel Type" value={field.value ?? ''} onChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -125,7 +126,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                             name="vessel.flag"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.flag" className="max-w-[300px]  border-2 rounded-xl" placeholder="Flag" {...field} />
+                                    <Input id="vessel.flag" className="max-w-[300px]  border-2 rounded-xl" placeholder="Flag" value={field.value ?? ''} onChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -142,7 +143,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                             name="vessel.ship_gross_tonnage"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.ship_gross_tonnage" className="max-w-[300px]  border-2 rounded-xl" placeholder="Gross Tonnage" {...field} />
+                                    <Input id="vessel.ship_gross_tonnage" className="max-w-[300px]  border-2 rounded-xl" placeholder="Gross Tonnage" value={field.value ?? ''} onChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -159,7 +160,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                             name="vessel.ship_net_tonnage"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.ship_net_tonnage" className="max-w-[300px]  border-2 rounded-xl" placeholder="Net Tonnage" {...field} />
+                                    <Input id="vessel.ship_net_tonnage" className="max-w-[300px]  border-2 rounded-xl" placeholder="Net Tonnage" value={field.value ?? ''} onChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -176,7 +177,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                             name="vessel.deadweight"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.deadweight" className="max-w-[300px]  border-2 rounded-xl" placeholder="Deadweight" {...field} />
+                                    <Input id="vessel.deadweight" className="max-w-[300px]  border-2 rounded-xl" placeholder="Deadweight" value={field.value ?? ''} onChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -193,7 +194,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                             name="vessel.draft"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Input id="vessel.draft" className="max-w-[300px]  border-2 rounded-xl" placeholder="Draft in meters" {...field} />
+                                    <Input id="vessel.draft" className="max-w-[300px]  border-2 rounded-xl" placeholder="Draft in meters" value={field.value ?? ''} onChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
                             )}
@@ -214,9 +215,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                         className="max-w-[300px] border-2 rounded-xl"
                                         type="number"
                                         placeholder="Length in meters"
-                                        {...field}
-                                        value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.value)}
+                                        value={field.value?.toString() || '0'}
+                                        onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                        onBlur={field.onBlur}
+                                        ref={field.ref}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -334,9 +336,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                                 className="max-w-[300px] border-2 rounded-xl"
                                                 type="number"
                                                 placeholder="Enter Quantity"
-                                                {...field}
-                                                value={field.value || ''}
-                                                onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                value={field.value?.toString() || '0'}
+                                                onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                                onBlur={field.onBlur}
+                                                ref={field.ref}
                                             />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>
@@ -356,7 +359,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                             <Input 
                                                 className="max-w-[300px] border-2 rounded-xl" 
                                                 placeholder="Insert the type (e.g., bulk grain, containers, fuel, etc.)" 
-                                                {...field} 
+                                                value={field.value ?? ''}
+                                                onChange={field.onChange}
+                                                onBlur={field.onBlur}
+                                                ref={field.ref}
                                             />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>
@@ -396,9 +402,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                             className="max-w-[300px] border-2 rounded-xl"
                                             type="number"
                                             placeholder="Enter number of days"
-                                            {...field}
-                                            value={field.value || ''}
-                                            onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                            value={field.value?.toString() || '0'}
+                                            onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                            onBlur={field.onBlur}
+                                            ref={field.ref}
                                         />
                                         {error && <p className="text-red-500">{error.message}</p>}
                                     </>
@@ -425,9 +432,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                                 className="max-w-[300px] border-2 rounded-xl"
                                                 type="number"
                                                 placeholder="Enter Quantity"
-                                                {...field}
-                                                value={field.value || ''}
-                                                onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                                value={field.value?.toString() || '0'}
+                                                onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                                onBlur={field.onBlur}
+                                                ref={field.ref}
                                             />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>
@@ -447,7 +455,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                             <Input 
                                                 className="max-w-[300px] border-2 rounded-xl" 
                                                 placeholder="Insert Type (e.g., crude oil, equipment, chemicals, etc.)" 
-                                                {...field} 
+                                                value={field.value ?? ''}
+                                                onChange={field.onChange}
+                                                onBlur={field.onBlur}
+                                                ref={field.ref}
                                             />
                                             {error && <p className="text-red-500">{error.message}</p>}
                                         </>
@@ -488,9 +499,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                         className="max-w-[300px] border-2 rounded-xl"
                                         type="number"
                                         placeholder="Enter number of days"
-                                        {...field}
-                                        value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                        value={field.value?.toString() || '0'}
+                                        onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                        onBlur={field.onBlur}
+                                        ref={field.ref}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -512,7 +524,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                         className="max-w-[300px] border-2 rounded-xl" 
                                         type="date" 
                                         placeholder="Select date"
-                                        {...field} 
+                                        value={field.value ?? ''}
+                                        onChange={field.onChange}
+                                        onBlur={field.onBlur}
+                                        ref={field.ref}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -534,9 +549,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                         className="max-w-[300px] border-2 rounded-xl"
                                         type="number"
                                         placeholder="No. of Days"
-                                        {...field}
-                                        value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                        value={field.value?.toString() || '0'}
+                                        onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                        onBlur={field.onBlur}
+                                        ref={field.ref}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -558,9 +574,10 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                         className="max-w-[300px] border-2 rounded-xl"
                                         type="number"
                                         placeholder="No. of Days"
-                                        {...field}
-                                        value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                        value={field.value?.toString() || '0'}
+                                        onChange={(e) => field.onChange(e.target.value ? Number(e.target.value) : 0)}
+                                        onBlur={field.onBlur}
+                                        ref={field.ref}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -1151,7 +1168,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                             name="additional_information"
                             render={({ field, fieldState: { error } }) => (
                                 <>
-                                    <Textarea className="max-w-[600px] border-2 rounded-xl min-h-[100px]" placeholder="Special requests or notes..." {...field} />
+                                    <Textarea className="max-w-[600px] border-2 rounded-xl min-h-[100px]" placeholder="Special requests or notes..." value={field.value ?? ''} onChange={field.onChange} onBlur={field.onBlur} ref={field.ref} />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>)}
                         />
@@ -1177,7 +1194,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                                         type="file" 
                                         multiple 
                                         accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx" 
-                                        {...field} 
+                                        onChange={(e) => field.onChange(Array.from(e.target.files || []).map(f => f.name))}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>

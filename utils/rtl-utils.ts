@@ -21,15 +21,26 @@ export function useIsRTL() {
 }
 
 /**
+ * Non-hook utility to determine RTL using the DOM. Safe in any function.
+ */
+function getIsRTL(): boolean {
+  if (typeof document === 'undefined') return false;
+  const dir = document.documentElement.getAttribute('dir');
+  if (dir) return dir.toLowerCase() === 'rtl';
+  const lang = document.documentElement.getAttribute('lang');
+  if (lang) return lang.toLowerCase().startsWith('ar');
+  return false;
+}
+
+/**
  * Utility function to get RTL-aware text alignment class
  * @param defaultAlignment - Default alignment for LTR languages
  * @returns Tailwind class for proper text alignment
  */
 export function getRTLTextAlign(defaultAlignment: 'left' | 'right' | 'center' = 'left') {
-  const locale = useLocale();
+  const isRTL = getIsRTL();
 
-  if (locale === 'ar') {
-    // For Arabic, flip left/right alignments
+  if (isRTL) {
     switch (defaultAlignment) {
       case 'left':
         return 'text-right';
@@ -42,7 +53,6 @@ export function getRTLTextAlign(defaultAlignment: 'left' | 'right' | 'center' = 
     }
   }
 
-  // For other languages, use default alignment
   return `text-${defaultAlignment}`;
 }
 
@@ -52,14 +62,12 @@ export function getRTLTextAlign(defaultAlignment: 'left' | 'right' | 'center' = 
  * @returns Tailwind class for proper flex direction
  */
 export function getRTLFlexDirection(defaultDirection: 'row' | 'row-reverse' = 'row') {
-  const locale = useLocale();
+  const isRTL = getIsRTL();
 
-  if (locale === 'ar') {
-    // For Arabic, flip row directions
+  if (isRTL) {
     return defaultDirection === 'row' ? 'flex-row-reverse' : 'flex-row';
   }
 
-  // For other languages, use default direction
   return `flex-${defaultDirection}`;
 }
 
@@ -68,11 +76,12 @@ export function getRTLFlexDirection(defaultDirection: 'row' | 'row-reverse' = 'r
  * @param defaultJustify - Default justify content for LTR languages
  * @returns Tailwind class for proper justify content
  */
-export function getRTLJustifyContent(defaultJustify: 'start' | 'end' | 'between' | 'around' | 'evenly' = 'start') {
-  const locale = useLocale();
+export function getRTLJustifyContent(
+  defaultJustify: 'start' | 'end' | 'between' | 'around' | 'evenly' = 'start'
+) {
+  const isRTL = getIsRTL();
 
-  if (locale === 'ar') {
-    // For Arabic, flip start/end
+  if (isRTL) {
     switch (defaultJustify) {
       case 'start':
         return 'justify-end';
@@ -83,7 +92,6 @@ export function getRTLJustifyContent(defaultJustify: 'start' | 'end' | 'between'
     }
   }
 
-  // For other languages, use default justify
   return `justify-${defaultJustify}`;
 }
 
@@ -94,21 +102,13 @@ export function getRTLJustifyContent(defaultJustify: 'start' | 'end' | 'between'
  * @returns Object with pl and pr classes
  */
 export function getRTLPadding(left: string, right: string) {
-  const locale = useLocale();
+  const isRTL = getIsRTL();
 
-  if (locale === 'ar') {
-    // For Arabic, swap left and right padding
-    return {
-      pl: right,
-      pr: left
-    };
+  if (isRTL) {
+    return { pl: right, pr: left };
   }
 
-  // For other languages, use original padding
-  return {
-    pl: left,
-    pr: right
-  };
+  return { pl: left, pr: right };
 }
 
 /**
@@ -118,21 +118,13 @@ export function getRTLPadding(left: string, right: string) {
  * @returns Object with ml and mr classes
  */
 export function getRTLMargin(left: string, right: string) {
-  const locale = useLocale();
+  const isRTL = getIsRTL();
 
-  if (locale === 'ar') {
-    // For Arabic, swap left and right margin
-    return {
-      ml: right,
-      mr: left
-    };
+  if (isRTL) {
+    return { ml: right, mr: left };
   }
 
-  // For other languages, use original margin
-  return {
-    ml: left,
-    mr: right
-  };
+  return { ml: left, mr: right };
 }
 
 /**
@@ -142,8 +134,8 @@ export function getRTLMargin(left: string, right: string) {
  * @returns The appropriate class based on current locale
  */
 export function getRTLClass(ltrClass: string, rtlClass: string) {
-  const locale = useLocale();
-  return locale === 'ar' ? rtlClass : ltrClass;
+  const isRTL = getIsRTL();
+  return isRTL ? rtlClass : ltrClass;
 }
 
 /**
@@ -153,21 +145,13 @@ export function getRTLClass(ltrClass: string, rtlClass: string) {
  * @returns Object with rounded-l and rounded-r classes
  */
 export function getRTLBorderRadius(left: string, right: string) {
-  const locale = useLocale();
+  const isRTL = getIsRTL();
 
-  if (locale === 'ar') {
-    // For Arabic, swap left and right border radius
-    return {
-      'rounded-l': right,
-      'rounded-r': left
-    };
+  if (isRTL) {
+    return { 'rounded-l': right, 'rounded-r': left } as const;
   }
 
-  // For other languages, use original border radius
-  return {
-    'rounded-l': left,
-    'rounded-r': right
-  };
+  return { 'rounded-l': left, 'rounded-r': right } as const;
 }
 
 /**
@@ -177,21 +161,13 @@ export function getRTLBorderRadius(left: string, right: string) {
  * @returns Object with left and right classes
  */
 export function getRTLPosition(left: string, right: string) {
-  const locale = useLocale();
+  const isRTL = getIsRTL();
 
-  if (locale === 'ar') {
-    // For Arabic, swap left and right positioning
-    return {
-      left: right,
-      right: left
-    };
+  if (isRTL) {
+    return { left: right, right: left } as const;
   }
 
-  // For other languages, use original positioning
-  return {
-    left: left,
-    right: right
-  };
+  return { left, right } as const;
 }
 
 /**
@@ -200,14 +176,12 @@ export function getRTLPosition(left: string, right: string) {
  * @returns RTL-aware transform class
  */
 export function getRTLTransform(defaultTransform: string = '') {
-  const locale = useLocale();
+  const isRTL = getIsRTL();
 
-  if (locale === 'ar') {
-    // For Arabic, add scaleX(-1) to flip horizontally
+  if (isRTL) {
     return `${defaultTransform} scale-x-[-1]`.trim();
   }
 
-  // For other languages, use original transform
   return defaultTransform;
 }
 
@@ -217,15 +191,8 @@ export function getRTLTransform(defaultTransform: string = '') {
  * @returns RTL-aware icon class
  */
 export function getRTLIcon(iconName: string) {
-  const locale = useLocale();
-
-  if (locale === 'ar') {
-    // For Arabic, add flip class to icons
-    return `${iconName} rtl-flip`;
-  }
-
-  // For other languages, use original icon
-  return iconName;
+  const isRTL = getIsRTL();
+  return isRTL ? `${iconName} rtl-flip` : iconName;
 }
 
 /**
@@ -234,15 +201,8 @@ export function getRTLIcon(iconName: string) {
  * @returns RTL-aware animation direction
  */
 export function getRTLAnimationDirection(defaultDirection: 'normal' | 'reverse' = 'normal') {
-  const locale = useLocale();
-
-  if (locale === 'ar') {
-    // For Arabic, reverse animations
-    return defaultDirection === 'normal' ? 'reverse' : 'normal';
-  }
-
-  // For other languages, use original direction
-  return defaultDirection;
+  const isRTL = getIsRTL();
+  return isRTL ? (defaultDirection === 'normal' ? 'reverse' : 'normal') : defaultDirection;
 }
 
 /**
@@ -251,14 +211,7 @@ export function getRTLAnimationDirection(defaultDirection: 'normal' | 'reverse' 
  * @returns RTL-aware list style
  */
 export function getRTLListStyle(defaultStyle: 'disc' | 'decimal' | 'none' = 'disc') {
-  const locale = useLocale();
-
-  if (locale === 'ar') {
-    // For Arabic, use appropriate list style
-    return defaultStyle;
-  }
-
-  // For other languages, use original style
+  // List style unaffected; keep for API symmetry
   return defaultStyle;
 }
 
@@ -268,15 +221,8 @@ export function getRTLListStyle(defaultStyle: 'disc' | 'decimal' | 'none' = 'dis
  * @returns RTL-aware input direction
  */
 export function getRTLInputDirection(defaultDirection: 'ltr' | 'rtl' = 'ltr') {
-  const locale = useLocale();
-
-  if (locale === 'ar') {
-    // For Arabic, use RTL input direction
-    return 'rtl';
-  }
-
-  // For other languages, use original direction
-  return defaultDirection;
+  const isRTL = getIsRTL();
+  return isRTL ? 'rtl' : defaultDirection;
 }
 
 /**
@@ -285,13 +231,6 @@ export function getRTLInputDirection(defaultDirection: 'ltr' | 'rtl' = 'ltr') {
  * @returns RTL-aware text direction
  */
 export function getRTLTextDirection(defaultDirection: 'ltr' | 'rtl' = 'ltr') {
-  const locale = useLocale();
-
-  if (locale === 'ar') {
-    // For Arabic, use RTL text direction
-    return 'rtl';
-  }
-
-  // For other languages, use original direction
-  return defaultDirection;
-} 
+  const isRTL = getIsRTL();
+  return isRTL ? 'rtl' : defaultDirection;
+}

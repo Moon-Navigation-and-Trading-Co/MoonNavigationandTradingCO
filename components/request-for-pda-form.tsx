@@ -15,123 +15,131 @@ import { useTranslations } from 'next-intl';
 import PDAdetails from './pda-details-card';
 import { Separator } from '@radix-ui/react-dropdown-menu';
 
-
-// 1. Define a type-safe form handler using z.infer
-const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
-    // Get Content
-    const t = useTranslations('Inland-errors')
-
-    // Define your Zod schema (as before)
-    const formSchema = z.object({
-        port: z.object({
-            name: z.string().min(1, { message: t("Required") }),
-        }),
-        vessel: z.object({
-            name: z.string().min(1, { message: t("Required") }),
-            imo: z.coerce.number().min(1, { message: t("Required") }),
-            type: z.string().min(1, { message: t("Required") }),
-            flag: z.string().min(1, { message: t("Required") }),
-            ship_gross_tonnage: z.string().min(1, { message: t("Required") }),
-            ship_net_tonnage: z.string().min(1, { message: t("Required") }),
-            deadweight: z.string().min(1, { message: t("Required") }),
-            draft: z.string().min(1, { message: t("Required") }),
-            length: z.coerce.number().min(1, { message: t("Required") }),
-        }),
+// Define the Zod schema
+const formSchema = z.object({
+    port: z.object({
+        name: z.string().min(1, { message: "Required" }),
+    }),
+    vessel: z.object({
+        name: z.string().min(1, { message: "Required" }),
+        imo: z.coerce.number().min(1, { message: "Required" }),
+        type: z.string().min(1, { message: "Required" }),
+        flag: z.string().min(1, { message: "Required" }),
+        ship_gross_tonnage: z.string().min(1, { message: "Required" }),
+        ship_net_tonnage: z.string().min(1, { message: "Required" }),
+        deadweight: z.string().min(1, { message: "Required" }),
+        draft: z.string().min(1, { message: "Required" }),
+        length: z.coerce.number().min(1, { message: "Required" }),
         call_for_commercial: z.boolean().optional().default(false),
         call_for_maintenance: z.boolean().optional().default(false),
         call_for_other: z.boolean().optional().default(false),
         other_purpose_details: z.string().optional(),
-        total_discharged_cargo: z.coerce.number().min(1, { message: t("Required") }),
+        total_discharged_cargo: z.coerce.number().min(1, { message: "Required" }),
         discharged_cargo_type: z.string().optional(),
         discharged_dangerous_cargo: z.boolean().optional().default(false),
-        total_days_needed_for_discharging: z.coerce.number().min(1, { message: t("Required") }),
-        total_loaded_cargo: z.coerce.number().min(1, { message: t("Required") }),
+        total_days_needed_for_discharging: z.coerce.number().min(1, { message: "Required" }),
+        total_loaded_cargo: z.coerce.number().min(1, { message: "Required" }),
         loaded_cargo_type: z.string().optional(),
         loaded_dangerous_cargo: z.boolean().optional().default(false),
-        total_days_needed_for_loading: z.coerce.number().min(1, { message: t("Required") }),
+        total_days_needed_for_loading: z.coerce.number().min(1, { message: "Required" }),
         eta_expected_date: z.string().optional(),
-        total_expected_berthing_days: z.coerce.number().min(1, { message: t("Required") }),
-        total_expected_anchor_days: z.coerce.number().min(1, { message: t("Required") }),
-        services: z.object({
-            bunkering: z.object({
-                mgo: z.boolean().default(false),
-                mgo_details: z.string().optional(),
-                vlsfo: z.boolean().default(false),
-                vlsfo_details: z.string().optional(),
-                hfo: z.boolean().default(false),
-                hfo_details: z.string().optional(),
-                other: z.boolean().default(false),
-                other_details: z.string().optional(),
-                details: z.string().optional(),
-            }),
-            chandlery: z.object({
-                fresh_dry_provisions: z.boolean().default(false),
-                fresh_dry_provisions_details: z.string().optional(),
-                spare_parts_tools: z.boolean().default(false),
-                spare_parts_tools_details: z.string().optional(),
-                deck_engine_stores: z.boolean().default(false),
-                deck_engine_stores_details: z.string().optional(),
-                details: z.string().optional(),
-            }),
-            crew: z.object({
-                crew_change_assistance: z.boolean().default(false),
-                crew_change_assistance_details: z.string().optional(),
-                transport_accommodation: z.boolean().default(false),
-                transport_accommodation_details: z.string().optional(),
-                medical_assistance: z.boolean().default(false),
-                medical_assistance_details: z.string().optional(),
-                other: z.boolean().default(false),
-                other_details: z.string().optional(),
-                details: z.string().optional(),
-            }),
-            cargo: z.object({
-                stevedoring: z.boolean().default(false),
-                stevedoring_details: z.string().optional(),
-                cargo_surveys: z.boolean().default(false),
-                cargo_surveys_details: z.string().optional(),
-                lashing_securing: z.boolean().default(false),
-                lashing_securing_details: z.string().optional(),
-                other: z.boolean().default(false),
-                other_details: z.string().optional(),
-                details: z.string().optional(),
-            }),
-            other: z.object({
-                waste_disposal: z.boolean().default(false),
-                waste_disposal_details: z.string().optional(),
-                fresh_water: z.boolean().default(false),
-                fresh_water_details: z.string().optional(),
-                other: z.boolean().default(false),
-                other_details: z.string().optional(),
-                details: z.string().optional(),
-            }),
-        }).refine((data) => {
-            const bunkeringSelected = data.bunkering.mgo || data.bunkering.vlsfo || data.bunkering.hfo || data.bunkering.other;
-            const chandlerySelected = data.chandlery.fresh_dry_provisions || data.chandlery.spare_parts_tools || data.chandlery.deck_engine_stores;
-            const crewSelected = data.crew.crew_change_assistance || data.crew.transport_accommodation || data.crew.medical_assistance || data.crew.other;
-            const cargoSelected = data.cargo.stevedoring || data.cargo.cargo_surveys || data.cargo.lashing_securing || data.cargo.other;
-            const otherSelected = data.other.waste_disposal || data.other.fresh_water || data.other.other;
-            
-            return bunkeringSelected || chandlerySelected || crewSelected || cargoSelected || otherSelected;
-        }, {
-            message: "Please select at least one service from the available options",
-            path: ["services"]
+        total_expected_berthing_days: z.coerce.number().min(1, { message: "Required" }),
+        total_expected_anchor_days: z.coerce.number().min(1, { message: "Required" }),
+    }),
+    services: z.object({
+        bunkering: z.object({
+            mgo: z.boolean().default(false),
+            mgo_details: z.string().optional(),
+            vlsfo: z.boolean().default(false),
+            vlsfo_details: z.string().optional(),
+            hfo: z.boolean().default(false),
+            hfo_details: z.string().optional(),
+            other: z.boolean().default(false),
+            other_details: z.string().optional(),
+            details: z.string().optional(),
         }),
-        additional_information: z.string().optional(),
-        supporting_files: z.array(z.string()).optional(),
-        company_details: z.object({
-            company_name: z.string().min(1, { message: t("Required") }),
-            contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
-            title: z.string().min(1, { message: t("Title") }),
-            country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
-            company_email: z.string().email({ message: t("CompanyEmail") }),
-            additional_email: z.string().email({ message: t("CompanyEmail") }).optional(),
-            phone_number: z.string().min(1, { message: t("PhoneNumber") }),
-            additional_phone_number: z.string().min(1, { message: t("PhoneNumber") }).optional(),
-        })
-        // Add more sections as needed
-    });
+        chandlery: z.object({
+            fresh_dry_provisions: z.boolean().default(false),
+            fresh_dry_provisions_details: z.string().optional(),
+            spare_parts_tools: z.boolean().default(false),
+            spare_parts_tools_details: z.string().optional(),
+            deck_engine_stores: z.boolean().default(false),
+            deck_engine_stores_details: z.string().optional(),
+            details: z.string().optional(),
+        }),
+        crew: z.object({
+            crew_change_assistance: z.boolean().default(false),
+            crew_change_assistance_details: z.string().optional(),
+            transport_accommodation: z.boolean().default(false),
+            transport_accommodation_details: z.string().optional(),
+            medical_assistance: z.boolean().default(false),
+            medical_assistance_details: z.string().optional(),
+            other: z.boolean().default(false),
+            other_details: z.string().optional(),
+            details: z.string().optional(),
+        }),
+        cargo: z.object({
+            stevedoring: z.boolean().default(false),
+            stevedoring_details: z.string().optional(),
+            cargo_surveys: z.boolean().default(false),
+            cargo_surveys_details: z.string().optional(),
+            lashing_securing: z.boolean().default(false),
+            lashing_securing_details: z.string().optional(),
+            other: z.boolean().default(false),
+            other_details: z.string().optional(),
+            details: z.string().optional(),
+        }),
+        other: z.object({
+            waste_disposal: z.boolean().default(false),
+            waste_disposal_details: z.string().optional(),
+            fresh_water: z.boolean().default(false),
+            fresh_water_details: z.string().optional(),
+            other: z.boolean().default(false),
+            other_details: z.string().optional(),
+            details: z.string().optional(),
+        }),
+    }).refine((data) => {
+        const bunkeringSelected = data.bunkering.mgo || data.bunkering.vlsfo || data.bunkering.hfo || data.bunkering.other;
+        const chandlerySelected = data.chandlery.fresh_dry_provisions || data.chandlery.spare_parts_tools || data.chandlery.deck_engine_stores;
+        const crewSelected = data.crew.crew_change_assistance || data.crew.transport_accommodation || data.crew.medical_assistance || data.crew.other;
+        const cargoSelected = data.cargo.stevedoring || data.cargo.cargo_surveys || data.cargo.lashing_securing || data.cargo.other;
+        const otherSelected = data.other.waste_disposal || data.other.fresh_water || data.other.other;
+        
+        return bunkeringSelected || chandlerySelected || crewSelected || cargoSelected || otherSelected;
+    }, {
+        message: "Please select at least one service from the available options",
+        path: ["services"]
+    }),
+    additional_information: z.string().optional(),
+    supporting_files: z.array(z.string()).optional(),
+    company_details: z.object({
+        company_name: z.string().min(1, { message: "Required" }),
+        contact_person_name: z.string().min(1, { message: "ContactPersonName" }),
+        title: z.string().min(1, { message: "Title" }),
+        country_of_origin: z.string().min(1, { message: "CountryOfOrigin" }),
+        company_email: z.string().email({ message: "CompanyEmail" }),
+        additional_email: z.string().email({ message: "CompanyEmail" }).optional().or(z.literal('')),
+        phone_number: z.string().min(1, { message: "PhoneNumber" }),
+        additional_phone_number: z.string().optional(),
+    })
+});
 
-    const form = useForm({
+// Infer the TypeScript type from the schema
+type FormData = z.infer<typeof formSchema>;
+
+interface RequestForPdaFormProps {
+    onSubmit: (data: FormData) => void;
+    isSubmitting?: boolean;
+}
+
+const RequestForPdaForm: React.FC<RequestForPdaFormProps> = ({ 
+    onSubmit, 
+    isSubmitting = false 
+}) => {
+    // Get translations
+    const t = useTranslations('Inland-errors');
+
+    const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
             port: {
@@ -231,57 +239,62 @@ const RequestForPdaForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?
         }
     });
 
-    // 2. Type-safe submit handler
-    const handleSubmit = (values: any) => {
-        // eslint-disable-next-line no-console
+    // Type-safe submit handler
+    const handleSubmit = (values: FormData) => {
         console.log("=== FORM SUBMISSION START ===");
-        // eslint-disable-next-line no-console
         console.log("Form values:", values);
-        // eslint-disable-next-line no-console
         console.log("Form is valid:", form.formState.isValid);
-        // eslint-disable-next-line no-console
         console.log("Form errors:", form.formState.errors);
+        
         try {
-            // eslint-disable-next-line no-console
             console.log("Calling onSubmit function...");
             onSubmit(values);
-            // eslint-disable-next-line no-console
             console.log("onSubmit completed successfully");
         } catch (error) {
-            // eslint-disable-next-line no-console
             console.error("Error in onSubmit:", error);
         }
-        // eslint-disable-next-line no-console
         console.log("=== FORM SUBMISSION END ===");
     };
 
-
-    const handleError = (errors: unknown) => {
+    const handleError = (errors: any) => {
         // Log validation errors for debugging
         if (process.env.NODE_ENV === 'development') {
-            // eslint-disable-next-line no-console
             console.log("Validation errors:", errors);
-            // eslint-disable-next-line no-console
             console.log("Form values:", form.getValues());
         }
     };
 
+    // Display form-level errors
+    const { formState: { errors } } = form;
+
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit, handleError)} className="space-y-8">
+                {/* Display services error if it exists */}
+                {errors.services && (
+                    <div className="bg-red-50 border border-red-200 rounded-md p-4">
+                        <p className="text-red-600 text-sm font-medium">
+                            {errors.services.message}
+                        </p>
+                    </div>
+                )}
 
-                {/* Details */}
+                {/* PDA Details */}
                 <PDAdetails control={form.control} formState={form.formState} />
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+                <Button 
+                    type="submit" 
+                    className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} 
+                    disabled={isSubmitting}
+                >
                     {isSubmitting ? (
-                      <div className="flex items-center justify-center gap-2">
-                        <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
-                        <span>Submitting...</span>
-                      </div>
+                        <div className="flex items-center justify-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                            <span>Submitting...</span>
+                        </div>
                     ) : "Submit"}
                 </Button>                
             </form>

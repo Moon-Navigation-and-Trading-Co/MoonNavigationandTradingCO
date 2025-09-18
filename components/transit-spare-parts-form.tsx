@@ -31,20 +31,27 @@ const sparePartSchema = z.object({
     urgency: z.enum(['normal', 'urgent']),
 });
 
-// 1. Define a type-safe form handler using z.infer
-const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
+interface TransitSparePartsFormProps {
+    onSubmit: (data: any) => void;
+    isSubmitting?: boolean;
+}
+
+const TransitSparePartsForm: React.FC<TransitSparePartsFormProps> = ({ 
+    onSubmit, 
+    isSubmitting = false 
+}) => {
     // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
 
-    // Define your Zod schema (as before)
+    // Define your Zod schema
     const formSchema = z.object({
         port: z.object({
             name: z.string().min(1, { message: t("Required") }),
         }),
         vessel: z.object({
             name: z.string().min(1, { message: t("Required") }),
-            imo: z.coerce.number().min(1, { message: t("Required") }),
+            imo: z.coerce.number().min(1000000, { message: "IMO must be 7 digits" }).max(9999999, { message: "IMO must be 7 digits" }),
             type: z.string().min(1, { message: t("Required") }),
             flag: z.string().min(1, { message: t("Required") }),
             ship_gross_tonnage: z.string().min(1, { message: t("Required") }),
@@ -60,7 +67,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
             special_requests: z.string().optional(),
             supporting_files: z.any().optional(),
         }),
-        spare_parts: z.array(sparePartSchema).optional(),
+        spare_parts: z.array(sparePartSchema).min(1, "At least one spare part is required").optional(),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("Required") }),
             contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
@@ -78,6 +85,27 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
         defaultValues: {
+            port: {
+                name: '',
+            },
+            vessel: {
+                name: '',
+                imo: 0,
+                type: '',
+                flag: '',
+                ship_gross_tonnage: '',
+                ship_net_tonnage: '',
+                deadweight: '',
+                draft: '',
+                length: 0,
+                location: undefined,
+                port_of_crew_change: '',
+                eta: '',
+                etd: '',
+                airport_pickup: '',
+                special_requests: '',
+                supporting_files: [],
+            },
             spare_parts: [{
                 type: '',
                 quantity: 1,
@@ -91,7 +119,17 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                 packing_type: 'crate',
                 packing_type_other: '',
                 urgency: 'normal',
-            }]
+            }],
+            company_details: {
+                company_name: '',
+                contact_person_name: '',
+                title: '',
+                country_of_origin: '',
+                company_email: '',
+                additional_email: '',
+                phone_number: '',
+                additional_phone_number: '',
+            },
         }
     });
 
@@ -100,20 +138,38 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
         name: "spare_parts",
     });
 
-    // 2. Type-safe submit handler
-    const handleSubmit = (values: any) => {
+    // Auto-calculate CBM function
+    const calculateCBM = (index: number) => {
+        const length = form.getValues(`spare_parts.${index}.length`) || 0;
+        const width = form.getValues(`spare_parts.${index}.width`) || 0;
+        const height = form.getValues(`spare_parts.${index}.height`) || 0;
+        const unit = form.getValues(`spare_parts.${index}.dimension_unit`);
+        const multiplier = unit === 'cm' ? 0.000001 : 1; // Convert cm to m³
+        return length * width * height * multiplier;
+    };
+
+    // Type-safe submit handler
+    const handleSubmit = (values: FormData) => {
         console.log("Form submitted successfully:", values);
         onSubmit(values);
     };
 
-
     const handleError = (errors: unknown) => {
-        // Log validation errors for debugging
         if (process.env.NODE_ENV === 'development') {
-            // eslint-disable-next-line no-console
             console.error("Validation errors:", errors);
         }
     };
+
+    // Calculate totals
+    const totalCBM = sparePartsFields.reduce((total, field, index) => {
+        const cbm = form.getValues(`spare_parts.${index}.total_cbm`) || 0;
+        return total + cbm;
+    }, 0);
+
+    const totalWeight = sparePartsFields.reduce((total, field, index) => {
+        const weight = form.getValues(`spare_parts.${index}.total_weight`) || 0;
+        return total + weight;
+    }, 0);
 
     return (
         <Form {...form}>
@@ -124,134 +180,257 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                     <h1 className='text-xl font-raleway font-medium'>{tt('vessel')}</h1>
                     <div className='pt-8 flex flex-col gap-5 p-4'>
 
-                        {/* Port Name and Vessel Name Fields - Vertical Layout */}
-                        <div className="space-y-4">
-                            {/* Port Name Field */}
+                        {/* Port Name and Vessel Name Fields */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <FormItem>
-                                <FormLabel htmlFor="port.name" id="port.name" >{tt('port-name')}</FormLabel>
+                                <FormLabel htmlFor="port.name">{tt('port-name')}</FormLabel>
                                 <FormControl>
                                     <Controller
                                         control={form.control}
                                         name="port.name"
-                                        render={({ field, fieldState: { error } }) => (
-                                            <>
-                                                <Input id="port.name" className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Port Name" {...field} />
-                                                {error && <p className="text-red-500">{error.message}</p>}
-                                            </>)}
+                                        render={({ field }) => (
+                                            <Input 
+                                                id="port.name" 
+                                                className="border-2 rounded-xl" 
+                                                placeholder="Port Name" 
+                                                {...field} 
+                                            />
+                                        )}
                                     />
                                 </FormControl>
+                                <FormMessage />
                             </FormItem>
 
-                            {/* Vessel Name Field */}
                             <FormItem>
-                                <FormLabel id="vessel.name">{tt('vessel-name')}</FormLabel>
+                                <FormLabel>{tt('vessel-name')}</FormLabel>
                                 <FormControl>
                                     <Controller
                                         control={form.control}
                                         name="vessel.name"
-                                        render={({ field, fieldState: { error } }) => (
-                                            <>
-                                                <Input id="vessel.name" className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Vessel Name" {...field} />
-                                                {error && <p className="text-red-500">{error.message}</p>}
-                                            </>
+                                        render={({ field }) => (
+                                            <Input 
+                                                className="border-2 rounded-xl" 
+                                                placeholder="Vessel Name" 
+                                                {...field} 
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        </div>
+
+                        {/* Vessel Details Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <FormItem>
+                                <FormLabel>{tt('vessel-imo')}</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.imo"
+                                        render={({ field }) => (
+                                            <Input
+                                                className="border-2 rounded-xl no-spinner"
+                                                type="number"
+                                                placeholder="7-digit IMO Number"
+                                                {...field}
+                                                value={field.value || ''}
+                                                onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+
+                            <FormItem>
+                                <FormLabel>Vessel Type</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.type"
+                                        render={({ field }) => (
+                                            <Input 
+                                                className="border-2 rounded-xl" 
+                                                placeholder="e.g., Bulk Carrier" 
+                                                {...field} 
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+
+                            <FormItem>
+                                <FormLabel>Flag</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.flag"
+                                        render={({ field }) => (
+                                            <Input 
+                                                className="border-2 rounded-xl" 
+                                                placeholder="Flag State" 
+                                                {...field} 
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+
+                            <FormItem>
+                                <FormLabel>Gross Tonnage</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.ship_gross_tonnage"
+                                        render={({ field }) => (
+                                            <Input 
+                                                className="border-2 rounded-xl" 
+                                                placeholder="Gross Tonnage" 
+                                                {...field} 
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+
+                            <FormItem>
+                                <FormLabel>Net Tonnage</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.ship_net_tonnage"
+                                        render={({ field }) => (
+                                            <Input 
+                                                className="border-2 rounded-xl" 
+                                                placeholder="Net Tonnage" 
+                                                {...field} 
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                                {form.formState.errors?.vessel?.ship_net_tonnage && (
+                                    <p className="text-red-500 text-xs mt-1">{form.formState.errors.vessel?.ship_net_tonnage?.message as string}</p>
+                                )}
+                            </FormItem>
+
+                            <FormItem>
+                                <FormLabel>Deadweight</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.deadweight"
+                                        render={({ field }) => (
+                                            <Input 
+                                                className="border-2 rounded-xl" 
+                                                placeholder="Deadweight (MT)" 
+                                                {...field} 
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+
+                            <FormItem>
+                                <FormLabel>Draft</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.draft"
+                                        render={({ field }) => (
+                                            <Input 
+                                                className="border-2 rounded-xl" 
+                                                placeholder="Draft (m)" 
+                                                {...field} 
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+
+                            <FormItem>
+                                <FormLabel>Length</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.length"
+                                        render={({ field }) => (
+                                            <Input
+                                                className="border-2 rounded-xl"
+                                                type="number"
+                                                placeholder="Length (m)"
+                                                {...field}
+                                                value={field.value || ''}
+                                                onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        </div>
+
+                        {/* Port of Crew Change */}
+                        <FormItem>
+                            <FormLabel>Port of Crew Change (Optional)</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="vessel.port_of_crew_change"
+                                    render={({ field }) => (
+                                        <Input 
+                                            className="max-w-[300px] border-2 rounded-xl" 
+                                            placeholder="Port Name" 
+                                            {...field} 
+                                        />
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+
+                        {/* ETA and ETD Fields */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-[600px]">
+                            <FormItem>
+                                <FormLabel>ETA (Estimated Time of Arrival)</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.eta"
+                                        render={({ field }) => (
+                                            <Input 
+                                                className="border-2 rounded-xl" 
+                                                type="date" 
+                                                {...field} 
+                                            />
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+
+                            <FormItem>
+                                <FormLabel>ETD (Estimated Time of Departure)</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="vessel.etd"
+                                        render={({ field }) => (
+                                            <Input 
+                                                className="border-2 rounded-xl" 
+                                                type="date" 
+                                                {...field} 
+                                            />
                                         )}
                                     />
                                 </FormControl>
                             </FormItem>
                         </div>
 
-                        {/* IMO Field */}
-                        <FormItem>
-                            <FormLabel id="vessel.imo">{tt('vessel-imo')}</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="vessel.imo"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input
-                                                className="w-full max-w-[300px] border-2 rounded-xl no-spinner"
-                                                type="number"
-                                                placeholder="IMO Number"
-                                                {...field}
-                                                value={field.value || ''}
-                                                onChange={(e) => field.onChange(e.target.valueAsNumber)}
-                                            />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
-
-                        {/* Flag Field */}
-                        <FormItem>
-                            <FormLabel>Flag</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="vessel.flag"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Flag" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
-                                />
-                            </FormControl>
-                        </FormItem>
-
-                        {/* Port Name Field */}
-                        <FormItem>
-                            <FormLabel>Port Name</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="vessel.port_of_crew_change"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Port Name" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
-                                />
-                            </FormControl>
-                        </FormItem>
-
-                        {/* ETA and ETD Fields - Vertical Layout */}
-                        <div className="space-y-4">
-                            {/* ETA Field */}
-                            <FormItem>
-                                <FormLabel>ETA (Estimated Time of Arrival): (DD/MM/YYYY)</FormLabel>
-                                <FormControl>
-                                    <Controller
-                                        control={form.control}
-                                        name="vessel.eta"
-                                        render={({ field, fieldState: { error } }) => (
-                                            <>
-                                                <Input className="w-full max-w-[300px] border-2 rounded-xl" type="date" {...field} />
-                                                {error && <p className="text-red-500">{error.message}</p>}
-                                            </>)}
-                                    />
-                                </FormControl>
-                            </FormItem>
-
-                            {/* ETD Field */}
-                            <FormItem>
-                                <FormLabel>ETD (Estimated Time of Departure): (DD/MM/YYYY)</FormLabel>
-                                <FormControl>
-                                    <Controller
-                                        control={form.control}
-                                        name="vessel.etd"
-                                        render={({ field, fieldState: { error } }) => (
-                                            <>
-                                                <Input className="w-full max-w-[300px] border-2 rounded-xl" type="date" {...field} />
-                                                {error && <p className="text-red-500">{error.message}</p>}
-                                            </>)}
-                                    />
-                                </FormControl>
-                            </FormItem>
-                        </div>
-
-                        {/* Vessel Location Radio Buttons - Moved after ETD */}
+                        {/* Vessel Location Radio Buttons */}
                         <div className="pt-5">
                             <h3 className="text-lg font-raleway font-medium mb-3">Vessel Location</h3>
                             <FormItem>
@@ -259,61 +438,61 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                     <Controller
                                         control={form.control}
                                         name="vessel.location"
-                                        render={({ field, fieldState: { error } }) => (
-                                            <>
-                                                <RadioGroup
-                                                    onValueChange={field.onChange}
-                                                    value={field.value || ""}
-                                                    className="flex flex-col space-y-1"
-                                                >
-                                                    <FormItem className="flex items-center space-x-3 space-y-0">
-                                                        <FormControl>
-                                                            <RadioGroupItem value="at_anchor" />
-                                                        </FormControl>
-                                                        <FormLabel className="font-normal">At Anchor</FormLabel>
-                                                    </FormItem>
-                                                    <FormItem className="flex items-center space-x-3 space-y-0">
-                                                        <FormControl>
-                                                            <RadioGroupItem value="at_berth" />
-                                                        </FormControl>
-                                                        <FormLabel className="font-normal">At Berth</FormLabel>
-                                                    </FormItem>
-                                                    <FormItem className="flex items-center space-x-3 space-y-0">
-                                                        <FormControl>
-                                                            <RadioGroupItem value="suez_canal_passage" />
-                                                        </FormControl>
-                                                        <FormLabel className="font-normal">During Suez Canal Passage</FormLabel>
-                                                    </FormItem>
-                                                </RadioGroup>
-                                                {error && <p className="text-red-500">{error.message}</p>}
-                                            </>)}
+                                        render={({ field }) => (
+                                            <RadioGroup
+                                                onValueChange={field.onChange}
+                                                value={field.value || ""}
+                                                className="flex flex-col space-y-2"
+                                            >
+                                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                                    <FormControl>
+                                                        <RadioGroupItem value="at_anchor" />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">At Anchor</FormLabel>
+                                                </FormItem>
+                                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                                    <FormControl>
+                                                        <RadioGroupItem value="at_berth" />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">At Berth</FormLabel>
+                                                </FormItem>
+                                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                                    <FormControl>
+                                                        <RadioGroupItem value="suez_canal_passage" />
+                                                    </FormControl>
+                                                    <FormLabel className="font-normal">During Suez Canal Passage</FormLabel>
+                                                </FormItem>
+                                            </RadioGroup>
+                                        )}
                                     />
                                 </FormControl>
+                                <FormMessage />
                             </FormItem>
                         </div>
 
-                        {/* Airport/Seaport Pickup Name Field - Added after Vessel Location */}
+                        {/* Airport/Seaport Pickup Name */}
                         <FormItem>
-                            <FormLabel>Airport/seaport pickup name:</FormLabel>
+                            <FormLabel>Airport/Seaport Pickup Name (Optional)</FormLabel>
                             <FormControl>
                                 <Controller
                                     control={form.control}
                                     name="vessel.airport_pickup"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input className="w-full max-w-[300px] border-2 rounded-xl" placeholder="Please insert airport/seaport pickup name" {...field} />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>)}
+                                    render={({ field }) => (
+                                        <Input 
+                                            className="max-w-[400px] border-2 rounded-xl" 
+                                            placeholder="Please insert airport/seaport pickup name" 
+                                            {...field} 
+                                        />
+                                    )}
                                 />
                             </FormControl>
                         </FormItem>
-
                     </div>
                 </div>
 
                 {/* Spare Parts Details Table */}
                 <div className="space-y-6">
-                    <h3 className="text-lg font-raleway font-medium">Spare Parts Details (Attach list if necessary.)</h3>
+                    <h3 className="text-lg font-raleway font-medium">Spare Parts Details (Attach list if necessary)</h3>
                     
                     {/* Mobile Swipe Indicator */}
                     <div className="md:hidden flex items-center justify-center gap-2 text-sm text-blue-600 bg-blue-50 p-2 rounded-lg border border-blue-200">
@@ -434,12 +613,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                                                         onChange={(e) => {
                                                                             const value = parseFloat(e.target.value) || 0;
                                                                             field.onChange(value);
-                                                                            // Auto-calculate CBM
-                                                                            const width = form.getValues(`spare_parts.${index}.width`) || 0;
-                                                                            const height = form.getValues(`spare_parts.${index}.height`) || 0;
-                                                                            const unit = form.getValues(`spare_parts.${index}.dimension_unit`);
-                                                                            const multiplier = unit === 'cm' ? 0.000001 : 1; // Convert cm to m³
-                                                                            const cbm = value * width * height * multiplier;
+                                                                            const cbm = calculateCBM(index);
                                                                             form.setValue(`spare_parts.${index}.total_cbm`, cbm);
                                                                         }}
                                                                     />
@@ -463,12 +637,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                                                         onChange={(e) => {
                                                                             const value = parseFloat(e.target.value) || 0;
                                                                             field.onChange(value);
-                                                                            // Auto-calculate CBM
-                                                                            const length = form.getValues(`spare_parts.${index}.length`) || 0;
-                                                                            const height = form.getValues(`spare_parts.${index}.height`) || 0;
-                                                                            const unit = form.getValues(`spare_parts.${index}.dimension_unit`);
-                                                                            const multiplier = unit === 'cm' ? 0.000001 : 1; // Convert cm to m³
-                                                                            const cbm = length * value * height * multiplier;
+                                                                            const cbm = calculateCBM(index);
                                                                             form.setValue(`spare_parts.${index}.total_cbm`, cbm);
                                                                         }}
                                                                     />
@@ -492,12 +661,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                                                         onChange={(e) => {
                                                                             const value = parseFloat(e.target.value) || 0;
                                                                             field.onChange(value);
-                                                                            // Auto-calculate CBM
-                                                                            const length = form.getValues(`spare_parts.${index}.length`) || 0;
-                                                                            const width = form.getValues(`spare_parts.${index}.width`) || 0;
-                                                                            const unit = form.getValues(`spare_parts.${index}.dimension_unit`);
-                                                                            const multiplier = unit === 'cm' ? 0.000001 : 1; // Convert cm to m³
-                                                                            const cbm = length * width * value * multiplier;
+                                                                            const cbm = calculateCBM(index);
                                                                             form.setValue(`spare_parts.${index}.total_cbm`, cbm);
                                                                         }}
                                                                     />
@@ -537,13 +701,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                                     value={field.value || ""}
                                                     onValueChange={(value) => {
                                                         field.onChange(value);
-                                                        // Recalculate CBM when unit changes
-                                                        const length = form.getValues(`spare_parts.${index}.length`) || 0;
-                                                        const width = form.getValues(`spare_parts.${index}.width`) || 0;
-                                                        const height = form.getValues(`spare_parts.${index}.height`) || 0;
-                                                        const multiplier = value === 'cm' ? 0.000001 : 1;
-                                                        const cbm = length * width * height * multiplier;
-                                                        form.setValue(`spare_parts.${index}.total_cbm`, cbm);
+                                                        form.setValue(`spare_parts.${index}.total_cbm`, calculateCBM(index));
                                                     }}
                                                     className="flex flex-col space-y-1"
                                                 >
@@ -632,6 +790,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                                             variant="outline"
                                             onClick={() => removeSparePart(index)}
                                             className="text-red-500 hover:text-red-700 p-2"
+                                            disabled={sparePartsFields.length === 1}
                                         >
                                             <CircleMinus className="h-4 w-4" />
                                         </Button>
@@ -667,22 +826,14 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                         
                         <div className="text-right space-y-1">
                             <p className="text-sm font-medium text-gray-700">
-                                Total CBM: {sparePartsFields.reduce((total, field, index) => {
-                                    const cbm = form.getValues(`spare_parts.${index}.total_cbm`) || 0;
-                                    return total + cbm;
-                                }, 0).toFixed(3)} m³
+                                Total CBM: {totalCBM.toFixed(3)} m³
                             </p>
                             <p className="text-sm font-medium text-gray-700">
-                                Total Weight: {sparePartsFields.reduce((total, field, index) => {
-                                    const weight = form.getValues(`spare_parts.${index}.total_weight`) || 0;
-                                    return total + weight;
-                                }, 0).toFixed(2)} kg
+                                Total Weight: {totalWeight.toFixed(2)} kg
                             </p>
                         </div>
                     </div>
                 </div>
-
-
 
                 {/* Additional Information Section */}
                 <div className="space-y-6">
@@ -705,7 +856,7 @@ const TransitSparePartsForm: React.FC<{ onSubmit: (data: any) => void; isSubmitt
                         </div>
 
                         <div className="space-y-2">
-                            <FormLabel>Supporting files (Optional)</FormLabel>
+                            <FormLabel>Supporting Files (Optional)</FormLabel>
                             <p className="text-sm text-gray-600">
                                 Attach any relevant documents (Packing List, Invoice, Technical Specs, etc.).
                             </p>

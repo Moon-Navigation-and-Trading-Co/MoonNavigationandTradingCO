@@ -10,13 +10,14 @@ import { Checkbox } from './ui/checkbox';
 import PortCard from './port-card';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
-import { CircleMinus, Plus } from 'lucide-react';
+import { CircleMinus, Plus, AlertCircle, Upload } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Textarea } from './ui/textarea';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
+import { Alert, AlertDescription } from './ui/alert';
 
-// Nationalities list
+// Nationalities list (same as original)
 const nationalities = [
     "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Antiguans", "Argentinean", "Armenian", "Australian",
     "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Barbudans", "Batswana", "Belarusian", "Belgian",
@@ -40,23 +41,39 @@ const nationalities = [
     "Welsh", "Yemenite", "Zambian", "Zimbabwean"
 ];
 
-// Define the crew member schema
+// Enhanced file validation
+const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
+const ACCEPTED_FILE_TYPES = [
+    'application/pdf',
+    'image/jpeg',
+    'image/jpg', 
+    'image/gif',
+    'image/png',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.ms-excel',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'application/vnd.ms-powerpoint',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+];
+
+// Enhanced crew member schema with better validation
 const crewMemberSchema = z.object({
-    crew_number: z.number().min(1, "Crew number is required"),
-    rank: z.string().min(1, "Rank is required"),
+    crew_number: z.number().min(1, "Crew number must be at least 1"),
+    rank: z.string().min(1, "Rank is required").max(50, "Rank must be less than 50 characters"),
     nationality: z.string().min(1, "Nationality is required"),
     airport_pickup: z.enum(['yes', 'no']).default('yes'),
-    hotel_accommodation: z.enum(['yes', 'no']).optional(),
+    hotel_accommodation: z.enum(['yes', 'no']).default('no'),
 });
 
-// Define the form schema
+// Enhanced form schema
 const formSchema = z.object({
     port: z.object({
-        name: z.string().min(1, { message: "Required" }),
+        name: z.string().min(1, { message: "Port name is required" }),
     }),
     vessel: z.object({
-        name: z.string().min(1, { message: "Required" }),
-        imo: z.number({ message: "Number" }).min(0, { message: "Number" }),
+        name: z.string().min(1, { message: "Vessel name is required" }),
+        imo: z.number({ message: "IMO must be a number" }).min(1000000, { message: "IMO must be 7 digits" }).max(9999999, { message: "IMO must be 7 digits" }),
         location: z.enum(['at_anchor', 'at_berth', 'suez_canal_passage']).optional(),
         flag: z.string().optional(),
         port_of_crew_change: z.string().optional(),
@@ -66,12 +83,23 @@ const formSchema = z.object({
     crew: z.object({
         on: z.boolean().optional().default(false),
         off: z.boolean().optional().default(false),
-        sign_on_members: z.array(crewMemberSchema).min(1, "At least one crew member is required for Sign On"),
-        sign_off_members: z.array(crewMemberSchema).optional(),
+        sign_on_members: z.array(crewMemberSchema).optional().default([]),
+        sign_off_members: z.array(crewMemberSchema).optional().default([]),
         special_requests_on: z.string().optional(),
         special_requests_off: z.string().optional(),
         special_instructions: z.string().optional(),
         supporting_files: z.any().optional(),
+    }).refine((data) => {
+        if (data.on && (!data.sign_on_members || data.sign_on_members.length === 0)) {
+            return false;
+        }
+        if (data.off && (!data.sign_off_members || data.sign_off_members.length === 0)) {
+            return false;
+        }
+        return data.on || data.off;
+    }, {
+        message: "Please select Sign On or Sign Off and add at least one crew member for the selected option",
+        path: ["crew"]
     }),
     company_details: z.object({
         company_name: z.string().min(1, { message: "Company name is required" }),
@@ -79,7 +107,7 @@ const formSchema = z.object({
         title: z.string().min(1, { message: "Title is required" }),
         country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
         company_email: z.string().email({ message: "Valid email is required" }),
-        additional_email: z.string().optional(),
+        additional_email: z.string().email().optional().or(z.literal("")),
         phone_number: z.string().min(1, { message: "Phone number is required" }),
         additional_phone_number: z.string().optional(),
     })
@@ -87,9 +115,152 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
+// Enhanced crew member table row component
+const CrewMemberRow = ({ 
+    control, 
+    index, 
+    fieldName, 
+    onRemove, 
+    isSignOff = false 
+}: {
+    control: any;
+    index: number;
+    fieldName: string;
+    onRemove: () => void;
+    isSignOff?: boolean;
+}) => {
+    return (
+        <TableRow>
+            <TableCell className="text-center font-medium">
+                {index + 1}
+            </TableCell>
+            <TableCell>
+                <Controller
+                    control={control}
+                    name={`${fieldName}.${index}.crew_number`}
+                    render={({ field, fieldState }) => (
+                        <div>
+                            <Input
+                                type="number"
+                                min="1"
+                                className={`w-24 ${fieldState.error ? 'border-red-500' : ''}`}
+                                {...field}
+                                onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
+                            />
+                            {fieldState.error && (
+                                <p className="text-red-500 text-xs mt-1">{fieldState.error.message}</p>
+                            )}
+                        </div>
+                    )}
+                />
+            </TableCell>
+            <TableCell>
+                <Controller
+                    control={control}
+                    name={`${fieldName}.${index}.rank`}
+                    render={({ field, fieldState }) => (
+                        <div>
+                            <Input
+                                placeholder="Enter rank"
+                                className={fieldState.error ? 'border-red-500' : ''}
+                                {...field}
+                            />
+                            {fieldState.error && (
+                                <p className="text-red-500 text-xs mt-1">{fieldState.error.message}</p>
+                            )}
+                        </div>
+                    )}
+                />
+            </TableCell>
+            <TableCell>
+                <Controller
+                    control={control}
+                    name={`${fieldName}.${index}.nationality`}
+                    render={({ field, fieldState }) => (
+                        <div>
+                            <Select onValueChange={field.onChange} value={field.value || ""}>
+                                <SelectTrigger className={`w-full ${fieldState.error ? 'border-red-500' : ''}`}>
+                                    <SelectValue placeholder="Select nationality" />
+                                </SelectTrigger>
+                                <SelectContent className="max-h-[200px]">
+                                    {nationalities.map((nationality) => (
+                                        <SelectItem key={nationality} value={nationality}>
+                                            {nationality}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                            {fieldState.error && (
+                                <p className="text-red-500 text-xs mt-1">{fieldState.error.message}</p>
+                            )}
+                        </div>
+                    )}
+                />
+            </TableCell>
+            <TableCell>
+                <Controller
+                    control={control}
+                    name={`${fieldName}.${index}.airport_pickup`}
+                    render={({ field }) => (
+                        <RadioGroup
+                            value={field.value || ""}
+                            onValueChange={field.onChange}
+                            className="flex space-x-4"
+                        >
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="yes" id={`${isSignOff ? 'dropoff' : 'pickup'}-yes-${index}`} />
+                                <label htmlFor={`${isSignOff ? 'dropoff' : 'pickup'}-yes-${index}`} className="text-sm">Yes</label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="no" id={`${isSignOff ? 'dropoff' : 'pickup'}-no-${index}`} />
+                                <label htmlFor={`${isSignOff ? 'dropoff' : 'pickup'}-no-${index}`} className="text-sm">No</label>
+                            </div>
+                        </RadioGroup>
+                    )}
+                />
+            </TableCell>
+            <TableCell>
+                <Controller
+                    control={control}
+                    name={`${fieldName}.${index}.hotel_accommodation`}
+                    render={({ field }) => (
+                        <RadioGroup
+                            value={field.value || ''}
+                            onValueChange={field.onChange}
+                            className="flex space-x-4"
+                        >
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="yes" id={`hotel-${isSignOff ? 'off' : 'on'}-yes-${index}`} />
+                                <label htmlFor={`hotel-${isSignOff ? 'off' : 'on'}-yes-${index}`} className="text-sm">Yes</label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <RadioGroupItem value="no" id={`hotel-${isSignOff ? 'off' : 'on'}-no-${index}`} />
+                                <label htmlFor={`hotel-${isSignOff ? 'off' : 'on'}-no-${index}`} className="text-sm">No</label>
+                            </div>
+                        </RadioGroup>
+                    )}
+                />
+            </TableCell>
+            <TableCell>
+                <Button
+                    type="button"
+                    variant="outline"
+                    onClick={onRemove}
+                    className="text-red-500 hover:text-red-700 p-2"
+                    disabled={index === 0} // Prevent removing the first row
+                >
+                    <CircleMinus className="h-4 w-4" />
+                </Button>
+            </TableCell>
+        </TableRow>
+    );
+};
+
 const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
-    const t = useTranslations('Inland-errors')
-    const tt = useTranslations('Inland-forms')
+    const t = useTranslations('Inland-errors');
+    const tt = useTranslations('Inland-forms');
+    const [uploadedFiles, setUploadedFiles] = React.useState<File[]>([]);
+    const [fileErrors, setFileErrors] = React.useState<string[]>([]);
 
     const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
@@ -106,13 +277,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
             crew: {
                 on: false,
                 off: false,
-                sign_on_members: [{ 
-                    crew_number: 1, 
-                    rank: '', 
-                    nationality: '', 
-                    airport_pickup: 'yes',
-                    hotel_accommodation: 'no'
-                }],
+                sign_on_members: [],
                 sign_off_members: [],
                 special_requests_on: '',
                 special_requests_off: '',
@@ -135,6 +300,37 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
     const watchSignOn = form.watch("crew.on");
     const watchSignOff = form.watch("crew.off");
 
+    // Enhanced file validation
+    const validateFiles = (files: FileList) => {
+        const errors: string[] = [];
+        const validFiles: File[] = [];
+
+        Array.from(files).forEach((file, index) => {
+            if (file.size > MAX_FILE_SIZE) {
+                errors.push(`File "${file.name}" exceeds 20MB limit`);
+            } else if (!ACCEPTED_FILE_TYPES.includes(file.type)) {
+                errors.push(`File "${file.name}" is not a supported file type`);
+            } else {
+                validFiles.push(file);
+            }
+        });
+
+        return { errors, validFiles };
+    };
+
+    // Add first row to Sign On when it's selected
+    React.useEffect(() => {
+        if (watchSignOn && signOnFields.length === 0) {
+            appendSignOn({ 
+                crew_number: 1, 
+                rank: '', 
+                nationality: '', 
+                airport_pickup: 'yes',
+                hotel_accommodation: 'no'
+            });
+        }
+    }, [watchSignOn, signOnFields.length, appendSignOn]);
+
     // Add first row to Sign Off when it's selected
     React.useEffect(() => {
         if (watchSignOff && signOffFields.length === 0) {
@@ -154,11 +350,29 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
     };
 
     const handleError = (errors: unknown) => {
-        // Log validation errors for debugging
         if (process.env.NODE_ENV === 'development') {
-            // eslint-disable-next-line no-console
-            console.error("Validation errors:", errors);
+            console.log("Validation errors:", errors);
+            console.log("Current form values:", form.getValues());
         }
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
+        if (!files) return;
+
+        const { errors, validFiles } = validateFiles(files);
+        
+        setFileErrors(errors);
+        setUploadedFiles(validFiles);
+        
+        // Update form with valid files
+        form.setValue('crew.supporting_files', validFiles);
+    };
+
+    const removeFile = (indexToRemove: number) => {
+        const newFiles = uploadedFiles.filter((_, index) => index !== indexToRemove);
+        setUploadedFiles(newFiles);
+        form.setValue('crew.supporting_files', newFiles);
     };
 
     return (
@@ -206,6 +420,16 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                             </label>
                         </div>
                     </div>
+
+                    {/* Display crew validation errors */}
+                    {form.formState.errors.crew && (
+                        <Alert variant="destructive">
+                            <AlertCircle className="h-4 w-4" />
+                            <AlertDescription>
+                                {form.formState.errors.crew.message}
+                            </AlertDescription>
+                        </Alert>
+                    )}
                 </div>
 
                 {/* Sign On Section */}
@@ -213,6 +437,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                     <div className="space-y-6">
                         <h3 className="text-lg font-raleway font-medium text-blue-600">Sign On Crew Members</h3>
                         
+                        <div className="overflow-x-auto">
                         <Table className="border rounded-lg">
                                 <TableHeader>
                                     <TableRow>
@@ -227,115 +452,18 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                                 </TableHeader>
                                 <TableBody>
                                     {signOnFields.map((field, index) => (
-                                        <TableRow key={field.id}>
-                                            <TableCell className="text-center font-medium">
-                                                {index + 1}
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
+                                        <CrewMemberRow
+                                            key={field.id}
                                                     control={form.control}
-                                                    name={`crew.sign_on_members.${index}.crew_number`}
-                                                    render={({ field }) => (
-                                                        <Input
-                                                            type="number"
-                                                            min="1"
-                                                            className="w-24"
-                                                            {...field}
-                                                            onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
-                                                        />
-                                                    )}
+                                            index={index}
+                                            fieldName="crew.sign_on_members"
+                                            onRemove={() => removeSignOn(index)}
+                                            isSignOff={false}
                                                 />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
-                                                    control={form.control}
-                                                    name={`crew.sign_on_members.${index}.rank`}
-                                                    render={({ field }) => (
-                                                        <Input
-                                                            placeholder="Enter rank"
-                                                            {...field}
-                                                        />
-                                                    )}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
-                                                    control={form.control}
-                                                    name={`crew.sign_on_members.${index}.nationality`}
-                                                    render={({ field }) => (
-                                                        <Select onValueChange={field.onChange} value={field.value || ""}>
-                                                            <SelectTrigger className="w-full">
-                                                                <SelectValue placeholder="Select nationality" />
-                                                            </SelectTrigger>
-                                                            <SelectContent className="max-h-[200px]">
-                                                                {nationalities.map((nationality) => (
-                                                                    <SelectItem key={nationality} value={nationality}>
-                                                                        {nationality}
-                                                                    </SelectItem>
-                                                                ))}
-                                                            </SelectContent>
-                                                        </Select>
-                                                    )}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
-                                                    control={form.control}
-                                                    name={`crew.sign_on_members.${index}.airport_pickup`}
-                                                    render={({ field }) => (
-                                                        <RadioGroup
-                                                            value={field.value || ""}
-                                                            onValueChange={field.onChange}
-                                                            className="flex space-x-4"
-                                                        >
-                                                            <div className="flex items-center space-x-2">
-                                                                <RadioGroupItem value="yes" id={`airport-yes-${index}`} />
-                                                                <label htmlFor={`airport-yes-${index}`} className="text-sm">Yes</label>
-                                                            </div>
-                                                            <div className="flex items-center space-x-2">
-                                                                <RadioGroupItem value="no" id={`airport-no-${index}`} />
-                                                                <label htmlFor={`airport-no-${index}`} className="text-sm">No</label>
-                                                            </div>
-                                                        </RadioGroup>
-                                                    )}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
-                                                    control={form.control}
-                                                    name={`crew.sign_on_members.${index}.hotel_accommodation`}
-                                                    render={({ field }) => (
-                                                        <RadioGroup
-                                                            value={field.value || ''}
-                                                            onValueChange={field.onChange}
-                                                            className="flex space-x-4"
-                                                        >
-                                                            <div className="flex items-center space-x-2">
-                                                                <RadioGroupItem value="yes" id={`hotel-yes-${index}`} />
-                                                                <label htmlFor={`hotel-yes-${index}`} className="text-sm">Yes</label>
-                                                            </div>
-                                                            <div className="flex items-center space-x-2">
-                                                                <RadioGroupItem value="no" id={`hotel-no-${index}`} />
-                                                                <label htmlFor={`hotel-no-${index}`} className="text-sm">No</label>
-                                                            </div>
-                                                        </RadioGroup>
-                                                    )}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Button
-                                                    type="button"
-                                                    variant="outline"
-                                                    onClick={() => removeSignOn(index)}
-                                                    className="text-red-500 hover:text-red-700 p-2"
-                                                >
-                                                    <CircleMinus className="h-4 w-4" />
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
                                     ))}
                                 </TableBody>
                             </Table>
+                        </div>
 
                         <div className="space-y-2">
                             <Button
@@ -348,14 +476,18 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                                     hotel_accommodation: 'no'
                                 })}
                                 className="flex items-center gap-2"
+                                variant="outline"
                             >
                                 <Plus className="h-4 w-4" />
                                 Add Row
                             </Button>
                             
-                            <p className="text-red-500 text-sm font-medium">
+                            <Alert>
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>
                                 Please insert quantity for each nationality
-                            </p>
+                                </AlertDescription>
+                            </Alert>
                         </div>
 
                         <div className="space-y-2">
@@ -380,6 +512,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                     <div className="space-y-6">
                         <h3 className="text-lg font-raleway font-medium text-blue-600">Sign Off Crew Members</h3>
                         
+                        <div className="overflow-x-auto">
                         <Table className="border rounded-lg">
                                 <TableHeader>
                                     <TableRow>
@@ -394,115 +527,18 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                                 </TableHeader>
                                 <TableBody>
                                     {signOffFields.map((field, index) => (
-                                        <TableRow key={field.id}>
-                                            <TableCell className="text-center font-medium">
-                                                {index + 1}
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
+                                        <CrewMemberRow
+                                            key={field.id}
                                                     control={form.control}
-                                                    name={`crew.sign_off_members.${index}.crew_number`}
-                                                    render={({ field }) => (
-                                                        <Input
-                                                            type="number"
-                                                            min="1"
-                                                            className="w-24"
-                                                            {...field}
-                                                            onChange={(e) => field.onChange(parseInt(e.target.value) || 1)}
-                                                        />
-                                                    )}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
-                                                    control={form.control}
-                                                    name={`crew.sign_off_members.${index}.rank`}
-                                                    render={({ field }) => (
-                                                        <Input
-                                                            placeholder="Enter rank"
-                                                            {...field}
-                                                        />
-                                                    )}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
-                                                    control={form.control}
-                                                    name={`crew.sign_off_members.${index}.nationality`}
-                                                    render={({ field }) => (
-                                                        <Select onValueChange={field.onChange} value={field.value || ""}>
-                                                            <SelectTrigger className="w-full">
-                                                                <SelectValue placeholder="Select nationality" />
-                                                            </SelectTrigger>
-                                                            <SelectContent className="max-h-[200px]">
-                                                                {nationalities.map((nationality) => (
-                                                                    <SelectItem key={nationality} value={nationality}>
-                                                                        {nationality}
-                                                                    </SelectItem>
-                                                                ))}
-                                                            </SelectContent>
-                                                        </Select>
-                                                    )}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
-                                                    control={form.control}
-                                                    name={`crew.sign_off_members.${index}.airport_pickup`}
-                                                    render={({ field }) => (
-                                                        <RadioGroup
-                                                            value={field.value || ""}
-                                                            onValueChange={field.onChange}
-                                                            className="flex space-x-4"
-                                                        >
-                                                            <div className="flex items-center space-x-2">
-                                                                <RadioGroupItem value="yes" id={`dropoff-yes-${index}`} />
-                                                                <label htmlFor={`dropoff-yes-${index}`} className="text-sm">Yes</label>
-                                                            </div>
-                                                            <div className="flex items-center space-x-2">
-                                                                <RadioGroupItem value="no" id={`dropoff-no-${index}`} />
-                                                                <label htmlFor={`dropoff-no-${index}`} className="text-sm">No</label>
-                                                            </div>
-                                                        </RadioGroup>
-                                                    )}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Controller
-                                                    control={form.control}
-                                                    name={`crew.sign_off_members.${index}.hotel_accommodation`}
-                                                    render={({ field }) => (
-                                                        <RadioGroup
-                                                            value={field.value || ''}
-                                                            onValueChange={field.onChange}
-                                                            className="flex space-x-4"
-                                                        >
-                                                            <div className="flex items-center space-x-2">
-                                                                <RadioGroupItem value="yes" id={`hotel-off-yes-${index}`} />
-                                                                <label htmlFor={`hotel-off-yes-${index}`} className="text-sm">Yes</label>
-                                                            </div>
-                                                            <div className="flex items-center space-x-2">
-                                                                <RadioGroupItem value="no" id={`hotel-off-no-${index}`} />
-                                                                <label htmlFor={`hotel-off-no-${index}`} className="text-sm">No</label>
-                                                            </div>
-                                                        </RadioGroup>
-                                                    )}
-                                                />
-                                            </TableCell>
-                                            <TableCell>
-                                                <Button
-                                                    type="button"
-                                                    variant="outline"
-                                                    onClick={() => removeSignOff(index)}
-                                                    className="text-red-500 hover:text-red-700 p-2"
-                                                >
-                                                    <CircleMinus className="h-4 w-4" />
-                                                </Button>
-                                            </TableCell>
-                                        </TableRow>
+                                            index={index}
+                                            fieldName="crew.sign_off_members"
+                                            onRemove={() => removeSignOff(index)}
+                                            isSignOff={true}
+                                        />
                                     ))}
                                 </TableBody>
                             </Table>
+                        </div>
 
                         <div className="space-y-2">
                             <Button
@@ -515,14 +551,18 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                                     hotel_accommodation: 'no'
                                 })}
                                 className="flex items-center gap-2"
+                                variant="outline"
                             >
                                 <Plus className="h-4 w-4" />
                                 Add Row
                             </Button>
                             
-                            <p className="text-red-500 text-sm font-medium">
+                            <Alert>
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>
                                 Please insert quantity for each nationality
-                            </p>
+                                </AlertDescription>
+                            </Alert>
                         </div>
 
                         <div className="space-y-2">
@@ -542,7 +582,7 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                     </div>
                 )}
 
-                {/* Additional Information Section */}
+                {/* Enhanced Additional Information Section */}
                 <div className="space-y-6">
                     <h3 className="text-lg font-raleway font-medium">Additional Information</h3>
                     
@@ -562,27 +602,74 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                             />
                         </div>
 
+                        <div className="space-y-4">
                         <div className="space-y-2">
                             <FormLabel>Supporting files (optional)</FormLabel>
                             <p className="text-sm text-gray-600">
-                                Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+                                    Max size 20 MB per file. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
                             </p>
-                            <Controller
-                                control={form.control}
-                                name="crew.supporting_files"
-                                render={({ field }) => (
+                                <div className="flex items-center gap-4">
                                     <Input
                                         type="file"
                                         multiple
                                         accept=".pdf,.jpeg,.jpg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                        onChange={(e) => {
-                                            const files = Array.from(e.target.files || []);
-                                            field.onChange(files);
-                                        }}
+                                        onChange={handleFileChange}
                                         className="max-w-md"
+                                        id="file-upload"
                                     />
-                                )}
-                            />
+                                    <Button
+                                        type="button"
+                                        variant="outline"
+                                        onClick={() => document.getElementById('file-upload')?.click()}
+                                        className="flex items-center gap-2"
+                                    >
+                                        <Upload className="h-4 w-4" />
+                                        Browse Files
+                                    </Button>
+                                </div>
+                            </div>
+
+                            {/* Display file errors */}
+                            {fileErrors.length > 0 && (
+                                <Alert variant="destructive">
+                                    <AlertCircle className="h-4 w-4" />
+                                    <AlertDescription>
+                                        <ul className="list-disc list-inside space-y-1">
+                                            {fileErrors.map((error, index) => (
+                                                <li key={index}>{error}</li>
+                                            ))}
+                                        </ul>
+                                    </AlertDescription>
+                                </Alert>
+                            )}
+
+                            {/* Display uploaded files */}
+                            {uploadedFiles.length > 0 && (
+                                <div className="space-y-2">
+                                    <p className="text-sm font-medium">Uploaded Files:</p>
+                                    <div className="space-y-2">
+                                        {uploadedFiles.map((file, index) => (
+                                            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                                <div className="flex items-center gap-2">
+                                                    <Upload className="h-4 w-4 text-gray-500" />
+                                                    <span className="text-sm">{file.name}</span>
+                                                    <span className="text-xs text-gray-500">
+                                                        ({(file.size / 1024 / 1024).toFixed(2)} MB)
+                                                    </span>
+                                                </div>
+                                                <Button
+                                                    type="button"
+                                                    variant="ghost"
+                                                    onClick={() => removeFile(index)}
+                                                    className="text-red-500 hover:text-red-700"
+                                                >
+                                                    <CircleMinus className="h-4 w-4" />
+                                                </Button>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
