@@ -84,7 +84,12 @@ const baseSchema = z.object({
             required_error: "You need to select a transportation method.",
         }),
     }),
-    supporting_files: z.array(z.string()).optional(),
+    entry_mode: z.enum(["itemized", "consolidated"], {
+        required_error: "Please select an entry mode.",
+    }),
+    itemized_data: itemizedEntrySchema.optional(),
+    consolidated_data: consolidatedEntrySchema.optional(),
+    supporting_files: z.array(z.instanceof(File)).optional(),
     additional_information: z.string().optional(),
     effective_date: z.string().min(1, { message: "Effective date is required" }),
     expiry_date: z.string().min(1, { message: "Expiry date is required" }),
@@ -111,23 +116,37 @@ const baseSchema = z.object({
         phone_number: z.string().min(1, { message: "Phone number is required" }),
         additional_phone_number: z.string().optional(),
     }),
-}).strict();
-
-const formSchema = z.discriminatedUnion('entry_mode', [
-    baseSchema.extend({
-        entry_mode: z.literal('itemized'),
-        itemized_data: itemizedEntrySchema,
-        consolidated_data: z.undefined().optional(),
-    }).strict(),
-    baseSchema.extend({
-        entry_mode: z.literal('consolidated'),
-        consolidated_data: consolidatedEntrySchema,
-        itemized_data: z.undefined().optional(),
-    }).strict(),
-]);
+}).refine((data) => {
+    // Conditional validation: require supporting_files for consolidated mode
+    if (data.entry_mode === 'consolidated') {
+        return data.supporting_files && data.supporting_files.length > 0;
+    }
+    return true;
+}, {
+    message: "Supporting files are required for Consolidated Entry",
+    path: ["supporting_files"]
+}).refine((data) => {
+    // Ensure itemized_data is required when entry_mode is itemized
+    if (data.entry_mode === 'itemized') {
+        return data.itemized_data && data.itemized_data.length > 0;
+    }
+    return true;
+}, {
+    message: "At least one item is required for Itemized Entry",
+    path: ["itemized_data"]
+}).refine((data) => {
+    // Ensure consolidated_data is required when entry_mode is consolidated
+    if (data.entry_mode === 'consolidated') {
+        return data.consolidated_data;
+    }
+    return true;
+}, {
+    message: "Consolidated data is required for Consolidated Entry",
+    path: ["consolidated_data"]
+});
 
 // Add the missing type definition
-type FormData = z.infer<typeof formSchema>;
+type FormData = z.infer<typeof baseSchema>;
 
 const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSubmit }) => {
     const t = useTranslations('Inland-errors');
@@ -135,8 +154,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const form = useForm<FormData>({
-        resolver: zodResolver(formSchema),
-        shouldUnregister: true,
+        resolver: zodResolver(baseSchema),
         defaultValues: {
             routing: [{
                 from_country: '',
@@ -175,6 +193,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                 temperature_min: 0,
                 temperature_max: 0,
             }],
+            consolidated_data: undefined,
             supporting_files: [],
             additional_information: '',
             effective_date: '',
@@ -208,8 +227,16 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
     const handleSubmit = async (values: FormData) => {
         setIsSubmitting(true);
         try {
-            console.log(values);
-            await onSubmit(values);
+            // Clean up data before submission - only send relevant data
+            const cleanedData: FormData = {
+                ...values,
+                // Only include itemized_data if mode is itemized
+                itemized_data: values.entry_mode === 'itemized' ? values.itemized_data : undefined,
+                // Only include consolidated_data if mode is consolidated
+                consolidated_data: values.entry_mode === 'consolidated' ? values.consolidated_data : undefined,
+            };
+            console.log(cleanedData);
+            await onSubmit(cleanedData);
         } finally {
             setIsSubmitting(false);
         }
@@ -218,9 +245,14 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
     const handleModeChange = (mode: 'itemized' | 'consolidated') => {
         setEntryMode(mode);
         form.setValue('entry_mode', mode);
+        
+        // Clear the data for the mode that's not being used
         if (mode === 'itemized') {
-            // Ensure itemized_data exists so inputs are controlled
-            if (!form.getValues('itemized_data')) {
+            form.setValue('consolidated_data', undefined);
+            // Clear supporting files requirement for itemized mode
+            form.setValue('supporting_files', []);
+            // Ensure itemized data has at least one blank row
+            if (!form.getValues('itemized_data') || form.getValues('itemized_data')?.length === 0) {
                 form.setValue('itemized_data', [{
                     commodity: '',
                     packaging_type: 'pallets',
@@ -246,10 +278,9 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                     temperature_max: 0,
                 }]);
             }
-            form.clearErrors('consolidated_data');
-            form.unregister('consolidated_data');
         } else {
-            // Ensure consolidated_data exists so inputs are controlled
+            // consolidated
+            form.setValue('itemized_data', undefined);
             if (!form.getValues('consolidated_data')) {
                 form.setValue('consolidated_data', {
                     commodity_types: '',
@@ -266,24 +297,33 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                     temperature_min: 0,
                     temperature_max: 0,
                     special_handling: '',
-                } as any);
+                });
             }
-            form.clearErrors('itemized_data');
-            form.unregister('itemized_data');
+        }
+    };
+
+    const handleFormError = (errors: any) => {
+        // Only log if there are actual errors (check for both existence and non-empty object)
+        if (errors && typeof errors === 'object' && Object.keys(errors).length > 0) {
+            console.error("Validation errors:", errors);
+            
+            // Focus the first errored field
+            const fieldNames = Object.keys(errors);
+            if (fieldNames.length > 0) {
+                const firstErrorField = fieldNames[0];
+                // Try to focus the field, but don't break if it fails
+                try {
+                    form.setFocus(firstErrorField as any);
+                } catch (e) {
+                    console.warn("Could not focus field:", firstErrorField);
+                }
+            }
         }
     };
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleSubmit, (errors) => {
-                    console.error('Validation errors:', errors);
-                    const first = Object.keys(errors)[0] as any;
-                    if (first) {
-                        // Focus the first errored field
-                        // @ts-ignore
-                        form.setFocus(first);
-                    }
-                })} className="space-y-8">
+            <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Routing Section */}
                 <RoutingCard1 control={form.control} />
 
@@ -339,7 +379,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                                                 placeholder="Add any additional information about your cargo"
                                                 {...field}
                                             />
-                                            {error && <p className="text-red-500">{error.message}</p>}
+                                            {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                         </>
                                     )}
                                 />
@@ -352,27 +392,40 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-semibold mb-4">Supporting Files</h2>
                     <FormItem>
-                        <FormLabel>Upload Files {entryMode === 'consolidated' && <span className="text-red-500">*</span>}</FormLabel>
+                        <FormLabel>
+                            Upload Files 
+                            {entryMode === 'consolidated' && <span className="text-red-500"> *</span>}
+                            {entryMode === 'itemized' && <span className="text-gray-500"> (Optional)</span>}
+                        </FormLabel>
                         <FormControl>
                             <Controller
                                 control={form.control}
                                 name="supporting_files"
-                                render={({ field: { onChange, ref }, fieldState: { error } }) => (
+                                render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
                                     <>
                                         <Input
                                             type="file"
                                             multiple
                                             accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                                             className="max-w-[300px] border-2 rounded-xl"
-                                            onChange={(e) => onChange(e.target.files)}
+                                            name={name}
                                             ref={ref}
+                                            onBlur={onBlur}
+                                            onChange={(e) => onChange(Array.from(e.target.files ?? []))}
                                         />
                                         {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                                     </>
                                 )}
                             />
                         </FormControl>
-                        <p className="text-xs text-gray-500 mt-1">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
+                        <p className="text-xs text-gray-500 mt-1">
+                            Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+                            {entryMode === 'consolidated' && (
+                                <span className="block text-red-400 mt-1">
+                                    * Supporting files are required for Consolidated Entry
+                                </span>
+                            )}
+                        </p>
                     </FormItem>
                 </div>
 
@@ -522,7 +575,7 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                                                 render={({ field, fieldState: { error } }) => (
                                                     <>
                                                         <Textarea
-                                                            className="min-h[100px] border-2 rounded-xl"
+                                                            className="min-h-[100px] border-2 rounded-xl"
                                                             placeholder="Describe special handling requirements..."
                                                             {...field}
                                                         />
@@ -541,40 +594,47 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                 {/* Service Contract */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-semibold mb-4">Service Contract</h2>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name="effective_date"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <FormLabel>Effective Date <span className="text-muted-foreground text-xs">(Required)</span></FormLabel>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        type="date"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                    <FormControl className="mt-4">
-                        <Controller
-                            control={form.control}
-                            name="expiry_date"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <FormLabel>Expiry Date <span className="text-muted-foreground text-xs">(Required)</span></FormLabel>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        type="date"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
+                    <div className="space-y-4">
+                        <FormItem>
+                            <FormLabel>Effective Date <span className="text-red-500">*</span></FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="effective_date"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input
+                                                className="max-w-[300px] border-2 rounded-xl"
+                                                type="date"
+                                                {...field}
+                                            />
+                                            {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                                        </>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+                        
+                        <FormItem>
+                            <FormLabel>Expiry Date <span className="text-red-500">*</span></FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="expiry_date"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <>
+                                            <Input
+                                                className="max-w-[300px] border-2 rounded-xl"
+                                                type="date"
+                                                {...field}
+                                            />
+                                            {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                                        </>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+                    </div>
                 </div>
 
                 {/* Company Details */}

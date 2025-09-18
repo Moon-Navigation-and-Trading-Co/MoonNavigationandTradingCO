@@ -20,7 +20,7 @@ import { SearchableCountrySelect } from './searchable-country-select';
 import CompanyDetailsCard from './company-details-card';
 import RoutingCard0 from './routing-card-0';
 
-// Complete form schema definition
+// Updated form schema with conditional validation
 const formSchema = z.object({
   routing: z.array(z.object({
     from_country: z.string().min(1, { message: "From country is required" }),
@@ -78,7 +78,8 @@ const formSchema = z.object({
     temperature_max: z.number().optional(),
     special_handling: z.string().optional(),
   }).optional(),
-  supporting_files: z.array(z.string()).optional(),
+  // Schema: store actual files
+  supporting_files: z.array(z.instanceof(File)).optional(),
   additional_information: z.string().optional(),
   effective_date: z.string().min(1, { message: "Effective date is required" }),
   expiry_date: z.string().min(1, { message: "Expiry date is required" }),
@@ -105,6 +106,33 @@ const formSchema = z.object({
     phone_number: z.string().min(1, { message: "Phone number is required" }),
     additional_phone_number: z.string().optional(),
   })
+}).refine((data) => {
+  // Conditional validation: require supporting_files for consolidated mode
+  if (data.entry_mode === 'consolidated') {
+    return data.supporting_files && data.supporting_files.length > 0;
+  }
+  return true;
+}, {
+  message: "Supporting files are required for Consolidated Entry",
+  path: ["supporting_files"]
+}).refine((data) => {
+  // Ensure itemized_data is required when entry_mode is itemized
+  if (data.entry_mode === 'itemized') {
+    return data.itemized_data && data.itemized_data.length > 0;
+  }
+  return true;
+}, {
+  message: "At least one item is required for Itemized Entry",
+  path: ["itemized_data"]
+}).refine((data) => {
+  // Ensure consolidated_data is required when entry_mode is consolidated
+  if (data.entry_mode === 'consolidated') {
+    return data.consolidated_data;
+  }
+  return true;
+}, {
+  message: "Consolidated data is required for Consolidated Entry",
+  path: ["consolidated_data"]
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -156,25 +184,7 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
         temperature_min: 0,
         temperature_max: 0,
       }],
-      consolidated_data: {
-        commodity_types: '',
-        total_quantity: 0,
-        total_weight: 0,
-        weight_unit: 'kg',
-        total_volume: 0,
-        volume_unit: 'cbm',
-        dangerous_goods: false,
-        un_number: '',
-        class: '',
-        special_instructions: '',
-        packaging_type: 'pallets',
-        packaging_type_other: '',
-        stackable: false,
-        temperature_control: false,
-        temperature_min: 0,
-        temperature_max: 0,
-        special_handling: '',
-      },
+      consolidated_data: undefined,
       supporting_files: [],
       additional_information: '',
       effective_date: '',
@@ -205,9 +215,85 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
     }
   });
 
+  // Watch for entry mode changes
+  const entryMode = form.watch('entry_mode');
+
+  // Handle cargo mode change with proper cleanup
+  const handleCargoModeChange = (mode: 'itemized' | 'consolidated') => {
+    setCargoMode(mode);
+    form.setValue('entry_mode', mode);
+    
+    // Clear the data for the mode that's not being used
+    if (mode === 'itemized') {
+      form.setValue('consolidated_data', undefined);
+      // Clear supporting files requirement for itemized mode
+      form.setValue('supporting_files', []);
+      // Ensure itemized data has at least one blank row
+      if (!form.getValues('itemized_data') || form.getValues('itemized_data')?.length === 0) {
+        form.setValue('itemized_data', [{
+          commodity: '',
+          packaging_type: 'pallets',
+          packaging_type_other: '',
+          stackable: false,
+          quantity: 1,
+          length: 0,
+          length_unit: 'cm',
+          width: 0,
+          width_unit: 'cm',
+          height: 0,
+          height_unit: 'cm',
+          weight: 0,
+          cbm: 0,
+          gross_cbm: 0,
+          gross_weight: 0,
+          dangerous_goods: false,
+          un_number: '',
+          class: '',
+          remarks: '',
+          temperature_control: false,
+          temperature_min: 0,
+          temperature_max: 0,
+        }]);
+      }
+    } else {
+      // consolidated
+      form.setValue('itemized_data', undefined);
+      if (!form.getValues('consolidated_data')) {
+      form.setValue('consolidated_data', {
+        commodity_types: '',
+        total_quantity: 0,
+        total_weight: 0,
+        weight_unit: 'kg',
+        total_volume: 0,
+        volume_unit: 'cbm',
+        dangerous_goods: false,
+        un_number: '',
+        class: '',
+        special_instructions: '',
+        packaging_type: 'pallets',
+        packaging_type_other: '',
+        stackable: false,
+        temperature_control: false,
+        temperature_min: 0,
+        temperature_max: 0,
+        special_handling: '',
+      });
+      }
+    }
+  };
+
   const handleSubmit = (values: FormData) => {
-    console.log("Form submitted:", values);
-    onSubmit(values);
+    // Clean up data before submission - only send relevant data
+    const cleanedData: FormData = {
+      ...values,
+      // Only include itemized_data if mode is itemized
+      itemized_data: values.entry_mode === 'itemized' ? values.itemized_data : undefined,
+      // Only include consolidated_data if mode is consolidated
+      consolidated_data: values.entry_mode === 'consolidated' ? values.consolidated_data : undefined,
+    };
+    
+    console.log("Form submitted:", cleanedData);
+    onSubmit(cleanedData);
   };
 
   return (
@@ -215,34 +301,29 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
         {/* Route Selection */}
         <RoutingCard0 control={form.control} />
+        
         {/* Cargo Details */}
         <div className="">
           <h1 className='text-xl font-raleway font-medium'>{t('cargo-details')}</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             {/* Cargo Entry Mode Selection */}
             <div className="flex flex-col sm:flex-row gap-4">
-                              <Button
-                  type="button"
-                  variant={cargoMode === 'itemized' ? 'default' : 'outline'}
-                  onClick={() => {
-                    setCargoMode('itemized');
-                  form.setValue('entry_mode', 'itemized');
-                  }}
-                  className="w-full sm:w-auto text-sm sm:text-base"
-                >
+              <Button
+                type="button"
+                variant={cargoMode === 'itemized' ? 'default' : 'outline'}
+                onClick={() => handleCargoModeChange('itemized')}
+                className="w-full sm:w-auto text-sm sm:text-base"
+              >
                 Itemized Entry by Commodity
-                </Button>
-                <Button
-                  type="button"
-                  variant={cargoMode === 'consolidated' ? 'default' : 'outline'}
-                  onClick={() => {
-                    setCargoMode('consolidated');
-                  form.setValue('entry_mode', 'consolidated');
-                  }}
-                  className="w-full sm:w-auto text-sm sm:text-base"
-                >
+              </Button>
+              <Button
+                type="button"
+                variant={cargoMode === 'consolidated' ? 'default' : 'outline'}
+                onClick={() => handleCargoModeChange('consolidated')}
+                className="w-full sm:w-auto text-sm sm:text-base"
+              >
                 Consolidated Entry for Multiple Commodities
-                </Button>
+              </Button>
             </div>
 
             {/* Cargo Entry Section */}
@@ -254,30 +335,44 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
           </div>
         </div>
 
-        {/* Supporting Files */}
+        {/* Supporting Files - Conditional Display */}
         <div className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-xl font-semibold mb-4">Supporting Files</h2>
           <FormItem>
-            <FormLabel>Upload Files {cargoMode === 'consolidated' && <span className="text-red-500">*</span>}</FormLabel>
+            <FormLabel>
+              Upload Files 
+              {cargoMode === 'consolidated' && <span className="text-red-500"> *</span>}
+              {cargoMode === 'itemized' && <span className="text-gray-500"> (Optional)</span>}
+            </FormLabel>
             <FormControl>
               <Controller
                 control={form.control}
                 name="supporting_files"
-                render={({ field, fieldState: { error } }) => (
+                render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
                   <>
                     <Input
                       type="file"
                       multiple
                       accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                       className="max-w-[300px] border-2 rounded-xl"
-                      {...field}
+                      name={name}
+                      ref={ref}
+                      onBlur={onBlur}
+                      onChange={(e) => onChange(Array.from(e.target.files ?? []))}
                     />
                     {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                   </>
                 )}
               />
             </FormControl>
-            <p className="text-xs text-gray-500 mt-1">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
+            <p className="text-xs text-gray-500 mt-1">
+              Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+              {cargoMode === 'consolidated' && (
+                <span className="block text-red-400 mt-1">
+                  * Supporting files are required for Consolidated Entry
+                </span>
+              )}
+            </p>
           </FormItem>
         </div>
 
@@ -567,4 +662,4 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
   );
 };
 
-export default OceanFreightQuotationForm; 
+export default OceanFreightQuotationForm;

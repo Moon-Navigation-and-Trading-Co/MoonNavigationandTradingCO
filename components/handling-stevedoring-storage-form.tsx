@@ -18,7 +18,7 @@ import ConsolidatedForm from './consolidated-form';
 import CompanyDetailsCard from './company-details-card';
 import FileUpload from './file-upload';
 
-// Define the form schema
+// Define the form schema with conditional validation
 const formSchema = z.object({
   import_export: z.enum(['import', 'export']),
   port_airport: z.string().min(1, { message: "Port/Airport is required" }),
@@ -106,7 +106,7 @@ const formSchema = z.object({
     additional_requirements: z.string().optional(),
   }),
   
-  supporting_files: z.array(z.string()).optional(), // Changed from z.array(z.any()) to z.array(z.string())
+  supporting_files: z.array(z.instanceof(File)).optional(),
   
   company_details: z.object({
     company_name: z.string().min(1, { message: "Company name is required" }),
@@ -118,6 +118,33 @@ const formSchema = z.object({
     phone_number: z.string().min(1, { message: "Phone number is required" }),
     additional_phone_number: z.string().optional(),
   }),
+}).refine((data) => {
+  // Conditional validation: require supporting_files for consolidated mode
+  if (data.entry_mode === 'consolidated') {
+    return data.supporting_files && data.supporting_files.length > 0;
+  }
+  return true;
+}, {
+  message: "Supporting files are required for Consolidated Entry",
+  path: ["supporting_files"]
+}).refine((data) => {
+  // Ensure itemized_data is required when entry_mode is itemized
+  if (data.entry_mode === 'itemized') {
+    return data.itemized_data && data.itemized_data.length > 0;
+  }
+  return true;
+}, {
+  message: "At least one item is required for Itemized Entry",
+  path: ["itemized_data"]
+}).refine((data) => {
+  // Ensure consolidated_data is required when entry_mode is consolidated
+  if (data.entry_mode === 'consolidated') {
+    return data.consolidated_data;
+  }
+  return true;
+}, {
+  message: "Consolidated data is required for Consolidated Entry",
+  path: ["consolidated_data"]
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -159,20 +186,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
         remarks: '',
         temperature_control: false,
       }],
-      consolidated_data: {
-        commodity_types: '',
-        total_quantity: 0,
-        total_weight: 0,
-        total_volume: 0,
-        dangerous_goods: false,
-        un_number: '',
-        class: '',
-        special_instructions: '',
-        packaging_type: 'pallets',
-        stackable: false,
-        temperature_control: false,
-        special_handling: '',
-      },
+      consolidated_data: undefined,
       handling_stevedoring: false,
       loading_cargo: false,
       discharging_cargo: false,
@@ -217,10 +231,19 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
   const handleSubmit = async (values: FormData) => {
     set_is_submitting(true);
     try {
+      // Clean up data before submission - only send relevant data
+      const cleanedData: FormData = {
+        ...values,
+        // Only include itemized_data if mode is itemized
+        itemized_data: values.entry_mode === 'itemized' ? values.itemized_data : undefined,
+        // Only include consolidated_data if mode is consolidated
+        consolidated_data: values.entry_mode === 'consolidated' ? values.consolidated_data : undefined,
+      };
+      
       if (onSubmit) {
-        await onSubmit(values);
+        await onSubmit(cleanedData);
       }
-      console.log("Handling Stevedoring Storage Form Data:", values);
+      console.log("Handling Stevedoring Storage Form Data:", cleanedData);
     } catch (error) {
       console.error('Error submitting form:', error);
     } finally {
@@ -231,6 +254,56 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
   const handleModeChange = (mode: 'itemized' | 'consolidated') => {
     set_entry_mode(mode);
     form.setValue('entry_mode', mode);
+    
+    // Clear the data for the mode that's not being used
+    if (mode === 'itemized') {
+      form.setValue('consolidated_data', undefined);
+      // Clear supporting files requirement for itemized mode
+      form.setValue('supporting_files', []);
+      // Ensure itemized data has at least one blank row
+      if (!form.getValues('itemized_data') || form.getValues('itemized_data')?.length === 0) {
+        form.setValue('itemized_data', [{
+          commodity: '',
+          packaging_type: 'pallets',
+          stackable: false,
+          quantity: 1,
+          length: 0,
+          length_unit: 'cm',
+          width: 0,
+          width_unit: 'cm',
+          height: 0,
+          height_unit: 'cm',
+          weight: 0,
+          cbm: 0,
+          gross_cbm: 0,
+          gross_weight: 0,
+          dangerous_goods: false,
+          un_number: '',
+          class: '',
+          remarks: '',
+          temperature_control: false,
+        }]);
+      }
+    } else {
+      // consolidated
+      form.setValue('itemized_data', undefined);
+      if (!form.getValues('consolidated_data')) {
+        form.setValue('consolidated_data', {
+          commodity_types: '',
+          total_quantity: 0,
+          total_weight: 0,
+          total_volume: 0,
+          dangerous_goods: false,
+          un_number: '',
+          class: '',
+          special_instructions: '',
+          packaging_type: 'pallets',
+          stackable: false,
+          temperature_control: false,
+          special_handling: '',
+        });
+      }
+    }
   };
 
   return (
@@ -276,7 +349,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                         <Input
                           {...field}
                           placeholder="Enter port or airport"
-                          className={`mt-2 ${error ? 'border-red-500' : ''}`}
+                          className={`mt-2 max-w-[300px] ${error ? 'border-red-500' : ''}`}
                         />
                         {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                       </>
@@ -295,7 +368,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                         <Input
                           {...field}
                           placeholder="Insert Location"
-                          className={`mt-2 ${error ? 'border-red-500' : ''}`}
+                          className={`mt-2 max-w-[300px] ${error ? 'border-red-500' : ''}`}
                         />
                         {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                       </>
@@ -326,7 +399,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   onClick={() => handleModeChange('consolidated')}
                   className="flex-1"
                 >
-                  Consolidated Entry
+                  Consolidated Entry for Multiple Commodities
                 </Button>
               </div>
             </div>
@@ -353,7 +426,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                           <Textarea
                             {...field}
                             placeholder="Please provide any additional information about your cargo..."
-                            className={`mt-2 ${error ? 'border-red-500' : ''}`}
+                            className={`mt-2 max-w-[400px] ${error ? 'border-red-500' : ''}`}
                             rows={4}
                           />
                           {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
@@ -373,7 +446,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                           <Textarea
                             {...field}
                             placeholder="Please advise other relevant commercial terms such as loading/discharging rates and Incoterms."
-                            className={`mt-2 ${error ? 'border-red-500' : ''}`}
+                            className={`mt-2 max-w-[400px] ${error ? 'border-red-500' : ''}`}
                             rows={3}
                           />
                           {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
@@ -387,21 +460,26 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
 
             {/* Supporting Files Section - Optional for Itemized */}
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-4">Supporting Files (Optional)</h3>
+              <h3 className="text-lg font-semibold mb-4">Supporting Files 
+                <span className="text-gray-500"> (Optional)</span>
+              </h3>
               <FormItem>
                 <FormLabel>Upload supporting documents</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
                     name="supporting_files"
-                    render={({ field, fieldState: { error } }) => (
+                    render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
                       <>
                         <Input
                           type="file"
                           multiple
                           accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                           className="max-w-[300px] border-2 rounded-xl"
-                          {...field}
+                          name={name}
+                          ref={ref}
+                          onBlur={onBlur}
+                          onChange={(e) => onChange(Array.from(e.target.files ?? []))}
                         />
                         {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                       </>
@@ -420,21 +498,26 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
             
             {/* Supporting Files Section - Mandatory for Consolidated */}
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-4">Supporting Files (Required)</h3>
+              <h3 className="text-lg font-semibold mb-4">Supporting Files 
+                <span className="text-red-500"> *</span>
+              </h3>
               <FormItem>
                 <FormLabel>Upload supporting documents</FormLabel>
                 <FormControl>
                   <Controller
                     control={form.control}
                     name="supporting_files"
-                    render={({ field, fieldState: { error } }) => (
+                    render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
                       <>
                         <Input
                           type="file"
                           multiple
                           accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
                           className="max-w-[300px] border-2 rounded-xl"
-                          {...field}
+                          name={name}
+                          ref={ref}
+                          onBlur={onBlur}
+                          onChange={(e) => onChange(Array.from(e.target.files ?? []))}
                         />
                         {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                       </>
@@ -443,16 +526,17 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 </FormControl>
                 <p className="text-xs text-gray-500 mt-1">
                   Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+                  <span className="block text-red-400 mt-1">
+                    * Supporting files are required for Consolidated Entry
+                  </span>
                 </p>
               </FormItem>
             </div>
             
             {/* Additional Information */}
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-xl font-bold">Additional Information</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
+            <div className="">
+              <h1 className='text-xl font-raleway font-medium'>Additional Information</h1>
+              <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
                 <FormItem>
                   <FormLabel className="text-lg font-semibold">Additional Information:</FormLabel>
                   <FormControl>
@@ -464,7 +548,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                           <Textarea
                             {...field}
                             placeholder="Please provide any additional information about your cargo..."
-                            className={`mt-2 ${error ? 'border-red-500' : ''}`}
+                            className={`mt-2 max-w-[400px] ${error ? 'border-red-500' : ''}`}
                             rows={4}
                           />
                           {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
@@ -484,7 +568,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                           <Textarea
                             {...field}
                             placeholder="Please advise other relevant commercial terms such as loading/discharging rates and Incoterms."
-                            className={`mt-2 ${error ? 'border-red-500' : ''}`}
+                            className={`mt-2 max-w-[400px] ${error ? 'border-red-500' : ''}`}
                             rows={3}
                           />
                           {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
@@ -493,69 +577,27 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                     />
                   </FormControl>
                 </FormItem>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </>
         )}
 
-        {/* Dates */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl font-bold">Dates</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <FormItem>
-                <FormLabel className="text-lg font-semibold">Effective Date:</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="effective_date"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <Input
-                          {...field}
-                          type="date"
-                          className={`mt-2 ${error ? 'border-red-500' : ''}`}
-                        />
-                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-              <FormItem>
-                <FormLabel className="text-lg font-semibold">Expiry Date:</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="expiry_date"
-                    render={({ field, fieldState: { error } }) => (
-                      <>
-                        <Input
-                          {...field}
-                          type="date"
-                          className={`mt-2 ${error ? 'border-red-500' : ''}`}
-                        />
-                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-              </FormItem>
-            </div>
+        {/* Service Contract */}
+        <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-xl font-semibold mb-4">Service Contract</h2>
+          <div className="space-y-4">
             <FormItem>
-              <FormLabel className="text-lg font-semibold">Service Contract (Optional):</FormLabel>
+              <FormLabel>Effective Date <span className="text-red-500">*</span></FormLabel>
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="service_contract"
+                  name="effective_date"
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Input
+                        className="max-w-[300px] border-2 rounded-xl"
+                        type="date"
                         {...field}
-                        placeholder="Enter service contract number"
-                        className={`mt-2 ${error ? 'border-red-500' : ''}`}
                       />
                       {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                     </>
@@ -563,196 +605,255 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 />
               </FormControl>
             </FormItem>
-          </CardContent>
-        </Card>
+            
+            <FormItem>
+              <FormLabel>Expiry Date <span className="text-red-500">*</span></FormLabel>
+              <FormControl>
+                <Controller
+                  control={form.control}
+                  name="expiry_date"
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Input
+                        className="max-w-[300px] border-2 rounded-xl"
+                        type="date"
+                        {...field}
+                      />
+                      {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                    </>
+                  )}
+                />
+              </FormControl>
+            </FormItem>
+            
+            <FormItem>
+              <FormLabel>Service Contract Number (Optional)</FormLabel>
+              <FormControl>
+                <Controller
+                  control={form.control}
+                  name="service_contract"
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Input
+                        className="max-w-[300px] border-2 rounded-xl"
+                        placeholder="Enter service contract number"
+                        {...field}
+                      />
+                      {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                    </>
+                  )}
+                />
+              </FormControl>
+            </FormItem>
+          </div>
+        </div>
 
-        {/* Required Services */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl font-bold">Required Services</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8">
-            {/* Handling & Stevedoring */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Handling & Stevedoring</h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-2">
+        {/* Handling Services Section */}
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>Handling Services</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="handling_stevedoring"
                     render={({ field }) => (
-                      <Checkbox
-                        id="handlingStevedoring"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Handling & Stevedoring</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="handlingStevedoring">Handling & Stevedoring</Label>
-                </div>
-                <div className="flex items-center space-x-2">
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="loading_cargo"
                     render={({ field }) => (
-                      <Checkbox
-                        id="loadingCargo"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Loading Cargo</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="loadingCargo">Loading of cargo</Label>
-                </div>
-                <div className="flex items-center space-x-2">
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="discharging_cargo"
                     render={({ field }) => (
-                      <Checkbox
-                        id="dischargingCargo"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Discharging Cargo</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="dischargingCargo">Discharging of cargo</Label>
-                </div>
-                <div className="flex items-center space-x-2">
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="lashing_cargo"
                     render={({ field }) => (
-                      <Checkbox
-                        id="lashingCargo"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Lashing Cargo</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="lashingCargo">Lashing of cargo</Label>
-                </div>
-                <div className="flex items-center space-x-2">
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="unlashing_cargo"
                     render={({ field }) => (
-                      <Checkbox
-                        id="unlashingCargo"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Unlashing Cargo</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="unlashingCargo">Unlashing of cargo</Label>
-                </div>
-                <div className="flex items-center space-x-2">
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="port_handling_stevedoring"
                     render={({ field }) => (
-                      <Checkbox
-                        id="portHandlingStevedoring"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Port Handling & Stevedoring</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="portHandlingStevedoring">Port Handling & Stevedoring (if required)</Label>
-                </div>
-              </div>
-            </div>
+                </FormControl>
+              </FormItem>
 
-            <Separator />
-
-            {/* Cargo Reception & Delivery */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Cargo Reception & Delivery</h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-2">
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="cargo_reception_delivery"
                     render={({ field }) => (
-                      <Checkbox
-                        id="cargoReceptionDelivery"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Cargo Reception & Delivery</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="cargoReceptionDelivery">Cargo Reception & Delivery</Label>
-                </div>
-                <div className="flex items-center space-x-2">
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="reception_before_shipment"
                     render={({ field }) => (
-                      <Checkbox
-                        id="receptionBeforeShipment"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Reception Before Shipment</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="receptionBeforeShipment">Reception, delivery, and safekeeping of cargo before shipment</Label>
-                </div>
-                <div className="flex items-center space-x-2">
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="reception_after_discharge"
                     render={({ field }) => (
-                      <Checkbox
-                        id="receptionAfterDischarge"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Reception After Discharge</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="receptionAfterDischarge">Reception, delivery, and safekeeping of cargo after discharge</Label>
-                </div>
-              </div>
-            </div>
+                </FormControl>
+              </FormItem>
 
-            <Separator />
-
-            {/* Storage & Warehousing */}
-            <div>
-              <h3 className="text-lg font-semibold mb-6">Storage & Warehousing</h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-2">
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="storage_warehousing"
                     render={({ field }) => (
-                      <Checkbox
-                        id="storageWarehousing"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Storage & Warehousing</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="storageWarehousing">Storage & Warehousing</Label>
-                </div>
-                <div className="flex items-center space-x-2">
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
                   <Controller
                     control={form.control}
                     name="temporary_storage"
                     render={({ field }) => (
-                      <Checkbox
-                        id="temporaryStorage"
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                      />
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Temporary Storage</label>
+                      </div>
                     )}
                   />
-                  <Label htmlFor="temporaryStorage">Temporary storage</Label>
-                </div>
-              </div>
+                </FormControl>
+              </FormItem>
             </div>
 
-            <FormItem>
-              <FormLabel className="text-lg font-semibold">Additional Requirements:</FormLabel>
+            <FormItem className="mt-4">
+              <FormLabel>Handling Requirements (Optional)</FormLabel>
               <FormControl>
                 <Controller
                   control={form.control}
@@ -761,8 +862,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                     <>
                       <Textarea
                         {...field}
-                        placeholder="Note: Type the handling and stevedoring requirement needed if not listed."
-                        className={`mt-2 ${error ? 'border-red-500' : ''}`}
+                        placeholder="Specify any special handling requirements..."
                         rows={3}
                       />
                       {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
@@ -771,157 +871,165 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 />
               </FormControl>
             </FormItem>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
 
         {/* Additional Services */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-xl font-bold">Additional Services</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="flex items-center space-x-2">
-                <Controller
-                  control={form.control}
-                  name="additional_services.crane_heavy_lift"
-                  render={({ field }) => (
-                    <Checkbox
-                      id="crane_heavy_lift"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  )}
-                />
-                <Label htmlFor="crane_heavy_lift">Crane / Heavy Lift Equipment</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Controller
-                  control={form.control}
-                  name="additional_services.customs_clearance"
-                  render={({ field }) => (
-                    <Checkbox
-                      id="customs_clearance"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  )}
-                />
-                <Label htmlFor="customs_clearance">Customs Clearance</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Controller
-                  control={form.control}
-                  name="additional_services.transport_to_from_port"
-                  render={({ field }) => (
-                    <Checkbox
-                      id="transport_to_from_port"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  )}
-                />
-                <Label htmlFor="transport_to_from_port">Transport to/from Port (Inland Freight)</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Controller
-                  control={form.control}
-                  name="additional_services.inspection_quality_control"
-                  render={({ field }) => (
-                    <Checkbox
-                      id="inspection_quality_control"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  )}
-                />
-                <Label htmlFor="inspection_quality_control">Inspection & Quality Control</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Controller
-                  control={form.control}
-                  name="additional_services.escort_permits"
-                  render={({ field }) => (
-                    <Checkbox
-                      id="escort_permits"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  )}
-                />
-                <Label htmlFor="escort_permits">Escort or Permits (if applicable)</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Controller
-                  control={form.control}
-                  name="additional_services.engineering_support"
-                  render={({ field }) => (
-                    <Checkbox
-                      id="engineering_support"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  )}
-                />
-                <Label htmlFor="engineering_support">Engineering Support (Lashing/Surveying)</Label>
-              </div>
-            </div>
-            
-            {/* Other (Please Specify) */}
-            <FormItem className="mt-8">
-              <FormControl>
-                <Controller
-                  control={form.control}
-                  name="additional_services.other"
-                  render={({ field }) => (
-                    <div className="flex items-center space-x-2">
-                      <Checkbox
-                        checked={field.value}
-                        onCheckedChange={field.onChange}
-                        id="other"
-                      />
-                      <label htmlFor="other" className="text-sm font-medium">
-                        Other (Please Specify):
-                      </label>
-                    </div>
-                  )}
-                />
-              </FormControl>
-            </FormItem>
-
-            {/* Other Specify Input */}
-            <Controller
-              control={form.control}
-              name="additional_services.other"
-              render={({ field: { value } }) => (
-                <div>
-                  {value && (
-                    <div className="ml-6">
-                      <FormControl>
-                        <Controller
-                          control={form.control}
-                          name="additional_services.other_specify"
-                          render={({ field, fieldState: { error } }) => (
-                            <>
-                              <Input
-                                className="max-w-[400px] border-2 rounded-xl"
-                                placeholder="Please specify other service"
-                                {...field}
-                              />
-                              {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                            </>
-                          )}
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>Additional Services</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormItem>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="additional_services.crane_heavy_lift"
+                    render={({ field }) => (
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
                         />
-                      </FormControl>
-                    </div>
-                  )}
-                </div>
-              )}
-            />
+                        <label className="text-sm">Crane / Heavy Lift</label>
+                      </div>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
 
-            {/* Additional Requirements Textarea */}
-            <FormItem className="mt-8">
-              <FormLabel className="text-sm font-medium">Please describe any additional service or special requirement not listed above.</FormLabel>
+              <FormItem>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="additional_services.customs_clearance"
+                    render={({ field }) => (
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Customs Clearance</label>
+                      </div>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="additional_services.transport_to_from_port"
+                    render={({ field }) => (
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Transport to/from Port</label>
+                      </div>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="additional_services.inspection_quality_control"
+                    render={({ field }) => (
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Inspection & Quality Control</label>
+                      </div>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="additional_services.escort_permits"
+                    render={({ field }) => (
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Escort / Permits</label>
+                      </div>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="additional_services.engineering_support"
+                    render={({ field }) => (
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Engineering Support</label>
+                      </div>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="additional_services.other"
+                    render={({ field }) => (
+                      <div className="flex items-center space-x-2">
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                        />
+                        <label className="text-sm">Other</label>
+                      </div>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
+            </div>
+
+            {form.watch('additional_services.other') && (
+              <FormItem className="mt-4">
+                <FormLabel>Other Services (Specify)</FormLabel>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="additional_services.other_specify"
+                    render={({ field, fieldState: { error } }) => (
+                      <>
+                        <Textarea
+                          {...field}
+                          placeholder="Please specify other services required..."
+                          rows={3}
+                        />
+                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                      </>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+
+            <FormItem className="mt-4">
+              <FormLabel>Additional Requirements (Optional)</FormLabel>
               <FormControl>
                 <Controller
                   control={form.control}
@@ -929,9 +1037,9 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                   render={({ field, fieldState: { error } }) => (
                     <>
                       <Textarea
-                        className="min-h-[100px] border-2 rounded-xl"
-                        placeholder="Describe any additional services or special requirements..."
                         {...field}
+                        placeholder="Any additional service requirements..."
+                        rows={3}
                       />
                       {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
                     </>
@@ -939,23 +1047,21 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
                 />
               </FormControl>
             </FormItem>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
+
         {/* Company Details */}
         <CompanyDetailsCard control={form.control} />
 
-        {/* Submit Button */}
-        <div className="flex justify-start">
-          <Button type="submit" disabled={is_submitting} className="w-full">
-            {is_submitting ? (
-              <div className="flex items-center gap-2">
-                <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
-                <span>Submitting...</span>
-              </div>
-            ) : "Submit"}
-          </Button>
-        </div>
+        <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
+          {is_submitting ? (
+            <div className="flex items-center justify-center gap-2">
+              <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+              <span>Submitting...</span>
+            </div>
+          ) : "Submit"}
+        </Button>
       </form>
     </Form>
   );
-} 
+}
