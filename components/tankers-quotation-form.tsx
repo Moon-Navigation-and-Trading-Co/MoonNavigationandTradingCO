@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { useForm, Controller, useFieldArray } from 'react-hook-form';
+import React, { useState, useRef, useCallback } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
@@ -10,16 +10,13 @@ import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Form, FormItem, FormLabel, FormControl, FormField, FormMessage, FormDescription } from '@/components/ui/form';
-import { Trash2, Plus, Mail, Phone, AlertCircle, CheckCircle2 } from 'lucide-react';
-import { PhoneInput } from '@/components/phone-input';
-import { SearchableCountrySelect } from './searchable-country-select';
+import { Form, FormItem, FormLabel, FormControl } from '@/components/ui/form';
+import { AlertCircle, CheckCircle2 } from 'lucide-react';
 import CompanyDetailsCard from './company-details-card';
 import RoutingCard0 from './routing-card-0';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { toast } from '@/hooks/use-toast';
 
-// Simple validation messages with enhanced error handling
 const tankersFormSchema = z.object({
   routing: z.array(z.object({
     from_country: z.string().min(1, { message: "From country is required" }),
@@ -62,18 +59,20 @@ const tankersFormSchema = z.object({
   
   additional_requirements: z.string().optional(),
   
+  // Nested company_details object to match CompanyDetailsCard structure
+  company_details: z.object({
   company_name: z.string().min(1, "Company name is required"),
   contact_person_name: z.string().min(1, "Contact person name is required"),
   title: z.string().min(1, "Title is required"),
-  city_country: z.string().min(1, "City/Country is required"),
+    country_of_origin: z.string().min(1, "Country is required"), // Changed from city_country to match CompanyDetailsCard
   company_email: z.string().email("Valid email is required"),
   phone_number: z.string().min(1, "Phone number is required"),
+    additional_email: z.string().email("Please enter a valid email").optional().or(z.literal("")),
+    additional_phone_number: z.string().optional(), // Changed from additional_phone to match CompanyDetailsCard
+  }),
   
   show_additional_email: z.boolean().default(false),
-  additional_email: z.string().optional(),
-  
-  show_additional_phone: z.boolean().default(false),
-  additional_phone: z.string().optional()
+  show_additional_phone: z.boolean().default(false)
 });
 
 type TankersFormData = z.infer<typeof tankersFormSchema>;
@@ -90,7 +89,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
 
   const form = useForm<TankersFormData>({
     resolver: zodResolver(tankersFormSchema),
-    mode: 'onBlur', // Validate on blur for better UX
+    mode: 'onBlur',
     defaultValues: {
       routing: [{ from_country: '', from_port: '', to_country: '', to_port: '' }],
       effective_date: '',
@@ -99,60 +98,40 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
       other_cargo_type: '',
       total_quantity: 0,
       quantity_unit: '',
-      temperature_requirement: 'standard', // Set default value
+      temperature_requirement: 'standard',
       temperature_range: '',
       flashpoint: '',
       tanker_type: [],
       charter_type: '',
       cargo_handling: [],
-      supporting_files: null, // Keep as null for file input
+      supporting_files: null,
       cargo_lifting_points: false,
       additional_information: '',
       service_contract: '',
       safety_compliance: [],
       other_safety_compliance: '',
-      marine_insurance: '', // Set default empty string
+      marine_insurance: '',
       insurance_details: '',
       additional_services: [],
       other_additional_service: '',
       additional_requirements: '',
+      company_details: {
       company_name: '',
       contact_person_name: '',
       title: '',
-      city_country: '',
+        country_of_origin: '',
       company_email: '',
       phone_number: '',
-      show_additional_email: false,
       additional_email: '',
-      show_additional_phone: false,
-      additional_phone: ''
+        additional_phone_number: '',
+      },
+      show_additional_email: false,
+      show_additional_phone: false
     }
   });
 
-  // Enhanced error focusing function
-  const focusFirstError = useCallback(() => {
-    const errors = form.formState.errors;
-    const firstErrorField = Object.keys(errors)[0];
-    
-    if (firstErrorField && formRef.current) {
-      // Handle nested field paths
-      let fieldName = firstErrorField;
-      if (firstErrorField.includes('.')) {
-        const parts = firstErrorField.split('.');
-        if (parts[0] === 'routing' && parts[2]) {
-          fieldName = `routing.0.${parts[2]}`;
-        }
-      }
-      
-      const firstErrorElement = formRef.current.querySelector(`[name="${fieldName}"]`) as HTMLElement;
-      if (firstErrorElement) {
-        firstErrorElement.focus();
-        firstErrorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
-  }, [form.formState.errors]);
-
   const handleFormSubmit = async (data: TankersFormData) => {
+    console.log("Form submission started with data:", data);
     setSubmitError(null);
     setSubmitSuccess(false);
     
@@ -165,6 +144,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
         variant: "default",
       });
     } catch (error) {
+      console.error("Form submission error:", error);
       const errorMessage = error instanceof Error ? error.message : 'An unexpected error occurred while submitting the form. Please try again.';
       setSubmitError(errorMessage);
       toast({
@@ -175,34 +155,11 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
     }
   };
 
-  const handleError = useCallback((errors: any) => {
-    // More explicit error checking
-    if (errors && typeof errors === 'object') {
-      const errorKeys = Object.keys(errors);
-      if (errorKeys.length > 0) {
-        console.error("Form validation errors:", errors);
-        setSubmitError("Please correct the highlighted errors before submitting.");
-        
-        // Focus on first error field
-        setTimeout(focusFirstError, 100);
-        
-        // Show error toast
-        toast({
-          title: "Validation Errors",
-          description: "Please review and correct the highlighted fields.",
-          variant: "destructive",
-        });
-      }
-    }
-    // If no errors, do nothing
-  }, [focusFirstError]);
-
-  // Fix all form fields to use ?? instead of || and ensure consistent values
   return (
     <Form {...form}>
       <form 
         ref={formRef}
-        onSubmit={form.handleSubmit(handleFormSubmit, handleError)} 
+        onSubmit={form.handleSubmit(handleFormSubmit)} 
         className="space-y-8"
         noValidate
       >
@@ -227,11 +184,70 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
         {/* Routing Section */}
         <RoutingCard0 control={form.control} />
 
+        {/* Dates Section */}
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium'>Dates</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
+            <div className="grid md:grid-cols-2 gap-5">
+              <FormItem>
+                <FormLabel>Effective Date <span className="text-red-500">*</span></FormLabel>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="effective_date"
+                    render={({ field, fieldState: { error } }) => (
+                      <>
+                        <Input
+                          type="date"
+                          className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                          {...field}
+                        />
+                        <p className="text-xs text-gray-500 mt-1">dd/mm/yyyy - Select when you need the service to begin</p>
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                            {error.message}
+                          </p>
+                        )}
+                      </>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
+
+              <FormItem>
+                <FormLabel>Expiry Date <span className="text-red-500">*</span></FormLabel>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="expiry_date"
+                    render={({ field, fieldState: { error } }) => (
+                      <>
+                        <Input
+                          type="date"
+                          className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                          {...field}
+                        />
+                        <p className="text-xs text-gray-500 mt-1">dd/mm/yyyy - Select when the service agreement expires</p>
+                        {error && (
+                          <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                            <AlertCircle className="h-3 w-3" />
+                            {error.message}
+                          </p>
+                        )}
+                      </>
+                    )}
+                  />
+                </FormControl>
+              </FormItem>
+            </div>
+          </div>
+        </div>
+
         {/* Cargo Details */}
         <div className="">
           <h1 className='text-xl font-raleway font-medium'>Cargo Details</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
-            {/* Type of Cargo */}
             <div>
               <FormLabel className="text-base font-medium">Type of Cargo (Select one or more):</FormLabel>
               {form.formState.errors.cargo_type?.message && (
@@ -264,7 +280,6 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   </div>
                 ))}
                 
-                {/* Other option with specify field */}
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Controller
@@ -311,7 +326,6 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               </div>
             </div>
 
-            {/* Total Quantity */}
             <FormItem>
               <FormLabel>Total Quantity (Metric Tons or Barrels)</FormLabel>
               <div className="grid md:grid-cols-2 gap-5">
@@ -369,7 +383,6 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               </div>
             </FormItem>
 
-            {/* Temperature Requirements */}
             <div>
               <FormLabel className="text-base font-medium">Temperature Requirements:</FormLabel>
               <Controller
@@ -429,7 +442,6 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               )}
             </div>
 
-            {/* Flashpoint */}
             <FormItem>
               <FormLabel>Flashpoint (if applicable)</FormLabel>
               <FormControl>
@@ -454,6 +466,63 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 />
               </FormControl>
             </FormItem>
+
+            {/* Marine Insurance Section */}
+            <div>
+              <FormLabel className="text-base font-medium">Do You Require Marine Insurance?</FormLabel>
+              <Controller
+                control={form.control}
+                name="marine_insurance"
+                render={({ field, fieldState: { error } }) => (
+                  <>
+                    <RadioGroup onValueChange={field.onChange} value={field.value ?? ""} className="mt-3 space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="yes" id="insurance_yes" />
+                        <label htmlFor="insurance_yes" className="text-sm font-medium">Yes</label>
+          </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="no" id="insurance_no" />
+                        <label htmlFor="insurance_no" className="text-sm font-medium">No</label>
+                      </div>
+                    </RadioGroup>
+                    {error && (
+                      <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                        <AlertCircle className="h-3 w-3" />
+                        {error.message}
+                      </p>
+                    )}
+                  </>
+                )}
+              />
+              
+              {form.watch('marine_insurance') === 'yes' && (
+                <FormItem className="mt-3">
+                  <FormLabel>If yes, specify coverage type & value:</FormLabel>
+                  <FormControl>
+                    <Controller
+                      control={form.control}
+                      name="insurance_details"
+                      render={({ field, fieldState: { error } }) => (
+                        <>
+                          <Textarea
+                            placeholder="Please specify the coverage type and value required"
+                            className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                            rows={3}
+                            {...field}
+                          />
+                          {error && (
+                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                              <AlertCircle className="h-3 w-3" />
+                              {error.message}
+                            </p>
+                          )}
+                        </>
+                      )}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            </div>
           </div>
         </div>
 
@@ -461,7 +530,6 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
         <div className="">
           <h1 className='text-xl font-raleway font-medium'>Vessel & Transport Specifications</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
-            {/* Preferred Tanker Type */}
             <div>
               <FormLabel className="text-base font-medium">Preferred Tanker Type (Select one or more):</FormLabel>
               {form.formState.errors.tanker_type?.message && (
@@ -501,7 +569,6 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               </div>
             </div>
 
-            {/* Charter Type */}
             <FormItem>
               <FormLabel>Charter Type (Select one)</FormLabel>
               <FormControl>
@@ -532,7 +599,6 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
               </FormControl>
             </FormItem>
 
-            {/* Cargo Handling & Storage Requirements */}
             <div>
               <FormLabel className="text-base font-medium">Cargo Handling & Storage Requirements (Check all that apply):</FormLabel>
               <div className="mt-3 space-y-3">
@@ -587,7 +653,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                         className={`max-w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
                         onChange={(e) => onChange(e.target.files || null)}
                         ref={ref}
-                        value="" // Always controlled with empty string
+                        value=""
                       />
                       {error && (
                         <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
@@ -653,45 +719,40 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
         </div>
 
         {/* Service Contract */}
-        <FormItem className='pb-4'>
-          <FormControl>
-            <div>
-              <h1 className='text-xl font-raleway font-medium mb-4'>Service Contract</h1>
-              <div className='flex gap-5 p-4 items-center'>
-                <FormItem>
-                  <FormLabel>Service contract <span className='text-muted-foreground text-xs'>(Optional)</span></FormLabel>
-                  <FormControl>
-                    <Controller
-                      control={form.control}
-                      name="service_contract"
-                      render={({ field, fieldState: { error } }) => (
-                        <>
-                          <Input
-                            className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
-                            placeholder="Service Contract No."
-                            {...field}
-                          />
-                          {error && (
-                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                              <AlertCircle className="h-3 w-3" />
-                              {error.message}
-                            </p>
-                          )}
-                        </>
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium mb-4'>Service Contract</h1>
+          <div className='flex gap-5 p-4 items-center'>
+            <FormItem>
+              <FormLabel>Service contract <span className='text-muted-foreground text-xs'>(Optional)</span></FormLabel>
+              <FormControl>
+                <Controller
+                  control={form.control}
+                  name="service_contract"
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Input
+                        className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                        placeholder="Service Contract No."
+                        {...field}
+                      />
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
                       )}
-                    />
-                  </FormControl>
-                </FormItem>
-              </div>
-            </div>
-          </FormControl>
-        </FormItem>
+                    </>
+                  )}
+                />
+              </FormControl>
+            </FormItem>
+          </div>
+        </div>
 
         {/* Safety, Compliance & Documentation */}
         <div className="">
           <h1 className='text-xl font-raleway font-medium'>Safety, Compliance & Documentation</h1>
           <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
-            {/* Regulatory & Safety Compliance */}
             <div>
               <FormLabel className="text-base font-medium">Regulatory & Safety Compliance Required (Check all that apply):</FormLabel>
               <div className="mt-3 space-y-3">
@@ -723,7 +784,6 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                   </div>
                 ))}
                 
-                {/* Other Specify Option */}
                 <div className="space-y-2">
                   <div className="flex items-center space-x-2">
                     <Controller
@@ -769,168 +829,80 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 </div>
               </div>
             </div>
-
-            {/* Marine Insurance */}
-            <div>
-              <FormLabel className="text-base font-medium">Do You Require Marine Insurance?</FormLabel>
-              <Controller
-                control={form.control}
-                name="marine_insurance"
-                render={({ field, fieldState: { error } }) => (
-                  <>
-                    <RadioGroup onValueChange={field.onChange} value={field.value ?? ""} className="mt-3 space-y-2">
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="yes" id="insurance_yes" />
-                        <label htmlFor="insurance_yes" className="text-sm font-medium">Yes</label>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="no" id="insurance_no" />
-                        <label htmlFor="insurance_no" className="text-sm font-medium">No</label>
-                      </div>
-                    </RadioGroup>
-                    {error && (
-                      <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                        <AlertCircle className="h-3 w-3" />
-                        {error.message}
-                      </p>
-                    )}
-                  </>
-                )}
-              />
-              
-              {form.watch('marine_insurance') === 'yes' && (
-                <FormItem className="mt-3">
-                  <FormLabel>If yes, specify coverage type & value:</FormLabel>
-                  <FormControl>
-                    <Controller
-                      control={form.control}
-                      name="insurance_details"
-                      render={({ field, fieldState: { error } }) => (
-                        <>
-                          <Textarea
-                            placeholder="Please specify the coverage type and value required"
-                            className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
-                            rows={3}
-                            {...field}
-                          />
-                          {error && (
-                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                              <AlertCircle className="h-3 w-3" />
-                              {error.message}
-                            </p>
-                          )}
-                        </>
-                      )}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            </div>
           </div>
         </div>
 
         {/* Additional Required Services */}
-        <FormItem className='pb-4'>
-          <FormControl>
+        <div className="">
+          <h1 className='text-xl font-raleway font-medium mb-4'>Additional Required Services</h1>
+          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
             <div>
-              <h1 className='text-xl font-raleway font-medium mb-4'>Additional Required Services</h1>
-              <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
-                <div>
-                  <FormLabel className="text-base font-medium">(Select any required services.)</FormLabel>
-                  <div className="mt-3 space-y-3">
-                    {[
-                      'Port Handling & Stevedoring',
-                      'Customs Clearance',
-                      'Storage & Warehousing',
-                      'Transport to/from Port (Inland Freight)',
-                      'Inspection & Quality Control',
-                      'Escort or Permits (if applicable)'
-                    ].map((service) => (
-                      <div key={service} className="flex items-center space-x-2">
-                        <Controller
-                          control={form.control}
-                          name="additional_services"
-                          render={({ field }) => (
-                            <Checkbox
-                              checked={field.value?.includes(service)}
-                              onCheckedChange={(checked) => {
-                                const currentValues = field.value || [];
-                                if (checked) {
-                                  field.onChange([...currentValues, service]);
-                                } else {
-                                  field.onChange(currentValues.filter((value: string) => value !== service));
-                                }
-                              }}
-                            />
-                          )}
-                        />
-                        <label className="text-sm">{service}</label>
-                      </div>
-                    ))}
-                    
-                    {/* Other Specify Option */}
-                    <div className="space-y-2">
-                      <div className="flex items-center space-x-2">
-                        <Controller
-                          control={form.control}
-                          name="additional_services"
-                          render={({ field }) => (
-                            <Checkbox
-                              checked={field.value?.includes('Other')}
-                              onCheckedChange={(checked) => {
-                                const currentValues = field.value || [];
-                                if (checked) {
-                                  field.onChange([...currentValues, 'Other']);
-                                } else {
-                                  field.onChange(currentValues.filter((value: string) => value !== 'Other'));
-                                }
-                              }}
-                            />
-                          )}
-                        />
-                        <label className="text-sm">Other (Specify)</label>
-                      </div>
-                      {form.watch('additional_services')?.includes('Other') && (
-                        <Controller
-                          control={form.control}
-                          name="other_additional_service"
-                          render={({ field, fieldState: { error } }) => (
-                            <>
-                              <Input
-                                placeholder="Specify other service"
-                                className={`w-[300px] border-2 rounded-xl ml-6 ${error ? 'border-red-500' : ''}`}
-                                {...field}
-                              />
-                              {error && (
-                                <p className="text-red-500 text-sm mt-1 ml-6 flex items-center gap-1">
-                                  <AlertCircle className="h-3 w-3" />
-                                  {error.message}
-                                </p>
-                              )}
-                            </>
-                          )}
-                        />
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                <FormItem>
-                  <FormLabel>Please describe any additional service or special requirement not listed above.</FormLabel>
-                  <FormControl>
+              <FormLabel className="text-base font-medium">(Select any required services.)</FormLabel>
+              <div className="mt-3 space-y-3">
+                {[
+                  'Port Handling & Stevedoring',
+                  'Customs Clearance',
+                  'Storage & Warehousing',
+                  'Transport to/from Port (Inland Freight)',
+                  'Inspection & Quality Control',
+                  'Escort or Permits (if applicable)'
+                ].map((service) => (
+                  <div key={service} className="flex items-center space-x-2">
                     <Controller
                       control={form.control}
-                      name="additional_requirements"
+                      name="additional_services"
+                      render={({ field }) => (
+                        <Checkbox
+                          checked={field.value?.includes(service)}
+                          onCheckedChange={(checked) => {
+                            const currentValues = field.value || [];
+                            if (checked) {
+                              field.onChange([...currentValues, service]);
+                            } else {
+                              field.onChange(currentValues.filter((value: string) => value !== service));
+                            }
+                          }}
+                        />
+                      )}
+                    />
+                    <label className="text-sm">{service}</label>
+                  </div>
+                ))}
+                
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <Controller
+                      control={form.control}
+                      name="additional_services"
+                      render={({ field }) => (
+                        <Checkbox
+                          checked={field.value?.includes('Other')}
+                          onCheckedChange={(checked) => {
+                            const currentValues = field.value || [];
+                            if (checked) {
+                              field.onChange([...currentValues, 'Other']);
+                            } else {
+                              field.onChange(currentValues.filter((value: string) => value !== 'Other'));
+                            }
+                          }}
+                        />
+                      )}
+                    />
+                    <label className="text-sm">Other (Specify)</label>
+                  </div>
+                  {form.watch('additional_services')?.includes('Other') && (
+                    <Controller
+                      control={form.control}
+                      name="other_additional_service"
                       render={({ field, fieldState: { error } }) => (
                         <>
-                          <Textarea
-                            placeholder="Please describe any additional requirements..."
-                            className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
-                            rows={4}
+                          <Input
+                            placeholder="Specify other service"
+                            className={`w-[300px] border-2 rounded-xl ml-6 ${error ? 'border-red-500' : ''}`}
                             {...field}
                           />
                           {error && (
-                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                            <p className="text-red-500 text-sm mt-1 ml-6 flex items-center gap-1">
                               <AlertCircle className="h-3 w-3" />
                               {error.message}
                             </p>
@@ -938,17 +910,43 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                         </>
                       )}
                     />
-                  </FormControl>
-                </FormItem>
+                  )}
+                </div>
               </div>
             </div>
-          </FormControl>
-        </FormItem>
 
-        {/* Company Details */}
+            <FormItem>
+              <FormLabel>Please describe any additional service or special requirement not listed above.</FormLabel>
+              <FormControl>
+                <Controller
+                  control={form.control}
+                  name="additional_requirements"
+                  render={({ field, fieldState: { error } }) => (
+                    <>
+                      <Textarea
+                        placeholder="Please describe any additional requirements..."
+                        className={`w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                        rows={4}
+                        {...field}
+                      />
+                      {error && (
+                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                          <AlertCircle className="h-3 w-3" />
+                          {error.message}
+                        </p>
+                      )}
+                    </>
+                  )}
+                />
+              </FormControl>
+            </FormItem>
+          </div>
+        </div>
+
+        {/* Company Details - Now handled by CompanyDetailsCard component */}
         <CompanyDetailsCard control={form.control} />
 
-        {/* Enhanced Submit Button */}
+        {/* Submit Button */}
         <div className="text-center">
           <Button 
             type="submit" 
@@ -960,7 +958,7 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>
               </div>
-            ) : "Submit Request"}
+            ) : "Submit"}
           </Button>
           <p className="text-xs text-gray-500 mt-2">
             By submitting this form, you agree to our terms of service and privacy policy.
@@ -969,4 +967,4 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
       </form>
     </Form>
   );
-} 
+}

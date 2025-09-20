@@ -22,21 +22,21 @@ import { toast } from '@/hooks/use-toast';
 // Enhanced form schema with comprehensive validation (matching air freight standards)
 const formSchema = z.object({
   routing: z.array(z.object({
-    from_country: z.string().min(1, { message: "Origin country is required for proper routing" }),
-    from_port: z.string().min(1, { message: "Origin port/area is required for accurate logistics planning" }),
-    to_country: z.string().min(1, { message: "Destination country is required for customs and regulations" }),
-    to_port: z.string().min(1, { message: "Destination port/area is required for final delivery" }),
+    from_country: z.string().min(1, { message: "From country is required" }),
+    from_port: z.string().min(1, { message: "From port/area is required" }),
+    to_country: z.string().min(1, { message: "To country is required" }),
+    to_port: z.string().min(1, { message: "To port/area is required" }),
   })).min(1, { message: "At least one routing entry is required" }),
   
   dates: z.object({
-    effective_date: z.string().min(1, { message: "Effective date is required for service planning" })
+    effective_date: z.string().min(1, { message: "Effective date is required" })
       .refine((date) => {
         const selectedDate = new Date(date);
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         return selectedDate >= today;
       }, { message: "Effective date cannot be in the past" }),
-    expiry_date: z.string().min(1, { message: "Expiry date is required for contract validity" }),
+    expiry_date: z.string().min(1, { message: "Expiry date is required" }),
   }).refine((data) => {
     if (data.effective_date && data.expiry_date) {
       return new Date(data.expiry_date) > new Date(data.effective_date);
@@ -49,26 +49,26 @@ const formSchema = z.object({
 
   livestock_details: z.array(z.object({
     type: z.string()
-      .min(1, { message: "Livestock type is required for proper handling arrangements" })
-      .max(100, { message: "Livestock type description too long (max 100 characters)" }),
+      .min(1, { message: "Livestock type is required" })
+      .max(100, { message: "Type description too long" }),
     quantity: z.number()
-      .min(1, { message: "Quantity must be at least 1 animal" })
-      .max(10000, { message: "Quantity seems unusually high, please verify" }),
+      .min(1, { message: "Quantity must be at least 1" })
+      .max(10000, { message: "Quantity too high" }),
     weight_per_animal: z.number()
-      .min(0.1, { message: "Weight per animal must be at least 0.1 kg" })
-      .max(5000, { message: "Weight per animal seems unusually high, please verify" }),
+      .min(0.1, { message: "Weight must be at least 0.1 kg" })
+      .max(5000, { message: "Weight too high" }),
   })).min(1, { message: "At least one livestock entry is required" }),
 
   special_handling: z.string()
-    .max(1000, { message: "Special handling description too long (max 1000 characters)" })
+    .max(1000, { message: "Description too long" })
     .optional(),
 
   additional_information: z.string()
-    .max(2000, { message: "Additional information too long (max 2000 characters)" })
+    .max(2000, { message: "Information too long" })
     .optional(),
 
   service_contract: z.string()
-    .max(50, { message: "Service contract number too long (max 50 characters)" })
+    .max(50, { message: "Contract number too long" })
     .optional(),
 
   transport_modes: z.object({
@@ -91,10 +91,10 @@ const formSchema = z.object({
     escort_permits: z.boolean().default(false),
     other: z.boolean().default(false),
     other_specify: z.string()
-      .max(200, { message: "Other services description too long (max 200 characters)" })
+      .max(200, { message: "Description too long" })
       .optional(),
     additional_requirements: z.string()
-      .max(1000, { message: "Additional requirements too long (max 1000 characters)" })
+      .max(1000, { message: "Requirements too long" })
       .optional(),
   }).refine((data) => {
     if (data.other && !data.other_specify?.trim()) {
@@ -102,7 +102,7 @@ const formSchema = z.object({
     }
     return true;
   }, {
-    message: "Please specify what other services you need",
+    message: "Please specify other services",
     path: ["other_specify"],
   }),
 
@@ -111,7 +111,7 @@ const formSchema = z.object({
       required_error: "Please specify if insurance is required" 
     }).optional(),
     coverage_details: z.string()
-      .max(500, { message: "Coverage details too long (max 500 characters)" })
+      .max(500, { message: "Coverage details too long" })
       .optional(),
   }).refine((data) => {
     if (data.required === "yes" && !data.coverage_details?.trim()) {
@@ -119,34 +119,34 @@ const formSchema = z.object({
     }
     return true;
   }, {
-    message: "Please provide coverage details when insurance is required",
+    message: "Please provide coverage details",
     path: ["coverage_details"],
   }),
 
   company_details: z.object({
     company_name: z.string()
-      .min(1, { message: "Company name is required for business identification" })
-      .max(200, { message: "Company name too long (max 200 characters)" }),
+      .min(1, { message: "Company name is required" })
+      .max(200, { message: "Company name too long" }),
     contact_person_name: z.string()
-      .min(1, { message: "Contact person name is required for communication" })
-      .max(100, { message: "Contact person name too long (max 100 characters)" }),
+      .min(1, { message: "Contact person name is required" })
+      .max(100, { message: "Name too long" }),
     title: z.string()
-      .min(1, { message: "Job title is required for proper business correspondence" })
-      .max(100, { message: "Title too long (max 100 characters)" }),
+      .min(1, { message: "Title is required" })
+      .max(100, { message: "Title too long" }),
     country_of_origin: z.string()
-      .min(1, { message: "Country is required for regulatory compliance" }),
+      .min(1, { message: "Country is required" }),
     company_email: z.string()
-      .min(1, { message: "Company email is required for official communication" })
-      .email({ message: "Please enter a valid email address" }),
+      .min(1, { message: "Email is required" })
+      .email({ message: "Please enter a valid email" }),
     additional_email: z.string()
-      .email({ message: "Please enter a valid additional email address" })
+      .email({ message: "Please enter a valid email" })
       .optional()
       .or(z.literal("")),
     phone_number: z.string()
-      .min(1, { message: "Phone number is required for urgent communication" })
-      .max(20, { message: "Phone number too long (max 20 characters)" }),
+      .min(1, { message: "Phone number is required" })
+      .max(20, { message: "Phone number too long" }),
     additional_phone_number: z.string()
-      .max(20, { message: "Additional phone number too long (max 20 characters)" })
+      .max(20, { message: "Phone number too long" })
       .optional(),
   }),
 
@@ -1054,7 +1054,7 @@ export default function LivestockTransportationForm({ onSubmit, isSubmitting = f
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>
               </div>
-            ) : "Submit Request"}
+            ) : "Submit"}
           </Button>
           <p className="text-xs text-gray-500 mt-2">
             By submitting this form, you agree to our terms of service and privacy policy.
