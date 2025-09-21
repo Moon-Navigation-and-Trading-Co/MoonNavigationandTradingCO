@@ -52,31 +52,12 @@ const ContainerServicesCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
             height_unit: z.enum(["cm", "m"], { required_error: "Height unit is required" }),
             weight: z.number().min(0, { message: "Weight is required" }),
             weight_unit: z.enum(["kg", "ton"], { required_error: "Weight unit is required" }),
-            gross_weight: z.number(),
+            gross_weight: z.number().optional(), // Made optional since it's calculated
             dangerous: z.enum(["yes", "no"], { required_error: "Dangerous status is required" }),
             un_class_remarks: z.string().optional(),
             container_ownership: z.enum(["yes", "no"], { required_error: "Container ownership is required" }),
             notes: z.string().optional(),
-        })),
-        commodities: z.array(z.object({
-            type: z.string().optional(),
-            triangulation: z.boolean().default(false),
-            shippers: z.boolean().default(false),
-            import: z.boolean().default(false),
-            export: z.boolean().default(false),
-            container_type: z.string().optional(),
-            container_number: z.string().optional(),
-            container_weight: z.string().optional(),
-            details: z.string().optional(),
-            temperature: z.boolean().default(false),
-            dangerous: z.boolean().default(false),
-            oversized: z.boolean().default(false),
-            length: z.string().optional(),
-            width: z.string().optional(),
-            height: z.string().optional(),
-            weight: z.string().optional(),
-            file: z.string().optional(),
-            additional_information: z.string().optional(),
+            only_cm: z.boolean().optional(), // Added missing field
         })),
         dates: z.object({
             effective_date: z.string().min(1, { message: "Effective date is required" }),
@@ -100,16 +81,16 @@ const ContainerServicesCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
             cargo_picture: z.boolean().default(false),
             files: z.array(z.any()).optional(),
         }),
-        vad: z.object({
-            inland_container: z.string().optional(),
-        }),
         company_details: z.object({
             company_name: z.string().min(1, { message: "Company name is required" }),
             contact_person_name: z.string().min(1, { message: "Contact person is required" }),
             title: z.string().min(1, { message: "Title is required" }),
             country_of_origin: z.string().min(1, { message: "Country is required" }),
             company_email: z.string().email({ message: "Valid email is required" }),
-            additional_email: z.string().email({ message: "Valid email format" }).optional(),
+            additional_email: z.string().optional().refine(
+                (val) => val === "" || z.string().email().safeParse(val).success,
+                { message: "Valid email format" }
+            ),
             phone_number: z.string().min(1, { message: "Phone number is required" }),
             additional_phone_number: z.string().optional(),
         }),
@@ -148,26 +129,7 @@ const ContainerServicesCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
                 un_class_remarks: '',
                 container_ownership: 'no',
                 notes: '',
-            }],
-            commodities: [{
-                type: '',
-                triangulation: false,
-                shippers: false,
-                import: false,
-                export: false,
-                container_type: '',
-                container_number: '',
-                container_weight: '',
-                details: '',
-                temperature: false,
-                dangerous: false,
-                oversized: false,
-                length: '',
-                width: '',
-                height: '',
-                weight: '',
-                file: '',
-                additional_information: ''
+                only_cm: false, // Added missing field
             }],
             dates: {
                 effective_date: '',
@@ -190,9 +152,6 @@ const ContainerServicesCard: React.FC<{ onSubmit: (data: any) => void }> = ({ on
             supporting_files: {
                 cargo_picture: false,
                 files: [],
-            },
-            vad: {
-                inland_container: ''
             },
             company_details: {
                 company_name: '',

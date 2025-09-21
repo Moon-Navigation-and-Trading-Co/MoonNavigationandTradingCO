@@ -48,6 +48,10 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
             only_cm: z.boolean().optional(),
         })),
         additional_information: z.string().optional(),
+        dates: z.object({
+            effective_date: z.string().min(1, { message: "Effective date is required" }),
+            expiry_date: z.string().min(1, { message: "Expiry date is required" }),
+        }),
         supporting_files: z.object({
             cargo_picture: z.boolean().optional(),
             files: z.array(z.any()).optional(),
@@ -115,6 +119,10 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                 only_cm: false
             }],
             additional_information: '',
+            dates: {
+                effective_date: '',
+                expiry_date: ''
+            },
             supporting_files: {
                 cargo_picture: false,
                 files: []
@@ -195,6 +203,9 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                         </FormControl>
                     </FormItem>
                 </div>
+
+                {/* Dates */}
+                <DatesCard control={form.control} />
 
                 {/* Supporting Files */}
                 <div className="bg-white rounded-lg shadow-md p-6">
@@ -354,7 +365,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                                                 id="reception_delivery_before"
                                             />
                                             <label htmlFor="reception_delivery_before" className="text-sm font-medium">
-                                                Reception, delivery, and safekeeping of containers before shipment
+                                                Reception and delivery of containers before vessel arrival
                                             </label>
                                         </div>
                                     )}
@@ -375,7 +386,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                                                 id="reception_delivery_after"
                                             />
                                             <label htmlFor="reception_delivery_after" className="text-sm font-medium">
-                                                Reception, delivery, and safekeeping of containers after discharge
+                                                Reception and delivery of containers after vessel departure
                                             </label>
                                         </div>
                                     )}
@@ -383,7 +394,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                             </FormControl>
                         </FormItem>
 
-                        <h3 className="text-lg font-raleway font-medium mt-6 mb-3">Container Storage & Warehousing</h3>
+                        <h3 className="text-lg font-raleway font-medium mt-6 mb-3">Storage Services</h3>
 
                         <FormItem>
                             <FormControl>
@@ -398,7 +409,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                                                 id="temporary_storage"
                                             />
                                             <label htmlFor="temporary_storage" className="text-sm font-medium">
-                                                Temporary container storage in yard
+                                                Temporary storage of containers
                                             </label>
                                         </div>
                                     )}
@@ -419,7 +430,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                                                 id="long_term_warehousing"
                                             />
                                             <label htmlFor="long_term_warehousing" className="text-sm font-medium">
-                                                Long-term container warehousing (if applicable)
+                                                Long-term warehousing of containers
                                             </label>
                                         </div>
                                     )}
@@ -428,7 +439,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                         </FormItem>
 
                         <FormItem>
-                            <FormLabel className="text-sm font-medium">Note: Specify any special container handling, stevedoring, or storage requirements not listed.</FormLabel>
+                            <FormLabel className="text-sm font-medium">Special Requirements</FormLabel>
                             <FormControl>
                                 <Controller
                                     control={form.control}
@@ -436,8 +447,8 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <textarea
-                                                className="w-full min-h-[100px] border-2 rounded-xl p-3"
-                                                placeholder="Describe any special requirements..."
+                                                className="w-full min-h-[80px] border-2 rounded-xl p-3"
+                                                placeholder="Describe any special requirements for container handling..."
                                                 {...field}
                                             />
                                             {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
@@ -452,6 +463,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                 {/* Additional Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-raleway font-medium mb-4">Additional Services</h2>
+                    <p className="text-sm text-gray-600 mb-6">Please select any additional services needed with your container handling request</p>
                     
                     <div className="space-y-4">
                         <FormItem>
@@ -488,7 +500,7 @@ const HSSCard: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
                                                 id="inland_freight"
                                             />
                                             <label htmlFor="inland_freight" className="text-sm font-medium">
-                                                Transport to/from Port (Inland Freight)
+                                                Inland Freight
                                             </label>
                                         </div>
                                     )}

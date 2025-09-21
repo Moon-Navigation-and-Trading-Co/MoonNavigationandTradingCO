@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { useForm, Controller, useFieldArray } from 'react-hook-form';
+import { useForm, Controller, useFieldArray, Control, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Form, FormItem, FormLabel, FormControl } from "@/components/ui/form";
@@ -63,13 +63,13 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
             other_specify: z.string().optional(),
         }).optional(),
         company_details: z.object({
-            company_name: z.string().min(1, { message: t("CompanyName") }),
-            contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
-            title: z.string().min(1, { message: t("Title") }),
-            country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
-            company_email: z.string().email({ message: t("CompanyEmail") }),
+            company_name: z.string().min(1, { message: "Company name is required" }),
+            contact_person_name: z.string().min(1, { message: "Contact person is required" }),
+            title: z.string().min(1, { message: "Title is required" }),
+            country_of_origin: z.string().min(1, { message: "Country is required" }),
+            company_email: z.string().email({ message: "Valid email is required" }),
             additional_email: z.string().optional(),
-            phone_number: z.string().min(1, { message: t("PhoneNumber") }),
+            phone_number: z.string().min(1, { message: "Phone number is required" }),
             additional_phone_number: z.string().optional(),
         })
         // Add more sections as needed
@@ -149,7 +149,11 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                 <RoutingCard0 control={form.control} />
 
                 {/* Container Details Table */}
-                <ContainerDetailsTable control={form.control} />
+                <ContainerDetailsTable 
+                    control={form.control} 
+                    setValue={form.setValue}
+                    watch={form.watch}
+                />
 
                 {/* Supporting Files */}
                 <div className="bg-white rounded-lg shadow-md p-6">
@@ -464,7 +468,7 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" disabled={is_submitting} className="mt-4 w-[200px]">
+                <Button type="submit" disabled={is_submitting} className="w-[200px]">
                     {is_submitting ? (
                         <div className="flex items-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>

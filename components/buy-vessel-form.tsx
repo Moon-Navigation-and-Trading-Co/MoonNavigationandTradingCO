@@ -11,26 +11,37 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Textarea } from './ui/textarea';
 import CompanyDetailsCard from './company-details-card';
 
-
-// 1. Define a type-safe form handler using z.infer
 const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
-    // Get Content
     const t = useTranslations('Inland-errors')
     const tt = useTranslations('Inland-forms')
     const [is_submitting, set_is_submitting] = useState(false);
+    
+    // Updated schema with proper number transformations
     const formSchema = z.object({
         container: z.object({
             type: z.string().min(1, { message: t("Type") }),
-            number: z.number().min(1, { message: t("Required") }),
+            number: z.union([z.string(), z.number()]).transform((val) => {
+                if (typeof val === 'string') {
+                    const parsed = parseInt(val);
+                    return isNaN(parsed) ? 0 : parsed;
+                }
+                return val;
+            }).pipe(z.number().min(1, { message: t("Required") })),
             condition: z.enum(["new", "used"]),
         }),
         date: z.string().min(1, { message: t("Date") }).refine(value => {
-            return !isNaN(Date.parse(value)); // Ensure valid date
+            return !isNaN(Date.parse(value));
         }, { message: t("InvalidDate") }),
         pick_up_location: z.string().min(1, { message: t("Required") }),
         detailed_location: z.string().optional(),
-        required_specification: z.string().min(1, { message: t("Required") }),
-        budget: z.number().optional(),
+        required_specification: z.string().optional(),
+        budget: z.union([z.string(), z.number()]).transform((val) => {
+            if (typeof val === 'string') {
+                const parsed = parseFloat(val);
+                return isNaN(parsed) ? 0 : parsed;
+            }
+            return val;
+        }).pipe(z.number().optional()),
         additional_services: z.string().optional(),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("CompanyName") }),
@@ -42,7 +53,6 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
             phone_number: z.string().min(1, { message: t("PhoneNumber") }),
             additional_phone_number: z.string().optional(),
         })
-        // Add more sections as needed
     });
 
     const form = useForm({
@@ -68,12 +78,10 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                 additional_email: '',
                 phone_number: '',
                 additional_phone_number: ''
-
             }
         }
     });
 
-    // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
         set_is_submitting(true);
         try {
@@ -88,65 +96,88 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-                {/* Routing Section */}
-                {/* <RoutingCard control={form.control} /> */}
-                <FormItem>
+                {/* Vessel Details Section */}
+                <div className="space-y-4">
                     <h2 className='text-lg mb-2 font-raleway font-medium'>{tt('vesselDetails')}</h2>
-                    <FormLabel>{t('vesselTypeandSize')}</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                            name={`container.type`}
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                        className="max-w-[300px] border-2 rounded-xl"
-                                        placeholder="Type a vessel"
-                                        {...field}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
+                    
+                    {/* Vessel Type */}
+                    <FormItem>
+                        <FormLabel>{t('vesselTypeandSize')}</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="container.type"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            placeholder="Type a vessel"
+                                            {...field}
+                                        />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>
+                                )}
+                            />
+                        </FormControl>
+                    </FormItem>
 
-
-
+                    {/* Container/Vessel Number - ADDED MISSING FIELD */}
+                    <FormItem>
+                        <FormLabel>Number of Vessels</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="container.number"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Input
+                                            type="number"
+                                            min="1"
+                                            className="max-w-[300px] border-2 rounded-xl"
+                                            placeholder="Enter number of vessels"
+                                            value={field.value || ''}
+                                            onChange={(e) => {
+                                                const value = e.target.value;
+                                                const numValue = value === '' ? 0 : parseInt(value) || 0;
+                                                field.onChange(numValue);
+                                            }}
+                                        />
+                                        {error && <p className="text-red-500">{error.message}</p>}
+                                    </>
+                                )}
+                            />
+                        </FormControl>
+                    </FormItem>
+                </div>
 
                 {/* Container Condition */}
                 <FormItem className="space-y-3">
                     <FormLabel className='text-lg'>{t('vesselCondition')}</FormLabel>
                     <Controller
                         control={form.control}
-                        name="container.condition" // Use the correct form field name
-                        defaultValue="new" // Set a default value
+                        name="container.condition"
+                        defaultValue="new"
                         render={({ field, fieldState: { error } }) => (
                             <RadioGroup
-                                onValueChange={field.onChange} // Update form state
-                                value={field.value || ""} // The selected value
+                                onValueChange={field.onChange}
+                                value={field.value || ""}
                                 className="flex flex-col space-y-1"
                             >
-                                {/* sea Transportation Method */}
                                 <div className="flex items-center space-x-3">
                                     <RadioGroupItem value="new" />
                                     <FormLabel className="font-normal">{t("new")}</FormLabel>
                                 </div>
-
-                                {/* ULD Transportation Method */}
                                 <div className="flex items-center space-x-3">
                                     <RadioGroupItem value="used" />
                                     <FormLabel className="font-normal">{t("used-v")}</FormLabel>
                                 </div>
-
-
                             </RadioGroup>
                         )}
                     />
                     <FormMessage />
                 </FormItem>
 
-                {/* Delivery Date, Pick up location, and Detailed Location on same line */}
+                {/* Delivery Date, Pick up location, and Detailed Location */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <FormItem>
                         <FormLabel>Delivery Date</FormLabel>
@@ -222,7 +253,6 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                                 <>
                                     <Textarea
                                         className="min-h-[150px] max-w-[800px] border-2 rounded-xl"
-                                        id="required_specification"
                                         placeholder="Add any additional information"
                                         {...field}
                                     />
@@ -233,7 +263,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                     </FormControl>
                 </FormItem>
 
-
+                {/* Budget - FIXED NUMERIC INPUT */}
                 <FormItem>
                     <FormLabel>Budget (USD) <span className="text-sm text-gray-500">(optional)</span></FormLabel>
                     <p className='text-sm text-muted-foreground'>Share your budget in USD for purchasing the vessel, which can help determine the most suitable options.</p>
@@ -245,11 +275,16 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                                 <>
                                     <Input
                                         type="number"
+                                        step="0.01"
+                                        min="0"
                                         className="max-w-[300px] border-2 rounded-xl"
                                         placeholder="Budget in USD"
-                                        {...field}
                                         value={field.value || ''}
-                                        onChange={(e) => field.onChange(e.target.valueAsNumber)}
+                                        onChange={(e) => {
+                                            const value = e.target.value;
+                                            const numValue = value === '' ? 0 : parseFloat(value) || 0;
+                                            field.onChange(numValue);
+                                        }}
                                     />
                                     {error && <p className="text-red-500">{error.message}</p>}
                                 </>
@@ -260,7 +295,7 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
 
                 {/* Additional Service or Amenities */}
                 <FormItem>
-                    <FormLabel>Additional Service or Amenities</FormLabel>
+                    <FormLabel>Additional Service or Amenities <span className="text-sm text-gray-500">(optional)</span></FormLabel>
                     <p className='text-sm text-muted-foreground'>If you require any additional services or amenities, such as crew management, insurance, specific equipment, or technical support be sure to mention them.</p>
                     <FormControl>
                         <Controller
@@ -280,18 +315,19 @@ const BuyVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }
                         />
                     </FormControl>
                 </FormItem>
-            <CompanyDetailsCard control={form.control} />
 
-            <Button type="submit" disabled={is_submitting} className="w-full">
-                {is_submitting ? (
-                    <div className="flex items-center gap-2">
-                        <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
-                        <span>Submitting...</span>
-                    </div>
-                ) : "Submit"}
-            </Button>
-        </form>
-    </Form>
+                <CompanyDetailsCard control={form.control} />
+
+                <Button type="submit" disabled={is_submitting} className="w-[200px]">
+                    {is_submitting ? (
+                        <div className="flex items-center gap-2">
+                            <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
+                            <span>Submitting...</span>
+                        </div>
+                    ) : "Submit"}
+                </Button>
+            </form>
+        </Form>
     );
 };
 

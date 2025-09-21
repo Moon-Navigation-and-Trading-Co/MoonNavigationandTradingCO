@@ -48,7 +48,7 @@ export default function RoutingCard3({ control }: RoutingCard3Props) {
 
   return (
     <div className="">
-      <h1 className='text-xl font-raleway font-medium'>{t("routing.title")}</h1>
+      <h1 className='text-xl font-raleway font-medium'>Routing</h1>
       <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
         {fields.map((field, index) => (
           <div key={field.id} className="space-y-6">

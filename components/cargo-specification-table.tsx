@@ -13,7 +13,7 @@ interface CargoSpecificationTableProps {
 }
 
 const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ control }) => {
-    const { watch } = useFormContext();
+    const { watch, setValue } = useFormContext();
     const { fields, append, remove } = useFieldArray({
         control,
         name: "cargo_specifications",
@@ -22,8 +22,18 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
     // Watch all cargo specifications for calculations
     const cargoSpecifications = watch("cargo_specifications");
 
-    // Calculate total weight
-    const totalWeight = cargoSpecifications?.reduce((sum: number, item: any) => sum + (item.gross_weight || 0), 0) || 0;
+    // Calculate total weight with proper unit conversion
+    const totalWeight = cargoSpecifications?.reduce((sum: number, item: any) => {
+        const quantity = item?.quantity || 0;
+        const weight = item?.weight || 0;
+        const weightUnit = item?.weight_unit || 'kg';
+        
+        // Convert to kg for consistent calculation
+        const weightInKg = weightUnit === 'ton' ? weight * 1000 : weight;
+        const grossWeight = quantity * weightInKg;
+        
+        return sum + grossWeight;
+    }, 0) || 0;
 
     const standardContainerTypes = [
         "20' Dry Container",
@@ -126,10 +136,17 @@ const CargoSpecificationTable: React.FC<CargoSpecificationTableProps> = ({ contr
                             const onlyCm = rowData?.only_cm;
                             const isStandard = isStandardContainer(rowData?.container_type || '');
                             
-                            // Auto-calculate gross weight
+                            // Auto-calculate gross weight with unit conversion
                             const quantity = rowData?.quantity || 0;
                             const weight = rowData?.weight || 0;
-                            const grossWeight = quantity * weight;
+                            const weightUnit = rowData?.weight_unit || 'kg';
+                            const weightInKg = weightUnit === 'ton' ? weight * 1000 : weight;
+                            const grossWeight = quantity * weightInKg;
+
+                            // Update the form value for gross_weight
+                            React.useEffect(() => {
+                                setValue(`cargo_specifications.${index}.gross_weight`, grossWeight);
+                            }, [grossWeight, index, setValue]);
 
                             return (
                                 <tr key={field.id} className="border-b border-gray-100 hover:bg-gray-50">

@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Textarea } from './ui/textarea';
+import { AlertCircle } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import RoutingCard0 from './routing-card-0';
 import CommoditiesCard from './commodities-card-variant-8';
 import CompanyDetailsCard from './company-details-card';
@@ -17,120 +19,172 @@ import DatesCard from './dates-card-variant-2';
 import ItemizedTable from './itemized-table';
 import ConsolidatedForm from './consolidated-form';
 
+// Define the form schema with conditional validation
+const formSchema = z.object({
+    routing: z.array(z.object({
+        from_country: z.string().min(1, { message: "From country is required" }),
+        from_port: z.string().min(1, { message: "From port/area is required" }),
+        to_country: z.string().min(1, { message: "To country is required" }),
+        to_port: z.string().min(1, { message: "To port/area is required" }),
+    })),
+    date: z.string().min(1, { message: "Date is required" }).refine(value => {
+        return !isNaN(Date.parse(value)); // Ensure valid date
+    }, { message: "Invalid date format" }),
+    entry_mode: z.enum(["itemized", "consolidated"], {
+        required_error: "Please select an entry mode.",
+    }),
+    itemized_data: z.array(z.object({
+        commodity: z.string().min(1, { message: "Commodity is required" }),
+        packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
+            required_error: "Packaging type is required",
+        }),
+        packaging_type_other: z.string().optional(),
+        stackable: z.boolean(),
+        quantity: z.number().optional().refine(val => {
+            return val === undefined || val === 0 || val >= 1;
+        }, { message: "Quantity must be 0 or at least 1" }),
+        length: z.number().optional().refine(val => {
+            return val === undefined || val === 0 || val >= 0.1;
+        }, { message: "Length must be 0 or at least 0.1" }),
+        length_unit: z.enum(["cm", "m"], { required_error: "Length unit is required" }),
+        width: z.number().optional().refine(val => {
+            return val === undefined || val === 0 || val >= 0.1;
+        }, { message: "Width must be 0 or at least 0.1" }),
+        width_unit: z.enum(["cm", "m"], { required_error: "Width unit is required" }),
+        height: z.number().optional().refine(val => {
+            return val === undefined || val === 0 || val >= 0.1;
+        }, { message: "Height must be 0 or at least 0.1" }),
+        height_unit: z.enum(["cm", "m"], { required_error: "Height unit is required" }),
+        weight: z.number().optional().refine(val => {
+            return val === undefined || val === 0 || val >= 0.1;
+        }, { message: "Weight must be 0 or at least 0.1" }),
+        cbm: z.number(),
+        gross_cbm: z.number(),
+        gross_weight: z.number(),
+        dangerous_goods: z.boolean(),
+        un_number: z.string().optional(),
+        class: z.string().optional(),
+        remarks: z.string().optional(),
+        temperature_control: z.boolean(),
+        temperature_min: z.number().optional(),
+        temperature_max: z.number().optional(),
+    })).optional(),
+    consolidated_data: z.object({
+        commodity_types: z.string().min(1, { message: "Commodity types are required" }),
+        total_quantity: z.number().refine(val => {
+            return val === 0 || val >= 1;
+        }, { message: "Total quantity must be 0 or at least 1" }),
+        total_weight: z.number().refine(val => {
+            return val === 0 || val >= 1;
+        }, { message: "Total weight must be 0 or at least 1" }),
+        weight_unit: z.enum(["kg", "ton"], { required_error: "Weight unit is required" }),
+        total_volume: z.number().refine(val => {
+            return val === 0 || val >= 1;
+        }, { message: "Total volume must be 0 or at least 1" }),
+        volume_unit: z.enum(["cbm", "m3"], { required_error: "Volume unit is required" }),
+        dangerous_goods: z.boolean(),
+        un_number: z.string().optional(),
+        class: z.string().optional(),
+        special_instructions: z.string().optional(),
+        packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
+            required_error: "Packaging type is required",
+        }),
+        packaging_type_other: z.string().optional(),
+        stackable: z.boolean(),
+        temperature_control: z.boolean(),
+        temperature_min: z.number().optional(),
+        temperature_max: z.number().optional(),
+        special_handling: z.string().optional(),
+    }).optional(),
+    supporting_files: z.array(z.any()).optional(),
+    additional_details: z.string().optional(),
+    commercial_terms: z.string().optional(),
+    commodities: z.array(z.object({
+        type: z.string().min(1, { message: "Type is required" }),
+        temperature: z.boolean().optional(),
+        dangerous: z.boolean().optional(),
+        oversized: z.boolean().optional(),
+        details: z.string().optional(),
+        length: z.number().optional().refine(val => {
+            return val === undefined || val === 0 || val >= 1;
+        }, { message: "Length must be 0 or at least 1" }),
+        width: z.number().optional().refine(val => {
+            return val === undefined || val === 0 || val >= 1;
+        }, { message: "Width must be 0 or at least 1" }),
+        height: z.number().optional().refine(val => {
+            return val === undefined || val === 0 || val >= 1;
+        }, { message: "Height must be 0 or at least 1" }),
+        weight: z.number().optional().refine(val => {
+            return val === undefined || val === 0 || val >= 1;
+        }, { message: "Weight must be 0 or at least 1" }),
+        weight_unit: z.string().optional(),
+        file: z.string().optional().refine(value => {
+            return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
+        }, { message: "Invalid file format" }),
+        additional_information: z.string().optional(),
+    })),
+    additional_services: z.object({
+        inland_container_transportation: z.boolean().optional(),
+        handling_stevedoring: z.boolean().optional(),
+        crane_heavy_lift: z.boolean().optional(),
+        storage_warehousing: z.boolean().optional(),
+        escort_permits: z.boolean().optional(),
+        engineering_support: z.boolean().optional(),
+        other: z.boolean().optional(),
+        other_specify: z.string().optional(),
+        additional_requirements: z.string().optional(),
+    }),
+    company_details: z.object({
+        company_name: z.string().min(1, { message: "Company name is required" }),
+        contact_person_name: z.string().min(1, { message: "Contact person name is required" }),
+        title: z.string().min(1, { message: "Title is required" }),
+        country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
+        company_email: z.string().email({ message: "Valid email is required" }),
+        additional_email: z.string().optional(),
+        phone_number: z.string().min(1, { message: "Phone number is required" }),
+        additional_phone_number: z.string().optional(),
+    })
+}).refine((data) => {
+    // Conditional validation: require supporting_files for consolidated mode
+    if (data.entry_mode === 'consolidated') {
+        return data.supporting_files && data.supporting_files.length > 0;
+    }
+    return true;
+}, {
+    message: "Supporting files are required for Consolidated Entry",
+    path: ["supporting_files"]
+}).refine((data) => {
+    // Ensure itemized_data is required when entry_mode is itemized
+    if (data.entry_mode === 'itemized') {
+        return data.itemized_data && data.itemized_data.length > 0;
+    }
+    return true;
+}, {
+    message: "At least one item is required for Itemized Entry",
+    path: ["itemized_data"]
+}).refine((data) => {
+    // Ensure consolidated_data is required when entry_mode is consolidated
+    if (data.entry_mode === 'consolidated') {
+        return data.consolidated_data;
+    }
+    return true;
+}, {
+    message: "Consolidated data is required for Consolidated Entry",
+    path: ["consolidated_data"]
+});
 
+type FormData = z.infer<typeof formSchema>;
 
-// 1. Define a type-safe form handler using z.infer
-const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
-    // Get Content
+const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSubmit }) => {
     const t = useTranslations('Inland-errors')
     const [is_submitting, set_is_submitting] = useState(false);
     const [entry_mode, set_entry_mode] = useState<'itemized' | 'consolidated'>('itemized');
-    // Define your Zod schema (as before)
-    const formSchema = z.object({
-        routing: z.array(z.object({
-            from_country: z.string().min(1, { message: "From country is required" }),
-            from_port: z.string().min(1, { message: "From port/area is required" }),
-            to_country: z.string().min(1, { message: "To country is required" }),
-            to_port: z.string().min(1, { message: "To port/area is required" }),
-        })),
-        date: z.string().min(1, { message: t("Date") }).refine(value => {
-            return !isNaN(Date.parse(value)); // Ensure valid date
-        }, { message: t("InvalidDate") }),
-        entry_mode: z.enum(["itemized", "consolidated"], {
-            required_error: "Please select an entry mode.",
-        }),
-        itemized_data: z.array(z.object({
-            commodity: z.string().min(1, { message: "Commodity is required" }),
-            packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
-                required_error: "Packaging type is required",
-            }),
-            packaging_type_other: z.string().optional(),
-            stackable: z.boolean(),
-            quantity: z.number().min(1, { message: "Quantity is required" }),
-            length: z.number().min(1, { message: "Length is required" }),
-            length_unit: z.enum(["cm", "m"], { required_error: "Length unit is required" }),
-            width: z.number().min(1, { message: "Width is required" }),
-            width_unit: z.enum(["cm", "m"], { required_error: "Width unit is required" }),
-            height: z.number().min(1, { message: "Height is required" }),
-            height_unit: z.enum(["cm", "m"], { required_error: "Height unit is required" }),
-            weight: z.number().min(1, { message: "Weight is required" }),
-            cbm: z.number(),
-            gross_cbm: z.number(),
-            gross_weight: z.number(),
-            dangerous_goods: z.boolean(),
-            un_number: z.string().optional(),
-            class: z.string().optional(),
-            remarks: z.string().optional(),
-            temperature_control: z.boolean(),
-            temperature_min: z.number().optional(),
-            temperature_max: z.number().optional(),
-        })).optional(),
-        consolidated_data: z.object({
-            commodity_types: z.string().min(1, { message: "Commodity types are required" }),
-            total_quantity: z.number().min(1, { message: "Total quantity is required" }),
-            total_weight: z.number().min(1, { message: "Total weight is required" }),
-            weight_unit: z.enum(["kg", "ton"], { required_error: "Weight unit is required" }),
-            total_volume: z.number().min(1, { message: "Total volume is required" }),
-            volume_unit: z.enum(["cbm", "m3"], { required_error: "Volume unit is required" }),
-            dangerous_goods: z.boolean(),
-            un_number: z.string().optional(),
-            class: z.string().optional(),
-            special_instructions: z.string().optional(),
-            packaging_type: z.enum(["pallets", "crates", "boxes", "other"], {
-                required_error: "Packaging type is required",
-            }),
-            packaging_type_other: z.string().optional(),
-            stackable: z.boolean(),
-            temperature_control: z.boolean(),
-            temperature_min: z.number().optional(),
-            temperature_max: z.number().optional(),
-            special_handling: z.string().optional(),
-        }).optional(),
-        supporting_files: z.array(z.string()).optional(),
-        additional_details: z.string().optional(),
-        commercial_terms: z.string().optional(),
-        commodities: z.array(z.object({
-            type: z.string().min(1, { message: t("Type") }),
-            temperature: z.boolean().optional(),
-            dangerous: z.boolean().optional(),
-            oversized: z.boolean().optional(),
-            details: z.string().optional(),
-            length: z.number().min(1, { message: t("Length") }),
-            width: z.number().min(1, { message: t("Width") }),
-            height: z.number().min(1, { message: t("Height") }),
-            weight: z.number().min(1, { message: t("Weight") }),
-            weight_unit: z.string().optional(),
-            file: z.string().optional().refine(value => {
-                return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
-            }, { message: t("File") }),
-            additional_information: z.string().optional(),
-        })),
-        additional_services: z.object({
-            inland_container_transportation: z.boolean().optional(),
-            handling_stevedoring: z.boolean().optional(),
-            crane_heavy_lift: z.boolean().optional(),
-            storage_warehousing: z.boolean().optional(),
-            escort_permits: z.boolean().optional(),
-            engineering_support: z.boolean().optional(),
-            other: z.boolean().optional(),
-            other_specify: z.string().optional(),
-            additional_requirements: z.string().optional(),
-        }),
-        company_details: z.object({
-            company_name: z.string().min(1, { message: t("CompanyName") }),
-            contact_person_name: z.string().min(1, { message: t("ContactPersonName") }),
-            title: z.string().min(1, { message: t("Title") }),
-            country_of_origin: z.string().min(1, { message: t("CountryOfOrigin") }),
-            company_email: z.string().email({ message: t("CompanyEmail") }),
-            additional_email: z.string().optional(),
-            phone_number: z.string().min(1, { message: t("PhoneNumber") }),
-            additional_phone_number: z.string().optional(),
-        })
-        // Add more sections as needed
-    });
 
-    const form = useForm({
+    const form = useForm<FormData>({
         resolver: zodResolver(formSchema),
+        mode: 'onSubmit', // Only validate when form is submitted
+        reValidateMode: 'onChange', // Re-validate as user types after first validation
+        shouldFocusError: true,
         defaultValues: {
             routing: [{
                 from_country: '',
@@ -164,29 +218,12 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 temperature_min: 0,
                 temperature_max: 0,
             }],
-            consolidated_data: {
-                commodity_types: '',
-                total_quantity: 0,
-                total_weight: 0,
-                weight_unit: 'kg',
-                total_volume: 0,
-                volume_unit: 'cbm',
-                dangerous_goods: false,
-                un_number: '',
-                class: '',
-                special_instructions: '',
-                packaging_type: 'pallets',
-                packaging_type_other: '',
-                stackable: true,
-                temperature_control: false,
-                temperature_min: 0,
-                temperature_max: 0,
-                special_handling: '',
-            },
+            consolidated_data: undefined,
             supporting_files: [],
             additional_details: '',
             commercial_terms: '',
             commodities: [{
+                type: 'General Cargo',
                 temperature: false,
                 dangerous: false,
                 oversized: false,
@@ -218,31 +255,157 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
                 company_email: '',
                 additional_email: '',
                 phone_number: '',
-                additional_phone_number: ''
+                additional_phone_number: '',
             }
         }
     });
 
-    // 2. Type-safe submit handler
-    const handleSubmit = async (values: any) => {
+    const handleSubmit = async (values: FormData) => {
+        console.log("🚀 Form submission started");
+        console.log("Values:", values);
+        console.log("Form errors:", form.formState.errors);
+        console.log("Form valid:", form.formState.isValid);
+
+        // No need for manual validation check - onSubmit mode handles it
         set_is_submitting(true);
         try {
-            await onSubmit(values);
+            // Clean up data before submission - only send relevant data
+            const cleanedData: FormData = {
+                ...values,
+                // Only include itemized_data if mode is itemized
+                itemized_data: values.entry_mode === 'itemized' ? values.itemized_data : undefined,
+                // Only include consolidated_data if mode is consolidated
+                consolidated_data: values.entry_mode === 'consolidated' ? values.consolidated_data : undefined,
+            };
+            console.log("✅ Submitting cleaned data:", cleanedData);
+            await onSubmit(cleanedData);
         } catch (error) {
-            console.error("Submission failed:", error);
+            console.error("❌ Submission failed:", error);
         } finally {
             set_is_submitting(false);
         }
     };
 
     const handleModeChange = (mode: 'itemized' | 'consolidated') => {
+        console.log("🔄 Changing mode to:", mode);
         set_entry_mode(mode);
         form.setValue('entry_mode', mode);
+        
+        // Clear form errors when switching modes
+        form.clearErrors();
+        
+        // Clear the data for the mode that's not being used
+        if (mode === 'itemized') {
+            form.setValue('consolidated_data', undefined);
+            // Clear supporting files requirement for itemized mode
+            form.setValue('supporting_files', []);
+            // Ensure itemized data has at least one blank row with valid defaults
+            if (!form.getValues('itemized_data') || form.getValues('itemized_data')?.length === 0) {
+                form.setValue('itemized_data', [{
+                    commodity: '',
+                    packaging_type: 'pallets',
+                    packaging_type_other: '',
+                    stackable: true,
+                    quantity: 0,
+                    length: 0,
+                    length_unit: 'cm',
+                    width: 0,
+                    width_unit: 'cm',
+                    height: 0,
+                    height_unit: 'cm',
+                    weight: 0,
+                    cbm: 0,
+                    gross_cbm: 0,
+                    gross_weight: 0,
+                    dangerous_goods: false,
+                    un_number: '',
+                    class: '',
+                    remarks: '',
+                    temperature_control: false,
+                    temperature_min: 0,
+                    temperature_max: 0,
+                }]);
+            }
+        } else {
+            // consolidated
+            form.setValue('itemized_data', undefined);
+            if (!form.getValues('consolidated_data')) {
+                form.setValue('consolidated_data', {
+                    commodity_types: '',
+                    total_quantity: 0,
+                    total_weight: 0,
+                    weight_unit: 'kg',
+                    total_volume: 0,
+                    volume_unit: 'cbm',
+                    dangerous_goods: false,
+                    un_number: '',
+                    class: '',
+                    special_instructions: '',
+                    packaging_type: 'pallets',
+                    packaging_type_other: '',
+                    stackable: true,
+                    temperature_control: false,
+                    temperature_min: 0,
+                    temperature_max: 0,
+                    special_handling: '',
+                });
+            }
+        }
+    };
+
+    // Debug function to check form state
+    const debugForm = () => {
+        console.log("🐛 Form Debug Info:");
+        console.log("Form valid:", form.formState.isValid);
+        console.log("Form errors:", form.formState.errors);
+        console.log("Form values:", form.getValues());
+        console.log("Dirty fields:", form.formState.dirtyFields);
+        console.log("Touched fields:", form.formState.touchedFields);
+    };
+
+    const testValidation = async () => {
+        console.log("�� Testing validation...");
+        
+        // Test with empty required field
+        form.setValue('routing.0.from_country', '');
+        form.setValue('routing.0.from_port', '');
+        form.setValue('routing.0.to_country', '');
+        form.setValue('routing.0.to_port', '');
+        
+        // Trigger validation
+        const result = await form.trigger();
+        console.log("Validation result:", result);
+        console.log("Errors:", form.formState.errors);
     };
 
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+                {/* Debug Button - Remove in production */}
+                <Button type="button" onClick={debugForm} variant="outline" className="mb-4">
+                    Debug Form State
+                </Button>
+                <Button type="button" onClick={testValidation} variant="outline" className="mb-4 ml-2">
+                    Test Validation
+                </Button>
+
+                {/* Global Form Errors Display */}
+                {Object.keys(form.formState.errors).length > 0 && (
+                    <Alert variant="destructive" className="mb-4">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>
+                            Please fix the following errors before submitting:
+                            <ul className="mt-2 list-disc list-inside">
+                                {Object.entries(form.formState.errors).map(([key, error]) => (
+                                    <li key={key}>
+                                        {key}: {error?.message || 'Invalid value'}
+                                    </li>
+                                ))}
+                            </ul>
+                        </AlertDescription>
+                    </Alert>
+                )}
+
                 {/* Routing Section */}
                 <RoutingCard0 control={form.control} />
 
@@ -274,276 +437,429 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: any) => void 
 
                 {/* Cargo Entry Section */}
                 {entry_mode === 'itemized' ? (
-                    <ItemizedTable control={form.control} />
+                    <>
+                        <ItemizedTable control={form.control} />
+                        
+                        {/* Display validation error for itemized_data array */}
+                        {form.formState.errors.itemized_data?.message && (
+                            <Alert variant="destructive" className="mb-4">
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>{form.formState.errors.itemized_data.message}</AlertDescription>
+                            </Alert>
+                        )}
+                        
+                        {/* Additional Information - Only for Itemized Entry */}
+                        <div className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-lg font-semibold mb-4">Additional Information 
+                                <span className="text-gray-500"> (Optional)</span>
+                            </h3>
+                            <FormItem>
+                                <FormLabel>Additional Details</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="additional_details"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Textarea
+                                                    {...field}
+                                                    placeholder="Please provide any additional information about your cargo..."
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    rows={4}
+                                                />
+                                                {error && (
+                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {error.message}
+                                                    </p>
+                                                )}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                            <FormItem className="mt-4">
+                                <FormLabel>Commercial Terms</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="commercial_terms"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Textarea
+                                                    {...field}
+                                                    placeholder="Please advise other relevant commercial terms..."
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    rows={3}
+                                                />
+                                                {error && (
+                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {error.message}
+                                                    </p>
+                                                )}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        </div>
+
+                        {/* Supporting Files Section - Optional for Itemized */}
+                        <div className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-lg font-semibold mb-4">Supporting Files 
+                                <span className="text-gray-500"> (Optional)</span>
+                            </h3>
+                            <FormItem>
+                                <FormLabel>Upload supporting documents</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="supporting_files"
+                                        render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
+                                            <>
+                                                <Input
+                                                    type="file"
+                                                    multiple
+                                                    accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                                                    className={`max-w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    name={name}
+                                                    ref={ref}
+                                                    onBlur={onBlur}
+                                                    onChange={(e) => onChange(Array.from(e.target.files ?? []))}
+                                                />
+                                                {error && (
+                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {error.message}
+                                                    </p>
+                                                )}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                                <p className="text-xs text-gray-500 mt-1">
+                                    Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+                                </p>
+                            </FormItem>
+                        </div>
+                    </>
                 ) : (
-                    <ConsolidatedForm control={form.control} />
+                    <>
+                        <ConsolidatedForm control={form.control} />
+                        
+                        {/* Display validation error for consolidated_data */}
+                        {form.formState.errors.consolidated_data?.message && (
+                            <Alert variant="destructive" className="mb-4">
+                                <AlertCircle className="h-4 w-4" />
+                                <AlertDescription>{form.formState.errors.consolidated_data.message}</AlertDescription>
+                            </Alert>
+                        )}
+                        
+                        {/* Supporting Files Section - Mandatory for Consolidated */}
+                        <div className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-lg font-semibold mb-4">Supporting Files 
+                                <span className="text-red-500"> *</span>
+                            </h3>
+                            <FormItem>
+                                <FormLabel>Upload supporting documents</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="supporting_files"
+                                        render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
+                                            <>
+                                                <Input
+                                                    type="file"
+                                                    multiple
+                                                    accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                                                    className={`max-w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    name={name}
+                                                    ref={ref}
+                                                    onBlur={onBlur}
+                                                    onChange={(e) => onChange(Array.from(e.target.files ?? []))}
+                                                />
+                                                {error && (
+                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {error.message}
+                                                    </p>
+                                                )}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                                <p className="text-xs text-gray-500 mt-1">
+                                    Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
+                                    <span className="block text-red-400 mt-1">
+                                        * Supporting files are required for Consolidated Entry
+                                    </span>
+                                </p>
+                            </FormItem>
+                        </div>
+                        
+                        {/* Additional Information */}
+                        <div className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-lg font-semibold mb-4">Additional Information 
+                                <span className="text-gray-500"> (Optional)</span>
+                            </h3>
+                            <FormItem>
+                                <FormLabel>Additional Details</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="additional_details"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Textarea
+                                                    {...field}
+                                                    placeholder="Please provide any additional information about your cargo..."
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    rows={4}
+                                                />
+                                                {error && (
+                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {error.message}
+                                                    </p>
+                                                )}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                            <FormItem className="mt-4">
+                                <FormLabel>Commercial Terms</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="commercial_terms"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <>
+                                                <Textarea
+                                                    {...field}
+                                                    placeholder="Please advise other relevant commercial terms..."
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    rows={3}
+                                                />
+                                                {error && (
+                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {error.message}
+                                                    </p>
+                                                )}
+                                            </>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        </div>
+                    </>
                 )}
 
-                {/* Additional Details - Only for Itemized Entry */}
-                {entry_mode === 'itemized' && (
-                    <div className="bg-white rounded-lg shadow-md p-6">
+                {/* Display validation error for supporting_files */}
+                {form.formState.errors.supporting_files?.message && (
+                    <Alert variant="destructive" className="mb-4">
+                        <AlertCircle className="h-4 w-4" />
+                        <AlertDescription>{form.formState.errors.supporting_files.message}</AlertDescription>
+                    </Alert>
+                )}
+
+                {/* Commodities Section */}
+                <CommoditiesCard control={form.control} dangerous_bool={false} />
+
+                {/* Additional Services */}
+                <div className="bg-white rounded-lg shadow-md p-6">
+                    <h2 className="text-xl font-semibold mb-4">Additional Services</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <FormItem>
-                            <FormLabel>Additional Details (Optional)</FormLabel>
                             <FormControl>
                                 <Controller
                                     control={form.control}
-                                    name="additional_details"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Textarea
-                                                className="min-h-[100px] border-2 rounded-xl"
-                                                placeholder="Add any additional information about your cargo"
-                                                {...field}
+                                    name="additional_services.inland_container_transportation"
+                                    render={({ field }) => (
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
                                             />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>
+                                            <label className="text-sm">Inland Container Transportation</label>
+                                        </div>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+
+                        <FormItem>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="additional_services.handling_stevedoring"
+                                    render={({ field }) => (
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
+                                            <label className="text-sm">Handling & Stevedoring</label>
+                                        </div>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+
+                        <FormItem>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="additional_services.crane_heavy_lift"
+                                    render={({ field }) => (
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
+                                            <label className="text-sm">Crane / Heavy Lift</label>
+                                        </div>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+
+                        <FormItem>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="additional_services.storage_warehousing"
+                                    render={({ field }) => (
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
+                                            <label className="text-sm">Storage & Warehousing</label>
+                                        </div>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+
+                        <FormItem>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="additional_services.escort_permits"
+                                    render={({ field }) => (
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
+                                            <label className="text-sm">Escort / Permits</label>
+                                        </div>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+
+                        <FormItem>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="additional_services.engineering_support"
+                                    render={({ field }) => (
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
+                                            <label className="text-sm">Engineering Support</label>
+                                        </div>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+
+                        <FormItem>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="additional_services.other"
+                                    render={({ field }) => (
+                                        <div className="flex items-center space-x-2">
+                                            <Checkbox
+                                                checked={field.value}
+                                                onCheckedChange={field.onChange}
+                                            />
+                                            <label className="text-sm">Other</label>
+                                        </div>
                                     )}
                                 />
                             </FormControl>
                         </FormItem>
                     </div>
-                )}
 
-                {/* Supporting Files Section */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-raleway font-medium mb-4">Supporting Files (Optional)</h2>
-                    <FormItem>
-                        <FormLabel>Upload supporting documents</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="supporting_files"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input
-                                            type="file"
-                                            multiple
-                                            accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                            className="max-w-[300px] border-2 rounded-xl"
-                                            {...field}
-                                        />
-                                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                    </>
-                                )}
-                            />
-                        </FormControl>
-                        <p className="text-xs text-gray-500 mt-1">
-                            Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
-                        </p>
-                    </FormItem>
-                </div>
-
-                {/* Commercial Terms */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <FormItem>
-                        <FormLabel>Commercial Terms (Optional)</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="commercial_terms"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Textarea
-                                            className="min-h-[100px] border-2 rounded-xl"
-                                            placeholder="Loading/discharging rates, Incoterms, etc."
-                                            {...field}
-                                        />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>
-                                )}
-                            />
-                        </FormControl>
-                    </FormItem>
-                </div>
-
-                {/* Additional Required Services */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-raleway font-medium mb-4">Additional Required Services</h2>
-                    <div className="space-y-4">
-                        {/* Service Checkboxes */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="flex items-center space-x-2">
-                                <Controller
-                                    control={form.control}
-                                    name="additional_services.inland_container_transportation"
-                                    render={({ field }) => (
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked === true)}
-                                            id="inland_container_transportation"
-                                        />
-                                    )}
-                                />
-                                <label htmlFor="inland_container_transportation" className="text-sm font-medium">
-                                    Inland Container Transportation
-                                </label>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <Controller
-                                    control={form.control}
-                                    name="additional_services.handling_stevedoring"
-                                    render={({ field }) => (
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked === true)}
-                                            id="handling_stevedoring"
-                                        />
-                                    )}
-                                />
-                                <label htmlFor="handling_stevedoring" className="text-sm font-medium">
-                                    Handling & Stevedoring
-                                </label>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <Controller
-                                    control={form.control}
-                                    name="additional_services.crane_heavy_lift"
-                                    render={({ field }) => (
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked === true)}
-                                            id="crane_heavy_lift"
-                                        />
-                                    )}
-                                />
-                                <label htmlFor="crane_heavy_lift" className="text-sm font-medium">
-                                    Crane / Heavy Lift Equipment
-                                </label>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <Controller
-                                    control={form.control}
-                                    name="additional_services.storage_warehousing"
-                                    render={({ field }) => (
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked === true)}
-                                            id="storage_warehousing"
-                                        />
-                                    )}
-                                />
-                                <label htmlFor="storage_warehousing" className="text-sm font-medium">
-                                    Storage & Warehousing
-                                </label>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <Controller
-                                    control={form.control}
-                                    name="additional_services.escort_permits"
-                                    render={({ field }) => (
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked === true)}
-                                            id="escort_permits"
-                                        />
-                                    )}
-                                />
-                                <label htmlFor="escort_permits" className="text-sm font-medium">
-                                    Escort or Permits (if applicable)
-                                </label>
-                            </div>
-
-                            <div className="flex items-center space-x-2">
-                                <Controller
-                                    control={form.control}
-                                    name="additional_services.engineering_support"
-                                    render={({ field }) => (
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked === true)}
-                                            id="engineering_support"
-                                        />
-                                    )}
-                                />
-                                <label htmlFor="engineering_support" className="text-sm font-medium">
-                                    Engineering Support (Lashing/Surveying)
-                                </label>
-                            </div>
-                        </div>
-
-                        {/* Other Service */}
-                        <div className="space-y-2">
-                            <div className="flex items-center space-x-2">
-                                <Controller
-                                    control={form.control}
-                                    name="additional_services.other"
-                                    render={({ field }) => (
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={(checked) => field.onChange(checked === true)}
-                                            id="other_service"
-                                        />
-                                    )}
-                                />
-                                <label htmlFor="other_service" className="text-sm font-medium">
-                                    Other (Specify)
-                                </label>
-                            </div>
-                            
-                            {/* Conditional Other Input */}
-                            <Controller
-                                control={form.control}
-                                name="additional_services.other"
-                                render={({ field: { value } }) => (
-                                    <div>
-                                        {value && (
-                                        <div className="ml-6">
-                                            <Controller
-                                                control={form.control}
-                                                name="additional_services.other_specify"
-                                                render={({ field, fieldState: { error } }) => (
-                                                    <div>
-                                                        <Input
-                                                            className={`w-full border-2 rounded ${error ? 'border-red-500' : 'border-gray-300'}`}
-                                                            placeholder="Please specify"
-                                                            {...field}
-                                                        />
-                                                        {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
-                                                    </div>
-                                                )}
-                                            />
-                                        </div>
-                                        )}
-                                    </div>
-                                )}
-                            />
-                        </div>
-
-                        {/* Additional Requirements Text Area */}
-                        <div className="mt-6">
-                            <FormLabel className="text-sm font-medium">
-                                Please describe any additional service or special requirement not listed above.
-                            </FormLabel>
+                    {form.watch('additional_services.other') && (
+                        <FormItem className="mt-4">
+                            <FormLabel>Other Services (Specify)</FormLabel>
                             <FormControl>
                                 <Controller
                                     control={form.control}
-                                    name="additional_services.additional_requirements"
+                                    name="additional_services.other_specify"
                                     render={({ field, fieldState: { error } }) => (
                                         <>
                                             <Textarea
-                                                className="min-h-[100px] border-2 rounded-xl mt-2"
-                                                placeholder="Describe additional services or special requirements..."
                                                 {...field}
+                                                placeholder="Please specify other services required..."
+                                                className={`border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                rows={3}
                                             />
-                                            {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
+                                            {error && (
+                                                <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                    <AlertCircle className="h-3 w-3" />
+                                                    {error.message}
+                                                </p>
+                                            )}
                                         </>
                                     )}
                                 />
                             </FormControl>
-                        </div>
-                    </div>
+                        </FormItem>
+                    )}
+
+                    <FormItem className="mt-4">
+                        <FormLabel>Additional Requirements (Optional)</FormLabel>
+                        <FormControl>
+                            <Controller
+                                control={form.control}
+                                name="additional_services.additional_requirements"
+                                render={({ field, fieldState: { error } }) => (
+                                    <>
+                                        <Textarea
+                                            {...field}
+                                            placeholder="Any additional service requirements..."
+                                            className={`border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                            rows={3}
+                                        />
+                                        {error && (
+                                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                <AlertCircle className="h-3 w-3" />
+                                                {error.message}
+                                            </p>
+                                        )}
+                                    </>
+                                )}
+                            />
+                        </FormControl>
+                    </FormItem>
                 </div>
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" disabled={is_submitting} className="w-full">
+                <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
                     {is_submitting ? (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center justify-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>
                         </div>

@@ -1,6 +1,6 @@
 "use client"
 import React from 'react';
-import { Controller, useFieldArray, useFormContext } from "react-hook-form";
+import { Controller, useFieldArray, Control, UseFormSetValue, UseFormWatch } from "react-hook-form";
 import { FormItem, FormLabel, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -9,11 +9,16 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Plus, Trash2 } from "lucide-react";
 
 interface ContainerDetailsTableProps {
-    control: any;
+    control: Control<any>;
+    setValue: UseFormSetValue<any>;
+    watch: UseFormWatch<any>;
 }
 
-const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ control }) => {
-    const { watch } = useFormContext();
+const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ 
+    control, 
+    setValue, 
+    watch 
+}) => {
     const { fields, append, remove } = useFieldArray({
         control,
         name: "container_details",
@@ -153,16 +158,21 @@ const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ control }
                                                         <Input
                                                             type="number"
                                                             min="1"
-                                                            className="w-full border border-gray-200 rounded-md text-sm"
-                                                            placeholder="Quantity"
+                                                            className="w-full border-2 rounded-xl text-center"
+                                                            placeholder="0"
+                                                            value={field.value || ''} // Ensure controlled input
                                                             onChange={(e) => {
-                                                                const value = parseInt(e.target.value) || 0;
-                                                                field.onChange(value);
-                                                                // Update gross weight
+                                                                const value = e.target.value;
+                                                                // Convert to number, or set to 0 if empty/invalid
+                                                                const numValue = value === '' ? 0 : parseInt(value) || 0;
+                                                                field.onChange(numValue);
+                                                                
+                                                                // Calculate gross weight when quantity changes
                                                                 const weightPerContainer = watch(`container_details.${index}.weight_per_container`) || 0;
-                                                                const grossWeight = calculateGrossWeight(value, weightPerContainer);
-                                                                control.setValue(`container_details.${index}.gross_weight`, grossWeight);
+                                                                const grossWeight = calculateGrossWeight(numValue, weightPerContainer);
+                                                                setValue(`container_details.${index}.gross_weight`, grossWeight);
                                                             }}
+                                                            required={!isStandard}
                                                         />
                                                         {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
                                                     </div>
@@ -198,17 +208,21 @@ const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ control }
                                                         <div>
                                                             <Input
                                                                 type="number"
-                                                                min="0"
                                                                 step="0.01"
-                                                                className={`w-24 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}
-                                                                placeholder={!isStandard ? "Required" : ""}
+                                                                min="0"
+                                                                className={`w-24 border-2 rounded-xl text-center ${!isStandard ? 'border-red-300' : ''}`}
+                                                                placeholder="0.00"
+                                                                value={field.value || ''} // Ensure controlled input
                                                                 onChange={(e) => {
-                                                                    const value = parseFloat(e.target.value) || 0;
-                                                                    field.onChange(value);
-                                                                    // Update gross weight
+                                                                    const value = e.target.value;
+                                                                    // Convert to number, or set to 0 if empty/invalid
+                                                                    const numValue = value === '' ? 0 : parseFloat(value) || 0;
+                                                                    field.onChange(numValue);
+                                                                    
+                                                                    // Calculate gross weight when weight changes
                                                                     const quantity = watch(`container_details.${index}.quantity`) || 0;
-                                                                    const grossWeight = calculateGrossWeight(quantity, value);
-                                                                    control.setValue(`container_details.${index}.gross_weight`, grossWeight);
+                                                                    const grossWeight = calculateGrossWeight(quantity, numValue);
+                                                                    setValue(`container_details.${index}.gross_weight`, grossWeight);
                                                                 }}
                                                                 required={!isStandard}
                                                             />
@@ -217,7 +231,7 @@ const ContainerDetailsTable: React.FC<ContainerDetailsTableProps> = ({ control }
                                                     )}
                                                 />
                                                 <Select 
-                                                    onValueChange={(value) => control.setValue(`container_details.${index}.weight_unit`, value)} 
+                                                    onValueChange={(value) => setValue(`container_details.${index}.weight_unit`, value)} 
                                                     value={watch(`container_details.${index}.weight_unit`) || 'kg'}
                                                 >
                                                     <SelectTrigger className={`w-20 border border-gray-200 rounded-md text-sm ${!isStandard ? 'border-red-300' : ''}`}>

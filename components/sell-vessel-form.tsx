@@ -32,7 +32,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
         duration_unit: z.enum(["days", "weeks", "months"]),
         detailed_location: z.string().optional(),
         trading_area: z.string().optional(),
-        required_specification: z.string().min(1, { message: t("Required") }),
+        required_specification: z.string().optional(), // Changed from required to optional
         budget: z.number().optional(),
         additional_information: z.string().optional(),
         company_details: z.object({
@@ -357,9 +357,7 @@ const SellVesselForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit 
                 </div>
                 <CompanyDetailsCard control={form.control} />
 
-                <CompanyDetailsCard control={form.control} />
-
-                <Button type="submit" disabled={is_submitting} className="w-full">
+                <Button type="submit" disabled={is_submitting} className="w-[200px]">
                     {is_submitting ? (
                         <div className="flex items-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
