@@ -12,7 +12,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Plus, Upload, Trash2, Mail, Phone, Calendar, Minus } from 'lucide-react';
 import CompanyDetailsCard from './company-details-card';
 import RoutingCard0 from './routing-card-0';
-import DatesCard from './dates-card';
+import DatesCard from './dates-card-variant-2';
 import ContainerDetailsTable from './container-details-table';
 import { useTranslations } from 'next-intl';
 
@@ -46,10 +46,13 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
             files: z.array(z.any()).optional(),
         }).optional(),
         additional_information: z.string().optional(),
-        dates: z.object({
-            effective_date: z.string().optional(),
-            expiry_date: z.string().optional(),
-        }).optional(),
+        // Update dates structure to match International form
+        effective_date: z.string().min(1, { message: "Effective date is required" }).refine(value => {
+            return !isNaN(Date.parse(value)); // Ensure valid date
+        }, { message: "Invalid effective date format" }),
+        expiry_date: z.string().min(1, { message: "Expiry date is required" }).refine(value => {
+            return !isNaN(Date.parse(value)); // Ensure valid date
+        }, { message: "Invalid expiry date format" }),
         service_contract: z.object({
             contract_number: z.string().optional(),
         }).optional(),
@@ -62,17 +65,27 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
             other: z.boolean().optional(),
             other_specify: z.string().optional(),
         }).optional(),
+        // Add missing vad field for submission compatibility
+        vad: z.object({
+            inland_container: z.string().optional(),
+        }).optional(),
+        // Add missing commodities field for submission compatibility
+        commodities: z.array(z.object({
+            type: z.string().optional(),
+            details: z.string().optional(),
+            weight: z.number().optional(),
+            weight_unit: z.string().optional(),
+        })).optional(),
         company_details: z.object({
             company_name: z.string().min(1, { message: "Company name is required" }),
             contact_person_name: z.string().min(1, { message: "Contact person is required" }),
             title: z.string().min(1, { message: "Title is required" }),
             country_of_origin: z.string().min(1, { message: "Country is required" }),
             company_email: z.string().email({ message: "Valid email is required" }),
-            additional_email: z.string().optional(),
+            additional_email: z.string().email().optional().or(z.literal('')),
             phone_number: z.string().min(1, { message: "Phone number is required" }),
             additional_phone_number: z.string().optional(),
         })
-        // Add more sections as needed
     });
 
     const form = useForm({
@@ -101,10 +114,9 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                 files: []
             },
             additional_information: '',
-            dates: {
-                effective_date: '',
-                expiry_date: ''
-            },
+            // Update default values to match new structure
+            effective_date: '',
+            expiry_date: '',
             service_contract: {
                 contract_number: ''
             },
@@ -117,6 +129,16 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                 other: false,
                 other_specify: ''
             },
+            // Add missing default values
+            vad: {
+                inland_container: ''
+            },
+            commodities: [{
+                type: '',
+                details: '',
+                weight: 0,
+                weight_unit: 'kg'
+            }],
             company_details: {
                 company_name: '',
                 contact_person_name: '',
@@ -125,9 +147,9 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                 company_email: '',
                 additional_email: '',
                 phone_number: '',
-                additional_phone_number: '',
+                additional_phone_number: ''
             }
-        }
+        },
     });
 
     // 2. Type-safe submit handler
@@ -147,6 +169,11 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
                 {/* Routing Section */}
                 <RoutingCard0 control={form.control} />
+
+                {/* Dates Section - Using the same component as International form */}
+                <div className="bg-white rounded-lg shadow-md p-6">
+                    <DatesCard control={form.control} />
+                </div>
 
                 {/* Container Details Table */}
                 <ContainerDetailsTable 
@@ -230,52 +257,6 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                             />
                         </FormControl>
                     </FormItem>
-                </div>
-
-                {/* Dates */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-raleway font-medium mb-4">Dates</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormItem>
-                            <FormLabel>Effective Date</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={form.control}
-                                    name="dates.effective_date"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input
-                                                type="date"
-                                                className="w-full border-2 rounded-xl"
-                                        {...field}
-                                    />
-                                            {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
-
-                        <FormItem>
-                            <FormLabel>Expiry Date</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="dates.expiry_date"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input
-                                                type="date"
-                                                className="w-full border-2 rounded-xl"
-                                                {...field}
-                                            />
-                                            {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                        </>
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
-                    </div>
                 </div>
 
                 {/* Service Contract */}

@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Minus } from "lucide-react";
 import { Button } from "./ui/button";
+import { AlertCircle } from "lucide-react";
 
 
 const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, dangerous_bool: boolean }) => {
@@ -51,15 +52,22 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                     control={control}
                                     name={`commodities.${index}.file`}
                                     render={({ field, fieldState: { error } }) => (
-                                        <>
+                                        <div className="space-y-1">
                                             <Input
-                                                className="max-w-[240px] border-2 rounded-xl"
+                                                className={`max-w-[240px] border-2 rounded-xl ${
+                                                    error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                }`}
                                                 id="docs"
                                                 type="file"
                                                 {...field}
                                             />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>
+                                            {error && (
+                                                <p className="text-red-500 text-sm flex items-center gap-1">
+                                                    <AlertCircle className="w-4 h-4" />
+                                                    {error.message}
+                                                </p>
+                                            )}
+                                        </div>
                                     )}
                                 />
                             </FormControl>
@@ -76,15 +84,22 @@ const CommoditiesCard = ({ control, dangerous_bool = false }: { control: any, da
                                     control={control}
                                     name={`commodities.${index}.additional_information`}
                                     render={({ field, fieldState: { error } }) => (
-                                        <>
+                                        <div className="space-y-1">
                                             <Textarea
-                                                className="max-w-[300px] border-2 rounded-xl"
+                                                className={`max-w-[300px] border-2 rounded-xl ${
+                                                    error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                }`}
                                                 id="additional_information"
                                                 placeholder="Add any additional information"
                                                 {...field}
                                             />
-                                            {error && <p className="text-red-500">{error.message}</p>}
-                                        </>
+                                            {error && (
+                                                <p className="text-red-500 text-sm flex items-center gap-1">
+                                                    <AlertCircle className="w-4 h-4" />
+                                                    {error.message}
+                                                </p>
+                                            )}
+                                        </div>
                                     )}
                                 />
                             </FormControl>

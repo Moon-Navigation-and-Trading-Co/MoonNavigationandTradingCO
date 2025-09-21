@@ -12,7 +12,7 @@ import { Textarea } from './ui/textarea';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { useTranslations } from 'next-intl';
-import { Plus, Upload, Trash2, Mail, Phone, Calendar, Minus } from 'lucide-react';
+import { Plus, Upload, Trash2, Mail, Phone, Calendar, Minus, AlertCircle } from 'lucide-react';
 import { SearchableCountrySelect } from './searchable-country-select';
 import { PhoneInput } from '@/components/phone-input';
 import CompanyDetailsCard from './company-details-card';
@@ -20,19 +20,18 @@ import CompanyDetailsCard from './company-details-card';
 // Define the form schema
 const formSchema = z.object({
   // Basic Information
-  import_export: z.enum(["import", "export"], {
-    required_error: "Please select import or export"
+  import_export: z.enum(["import", "export", "transit", "re-export"], {
+    required_error: "Please select import, export, transit, or re-export"
   }),
-  port_airport: z.string().min(1, { message: "Port/Airport is required" }),
-  location: z.string().min(1, { message: "Location is required" }),
+  port_airport: z.string().optional(),
+  location: z.string().optional(), 
   expected_date: z.string().min(1, { message: "Expected date is required" }),
   
   // Commodity Details
   commodity: z.string().min(1, { message: "Commodity is required" }),
-  commodity_description: z.string().min(1, { message: "Commodity description is required" }),
-  hs_code: z.string().min(1, { message: "HS Code is required" }),
-  is_dangerous: z.boolean().default(false),
+  is_dangerous: z.boolean().optional(),
   un_number_class: z.string().optional(),
+  
   shipment_mode: z.enum(["sea", "air", "inland"], {
     required_error: "Please select shipment mode"
   }),
@@ -45,27 +44,92 @@ const formSchema = z.object({
     "40-open-top", "20-high-cube-open-top", "40-high-cube-open-top", 
     "20-flat-rack", "40-flat-rack"
   ]).optional(),
-  number_of_containers: z.number().min(1, { message: "Number of containers is required" }),
+  number_of_containers: z.number().min(1, { message: "Number of containers is required" }).optional(),
   total_weight: z.number().min(0.1, { message: "Total weight is required" }),
-  weight_unit: z.enum(["kg", "ton"]).default("kg"),
+  weight_unit: z.enum(["kg", "ton"]).optional(),
   total_volume: z.number().optional(),
   number_of_trucks: z.number().optional(),
   country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
   final_destination: z.string().min(1, { message: "Final destination is required" }),
-  supporting_files: z.array(z.string()).optional(),
+  supporting_files: z.array(z.any()).optional(),
   additional_services: z.string().optional(),
+  
+  // Company Details - Exact match to CompanyDetailsCard structure
   company_details: z.object({
     company_name: z.string().min(1, { message: "Company name is required" }),
-    contact_person: z.string().min(1, { message: "Contact person is required" }),
+    contact_person_name: z.string().min(1, { message: "Contact person is required" }),
     title: z.string().min(1, { message: "Title is required" }),
-    city_country: z.string().min(1, { message: "City/Country is required" }),
-    email: z.string().email({ message: "Valid email is required" }),
-    additional_email: z.string().email({ message: "Valid email format" }).optional(),
-    phone: z.string().min(1, { message: "Phone number is required" }),
-    additional_phone: z.string().optional(),
+    country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
+    company_email: z.string().email({ message: "Valid email is required" }),
+    additional_email: z.string().email().optional().or(z.literal('')),
+    phone_number: z.string().min(1, { message: "Phone number is required" }),
+    additional_phone_number: z.string().optional(),
   }),
-  show_additional_email: z.boolean().default(false),
-  show_additional_phone: z.boolean().default(false),
+  show_additional_email: z.boolean().optional(),
+  show_additional_phone: z.boolean().optional(),
+}).refine((data) => {
+  // Validate port_airport for import, export, and re-export
+  if ((data.import_export === "import" || data.import_export === "export" || data.import_export === "re-export") && (!data.port_airport || data.port_airport.trim() === '')) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Port/Airport is required",
+  path: ["port_airport"]
+}).refine((data) => {
+  // Validate location for transit
+  if (data.import_export === "transit" && (!data.location || data.location.trim() === '')) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Origin location is required for transit",
+  path: ["location"]
+}).refine((data) => {
+  // Validate UN number for dangerous goods
+  if (data.is_dangerous && (!data.un_number_class || data.un_number_class.trim() === '')) {
+    return false;
+  }
+  return true;
+}, {
+  message: "UN Number & Class is required for dangerous goods",
+  path: ["un_number_class"]
+}).refine((data) => {
+  // Validate container type for sea shipments
+  if (data.shipment_mode === "sea" && !data.container_type) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Container type is required for sea shipments",
+  path: ["container_type"]
+}).refine((data) => {
+  // Validate container size for FCL
+  if (data.shipment_mode === "sea" && data.container_type === "fcl" && !data.container_size) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Container size is required for FCL",
+  path: ["container_size"]
+}).refine((data) => {
+  // Validate number of containers for FCL
+  if (data.shipment_mode === "sea" && data.container_type === "fcl" && (!data.number_of_containers || data.number_of_containers < 1)) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Number of containers is required for FCL",
+  path: ["number_of_containers"]
+}).refine((data) => {
+  // Validate number of trucks for inland
+  if (data.shipment_mode === "inland" && (!data.number_of_trucks || data.number_of_trucks < 1)) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Number of trucks is required for inland shipment",
+  path: ["number_of_trucks"]
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -80,37 +144,36 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
   
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
+    mode: 'onChange',
     defaultValues: {
       import_export: 'import',
       port_airport: '',
       location: '',
       expected_date: '',
       commodity: '',
-      commodity_description: '',
-      hs_code: '',
       is_dangerous: false,
       un_number_class: '',
       shipment_mode: 'sea',
       container_type: "fcl",
       container_size: '20-dry',
       number_of_containers: 1,
-      total_weight: 0,
+      total_weight: 1,
       weight_unit: 'kg',
-      total_volume: 0,
-      number_of_trucks: 0,
+      total_volume: 1,
+      number_of_trucks: 1,
       country_of_origin: '',
       final_destination: '',
       supporting_files: [],
       additional_services: '',
       company_details: {
         company_name: '',
-        contact_person: '',
+        contact_person_name: '',
         title: '',
-        city_country: '',
-        email: '',
+        country_of_origin: '',
+        company_email: '',
         additional_email: '',
-        phone: '',
-        additional_phone: '',
+        phone_number: '',
+        additional_phone_number: '',
       },
       show_additional_email: false,
       show_additional_phone: false,
@@ -162,14 +225,22 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                       <RadioGroupItem value="export" id="export" />
                       <label htmlFor="export" className="text-sm font-medium">Export</label>
                     </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="transit" id="transit" />
+                      <label htmlFor="transit" className="text-sm font-medium">Transit</label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="re-export" id="re-export" />
+                      <label htmlFor="re-export" className="text-sm font-medium">Re-Export</label>
+                    </div>
                   </RadioGroup>
                 )}
               />
             </FormControl>
           </div>
 
-          {/* Port/Airport - Show only if NOT transit */}
-          {form.watch("import_export") !== "export" && (
+          {/* Port/Airport - Show for import, export, and re-export */}
+          {(form.watch("import_export") === "import" || form.watch("import_export") === "export" || form.watch("import_export") === "re-export") && (
             <div className="mb-6">
               <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
                 Port / Airport:
@@ -194,7 +265,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
           )}
 
           {/* Transit Locations - Show only if transit is selected */}
-          {form.watch("import_export") === "export" && (
+          {form.watch("import_export") === "transit" && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
                 <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
@@ -272,121 +343,91 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
         <div className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-xl font-raleway font-medium mb-4">Commodity Details</h2>
           
-          {/* Commodity */}
-          <div className="mb-6">
-            <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
-              Commodity:
-            </FormLabel>
-            <FormControl>
-              <Controller
-                control={form.control}
-                name="commodity"
-                render={({ field, fieldState: { error } }) => (
-                  <>
-                    <Input
-                      placeholder="Type the commodity"
-                      className="max-w-[300px] border-2 rounded-xl"
-                      {...field}
-                    />
-                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                  </>
-                )}
-              />
-            </FormControl>
-          </div>
-
-          {/* Commodity Description - ADD THIS MISSING FIELD */}
-          <div className="mb-6">
-            <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
-              Commodity Description:
-            </FormLabel>
-            <FormControl>
-              <Controller
-                control={form.control}
-                name="commodity_description"
-                render={({ field, fieldState: { error } }) => (
-                  <>
-                    <Input
-                      placeholder="Enter commodity description"
-                      className="max-w-[300px] border-2 rounded-xl"
-                      {...field}
-                    />
-                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                  </>
-                )}
-              />
-            </FormControl>
-          </div>
-
-          {/* HS Code - ADD THIS MISSING FIELD */}
-          <div className="mb-6">
-            <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
-              HS Code:
-            </FormLabel>
-            <FormControl>
-              <Controller
-                control={form.control}
-                name="hs_code"
-                render={({ field, fieldState: { error } }) => (
-                  <>
-                    <Input
-                      placeholder="Enter HS Code"
-                      className="max-w-[300px] border-2 rounded-xl"
-                      {...field}
-                    />
-                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                  </>
-                )}
-              />
-            </FormControl>
-          </div>
-
-          {/* Dangerous Cargo */}
-          <div className="mb-6">
-            <FormControl>
-              <Controller
-                control={form.control}
-                name="is_dangerous"
-                render={({ field }) => (
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                      id="is_dangerous" // CHANGE FROM "isDangerous"
-                    />
-                    <label htmlFor="is_dangerous" className="text-sm font-medium"> {/* CHANGE FROM "isDangerous" */}
-                      This cargo is considered dangerous.
-                    </label>
-                  </div>
-                )}
-              />
-            </FormControl>
-          </div>
-
-          {/* UN Number & Class - Show only if dangerous is checked */}
-          {form.watch("is_dangerous") && (
+          <div className="space-y-6">
+            {/* Commodity */}
             <div>
               <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
-                UN Number & Class:
+                Commodity: <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
                 <Controller
                   control={form.control}
-                  name="un_number_class"
+                  name="commodity"
                   render={({ field, fieldState: { error } }) => (
-                    <>
+                    <div className="space-y-1">
                       <Input
-                        placeholder="Enter UN Number and Class"
-                        className="max-w-[300px] border-2 rounded-xl"
+                        placeholder="Type the commodity"
+                        className={`max-w-[300px] border-2 rounded-xl ${
+                          error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                        }`}
                         {...field}
                       />
-                      {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                    </>
+                      {error && (
+                        <p className="text-red-500 text-sm flex items-center gap-1">
+                          <AlertCircle className="w-4 h-4" />
+                          {error.message}
+                        </p>
+                      )}
+                    </div>
                   )}
                 />
               </FormControl>
             </div>
-          )}
+
+            {/* Dangerous Cargo */}
+            <div>
+              <FormControl>
+                <Controller
+                  control={form.control}
+                  name="is_dangerous"
+                  render={({ field }) => (
+                    <div className="flex items-center space-x-2">
+                      <Checkbox
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        id="is_dangerous"
+                      />
+                      <label htmlFor="is_dangerous" className="text-sm font-medium">
+                        This cargo is considered dangerous.
+                      </label>
+                    </div>
+                  )}
+                />
+              </FormControl>
+            </div>
+
+            {/* UN Number & Class - Conditional */}
+            {form.watch("is_dangerous") && (
+              <div>
+                <FormLabel className="text-sm font-medium text-gray-700 mb-2 block">
+                  UN Number & Class: <span className="text-red-500">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Controller
+                    control={form.control}
+                    name="un_number_class"
+                    render={({ field, fieldState: { error } }) => (
+                      <div className="space-y-1">
+                        <Input
+                          placeholder="Enter UN Number and Class"
+                          className={`max-w-[300px] border-2 rounded-xl ${
+                            error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                          }`}
+                          {...field}
+                        />
+                        {error && (
+                          <p className="text-red-500 text-sm flex items-center gap-1">
+                            <AlertCircle className="w-4 h-4" />
+                            {error.message}
+                          </p>
+                        )}
+                      </div>
+                    )}
+                  />
+                </FormControl>
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Shipment Mode */}
@@ -507,7 +548,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                               <Button
                                 type="button"
                                 variant="outline"
-                                onClick={() => field.onChange(Math.max(1, field.value - 1))}
+                                onClick={() => field.onChange(Math.max(1, (field.value || 1) - 1))}
                               >
                                 <Minus className="h-4 w-4" />
                               </Button>
@@ -521,7 +562,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
                               <Button
                                 type="button"
                                 variant="outline"
-                                onClick={() => field.onChange(field.value + 1)}
+                                onClick={() => field.onChange((field.value || 1) + 1)}
                               >
                                 <Plus className="h-4 w-4" />
                               </Button>
@@ -881,7 +922,7 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
         
         {/* Submit Button */}
         <div className="text-center">
-          <Button type="submit" disabled={is_submitting} className="w-full">
+          <Button type="submit" disabled={is_submitting} className="w-[200px]">
             {is_submitting ? (
               <div className="flex items-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>

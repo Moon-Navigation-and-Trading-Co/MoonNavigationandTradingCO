@@ -7,6 +7,7 @@ import { Plus, Minus } from "lucide-react";
 import { SearchableCountrySelect } from './searchable-country-select';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { z } from 'zod';
+import { AlertCircle } from "lucide-react";
 
 // Routing schema definition
 export const routingCard0Schema = z.object({
@@ -45,15 +46,22 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                             control={control}
                                             name={`routing.${index}.from_country`}
                                             render={({ field, fieldState: { error } }) => (
-                                                <>
+                                                <div className="space-y-1">
                                                     <SearchableCountrySelect
                                                         value={field.value || ""}
                                                         onValueChange={field.onChange}
                                                         placeholder="Select country"
-                                                        className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"
+                                                        className={`max-w-[300px] border-2 rounded-xl ${
+                                                            error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                        }`}
                                                     />
-                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                                </>
+                                                    {error && (
+                                                        <p className="text-red-500 text-sm flex items-center gap-1">
+                                                            <AlertCircle className="w-4 h-4" />
+                                                            {error.message}
+                                                        </p>
+                                                    )}
+                                                </div>
                                             )}
                                         />
                                     </FormControl>
@@ -65,14 +73,21 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                             control={control}
                                             name={`routing.${index}.from_port`}
                                             render={({ field, fieldState: { error } }) => (
-                                                <>
+                                                <div className="space-y-1">
                                                     <Input
                                                         {...field}
                                                         placeholder="Enter port/area"
-                                                        className={`mt-2 ${error ? 'border-red-500' : ''}`}
+                                                        className={`max-w-[300px] border-2 rounded-xl ${
+                                                            error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                        }`}
                                                     />
-                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                                </>
+                                                    {error && (
+                                                        <p className="text-red-500 text-sm flex items-center gap-1">
+                                                            <AlertCircle className="w-4 h-4" />
+                                                            {error.message}
+                                                        </p>
+                                                    )}
+                                                </div>
                                             )}
                                         />
                                     </FormControl>
@@ -91,15 +106,22 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                             control={control}
                                             name={`routing.${index}.to_country`}
                                             render={({ field, fieldState: { error } }) => (
-                                                <>
+                                                <div className="space-y-1">
                                                     <SearchableCountrySelect
                                                         value={field.value || ""}
                                                         onValueChange={field.onChange}
                                                         placeholder="Select country"
-                                                        className="w-full max-w-[300px] !border-2 !rounded-xl !border-gray-200"
+                                                        className={`max-w-[300px] border-2 rounded-xl ${
+                                                            error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                        }`}
                                                     />
-                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                                </>
+                                                    {error && (
+                                                        <p className="text-red-500 text-sm flex items-center gap-1">
+                                                            <AlertCircle className="w-4 h-4" />
+                                                            {error.message}
+                                                        </p>
+                                                    )}
+                                                </div>
                                             )}
                                         />
                                     </FormControl>
@@ -111,14 +133,21 @@ const RoutingCard0 = ({ control }: { control: any }) => {
                                             control={control}
                                             name={`routing.${index}.to_port`}
                                             render={({ field, fieldState: { error } }) => (
-                                                <>
+                                                <div className="space-y-1">
                                                     <Input
                                                         {...field}
                                                         placeholder="Enter port/area"
-                                                        className={`mt-2 ${error ? 'border-red-500' : ''}`}
+                                                        className={`max-w-[300px] border-2 rounded-xl ${
+                                                            error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                        }`}
                                                     />
-                                                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                                </>
+                                                    {error && (
+                                                        <p className="text-red-500 text-sm flex items-center gap-1">
+                                                            <AlertCircle className="w-4 h-4" />
+                                                            {error.message}
+                                                        </p>
+                                                    )}
+                                                </div>
                                             )}
                                         />
                                     </FormControl>

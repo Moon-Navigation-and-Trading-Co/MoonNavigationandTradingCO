@@ -27,9 +27,13 @@ const formSchema = z.object({
         to_country: z.string().min(1, { message: "To country is required" }),
         to_port: z.string().min(1, { message: "To port/area is required" }),
     })),
-    date: z.string().min(1, { message: "Date is required" }).refine(value => {
+    // Update to have both effective_date and expiry_date
+    effective_date: z.string().min(1, { message: "Effective date is required" }).refine(value => {
         return !isNaN(Date.parse(value)); // Ensure valid date
-    }, { message: "Invalid date format" }),
+    }, { message: "Invalid effective date format" }),
+    expiry_date: z.string().min(1, { message: "Expiry date is required" }).refine(value => {
+        return !isNaN(Date.parse(value)); // Ensure valid date
+    }, { message: "Invalid expiry date format" }),
     entry_mode: z.enum(["itemized", "consolidated"], {
         required_error: "Please select an entry mode.",
     }),
@@ -134,13 +138,17 @@ const formSchema = z.object({
         other_specify: z.string().optional(),
         additional_requirements: z.string().optional(),
     }),
+    // Add missing vad field for submission compatibility
+    vad: z.object({
+        inland_container: z.string().optional(),
+    }).optional(),
     company_details: z.object({
         company_name: z.string().min(1, { message: "Company name is required" }),
         contact_person_name: z.string().min(1, { message: "Contact person name is required" }),
         title: z.string().min(1, { message: "Title is required" }),
         country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
         company_email: z.string().email({ message: "Valid email is required" }),
-        additional_email: z.string().optional(),
+        additional_email: z.string().email().optional().or(z.literal('')),
         phone_number: z.string().min(1, { message: "Phone number is required" }),
         additional_phone_number: z.string().optional(),
     })
@@ -192,7 +200,8 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                 to_country: '',
                 to_port: '',
             }],
-            date: '',
+            effective_date: '',
+            expiry_date: '',
             entry_mode: 'itemized',
             itemized_data: [{
                 commodity: '',
@@ -247,6 +256,8 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                 other_specify: '',
                 additional_requirements: '',
             },
+            // Make vad truly optional
+            vad: undefined,
             company_details: {
                 company_name: '',
                 contact_person_name: '',
@@ -266,7 +277,6 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
         console.log("Form errors:", form.formState.errors);
         console.log("Form valid:", form.formState.isValid);
 
-        // No need for manual validation check - onSubmit mode handles it
         set_is_submitting(true);
         try {
             // Clean up data before submission - only send relevant data
@@ -276,6 +286,8 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                 itemized_data: values.entry_mode === 'itemized' ? values.itemized_data : undefined,
                 // Only include consolidated_data if mode is consolidated
                 consolidated_data: values.entry_mode === 'consolidated' ? values.consolidated_data : undefined,
+                // Preserve vad field
+                vad: values.vad || { inland_container: '' },
             };
             console.log("✅ Submitting cleaned data:", cleanedData);
             await onSubmit(cleanedData);
@@ -353,55 +365,15 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
         }
     };
 
-    // Debug function to check form state
-    const debugForm = () => {
-        console.log("🐛 Form Debug Info:");
-        console.log("Form valid:", form.formState.isValid);
-        console.log("Form errors:", form.formState.errors);
-        console.log("Form values:", form.getValues());
-        console.log("Dirty fields:", form.formState.dirtyFields);
-        console.log("Touched fields:", form.formState.touchedFields);
-    };
-
-    const testValidation = async () => {
-        console.log("�� Testing validation...");
-        
-        // Test with empty required field
-        form.setValue('routing.0.from_country', '');
-        form.setValue('routing.0.from_port', '');
-        form.setValue('routing.0.to_country', '');
-        form.setValue('routing.0.to_port', '');
-        
-        // Trigger validation
-        const result = await form.trigger();
-        console.log("Validation result:", result);
-        console.log("Errors:", form.formState.errors);
-    };
-
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-                {/* Debug Button - Remove in production */}
-                <Button type="button" onClick={debugForm} variant="outline" className="mb-4">
-                    Debug Form State
-                </Button>
-                <Button type="button" onClick={testValidation} variant="outline" className="mb-4 ml-2">
-                    Test Validation
-                </Button>
-
                 {/* Global Form Errors Display */}
                 {Object.keys(form.formState.errors).length > 0 && (
                     <Alert variant="destructive" className="mb-4">
                         <AlertCircle className="h-4 w-4" />
                         <AlertDescription>
-                            Please fix the following errors before submitting:
-                            <ul className="mt-2 list-disc list-inside">
-                                {Object.entries(form.formState.errors).map(([key, error]) => (
-                                    <li key={key}>
-                                        {key}: {error?.message || 'Invalid value'}
-                                    </li>
-                                ))}
-                            </ul>
+                            Please fix the errors below before submitting the form.
                         </AlertDescription>
                     </Alert>
                 )}
@@ -460,20 +432,22 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                                         control={form.control}
                                         name="additional_details"
                                         render={({ field, fieldState: { error } }) => (
-                                            <>
+                                            <div className="space-y-1">
                                                 <Textarea
                                                     {...field}
                                                     placeholder="Please provide any additional information about your cargo..."
-                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${
+                                                        error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                    }`}
                                                     rows={4}
                                                 />
                                                 {error && (
-                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                    <p className="text-red-500 text-sm flex items-center gap-1">
                                                         <AlertCircle className="h-3 w-3" />
                                                         {error.message}
                                                     </p>
                                                 )}
-                                            </>
+                                            </div>
                                         )}
                                     />
                                 </FormControl>
@@ -485,20 +459,22 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                                         control={form.control}
                                         name="commercial_terms"
                                         render={({ field, fieldState: { error } }) => (
-                                            <>
+                                            <div className="space-y-1">
                                                 <Textarea
                                                     {...field}
                                                     placeholder="Please advise other relevant commercial terms..."
-                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${
+                                                        error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                    }`}
                                                     rows={3}
                                                 />
                                                 {error && (
-                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                    <p className="text-red-500 text-sm flex items-center gap-1">
                                                         <AlertCircle className="h-3 w-3" />
                                                         {error.message}
                                                     </p>
                                                 )}
-                                            </>
+                                            </div>
                                         )}
                                     />
                                 </FormControl>
@@ -610,20 +586,22 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                                         control={form.control}
                                         name="additional_details"
                                         render={({ field, fieldState: { error } }) => (
-                                            <>
+                                            <div className="space-y-1">
                                                 <Textarea
                                                     {...field}
                                                     placeholder="Please provide any additional information about your cargo..."
-                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${
+                                                        error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                    }`}
                                                     rows={4}
                                                 />
                                                 {error && (
-                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                    <p className="text-red-500 text-sm flex items-center gap-1">
                                                         <AlertCircle className="h-3 w-3" />
                                                         {error.message}
                                                     </p>
                                                 )}
-                                            </>
+                                            </div>
                                         )}
                                     />
                                 </FormControl>
@@ -635,20 +613,22 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                                         control={form.control}
                                         name="commercial_terms"
                                         render={({ field, fieldState: { error } }) => (
-                                            <>
+                                            <div className="space-y-1">
                                                 <Textarea
                                                     {...field}
                                                     placeholder="Please advise other relevant commercial terms..."
-                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${
+                                                        error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                    }`}
                                                     rows={3}
                                                 />
                                                 {error && (
-                                                    <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+                                                    <p className="text-red-500 text-sm flex items-center gap-1">
                                                         <AlertCircle className="h-3 w-3" />
                                                         {error.message}
                                                     </p>
                                                 )}
-                                            </>
+                                            </div>
                                         )}
                                     />
                                 </FormControl>
@@ -671,6 +651,38 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                 {/* Additional Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-semibold mb-4">Additional Services</h2>
+                    
+                    {/* Add VAD Section */}
+                    <div className="mb-6">
+                        <h3 className="text-lg font-medium mb-4">Value Added Services</h3>
+                        <FormItem>
+                            <FormLabel>Inland Container</FormLabel>
+                            <FormControl>
+                                <Controller
+                                    control={form.control}
+                                    name="vad.inland_container"
+                                    render={({ field, fieldState: { error } }) => (
+                                        <div className="space-y-1">
+                                            <Input
+                                                {...field}
+                                                placeholder="Enter inland container details"
+                                                className={`max-w-[300px] border-2 rounded-xl ${
+                                                    error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                }`}
+                                            />
+                                            {error && (
+                                                <p className="text-red-500 text-sm flex items-center gap-1">
+                                                    <AlertCircle className="w-4 h-4" />
+                                                    {error.message}
+                                                </p>
+                                            )}
+                                        </div>
+                                    )}
+                                />
+                            </FormControl>
+                        </FormItem>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <FormItem>
                             <FormControl>
@@ -807,20 +819,22 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                                     control={form.control}
                                     name="additional_services.other_specify"
                                     render={({ field, fieldState: { error } }) => (
-                                        <>
+                                        <div className="space-y-1">
                                             <Textarea
                                                 {...field}
                                                 placeholder="Please specify other services required..."
-                                                className={`border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                                className={`border-2 rounded-xl ${
+                                                    error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                }`}
                                                 rows={3}
                                             />
                                             {error && (
-                                                <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                                                    <AlertCircle className="h-3 w-3" />
+                                                <p className="text-red-500 text-sm flex items-center gap-1">
+                                                    <AlertCircle className="w-4 h-4" />
                                                     {error.message}
                                                 </p>
                                             )}
-                                        </>
+                                        </div>
                                     )}
                                 />
                             </FormControl>
@@ -834,20 +848,22 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                                 control={form.control}
                                 name="additional_services.additional_requirements"
                                 render={({ field, fieldState: { error } }) => (
-                                    <>
+                                    <div className="space-y-1">
                                         <Textarea
                                             {...field}
                                             placeholder="Any additional service requirements..."
-                                            className={`border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
+                                            className={`border-2 rounded-xl ${
+                                                error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                            }`}
                                             rows={3}
                                         />
                                         {error && (
-                                            <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                                                <AlertCircle className="h-3 w-3" />
+                                            <p className="text-red-500 text-sm flex items-center gap-1">
+                                                <AlertCircle className="w-4 h-4" />
                                                 {error.message}
                                             </p>
                                         )}
-                                    </>
+                                    </div>
                                 )}
                             />
                         </FormControl>
