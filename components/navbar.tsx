@@ -330,48 +330,66 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                         <AccordionContent className="pb-4">
                                             {item.name === "Services" ? (
                                                 <Accordion type="single" collapsible className="w-full">
-                                                    {serviceColumns.flatMap(c => c.sections).map((section, sectionIdx) => (
-                                                        <AccordionItem key={sectionIdx} value={section.title} className="border-none">
-                                                            <AccordionTrigger className="text-sm font-raleway font-medium text-gray-700 py-2">
-                                                                {section.title}
-                                                            </AccordionTrigger>
-                                                            <AccordionContent className="ml-4">
-                                                                {section.items.map((service, serviceIdx) => (
-                                                                    <div key={serviceIdx} className="py-1">
-                                                                        {'isDropdown' in service && service.isDropdown && service.dropdownItems ? (
-                                                                            <Accordion type="single" collapsible className="w-full">
-                                                                                <AccordionItem value={service.name} className="border-none">
-                                                                                    <AccordionTrigger className="text-sm font-raleway font-medium text-gray-600 py-1">
-                                                                                        {service.name}
-                                                                                    </AccordionTrigger>
-                                                                                    <AccordionContent className="ml-4 space-y-2 pt-2">
-                                                                                        {service.dropdownItems.map((subItem: { name: string; href: string }, subIdx: number) => (
-                                                                                            <Link 
-                                                                                                key={subIdx} 
-                                                                                                href={subItem.href} 
-                                                                                                className="block text-sm text-gray-500 hover:text-blue-600 transition-colors py-1" 
-                                                                                                onClick={toggleMobileMenu}
-                                                                                            >
-                                                                                                {subItem.name}
-                                                                                            </Link>
-                                                                                        ))}
-                                                                                    </AccordionContent>
-                                                                                </AccordionItem>
-                                                                            </Accordion>
-                                                                        ) : (
-                                                                            <Link 
-                                                                                href={service.href} 
-                                                                                className="block text-sm text-gray-500 hover:text-blue-600 transition-colors py-1" 
-                                                                                onClick={toggleMobileMenu}
-                                                                            >
-                                                                                {service.name}
-                                                                            </Link>
-                                                                        )}
-                                                                    </div>
-                                                                ))}
-                                                            </AccordionContent>
-                                                        </AccordionItem>
-                                                    ))}
+                                                    {(() => {
+                                                        // Custom order for mobile menu only
+                                                        const mobileOrder = [
+                                                            "Ship Agency and Operational Services",
+                                                            "Transportation Services", 
+                                                            "Vessel Support and Maintenance",
+                                                            "Other Logistics Services",
+                                                            "Expand Your Fleet and Capacity",
+                                                            "Trade Solutions"
+                                                        ];
+                                                        
+                                                        // Get all sections and sort them according to mobile order
+                                                        const allSections = serviceColumns.flatMap(c => c.sections);
+                                                        const orderedSections = mobileOrder.map(title => 
+                                                            allSections.find(section => section.title === title)
+                                                        ).filter((section): section is NonNullable<typeof section> => section !== undefined);
+                                                        
+                                                        return orderedSections.map((section, sectionIdx) => (
+                                                            <AccordionItem key={sectionIdx} value={section.title} className="border-none">
+                                                                <AccordionTrigger className="text-sm font-raleway font-medium text-gray-700 py-2">
+                                                                    {section.title}
+                                                                </AccordionTrigger>
+                                                                <AccordionContent className="ml-4">
+                                                                    {section.items.map((service, serviceIdx) => (
+                                                                        <div key={serviceIdx} className="py-1">
+                                                                            {'isDropdown' in service && service.isDropdown && service.dropdownItems ? (
+                                                                                <Accordion type="single" collapsible className="w-full">
+                                                                                    <AccordionItem value={service.name} className="border-none">
+                                                                                        <AccordionTrigger className="text-sm font-raleway font-medium text-gray-600 py-1">
+                                                                                            {service.name}
+                                                                                        </AccordionTrigger>
+                                                                                        <AccordionContent className="ml-4 space-y-2 pt-2">
+                                                                                            {service.dropdownItems.map((subItem: { name: string; href: string }, subIdx: number) => (
+                                                                                                <Link 
+                                                                                                    key={subIdx} 
+                                                                                                    href={subItem.href} 
+                                                                                                    className="block text-sm text-gray-500 hover:text-blue-600 transition-colors py-1" 
+                                                                                                    onClick={toggleMobileMenu}
+                                                                                                >
+                                                                                                    {subItem.name}
+                                                                                                </Link>
+                                                                                            ))}
+                                                                                        </AccordionContent>
+                                                                                    </AccordionItem>
+                                                                                </Accordion>
+                                                                            ) : (
+                                                                                <Link 
+                                                                                    href={service.href} 
+                                                                                    className="block text-sm text-gray-500 hover:text-blue-600 transition-colors py-1" 
+                                                                                    onClick={toggleMobileMenu}
+                                                                                >
+                                                                                    {service.name}
+                                                                                </Link>
+                                                                            )}
+                                                                        </div>
+                                                                    ))}
+                                                                </AccordionContent>
+                                                            </AccordionItem>
+                                                        ));
+                                                    })()}
                                                 </Accordion>
                                             ) : (
                                                 <div className="flex flex-col space-y-2">
@@ -403,11 +421,11 @@ const Navbar: React.FC<NavbarProps> = ({ user }) => {
                                 </Link>
                                 {!user && (
                                     <Link 
-                                        className="bg-[#011f4b] text-white hover:bg-[#022c6a] rounded-xl px-3 py-2 font-raleway font-semibold text-center transition-colors text-sm" 
+                                        className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl px-3 py-2 font-raleway font-light text-center transition-colors text-sm w-[100px] flex items-center justify-center" 
                                         href="/sign-in" 
                                         onClick={toggleMobileMenu}
                                     >
-                                        SIGN IN
+                                        Sign In
                                     </Link>
                                 )}
                                 {user && <SignOutButtonVariant />}

@@ -360,7 +360,7 @@ export default function Index() {
                                 {/* Stats Row */}
                                 <div className="grid grid-cols-2 gap-6 py-6">
                                     <div className="text-center">
-                                        <div className="text-2xl font-raleway font-medium text-blue-600">13+</div>
+                                        <div className="text-2xl font-raleway font-medium text-blue-600">15+</div>
                                         <div className="text-sm text-gray-500">Years Experience</div>
                                     </div>
                                     <div className="text-center">
@@ -720,7 +720,7 @@ export default function Index() {
                                             <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg flex-shrink-0">
                                                 <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                                 </svg>
                                             </div>
                                             <div className="min-w-0 flex-1">

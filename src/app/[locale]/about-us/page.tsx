@@ -31,7 +31,7 @@ import ReasonsGrid from "@/components/ReasonsGrid";
 
 export default function AboutUs() {
   const stats = [
-    { number: "13+", label: "Years of Excellence", icon: Award },
+    { number: "15+", label: "Years of Excellence", icon: Award },
     { number: "24/7", label: "Support Available", icon: Clock },
     { number: "100%", label: "Client Satisfaction", icon: Heart }
   ];
