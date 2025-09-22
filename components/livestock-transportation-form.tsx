@@ -19,6 +19,7 @@ import RoutingCard0 from './routing-card-0';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { toast } from '@/hooks/use-toast';
 
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 // Enhanced form schema with comprehensive validation (matching air freight standards)
 const formSchema = z.object({
   routing: z.array(z.object({
@@ -906,68 +907,13 @@ export default function LivestockTransportationForm({ onSubmit, isSubmitting = f
             </FormItem>
           </div>
         </div>
-
         {/* Enhanced Supporting Files Section */}
-        <div className="">
-          <h1 className='text-xl font-raleway font-medium mb-4'>Supporting Files (Optional)</h1>
-          <div className='px-4 w-full max-w-sm items-center gap-1.5 mt-1 mb-10'>
-            <FormItem>
-              <FormLabel>
-                {t('file')} <span className="text-sm text-gray-500">({t('optional')})</span>
-              </FormLabel>
-              <FormControl>
-                <Controller
-                  control={form.control}
-                  name="supporting_files"
-                  render={({ field: { onChange, ref }, fieldState: { error } }) => (
-                    <>
-                      <Input
-                        type="file"
-                        multiple
-                        accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                        className={`max-w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
-                        onChange={(e) => onChange(e.target.files)}
-                        ref={ref}
-                      />
-                      {error && (
-                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                          <AlertCircle className="h-3 w-3" />
-                          {error.message}
-                        </p>
-                      )}
-                    </>
-                  )}
-                />
-              </FormControl>
-              <p className="text-xs text-gray-500 mt-1">
-                Max size 20 MB per file. Supported: PDF, JPEG, GIF, PNG, Word, Excel, PowerPoint
-              </p>
-            </FormItem>
-
-            <div className="mt-4">
-              <Controller
-                control={form.control}
-                name="cargo_lifting_points"
-                render={({ field }) => (
-                  <div className="flex gap-2 items-center">
-                    <Checkbox
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                      id="cargo_lifting_points"
-                    />
-                    <label
-                      htmlFor="cargo_lifting_points"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      I wish to upload cargo picture with lifting points
-                    </label>
-                  </div>
-                )}
-              />
-            </div>
-          </div>
-        </div>
-
+        <EnhancedSupportingFiles 
+            control={form.control} 
+            name="supporting_files" 
+            cargoPictureName="cargo_lifting_points" 
+            title="Supporting Files (Optional)" 
+        />
         {/* Enhanced Additional Information Section */}
         <div className="">
           <h1 className='text-xl font-semibold mb-4'>Additional Information</h1>

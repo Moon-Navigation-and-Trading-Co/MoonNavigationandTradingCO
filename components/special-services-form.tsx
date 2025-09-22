@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
     const t = useTranslations('Inland-errors')
@@ -228,37 +229,12 @@ const SpecialServicesForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                     </FormItem>
                 </div>
 
-                {/* Supporting Files */}
-                <div className="space-y-4">
-                    <h3 className="text-xl font-raleway font-medium">Supporting files (Optional)</h3>
-                    <p className="text-sm text-gray-600">
-                        Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
-                    </p>
-                    <FormItem>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="supporting_files"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input
-                                            type="file"
-                                            multiple
-                                            accept=".pdf,.jpeg,.jpg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                            onChange={(e) => {
-                                                const files = Array.from(e.target.files || []);
-                                                field.onChange(files);
-                                            }}
-                                            className="max-w-md"
-                                        />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>
-                                )}
-                            />
-                        </FormControl>
-                    </FormItem>
-                </div>
-
+                <EnhancedSupportingFiles 
+                    control={form.control} 
+                    name="supporting_files" 
+                    showCargoPicture={false} 
+                    title="Supporting files (Optional)" 
+                />
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 

@@ -11,6 +11,7 @@ import { Checkbox } from './ui/checkbox';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 const BunkeringOilSupplyForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
     const t = useTranslations('Inland-errors')
@@ -683,7 +684,13 @@ const BunkeringOilSupplyForm: React.FC<{ onSubmit: (data: any) => void; isSubmit
                     </FormItem>
                 </div>
 
-                {/* Additional Information */}
+                {/* Supporting Files */}
+                <EnhancedSupportingFiles 
+                    control={form.control} 
+                    name="supporting_files" 
+                    showCargoPicture={false} 
+                    title="Supporting files (Optional)" 
+                />                {/* Additional Information */}
                 <div className="space-y-4">
                     <h3 className="text-xl font-raleway font-medium">Additional Information</h3>
                     <FormItem>
@@ -700,36 +707,7 @@ const BunkeringOilSupplyForm: React.FC<{ onSubmit: (data: any) => void; isSubmit
                             />
                         </FormControl>
                     </FormItem>
-
-                    <FormItem>
-                        <FormLabel>Supporting files (Optional)</FormLabel>
-                        <p className="text-sm text-gray-600 mb-2">
-                            Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
-                        </p>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="supporting_files"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input
-                                            type="file"
-                                            multiple
-                                            accept=".pdf,.jpeg,.jpg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                            onChange={(e) => {
-                                                const files = Array.from(e.target.files || []);
-                                                field.onChange(files);
-                                            }}
-                                            className="max-w-md"
-                                        />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>
-                                )}
-                            />
-                        </FormControl>
-                    </FormItem>
                 </div>
-
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 

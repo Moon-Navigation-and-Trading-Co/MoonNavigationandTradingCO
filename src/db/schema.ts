@@ -142,16 +142,18 @@ export const container_inland_services_table = pgTable("container_inland_service
     company_details: jsonb("company_details").notNull(),
 });
 
-// Contact Requests
+// Contact Requests - Updated to match contact form fields
 export const contact_requests_table = pgTable("contact_requests", {
     id: uuid().primaryKey().defaultRandom(),
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    // Contact details
+    // Contact details - Updated to match form
+    first_name: text("first_name").notNull(),
+    last_name: text("last_name").notNull(),
     title: text("title"),
-    name: text("name").notNull(),
-    company_name: text("company_name").notNull(),
+    company_name: text("company_name"),
     email: text("email").notNull(),
-    number: text("number").notNull(),
+    phone: text("phone").notNull(),
+    country_of_origin: text("country_of_origin"),
     message: text("message").notNull(),
     quotation_number: text("quotation_number"),
 });
@@ -823,44 +825,27 @@ export const heavy_lift = pgTable("heavy_lift", {
     quotation_number: text("quotation_number"),
 });
 
-// Investor Form - Added to match form structure
+// Investor Form - Updated to match form field names
 export const investor_form = pgTable("investor_form", {
     id: uuid().primaryKey().defaultRandom(),
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
-    user_id: uuid().notNull().references(() => users_table.id),
+    user_id: uuid().references(() => users_table.id), // Made nullable
     
-    // Personal/Company Information
-    full_name: text("full_name").notNull(),
-    company_name: text("company_name"),
-    position_title: text("position_title").notNull(),
-    nationality: text("nationality").notNull(),
+    // Personal/Company Information - Updated to match form
+    first_name: text("first_name").notNull(),
+    last_name: text("last_name").notNull(),
+    title: text("title").notNull(),
+    organization_name: text("organization_name"),
     email: text("email").notNull(),
     additional_email: text("additional_email"),
     phone_number: text("phone_number").notNull(),
     additional_phone_number: text("additional_phone_number"),
-    city_country_residence: text("city_country_residence").notNull(),
     
-    // Investment Interest
-    investor_type: text("investor_type").notNull(),
-    investor_type_other: text("investor_type_other"),
-    investment_range: text("investment_range").notNull(),
+    // Investment Interest - Updated to match form
+    accredited: text("accredited"),
+    qualified: text("qualified"),
+    check_size: text("check_size"),
     average_check_size: text("average_check_size"),
-    preferred_investment_type: jsonb("preferred_investment_type").notNull(),
-    preferred_investment_type_other: text("preferred_investment_type_other"),
-    
-    // Areas of Interest
-    areas_of_interest: jsonb("areas_of_interest").notNull(),
-    areas_of_interest_other: text("areas_of_interest_other"),
-    
-    // Interest Rate
-    interest_rate_type: text("interest_rate_type"),
-    fixed_interest_rate: text("fixed_interest_rate"),
-    
-    // Background & Intent
-    background_linkedin: text("background_linkedin"),
-    investment_interest_reason: text("investment_interest_reason"),
-    require_nda: text("require_nda").notNull(),
-    additional_notes: text("additional_notes"),
     
     quotation_number: text("quotation_number"),
 });

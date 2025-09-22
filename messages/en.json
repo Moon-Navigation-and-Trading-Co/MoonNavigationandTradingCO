@@ -283,6 +283,7 @@
         "commodity": "Commodity",
         "inland-containter-transportation": "Inland Container Transportation",
         "Required": "This field is required",
+        "Email": "Invalid email format",
         "addCargo": "Add Additional Cargo Details",
         "Number": "Invalid number format",
         "request": "Request",
@@ -320,7 +321,8 @@
         "Location": "Location is required",
         "Detailed": "Detailed Location is required",
         "crew-required": "Crew Details",
-        "Incoterm": "Incoterm field is required"
+        "Incoterm": "Incoterm field is required",
+        "Quantity": "Quantity is required"
     },
     "Air-Freight": {
         "from": "From",

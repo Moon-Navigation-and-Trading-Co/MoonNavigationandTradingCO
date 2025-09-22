@@ -12,6 +12,7 @@ import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
     const t = useTranslations('Inland-errors')
@@ -982,7 +983,13 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
                     </div>
                 </div>
 
-                {/* Additional Notes */}
+                {/* Supporting Files */}
+                <EnhancedSupportingFiles 
+                    control={form.control} 
+                    name="supporting_files" 
+                    showCargoPicture={false} 
+                    title="Supporting Files (Optional)" 
+                />                {/* Additional Notes */}
                 <div className="space-y-4">
                     <h3 className="text-xl font-raleway font-medium">Additional Notes or Special Request</h3>
                     <FormItem>
@@ -1003,7 +1010,6 @@ const SuezCanalTransitForm: React.FC<{ onSubmit: (data: any) => void; isSubmitti
 
 
 
-                {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
 

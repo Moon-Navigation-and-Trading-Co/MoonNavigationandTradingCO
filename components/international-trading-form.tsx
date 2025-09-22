@@ -36,10 +36,10 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
             type: z.string().min(1, { message: t("Type") }),
             quantity: z.number().min(1, { message: t("Quantity") }),
             supporting_files: z.array(z.instanceof(File)).optional(),
+            cargo_picture: z.boolean().optional(),
             additional_commodities: z.array(z.object({
                 type: z.string().optional(),
                 quantity: z.number().optional(),
-                supporting_files: z.array(z.instanceof(File)).optional(),
             })).optional(),
             additional_requirements: z.string().optional(),
         }),
@@ -74,6 +74,7 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 type: "",
                 quantity: 1,
                 supporting_files: [],
+                cargo_picture: false,
                 additional_commodities: [],
                 additional_requirements: "",
             },
@@ -117,7 +118,7 @@ const InternationalTradingForm: React.FC<{ onSubmit: (data: any) => void }> = ({
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
                 
-                <Button type="submit" disabled={is_submitting} className="w-full">
+                <Button type="submit" disabled={is_submitting} className="w-[200px]">
                     {is_submitting ? (
                         <div className="flex items-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>

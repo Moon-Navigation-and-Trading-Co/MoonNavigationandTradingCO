@@ -19,6 +19,7 @@ import { PhoneInput } from '@/components/phone-input';
 import { SearchableCountrySelect } from './searchable-country-select';
 import CompanyDetailsCard from './company-details-card';
 import RoutingCard0 from './routing-card-0';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 // Updated form schema with conditional validation
 const formSchema = z.object({
@@ -336,45 +337,13 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
         </div>
 
         {/* Supporting Files - Conditional Display */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-semibold mb-4">Supporting Files</h2>
-          <FormItem>
-            <FormLabel>
-              Upload Files 
-              {cargoMode === 'consolidated' && <span className="text-red-500"> *</span>}
-              {cargoMode === 'itemized' && <span className="text-gray-500"> (Optional)</span>}
-            </FormLabel>
-            <FormControl>
-              <Controller
-                control={form.control}
-                name="supporting_files"
-                render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
-                  <>
-                    <Input
-                      type="file"
-                      multiple
-                      accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                      className="max-w-[300px] border-2 rounded-xl"
-                      name={name}
-                      ref={ref}
-                      onBlur={onBlur}
-                      onChange={(e) => onChange(Array.from(e.target.files ?? []))}
-                    />
-                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                  </>
-                )}
-              />
-            </FormControl>
-            <p className="text-xs text-gray-500 mt-1">
-              Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
-              {cargoMode === 'consolidated' && (
-                <span className="block text-red-400 mt-1">
-                  * Supporting files are required for Consolidated Entry
-                </span>
-              )}
-            </p>
-          </FormItem>
-        </div>
+        <EnhancedSupportingFiles 
+          control={form.control} 
+          name="supporting_files"
+          showCargoPicture={false}
+          title="Supporting Files"
+          description="Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint. * Supporting files are required for Consolidated Entry"
+        />
 
         {/* Additional Information */}
         <div className="">

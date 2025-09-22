@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from './ui/checkbox';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import CompanyDetailsCard from './company-details-card';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 import { useTranslations } from 'next-intl';
 
 const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
@@ -54,11 +55,8 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
         }),
         additional_information: z.string().optional(),
         supporting_files: z.object({
-            ship_registration_class_certificates: z.boolean().refine((val) => val === true, {
-                message: "Ship Registration & Class Certificates upload is mandatory"
-            }),
+            files: z.array(z.instanceof(File)).min(1, { message: "Supporting files are required" }),
             cargo_picture: z.boolean().optional(),
-            files: z.array(z.any()).optional(),
         }),
         company_details: z.object({
             company_name: z.string().min(1, { message: t("Required") }),
@@ -113,9 +111,8 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
             },
             additional_information: '',
             supporting_files: {
-                ship_registration_class_certificates: false,
+                files: [],
                 cargo_picture: false,
-                files: []
             },
             company_details: {
                 company_name: '',
@@ -660,84 +657,15 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
                     </FormItem>
                 </div>
 
-                {/* Supporting Files */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-raleway font-medium mb-4">Supporting files</h2>
-                    <p className="text-sm text-gray-600 mb-4">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-                    
-                    <div className="space-y-4">
-                        {/* Ship Registration & Class Certificates Checkbox */}
-                        <FormItem>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="supporting_files.ship_registration_class_certificates"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <div className="space-y-2">
-                                            <div className="flex items-center space-x-2">
-                                                <Checkbox
-                                                    checked={field.value}
-                                                    onCheckedChange={field.onChange}
-                                                    id="ship_registration_class_certificates"
-                                                />
-                                                <label htmlFor="ship_registration_class_certificates" className="text-sm font-medium">
-                                                    Ship Registration & Class Certificates <span className="text-red-500">*</span>
-                                                </label>
-                                            </div>
-                                            {error && <p className="text-red-500 text-sm">{error.message}</p>}
-                                        </div>
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
-
-                        {/* Cargo Picture Checkbox */}
-                        <FormItem>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="supporting_files.cargo_picture"
-                                    render={({ field }) => (
-                                        <div className="flex items-center space-x-2">
-                                            <Checkbox
-                                                checked={field.value}
-                                                onCheckedChange={field.onChange}
-                                                id="cargo_picture"
-                                            />
-                                            <label htmlFor="cargo_picture" className="text-sm font-medium">
-                                                I wish to upload cargo picture with lifting points
-                                            </label>
-                                        </div>
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
-
-                        {/* File Upload */}
-                        <FormItem>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="supporting_files.files"
-                                    render={({ field }) => (
-                                        <div className="space-y-2">
-                                            <Input
-                                                type="file"
-                                                multiple
-                                                accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                                className="max-w-md"
-                                                onChange={(e) => {
-                                                    const files = Array.from(e.target.files || []);
-                                                    field.onChange(files);
-                                                }}
-                                            />
-                                        </div>
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
-                    </div>
-                </div>
+                {/* Enhanced Supporting Files - Now Required */}
+                <EnhancedSupportingFiles
+                    control={form.control}
+                    name="supporting_files.files"
+                    cargoPictureName="supporting_files.cargo_picture"
+                    showCargoPicture={true}
+                    title="Supporting Files *"
+                    description="Upload supporting documents for your ship management request. At least one file is required. Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint"
+                />
 
                 {/* Additional Information */}
                 <div className="space-y-4">

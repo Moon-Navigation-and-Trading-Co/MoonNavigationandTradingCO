@@ -1,4 +1,4 @@
-import { createBrowserClient } from "@supabase/ssr";
+import { createClient as createSupabaseClient } from "@supabase/supabase-js";
 
 // Validate environment variables
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -14,7 +14,7 @@ if (!supabaseAnonKey) {
 
 export const createClient = () => {
   try {
-    const client = createBrowserClient(supabaseUrl, supabaseAnonKey);
+    const client = createSupabaseClient(supabaseUrl, supabaseAnonKey);
     
     // Add connection error handling
     client.auth.onAuthStateChange((event, session) => {

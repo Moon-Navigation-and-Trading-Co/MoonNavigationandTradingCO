@@ -13,6 +13,7 @@ import CommoditiesCard from './commodities-card-variant-4';
 import CompanyDetailsCard from './company-details-card';
 import PickupDeliveryCard from './pickup-delivery-card';
 import { useTranslations } from 'next-intl';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 import DatesCard from './dates-card';
 import { Plus, Minus } from 'lucide-react';
 
@@ -579,44 +580,12 @@ const LessThanContainerForm: React.FC<{ onSubmit: (data: FormData) => Promise<vo
                     <h2 className="text-xl font-raleway font-medium mb-6">Commodity Details</h2>
                     <CommodityDetailsList control={form.control} />
                 </section>
-
                 {/* Supporting Files */}
-                <section className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-raleway font-medium mb-4">Supporting files (Optional)</h2>
-                    <p className="text-sm text-gray-600 mb-4">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-                    
-                    <div className="space-y-4">
-                        <CheckboxField
-                            control={form.control}
-                            name="supporting_files.cargo_picture"
-                            label="I wish to upload cargo picture with lifting points"
-                            id="cargo_picture"
-                        />
-
-                        <FormItem>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="supporting_files.files"
-                                    render={({ field }) => (
-                                        <Input
-                                            type="file"
-                                            multiple
-                                            accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                            className="max-w-md"
-                                            onChange={(e) => {
-                                                const files = Array.from(e.target.files || []);
-                                                field.onChange(files);
-                                            }}
-                                            aria-label="Upload supporting files"
-                                        />
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
-                    </div>
-                </section>
-
+                <EnhancedSupportingFiles 
+                    control={form.control} 
+                    name="supporting_files.files"
+                    cargoPictureName="supporting_files.cargo_picture"
+                />
                 {/* Validity */}
                 <section className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-raleway font-medium mb-4">Validity (optional)</h2>

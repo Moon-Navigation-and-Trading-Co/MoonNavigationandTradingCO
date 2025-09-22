@@ -16,6 +16,7 @@ import { useTranslations } from 'next-intl';
 import RecommendedServicesCard from './recommended-card';
 import DatesCard from './dates-card-variant-1';
 import ItemizedTable from './itemized-table';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 import ConsolidatedForm from './consolidated-form';
 
 // Define the form schema
@@ -389,47 +390,14 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                 )}
 
                 {/* Supporting Files Section */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">Supporting Files</h2>
-                    <FormItem>
-                        <FormLabel>
-                            Upload Files 
-                            {entryMode === 'consolidated' && <span className="text-red-500"> *</span>}
-                            {entryMode === 'itemized' && <span className="text-gray-500"> (Optional)</span>}
-                        </FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="supporting_files"
-                                render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
-                                    <>
-                                        <Input
-                                            type="file"
-                                            multiple
-                                            accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                            className="max-w-[300px] border-2 rounded-xl"
-                                            name={name}
-                                            ref={ref}
-                                            onBlur={onBlur}
-                                            onChange={(e) => onChange(Array.from(e.target.files ?? []))}
-                                        />
-                                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                                    </>
-                                )}
-                            />
-                        </FormControl>
-                        <p className="text-xs text-gray-500 mt-1">
-                            Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
-                            {entryMode === 'consolidated' && (
-                                <span className="block text-red-400 mt-1">
-                                    * Supporting files are required for Consolidated Entry
-                                </span>
-                            )}
-                        </p>
-                    </FormItem>
-                </div>
+                <EnhancedSupportingFiles 
+                    control={form.control} 
+                    name="supporting_files" 
+                    showCargoPicture={false} 
+                    title="Supporting Files" 
+                    description="Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint" 
 
-                {/* Commercial Terms */}
+                />                {/* Commercial Terms */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <FormItem>
                         <FormLabel>Commercial Terms (Optional)</FormLabel>

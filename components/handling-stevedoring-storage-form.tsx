@@ -18,6 +18,7 @@ import ConsolidatedForm from './consolidated-form';
 import CompanyDetailsCard from './company-details-card';
 import FileUpload from './file-upload';
 
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 // Define the form schema with conditional validation
 const formSchema = z.object({
   import_export: z.enum(['import', 'export']),
@@ -459,80 +460,25 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
             </div>
 
             {/* Supporting Files Section - Optional for Itemized */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-4">Supporting Files 
-                <span className="text-gray-500"> (Optional)</span>
-              </h3>
-              <FormItem>
-                <FormLabel>Upload supporting documents</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="supporting_files"
-                    render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
-                      <>
-                        <Input
-                          type="file"
-                          multiple
-                          accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                          className="max-w-[300px] border-2 rounded-xl"
-                          name={name}
-                          ref={ref}
-                          onBlur={onBlur}
-                          onChange={(e) => onChange(Array.from(e.target.files ?? []))}
-                        />
-                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-                <p className="text-xs text-gray-500 mt-1">
-                  Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
-                </p>
-              </FormItem>
-            </div>
-          </>
+            <EnhancedSupportingFiles 
+                control={form.control} 
+                name="supporting_files" 
+                showCargoPicture={false} 
+                title="Supporting Files (Optional)" 
+            />          </>
         ) : (
           <>
             <ConsolidatedForm control={form.control} />
             
             {/* Supporting Files Section - Mandatory for Consolidated */}
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-4">Supporting Files 
-                <span className="text-red-500"> *</span>
-              </h3>
-              <FormItem>
-                <FormLabel>Upload supporting documents</FormLabel>
-                <FormControl>
-                  <Controller
-                    control={form.control}
-                    name="supporting_files"
-                    render={({ field: { onChange, onBlur, name, ref }, fieldState: { error } }) => (
-                      <>
-                        <Input
-                          type="file"
-                          multiple
-                          accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                          className="max-w-[300px] border-2 rounded-xl"
-                          name={name}
-                          ref={ref}
-                          onBlur={onBlur}
-                          onChange={(e) => onChange(Array.from(e.target.files ?? []))}
-                        />
-                        {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                      </>
-                    )}
-                  />
-                </FormControl>
-                <p className="text-xs text-gray-500 mt-1">
-                  Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
-                  <span className="block text-red-400 mt-1">
-                    * Supporting files are required for Consolidated Entry
-                  </span>
-                </p>
-              </FormItem>
-            </div>
-            
+            <EnhancedSupportingFiles 
+                control={form.control} 
+                name="supporting_files" 
+                showCargoPicture={false} 
+                title="Supporting Files *" 
+                description="Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint. * Supporting files are required for Consolidated Entry" 
+                
+            />            
             {/* Additional Information */}
             <div className="">
               <h1 className='text-xl font-raleway font-medium'>Additional Information</h1>

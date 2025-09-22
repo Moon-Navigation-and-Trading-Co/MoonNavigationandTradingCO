@@ -14,6 +14,7 @@ import { CircleMinus, Plus } from 'lucide-react';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import { Textarea } from './ui/textarea';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 // Define spare part schema
 const sparePartSchema = z.object({
@@ -835,7 +836,13 @@ const TransitSparePartsForm: React.FC<TransitSparePartsFormProps> = ({
                     </div>
                 </div>
 
-                {/* Additional Information Section */}
+                {/* Supporting Files */}
+                <EnhancedSupportingFiles 
+                    control={form.control} 
+                    name="vessel.supporting_files" 
+                    showCargoPicture={false} 
+                    title="Supporting Files (Optional)" 
+                />                {/* Additional Information Section */}
                 <div className="space-y-6">
                     <h3 className="text-lg font-raleway font-medium">Additional Information</h3>
                     
@@ -854,36 +861,8 @@ const TransitSparePartsForm: React.FC<TransitSparePartsFormProps> = ({
                                 )}
                             />
                         </div>
-
-                        <div className="space-y-2">
-                            <FormLabel>Supporting Files (Optional)</FormLabel>
-                            <p className="text-sm text-gray-600">
-                                Attach any relevant documents (Packing List, Invoice, Technical Specs, etc.).
-                            </p>
-                            <p className="text-sm text-gray-600">
-                                Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
-                            </p>
-                            <Controller
-                                control={form.control}
-                                name="vessel.supporting_files"
-                                render={({ field }) => (
-                                    <Input
-                                        type="file"
-                                        multiple
-                                        accept=".pdf,.jpeg,.jpg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                        onChange={(e) => {
-                                            const files = Array.from(e.target.files || []);
-                                            field.onChange(files);
-                                        }}
-                                        className="max-w-md"
-                                    />
-                                )}
-                            />
-                        </div>
                     </div>
-                </div>
-
-                {/* Company Details */}
+                </div>                {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
                 <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>

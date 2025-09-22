@@ -11,6 +11,7 @@ import { Checkbox } from './ui/checkbox';
 import { RadioGroup, RadioGroupItem } from './ui/radio-group';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
     const t = useTranslations('Inland-errors')
@@ -889,26 +890,13 @@ const ShipMaintenanceForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSu
                         </FormControl>
                     </FormItem>
                 </div>
-
                 {/* Supporting files */}
-                <div className="space-y-4">
-                    <h3 className="text-xl font-raleway font-medium">Supporting files (Optional)</h3>
-                    <p className="text-sm text-muted-foreground">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-                    <FormItem>
-                        <FormLabel>Upload Files</FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="supporting_files"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Input className="max-w-[400px] border-2 rounded-xl" type="file" multiple accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx" {...field} />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>)}
-                            />
-                        </FormControl>
-                    </FormItem>
-                </div>
+                <EnhancedSupportingFiles 
+                    control={form.control} 
+                    name="supporting_files"
+                    showCargoPicture={false}
+                    title="Supporting files (Optional)"
+                />
 
                 {/* Additional Information */}
                 <div className="space-y-4">

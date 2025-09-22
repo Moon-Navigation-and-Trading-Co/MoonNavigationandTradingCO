@@ -796,7 +796,7 @@ const InvestorForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit })
                     </ul>
                 </div>
 
-                <Button type="submit" disabled={is_submitting} className="w-full">
+                <Button type="submit" disabled={is_submitting} className="w-[200px]">
                     {is_submitting ? (
                         <div className="flex items-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>

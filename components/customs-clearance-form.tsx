@@ -16,6 +16,7 @@ import { Plus, Upload, Trash2, Mail, Phone, Calendar, Minus, AlertCircle } from 
 import { SearchableCountrySelect } from './searchable-country-select';
 import { PhoneInput } from '@/components/phone-input';
 import CompanyDetailsCard from './company-details-card';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 // Define the form schema
 const formSchema = z.object({
@@ -866,33 +867,12 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
         </div>
 
         {/* Supporting Files */}
-        <div className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl font-raleway font-medium mb-4">Supporting Files (Optional)</h2>
-          <FormItem>
-            <FormLabel>
-              {t('file')} <span className="text-sm text-gray-500">({t('optional')})</span>
-            </FormLabel>
-            <FormControl>
-              <Controller
-                control={form.control}
-                name="supporting_files"
-                render={({ field, fieldState: { error } }) => (
-                  <>
-                    <Input
-                      type="file"
-                      multiple
-                      accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                      className="max-w-[300px] border-2 rounded-xl"
-                      {...field}
-                    />
-                    {error && <p className="text-red-500 text-sm mt-1">{error.message}</p>}
-                  </>
-                )}
-              />
-            </FormControl>
-            <p className="text-xs text-gray-500 mt-1">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-          </FormItem>
-        </div>
+        <EnhancedSupportingFiles 
+          control={form.control} 
+          name="supporting_files"
+          showCargoPicture={false}
+          title="Supporting Files (Optional)"
+        />
 
         {/* Additional Required Services/Information */}
         <div className="bg-white rounded-lg shadow-md p-6">

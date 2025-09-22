@@ -44,24 +44,42 @@ const Page: React.FC = () => {
     }
 
     const submitForm = async (formData: any) => {
-        // Flatten the formData before inserting into Supabase
-        let flattenedData;
-
-        flattenedData = {
+        // Map form data to database schema - using the actual form field names
+        const flattenedData = {
             user_id: user?.id || null, // Make user_id optional - null if user is not logged in
 
-            first_name: formData.firstname,
-            last_name: formData.lastname,
-            title: formData.title,
-            organization_name: formData.organization,
-            accredited: formData.accredited_investor,
-            qualified: formData.qualified_investor,
-            check_size: formData.check_size,
-            average_check_size: formData.average_check_size,
+            // Personal/Company Information
+            full_name: formData.full_name,
+            company_name: formData.company_name,
+            position_title: formData.position_title,
+            nationality: formData.nationality,
             email: formData.email,
             additional_email: formData.additional_email,
             phone_number: formData.phone_number,
-            additional_phone_number: formData.additional_phone_number
+            additional_phone_number: formData.additional_phone_number,
+            city_country_residence: formData.city_country_residence,
+
+            // Investment Interest
+            investor_type: formData.investor_type,
+            investor_type_other: formData.investor_type_other,
+            investment_range: formData.investment_range,
+            average_check_size: formData.average_check_size,
+            preferred_investment_type: formData.preferred_investment_type,
+            preferred_investment_type_other: formData.preferred_investment_type_other,
+
+            // Areas of Interest
+            areas_of_interest: formData.areas_of_interest,
+            areas_of_interest_other: formData.areas_of_interest_other,
+
+            // Interest Rate
+            interest_rate_type: formData.interest_rate_type,
+            fixed_interest_rate: formData.fixed_interest_rate,
+
+            // Background & Intent
+            background_linkedin: formData.background_linkedin,
+            investment_interest_reason: formData.investment_interest_reason,
+            require_nda: formData.require_nda,
+            additional_notes: formData.additional_notes,
         };
 
         console.log(flattenedData)

@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "./ui/button";
 import { useState } from "react";
 import { ChevronDown, ChevronUp, X, Plus } from "lucide-react";
+import EnhancedSupportingFiles from "./enhanced-supporting-files";
 
 
 const CommoditiesCard = ({ control }: { control: any }) => {
@@ -30,7 +31,7 @@ const CommoditiesCard = ({ control }: { control: any }) => {
             <div className="grid grid-cols-1 md:grid-cols-2">
                 {/* Main Commodity Fields - Horizontal Layout */}
                 <div className="pt-8 pb-10 p-4 col-span-2">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {/* Commodity Type */}
                         <div>
                             <FormLabel className="text-sm font-medium mb-2 block">{t('commodity')}</FormLabel>
@@ -76,44 +77,13 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                 />
                             </FormControl>
                         </div>
-
-                        {/* Supporting Files */}
-                        <div>
-                            <FormLabel className="text-sm font-medium mb-2 block">Supporting files (Optional)</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={control}
-                                    name="commodities.supporting_files"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input
-                                                className="w-full border-2 rounded-xl"
-                                                type="file"
-                                                multiple
-                                                {...field}
-                                            />
-                                            {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
-                                        </>
-                                    )}
-                                />
-                            </FormControl>
-                            <p className="text-xs text-gray-500 mt-1">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-                        </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
 
                 {/* Dynamic Additional Commodities - Stacked Vertically */}
                 {fields.map((field, index) => (
                     <div key={field.id} className="px-4 w-full col-span-2 mb-4">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border border-gray-200 rounded-lg">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border border-gray-200 rounded-lg">
                             {/* Additional Commodity Type */}
                             <div>
                                 <FormLabel className="text-sm font-medium mb-2 block">Commodity Type {index + 2}</FormLabel>
@@ -155,28 +125,6 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                                     )}
                                 />
                             </div>
-
-                            {/* Additional Supporting Files */}
-                            <div>
-                                <FormLabel className="text-sm font-medium mb-2 block">Supporting files (Optional) {index + 2}</FormLabel>
-                                <Controller
-                                    control={control}
-                                    name={`commodities.additional_commodities.${index}.supporting_files`}
-                                    render={({ field, fieldState: { error } }) => (
-                                        <>
-                                            <Input
-                                                className="w-full border-2 rounded-xl"
-                                                id={`additional-supporting-files-${index}`}
-                                                type="file"
-                                                multiple
-                                                {...field}
-                                            />
-                                            {error && <p className="text-red-500 text-xs mt-1">{error.message}</p>}
-                                        </>
-                                    )}
-                                />
-                                <p className="text-xs text-gray-500 mt-1">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-                            </div>
                         </div>
                         
                         {/* Remove Button */}
@@ -198,41 +146,52 @@ const CommoditiesCard = ({ control }: { control: any }) => {
                         type="button"
                         onClick={() => append({
                             type: '',
-                            quantity: 0,
-                            supporting_files: []
+                            quantity: 0
                         })}
                         className="bg-gray-800 text-white hover:bg-gray-900 px-6 py-2 rounded"
                     >
                         Add Additional Commodity {fields.length > 0 && `(${fields.length} added)`}
                     </Button>
                 </div>
+            </div>
 
-                {/* Additional Requirements Section */}
-                <div className="px-4 w-full items-center gap-1.5 mt-1 col-span-2 mb-10">
-                    <h3 className="text-lg font-medium mb-4">Additional Requirements</h3>
-                    <FormItem>
-                        <FormLabel htmlFor="additional-requirements">
-                            Declare Any Additional Requirements or Trade Notes
-                        </FormLabel>
-                        <FormControl>
-                            <Controller
-                                control={control}
-                                name="commodities.additional_requirements"
-                                render={({ field, fieldState: { error } }) => (
-                                    <>
-                                        <Textarea
-                                            className="w-full max-w-[800px] min-h-[180px] border-2 rounded-xl"
-                                            id="additional-requirements"
-                                            placeholder="Please specify any special trading instructions, delivery conditions, documentation needs, or regulatory concerns relevant to your request."
-                                            {...field}
-                                        />
-                                        {error && <p className="text-red-500">{error.message}</p>}
-                                    </>
-                                )}
-                            />
-                        </FormControl>
-                    </FormItem>
-                </div>
+            {/* Enhanced Supporting Files Section - Outside of Commodity Details Card */}
+            <div className="w-full mt-8 mb-6">
+                <EnhancedSupportingFiles
+                    control={control}
+                    name="commodities.supporting_files"
+                    cargoPictureName="commodities.cargo_picture"
+                    showCargoPicture={true}
+                    title="Supporting Files"
+                    description="Upload supporting documents for your international trading request. Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint"
+                />
+            </div>
+
+            {/* Additional Requirements Section */}
+            <div className="px-4 w-full items-center gap-1.5 mt-1 col-span-2 mb-10">
+                <h3 className="text-lg font-medium mb-4">Additional Requirements</h3>
+                <FormItem>
+                    <FormLabel htmlFor="additional-requirements">
+                        Declare Any Additional Requirements or Trade Notes
+                    </FormLabel>
+                    <FormControl>
+                        <Controller
+                            control={control}
+                            name="commodities.additional_requirements"
+                            render={({ field, fieldState: { error } }) => (
+                                <>
+                                    <Textarea
+                                        className="w-full max-w-[800px] min-h-[180px] border-2 rounded-xl"
+                                        id="additional-requirements"
+                                        placeholder="Please specify any special trading instructions, delivery conditions, documentation needs, or regulatory concerns relevant to your request."
+                                        {...field}
+                                    />
+                                    {error && <p className="text-red-500">{error.message}</p>}
+                                </>
+                            )}
+                        />
+                    </FormControl>
+                </FormItem>
             </div>
         </div>
     );

@@ -15,6 +15,7 @@ import RoutingCard0 from './routing-card-0';
 import DatesCard from './dates-card-variant-2';
 import ContainerDetailsTable from './container-details-table';
 import { useTranslations } from 'next-intl';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 // 1. Define a type-safe form handler using z.infer
 const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
@@ -183,59 +184,12 @@ const ContainerInlandServicesForm: React.FC<{ onSubmit: (data: any) => void }> =
                 />
 
                 {/* Supporting Files */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-raleway font-medium mb-4">Supporting files (Optional)</h2>
-                    <p className="text-sm text-gray-600 mb-4">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-                    
-                    <div className="space-y-4">
-                        {/* Cargo Picture Checkbox */}
-                        <FormItem>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="supporting_files.cargo_picture"
-                                    render={({ field }) => (
-                                        <div className="flex items-center space-x-2">
-                                            <Checkbox
-                                                checked={field.value}
-                                                onCheckedChange={field.onChange}
-                                                id="cargo_picture"
-                                            />
-                                            <label htmlFor="cargo_picture" className="text-sm font-medium">
-                                                I wish to upload cargo picture with lifting points
-                                            </label>
-                                        </div>
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
+                <EnhancedSupportingFiles 
+                    control={form.control} 
+                    name="supporting_files.files"
+                    cargoPictureName="supporting_files.cargo_picture"
 
-                        {/* File Upload */}
-                        <FormItem>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="supporting_files.files"
-                                    render={({ field }) => (
-                                        <div className="space-y-2">
-                                            <Input
-                                                type="file"
-                                                multiple
-                                                accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                                className="max-w-md"
-                                                onChange={(e) => {
-                                                    const files = Array.from(e.target.files || []);
-                                                    field.onChange(files);
-                                                }}
-                                            />
-                                        </div>
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
-                    </div>
-                </div>
-
+                />
                 {/* Additional Information */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-raleway font-medium mb-4">Additional Information</h2>

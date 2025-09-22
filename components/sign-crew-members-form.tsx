@@ -16,6 +16,7 @@ import { Textarea } from './ui/textarea';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select';
 import { Alert, AlertDescription } from './ui/alert';
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 // Nationalities list (same as original)
 const nationalities = [
@@ -582,7 +583,13 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                     </div>
                 )}
 
-                {/* Enhanced Additional Information Section */}
+                {/* Supporting Files */}
+                <EnhancedSupportingFiles 
+                    control={form.control} 
+                    name="supporting_files" 
+                    showCargoPicture={false} 
+                    title="Supporting files (optional)" 
+                />                {/* Enhanced Additional Information Section */}
                 <div className="space-y-6">
                     <h3 className="text-lg font-raleway font-medium">Additional Information</h3>
                     
@@ -602,79 +609,8 @@ const SignCrewMembersForm: React.FC<{ onSubmit: (data: any) => void; isSubmittin
                             />
                         </div>
 
-                        <div className="space-y-4">
-                        <div className="space-y-2">
-                            <FormLabel>Supporting files (optional)</FormLabel>
-                            <p className="text-sm text-gray-600">
-                                    Max size 20 MB per file. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint
-                            </p>
-                                <div className="flex items-center gap-4">
-                                    <Input
-                                        type="file"
-                                        multiple
-                                        accept=".pdf,.jpeg,.jpg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                                        onChange={handleFileChange}
-                                        className="max-w-md"
-                                        id="file-upload"
-                                    />
-                                    <Button
-                                        type="button"
-                                        variant="outline"
-                                        onClick={() => document.getElementById('file-upload')?.click()}
-                                        className="flex items-center gap-2"
-                                    >
-                                        <Upload className="h-4 w-4" />
-                                        Browse Files
-                                    </Button>
-                                </div>
-                            </div>
-
-                            {/* Display file errors */}
-                            {fileErrors.length > 0 && (
-                                <Alert variant="destructive">
-                                    <AlertCircle className="h-4 w-4" />
-                                    <AlertDescription>
-                                        <ul className="list-disc list-inside space-y-1">
-                                            {fileErrors.map((error, index) => (
-                                                <li key={index}>{error}</li>
-                                            ))}
-                                        </ul>
-                                    </AlertDescription>
-                                </Alert>
-                            )}
-
-                            {/* Display uploaded files */}
-                            {uploadedFiles.length > 0 && (
-                                <div className="space-y-2">
-                                    <p className="text-sm font-medium">Uploaded Files:</p>
-                                    <div className="space-y-2">
-                                        {uploadedFiles.map((file, index) => (
-                                            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                                                <div className="flex items-center gap-2">
-                                                    <Upload className="h-4 w-4 text-gray-500" />
-                                                    <span className="text-sm">{file.name}</span>
-                                                    <span className="text-xs text-gray-500">
-                                                        ({(file.size / 1024 / 1024).toFixed(2)} MB)
-                                                    </span>
-                                                </div>
-                                                <Button
-                                                    type="button"
-                                                    variant="ghost"
-                                                    onClick={() => removeFile(index)}
-                                                    className="text-red-500 hover:text-red-700"
-                                                >
-                                                    <CircleMinus className="h-4 w-4" />
-                                                </Button>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
                     </div>
-                </div>
-
-                {/* Company Details */}
+                </div>                {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
                 <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>

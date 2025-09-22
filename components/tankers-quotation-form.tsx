@@ -17,6 +17,7 @@ import RoutingCard0 from './routing-card-0';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { toast } from '@/hooks/use-toast';
 
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 const tankersFormSchema = z.object({
   routing: z.array(z.object({
     from_country: z.string().min(1, { message: "From country is required" }),
@@ -635,56 +636,12 @@ export default function TankersQuotationForm({ onSubmit, isSubmitting = false }:
         </div>
 
         {/* Supporting Files */}
-        <div className="">
-          <h1 className='text-xl font-raleway font-medium'>Supporting files (optional)</h1>
-          <div className='pt-8 pb-10 grid gap-5 p-4 rounded-3xl'>
-            <FormItem>
-              <FormLabel>Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</FormLabel>
-              <FormControl>
-                <Controller
-                  control={form.control}
-                  name="supporting_files"
-                  render={({ field: { onChange, ref }, fieldState: { error } }) => (
-                    <>
-                      <Input
-                        type="file"
-                        multiple
-                        accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
-                        className={`max-w-[300px] border-2 rounded-xl ${error ? 'border-red-500' : ''}`}
-                        onChange={(e) => onChange(e.target.files || null)}
-                        ref={ref}
-                        value=""
-                      />
-                      {error && (
-                        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
-                          <AlertCircle className="h-3 w-3" />
-                          {error.message}
-                        </p>
-                      )}
-                    </>
-                  )}
-                />
-              </FormControl>
-            </FormItem>
-
-            <div className="flex items-center space-x-2">
-              <Controller
-                control={form.control}
-                name="cargo_lifting_points"
-                render={({ field }) => (
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                    id="cargo_lifting_points"
-                  />
-                )}
-              />
-              <label htmlFor="cargo_lifting_points" className="text-sm font-medium">
-                I wish to upload cargo picture with lifting points
-              </label>
-            </div>
-          </div>
-        </div>
+        <EnhancedSupportingFiles 
+          control={form.control} 
+          name="supporting_files"
+          cargoPictureName="cargo_lifting_points"
+          title="Supporting files (optional)"
+        />
 
         {/* Additional Information */}
         <div className="">

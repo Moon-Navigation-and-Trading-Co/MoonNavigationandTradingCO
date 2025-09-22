@@ -6,6 +6,7 @@ import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { Label } from "./ui/label";
 import { Checkbox } from "./ui/checkbox";
 import { Textarea } from "./ui/textarea";
+import EnhancedSupportingFiles from './enhanced-supporting-files';
 
 const PDAdetails = ({ control, formState }: { control: any; formState?: any }) => {
     // Get Content
@@ -1157,7 +1158,13 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                 )}
             </div>
 
-            {/* Additional Information */}
+            {/* Supporting Files */}
+            <EnhancedSupportingFiles 
+                control={control} 
+                name="supporting_files" 
+                showCargoPicture={false} 
+                title="Supporting Files (Optional)" 
+            />            {/* Additional Information */}
             <div className="space-y-4 p-4">
                 <h3 className="text-xl font-semibold">Additional Information</h3>
                 <FormItem>
@@ -1175,37 +1182,7 @@ const PDAdetails = ({ control, formState }: { control: any; formState?: any }) =
                     </FormControl>
                 </FormItem>
             </div>
-
-            {/* Supporting Files */}
-            <div className="space-y-4 p-4">
-                <h3 className="text-xl font-semibold">Supporting Files (Optional)</h3>
-                <p className="text-sm text-muted-foreground">Attach any relevant documents (Charter Party, Voyage Order, etc.)</p>
-                <p className="text-sm text-muted-foreground">Max size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint</p>
-                <FormItem>
-                    <FormLabel>Upload Files</FormLabel>
-                    <FormControl>
-                        <Controller
-                            control={control}
-                            name="supporting_files"
-                            render={({ field, fieldState: { error } }) => (
-                                <>
-                                    <Input 
-                                        className="max-w-[400px] border-2 rounded-xl" 
-                                        type="file" 
-                                        multiple 
-                                        accept=".pdf,.jpg,.jpeg,.gif,.png,.doc,.docx,.xls,.xlsx,.ppt,.pptx" 
-                                        onChange={(e) => field.onChange(Array.from(e.target.files || []).map(f => f.name))}
-                                    />
-                                    {error && <p className="text-red-500">{error.message}</p>}
-                                </>
-                            )}
-                        />
-                    </FormControl>
-                </FormItem>
-            </div>
-
-        </div>
-    );
+        </div>    );
 };
 
 export default PDAdetails;
