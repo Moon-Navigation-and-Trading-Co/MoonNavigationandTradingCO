@@ -137,11 +137,11 @@ type FormData = z.infer<typeof formSchema>;
 
 interface CustomsClearanceFormProps {
   onSubmit?: (formData: FormData) => void;
+  isSubmitting?: boolean;
 }
 
-export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormProps) {
+export default function CustomsClearanceForm({ onSubmit, isSubmitting = false }: CustomsClearanceFormProps) {
   const t = useTranslations('Inland-forms');
-  const [is_submitting, set_is_submitting] = useState(false);
   
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -182,7 +182,6 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
   });
 
   const handleSubmit = async (values: FormData) => {
-    set_is_submitting(true);
     try {
       if (onSubmit) {
         await onSubmit(values);
@@ -190,8 +189,6 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
       console.log("Customs Clearance Form Data:", values);
     } catch (error) {
       console.error('Error submitting form:', error);
-    } finally {
-      set_is_submitting(false);
     }
   };
 
@@ -902,8 +899,8 @@ export default function CustomsClearanceForm({ onSubmit }: CustomsClearanceFormP
         
         {/* Submit Button */}
         <div className="text-center">
-          <Button type="submit" disabled={is_submitting} className="w-[200px]">
-            {is_submitting ? (
+          <Button type="submit" disabled={isSubmitting} className="w-[200px]">
+            {isSubmitting ? (
               <div className="flex items-center gap-2">
                 <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                 <span>Submitting...</span>

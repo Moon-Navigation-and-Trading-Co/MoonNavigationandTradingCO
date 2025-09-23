@@ -13,9 +13,8 @@ import CompanyDetailsCard from './company-details-card';
 import EnhancedSupportingFiles from './enhanced-supporting-files';
 import { useTranslations } from 'next-intl';
 
-const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSubmit }) => {
+const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void; isSubmitting?: boolean }> = ({ onSubmit, isSubmitting = false }) => {
     const t = useTranslations('Inland-errors')
-    const [is_submitting, set_is_submitting] = useState(false);
     const formSchema = z.object({
         vessel: z.object({
             name: z.string().min(1, { message: t("Required") }),
@@ -129,13 +128,10 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
 
     // 2. Type-safe submit handler
     const handleSubmit = async (values: any) => {
-        set_is_submitting(true);
         try {
             await onSubmit(values);
         } catch (error) {
             console.error('Error submitting form:', error);
-        } finally {
-            set_is_submitting(false);
         }
     };
 
@@ -665,6 +661,7 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
                     showCargoPicture={true}
                     title="Supporting Files *"
                     description="Upload supporting documents for your ship management request. At least one file is required. Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint"
+                    error={form.formState.errors.supporting_files?.files}
                 />
 
                 {/* Additional Information */}
@@ -689,8 +686,8 @@ const ShipManagementForm: React.FC<{ onSubmit: (data: any) => void }> = ({ onSub
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />
 
-                <Button type="submit" disabled={is_submitting} className="mt-4 w-[200px]">
-                    {is_submitting ? (
+                <Button type="submit" disabled={isSubmitting} className="mt-4 w-[200px]">
+                    {isSubmitting ? (
                         <div className="flex items-center gap-2">
                             <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
                             <span>Submitting...</span>

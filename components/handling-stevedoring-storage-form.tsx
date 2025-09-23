@@ -152,10 +152,10 @@ type FormData = z.infer<typeof formSchema>;
 
 interface Props {
   onSubmit: (data: FormData) => void;
+  isSubmitting?: boolean;
 }
 
-export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
-    const [is_submitting, set_is_submitting] = useState(false);
+export default function HandlingStevedoringStorageForm({ onSubmit, isSubmitting = false }: Props) {
     const [entry_mode, set_entry_mode] = useState<'itemized' | 'consolidated'>('itemized');
   
   const form = useForm<FormData>({
@@ -230,7 +230,6 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
   });
 
   const handleSubmit = async (values: FormData) => {
-    set_is_submitting(true);
     try {
       // Clean up data before submission - only send relevant data
       const cleanedData: FormData = {
@@ -247,8 +246,6 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
       console.log("Handling Stevedoring Storage Form Data:", cleanedData);
     } catch (error) {
       console.error('Error submitting form:', error);
-    } finally {
-      set_is_submitting(false);
     }
   };
 
@@ -999,8 +996,8 @@ export default function HandlingStevedoringStorageForm({ onSubmit }: Props) {
         {/* Company Details */}
         <CompanyDetailsCard control={form.control} />
 
-        <Button type="submit" className={`mt-4 w-[200px] ${is_submitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={is_submitting}>
-          {is_submitting ? (
+        <Button type="submit" className={`mt-4 w-[200px] ${isSubmitting ? "opacity-75 cursor-not-allowed" : ""}`} disabled={isSubmitting}>
+          {isSubmitting ? (
             <div className="flex items-center justify-center gap-2">
               <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-b-2 border-white"></div>
               <span>Submitting...</span>

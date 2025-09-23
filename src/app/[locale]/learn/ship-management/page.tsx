@@ -60,7 +60,7 @@ export default function ShipManagement() {
 
             {/* Classic Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 mt-12">
-            <Link href="/ship-management-forms">
+            <Link href="/vessel-support-maintenance-forms">
                 <button className="group relative bg-white text-gray-900 hover:bg-gray-50 px-10 py-4 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-gray-300 transform hover:-translate-y-1 active:translate-y-0">
                   <span className="flex items-center gap-2">
                     <svg className="w-4 h-4 text-blue-600 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1219,7 +1219,7 @@ export default function ShipManagement() {
       </section>
 
       {/* Quote Component */}
-      <GetQuoteComponent topic="Ship Management" link="/ship-management-forms" />
+      <GetQuoteComponent topic="Ship Management" link="/vessel-support-maintenance-forms" />
       
       {/* FAQ Section */}
       <FAQSearch category="ship-management" />    

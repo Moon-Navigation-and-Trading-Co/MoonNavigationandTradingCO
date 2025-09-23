@@ -350,7 +350,7 @@ export default function CustomsClearanceLearnMore() {
         </div>
       </section>
 
-      <GetQuoteComponent topic="Customs Clearance" link="/customs-clearance-forms"/>
+      <GetQuoteComponent topic="Customs Clearance" link="/other-logistics-services-forms"/>
       <FAQSearch category="customs-clearance" />
     </>
   );

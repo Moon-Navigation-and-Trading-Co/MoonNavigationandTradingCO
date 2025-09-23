@@ -118,14 +118,14 @@ export default function Index() {
         description: "",
         image: "/docking-1.jpg",
         link: "/learn/dockingandmaintenance",
-        quote: "/ship-maintenance-forms"
+        quote: "/vessel-support-maintenance-forms"
       },
       {
         title: "Ship Management",
         description: "",
         image: "/sm-1.jpg",
         link: "/learn/ship-management",
-        quote: "/ship-management-forms"
+        quote: "/vessel-support-maintenance-forms"
       }
     ]
     const TS = [
@@ -143,7 +143,7 @@ export default function Index() {
         description: "",
         image: "/hss-1.jpg",
         link: "/learn/handling-stevedoring-storage/learn-more",
-        quote: "/container-services-forms"
+        quote: "/other-logistics-services-forms"
 
       },
       {
@@ -151,7 +151,7 @@ export default function Index() {
         description: "",
         image: "/c-1.jpg",
         link: "/learn/customs",
-        quote: "/learn/container-services-forms"
+        quote: "/other-logistics-services-forms"
       }
     ]
     const EF = [

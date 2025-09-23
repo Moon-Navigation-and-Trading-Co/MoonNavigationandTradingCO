@@ -76,6 +76,20 @@ const forms = [
     category: 'Freight Services'
   },
   {
+    title: 'Other Logistics Services',
+    description: 'Handling, stevedoring, storage, and customs clearance services',
+    href: '/other-logistics-services-forms',
+    icon: Package,
+    category: 'Logistics Services'
+  },
+  {
+    title: 'Vessel Support and Maintenance',
+    description: 'Docking, maintenance, repair, and ship management services',
+    href: '/vessel-support-maintenance-forms',
+    icon: Wrench,
+    category: 'Vessel Services'
+  },
+  {
     title: 'Out Gauge Forms',
     description: 'Oversized and out-of-gauge cargo forms',
     href: '/out-gauge-forms',
