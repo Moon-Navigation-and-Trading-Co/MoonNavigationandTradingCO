@@ -11,7 +11,6 @@ import { Textarea } from './ui/textarea';
 import { AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import RoutingCard0 from './routing-card-0';
-import CommoditiesCard from './commodities-card';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import ItemizedTable from './itemized-table';
@@ -86,31 +85,18 @@ const formSchema = z.object({
         special_handling: z.string().optional(),
     }).optional(),
     supporting_files: z.array(z.instanceof(File)).optional(),
+    service_contract: z.string().optional(),
     additional_details: z.string().optional(),
     commercial_terms: z.string().optional(),
-    commodities: z.array(z.object({
-        temperature: z.boolean().optional(),
-        dangerous: z.boolean().optional(),
-        oversized: z.boolean().optional(),
-        length: z.number().min(1, { message: "Length is required" }),
-        width: z.number().min(1, { message: "Width is required" }),
-        height: z.number().min(1, { message: "Height is required" }),
-        weight: z.number().min(1, { message: "Weight is required" }),
-        file: z.string().optional().refine(value => {
-            return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
-        }, { message: "Invalid file format" }),
-        additional_information: z.string().optional(),
-    })),
-    vad: z.object({
-        inland_container: z.boolean().optional(),
-    }),
     company_details: z.object({
         company_name: z.string().min(1, { message: "Company name is required" }),
         contact_person_name: z.string().min(1, { message: "Contact person name is required" }),
         title: z.string().min(1, { message: "Title is required" }),
         country_of_origin: z.string().min(1, { message: "Country of origin is required" }),
         company_email: z.string().email({ message: "Valid email is required" }),
+        additional_email: z.string().email().optional().or(z.literal('')),
         phone_number: z.string().min(1, { message: "Phone number is required" }),
+        additional_phone_number: z.string().optional(),
     })
 }).refine((data) => {
     // Conditional validation: require supporting_files for consolidated mode
@@ -188,29 +174,18 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => void }> 
             }],
             consolidated_data: undefined,
             supporting_files: [],
+            service_contract: '',
             additional_details: '',
             commercial_terms: '',
-            commodities: [{
-                temperature: false,
-                dangerous: false,
-                oversized: false,
-                length: 0,
-                width: 0,
-                height: 0,
-                weight: 0,
-                file: '',
-                additional_information: '',
-            }],
-            vad: {
-                inland_container: false,
-            },
             company_details: {
                 company_name: '',
                 contact_person_name: '',
                 title: '',
                 country_of_origin: '',
                 company_email: '',
+                additional_email: '',
                 phone_number: '',
+                additional_phone_number: '',
             }
         }
     });
@@ -431,7 +406,42 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => void }> 
                             name="supporting_files" 
                             showCargoPicture={false} 
                             title="Supporting Files (Optional)" 
-                        />                    </>
+                        />
+
+                        {/* Service Contract Section */}
+                        <div className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-lg font-semibold mb-4">Service Contract 
+                                <span className="text-gray-500"> (Optional)</span>
+                            </h3>
+                            <FormItem>
+                                <FormLabel>Service Contract</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="service_contract"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <div className="space-y-1">
+                                                <Textarea
+                                                    {...field}
+                                                    placeholder="Please provide service contract details..."
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${
+                                                        error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                    }`}
+                                                    rows={3}
+                                                />
+                                                {error && (
+                                                    <p className="text-red-500 text-sm flex items-center gap-1">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {error.message}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        </div>
+                    </>
                 ) : (
                     <>
                         <ConsolidatedForm control={form.control} />
@@ -451,8 +461,43 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => void }> 
                             showCargoPicture={false} 
                             title="Supporting Files *" 
                             description="Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint. * Supporting files are required for Consolidated Entry" 
-                            required={true} 
-                        />                        
+                            error={form.formState.errors.supporting_files}
+                        />
+
+                        {/* Service Contract Section */}
+                        <div className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-lg font-semibold mb-4">Service Contract 
+                                <span className="text-gray-500"> (Optional)</span>
+                            </h3>
+                            <FormItem>
+                                <FormLabel>Service Contract</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="service_contract"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <div className="space-y-1">
+                                                <Textarea
+                                                    {...field}
+                                                    placeholder="Please provide service contract details..."
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${
+                                                        error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                    }`}
+                                                    rows={3}
+                                                />
+                                                {error && (
+                                                    <p className="text-red-500 text-sm flex items-center gap-1">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {error.message}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        </div>
+                        
                         {/* Additional Information */}
                         <div className="bg-white rounded-lg shadow-md p-6">
                             <h3 className="text-lg font-semibold mb-4">Additional Information 
@@ -520,30 +565,7 @@ const LocalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => void }> 
                     </Alert>
                 )}
 
-                {/* Commodities Section */}
-                <CommoditiesCard control={form.control} dangerous_bool={false} />
 
-                {/* VAD Section */}
-                <div className="bg-white rounded-lg shadow-md p-6">
-                    <h2 className="text-xl font-semibold mb-4">VAD (Value Added Services)</h2>
-                    <FormItem>
-                        <FormControl>
-                            <Controller
-                                control={form.control}
-                                name="vad.inland_container"
-                                render={({ field }) => (
-                                    <div className="flex items-center space-x-2">
-                                        <Checkbox
-                                            checked={field.value}
-                                            onCheckedChange={field.onChange}
-                                        />
-                                        <label className="text-sm">Inland Container</label>
-                                    </div>
-                                )}
-                            />
-                        </FormControl>
-                    </FormItem>
-                </div>
 
                 {/* Company Details */}
                 <CompanyDetailsCard control={form.control} />

@@ -13,7 +13,6 @@ import { useTranslations } from "next-intl";
 import { sendFormEmail } from '@/utils/email-helper';
 import { toast } from "@/hooks/use-toast";
 import RequestQuoteButton from './RequestQuoteButton';
-import { Mail, Phone } from 'lucide-react';
 import { PhoneInput } from "@/components/phone-input";
 import { CountrySelect } from "@/components/country-select";
 
@@ -56,9 +55,16 @@ const ContactForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, set_submitted] = useState(false);
   const [error, set_error] = useState<string | null>(null);
-  const [show_additional_email, set_show_additional_email] = useState(false);
-  const [show_additional_phone, set_show_additional_phone] = useState(false);
   const [phone_value, set_phone_value] = useState("");
+
+  const handleError = (errors: any) => {
+    console.error("Validation errors:", errors);
+    toast({
+      title: "Validation Errors",
+      description: "Please review and correct the highlighted fields.",
+      variant: "destructive",
+    });
+  };
 
   const onSubmit = async (data: FormData) => {
     setLoading(true);
@@ -93,12 +99,15 @@ const ContactForm: React.FC = () => {
           title: "Success",
           description: "Message sent successfully",
         })
+        set_submitted(true) // Show success message
         reset()
+        set_phone_value("") // Reset phone value state
       }
     } catch (err) {
       console.error("Error inserting data:", err);
       set_error("Failed to submit the form. Please try again.");
-      setLoading(false);
+    } finally {
+      setLoading(false); // Always reset loading state
     }
   };
 
@@ -111,7 +120,7 @@ const ContactForm: React.FC = () => {
           </p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full font-raleway">
+        <form onSubmit={handleSubmit(onSubmit, handleError)} className="w-full font-raleway">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
             <div className="flex flex-col">
               <label htmlFor="firstName" className="font-raleway font-medium text-sm text-gray-700 mb-2">First Name</label>
@@ -145,7 +154,7 @@ const ContactForm: React.FC = () => {
                 id="company_name"
                 {...register("company_name")}
                 placeholder="Enter company name"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="border border-[#E5EAF1] rounded-lg h-12 text-base focus:ring-2 focus:ring-[#283593]"
               />
             </div>
             <div className="flex flex-col">
@@ -164,8 +173,9 @@ const ContactForm: React.FC = () => {
                 id="phone"
                 value={phone_value}
                 onChange={(value) => {
-                  set_phone_value(value as string);
-                  setValue("phone", value as string);
+                  const stringValue = value || "";
+                  set_phone_value(stringValue);
+                  setValue("phone", stringValue);
                 }}
                 className="border border-[#E5EAF1] rounded-lg h-12  text-base focus:ring-2 focus:ring-[#283593]"
                 defaultCountry="EG"
@@ -196,9 +206,10 @@ const ContactForm: React.FC = () => {
           <div className="flex justify-end mt-8">
             <RequestQuoteButton
               type="submit"
-              className="w-[200px] h-12 text-base font-raleway font-medium bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              disabled={loading}
+              className="w-[200px] h-12 text-base font-raleway font-medium bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
             >
-              Send Message
+              {loading ? "Sending..." : "Send Message"}
             </RequestQuoteButton>
           </div>
         </form>

@@ -143,7 +143,7 @@ export const container_inland_services_table = pgTable("container_inland_service
 });
 
 // Contact Requests - Updated to match contact form fields
-export const contact_requests_table = pgTable("contact_requests", {
+export const contact_requests_table = pgTable("ContactRequests", {
     id: uuid().primaryKey().defaultRandom(),
     created_at: timestamp("created_at", { withTimezone: true }).defaultNow(),
     // Contact details - Updated to match form

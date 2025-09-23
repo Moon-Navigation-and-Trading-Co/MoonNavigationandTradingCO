@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import FormTabs from '@/components/form-tabs-variant-1';
 import InternationalInlandServicesForm from '@/components/international-inland-services-form';
+import LocalInlandServicesForm from '@/components/local-inland-services-form';
 import ContainerInlandServicesForm from '@/components/container-inland-services-form';
 import { createClient } from '@/utils/supabase/client'; // Make sure this is a client-side import
 import { useToast } from "@/hooks/use-toast"
@@ -143,7 +144,7 @@ const Page: React.FC = () => {
             title: t('local'),
             description: t('local-p'),
             content: <>
-                <InternationalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "local_inland_services")} />
+                <LocalInlandServicesForm onSubmit={(formData: any) => submitForm(formData, "local_inland_services")} />
             </>
         },
         {

@@ -12,7 +12,6 @@ import { Textarea } from './ui/textarea';
 import { AlertCircle } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import RoutingCard0 from './routing-card-0';
-import CommoditiesCard from './commodities-card-variant-8';
 import CompanyDetailsCard from './company-details-card';
 import { useTranslations } from 'next-intl';
 import DatesCard from './dates-card-variant-2';
@@ -101,33 +100,9 @@ const formSchema = z.object({
         temperature_max: z.number().optional(),
         special_handling: z.string().optional(),
     }).optional(),
-    supporting_files: z.array(z.any()).optional(),
-    additional_details: z.string().optional(),
+    supporting_files: z.array(z.instanceof(File)).optional(),
+    service_contract: z.string().optional(),
     commercial_terms: z.string().optional(),
-    commodities: z.array(z.object({
-        type: z.string().min(1, { message: "Type is required" }),
-        temperature: z.boolean().optional(),
-        dangerous: z.boolean().optional(),
-        oversized: z.boolean().optional(),
-        details: z.string().optional(),
-        length: z.number().optional().refine(val => {
-            return val === undefined || val === 0 || val >= 1;
-        }, { message: "Length must be 0 or at least 1" }),
-        width: z.number().optional().refine(val => {
-            return val === undefined || val === 0 || val >= 1;
-        }, { message: "Width must be 0 or at least 1" }),
-        height: z.number().optional().refine(val => {
-            return val === undefined || val === 0 || val >= 1;
-        }, { message: "Height must be 0 or at least 1" }),
-        weight: z.number().optional().refine(val => {
-            return val === undefined || val === 0 || val >= 1;
-        }, { message: "Weight must be 0 or at least 1" }),
-        weight_unit: z.string().optional(),
-        file: z.string().optional().refine(value => {
-            return !value || value.match(/\.(pdf|jpe?g|gif|png|docx|doc|xls|xlsx|ppt|pptx)$/i);
-        }, { message: "Invalid file format" }),
-        additional_information: z.string().optional(),
-    })),
     additional_services: z.object({
         inland_container_transportation: z.boolean().optional(),
         handling_stevedoring: z.boolean().optional(),
@@ -139,10 +114,6 @@ const formSchema = z.object({
         other_specify: z.string().optional(),
         additional_requirements: z.string().optional(),
     }),
-    // Add missing vad field for submission compatibility
-    vad: z.object({
-        inland_container: z.string().optional(),
-    }).optional(),
     company_details: z.object({
         company_name: z.string().min(1, { message: "Company name is required" }),
         contact_person_name: z.string().min(1, { message: "Contact person name is required" }),
@@ -230,22 +201,8 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
             }],
             consolidated_data: undefined,
             supporting_files: [],
-            additional_details: '',
+            service_contract: '',
             commercial_terms: '',
-            commodities: [{
-                type: 'General Cargo',
-                temperature: false,
-                dangerous: false,
-                oversized: false,
-                details: "",
-                length: 0,
-                width: 0,
-                height: 0,
-                weight: 0,
-                weight_unit: 'kg',
-                file: '',
-                additional_information: '',
-            }],
             additional_services: {
                 inland_container_transportation: false,
                 handling_stevedoring: false,
@@ -257,8 +214,6 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                 other_specify: '',
                 additional_requirements: '',
             },
-            // Make vad truly optional
-            vad: undefined,
             company_details: {
                 company_name: '',
                 contact_person_name: '',
@@ -287,8 +242,6 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                 itemized_data: values.entry_mode === 'itemized' ? values.itemized_data : undefined,
                 // Only include consolidated_data if mode is consolidated
                 consolidated_data: values.entry_mode === 'consolidated' ? values.consolidated_data : undefined,
-                // Preserve vad field
-                vad: values.vad || { inland_container: '' },
             };
             console.log("✅ Submitting cleaned data:", cleanedData);
             await onSubmit(cleanedData);
@@ -427,33 +380,6 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                                 <span className="text-gray-500"> (Optional)</span>
                             </h3>
                             <FormItem>
-                                <FormLabel>Additional Details</FormLabel>
-                                <FormControl>
-                                    <Controller
-                                        control={form.control}
-                                        name="additional_details"
-                                        render={({ field, fieldState: { error } }) => (
-                                            <div className="space-y-1">
-                                                <Textarea
-                                                    {...field}
-                                                    placeholder="Please provide any additional information about your cargo..."
-                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${
-                                                        error ? 'border-red-500 bg-red-50' : 'border-gray-200'
-                                                    }`}
-                                                    rows={4}
-                                                />
-                                                {error && (
-                                                    <p className="text-red-500 text-sm flex items-center gap-1">
-                                                        <AlertCircle className="h-3 w-3" />
-                                                        {error.message}
-                                                    </p>
-                                                )}
-                                            </div>
-                                        )}
-                                    />
-                                </FormControl>
-                            </FormItem>
-                            <FormItem className="mt-4">
                                 <FormLabel>Commercial Terms</FormLabel>
                                 <FormControl>
                                     <Controller
@@ -489,6 +415,40 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                             showCargoPicture={false}
                             title="Supporting Files (Optional)"
                         />
+
+                        {/* Service Contract Section */}
+                        <div className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-lg font-semibold mb-4">Service Contract 
+                                <span className="text-gray-500"> (Optional)</span>
+                            </h3>
+                            <FormItem>
+                                <FormLabel>Service Contract</FormLabel>
+                                <FormControl>
+                                    <Controller
+                                        control={form.control}
+                                        name="service_contract"
+                                        render={({ field, fieldState: { error } }) => (
+                                            <div className="space-y-1">
+                                                <Textarea
+                                                    {...field}
+                                                    placeholder="Please provide service contract details..."
+                                                    className={`mt-2 max-w-[400px] border-2 rounded-xl ${
+                                                        error ? 'border-red-500 bg-red-50' : 'border-gray-200'
+                                                    }`}
+                                                    rows={3}
+                                                />
+                                                {error && (
+                                                    <p className="text-red-500 text-sm flex items-center gap-1">
+                                                        <AlertCircle className="h-3 w-3" />
+                                                        {error.message}
+                                                    </p>
+                                                )}
+                                            </div>
+                                        )}
+                                    />
+                                </FormControl>
+                            </FormItem>
+                        </div>
                     </>
                 ) : (
                     <>
@@ -509,26 +469,29 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                             showCargoPicture={false}
                             title="Supporting Files *"
                             description="Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint. * Supporting files are required for Consolidated Entry"
+                            error={form.formState.errors.supporting_files}
                         />
+
+                        {/* Service Contract Section */}
                         <div className="bg-white rounded-lg shadow-md p-6">
-                            <h3 className="text-lg font-semibold mb-4">Additional Information 
+                            <h3 className="text-lg font-semibold mb-4">Service Contract 
                                 <span className="text-gray-500"> (Optional)</span>
                             </h3>
                             <FormItem>
-                                <FormLabel>Additional Details</FormLabel>
+                                <FormLabel>Service Contract</FormLabel>
                                 <FormControl>
                                     <Controller
                                         control={form.control}
-                                        name="additional_details"
+                                        name="service_contract"
                                         render={({ field, fieldState: { error } }) => (
                                             <div className="space-y-1">
                                                 <Textarea
                                                     {...field}
-                                                    placeholder="Please provide any additional information about your cargo..."
+                                                    placeholder="Please provide service contract details..."
                                                     className={`mt-2 max-w-[400px] border-2 rounded-xl ${
                                                         error ? 'border-red-500 bg-red-50' : 'border-gray-200'
                                                     }`}
-                                                    rows={4}
+                                                    rows={3}
                                                 />
                                                 {error && (
                                                     <p className="text-red-500 text-sm flex items-center gap-1">
@@ -541,7 +504,13 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                                     />
                                 </FormControl>
                             </FormItem>
-                            <FormItem className="mt-4">
+                        </div>
+
+                        <div className="bg-white rounded-lg shadow-md p-6">
+                            <h3 className="text-lg font-semibold mb-4">Additional Information 
+                                <span className="text-gray-500"> (Optional)</span>
+                            </h3>
+                            <FormItem>
                                 <FormLabel>Commercial Terms</FormLabel>
                                 <FormControl>
                                     <Controller
@@ -580,43 +549,11 @@ const InternationalInlandServicesForm: React.FC<{ onSubmit: (data: FormData) => 
                     </Alert>
                 )}
 
-                {/* Commodities Section */}
-                <CommoditiesCard control={form.control} dangerous_bool={false} />
 
                 {/* Additional Services */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <h2 className="text-xl font-semibold mb-4">Additional Services</h2>
                     
-                    {/* Add VAD Section */}
-                    <div className="mb-6">
-                        <h3 className="text-lg font-medium mb-4">Value Added Services</h3>
-                        <FormItem>
-                            <FormLabel>Inland Container</FormLabel>
-                            <FormControl>
-                                <Controller
-                                    control={form.control}
-                                    name="vad.inland_container"
-                                    render={({ field, fieldState: { error } }) => (
-                                        <div className="space-y-1">
-                                            <Input
-                                                {...field}
-                                                placeholder="Enter inland container details"
-                                                className={`max-w-[300px] border-2 rounded-xl ${
-                                                    error ? 'border-red-500 bg-red-50' : 'border-gray-200'
-                                                }`}
-                                            />
-                                            {error && (
-                                                <p className="text-red-500 text-sm flex items-center gap-1">
-                                                    <AlertCircle className="w-4 h-4" />
-                                                    {error.message}
-                                                </p>
-                                            )}
-                                        </div>
-                                    )}
-                                />
-                            </FormControl>
-                        </FormItem>
-                    </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <FormItem>

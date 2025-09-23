@@ -4,7 +4,7 @@ import { Controller, Control } from 'react-hook-form';
 import { FormItem, FormControl } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Trash2 } from 'lucide-react';
+import { Trash2, AlertCircle } from 'lucide-react';
 
 interface EnhancedSupportingFilesProps {
     control: Control<any>;
@@ -13,6 +13,7 @@ interface EnhancedSupportingFilesProps {
     showCargoPicture?: boolean;
     title?: string;
     description?: string;
+    error?: any;
 }
 
 const EnhancedSupportingFiles: React.FC<EnhancedSupportingFilesProps> = ({
@@ -21,7 +22,8 @@ const EnhancedSupportingFiles: React.FC<EnhancedSupportingFilesProps> = ({
     cargoPictureName = "supporting_files.cargo_picture",
     showCargoPicture = true,
     title = "Supporting files (Optional)",
-    description = "Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint"
+    description = "Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint",
+    error
 }) => {
     return (
         <div className="bg-white rounded-lg shadow-md p-6">
@@ -179,6 +181,16 @@ const EnhancedSupportingFiles: React.FC<EnhancedSupportingFilesProps> = ({
                         />
                     </FormControl>
                 </FormItem>
+                
+                {/* Error Display */}
+                {error && (
+                    <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <p className="text-red-600 text-sm font-medium flex items-center gap-2">
+                            <AlertCircle className="h-4 w-4" />
+                            {error.message}
+                        </p>
+                    </div>
+                )}
             </div>
         </div>
     );
