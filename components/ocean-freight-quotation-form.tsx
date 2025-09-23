@@ -341,8 +341,11 @@ const OceanFreightQuotationForm: React.FC<OceanFreightQuotationFormProps> = ({
           control={form.control} 
           name="supporting_files"
           showCargoPicture={false}
-          title="Supporting Files"
-          description="Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint. * Supporting files are required for Consolidated Entry"
+          title={entryMode === 'consolidated' ? 'Supporting Files *' : 'Supporting Files (Optional)'}
+          description={entryMode === 'consolidated' 
+            ? 'Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint. * Supporting files are required for Consolidated Entry'
+            : 'Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint'}
+          error={form.formState.errors.supporting_files}
         />
 
         {/* Additional Information */}

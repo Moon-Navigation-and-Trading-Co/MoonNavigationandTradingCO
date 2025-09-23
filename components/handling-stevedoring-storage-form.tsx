@@ -462,6 +462,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit, isSubmitting 
                 name="supporting_files" 
                 showCargoPicture={false} 
                 title="Supporting Files (Optional)" 
+                error={form.formState.errors.supporting_files}
             />          </>
         ) : (
           <>
@@ -474,7 +475,7 @@ export default function HandlingStevedoringStorageForm({ onSubmit, isSubmitting 
                 showCargoPicture={false} 
                 title="Supporting Files *" 
                 description="Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint. * Supporting files are required for Consolidated Entry" 
-                
+                error={form.formState.errors.supporting_files}
             />            
             {/* Additional Information */}
             <div className="">

@@ -394,9 +394,11 @@ const AirFreightForm: React.FC<{ onSubmit: (data: FormData) => void }> = ({ onSu
                     control={form.control} 
                     name="supporting_files" 
                     showCargoPicture={false} 
-                    title="Supporting Files" 
-                    description="Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint" 
-
+                    title={entryMode === 'consolidated' ? 'Supporting Files *' : 'Supporting Files (Optional)'} 
+                    description={entryMode === 'consolidated' 
+                        ? 'Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint. * Supporting files are required for Consolidated Entry' 
+                        : 'Max total size 20 MB. File types supported: PDF, JPEG, GIF, PNG, Word, Excel and PowerPoint'} 
+                    error={form.formState.errors.supporting_files}
                 />                {/* Commercial Terms */}
                 <div className="bg-white rounded-lg shadow-md p-6">
                     <FormItem>
