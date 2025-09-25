@@ -31,18 +31,20 @@ const services = [
 
 export default function ServicesWithLogo() {
   return (
-    <div className="bg-transparent p-6 md:pt-0">
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-6 text-muted-foreground">
+    <div className="bg-transparent p-3 md:p-6 md:pt-0">
+      <div className="grid grid-cols-2 md:grid-cols-3 auto-rows-fr items-center place-items-center gap-2 md:gap-x-10 md:gap-y-6 text-muted-foreground text-center">
         {services.map((service, index) => (
           <Link
             key={index}
             href={service.href}
-            className="flex flex-col items-center justify-center text-center space-y-3 w-full hover:text-primary p-4 dark:hover:text-white rounded-lg"
+            className="flex flex-col items-center justify-center text-center space-y-2 md:space-y-3 w-full h-full hover:text-primary p-3 md:p-4 dark:hover:text-white rounded-lg min-h-24 md:min-h-28"
           >
-            <div className="w-12 h-12 md:w-10 md:h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-              <service.icon strokeWidth={1.5} className="w-6 h-6 md:w-5 md:h-5 text-blue-600" />
+            <div className="w-9 h-9 md:w-10 md:h-10 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+              <service.icon strokeWidth={1.5} className="w-4.5 h-4.5 md:w-5 md:h-5 text-blue-600" />
             </div>
-            <span className="text-base font-medium">{service.label}</span>
+            <span className="text-xs md:text-base font-raleway font-light leading-tight h-10 md:h-10 flex items-center justify-center w-full text-center">
+              {service.label}
+            </span>
           </Link>
         ))}
       </div>

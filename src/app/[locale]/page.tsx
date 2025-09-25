@@ -86,7 +86,7 @@ export default function Index() {
             title: t("servicesCard2Title"),
             description: t("servicesCard2Description"),
             image: "/airCargo.jpg",
-            link: "/learn-more/ocean-freight", //modify here to change linking
+            link: "/learn-more/ocean-freight",
             quote: "/ocean-freight-forms",
         },
         {
@@ -198,8 +198,8 @@ export default function Index() {
                 {/* Enhanced Hero Section */}
                 <section className="relative w-full min-h-[600px] md:min-h-[700px] mt-8 md:mt-12">
                     <div className="relative flex items-center rounded-[2rem] md:rounded-[3rem] bg-home-image bg-center bg-cover w-full h-full min-h-[600px] md:min-h-[700px] shadow-2xl shadow-black/30 overflow-hidden">
-                        {/* Enhanced Background Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/60 rounded-[2rem] md:rounded-[3rem] z-10"></div>
+                        {/* Enhanced Background Overlay to match Ocean Freight */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/60 rounded-[2rem] md:rounded-[3rem] z-10"></div>
                         
                         {/* Animated Background Elements */}
                         <div className="absolute inset-0 z-5">
@@ -213,7 +213,7 @@ export default function Index() {
                             {/* Badge */}
                             <div className={`inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full w-fit ${textAlignClass}`}>
                                 <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                                <span className="text-white/90 text-sm font-medium">Exceptional Partner</span>
+                                <span className="text-white/90 text-sm font-medium">Global Maritime Solutions</span>
                             </div>
 
                             {/* Enhanced Heading */}
@@ -228,8 +228,8 @@ export default function Index() {
 
                             {/* Classic Buttons */}
                             <div className={`flex flex-col sm:flex-row gap-6 mt-12 ${textAlignClass}`}>
-                                <Link href="#services">
-                                    <button className="group relative bg-white text-gray-900 hover:bg-gray-50 px-10 py-4 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-gray-300 transform hover:-translate-y-1 active:translate-y-0">
+                                <Link href="#premium-solutions">
+                                    <button className="group relative bg-white text-gray-900 hover:bg-gray-50 px-6 md:px-10 py-3 md:py-4 rounded-lg font-raleway font-medium text-xs md:text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-gray-300 transform hover:-translate-y-1 active:translate-y-0">
                                         <span className="flex items-center gap-2">
                                             <svg className="w-4 h-4 text-blue-600 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -238,8 +238,8 @@ export default function Index() {
                                         </span>
                                     </button>
                                 </Link>
-                            <Link href="#services">
-                                    <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
+                            <Link href="/quote-request">
+                                    <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-10 py-3 md:py-4 rounded-lg font-raleway font-medium text-xs md:text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
                                         <span className="flex items-center gap-2">
                                             <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
@@ -372,7 +372,7 @@ export default function Index() {
                                 {/* Enhanced CTA */}
                                 <div className="pt-6">
                                     <Link href="/about-us">
-                                        <button className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                        <button className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white h-12 md:h-14 px-8 rounded-xl font-raleway font-light text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                                             <span className="relative z-10 flex items-center gap-3">
                                             {tt("learnmore")}
                                                 <svg className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -402,7 +402,7 @@ export default function Index() {
                           
                           <h2 className="text-3xl md:text-4xl lg:text-5xl font-raleway font-light text-gray-900 mb-6 leading-tight">
                             Get Your 
-                            <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent font-medium"> Custom Quote</span>
+                            <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent font-medium"> Customized Quote</span>
                           </h2>
                           
                           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -496,7 +496,7 @@ export default function Index() {
                           </div>
 
                           <Link href="/quote-request">
-                            <button className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-raleway font-medium text-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <button className="group relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white h-12 md:h-14 px-8 rounded-xl font-raleway font-light text-sm md:text-base transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                               <span className="relative z-10 flex items-center gap-3">
                                 <svg className="w-6 h-6 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -513,6 +513,11 @@ export default function Index() {
                     <section className="px-4 sm:px-6 lg:px-8">
                         <IndustrySectorsNew />
                     </section>
+
+                {/* Our Partners section */}
+                <section id="partners" className="scroll-mt-[100px] px-4 sm:px-6 lg:px-8">
+                    <PartnerLogoCarousel />
+                </section>
 
                     {/* Benefits Section - Enhanced Modern Design */}
                     <section className="w-full bg-gradient-to-br from-gray-50 via-white to-blue-50/30 py-20 lg:py-32 px-4 sm:px-6 lg:px-8 font-raleway">
@@ -659,11 +664,6 @@ export default function Index() {
                           </div>
                         </div>
                       </div>
-                    </section>
-
-                    {/* Our Partners section */}
-                    <section id="partners" className="scroll-mt-[100px] px-4 sm:px-6 lg:px-8">
-                        <PartnerLogoCarousel />
                     </section>
 
                     {/* Contact Section */}

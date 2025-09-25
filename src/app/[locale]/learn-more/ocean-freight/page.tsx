@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import Link from 'next/link'
+import ServiceSection from '@/components/ServiceSection'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -192,69 +193,69 @@ export default function OceanFreightPage() {
                 </div>
             </section>
 
-            {/* What is Ocean Freight Section */}
-            <section className="w-full max-w-6xl mx-auto px-4">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div className="space-y-6">
-                        <Badge className="bg-primary/10 text-primary border-primary/20 px-4 py-2 text-sm font-medium">
-                            About Ocean Freight
-                        </Badge>
-                        <h2 className="text-3xl md:text-4xl font-normal text-primary mb-6 leading-tight" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
-                            What is Ocean Freight?
-                        </h2>
-                        <div className="space-y-4 text-lg leading-relaxed text-foreground">
-                            <p>
+            {/* What is Ocean Freight? Section - match International Trading design */}
+            <section className="px-4 sm:px-6 lg:px-8 mt-16">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        {/* Left: Content */}
+                        <div className="space-y-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
+                                <span>Ocean Freight</span>
+                            </div>
+                            
+                            <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
+                                What is Ocean Freight?
+                            </h2>
+                            
+                            <p className="text-base text-gray-600 leading-relaxed">
                                 Ocean freight is a vital link in global trade, providing businesses with a cost-effective and dependable way to transport goods across the world. At Moon Navigation and Trading Co., we specialize in creating smart, customized ocean freight solutions that meet the unique needs of every shipment.
                             </p>
-                            <p>
+                            
+                            <p className="text-base text-gray-600 leading-relaxed">
                                 Our expertise covers oversized, heavy-lift, livestock, hazardous cargo, and tankers. With access to global shipping routes, we ensure the smooth, secure, and efficient movement of goods from origin to destination.
                             </p>
-                            <p>
+                            
+                            <p className="text-base text-gray-600 leading-relaxed">
                                 Trust us to deliver logistics strategies built around your cargo—prioritizing performance, safety, and full compliance with international standards.
                             </p>
                         </div>
-                    </div>
-                    <div className="relative">
-                        <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                            <Image
-                                src="/a-6.jpg"
-                                alt="Ocean freight operations"
-                                width={600}
-                                height={400}
-                                className="w-full h-auto object-cover"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                        </div>
+                        
+                        {/* Right: Empty space (no image) */}
+                        <div className="hidden lg:block"></div>
                     </div>
                 </div>
             </section>
 
-            {/* Services Carousel Section */}
-            <section id="services" className="w-full">
-                <div className="text-center mb-12">
-                    <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 px-4 py-2 text-sm font-medium">
-                        Our Services
-                    </Badge>
-                    <h2 className="text-3xl md:text-4xl font-normal text-primary mb-4" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
-                        Comprehensive Ocean Freight Solutions
-                    </h2>
-                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                        From standard containers to specialized cargo, we provide end-to-end ocean freight services tailored to your specific requirements.
-                    </p>
-                </div>
-                <CarouselAnimation title={t('ocean')} freightTypes={Data} />
-            </section>
+            {/* Ocean Freight Services Cards */}
+            <ServiceSection
+                id="ocean-freight-services"
+                badgeLabel="Ocean Freight Services"
+                description="Specialized solutions for project cargo, RoRo, dangerous goods, heavy lift, and more."
+                items={Data.map((d) => ({
+                    title: d.title,
+                    description: d.description,
+                    image: d.image,
+                    learnLink: d.link,
+                    quoteLink: d.quote,
+                }))}
+            />
+
+			{/* Services Carousel Section removed per request */}
 
             {/* Benefits Section */}
             <section className="w-full max-w-6xl mx-auto px-4">
-                <div className="text-center mb-12">
-                    <Badge className="mb-4 bg-primary/10 text-primary border-primary/20 px-4 py-2 text-sm font-medium">
+                <div className="text-center mb-16 lg:mb-20">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
                         Why Choose Us
-                    </Badge>
-                    <h2 className="text-3xl md:text-4xl font-normal text-primary mb-4" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
+                    </div>
+                    <h2 className="text-4xl lg:text-5xl font-raleway font-light text-gray-900 mb-4 leading-tight">
                         Reasons to Choose Moon Navigation and Trading Co.
                     </h2>
-                    <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                    <p className="text-lg lg:text-xl font-raleway font-light text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         Experience the difference with our comprehensive ocean freight solutions designed for reliability, efficiency, and excellence.
                     </p>
                 </div>

@@ -153,15 +153,35 @@ const featuredPartners = [
 
 export default function PartnerLogoCarousel() {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+  const sectionRef = React.useRef<HTMLElement>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isInView, setIsInView] = useState(false);
 
-  // Auto-scroll functionality
+  // Observe when the partners section is in view
   useEffect(() => {
+    if (!sectionRef.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        const nowInView = entry.isIntersecting;
+        setIsInView(nowInView);
+        if (nowInView && scrollContainerRef.current) {
+          // Reset to the first logo when entering view
+          scrollContainerRef.current.scrollTo({ left: 0, behavior: 'auto' });
+        }
+      },
+      { root: null, threshold: 0.25 }
+    );
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-scroll only when section is in view
+  useEffect(() => {
+    if (!isInView) return;
     const interval = setInterval(() => {
       if (scrollContainerRef.current) {
         scrollContainerRef.current.scrollBy({ left: 200, behavior: 'smooth' });
-        
-        // Reset to beginning when reaching the end
         if (scrollContainerRef.current.scrollLeft >= scrollContainerRef.current.scrollWidth - scrollContainerRef.current.clientWidth) {
           setTimeout(() => {
             if (scrollContainerRef.current) {
@@ -171,9 +191,8 @@ export default function PartnerLogoCarousel() {
         }
       }
     }, 3000);
-
     return () => clearInterval(interval);
-  }, []);
+  }, [isInView]);
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
@@ -188,7 +207,7 @@ export default function PartnerLogoCarousel() {
   };
 
   return (
-    <section className="w-full bg-gradient-to-b from-slate-50 via-white to-blue-50/30 py-24 lg:py-32">
+    <section ref={sectionRef} className="w-full bg-gradient-to-b from-slate-50 via-white to-blue-50/30 py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="text-center mb-16">

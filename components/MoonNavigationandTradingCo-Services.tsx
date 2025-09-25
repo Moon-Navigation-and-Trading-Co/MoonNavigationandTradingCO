@@ -240,7 +240,7 @@ const MoonNavigationandTradingCoServices = () => {
   };
 
   return (
-    <section className="w-full font-raleway bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-gray-900 py-32 lg:py-40 relative overflow-hidden">
+    <section id="premium-solutions" className="w-full font-raleway bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-gray-900 py-32 lg:py-40 relative overflow-hidden">
       {/* Modern Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.08),transparent_50%)]"></div>
@@ -495,7 +495,7 @@ const MoonNavigationandTradingCoServices = () => {
                   <div className="flex gap-3">
                     <Button 
                       variant="outline" 
-                      className="flex-1 text-sm font-medium border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 py-3"
+                      className="flex-1 h-12 md:h-14 text-sm md:text-base font-raleway font-light border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.location.href = service.learnMore;
@@ -505,7 +505,7 @@ const MoonNavigationandTradingCoServices = () => {
                       Learn More
                     </Button>
                     <Button 
-                        className="flex-1 text-sm font-medium bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg py-3"
+                        className="flex-1 h-12 md:h-14 text-sm md:text-base font-raleway font-light bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.location.href = service.getQuote;
@@ -613,7 +613,7 @@ const MoonNavigationandTradingCoServices = () => {
                       <div className="flex gap-2">
                         <Button 
                           variant="outline" 
-                          className="flex-1 text-xs font-medium border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300 px-3 py-2"
+                          className="flex-1 h-12 md:h-14 text-sm md:text-base font-raleway font-light border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
                           onClick={(e) => {
                             e.stopPropagation();
                             window.location.href = service.learnMore;
@@ -623,7 +623,7 @@ const MoonNavigationandTradingCoServices = () => {
                           Learn More
                         </Button>
                         <Button 
-                              className="flex-1 text-xs font-medium bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg px-3 py-2"
+                              className="flex-1 h-12 md:h-14 text-sm md:text-base font-raleway font-light bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
                           onClick={(e) => {
                             e.stopPropagation();
                             window.location.href = service.getQuote;
@@ -687,8 +687,8 @@ const MoonNavigationandTradingCoServices = () => {
 
         {/* Modern CTA Section */}
         <div className="text-center mt-24">
-          <div className="inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-10 py-5 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group hover:shadow-2xl">
-            <span className="font-raleway font-medium text-lg">Explore All Services</span>
+          <div className="inline-flex h-12 md:h-14 items-center justify-center gap-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 md:px-10 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group hover:shadow-2xl font-raleway font-light text-sm md:text-base">
+            <span>Explore All Services</span>
             <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-2" />
           </div>
         </div>

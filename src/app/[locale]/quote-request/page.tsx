@@ -123,7 +123,7 @@ export default function QuoteRequestPage() {
                 
                 <h1 className="text-3xl lg:text-4xl font-raleway font-light text-gray-900 mb-4 leading-tight">
                   Get Your 
-                  <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent font-medium"> Custom Quote</span>
+                  <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent font-medium"> Customized Quote</span>
                 </h1>
                 
                 <p className="text-lg text-gray-600 leading-relaxed max-w-lg mx-auto">

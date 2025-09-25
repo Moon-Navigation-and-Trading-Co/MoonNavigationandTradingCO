@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, Plane } from "lucide-react";
 import { useTranslations } from "next-intl";
 import CarouselAnimation from "@/components/carousel-animation-component";
+import ServiceSection from "@/components/ServiceSection";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 
@@ -158,18 +159,19 @@ export default function OceanFreightPage() {
           </div>
         </section>
 
-        {/* Services Carousel Section */}
-        <section id="services" className="w-full">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-normal text-primary mb-4" style={{ fontFamily: 'Raleway, sans-serif', fontWeight: 400 }}>
-              Comprehensive Container Solutions
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              From standard containers to specialized cargo, we provide end-to-end container services tailored to your specific requirements.
-            </p>
-          </div>
-          <CarouselAnimation title={t("container")} freightTypes={Data} />
-        </section>
+        {/* Container Services Cards */}
+        <ServiceSection
+          id="services"
+          badgeLabel="Container Services"
+          description="End-to-end container logistics, from LCL/FCL to oversized and out-of-gauge solutions."
+          items={Data.map(d => ({
+            title: d.title,
+            description: d.description,
+            image: d.image,
+            learnLink: d.link,
+            quoteLink: d.quote,
+          }))}
+        />
 
         <GetQuoteComponent topic="Container Services" link="/container-services-forms" />
       </main>
