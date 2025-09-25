@@ -119,7 +119,7 @@ export default function AboutUs() {
                   </span>
                 </button>
               </Link>
-              <Link href="/efficient-transportation">
+              <Link href="/learn-more/transportation-freight">
                 <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
                   <span className="flex items-center gap-2">
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -422,8 +422,7 @@ export default function AboutUs() {
               </p>
               <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">
                 Our integrated sea-air solutions further enhance our logistics offerings, allowing for efficient and timely delivery of your shipments in today&apos;s dynamic market.
-              </p>
-              <Link href="/efficient-transportation">
+              </p>              <Link href="/learn-more/transportation-freight">
                 <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
                   <span className="flex items-center gap-2">
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -476,7 +475,7 @@ export default function AboutUs() {
             <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">
               Our experienced team also ensures efficient Suez Canal transit, handling documentation and coordination with authorities to minimize delays and ensure full compliance.
             </p>
-            <Link href="/ship-agency">
+            <Link href="/learn-more/ship-agency">
               <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -506,7 +505,7 @@ export default function AboutUs() {
             <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">
               You can rely on our commitment to excellence as we support and guide you toward success at every stage of the process.
             </p>
-            <Link href="/international-trading-forms">
+            <Link href="/learn/international-trading">
               <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -558,7 +557,7 @@ export default function AboutUs() {
             <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">
               In parallel, our docking and maintenance services cover every aspect of vessel upkeep, from dry docking and afloat repairs to hull cleaning, mechanical servicing, electrical systems maintenance, and safety equipment checks. Whether your vessel requires scheduled maintenance or urgent repairs, our experienced teams work around the clock to keep your operations uninterrupted and your ships in top seaworthy condition.
             </p>
-            <Link href="/ship-management-forms">
+            <Link href="/learn-more/vessel-support-maintenance">
               <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -593,7 +592,7 @@ export default function AboutUs() {
                 <p className="text-xs md:text-sm text-gray-600 leading-relaxed">Our skilled ground teams and modern equipment ensure safety, speed, and accuracy at every point of cargo movement.</p>
               </div>
             </div>
-            <Link href="/handling-stevedoring-storage-forms">
+            <Link href="/learn-more/other-logistics-services">
               <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
