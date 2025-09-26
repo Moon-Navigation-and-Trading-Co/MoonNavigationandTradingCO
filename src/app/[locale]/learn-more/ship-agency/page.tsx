@@ -35,6 +35,13 @@ export default function OceanFreightPage() {
       quote: "/ship-agency-forms",
     },
     {
+      title: "Suez Canal Transit Passage",
+      description: "End-to-end management of Suez Canal transits including documentation, slot booking, and coordination.",
+      image: "/suez-1.jpg",
+      link: "/learn/suez-canal-transit-passage",
+      quote: "/ship-agency-forms",
+    },
+    {
       title: t("transit"),
       description: t("transit-p"),
       image: "/airCargo.jpg",
@@ -45,7 +52,7 @@ export default function OceanFreightPage() {
       title: t("bunkering"),
       description: t("bunkering-p"),
       image: "/airCargo.jpg",
-      link: "/learn/bunkering/learn-more-bunkering",
+      link: "/learn/bunkering",
       quote: "/ship-agency-forms",
     },
     {

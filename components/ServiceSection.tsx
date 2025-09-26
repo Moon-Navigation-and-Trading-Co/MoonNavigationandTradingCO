@@ -34,6 +34,7 @@ const heroImageMap: Record<string, string> = {
   '/learn/suez-canal-transit-passage': '/suez-1.jpg',
   '/learn/spare-parts': '/spare-1.jpg',
   '/learn/bunkering/learn-more-bunkering': '/bunkering-1.jpg',
+  '/learn/bunkering': '/bunkering-1.jpg',
   '/learn/ship-management': '/sm-1.jpg',
   '/learn/dockingandmaintenance': '/docking-1.jpg',
   '/learn/international-trading': '/international-1.jpg',
@@ -47,7 +48,7 @@ const heroImageMap: Record<string, string> = {
   '/learn/oversized': '/ov-1.jpg',
   '/learn/out-gauge': '/out-gauge-banner.jpg',
   '/learn/inland-container': '/inland-container-banner.jpg',
-  '/learn/stevedoring-container': '/stevedoring-container-banner.jpg',
+  '/learn/stevedoring-container': '/hss-1.jpg',
   '/learn/vessel': '/vessel rentals and purchases 1.jpg',
   '/learn/container-purchases': '/Container purchases and rentals 1.jpg',
   
@@ -141,6 +142,9 @@ export default function ServiceSection({ id, badgeLabel, description, items, gri
           <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
           {badgeLabel}
         </div>
+        <h2 className="text-2xl md:text-3xl font-raleway font-light text-gray-900">
+          {badgeLabel}
+        </h2>
         {description && (
           <p className="text-muted-foreground max-w-3xl font-raleway font-light">{description}</p>
         )}

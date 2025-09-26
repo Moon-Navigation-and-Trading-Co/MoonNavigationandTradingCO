@@ -12,7 +12,7 @@ const servicesData = {
       description: "Set up Proforma Disbursement Accounts",
       image: "/pda-1.jpg",
       learnMore: "/learn/pda",
-      getQuote: "/ship-agency-forms#pda",
+      getQuote: "/ship-agency-forms",
       icon: Anchor,
       category: "Port Operations",
       features: ["24/7 Support", "Expert Guidance"]
@@ -22,7 +22,7 @@ const servicesData = {
       description: "Managed crew logistics",
       image: "/crew-1.jpg",
       learnMore: "/learn/crew",
-      getQuote: "/ship-agency-forms#crew",
+      getQuote: "/ship-agency-forms",
       icon: Users,
       category: "Crew Management",
       features: ["Compliance Ready", "Fast Processing", "Documentation Support"]
@@ -32,7 +32,7 @@ const servicesData = {
       description: "Transit facilitation through Suez Canal",
       image: "/suez-1.jpg",
       learnMore: "/learn/suez-canal-transit-passage",
-      getQuote: "/suez-canal-form",
+      getQuote: "/ship-agency-forms",
       icon: Ship,
       category: "Canal Transit",
       features: ["Priority Clearance", "Cost Optimization", "Time Efficiency"]
@@ -42,7 +42,7 @@ const servicesData = {
       description: "Port coordination for vessel spares",
       image: "/spare-1.jpg",
       learnMore: "/learn/spare-parts",
-      getQuote: "/ship-agency-forms#spare-parts",
+      getQuote: "/ship-agency-forms",
       icon: Wrench,
       category: "Maintenance",
       features: ["Quick Delivery", "Quality Assurance", "Inventory Management"]
@@ -52,7 +52,7 @@ const servicesData = {
       description: "Fuel and supplies delivery",
       image: "/bunkering-1.jpg",
       learnMore: "/learn/bunkering",
-      getQuote: "/bunkering-oil-supply-form",
+      getQuote: "/ship-agency-forms",
       icon: Wrench,
       category: "Fuel & Supplies",
       features: ["Quality Fuel", "Competitive Pricing", "On-time Delivery"]
@@ -62,7 +62,7 @@ const servicesData = {
       description: "Custom operational handling",
       image: "/special-1.jpg",
       learnMore: "/learn/special",
-      getQuote: "/special-services-forms",
+      getQuote: "/ship-agency-forms",
       icon: Zap,
       category: "Special Services",
       features: ["Custom Solutions", "Expert Team", "Flexible Approach"]
@@ -72,9 +72,9 @@ const servicesData = {
     {
       title: "Ocean Freight (Ship Chartering)",
       description: "Global chartering for ocean cargo",
-      image: "/cargoAir.jpeg",
+      image: "/icons/ocean freight/Ocean Freight.jpg",
       learnMore: "/learn-more/ocean-freight",
-      getQuote: "/ocean-freight-forms#chartering",
+      getQuote: "/ocean-freight-forms",
       icon: Ship,
       category: "Ocean Transport",
       features: ["Global Network", "Cost Effective", "Reliable Service"]
@@ -82,9 +82,9 @@ const servicesData = {
     {
       title: "Containers Services",
       description: "Full and shared container logistics",
-      image: "/container-1.jpg",
+      image: "/container-banner-out.jpg",
       learnMore: "/learn-more/container",
-      getQuote: "/container-services-forms#containers",
+      getQuote: "/container-services-forms",
       icon: Container,
       category: "Container Solutions",
       features: ["FCL & LCL", "Door-to-Door"]
@@ -92,9 +92,9 @@ const servicesData = {
     {
       title: "Inland Freight",
       description: "Cross-country ground transport",
-      image: "/land-cargo-2.jpeg",
-      learnMore: "/learn/inland-freight",
-      getQuote: "/inland-services-forms#inland",
+      image: "/f-inland-4.jpg",
+      learnMore: "/learn-more/inland-freight",
+      getQuote: "/inland-services-forms",
       icon: Truck,
       category: "Ground Transport",
       features: ["Nationwide Coverage", "Secure Transport"]
@@ -102,9 +102,9 @@ const servicesData = {
     {
       title: "Air Freight",
       description: "High-speed international cargo service",
-      image: "/airCargo.jpg",
-      learnMore: "/learn-more/air-freight",
-      getQuote: "/air-freight-forms#air-freight",
+      image: "/Air Freight.jpeg",
+      learnMore: "/learn/air-freight",
+      getQuote: "/air-freight-forms",
       icon: Plane,
       category: "Air Transport",
       features: ["Express Delivery", "Global Reach", "Priority Handling"]
@@ -115,8 +115,8 @@ const servicesData = {
       title: "Docking and Maintenance",
       description: "Scheduled and emergency maintenance",
       image: "/docking-1.jpg",
-      learnMore: "/learn/docking",
-      getQuote: "/ship-maintenance-forms#docking",
+      learnMore: "/learn/dockingandmaintenance",
+      getQuote: "/vessel-support-maintenance-forms",
       icon: Wrench,
       category: "Vessel Care",
       features: ["Scheduled Maintenance", "Emergency Repairs", "Quality Assurance"]
@@ -126,7 +126,7 @@ const servicesData = {
       description: "Technical and commercial vessel operations",
       image: "/sm-1.jpg",
       learnMore: "/learn/ship-management",
-      getQuote: "/ship-management-forms#management",
+      getQuote: "/vessel-support-maintenance-forms",
       icon: Building2,
       category: "Operations",
       features: ["Technical Management", "Commercial Operations", "Performance Monitoring"]
@@ -148,9 +148,9 @@ const servicesData = {
     {
       title: "Vessel Rentals and Purchases",
       description: "Rent or buy vessels to grow operations",
-      image: "/vrp-1.jpg",
+      image: "/vessel rentals and purchases 1.jpg",
       learnMore: "/learn/vessel",
-      getQuote: "/buy-rent-vessels-forms#vessels",
+      getQuote: "/buy-rent-vessels-forms",
       icon: Ship,
       category: "Fleet Expansion",
       features: ["Wide Selection", "Expert Consultation", "Legal Support"]
@@ -158,9 +158,9 @@ const servicesData = {
     {
       title: "Container Rentals and Purchases",
       description: "Flexible options for container acquisition",
-      image: "/crp-1.jpg",
+      image: "/Container purchases and rentals 1.jpg",
       learnMore: "/learn/container-purchases",
-      getQuote: "/buy-rent-container-forms#containers",
+      getQuote: "/buy-rent-container-forms",
       icon: Container,
       category: "Equipment",
       features: ["Quality Containers", "Flexible Terms", "Maintenance Support"]
@@ -170,19 +170,19 @@ const servicesData = {
     {
       title: "Customs Clearance Solutions",
       description: "Fast-track import/export compliance",
-      image: "/c-1.jpg",
+      image: "/Custom 1.jpg",
       learnMore: "/learn/customs-clearance",
-      getQuote: "/customs-clearance-forms#clearance",
+      getQuote: "/other-logistics-forms",
       icon: Package,
       category: "Compliance",
       features: ["Fast Clearance", "Documentation", "Regulatory Compliance"]
     },
     {
-      title: "Handling, Stevedoring & Storage",
+      title: "Handling, Stevedoring & Storage Services",
       description: "Port operations and warehousing",
-      image: "/hss-1.jpg",
-      learnMore: "/learn/stevedoring-container",
-      getQuote: "/hss-form#stevedoring",
+      image: "/H,S (7).jpg",
+      learnMore: "/learn/Handling-Stevedoring-Storage/learn-more",
+      getQuote: "/other-logistics-forms",
       icon: Building2,
       category: "Port Operations",
       features: ["Efficient Handling", "Secure Storage", "24/7 Operations"]
@@ -192,7 +192,7 @@ const servicesData = {
     {
       title: "Investment",
       description: "Opportunities to partner and grow",
-      image: "/invest/invest-hero.jpeg",
+      image: "/icons/invest/invest.jpeg",
       learnMore: "/invest",
       getQuote: "/investor-form#investment",
       icon: DollarSign,
@@ -495,23 +495,23 @@ const MoonNavigationandTradingCoServices = () => {
                   <div className="flex gap-3">
                     <Button 
                       variant="outline" 
-                      className="flex-1 h-12 md:h-14 text-sm md:text-base font-raleway font-light border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
+                      className="flex-1 h-9 md:h-10 text-xs md:text-sm font-raleway font-light border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.location.href = service.learnMore;
                       }}
                     >
-                      <ExternalLink className="w-4 h-4 mr-2" />
+                      <ExternalLink className="w-3 h-3 mr-2" />
                       Learn More
                     </Button>
                     <Button 
-                        className="flex-1 h-12 md:h-14 text-sm md:text-base font-raleway font-light bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                        className="flex-1 h-9 md:h-10 text-xs md:text-sm font-raleway font-light bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
                       onClick={(e) => {
                         e.stopPropagation();
                         window.location.href = service.getQuote;
                       }}
                     >
-                      <ArrowRight className="w-4 h-4 mr-2" />
+                      <ArrowRight className="w-3 h-3 mr-2" />
                       Get Quote
                     </Button>
                     </div>
@@ -613,7 +613,7 @@ const MoonNavigationandTradingCoServices = () => {
                       <div className="flex gap-2">
                         <Button 
                           variant="outline" 
-                          className="flex-1 h-12 md:h-14 text-sm md:text-base font-raleway font-light border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
+                          className="flex-1 h-9 md:h-10 text-xs md:text-sm font-raleway font-light border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50 transition-all duration-300"
                           onClick={(e) => {
                             e.stopPropagation();
                             window.location.href = service.learnMore;
@@ -623,7 +623,7 @@ const MoonNavigationandTradingCoServices = () => {
                           Learn More
                         </Button>
                         <Button 
-                              className="flex-1 h-12 md:h-14 text-sm md:text-base font-raleway font-light bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                              className="flex-1 h-9 md:h-10 text-xs md:text-sm font-raleway font-light bg-blue-600 hover:bg-blue-700 transition-all duration-300 shadow-md hover:shadow-lg"
                           onClick={(e) => {
                             e.stopPropagation();
                             window.location.href = service.getQuote;
@@ -687,10 +687,12 @@ const MoonNavigationandTradingCoServices = () => {
 
         {/* Modern CTA Section */}
         <div className="text-center mt-24">
-          <div className="inline-flex h-12 md:h-14 items-center justify-center gap-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 md:px-10 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group hover:shadow-2xl font-raleway font-light text-sm md:text-base">
-            <span>Explore All Services</span>
-            <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-2" />
-          </div>
+          <Link href="/learn-more/services">
+            <div className="inline-flex h-12 md:h-14 items-center justify-center gap-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 md:px-10 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer group hover:shadow-2xl font-raleway font-light text-sm md:text-base">
+              <span>Explore All Services</span>
+              <ArrowRight className="w-6 h-6 transition-transform duration-300 group-hover:translate-x-2" />
+            </div>
+          </Link>
         </div>
       </div>
     </section>

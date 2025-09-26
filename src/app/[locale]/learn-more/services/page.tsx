@@ -92,7 +92,7 @@ export default function ServicesPage() {
           { title: 'Sign On/Off Crew Members', image: '/airCargo.jpg', description: 'Compliant crew changes coordinated end to end, including immigration formalities and logistics.', learnLink: '/learn/crew', quoteLink: '/ship-agency-forms' },
           { title: 'Suez Canal Transit Passage', image: '/suez.jpg', description: 'End-to-end management of Suez Canal transits including documentation, slot booking, and coordination.', learnLink: '/learn/suez-canal-transit-passage', quoteLink: '/ship-agency-forms' },
           { title: 'Transit Spare Parts', image: '/spare-parts.jpg', description: 'Expedited customs clearance, secure handling, and on-board delivery of urgent spare parts.', learnLink: '/learn/spare-parts', quoteLink: '/special-services-forms' },
-          { title: 'Bunkering | Oil Supply | Ship Chandlery', image: '/bunkering-hero.jpg', description: 'Quality-controlled fuel, lubricants, provisions, and technical stores with documented delivery.', learnLink: '/learn/bunkering/learn-more-bunkering', quoteLink: '/special-services-forms' },
+          { title: 'Bunkering | Oil Supply | Ship Chandlery', image: '/bunkering-hero.jpg', description: 'Quality-controlled fuel, lubricants, provisions, and technical stores with documented delivery.', learnLink: '/learn/bunkering', quoteLink: '/special-services-forms' },
           { title: 'Special Services by Case', image: '/special-services.jpg', description: 'Custom agency solutions for non-standard operations and time-critical requirements.', learnLink: '/special-services-forms', quoteLink: '/special-services-forms' },
         ]}
       />
@@ -105,7 +105,7 @@ export default function ServicesPage() {
           { title: 'Ocean Freight (Ship Chartering)', image: '/icons/ocean freight/Ocean Freight.jpg', description: 'Chartering solutions for bulk, breakbulk, and project cargo backed by market insight and disciplined execution.', learnLink: '/learn-more/ocean-freight', quoteLink: '/ocean-freight-forms' },
           { title: 'Containers Services', image: '/container-banner-out.jpg', description: 'End-to-end container logistics with space assurance, efficient stuffing, tracking, and dependable delivery.', learnLink: '/learn-more/container', quoteLink: '/container-services-forms' },
           { title: 'Inland Freight', image: '/inland-2.jpg', description: 'Nationwide road and rail transport with defined SLAs and secure handling.', learnLink: '/learn-more/inland-freight', quoteLink: '/inland-freight-forms' },
-          { title: 'Air Freight', image: '/Air Freight.jpeg', description: 'Priority air services for time-critical and high-value cargo with customs support.', learnLink: '/learn-more/air-freight', quoteLink: '/air-freight-forms' },
+          { title: 'Air Freight', image: '/Air Freight.jpeg', description: 'Priority air services for time-critical and high-value cargo with customs support.', learnLink: '/learn/air-freight', quoteLink: '/air-freight-forms' },
         ]}
       />
 
@@ -134,8 +134,8 @@ export default function ServicesPage() {
         badgeLabel="Expand Your Fleet and Capacity"
         description="Flexible options to support and scale your operations."
         items={[
-          { title: 'Vessel Rentals and Purchases', image: '/buy-rent-vessel.jpg', description: 'Curated vessel charters and acquisitions aligned to trade requirements and budget.', learnLink: '/buy-rent-vessels-forms', quoteLink: '/buy-rent-vessels-forms' },
-          { title: 'Container Rentals and Purchases', image: '/container-rentals.jpg', description: 'Flexible container leasing and purchase options with rapid deployment.', learnLink: '/buy-rent-container-forms', quoteLink: '/buy-rent-container-forms' },
+          { title: 'Vessel Rentals and Purchases', image: '/buy-rent-vessel.jpg', description: 'Curated vessel charters and acquisitions aligned to trade requirements and budget.', learnLink: '/learn/vessel', quoteLink: '/buy-rent-vessels-forms' },
+          { title: 'Container Rentals and Purchases', image: '/container-rentals.jpg', description: 'Flexible container leasing and purchase options with rapid deployment.', learnLink: '/learn/container-purchases', quoteLink: '/buy-rent-container-forms' },
         ]}
       />
 

@@ -9,6 +9,45 @@ import GetQuoteComponent from "@/components/getQuoteComponent"
 import FAQSearch from "@/components/faq"
 import Image from "next/image";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
+import ExamplesCarousel, { ExampleItem } from "@/components/examples-carousel";
+
+const heavyLiftExamples: ExampleItem[] = [
+    {
+        id: 1,
+        image: "/heavy-wind-turbine.jpg",
+        title: "Wind turbines and blades",
+        description: "Specialized transportation for renewable energy infrastructure components.",
+        alt: "Wind turbines and blades"
+    },
+    {
+        id: 2,
+        image: "/heavy-industrial-press.jpg",
+        title: "Industrial presses",
+        description: "Heavy machinery and manufacturing equipment transportation.",
+        alt: "Industrial presses"
+    },
+    {
+        id: 3,
+        image: "/heavy-power-plant.jpg",
+        title: "Power plant components",
+        description: "Critical infrastructure components for energy generation facilities.",
+        alt: "Power plant components"
+    },
+    {
+        id: 4,
+        image: "/heavy-oil-gas.jpg",
+        title: "Oil and gas equipment",
+        description: "Specialized equipment for petroleum and natural gas operations.",
+        alt: "Oil and gas equipment"
+    },
+    {
+        id: 5,
+        image: "/heavy-yacht.jpg",
+        title: "Large yachts/ Vessels",
+        description: "Luxury vessels and maritime transportation solutions.",
+        alt: "Large yachts/ Vessels"
+    }
+];
 
 export default function HeavyLiftCargoInfo() {
     const t = useTranslations("learn-heavy-lift-cargo")
@@ -216,136 +255,13 @@ export default function HeavyLiftCargoInfo() {
                             <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
                             <span>Heavy Lift Examples</span>
             </div>
-
-                        <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
-                    Examples of Heavy Lift Cargo
-                </h2>
-                        <p className="text-base text-gray-600 leading-relaxed max-w-3xl mx-auto">
-                            Our HeavyLift services handle various types of equipment, including specialized transportation for renewable energy infrastructure components, heavy machinery, and critical infrastructure.
-                </p>
                     </div>
                 
-                    <div className="relative w-full max-w-7xl mx-auto">
-                    {/* Left Arrow */}
-                    <button 
-                        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-                        onClick={() => {
-                            const container = document.getElementById('examples-carousel');
-                            if (container) {
-                                    container.scrollBy({ left: -400, behavior: 'smooth' });
-                            }
-                        }}
-                    >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
-
-                    {/* Right Arrow */}
-                    <button 
-                        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-                        onClick={() => {
-                            const container = document.getElementById('examples-carousel');
-                            if (container) {
-                                    container.scrollBy({ left: 400, behavior: 'smooth' });
-                            }
-                        }}
-                    >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-
-                    <div 
-                        id="examples-carousel"
-                            className="overflow-x-auto scrollbar-hide scroll-smooth"
-                        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-                    >
-                            <div className="flex gap-8 min-w-max">
-                                <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 w-80 flex-shrink-0">
-                                    <div className="h-48 relative">
-                            <Image
-                                        src="/heavy-wind-turbine.jpg"
-                                alt="Wind turbines and blades"
-                                            fill 
-                                            className="object-cover group-hover:scale-105 transition-transform duration-300" 
-                            />
-                                </div>
-                                    <div className="p-6">
-                                        <h3 className="font-medium text-base mb-3 text-gray-900">Wind turbines and blades</h3>
-                                        <p className="text-sm text-gray-600 leading-relaxed">Specialized transportation for renewable energy infrastructure components.</p>
-                            </div>
-                        </div>
-
-                                <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 w-80 flex-shrink-0">
-                                    <div className="h-48 relative">
-                            <Image
-                                        src="/heavy-industrial-press.jpg"
-                                alt="Industrial presses"
-                                            fill 
-                                            className="object-cover group-hover:scale-105 transition-transform duration-300" 
-                            />
-                                </div>
-                                    <div className="p-6">
-                                        <h3 className="font-medium text-base mb-3 text-gray-900">Industrial presses</h3>
-                                        <p className="text-sm text-gray-600 leading-relaxed">Heavy machinery and manufacturing equipment transportation.</p>
-                            </div>
-                        </div>
-
-                                <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 w-80 flex-shrink-0">
-                                    <div className="h-48 relative">
-                            <Image
-                                        src="/heavy-power-plant.jpg"
-                                alt="Power plant components"
-                                            fill 
-                                            className="object-cover group-hover:scale-105 transition-transform duration-300" 
-                            />
-                                </div>
-                                    <div className="p-6">
-                                        <h3 className="font-medium text-base mb-3 text-gray-900">Power plant components</h3>
-                                        <p className="text-sm text-gray-600 leading-relaxed">Critical infrastructure components for energy generation facilities.</p>
-                            </div>
-                        </div>
-
-                                <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 w-80 flex-shrink-0">
-                                    <div className="h-48 relative">
-                            <Image
-                                        src="/heavy-oil-gas.jpg"
-                                alt="Oil and gas equipment"
-                                            fill 
-                                            className="object-cover group-hover:scale-105 transition-transform duration-300" 
-                            />
-                                </div>
-                                    <div className="p-6">
-                                        <h3 className="font-medium text-base mb-3 text-gray-900">Oil and gas equipment</h3>
-                                        <p className="text-sm text-gray-600 leading-relaxed">Specialized equipment for petroleum and natural gas operations.</p>
-                            </div>
-                        </div>
-
-                                <div className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 w-80 flex-shrink-0">
-                                    <div className="h-48 relative">
-                            <Image
-                                        src="/heavy-yacht.jpg"
-                                alt="Large yachts/ Vessels"
-                                            fill 
-                                            className="object-cover group-hover:scale-105 transition-transform duration-300" 
-                            />
-                                </div>
-                                    <div className="p-6">
-                                        <h3 className="font-medium text-base mb-3 text-gray-900">Large yachts/ Vessels</h3>
-                                        <p className="text-sm text-gray-600 leading-relaxed">Luxury vessels and maritime transportation solutions.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Custom scrollbar styles */}
-                <style jsx>{`
-                    .scrollbar-hide::-webkit-scrollbar {
-                        display: none;
-                    }
-                `}</style>
-                    </div>
+                    <ExamplesCarousel 
+                        items={heavyLiftExamples}
+                        title="Examples of Heavy Lift Cargo"
+                        subtitle="Our HeavyLift services handle various types of equipment, including specialized transportation for renewable energy infrastructure components, heavy machinery, and critical infrastructure."
+                    />
                 </div>
             </section>
 
