@@ -7,7 +7,6 @@ import { useTranslations } from "next-intl";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
-import OverviewServicesTabs from "@/components/overview-services";
 import dynamic from "next/dynamic";
 
 import ReasonsGrid from "@/components/ReasonsGrid";

@@ -10,7 +10,6 @@ import { useState } from "react"
 import RequestQuoteButton from "@/components/RequestQuoteButton"
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
-import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 import { Award } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";

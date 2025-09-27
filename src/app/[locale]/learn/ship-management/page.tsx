@@ -6,7 +6,6 @@ import Image from "next/image"
 import RequestQuoteButton from "@/components/RequestQuoteButton"; 
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
-import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGrid from "@/components/ReasonsGrid";
 import { ArrowRight, Ship, Users, Wrench, Globe, Shield, DollarSign, Award, CheckCircle, TrendingUp, Anchor, Settings } from "lucide-react";
 

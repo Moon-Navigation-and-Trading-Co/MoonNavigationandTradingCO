@@ -6,7 +6,6 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
-import OverviewServicesTabs from "@/components/overview-services";
 import { useTranslations } from "next-intl";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

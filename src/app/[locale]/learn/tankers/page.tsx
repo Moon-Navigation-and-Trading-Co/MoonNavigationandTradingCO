@@ -5,7 +5,6 @@ import RequestQuoteButton from "@/components/RequestQuoteButton";
 import Link from "next/link";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import FAQSearch from "@/components/faq";
-import OverviewServicesTabs from "@/components/overview-services";
 import dynamic from "next/dynamic";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 import { Award, Ship, Shield, Globe, Leaf, HeadphonesIcon } from "lucide-react";

@@ -11,7 +11,6 @@ import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 import dynamic from "next/dynamic";
 
 const VesselCarousel = dynamic(() => import("@/components/vessel-carousel"), { ssr: false });
-import OverviewServicesTabs from "@/components/overview-services";
 import FormTabs from "@/components/form-tabs";
 import LearnMore from "./learn-more/page";
 

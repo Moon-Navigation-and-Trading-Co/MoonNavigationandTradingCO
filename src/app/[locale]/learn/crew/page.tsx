@@ -1,7 +1,6 @@
 "use client"
 import FAQSearch from "@/components/faq";
 import GetQuoteComponent from "@/components/getQuoteComponent";
-import OverviewServicesTabs from "@/components/overview-services";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";

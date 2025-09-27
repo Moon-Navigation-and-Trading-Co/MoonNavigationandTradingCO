@@ -9,7 +9,6 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import FAQPage from "../../faq/page";
 import FAQSearch from "@/components/faq";
-import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 import { Award, Settings, DollarSign, Calendar, Truck, Wrench, Package, Shield } from "lucide-react";
 import ExamplesCarousel, { ExampleItem } from "@/components/examples-carousel";

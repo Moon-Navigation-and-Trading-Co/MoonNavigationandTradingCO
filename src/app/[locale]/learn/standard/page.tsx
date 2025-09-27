@@ -11,7 +11,6 @@ import {
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import Image from "next/image";
-import OverviewServicesTabs from "@/components/overview-services";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";

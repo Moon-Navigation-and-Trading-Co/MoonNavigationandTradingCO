@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { useTranslations } from "next-intl"
 import Link from "next/link"
-import OverviewServicesTabs from "@/components/overview-services";
 import GetQuoteComponent from "@/components/getQuoteComponent"
 import FAQSearch from "@/components/faq"
 import dynamic from "next/dynamic";

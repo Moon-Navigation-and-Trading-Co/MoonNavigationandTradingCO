@@ -10,7 +10,6 @@ import RequestQuoteButton from "@/components/RequestQuoteButton"
 import FAQSearch from "@/components/faq"
 import GetQuoteComponent from "@/components/getQuoteComponent"
 import { Carousel, CarouselContent, CarouselItem, CarouselNavigation, CarouselPrevious, CarouselNext } from "@/components/ui/carousel"
-import OverviewServicesTabs from "@/components/overview-services"
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 import { Award } from "lucide-react";
 

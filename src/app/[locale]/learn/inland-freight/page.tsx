@@ -8,7 +8,6 @@ import Image from "next/image";
 import GetQuoteComponent from "@/components/getQuoteComponent";
 import RequestQuoteButton from "@/components/RequestQuoteButton";
 import FAQSearch from "@/components/faq";
-import OverviewServicesTabs from "@/components/overview-services";
 import ReasonsGridUniversal from "@/components/ReasonsGridUniversal";
 
 export default function InlandFreightInfo() {

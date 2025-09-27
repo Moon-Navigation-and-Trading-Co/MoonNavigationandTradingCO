@@ -1,6 +1,5 @@
 "use client"
 import React, { useEffect, useState } from "react";
-import OverviewServicesTabs from "@/components/overview-services";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import GetQuoteComponent from "@/components/getQuoteComponent";
