@@ -1,1 +1,21 @@
-{}
+{
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "stylelint.validate": [
+    "css",
+    "scss",
+    "less"
+  ],
+  "css.customData": [
+    ".vscode/css_custom_data.json"
+  ],
+  "tailwindCSS.includeLanguages": {
+    "css": "css",
+    "scss": "scss"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["@apply\\s+([^;}]+)", "([^;}]+)"],
+    ["@layer\\s+([^;}]+)", "([^;}]+)"]
+  ]
+}

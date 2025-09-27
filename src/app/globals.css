@@ -401,7 +401,8 @@ table {
 
 /* Hide incrementors in Firefox */
 .no-spinner {
-  -moz-appearance: textfield;
+  -moz-appearance: textfield; /* stylelint-disable-line property-no-vendor-prefix */
+  appearance: textfield; /* stylelint-disable-line property-no-vendor-prefix */
 }
 
 /* stylelint-disable-next-line at-rule-no-unknown */
