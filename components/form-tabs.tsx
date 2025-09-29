@@ -38,25 +38,31 @@ const FormTabs: React.FC<FormTabsProps> = ({ tabData, activeTab: controlledActiv
         const checkScrollable = () => {
             if (tabsContainerRef.current) {
                 const container = tabsContainerRef.current;
-                const isScrollable = container.scrollWidth > container.clientWidth;
+                const isScrollable = container.scrollWidth > container.clientWidth + 10; // Add small buffer
                 set_show_scroll_indicator(isScrollable);
             }
         };
 
+        // Check immediately and after a short delay to ensure DOM is ready
         checkScrollable();
+        const timeoutId = setTimeout(checkScrollable, 100);
+        
         window.addEventListener('resize', checkScrollable);
-        return () => window.removeEventListener('resize', checkScrollable);
+        return () => {
+            window.removeEventListener('resize', checkScrollable);
+            clearTimeout(timeoutId);
+        };
     }, [tabData]);
 
     return (
-        <div className="w-full mt-2 mx-auto flex flex-col">
+        <div className="w-full mx-auto flex flex-col px-2 md:px-0 relative z-30">
             <div className="border-b border-gray-200 relative">
-                <div className="flex justify-start ml-8 overflow-x-auto scrollbar-hide" ref={tabsContainerRef}>
+                <div className="flex justify-start overflow-x-auto scrollbar-hide" ref={tabsContainerRef} style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
                     {tabData.map((tab) => (
                         <button
                             key={tab.id}
                             onClick={() => setActiveTab(tab.id)}
-                            className={`px-8 py-2 text-base font-medium focus:outline-none transition-colors whitespace-nowrap
+                            className={`px-4 md:px-8 py-3 md:py-2 text-sm md:text-base font-medium focus:outline-none transition-colors whitespace-nowrap min-w-fit
                                 ${activeTab === tab.id ? "text-[#222] border-b-2 border-[#22313f]" : "text-gray-500 border-b-2 border-transparent"}
                             `}
                             style={{ background: 'none', borderRadius: 0 }}
@@ -66,39 +72,73 @@ const FormTabs: React.FC<FormTabsProps> = ({ tabData, activeTab: controlledActiv
                     ))}
                 </div>
                 
-                {/* Mobile Scroll Indicator */}
+                {/* Mobile Scroll Indicators */}
                 {show_scroll_indicator && (
-                    <div className="absolute right-0 top-0 bottom-0 flex items-center md:hidden">
-                        <div className="bg-gradient-to-l from-white via-white to-transparent w-12 h-full flex items-center justify-center">
-                            <button 
-                                onClick={() => {
-                                    if (tabsContainerRef.current) {
-                                        const container = tabsContainerRef.current;
-                                        const scrollAmount = container.clientWidth * 0.8; // Scroll 80% of container width
-                                        container.scrollBy({
-                                            left: scrollAmount,
-                                            behavior: 'smooth'
-                                        });
-                                    }
-                                }}
-                                className="bg-blue-500/20 backdrop-blur-sm rounded-full p-2 border border-blue-200/50 hover:bg-blue-500/30 hover:border-blue-300/50 transition-all duration-300 cursor-pointer group"
-                            >
-                                <svg 
-                                    className="w-5 h-5 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-300" 
-                                    fill="none" 
-                                    stroke="currentColor" 
-                                    viewBox="0 0 24 24"
+                    <>
+                        {/* Left Scroll Indicator */}
+                        <div className="absolute left-0 top-0 bottom-0 flex items-center md:hidden z-10">
+                            <div className="bg-gradient-to-r from-white via-white to-transparent w-8 h-full flex items-center justify-center">
+                                <button 
+                                    onClick={() => {
+                                        if (tabsContainerRef.current) {
+                                            const container = tabsContainerRef.current;
+                                            container.scrollBy({
+                                                left: -container.clientWidth * 0.6,
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    }}
+                                    className="bg-blue-500/20 backdrop-blur-sm rounded-full p-1.5 border border-blue-200/50 hover:bg-blue-500/30 hover:border-blue-300/50 transition-all duration-300 cursor-pointer group"
                                 >
-                                    <path 
-                                        strokeLinecap="round" 
-                                        strokeLinejoin="round" 
-                                        strokeWidth={2.5} 
-                                        d="M9 5l7 7-7 7" 
-                                    />
-                                </svg>
-                            </button>
+                                    <svg 
+                                        className="w-4 h-4 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-300" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round" 
+                                            strokeWidth={2.5} 
+                                            d="M15 19l-7-7 7-7" 
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
-                    </div>
+
+                        {/* Right Scroll Indicator */}
+                        <div className="absolute right-0 top-0 bottom-0 flex items-center md:hidden z-10">
+                            <div className="bg-gradient-to-l from-white via-white to-transparent w-8 h-full flex items-center justify-center">
+                                <button 
+                                    onClick={() => {
+                                        if (tabsContainerRef.current) {
+                                            const container = tabsContainerRef.current;
+                                            container.scrollBy({
+                                                left: container.clientWidth * 0.6,
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    }}
+                                    className="bg-blue-500/20 backdrop-blur-sm rounded-full p-1.5 border border-blue-200/50 hover:bg-blue-500/30 hover:border-blue-300/50 transition-all duration-300 cursor-pointer group"
+                                >
+                                    <svg 
+                                        className="w-4 h-4 text-blue-600 group-hover:text-blue-700 group-hover:scale-110 transition-all duration-300" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path 
+                                            strokeLinecap="round" 
+                                            strokeLinejoin="round" 
+                                            strokeWidth={2.5} 
+                                            d="M9 5l7 7-7 7" 
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </>
                 )}
             </div>
             <div className="w-full">

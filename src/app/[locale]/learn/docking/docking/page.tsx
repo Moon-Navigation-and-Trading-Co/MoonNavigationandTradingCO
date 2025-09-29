@@ -118,11 +118,11 @@ function overview() {
               </h2>
               
               <p className="text-base text-gray-600 leading-relaxed">
-                At Moon Navigation and Trading Co., we specialize in delivering secure, efficient, and professionally coordinated docking services for all port terminals. We handle berthing, major arrivals, emergency situations, and operations from various safe handling, terminal situations, and complete assistance with short and medium-term berthing.
+                At Moon Navigation and Trading Co., we specialize in delivering secure, efficient, and professionally coordinated docking services at key ports and terminals. Whether for routine berthing, major overhauls, or emergency situations, our operations team ensures safe handling, minimal downtime, and complete compliance with port and maritime regulations.
               </p>
               
               <p className="text-base text-gray-600 leading-relaxed">
-                We tailor our docking solutions to meet the needs of each vessel, ensuring smooth operations from arrival to departure. Our comprehensive services include port docking and berthing, dry docking for scheduled repairs, wet docking for afloat repairs, anchorage services, and emergency docking operations.
+                We tailor our docking solutions to meet the needs of each vessel, ensuring smooth operations from arrival to departure.
               </p>
             </div>
             
@@ -162,12 +162,12 @@ function services() {
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                        We manage all aspects of vessel berthing at port terminals, ensuring precise coordination with port authorities and terminal operators. Our services include:
+                        We manage all aspects of vessel berthing at port terminals, ensuring precise coordination with port authorities and terminal operators. Our Services Include:
                     </p>
                 <ul className="space-y-2 text-base text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Advance berth reservation and scheduling</span>
+                    <span>Advance berth reservations and scheduling</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
@@ -204,7 +204,7 @@ function services() {
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                  We coordinate full scale dry docking operations for vessels requiring scheduled inspection, structural maintenance, or major repairs. Our services include:
+                  We coordinate full-scale dry docking operations for vessels requiring scheduled inspections, structural maintenance, or major repairs. Our Services Include:
                 </p>
                 <ul className="space-y-2 text-base text-gray-600">
                   <li className="flex items-start gap-2">
@@ -217,7 +217,7 @@ function services() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Ballast tank maintenance and refitting supervision</span>
+                    <span>Ballast tank maintenance and coating</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
@@ -262,7 +262,7 @@ function services() {
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                  For vessels that don&apos;t require full dry docking, we offer wet docking (afloat repairs) to reduce operational disruption and cost. Our services include:
+                  For vessels that do not require full dry docking, we offer wet docking (afloat repairs) to reduce operational disruption and cost. Our Services Include:
                 </p>
                 <ul className="space-y-2 text-base text-gray-600">
                   <li className="flex items-start gap-2">
@@ -271,7 +271,7 @@ function services() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Hull cleaning, painting, and coating without dry docking</span>
+                    <span>Minor hull and structure maintenance</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
@@ -279,7 +279,7 @@ function services() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Supply of spares, tools, and consumables directly onboard</span>
+                    <span>Supply of spares, tools, and consumables directly at berth</span>
                   </li>
                     </ul>
               </div>
@@ -304,20 +304,20 @@ function services() {
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                        We provide anchorage support for vessels requiring offshore services or awaiting port entry. Our services include:
+                        We provide anchorage support for vessels requiring offshore services or awaiting port entry. Our Services Include:
                     </p>
                 <ul className="space-y-2 text-base text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Core charge arrangements and launch boat support</span>
+                    <span>Crew change arrangements and launch boat support</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Offshore delivery of spares, parts, provisions, and support</span>
+                    <span>Offshore delivery of spare parts, provisions, and equipment</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>In situ inspections and afloat maintenance operations</span>
+                    <span>In-situ inspections and afloat maintenance operations</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
@@ -358,16 +358,16 @@ function services() {
               
               <div className="space-y-4">
                 <p className="text-base text-gray-600 leading-relaxed">
-                        Our team is equipped to respond swiftly to emergency situations requiring immediate docking or vessel recovery. Our services include:
+                        Our team is equipped to respond swiftly to emergency situations requiring immediate docking or vessel recovery. Our Services Include:
                     </p>
                 <ul className="space-y-2 text-base text-gray-600">
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Rapid coordination for emergency, berthing, and repair access</span>
+                    <span>Rapid coordination for emergency berthing and repair access</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                    <span>Support for salvage operations and accident investigation</span>
+                    <span>Support for salvage operations and vessel refloating</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
