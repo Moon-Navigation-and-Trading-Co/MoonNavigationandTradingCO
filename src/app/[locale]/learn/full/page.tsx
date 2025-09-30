@@ -11,9 +11,9 @@ import { useState } from "react";
 import FormTabs from "@/components/form-tabs";
 import DryContainerPage from "./dry/page";
 import ReeferPage from "./reefer/page";
-import DangerousCargoInfo from "../dangerous-goods/page";
+import DangerousGoodsPage from "./dangerous-goods/page";
 
-function OverviewTab() {
+function OverviewTab({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
   const fclBenefits = [
     {
       icon: <Image src="/icons/container/24.png" alt="Shipment Management Icon" width={48} height={48} className="w-12 h-12" />,
@@ -90,7 +90,7 @@ function OverviewTab() {
         </div>
       </div>
           
-          <div className="order-1 lg:order-2 relative">
+          <div className="order-2 lg:order-2 relative">
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/container-banner.jpg"
@@ -175,7 +175,7 @@ function OverviewTab() {
       {/* When to Use FCL Section */}
       <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 space-y-6">
+          <div className="order-1 lg:order-1 space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
               <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
               <span>FCL Usage</span>
@@ -195,7 +195,7 @@ function OverviewTab() {
         </div>
           </div>
           
-          <div className="order-1 lg:order-2 relative">
+          <div className="order-2 lg:order-2 relative">
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
           <Image
             src="/fcl-when-to-use.jpg"
@@ -336,7 +336,7 @@ function OverviewTab() {
       {/* Standard Dry Containers Section */}
       <section id="standard-dry" className="w-full max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 space-y-6">
+          <div className="order-1 lg:order-1 space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
               <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
               <span>Standard Cargo</span>
@@ -367,15 +367,16 @@ function OverviewTab() {
             </div>
             
                         <div className="pt-4">
-              <Link href="/learn/full/dry">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-                  Learn more
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => setActiveTab("dry")} 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Learn more
+              </Button>
             </div>
           </div>
           
-          <div className="order-1 lg:order-2 relative">
+          <div className="order-2 lg:order-2 relative">
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/container-standard-s.jpg"
@@ -388,14 +389,14 @@ function OverviewTab() {
         </div>
       </section>
 
-      {/* Reefer Containers Section */}
-      <section id="reefer-containers" className="w-full max-w-7xl mx-auto px-4 md:px-8">
+      {/* Reefer Cargo Section */}
+      <section className="w-full max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="order-1 lg:order-1 relative">
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <Image
                 src="/reefer-header.jpg"
-                alt="Reefer containers"
+                alt="Reefer container interior"
                 fill
                 className="object-cover"
               />
@@ -405,7 +406,7 @@ function OverviewTab() {
           <div className="order-2 lg:order-2 space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50/80 backdrop-blur-sm border border-blue-200/50 text-blue-700 rounded-full text-sm font-medium">
               <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></div>
-              <span>Temperature Control</span>
+              <span>Reefer Cargo</span>
             </div>
             
             <h2 className="text-3xl lg:text-4xl font-light text-gray-900 leading-tight">
@@ -419,15 +420,15 @@ function OverviewTab() {
               <ul className="space-y-2 text-base text-gray-600">
                 <li className="flex items-start gap-2">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Perishable Food Items—Fresh produce, dairy, and frozen foods.</span>
+                  <span>Perishable Food Items — Fresh produce, dairy, and frozen foods.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Pharmaceuticals—medicines and vaccines that need strict temperature control.</span>
+                  <span>Pharmaceuticals — Medicines and vaccines that need strict temperature control.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0"></span>
-                  <span>Flowers & Plants—Goods that require constant climate monitoring.</span>
+                  <span>Flowers & Plants — Goods that require constant climate monitoring.</span>
                 </li>
               </ul>
               <p className="text-base text-gray-600 leading-relaxed">
@@ -435,12 +436,13 @@ function OverviewTab() {
               </p>
             </div>
             
-                        <div className="pt-4">
-              <Link href="/learn/full/reefer">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-                  Learn more
-                </Button>
-              </Link>
+            <div className="pt-4">
+              <Button 
+                onClick={() => setActiveTab("reefer")} 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Learn more
+              </Button>
             </div>
           </div>
         </div>
@@ -487,18 +489,19 @@ function OverviewTab() {
             </div>
             
             <div className="pt-4">
-              <Link href="/learn/dangerous-goods">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl">
-                  Learn more
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => setActiveTab("dangerous-goods")} 
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                Learn more
+              </Button>
             </div>
           </div>
           
           <div className="order-1 lg:order-2 relative">
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
               <Image
-                src="/dangerous-container-hero.jpg"
+                src="/container-dangerous.jpg"
                 alt="Dangerous goods containers"
                 fill
                 className="object-cover"
@@ -619,12 +622,18 @@ function OverviewTab() {
 
 export default function FullContainerLoadPage() {
   const [activeTab, setActiveTab] = useState("overview");
+  
+  // Handle tab change with scroll to top
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const tabData = [
     {
       id: "overview",
       title: "Overview",
-      content: <OverviewTab />,
+      content: <OverviewTab setActiveTab={handleTabChange} />,
     },
     {
       id: "dry",
@@ -639,7 +648,7 @@ export default function FullContainerLoadPage() {
     {
       id: "dangerous-goods",
       title: "Dangerous",
-      content: <DangerousCargoInfo />,
+      content: <DangerousGoodsPage />,
     },
   ];
 
@@ -647,7 +656,7 @@ export default function FullContainerLoadPage() {
     overview: "/container-banner.jpg",
     dry: "/container-standard-s.jpg",
     reefer: "/reefer-header.jpg",
-    "dangerous-goods": "/dangerous-container-hero.jpg",
+    "dangerous-goods": "/container-dangerous.jpg",
   };
 
   const heroTexts = {
@@ -768,7 +777,7 @@ export default function FullContainerLoadPage() {
       <FormTabs
         tabData={tabData}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        setActiveTab={handleTabChange}
       />
     </div>
   );

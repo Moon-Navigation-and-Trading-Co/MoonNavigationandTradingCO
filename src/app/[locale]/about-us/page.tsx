@@ -62,8 +62,8 @@ export default function AboutUs() {
   return (
     <main className='w-full max-w-7xl place-self-center flex flex-col gap-16 sm:gap-20 md:gap-24' style={{ fontFamily: 'Raleway, sans-serif' }}>
       {/* Enhanced Hero Section */}
-      <section className="relative w-full min-h-[400px] md:min-h-[500px] mt-8 md:mt-12">
-        <div className="relative flex items-center rounded-[2rem] md:rounded-[3rem] bg-center bg-cover w-full h-full min-h-[400px] md:min-h-[500px] shadow-2xl shadow-black/30 overflow-hidden">
+      <section className="relative w-full min-h-[600px] md:min-h-[700px] mt-8 md:mt-12">
+        <div className="relative flex items-center rounded-[2rem] md:rounded-[3rem] bg-center bg-cover w-full h-full min-h-[600px] md:min-h-[700px] shadow-2xl shadow-black/30 overflow-hidden">
           {/* Enhanced Background Overlay */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/60 rounded-[2rem] md:rounded-[3rem] z-10"></div>
           
@@ -109,7 +109,7 @@ export default function AboutUs() {
             
             {/* Classic Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 mt-12">
-              <Link href="/contact">
+              <Link href="/quote-request">
                 <button className="group relative bg-white text-gray-900 hover:bg-gray-50 px-10 py-4 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-gray-200 hover:border-gray-300 transform hover:-translate-y-1 active:translate-y-0">
                   <span className="flex items-center gap-2">
                     <svg className="w-4 h-4 text-blue-600 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -119,7 +119,7 @@ export default function AboutUs() {
                   </span>
                 </button>
               </Link>
-              <Link href="/learn-more/transportation-freight">
+              <Link href="#ship-agency">
                 <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-10 py-4 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
                   <span className="flex items-center gap-2">
                     <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -151,6 +151,7 @@ export default function AboutUs() {
           </div>
         </div>
       </section>
+
 
       {/* Statistics Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-16 bg-gradient-to-br from-blue-50 via-white to-blue-50/50">
@@ -362,30 +363,22 @@ export default function AboutUs() {
             </p>
           </div>
           
-          {/* Service Navigation Buttons */}
+          {/* Service Navigation Buttons (Reordered) */}
           <div className="flex flex-wrap gap-4 justify-center mb-16">
             <button 
-              onClick={() => document.getElementById('transportation-freight')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 bg-blue-600 text-white shadow-xl"
-            >
-              <Ship className="w-5 h-5 mr-2" />
-              Transportation & Freight
-            </button>
-            
-            <button 
               onClick={() => document.getElementById('ship-agency')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 bg-white text-gray-700 hover:bg-blue-50 border border-gray-200 hover:border-blue-300"
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 bg-blue-600 text-white shadow-xl"
             >
               <Anchor className="w-5 h-5 mr-2" />
               Ship Agency & Marine
             </button>
             
             <button 
-              onClick={() => document.getElementById('global-trade')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('transportation-freight')?.scrollIntoView({ behavior: 'smooth' })}
               className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 bg-white text-gray-700 hover:bg-blue-50 border border-gray-200 hover:border-blue-300"
             >
-              <Globe className="w-5 h-5 mr-2" />
-              Global Trade Solutions
+              <Ship className="w-5 h-5 mr-2" />
+              Transportation & Freight
             </button>
             
             <button 
@@ -403,49 +396,18 @@ export default function AboutUs() {
               <Package className="w-5 h-5 mr-2" />
               Other Logistics Services
             </button>
+            
+            <button 
+              onClick={() => document.getElementById('global-trade')?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-flex items-center justify-center whitespace-nowrap rounded-full text-base font-medium transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 h-12 px-6 py-3 font-raleway shadow-lg hover:shadow-xl transform hover:-translate-y-1 bg-white text-gray-700 hover:bg-blue-50 border border-gray-200 hover:border-blue-300"
+            >
+              <Globe className="w-5 h-5 mr-2" />
+              Global Trade Solutions
+            </button>
           </div>
         </div>
 
-        {/* Enhanced Transportation & Freight Solutions Section */}
-        <section id="transportation-freight" className="bg-white rounded-3xl shadow-xl md:bg-transparent md:rounded-none md:shadow-none p-6 md:p-8 mb-8 md:mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            {/* Text Content - Left */}
-            <div className="order-2 lg:order-1">
-              <div className="mb-4 md:mb-6">
-                <h3 className="text-xl md:text-3xl font-light mb-3 md:mb-4 text-primary font-raleway">Efficient Transportation & Freight Solutions</h3>
-              </div>
-              <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-4 md:mb-6">
-                We pride ourselves on providing comprehensive transportation and freight solutions designed to meet diverse logistical needs.
-              </p>
-              <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
-                From local transport to freight services, we ensure that your goods arrive safely and punctually. Our ocean freight capabilities accommodate a wide range of cargo types, including project cargo, dangerous goods, heavy lift, break bulk, and containers in both standard and nonstandard sizes, along with inland container transport and storage solutions, establishing ourselves as a versatile choice for effectively transporting any shipment without compromising quality or timeliness, whether across borders or overseas.
-              </p>
-              <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">
-                Our integrated sea-air solutions further enhance our logistics offerings, allowing for efficient and timely delivery of your shipments in today&apos;s dynamic market.
-              </p>              <Link href="/learn-more/transportation-freight">
-                <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
-                  <span className="flex items-center gap-2">
-                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                    </svg>
-                    Explore Freight Solutions
-                  </span>
-                </button>
-              </Link>
-            </div>
-            
-            {/* Image - Right */}
-            <div className="order-1 lg:order-2">
-              <Image
-                src="/a-6.jpg"
-                alt="Freight and Cargo"
-                width={600}
-                height={400}
-                className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-700"
-              />
-            </div>
-          </div>
-        </section>
+        {/* Enhanced Transportation & Freight Solutions Section (moved below Ship Agency) */}
       </section>
 
       <section id="ship-agency" className="bg-white rounded-3xl shadow-xl md:bg-transparent md:rounded-none md:shadow-none p-6 md:p-8 mb-8 md:mb-16">
@@ -489,10 +451,62 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <section id="global-trade" className="bg-white rounded-3xl shadow-xl md:bg-transparent md:rounded-none md:shadow-none p-6 md:p-8 mb-8 md:mb-16">
+      <section id="transportation-freight" className="bg-white rounded-3xl shadow-xl md:bg-transparent md:rounded-none md:shadow-none p-6 md:p-8 mb-8 md:mb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Text Content - Left */}
           <div className="order-2 lg:order-1">
+            <div className="mb-4 md:mb-6">
+              <h3 className="text-xl md:text-3xl font-light mb-3 md:mb-4 text-primary font-raleway">Efficient Transportation & Freight Solutions</h3>
+            </div>
+            <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-4 md:mb-6">
+              We pride ourselves on providing comprehensive transportation and freight solutions designed to meet diverse logistical needs.
+            </p>
+            <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-4 md:mb-6">
+              From local transport to freight services, we ensure that your goods arrive safely and punctually. Our ocean freight capabilities accommodate a wide range of cargo types, including project cargo, dangerous goods, heavy lift, break bulk, and containers in both standard and nonstandard sizes, along with inland container transport and storage solutions, establishing ourselves as a versatile choice for effectively transporting any shipment without compromising quality or timeliness, whether across borders or overseas.
+            </p>
+            <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-6 md:mb-8">
+              Our integrated sea-air solutions further enhance our logistics offerings, allowing for efficient and timely delivery of your shipments in today's dynamic market.
+            </p>
+            <Link href="/learn-more/transportation-freight">
+              <button className="group relative bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-raleway font-medium text-sm transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-blue-600 hover:border-blue-700 transform hover:-translate-y-1 active:translate-y-0">
+                <span className="flex items-center gap-2">
+                  <svg className="w-4 h-4 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                  Explore Transportation Services
+                </span>
+              </button>
+            </Link>
+          </div>
+          
+          {/* Image - Right */}
+          <div className="order-1 lg:order-2">
+            <Image
+              src="/ve-9.jpg"
+              alt="Transportation and freight solutions"
+              width={600}
+              height={400}
+              className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="global-trade" className="bg-white rounded-3xl shadow-xl md:bg-transparent md:rounded-none md:shadow-none p-6 md:p-8 mb-8 md:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Image - Left */}
+          <div className="order-1 lg:order-1">
+            <Image
+              src="/a-8.jpg"
+              alt="Global trade connections"
+              width={600}
+              height={400}
+              className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+          
+          {/* Text Content - Right */}
+          <div className="order-2 lg:order-2">
             <div className="mb-4 md:mb-6">
               <h3 className="text-xl md:text-3xl font-light mb-3 md:mb-4 text-primary font-raleway">Streamlined Global Trade Solutions</h3>
             </div>
@@ -516,35 +530,13 @@ export default function AboutUs() {
               </button>
             </Link>
           </div>
-          
-          {/* Image - Right */}
-          <div className="order-1 lg:order-2">
-            <Image
-              src="/a-8.jpg"
-              alt="Global trade connections"
-              width={600}
-              height={400}
-              className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-700"
-            />
-          </div>
         </div>
       </section>
 
       <section id="vessel-support" className="bg-white rounded-3xl shadow-xl md:bg-transparent md:rounded-none md:shadow-none p-6 md:p-8 mb-8 md:mb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Image - Left */}
-          <div className="order-1 lg:order-1">
-            <Image
-              src="/a-9.jpg"
-              alt="Vessel in dry dock for maintenance"
-              width={600}
-              height={400}
-              className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-700"
-            />
-          </div>
-          
-          {/* Text Content - Right */}
-          <div className="order-2 lg:order-2">
+          {/* Text Content - Left */}
+          <div className="order-2 lg:order-1">
             <div className="mb-4 md:mb-6">
               <h3 className="text-xl md:text-3xl font-light mb-3 md:mb-4 text-primary font-raleway">Integrated Vessel Support and Maintenance</h3>
             </div>
@@ -568,13 +560,35 @@ export default function AboutUs() {
               </button>
             </Link>
           </div>
+          
+          {/* Image - Right */}
+          <div className="order-1 lg:order-2">
+            <Image
+              src="/a-9.jpg"
+              alt="Vessel in dry dock for maintenance"
+              width={600}
+              height={400}
+              className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
         </div>
       </section>
 
       <section id="other-logistics" className="bg-white rounded-3xl shadow-xl md:bg-transparent md:rounded-none md:shadow-none p-6 md:p-8 mb-8 md:mb-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Text Content - Left */}
-          <div className="order-2 lg:order-1">
+          {/* Image - Left */}
+          <div className="order-1 lg:order-1">
+            <Image
+              src="/a-10.jpg"
+              alt="Logistics worker inspecting containers at port"
+              width={600}
+              height={400}
+              className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+          
+          {/* Text Content - Right */}
+          <div className="order-2 lg:order-2">
             <div className="mb-4 md:mb-6">
               <h3 className="text-xl md:text-3xl font-light mb-3 md:mb-4 text-primary font-raleway">Other Logistic Services</h3>
             </div>
@@ -602,17 +616,6 @@ export default function AboutUs() {
                 </span>
               </button>
             </Link>
-          </div>
-          
-          {/* Image - Right */}
-          <div className="order-1 lg:order-2">
-            <Image
-              src="/a-10.jpg"
-              alt="Logistics worker inspecting containers at port"
-              width={600}
-              height={400}
-              className="w-full h-[300px] md:h-[350px] object-cover rounded-2xl shadow-lg group-hover:scale-105 transition-transform duration-700"
-            />
           </div>
         </div>
       </section>
